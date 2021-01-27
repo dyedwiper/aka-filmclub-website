@@ -10,9 +10,55 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "@babel/preset-react": "^7.12.10",
+        "babel-eslint": "^10.1.0",
+        "babel-plugin-styled-components": "^1.12.0",
+        "eslint": "^7.18.0",
+        "eslint-config-prettier": "^7.2.0",
+        "eslint-plugin-react": "^7.22.0",
+        "eslint-plugin-react-hooks": "^4.2.0",
         "laravel-mix": "^6.0.6",
-        "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "prettier": "2.2.1"
+    },
+    "dependencies": {
+        "axios": "^0.21.1",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1",
+        "react-router-dom": "^5.2.0",
+        "styled-components": "^5.2.1"
+    },
+    "babel": {
+        "plugins": [
+            "babel-plugin-styled-components"
+        ]
+    },
+    "eslintConfig": {
+        "env": {
+            "browser": true
+        },
+        "plugins": [
+            "react",
+            "react-hooks"
+        ],
+        "extends": [
+            "eslint:recommended",
+            "plugin:react/recommended"
+        ],
+        "parser": "babel-eslint"
+    },
+    "prettier": {
+        "singleQuote": true,
+        "tabWidth": 4
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version"
+        ]
     }
 }
