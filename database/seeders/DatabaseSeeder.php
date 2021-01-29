@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Database\Seeders\ScreeningSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,6 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ScreeningSeeder::class,
+            NoticeSeeder::class,
         ]);
     }
 }
