@@ -2777,7 +2777,7 @@ function Footer() {
 var FooterStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.footer.withConfig({
   displayName: "Footer__FooterStyled",
   componentId: "d2i78s-0"
-})(["position:fixed;bottom:0;height:50px;width:100%;background-color:var(--aka-gelb);"]);
+})(["height:50px;width:100%;background-color:var(--aka-gelb);"]);
 
 /***/ }),
 
@@ -2809,7 +2809,7 @@ function Header() {
 var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.header.withConfig({
   displayName: "Header__HeaderStyled",
   componentId: "d7im2b-0"
-})(["position:fixed;top:0;height:100px;width:100%;background-color:var(--aka-gelb);"]);
+})(["position:fixed;top:0;z-index:10;height:100px;width:100%;background-color:var(--aka-gelb);"]);
 var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.img.withConfig({
   displayName: "Header__LogoStyled",
   componentId: "d7im2b-1"
@@ -2843,7 +2843,7 @@ function ScreeningSlide(_ref) {
   var screening = _ref.screening;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningSlideStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
-      src: '/assets/' + screening.image
+      src: '/images/' + screening.image
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningInfoStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleStyled, {
         children: screening.title

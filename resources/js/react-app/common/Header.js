@@ -13,6 +13,7 @@ export default function Header() {
 const HeaderStyled = styled.header`
     position: fixed;
     top: 0;
+    z-index: 10;
     height: 100px;
     width: 100%;
     background-color: var(--aka-gelb);

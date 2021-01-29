@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use ScreeningSeeder;
+use Database\Seeders\ScreeningSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            ScreeningSeeder::class
+            ScreeningSeeder::class,
         ]);
     }
 }

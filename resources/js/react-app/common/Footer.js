@@ -6,8 +6,6 @@ export default function Footer() {
 }
 
 const FooterStyled = styled.footer`
-    position: fixed;
-    bottom: 0;
     height: 50px;
     width: 100%;
     background-color: var(--aka-gelb);

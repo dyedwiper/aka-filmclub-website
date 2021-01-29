@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export default function ScreeningSlide({ screening }) {
     return (
         <ScreeningSlideStyled>
-            <ScreeningImageStyled src={'/assets/' + screening.image} />
+            <ScreeningImageStyled src={'/images/' + screening.image} />
             <ScreeningInfoStyled>
                 <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
                 <ScreeningDateStyled>
