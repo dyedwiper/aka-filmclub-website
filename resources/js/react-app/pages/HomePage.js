@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import ScreeningSlide from '../common/ScreeningSlide';
 import { getScreenings } from '../utils/services';
 
 export default function HomePage() {
@@ -14,12 +15,12 @@ export default function HomePage() {
     return (
         <HomePageStyled>
             {screenings.map((screening) => (
-                <div key={screening.id}>{screening.title}</div>
+                <ScreeningSlide key={screening.id} screening={screening} />
             ))}
         </HomePageStyled>
     );
 }
 
 const HomePageStyled = styled.div`
-    padding-top: 100px;
+    padding-top: 160px;
 `;

@@ -15,7 +15,7 @@ const HeaderStyled = styled.header`
     top: 0;
     height: 100px;
     width: 100%;
-    background-color: #ffea0d;
+    background-color: var(--aka-gelb);
 `;
 
 const LogoStyled = styled.img`

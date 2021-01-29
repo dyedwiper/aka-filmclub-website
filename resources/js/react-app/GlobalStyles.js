@@ -5,6 +5,10 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
  
+  :root{
+      --aka-gelb: #ffea0d;
+  }
+
   body {
     margin: 0;
     font-family: 'Open Sans', 'Segoe UI', sans-serif;
