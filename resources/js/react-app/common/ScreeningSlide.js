@@ -22,7 +22,7 @@ export default function ScreeningSlide({ screening }) {
 const ScreeningSlideStyled = styled.div`
     position: relative;
     width: 70%;
-    margin: auto;
+    margin: 0 auto;
 `;
 
 const ScreeningImageStyled = styled.img`
