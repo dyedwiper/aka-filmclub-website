@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ScreeningCard from '../common/ScreeningCard';
 import ScreeningSlide from '../common/ScreeningSlide';
+import { PageStyled } from '../common/styledElements';
 import { getScreenings } from '../utils/services';
 import LoadingPage from './LoadingPage';
 
@@ -19,20 +20,16 @@ export default function HomePage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <HomePageStyled>
+        <PageStyled>
             <ScreeningSlide key={screenings[0].id} screening={screenings[0]} />
             <ScreeningCardsRowStyled>
                 {screenings.map((screening) => (
                     <ScreeningCard key={screening.id} screening={screening} />
                 ))}
             </ScreeningCardsRowStyled>
-        </HomePageStyled>
+        </PageStyled>
     );
 }
-
-const HomePageStyled = styled.div`
-    padding: 160px 100px;
-`;
 
 const ScreeningCardsRowStyled = styled.div`
     display: grid;

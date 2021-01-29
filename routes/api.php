@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Notice;
 use App\Models\Screening;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/screenings', function () {
     return Screening::all();
+});
+
+Route::get('/notices', function () {
+    return Notice::all();
 });
