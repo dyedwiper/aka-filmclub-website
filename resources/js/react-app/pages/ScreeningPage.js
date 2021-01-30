@@ -1,23 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../common/styledElements';
 import { IMAGE_FOLDER, UUID_LENGTH } from '../constants';
 import { getSingleScreening } from '../utils/services';
 import LoadingPage from './LoadingPage';
+import NotFoundPage from './NotFoundPage';
 
 export default function ScreeningPage() {
     const [screening, setScreening] = useState({});
     const [isLoading, setisLoading] = useState(true);
+    const [isInvalidUuid, setIsInvalidUuid] = useState(false);
 
     useEffect(() => {
-        const screeningUuid = window.location.pathname.slice(-UUID_LENGTH);
+        const path = window.location.pathname;
+        const screeningUuid = path.slice(path.lastIndexOf('/') + 1);
         getSingleScreening(screeningUuid).then((res) => {
+            console.log(res.data);
+            if (!res.data) {
+                setIsInvalidUuid(true);
+            }
             setScreening(res.data);
             setisLoading(false);
         });
     }, []);
 
     if (isLoading) return <LoadingPage />;
+
+    if (isInvalidUuid) return <Redirect to="/404" />;
 
     return (
         <PageStyled>
