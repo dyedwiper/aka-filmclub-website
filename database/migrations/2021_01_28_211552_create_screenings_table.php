@@ -15,6 +15,7 @@ class CreateScreeningsTable extends Migration
     {
         Schema::create('screenings', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->nullable();
             $table->timestamps();
             $table->string('title');
             $table->dateTime('date');

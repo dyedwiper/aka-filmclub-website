@@ -11,4 +11,13 @@ class ScreeningController extends Controller
     {
         return Screening::where('date', '>', date("Y-m-d H:i:s"))->get();
     }
+
+    public function UpdateUuids()
+    {
+        $screenings = Screening::all();
+        foreach ($screenings as $screening) {
+            $screening->uuid = uniqid();
+            $screening->save();
+        }
+    }
 }

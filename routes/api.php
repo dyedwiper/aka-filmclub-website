@@ -30,6 +30,10 @@ Route::get(
     [ScreeningController::class, 'GetFutureScreenings']
 );
 
+Route::get('screenings/update_uuids', [
+    ScreeningController::class, 'UpdateUuids'
+]);
+
 Route::get('/notices', function () {
     return Notice::all();
 });

@@ -15,6 +15,7 @@ class ScreeningSeeder extends Seeder
     public function run()
     {
         DB::table('screenings')->insert([[
+            'uuid' => uniqid(),
             'title' => 'Johnny Flash',
             'date' => date('Y-m-d H:i:s', strtotime('2021-10-28 20:00:00')),
             'original_title' => null,
@@ -35,6 +36,7 @@ class ScreeningSeeder extends Seeder
             'author' => 'maxb',
             'image' => 'johnny.jpg',
         ], [
+            'uuid' => uniqid(),
             'title' => 'Fish Tank',
             'date' => date('Y-m-d H:i:s', strtotime('2021-10-29 20:00:00')),
             'original_title' => null,
@@ -55,6 +57,7 @@ class ScreeningSeeder extends Seeder
             'author' => 'maxb',
             'image' => 'fish_tank.jpg',
         ], [
+            'uuid' => uniqid(),
             'title' => 'Der Riss',
             'date' => date('Y-m-d H:i:s', strtotime('2021-10-30 20:00:00')),
             'original_title' => 'La Rupture',
@@ -75,6 +78,7 @@ class ScreeningSeeder extends Seeder
             'author' => 'maxb',
             'image' => 'der_riss.jpg',
         ], [
+            'uuid' => uniqid(),
             'title' => 'Johnny Clash',
             'date' => date('Y-m-d H:i:s', strtotime('2020-11-22 20:00:00')),
             'original_title' => null,
