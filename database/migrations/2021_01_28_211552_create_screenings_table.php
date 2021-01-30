@@ -15,13 +15,26 @@ class CreateScreeningsTable extends Migration
     {
         Schema::create('screenings', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date');
-            $table->string('title');
-            $table->string('original_title')->nullable();
-            $table->string('directed_by');
-            $table->text('synopsis');
-            $table->string('image')->nullable();
             $table->timestamps();
+            $table->string('title');
+            $table->dateTime('date');
+            $table->string('original_title')->nullable();
+            $table->text('synopsis');
+            $table->string('directed_by');
+            $table->string('written_by')->nullable();
+            $table->string('music_by')->nullable();
+            $table->string('shot_by')->nullable();
+            $table->string('cast')->nullable();
+            $table->string('country');
+            $table->integer('year');
+            $table->integer('length');
+            $table->string('medium');
+            $table->string('version');
+            $table->string('venue');
+            $table->text('special')->nullable();
+            $table->text('tercet')->nullable();
+            $table->string('author')->nullable();
+            $table->string('image')->nullable();
         });
     }
 

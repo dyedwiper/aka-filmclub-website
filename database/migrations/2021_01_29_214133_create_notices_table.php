@@ -15,11 +15,11 @@ class CreateNoticesTable extends Migration
     {
         Schema::create('notices', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('author');
-            $table->text('content');
-            $table->string('image');
             $table->timestamps();
+            $table->string('title');
+            $table->text('content');
+            $table->string('author');
+            $table->string('image')->nullable();
         });
     }
 
