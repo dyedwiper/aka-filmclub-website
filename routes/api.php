@@ -21,18 +21,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/screenings', function () {
-    return Screening::all();
+Route::prefix('screenings')->group(function () {
+
+    Route::get('/', function () {
+        return Screening::all();
+    });
+
+    Route::get('/future', [
+        ScreeningController::class, 'GetFutureScreenings'
+    ]);
+
+    Route::get('/single/{uuid}', [
+        ScreeningController::class, 'GetSingleScreening'
+    ]);
+
+    Route::get('/update_uuids', [
+        ScreeningController::class, 'UpdateUuids'
+    ]);
 });
-
-Route::get(
-    '/screenings/future',
-    [ScreeningController::class, 'GetFutureScreenings']
-);
-
-Route::get('screenings/update_uuids', [
-    ScreeningController::class, 'UpdateUuids'
-]);
 
 Route::get('/notices', function () {
     return Notice::all();

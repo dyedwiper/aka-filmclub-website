@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { IMAGE_FOLDER } from '../../constants';
 import { formatDateAndTime } from '../../utils/dateFormatters';
 
 export default function ScreeningRow({ screening }) {
@@ -7,7 +9,9 @@ export default function ScreeningRow({ screening }) {
         <ScreeningRowStyled>
             <HorizontalLineStyled />
             <ScreeningContainerStyled>
-                <ScreeningImageStyled src={'/images/' + screening.image} />
+                <LinkStyled to={'/screening/' + screening.uuid}>
+                    <ScreeningImageStyled src={IMAGE_FOLDER + screening.image} />
+                </LinkStyled>
                 <ScreeningInfoStyled>
                     <ScreeningDateStyled>{formatDateAndTime(screening.date)}</ScreeningDateStyled>
                     <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
@@ -31,6 +35,8 @@ const ScreeningContainerStyled = styled.div`
     display: grid;
     grid-template-columns: 360px 1fr;
 `;
+
+const LinkStyled = styled(Link)``;
 
 const ScreeningImageStyled = styled.img`
     height: 200px;

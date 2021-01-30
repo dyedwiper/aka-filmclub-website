@@ -40,8 +40,6 @@ const NavStyled = styled.nav`
     padding: 20px;
 `;
 
-const NavItemStyled = styled.div``;
-
 const NavLinkStyled = styled(NavLink)`
     margin-right: 20px;
     text-decoration: none;

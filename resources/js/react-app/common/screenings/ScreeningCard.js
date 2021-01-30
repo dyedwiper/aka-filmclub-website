@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IMAGE_FOLDER } from '../../constants';
 import { formatDate } from '../../utils/dateFormatters';
 
 export default function ScreeningCard({ screening }) {
     return (
         <ScreeningCardStyled>
-            <ScreeningImageStyled src={'/images/' + screening.image} />
+            <ScreeningImageStyled src={IMAGE_FOLDER + screening.image} />
             <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
             <ScreeningDateStyled>{formatDate(screening.date)}</ScreeningDateStyled>
             <HorizontalLineStyled />

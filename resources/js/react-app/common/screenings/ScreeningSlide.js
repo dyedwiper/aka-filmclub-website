@@ -1,19 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IMAGE_FOLDER } from '../../constants';
+import { formatDate } from '../../utils/dateFormatters';
 
 export default function ScreeningSlide({ screening }) {
     return (
         <ScreeningSlideStyled>
-            <ScreeningImageStyled src={'/images/' + screening.image} />
+            <ScreeningImageStyled src={IMAGE_FOLDER + screening.image} />
             <ScreeningInfoStyled>
                 <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
-                <ScreeningDateStyled>
-                    {new Date(screening.date).toLocaleDateString('de-DE', {
-                        day: '2-digit',
-                        month: '2-digit',
-                        year: 'numeric',
-                    })}
-                </ScreeningDateStyled>
+                <ScreeningDateStyled>{formatDate(screening.date)}</ScreeningDateStyled>
             </ScreeningInfoStyled>
         </ScreeningSlideStyled>
     );

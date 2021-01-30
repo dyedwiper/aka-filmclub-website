@@ -6,6 +6,7 @@ import Header from './common/Header';
 import HomePage from './pages/HomePage';
 import NoticesPage from './pages/NoticesPage';
 import ProgramPage from './pages/ProgramPage';
+import ScreeningPage from './pages/ScreeningPage';
 
 export default function App() {
     return (
@@ -21,6 +22,9 @@ export default function App() {
                     </Route>
                     <Route exact path="/program">
                         <ProgramPage />
+                    </Route>
+                    <Route path="/screening">
+                        <ScreeningPage />
                     </Route>
                 </Switch>
                 <Footer />

@@ -2691,14 +2691,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/Footer */ "./resources/js/react-app/common/Footer.js");
 /* harmony import */ var _common_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/Header */ "./resources/js/react-app/common/Header.js");
 /* harmony import */ var _pages_HomePage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/HomePage */ "./resources/js/react-app/pages/HomePage.js");
 /* harmony import */ var _pages_NoticesPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/NoticesPage */ "./resources/js/react-app/pages/NoticesPage.js");
 /* harmony import */ var _pages_ProgramPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/ProgramPage */ "./resources/js/react-app/pages/ProgramPage.js");
+/* harmony import */ var _pages_ScreeningPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./pages/ScreeningPage */ "./resources/js/react-app/pages/ScreeningPage.js");
+
 
 
 
@@ -2711,26 +2713,29 @@ __webpack_require__.r(__webpack_exports__);
 
 function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AppStyled, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Switch, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Switch, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
           exact: true,
           path: "/",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_HomePage__WEBPACK_IMPORTED_MODULE_4__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
           exact: true,
           path: "/news",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_NoticesPage__WEBPACK_IMPORTED_MODULE_5__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
           exact: true,
           path: "/program",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ProgramPage__WEBPACK_IMPORTED_MODULE_6__.default, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+          path: "/screening",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ScreeningPage__WEBPACK_IMPORTED_MODULE_7__.default, {})
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Footer__WEBPACK_IMPORTED_MODULE_2__.default, {})]
     })
   });
 }
-var AppStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
+var AppStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "App__AppStyled",
   componentId: "sc-1i0elua-0"
 })(["height:100vh;"]);
@@ -2847,13 +2852,9 @@ var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.nav.withC
   displayName: "Header__NavStyled",
   componentId: "d7im2b-3"
 })(["padding:20px;"]);
-var NavItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
-  displayName: "Header__NavItemStyled",
-  componentId: "d7im2b-4"
-})([""]);
 var NavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink).withConfig({
   displayName: "Header__NavLinkStyled",
-  componentId: "d7im2b-5"
+  componentId: "d7im2b-4"
 })(["margin-right:20px;text-decoration:none;color:black;font-size:2rem;font-weight:bold;&.active,&:hover{text-decoration:underline var(--aka-gelb);}"]);
 
 /***/ }),
@@ -2924,8 +2925,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+
 
 
 
@@ -2935,37 +2938,37 @@ function ScreeningCard(_ref) {
   var screening = _ref.screening;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningCardStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
-      src: '/images/' + screening.image
+      src: _constants__WEBPACK_IMPORTED_MODULE_2__.IMAGE_FOLDER + screening.image
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleStyled, {
       children: screening.title
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
-      children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatDate)(screening.date)
+      children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatDate)(screening.date)
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningSynopsisStyled, {
       children: screening.synopsis
     })]
   });
 }
-var ScreeningCardStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var ScreeningCardStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningCard__ScreeningCardStyled",
   componentId: "ojz13b-0"
 })(["width:240px;"]);
-var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.img.withConfig({
+var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
   displayName: "ScreeningCard__ScreeningImageStyled",
   componentId: "ojz13b-1"
 })(["width:100%;"]);
-var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningCard__ScreeningTitleStyled",
   componentId: "ojz13b-2"
 })(["font-weight:bold;"]);
-var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningCard__ScreeningDateStyled",
   componentId: "ojz13b-3"
 })(["font-weight:bold;"]);
-var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningCard__HorizontalLineStyled",
   componentId: "ojz13b-4"
 })(["height:10px;width:80%;background-color:var(--aka-gelb);"]);
-var ScreeningSynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.p.withConfig({
+var ScreeningSynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
   displayName: "ScreeningCard__ScreeningSynopsisStyled",
   componentId: "ojz13b-5"
 })([""]);
@@ -2985,8 +2988,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+
+
 
 
 
@@ -2996,11 +3003,14 @@ function ScreeningRow(_ref) {
   var screening = _ref.screening;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningRowStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningContainerStyled, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
-        src: '/images/' + screening.image
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+        to: '/screening/' + screening.uuid,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
+          src: _constants__WEBPACK_IMPORTED_MODULE_2__.IMAGE_FOLDER + screening.image
+        })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningInfoStyled, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
-          children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatDateAndTime)(screening.date)
+          children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatDateAndTime)(screening.date)
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleStyled, {
           children: screening.title
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningSynopsisStyled, {
@@ -3010,37 +3020,41 @@ function ScreeningRow(_ref) {
     })]
   });
 }
-var ScreeningRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.li.withConfig({
+var ScreeningRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.li.withConfig({
   displayName: "ScreeningRow__ScreeningRowStyled",
   componentId: "sc-1xbervn-0"
 })([""]);
-var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningRow__HorizontalLineStyled",
   componentId: "sc-1xbervn-1"
 })(["height:10px;width:80%;margin:20px 0;background-color:var(--aka-gelb);"]);
-var ScreeningContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var ScreeningContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningRow__ScreeningContainerStyled",
   componentId: "sc-1xbervn-2"
 })(["display:grid;grid-template-columns:360px 1fr;"]);
-var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.img.withConfig({
-  displayName: "ScreeningRow__ScreeningImageStyled",
+var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link).withConfig({
+  displayName: "ScreeningRow__LinkStyled",
   componentId: "sc-1xbervn-3"
-})(["height:200px;"]);
-var ScreeningInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
-  displayName: "ScreeningRow__ScreeningInfoStyled",
-  componentId: "sc-1xbervn-4"
 })([""]);
-var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
-  displayName: "ScreeningRow__ScreeningDateStyled",
+var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
+  displayName: "ScreeningRow__ScreeningImageStyled",
+  componentId: "sc-1xbervn-4"
+})(["height:200px;"]);
+var ScreeningInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "ScreeningRow__ScreeningInfoStyled",
   componentId: "sc-1xbervn-5"
 })([""]);
-var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h3.withConfig({
-  displayName: "ScreeningRow__ScreeningTitleStyled",
+var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "ScreeningRow__ScreeningDateStyled",
   componentId: "sc-1xbervn-6"
 })([""]);
-var ScreeningSynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.p.withConfig({
-  displayName: "ScreeningRow__ScreeningSynopsisStyled",
+var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h3.withConfig({
+  displayName: "ScreeningRow__ScreeningTitleStyled",
   componentId: "sc-1xbervn-7"
+})([""]);
+var ScreeningSynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
+  displayName: "ScreeningRow__ScreeningSynopsisStyled",
+  componentId: "sc-1xbervn-8"
 })([""]);
 
 /***/ }),
@@ -3058,7 +3072,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+
+
 
 
 
@@ -3067,37 +3085,33 @@ function ScreeningSlide(_ref) {
   var screening = _ref.screening;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningSlideStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
-      src: '/images/' + screening.image
+      src: _constants__WEBPACK_IMPORTED_MODULE_2__.IMAGE_FOLDER + screening.image
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningInfoStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleStyled, {
         children: screening.title
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
-        children: new Date(screening.date).toLocaleDateString('de-DE', {
-          day: '2-digit',
-          month: '2-digit',
-          year: 'numeric'
-        })
+        children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatDate)(screening.date)
       })]
     })]
   });
 }
-var ScreeningSlideStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
+var ScreeningSlideStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningSlide__ScreeningSlideStyled",
   componentId: "sc-5avseb-0"
 })(["position:relative;width:70%;margin:0 auto;"]);
-var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.img.withConfig({
+var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
   displayName: "ScreeningSlide__ScreeningImageStyled",
   componentId: "sc-5avseb-1"
 })(["width:100%;"]);
-var ScreeningInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
+var ScreeningInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningSlide__ScreeningInfoStyled",
   componentId: "sc-5avseb-2"
 })(["position:absolute;bottom:20px;color:var(--aka-gelb);"]);
-var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.h2.withConfig({
+var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h2.withConfig({
   displayName: "ScreeningSlide__ScreeningTitleStyled",
   componentId: "sc-5avseb-3"
 })(["display:inline;margin:0 20px;font-size:40px;"]);
-var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.span.withConfig({
+var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.span.withConfig({
   displayName: "ScreeningSlide__ScreeningDateStyled",
   componentId: "sc-5avseb-4"
 })([""]);
@@ -3121,6 +3135,23 @@ var PageStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.main.wit
   displayName: "styledElements__PageStyled",
   componentId: "sc-1sog38p-0"
 })(["min-height:100vh;padding:160px 100px;"]);
+
+/***/ }),
+
+/***/ "./resources/js/react-app/constants.js":
+/*!*********************************************!*\
+  !*** ./resources/js/react-app/constants.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UUID_LENGTH": () => /* binding */ UUID_LENGTH,
+/* harmony export */   "IMAGE_FOLDER": () => /* binding */ IMAGE_FOLDER
+/* harmony export */ });
+var UUID_LENGTH = 13;
+var IMAGE_FOLDER = '/images/';
 
 /***/ }),
 
@@ -3406,6 +3437,112 @@ var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.defaul
 
 /***/ }),
 
+/***/ "./resources/js/react-app/pages/ScreeningPage.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/react-app/pages/ScreeningPage.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ ScreeningPage
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _utils_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/services */ "./resources/js/react-app/utils/services.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+
+
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+function ScreeningPage() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      screening = _useState2[0],
+      setScreening = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isLoading = _useState4[0],
+      setisLoading = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var screeningUuid = window.location.pathname.slice(-_constants__WEBPACK_IMPORTED_MODULE_3__.UUID_LENGTH);
+    (0,_utils_services__WEBPACK_IMPORTED_MODULE_4__.getSingleScreening)(screeningUuid).then(function (res) {
+      setScreening(res.data);
+      setisLoading(false);
+    });
+  }, []);
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_5__.default, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
+      src: _constants__WEBPACK_IMPORTED_MODULE_3__.IMAGE_FOLDER + screening.image
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleStyled, {
+      children: screening.title
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningSynopsisStyled, {
+      children: screening.synopsis
+    })]
+  });
+}
+var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.img(_templateObject());
+var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2(_templateObject2());
+var ScreeningSynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.p(_templateObject3());
+
+/***/ }),
+
 /***/ "./resources/js/react-app/utils/dateFormatters.js":
 /*!********************************************************!*\
   !*** ./resources/js/react-app/utils/dateFormatters.js ***!
@@ -3448,6 +3585,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getScreenings": () => /* binding */ getScreenings,
 /* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
+/* harmony export */   "getSingleScreening": () => /* binding */ getSingleScreening,
 /* harmony export */   "getNotices": () => /* binding */ getNotices
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -3458,6 +3596,9 @@ function getScreenings() {
 }
 function getFutureScreenings() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/future');
+}
+function getSingleScreening(uuid) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/single/' + uuid);
 }
 function getNotices() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/notices');
