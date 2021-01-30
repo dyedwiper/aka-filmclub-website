@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ScreeningRow from '../common/screenings/ScreeningRow';
 import { PageStyled } from '../common/styledElements';
-import { getScreenings } from '../utils/services';
+import { getFutureScreenings } from '../utils/services';
 import LoadingPage from './LoadingPage';
 
 export default function ProgramPage() {
@@ -10,7 +10,7 @@ export default function ProgramPage() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getScreenings().then((res) => {
+        getFutureScreenings().then((res) => {
             setScreenings(res.data);
             setIsLoading(false);
         });

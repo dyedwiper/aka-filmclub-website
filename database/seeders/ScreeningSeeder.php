@@ -74,6 +74,26 @@ class ScreeningSeeder extends Seeder
             'tercet' => null,
             'author' => 'maxb',
             'image' => 'der_riss.jpg',
-        ]]);
+        ], [
+            'title' => 'Johnny Clash',
+            'date' => date('Y-m-d H:i:s', strtotime('2020-11-22 20:00:00')),
+            'original_title' => null,
+            'synopsis' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, fugiat nesciunt, ipsum omnis ipsam sequi illum ullam consequuntur nisi enim sunt accusantium quasi natus cupiditate vero saepe consequatur. Doloribus, quas!',
+            'directed_by' => 'Werner Nekes',
+            'written_by' => 'Peter Ritz, Werner Nekes',
+            'music_by' => 'Helge Schneider',
+            'shot_by' => 'Bernd Upnmoor, Serge Roman',
+            'cast' => 'Helge Schneider, Andreas Kunze, Heike Melba-Fendel',
+            'country' => 'BRD',
+            'year' => '1986',
+            'length' => '86',
+            'medium' => '35mm',
+            'version' => 'dt. OV',
+            'venue' => 'GHS Biologie',
+            'special' => null,
+            'tercet' => null,
+            'author' => 'maxb',
+            'image' => 'johnny.jpg',
+        ],]);
     }
 }

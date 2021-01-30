@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ScreeningController;
 use App\Models\Notice;
 use App\Models\Screening;
 use Illuminate\Http\Request;
@@ -23,6 +24,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/screenings', function () {
     return Screening::all();
 });
+
+Route::get(
+    '/screenings/future',
+    [ScreeningController::class, 'GetFutureScreenings']
+);
 
 Route::get('/notices', function () {
     return Notice::all();

@@ -1,4 +1,3 @@
-import { format } from 'prettier';
 import React from 'react';
 import styled from 'styled-components';
 import { formatDate } from '../../utils/dateFormatters';

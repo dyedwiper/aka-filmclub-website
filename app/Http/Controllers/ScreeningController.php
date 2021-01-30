@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class ScreeningController extends Controller
 {
-    public function GetScreenings()
+    public function GetFutureScreenings()
     {
-        return Screening::all()
+        return Screening::where('date', '>', date("Y-m-d H:i:s"))->get();
     }
 }
