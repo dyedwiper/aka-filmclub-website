@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ScreeningCard from '../common/screenings/ScreeningCard';
-import ScreeningSlide from '../common/screenings/ScreeningSlide';
+import ScreeningRow from '../common/screenings/ScreeningRow';
 import { PageStyled } from '../common/styledElements';
 import { getScreenings } from '../utils/services';
 import LoadingPage from './LoadingPage';
 
-export default function HomePage() {
+export default function ProgramPage() {
     const [screenings, setScreenings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -21,19 +20,19 @@ export default function HomePage() {
 
     return (
         <PageStyled>
-            <ScreeningSlide key={screenings[0].id} screening={screenings[0]} />
-            <ScreeningCardsRowStyled>
+            <HeadlineStyled>Programm</HeadlineStyled>
+            <ScreeningsListStyled>
                 {screenings.map((screening) => (
-                    <ScreeningCard key={screening.id} screening={screening} />
+                    <ScreeningRow key={screening.id} screening={screening} />
                 ))}
-            </ScreeningCardsRowStyled>
+            </ScreeningsListStyled>
         </PageStyled>
     );
 }
 
-const ScreeningCardsRowStyled = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 20px;
-    background-color: deeppink;
+const HeadlineStyled = styled.h2``;
+
+const ScreeningsListStyled = styled.ul`
+    padding: 0;
+    list-style: none;
 `;

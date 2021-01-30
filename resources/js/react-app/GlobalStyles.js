@@ -35,4 +35,8 @@ export default createGlobalStyle`
     background-color: white;
     cursor: pointer;
   }
+
+  img {
+    filter: grayscale();
+  }
 `;

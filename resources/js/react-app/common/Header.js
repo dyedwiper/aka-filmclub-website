@@ -1,17 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export default function Header() {
     return (
         <HeaderStyled>
-            <Link to="/">
+            <LinkStyled to="/">
                 <LogoStyled src="/assets/aka_logo.png" />
-            </Link>
+            </LinkStyled>
             <NavStyled>
-                <NavItemStyled>
-                    <Link to="/news">News</Link>
-                </NavItemStyled>
+                <NavLinkStyled to="/news">News</NavLinkStyled>
+                <NavLinkStyled to="/program">Programm</NavLinkStyled>
             </NavStyled>
         </HeaderStyled>
     );
@@ -23,15 +22,35 @@ const HeaderStyled = styled.header`
     z-index: 10;
     display: grid;
     grid-template-columns: 200px 1fr;
-    height: 100px;
+    height: 120px;
     width: 100%;
-    background-color: var(--aka-gelb);
+    padding: 20px;
+    background-color: white;
+`;
+
+const LinkStyled = styled(Link)`
+    height: 100%;
 `;
 
 const LogoStyled = styled.img`
-    height: 100px;
+    height: 80px;
 `;
 
-const NavStyled = styled.nav``;
+const NavStyled = styled.nav`
+    padding: 20px;
+`;
 
 const NavItemStyled = styled.div``;
+
+const NavLinkStyled = styled(NavLink)`
+    margin-right: 20px;
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    font-weight: bold;
+
+    &.active,
+    &:hover {
+        text-decoration: underline var(--aka-gelb);
+    }
+`;

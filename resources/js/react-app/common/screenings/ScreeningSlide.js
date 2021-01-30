@@ -27,7 +27,6 @@ const ScreeningSlideStyled = styled.div`
 
 const ScreeningImageStyled = styled.img`
     width: 100%;
-    filter: grayscale();
 `;
 
 const ScreeningInfoStyled = styled.div`

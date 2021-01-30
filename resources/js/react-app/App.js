@@ -5,6 +5,7 @@ import Footer from './common/Footer';
 import Header from './common/Header';
 import HomePage from './pages/HomePage';
 import NoticesPage from './pages/NoticesPage';
+import ProgramPage from './pages/ProgramPage';
 
 export default function App() {
     return (
@@ -17,6 +18,9 @@ export default function App() {
                     </Route>
                     <Route exact path="/news">
                         <NoticesPage />
+                    </Route>
+                    <Route exact path="/program">
+                        <ProgramPage />
                     </Route>
                 </Switch>
                 <Footer />

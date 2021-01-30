@@ -1,22 +1,16 @@
+import { format } from 'prettier';
 import React from 'react';
 import styled from 'styled-components';
+import { formatDate } from '../../utils/dateFormatters';
 
 export default function ScreeningCard({ screening }) {
     return (
         <ScreeningCardStyled>
             <ScreeningImageStyled src={'/images/' + screening.image} />
             <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
-            <ScreeningDateStyled>
-                {new Date(screening.date).toLocaleDateString('de-DE', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric',
-                })}
-            </ScreeningDateStyled>
+            <ScreeningDateStyled>{formatDate(screening.date)}</ScreeningDateStyled>
             <HorizontalLineStyled />
-            <ScreeningSynopsisStyled>
-                {screening.synopsis}
-            </ScreeningSynopsisStyled>
+            <ScreeningSynopsisStyled>{screening.synopsis}</ScreeningSynopsisStyled>
         </ScreeningCardStyled>
     );
 }
@@ -27,7 +21,6 @@ const ScreeningCardStyled = styled.div`
 
 const ScreeningImageStyled = styled.img`
     width: 100%;
-    filter: grayscale();
 `;
 
 const ScreeningTitleStyled = styled.div`

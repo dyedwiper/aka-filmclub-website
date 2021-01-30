@@ -20,9 +20,12 @@ export default function NoticesPage() {
 
     return (
         <PageStyled>
+            <HeadlineStyled>News</HeadlineStyled>
             {notices.map((notice) => (
                 <Notice key={notice.id} notice={notice} />
             ))}
         </PageStyled>
     );
 }
+
+const HeadlineStyled = styled.h2``;
