@@ -3,10 +3,13 @@ import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-d
 import styled from 'styled-components';
 import Footer from './common/Footer';
 import Header from './common/Header';
+import AboutPage from './pages/AboutPage';
 import ArchivePage from './pages/ArchivePage';
+import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import NoticesPage from './pages/NoticesPage';
+import PressReviewPage from './pages/PressReviewPage';
 import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
 
@@ -30,6 +33,15 @@ export default function App() {
                     </Route>
                     <Route path="/screening">
                         <ScreeningPage />
+                    </Route>
+                    <Route path="/about">
+                        <AboutPage />
+                    </Route>
+                    <Route path="/faqs">
+                        <FaqsPage />
+                    </Route>
+                    <Route path="/press">
+                        <PressReviewPage />
                     </Route>
                     <Route path="/404">
                         <NotFoundPage />

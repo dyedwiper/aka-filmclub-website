@@ -5,6 +5,7 @@ import { PageStyled } from '../common/styledElements';
 import { getScreeningsBySemester } from '../utils/services';
 import LoadingPage from './LoadingPage';
 import { default as ReactSelect } from 'react-select';
+import { customSelectStyles } from '../styles/customSelectStyles';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
@@ -41,20 +42,6 @@ export default function ArchivePage() {
         }
     }, [semester]);
 
-    const customStyles = {
-        option: (provided, state) => ({
-            ...provided,
-            backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
-            color: 'black',
-        }),
-        container: (provided) => ({
-            ...provided,
-            display: 'inline-block',
-            width: '150px',
-            marginLeft: '20px',
-        }),
-    };
-
     if (isLoading) return <LoadingPage />;
 
     return (
@@ -64,7 +51,7 @@ export default function ArchivePage() {
                 Semester:
                 <ReactSelect
                     options={SemesterOptions.current}
-                    styles={customStyles}
+                    styles={customSelectStyles}
                     defaultValue={SemesterOptions.current[0]}
                     onChange={handleSemesterChange}
                 />
@@ -113,17 +100,5 @@ export default function ArchivePage() {
 const HeadlineStyled = styled.h2``;
 
 const SemesterSelectLabelStyled = styled.label``;
-
-const SemesterSelectStyled = styled.select`
-    margin-left: 10px;
-    padding: 5px 15px;
-`;
-
-const SemesterOptionStyled = styled.option`
-    &:hover,
-    &:focus {
-        box-shadow: 0 0 10px 100px var(--aka-gelb) inset;
-    }
-`;
 
 const ScreeningsListStyled = styled.ul``;

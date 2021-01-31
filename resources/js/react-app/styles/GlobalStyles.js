@@ -43,6 +43,11 @@ export default createGlobalStyle`
   a {
     text-decoration: none;
     color: black;
+
+    &.active,
+    &:hover {
+        text-decoration: underline var(--aka-gelb);
+    }
   }
 
   ul {
