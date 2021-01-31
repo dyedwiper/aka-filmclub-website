@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBookingsTable extends Migration
+class CreateSerialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateBookingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookings', function (Blueprint $table) {
+        Schema::create('serials', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->nullable();
             $table->timestamps();
-            $table->unsignedBigInteger('screening_fk');
-            $table->foreign('screening_fk')->references('id')->on('screenings');
-            $table->integer('tickets');
+            $table->string('title');
+            $table->string('subtitle')->nullable();
+            $table->text('article');
+            $table->string('author')->nullable();
         });
     }
 
@@ -29,6 +31,6 @@ class CreateBookingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('serials');
     }
 }

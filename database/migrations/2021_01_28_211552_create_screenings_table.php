@@ -34,6 +34,8 @@ class CreateScreeningsTable extends Migration
             $table->string('venue');
             $table->text('special')->nullable();
             $table->text('tercet')->nullable();
+            $table->unsignedBigInteger('serial_fk')->nullable();
+            $table->foreign('serial_id')->references('id')->on('serials');
             $table->string('author')->nullable();
             $table->string('image')->nullable();
         });
