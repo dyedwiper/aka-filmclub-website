@@ -39,7 +39,7 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'GetScreeningsByYear'
     ]);
 
-    Route::get('semester/{semester}/{year}', [
+    Route::get('semester/{season}/{year}', [
         ScreeningController::class, 'GetScreeningsBySemester'
     ]);
 

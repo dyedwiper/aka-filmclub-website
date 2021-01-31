@@ -22,13 +22,13 @@ class ScreeningController extends Controller
         return Screening::whereYear('date', $year)->get();
     }
 
-    public function GetScreeningsBySemester(string $semester, int $year)
+    public function GetScreeningsBySemester(string $season, int $year)
     {
-        if ($semester != 'ws' & $semester != 'ss') {
-            return response('Not a valid semester identifier', 400);
+        if ($season != 'ws' & $season != 'ss') {
+            return response('Not a valid season identifier', 400);
         }
 
-        if ($semester == 'ws') {
+        if ($season == 'ws') {
             return Screening::whereYear('date', $year)
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
@@ -37,7 +37,7 @@ class ScreeningController extends Controller
                 ->get();
         }
 
-        if ($semester == 'ss') {
+        if ($season == 'ss') {
             return Screening::whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)

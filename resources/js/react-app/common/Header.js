@@ -11,6 +11,7 @@ export default function Header() {
             <NavStyled>
                 <NavLinkStyled to="/news">News</NavLinkStyled>
                 <NavLinkStyled to="/program">Programm</NavLinkStyled>
+                <NavLinkStyled to="/archive">Archiv</NavLinkStyled>
             </NavStyled>
         </HeaderStyled>
     );
