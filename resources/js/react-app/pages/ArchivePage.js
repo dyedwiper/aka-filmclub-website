@@ -4,6 +4,7 @@ import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { PageStyled } from '../common/styledElements';
 import { getScreeningsBySemester } from '../utils/services';
 import LoadingPage from './LoadingPage';
+import { default as ReactSelect } from 'react-select';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
@@ -11,6 +12,11 @@ export default function ArchivePage() {
     const [isLoading, setIsLoading] = useState(true);
 
     const allSemesters = useRef([]);
+    const SemesterOptions = useRef([]);
+
+    useEffect(() => {
+        document.title = 'Archiv | aka-Filmclub ';
+    });
 
     useEffect(() => {
         const currentDate = new Date();
@@ -23,29 +29,46 @@ export default function ArchivePage() {
         };
         setSemester(currentSemester);
         allSemesters.current = computeAllSemesters(currentYear, currentMonth);
+        SemesterOptions.current = computeSemesterOptions(allSemesters.current);
     }, []);
 
     useEffect(() => {
         if (semester.year) {
             getScreeningsBySemester(semester).then((res) => {
-                console.log(res.data);
                 setScreenings(res.data);
                 setIsLoading(false);
             });
         }
     }, [semester]);
 
+    const customStyles = {
+        option: (provided, state) => ({
+            ...provided,
+            backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
+            color: 'black',
+        }),
+        container: (provided) => ({
+            ...provided,
+            display: 'inline-block',
+            width: '150px',
+            marginLeft: '20px',
+        }),
+    };
+
     if (isLoading) return <LoadingPage />;
 
     return (
         <PageStyled>
-            <SemesterSelectStyled onChange={handleSemesterChange}>
-                {allSemesters.current.map((semester, index) => (
-                    <SemesterOptionStyled key={index} value={index}>
-                        {semester.season.toUpperCase() + ' ' + semester.year}
-                    </SemesterOptionStyled>
-                ))}
-            </SemesterSelectStyled>
+            <HeadlineStyled>Programmarchiv</HeadlineStyled>
+            <SemesterSelectLabelStyled>
+                Semester:
+                <ReactSelect
+                    options={SemesterOptions.current}
+                    styles={customStyles}
+                    defaultValue={SemesterOptions.current[0]}
+                    onChange={handleSemesterChange}
+                />
+            </SemesterSelectLabelStyled>
             <ScreeningsListStyled>
                 {screenings.map((screening) => (
                     <ScreeningsListItem key={screening.uuid} screening={screening} />
@@ -71,14 +94,36 @@ export default function ArchivePage() {
         return allSemesters.reverse();
     }
 
-    function handleSemesterChange(event) {
-        console.log(event.currentTarget.value);
-        setSemester(allSemesters.current[event.currentTarget.value]);
+    function computeSemesterOptions(allSemesters) {
+        const semesterOptions = [];
+        allSemesters.forEach((semester) => {
+            semesterOptions.push({
+                label: semester.season.toUpperCase() + ' ' + semester.year,
+                value: allSemesters.indexOf(semester),
+            });
+        });
+        return semesterOptions;
+    }
+
+    function handleSemesterChange(option) {
+        setSemester(allSemesters.current[option.value]);
     }
 }
 
-const SemesterSelectStyled = styled.select``;
+const HeadlineStyled = styled.h2``;
 
-const SemesterOptionStyled = styled.option``;
+const SemesterSelectLabelStyled = styled.label``;
+
+const SemesterSelectStyled = styled.select`
+    margin-left: 10px;
+    padding: 5px 15px;
+`;
+
+const SemesterOptionStyled = styled.option`
+    &:hover,
+    &:focus {
+        box-shadow: 0 0 10px 100px var(--aka-gelb) inset;
+    }
+`;
 
 const ScreeningsListStyled = styled.ul``;

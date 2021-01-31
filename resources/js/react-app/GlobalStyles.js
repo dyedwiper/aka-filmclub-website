@@ -39,4 +39,14 @@ export default createGlobalStyle`
   img {
     filter: grayscale();
   }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
 `;
