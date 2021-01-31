@@ -35,6 +35,14 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'GetSingleScreening'
     ]);
 
+    Route::get('/year/{year}', [
+        ScreeningController::class, 'GetScreeningsByYear'
+    ]);
+
+    Route::get('semester/{semester}/{year}', [
+        ScreeningController::class, 'GetScreeningsBySemester'
+    ]);
+
     Route::get('/update_uuids', [
         ScreeningController::class, 'UpdateUuids'
     ]);
