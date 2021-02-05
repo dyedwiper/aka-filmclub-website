@@ -12,7 +12,7 @@ class ScreeningController extends Controller
         return Screening::where('date', '>', date("Y-m-d H:i:s"))->get();
     }
 
-    public function GetSingleScreening(string $uuid)
+    public function GetScreeningByUuid(string $uuid)
     {
         return Screening::where('uuid', $uuid)->first();
     }

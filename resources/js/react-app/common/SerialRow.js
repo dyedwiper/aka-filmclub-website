@@ -7,7 +7,7 @@ export default function SerialRow({ serial }) {
     return (
         <SerialRowStyled>
             <HorizontalLineStyled />
-            <SerialTitleLinkStyled to={'/serial'}>
+            <SerialTitleLinkStyled to={'/serial/' + serial.uuid}>
                 <SerialTitleStyled>{serial.title}</SerialTitleStyled>
             </SerialTitleLinkStyled>
             <SerialSubTitleStyled>{serial.subtitle}</SerialSubTitleStyled>

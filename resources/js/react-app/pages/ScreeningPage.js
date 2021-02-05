@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../common/styledElements';
 import { IMAGE_FOLDER } from '../constants';
-import { getSingleScreening } from '../utils/services';
+import { getScreeningByUuid } from '../utils/services';
 import LoadingPage from './LoadingPage';
 
 export default function ScreeningPage() {
@@ -15,9 +15,8 @@ export default function ScreeningPage() {
         const path = window.location.pathname;
         //todo: parsing der url überarbeiten
         const screeningUuid = path.slice(path.lastIndexOf('/') + 1);
-        getSingleScreening(screeningUuid).then((res) => {
-            console.log(res.data);
-            if (!res.data) {
+        getScreeningByUuid(screeningUuid).then((res) => {
+            if (!res.data.uuid) {
                 setNoScreeningFound(true);
             }
             setScreening(res.data);

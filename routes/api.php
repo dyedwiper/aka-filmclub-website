@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ScreeningController;
+use App\Http\Controllers\SerialController;
 use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
@@ -33,7 +34,7 @@ Route::prefix('screenings')->group(function () {
     ]);
 
     Route::get('/single/{uuid}', [
-        ScreeningController::class, 'GetSingleScreening'
+        ScreeningController::class, 'GetScreeningByUuid'
     ]);
 
     Route::get('/year/{year}', [
@@ -53,6 +54,16 @@ Route::get('/notices', function () {
     return Notice::all();
 });
 
-Route::get('/serials', function () {
-    return Serial::all();
+Route::prefix('serials')->group(function () {
+    Route::get('/', function () {
+        return Serial::all();
+    });
+
+    Route::get('/single/{uuid}', [
+        SerialController::class, 'GetSerialByUuid'
+    ]);
+
+    Route::get('/update_uuids', [
+        SerialController::class, 'UpdateUuids'
+    ]);
 });

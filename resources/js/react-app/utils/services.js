@@ -12,7 +12,7 @@ export function getScreeningsBySemester(semester) {
     return axios.get('/api/screenings/semester/' + semester.season + '/' + semester.year);
 }
 
-export function getSingleScreening(uuid) {
+export function getScreeningByUuid(uuid) {
     return axios.get('/api/screenings/single/' + uuid);
 }
 
@@ -22,4 +22,8 @@ export function getNotices() {
 
 export function getSerials() {
     return axios.get('/api/serials');
+}
+
+export function getSerialByUuid(uuid) {
+    return axios.get('/api/serials/single/' + uuid);
 }
