@@ -13,6 +13,7 @@ export default function ScreeningPage() {
 
     useEffect(() => {
         const path = window.location.pathname;
+        //todo: parsing der url überarbeiten
         const screeningUuid = path.slice(path.lastIndexOf('/') + 1);
         getSingleScreening(screeningUuid).then((res) => {
             console.log(res.data);

@@ -17,7 +17,7 @@ export default function ArchivePage() {
 
     useEffect(() => {
         document.title = 'Archiv | aka-Filmclub ';
-    });
+    }, []);
 
     useEffect(() => {
         const currentDate = new Date();

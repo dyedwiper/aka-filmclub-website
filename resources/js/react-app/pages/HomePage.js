@@ -11,6 +11,10 @@ export default function HomePage() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        document.title = 'aka-Filmclub ';
+    }, []);
+
+    useEffect(() => {
         getScreenings().then((res) => {
             setScreenings(res.data);
             setIsLoading(false);

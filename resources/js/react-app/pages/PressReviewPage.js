@@ -5,7 +5,7 @@ import { PageStyled } from '../common/styledElements';
 export default function PressReviewPage() {
     useEffect(() => {
         document.title = 'Pressespiegel | aka-Filmclub ';
-    });
+    }, []);
 
     return (
         <PageStyled>

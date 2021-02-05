@@ -10,6 +10,10 @@ export default function NoticesPage() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
+        document.title = 'News | aka-Filmclub ';
+    }, []);
+
+    useEffect(() => {
         getNotices().then((res) => {
             setNotices(res.data);
             setIsLoading(false);

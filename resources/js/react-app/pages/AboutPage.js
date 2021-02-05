@@ -5,7 +5,7 @@ import { PageStyled } from '../common/styledElements';
 export default function AboutPage() {
     useEffect(() => {
         document.title = 'Über uns | aka-Filmclub ';
-    });
+    }, []);
 
     return (
         <PageStyled>

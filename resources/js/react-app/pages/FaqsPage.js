@@ -5,7 +5,7 @@ import { PageStyled } from '../common/styledElements';
 export default function FaqsPage() {
     useEffect(() => {
         document.title = 'FAQs | aka-Filmclub ';
-    });
+    }, []);
 
     return (
         <PageStyled>
