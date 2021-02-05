@@ -78,6 +78,7 @@ const NavLinkStyled = styled(NavLink)`
 const SubNavStyled = styled.div`
     display: none;
     position: absolute;
+    background-color: var(--aka-secondary-color);
 `;
 
 const SubNavLinkStyled = styled(Link)`

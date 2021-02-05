@@ -7,6 +7,7 @@ export default createGlobalStyle`
  
   :root{
       --aka-gelb: #ffea0d;
+      --aka-secondary-color: white;
   }
 
   body {

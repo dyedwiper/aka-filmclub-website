@@ -21,8 +21,8 @@ class CreateSerialsTable extends Migration
             $table->string('subtitle')->nullable();
             $table->text('article');
             $table->string('author')->nullable();
-            // $table->unsignedBigInteger('image_fk');
-            // $table->foreign('image_fk')->references('id')->on('images');
+            $table->unsignedBigInteger('image_id');
+            $table->foreign('image_id')->references('id')->on('images');
         });
     }
 

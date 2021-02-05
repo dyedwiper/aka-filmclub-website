@@ -16,8 +16,8 @@ class CreateBookingsTable extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('screening_fk');
-            $table->foreign('screening_fk')->references('id')->on('screenings');
+            $table->unsignedBigInteger('screening_id');
+            $table->foreign('screening_id')->references('id')->on('screenings');
             $table->integer('tickets');
         });
     }
