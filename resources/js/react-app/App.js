@@ -12,6 +12,8 @@ import NoticesPage from './pages/NoticesPage';
 import PressReviewPage from './pages/PressReviewPage';
 import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
+import SerialPage from './pages/SerialPage';
+import SerialsPage from './pages/SerialsPage';
 
 export default function App() {
     return (
@@ -33,6 +35,12 @@ export default function App() {
                     </Route>
                     <Route path="/screening">
                         <ScreeningPage />
+                    </Route>
+                    <Route path="/serials">
+                        <SerialsPage />
+                    </Route>
+                    <Route path="/serial">
+                        <SerialPage />
                     </Route>
                     <Route path="/about">
                         <AboutPage />

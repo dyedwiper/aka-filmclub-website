@@ -4936,9 +4936,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/Footer */ "./resources/js/react-app/common/Footer.js");
 /* harmony import */ var _common_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/Header */ "./resources/js/react-app/common/Header.js");
 /* harmony import */ var _pages_AboutPage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/AboutPage */ "./resources/js/react-app/pages/AboutPage.js");
@@ -4950,6 +4950,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_PressReviewPage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./pages/PressReviewPage */ "./resources/js/react-app/pages/PressReviewPage.js");
 /* harmony import */ var _pages_ProgramPage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./pages/ProgramPage */ "./resources/js/react-app/pages/ProgramPage.js");
 /* harmony import */ var _pages_ScreeningPage__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/ScreeningPage */ "./resources/js/react-app/pages/ScreeningPage.js");
+/* harmony import */ var _pages_SerialPage__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pages/SerialPage */ "./resources/js/react-app/pages/SerialPage.js");
+/* harmony import */ var _pages_SerialsPage__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./pages/SerialsPage */ "./resources/js/react-app/pages/SerialsPage.js");
+
+
 
 
 
@@ -4968,47 +4972,53 @@ __webpack_require__.r(__webpack_exports__);
 
 function App() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AppStyled, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_13__.BrowserRouter, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Switch, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_15__.BrowserRouter, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Switch, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
           exact: true,
           path: "/",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_HomePage__WEBPACK_IMPORTED_MODULE_7__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
           exact: true,
           path: "/news",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_NoticesPage__WEBPACK_IMPORTED_MODULE_9__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
           exact: true,
           path: "/program",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ProgramPage__WEBPACK_IMPORTED_MODULE_11__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
           exact: true,
           path: "/archive",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ArchivePage__WEBPACK_IMPORTED_MODULE_5__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
           path: "/screening",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ScreeningPage__WEBPACK_IMPORTED_MODULE_12__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+          path: "/serials",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_SerialsPage__WEBPACK_IMPORTED_MODULE_14__.default, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
+          path: "/serial",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_SerialPage__WEBPACK_IMPORTED_MODULE_13__.default, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
           path: "/about",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_AboutPage__WEBPACK_IMPORTED_MODULE_4__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
           path: "/faqs",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_FaqsPage__WEBPACK_IMPORTED_MODULE_6__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
           path: "/press",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_PressReviewPage__WEBPACK_IMPORTED_MODULE_10__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Route, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Route, {
           path: "/404",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_NotFoundPage__WEBPACK_IMPORTED_MODULE_8__.default, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_14__.Redirect, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_16__.Redirect, {
           to: "/404"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Footer__WEBPACK_IMPORTED_MODULE_2__.default, {})]
     })
   });
 }
-var AppStyled = styled_components__WEBPACK_IMPORTED_MODULE_15__.default.div.withConfig({
+var AppStyled = styled_components__WEBPACK_IMPORTED_MODULE_17__.default.div.withConfig({
   displayName: "App__AppStyled",
   componentId: "sc-1i0elua-0"
 })(["height:100vh;"]);
@@ -5086,6 +5096,9 @@ function Header() {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
             to: "/archive",
             children: "Archiv"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+            to: "/serials",
+            children: "Filmreihen"
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
@@ -5194,6 +5207,66 @@ var NoticeContentStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default
   displayName: "Notice__NoticeContentStyled",
   componentId: "sc-1i8kh88-4"
 })([""]);
+
+/***/ }),
+
+/***/ "./resources/js/react-app/common/SerialRow.js":
+/*!****************************************************!*\
+  !*** ./resources/js/react-app/common/SerialRow.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ SerialRow
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styledElements */ "./resources/js/react-app/common/styledElements.js");
+
+
+
+
+
+
+function SerialRow(_ref) {
+  var serial = _ref.serial;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialRowStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialTitleLinkStyled, {
+      to: '/serial',
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialTitleStyled, {
+        children: serial.title
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialSubTitleStyled, {
+      children: serial.subtitle
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialArticleStyled, {
+      children: serial.article
+    })]
+  });
+}
+var SerialRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.li.withConfig({
+  displayName: "SerialRow__SerialRowStyled",
+  componentId: "ryf3n0-0"
+})([""]);
+var SerialTitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link).withConfig({
+  displayName: "SerialRow__SerialTitleLinkStyled",
+  componentId: "ryf3n0-1"
+})([""]);
+var SerialTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h3.withConfig({
+  displayName: "SerialRow__SerialTitleStyled",
+  componentId: "ryf3n0-2"
+})([""]);
+var SerialSubTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.p.withConfig({
+  displayName: "SerialRow__SerialSubTitleStyled",
+  componentId: "ryf3n0-3"
+})(["font-weight:bold;"]);
+var SerialArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.p.withConfig({
+  displayName: "SerialRow__SerialArticleStyled",
+  componentId: "ryf3n0-4"
+})(["display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;"]);
 
 /***/ }),
 
@@ -5466,7 +5539,8 @@ var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.defaul
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "PageStyled": () => /* binding */ PageStyled
+/* harmony export */   "PageStyled": () => /* binding */ PageStyled,
+/* harmony export */   "HorizontalLineStyled": () => /* binding */ HorizontalLineStyled
 /* harmony export */ });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
@@ -5474,6 +5548,10 @@ var PageStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.main.wit
   displayName: "styledElements__PageStyled",
   componentId: "sc-1sog38p-0"
 })(["min-height:100vh;max-width:1024px;margin:0 auto;padding:160px 100px 100px 100px;"]);
+var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.div.withConfig({
+  displayName: "styledElements__HorizontalLineStyled",
+  componentId: "sc-1sog38p-1"
+})(["height:10px;width:80%;margin:20px 0;background-color:var(--aka-gelb);"]);
 
 /***/ }),
 
@@ -5546,7 +5624,7 @@ __webpack_require__.r(__webpack_exports__);
 function AboutPage() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Über uns | aka-Filmclub ';
-  });
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Wir \xFCber uns"
@@ -5631,7 +5709,7 @@ function ArchivePage() {
   var SemesterOptions = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)([]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Archiv | aka-Filmclub ';
-  });
+  }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var currentDate = new Date();
     var currentMonth = currentDate.getMonth();
@@ -5761,7 +5839,7 @@ __webpack_require__.r(__webpack_exports__);
 function FaqsPage() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'FAQs | aka-Filmclub ';
-  });
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "FAQs"
@@ -5827,6 +5905,9 @@ function HomePage() {
       isLoading = _useState4[0],
       setIsLoading = _useState4[1];
 
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = 'aka-Filmclub ';
+  }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     (0,_utils_services__WEBPACK_IMPORTED_MODULE_5__.getScreenings)().then(function (res) {
       setScreenings(res.data);
@@ -5901,6 +5982,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function NotFoundPage() {
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = '404 | aka-Filmclub ';
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(IronsImageStyled, {
       src: _constants__WEBPACK_IMPORTED_MODULE_3__.ASSETS_FOLDER + 'waits_irons.jpg',
@@ -5972,6 +6056,9 @@ function NoticesPage() {
       setIsLoading = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = 'News | aka-Filmclub ';
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     (0,_utils_services__WEBPACK_IMPORTED_MODULE_4__.getNotices)().then(function (res) {
       setNotices(res.data);
       setIsLoading(false);
@@ -6017,7 +6104,7 @@ __webpack_require__.r(__webpack_exports__);
 function PressReviewPage() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Pressespiegel | aka-Filmclub ';
-  });
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Pressespiegel"
@@ -6169,7 +6256,8 @@ function ScreeningPage() {
       setNoScreeningFound = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var path = window.location.pathname;
+    var path = window.location.pathname; //todo: parsing der url überarbeiten
+
     var screeningUuid = path.slice(path.lastIndexOf('/') + 1);
     (0,_utils_services__WEBPACK_IMPORTED_MODULE_4__.getSingleScreening)(screeningUuid).then(function (res) {
       console.log(res.data);
@@ -6207,6 +6295,112 @@ var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.defaul
 var ScreeningSynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.p.withConfig({
   displayName: "ScreeningPage__ScreeningSynopsisStyled",
   componentId: "sc-1jbdtfx-2"
+})([""]);
+
+/***/ }),
+
+/***/ "./resources/js/react-app/pages/SerialPage.js":
+/*!****************************************************!*\
+  !*** ./resources/js/react-app/pages/SerialPage.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ SerialPage
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+
+
+
+function SerialPage() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {});
+}
+
+/***/ }),
+
+/***/ "./resources/js/react-app/pages/SerialsPage.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/react-app/pages/SerialsPage.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ SerialsPage
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_SerialRow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/SerialRow */ "./resources/js/react-app/common/SerialRow.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _utils_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/services */ "./resources/js/react-app/utils/services.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+function SerialsPage() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      serials = _useState2[0],
+      setSerials = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isLoading = _useState4[0],
+      setIsLoading = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = 'Archiv | aka-Filmclub ';
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    (0,_utils_services__WEBPACK_IMPORTED_MODULE_4__.getSerials)().then(function (res) {
+      setSerials(res.data);
+      setIsLoading(false);
+    });
+  }, []);
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_5__.default, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+      children: "Filmreihen"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialRowListStyled, {
+      children: serials.map(function (serial) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SerialRow__WEBPACK_IMPORTED_MODULE_2__.default, {
+          serial: serial
+        }, serial.id);
+      })
+    })]
+  });
+}
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2.withConfig({
+  displayName: "SerialsPage__HeadlineStyled",
+  componentId: "sc-4r2czp-0"
+})([""]);
+var SerialRowListStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.ul.withConfig({
+  displayName: "SerialsPage__SerialRowListStyled",
+  componentId: "sc-4r2czp-1"
 })([""]);
 
 /***/ }),
@@ -6319,7 +6513,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
 /* harmony export */   "getScreeningsBySemester": () => /* binding */ getScreeningsBySemester,
 /* harmony export */   "getSingleScreening": () => /* binding */ getSingleScreening,
-/* harmony export */   "getNotices": () => /* binding */ getNotices
+/* harmony export */   "getNotices": () => /* binding */ getNotices,
+/* harmony export */   "getSerials": () => /* binding */ getSerials
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -6338,6 +6533,9 @@ function getSingleScreening(uuid) {
 }
 function getNotices() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/notices');
+}
+function getSerials() {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials');
 }
 
 /***/ }),

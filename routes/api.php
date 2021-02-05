@@ -3,6 +3,7 @@
 use App\Http\Controllers\ScreeningController;
 use App\Models\Notice;
 use App\Models\Screening;
+use App\Models\Serial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -50,4 +51,8 @@ Route::prefix('screenings')->group(function () {
 
 Route::get('/notices', function () {
     return Notice::all();
+});
+
+Route::get('/serials', function () {
+    return Serial::all();
 });

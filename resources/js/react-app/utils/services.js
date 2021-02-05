@@ -19,3 +19,7 @@ export function getSingleScreening(uuid) {
 export function getNotices() {
     return axios.get('/api/notices');
 }
+
+export function getSerials() {
+    return axios.get('/api/serials');
+}
