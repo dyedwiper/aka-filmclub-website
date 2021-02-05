@@ -8,7 +8,7 @@ import LoadingPage from './LoadingPage';
 
 export default function ScreeningPage() {
     const [screening, setScreening] = useState({});
-    const [isLoading, setisLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [noScreeningFound, setNoScreeningFound] = useState(false);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ export default function ScreeningPage() {
                 setNoScreeningFound(true);
             }
             setScreening(res.data);
-            setisLoading(false);
+            setIsLoading(false);
         });
     }, []);
 

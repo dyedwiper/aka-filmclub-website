@@ -37,6 +37,10 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'GetScreeningByUuid'
     ]);
 
+    Route::get('/serial/{serialFk}', [
+        ScreeningController::class, 'GetScreeningsBySerialFk'
+    ]);
+
     Route::get('/year/{year}', [
         ScreeningController::class, 'GetScreeningsByYear'
     ]);

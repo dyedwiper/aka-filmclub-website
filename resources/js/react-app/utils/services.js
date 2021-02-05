@@ -16,6 +16,10 @@ export function getScreeningByUuid(uuid) {
     return axios.get('/api/screenings/single/' + uuid);
 }
 
+export function getScreeningsBySerialFk(serialFk) {
+    return axios.get('/api/screenings/serial/' + serialFk);
+}
+
 export function getNotices() {
     return axios.get('/api/notices');
 }

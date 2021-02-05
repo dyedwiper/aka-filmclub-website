@@ -6248,7 +6248,7 @@ function ScreeningPage() {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
       isLoading = _useState4[0],
-      setisLoading = _useState4[1];
+      setIsLoading = _useState4[1];
 
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
@@ -6265,7 +6265,7 @@ function ScreeningPage() {
       }
 
       setScreening(res.data);
-      setisLoading(false);
+      setIsLoading(false);
     });
   }, []);
   if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_5__.default, {});
@@ -6310,16 +6310,58 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _utils_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/services */ "./resources/js/react-app/utils/services.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
 
 
+
+function _templateObject8() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject7() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n    font-weight: bold;\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    margin-right: 10px;\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral([""]);
+  var data = _taggedTemplateLiteral(["\n    margin: 5px 0;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -6378,38 +6420,45 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function SerialPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
       serial = _useState2[0],
       setSerial = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState4 = _slicedToArray(_useState3, 2),
-      isLoading = _useState4[0],
-      setIsLoading = _useState4[1];
+      screenings = _useState4[0],
+      setScreenings = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState6 = _slicedToArray(_useState5, 2),
-      noSerialFound = _useState6[0],
-      SetNoSerialFound = _useState6[1];
+      isLoading = _useState6[0],
+      setIsLoading = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState8 = _slicedToArray(_useState7, 2),
+      noSerialFound = _useState8[0],
+      SetNoSerialFound = _useState8[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var path = window.location.pathname;
     var serialUuid = path.slice(path.lastIndexOf('/') + 1);
-    console.log(serialUuid);
     (0,_utils_services__WEBPACK_IMPORTED_MODULE_3__.getSerialByUuid)(serialUuid).then(function (res) {
       if (!res.data.uuid) {
         SetNoSerialFound(true);
       }
 
-      console.log(res.data);
       setSerial(res.data);
-      setIsLoading(false);
+      (0,_utils_services__WEBPACK_IMPORTED_MODULE_3__.getScreeningsBySerialFk)(res.data.id).then(function (res) {
+        setScreenings(res.data);
+        setIsLoading(false);
+      });
     });
   }, []);
   if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_4__.default, {});
-  if (noSerialFound) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Redirect, {
+  if (noSerialFound) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Redirect, {
     to: "/404"
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
@@ -6417,17 +6466,32 @@ function SerialPage() {
       children: serial.title
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialSubtitleStyled, {
       children: serial.subtitle
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialArticleStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialArticleStyled, {
       children: serial.article
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialAuthorStyled, {
       children: serial.author
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
+      children: screenings.map(function (screening) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningListItemStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
+            children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_5__.formatDate)(screening.date)
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleLinkStyled, {
+            to: '/screening/' + screening.uuid,
+            children: screening.title
+          })]
+        }, screening.id);
+      })
     })]
   });
 }
-var SerialTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2(_templateObject());
-var SerialSubtitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.p(_templateObject2());
-var SerialArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.p(_templateObject3());
-var SerialAuthorStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div(_templateObject4());
+var SerialTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2(_templateObject());
+var SerialSubtitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.p(_templateObject2());
+var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul(_templateObject3());
+var ScreeningListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.li(_templateObject4());
+var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div(_templateObject5());
+var ScreeningTitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link)(_templateObject6());
+var SerialArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.p(_templateObject7());
+var SerialAuthorStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div(_templateObject8());
 
 /***/ }),
 
@@ -6622,6 +6686,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
 /* harmony export */   "getScreeningsBySemester": () => /* binding */ getScreeningsBySemester,
 /* harmony export */   "getScreeningByUuid": () => /* binding */ getScreeningByUuid,
+/* harmony export */   "getScreeningsBySerialFk": () => /* binding */ getScreeningsBySerialFk,
 /* harmony export */   "getNotices": () => /* binding */ getNotices,
 /* harmony export */   "getSerials": () => /* binding */ getSerials,
 /* harmony export */   "getSerialByUuid": () => /* binding */ getSerialByUuid
@@ -6640,6 +6705,9 @@ function getScreeningsBySemester(semester) {
 }
 function getScreeningByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/single/' + uuid);
+}
+function getScreeningsBySerialFk(serialFk) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/serial/' + serialFk);
 }
 function getNotices() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/notices');
