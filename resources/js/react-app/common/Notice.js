@@ -1,12 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { getImageById } from '../utils/services';
 
 export default function Notice({ notice }) {
+    const [image, setImage] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        getImageById(notice.image_id).then((res) => {
+            setImage(res.data);
+            setIsLoading(false);
+        });
+    }, []);
+
+    if (isLoading) return <></>;
+
     return (
         <NoticeStyled>
             <HorizontalLineStyled />
             <NoticeTitleStyled>{notice.title}</NoticeTitleStyled>
-            <NoticeImageStyled src={'/images/' + notice.image} />
+            {image.id && <NoticeImageStyled src={'/images/' + image.source} />}
             <NoticeContentStyled>{notice.content}</NoticeContentStyled>
         </NoticeStyled>
     );
@@ -25,6 +38,6 @@ const NoticeImageStyled = styled.img`
     filter: grayscale();
 `;
 
-const NoticeTitleStyled = styled.h2``;
+const NoticeTitleStyled = styled.h3``;
 
 const NoticeContentStyled = styled.p``;

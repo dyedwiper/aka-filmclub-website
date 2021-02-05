@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ImageController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SerialController;
 use App\Models\Notice;
@@ -54,8 +56,14 @@ Route::prefix('screenings')->group(function () {
     ]);
 });
 
-Route::get('/notices', function () {
-    return Notice::all();
+Route::prefix('notices')->group(function () {
+    Route::get('/', [
+        NoticeController::class, 'GetNotices'
+    ]);
+
+    Route::get('/count', [
+        NoticeController::class, 'GetNoticesCount'
+    ]);
 });
 
 Route::prefix('serials')->group(function () {
@@ -69,5 +77,11 @@ Route::prefix('serials')->group(function () {
 
     Route::get('/update_uuids', [
         SerialController::class, 'UpdateUuids'
+    ]);
+});
+
+Route::prefix('images')->group(function () {
+    Route::get('/id/{id}', [
+        ImageController::class, 'GetImageById'
     ]);
 });

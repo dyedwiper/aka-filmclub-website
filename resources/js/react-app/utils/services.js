@@ -24,10 +24,22 @@ export function getNotices() {
     return axios.get('/api/notices');
 }
 
+export function getNoticesByPage(page) {
+    return axios.get('/api/notices?page=' + page);
+}
+
+export function getNoticesCount() {
+    return axios.get('/api/notices/count');
+}
+
 export function getSerials() {
     return axios.get('/api/serials');
 }
 
 export function getSerialByUuid(uuid) {
     return axios.get('/api/serials/single/' + uuid);
+}
+
+export function getImageById(id) {
+    return axios.get('/api/serials/id' + id);
 }
