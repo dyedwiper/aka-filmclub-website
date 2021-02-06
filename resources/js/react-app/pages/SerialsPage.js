@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import SemesterSelect from '../common/SemesterSelect';
 import SerialRow from '../common/SerialRow';
 import { PageStyled } from '../common/styledElements';
-import { getSerials } from '../utils/services';
+import { getSerials, GetSerialsBySemester } from '../utils/services';
 import LoadingPage from './LoadingPage';
 
 export default function SerialsPage() {
     const [serials, setSerials] = useState([]);
+    const [semester, setSemester] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -14,22 +16,27 @@ export default function SerialsPage() {
     }, []);
 
     useEffect(() => {
-        getSerials().then((res) => {
-            setSerials(res.data);
-            setIsLoading(false);
-        });
-    }, []);
-
-    if (isLoading) return <LoadingPage />;
+        if (semester.year) {
+            GetSerialsBySemester(semester).then((res) => {
+                setSerials(res.data);
+                setIsLoading(false);
+            });
+        }
+    }, [semester]);
 
     return (
         <PageStyled>
             <HeadlineStyled>Filmreihen</HeadlineStyled>
-            <SerialRowListStyled>
-                {serials.map((serial) => (
-                    <SerialRow key={serial.id} serial={serial} />
-                ))}
-            </SerialRowListStyled>
+            <SemesterSelect setSemester={setSemester} />
+            {isLoading ? (
+                <div>Loading</div>
+            ) : (
+                <SerialRowListStyled>
+                    {serials.map((serial) => (
+                        <SerialRow key={serial.id} serial={serial} />
+                    ))}
+                </SerialRowListStyled>
+            )}
         </PageStyled>
     );
 }

@@ -5348,6 +5348,132 @@ var UltimoPageLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.def
 
 /***/ }),
 
+/***/ "./resources/js/react-app/common/SemesterSelect.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/react-app/common/SemesterSelect.js ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ SemesterSelect
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function SemesterSelect(_ref) {
+  var setSemester = _ref.setSemester;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      semesterOptions = _useState2[0],
+      setSemesterOptions = _useState2[1];
+
+  var allSemesters = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)([]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var currentDate = new Date();
+    var currentMonth = currentDate.getMonth();
+    var currentYear = currentDate.getFullYear();
+    var currentSemester = {
+      //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+      season: currentMonth < 3 || currentMonth >= 9 ? 'ws' : 'ss',
+      year: currentMonth < 3 ? currentYear - 1 : currentYear
+    };
+    console.log(currentSemester);
+    setSemester(currentSemester);
+    allSemesters.current = computeAllSemesters(currentYear, currentMonth);
+    console.log(computeSemesterOptions(allSemesters.current));
+    setSemesterOptions(computeSemesterOptions(allSemesters.current));
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
+    children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
+      options: semesterOptions,
+      defaultValue: semesterOptions[0],
+      onChange: handleSemesterChange,
+      styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.customSelectStyles
+    })]
+  });
+
+  function computeAllSemesters(currentYear, currentMonth) {
+    var allSemesters = [];
+    allSemesters.push({
+      season: 'ws',
+      year: 2000
+    });
+
+    for (var year = 2001; year < currentYear; year++) {
+      allSemesters.push({
+        season: 'ss',
+        year: year
+      });
+      allSemesters.push({
+        season: 'ws',
+        year: year
+      });
+    } //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+
+
+    if (currentMonth >= 3) {
+      allSemesters.push({
+        season: 'ss',
+        year: currentYear
+      });
+    }
+
+    if (currentMonth >= 9) {
+      allSemesters.push({
+        season: 'ws',
+        year: currentYear
+      });
+    }
+
+    return allSemesters.reverse();
+  }
+
+  function computeSemesterOptions(allSemesters) {
+    var semesterOptions = [];
+    allSemesters.forEach(function (semester) {
+      semesterOptions.push({
+        label: semester.season.toUpperCase() + ' ' + semester.year,
+        value: allSemesters.indexOf(semester)
+      });
+    });
+    return semesterOptions;
+  }
+
+  function handleSemesterChange(option) {
+    setSemester(allSemesters.current[option.value]);
+  }
+}
+var SemesterSelectLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
+  displayName: "SemesterSelect__SemesterSelectLabelStyled",
+  componentId: "sc-1w0f71e-0"
+})([""]);
+
+/***/ }),
+
 /***/ "./resources/js/react-app/common/SerialRow.js":
 /*!****************************************************!*\
   !*** ./resources/js/react-app/common/SerialRow.js ***!
@@ -5799,13 +5925,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/screenings/ScreeningsListItem */ "./resources/js/react-app/common/screenings/ScreeningsListItem.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/services */ "./resources/js/react-app/utils/services.js");
-/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
-/* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
+/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _utils_services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/services */ "./resources/js/react-app/utils/services.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
 
@@ -5820,7 +5945,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -5845,114 +5969,40 @@ function ArchivePage() {
       isLoading = _useState6[0],
       setIsLoading = _useState6[1];
 
-  var allSemesters = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)([]);
-  var SemesterOptions = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)([]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Archiv | aka-Filmclub ';
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var currentDate = new Date();
-    var currentMonth = currentDate.getMonth();
-    var currentYear = currentDate.getFullYear();
-    var currentSemester = {
-      //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
-      season: currentMonth < 3 || currentMonth >= 9 ? 'ws' : 'ss',
-      year: currentMonth < 3 ? currentYear - 1 : currentYear
-    };
-    setSemester(currentSemester);
-    allSemesters.current = computeAllSemesters(currentYear, currentMonth);
-    SemesterOptions.current = computeSemesterOptions(allSemesters.current);
-  }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester.year) {
-      (0,_utils_services__WEBPACK_IMPORTED_MODULE_4__.getScreeningsBySemester)(semester).then(function (res) {
+      (0,_utils_services__WEBPACK_IMPORTED_MODULE_5__.getScreeningsBySemester)(semester).then(function (res) {
         setScreenings(res.data);
         setIsLoading(false);
       });
     }
   }, [semester]);
-  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_5__.default, {});
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Programmarchiv"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
-      children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_7__.default, {
-        options: SemesterOptions.current,
-        styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_6__.customSelectStyles,
-        defaultValue: SemesterOptions.current[0],
-        onChange: handleSemesterChange
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
+      setSemester: setSemester
+    }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      children: "Loading"
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
       children: screenings.map(function (screening) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_2__.default, {
           screening: screening
-        }, screening.uuid);
+        }, screening.id);
       })
     })]
   });
-
-  function computeAllSemesters(currentYear, currentMonth) {
-    var allSemesters = [];
-    allSemesters.push({
-      season: 'ws',
-      year: 2000
-    });
-
-    for (var year = 2001; year < currentYear; year++) {
-      allSemesters.push({
-        season: 'ss',
-        year: year
-      });
-      allSemesters.push({
-        season: 'ws',
-        year: year
-      });
-    } //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
-
-
-    if (currentMonth >= 3) {
-      allSemesters.push({
-        season: 'ss',
-        year: currentYear
-      });
-    }
-
-    if (currentMonth >= 9) {
-      allSemesters.push({
-        season: 'ws',
-        year: currentYear
-      });
-    }
-
-    return allSemesters.reverse();
-  }
-
-  function computeSemesterOptions(allSemesters) {
-    var semesterOptions = [];
-    allSemesters.forEach(function (semester) {
-      semesterOptions.push({
-        label: semester.season.toUpperCase() + ' ' + semester.year,
-        value: allSemesters.indexOf(semester)
-      });
-    });
-    return semesterOptions;
-  }
-
-  function handleSemesterChange(option) {
-    setSemester(allSemesters.current[option.value]);
-  }
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2.withConfig({
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
   displayName: "ArchivePage__HeadlineStyled",
   componentId: "c8luhi-0"
 })([""]);
-var SemesterSelectLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.label.withConfig({
-  displayName: "ArchivePage__SemesterSelectLabelStyled",
-  componentId: "c8luhi-1"
-})([""]);
-var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.ul.withConfig({
+var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
   displayName: "ArchivePage__ScreeningsListStyled",
-  componentId: "c8luhi-2"
+  componentId: "c8luhi-1"
 })([""]);
 
 /***/ }),
@@ -6688,11 +6738,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _common_SerialRow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/SerialRow */ "./resources/js/react-app/common/SerialRow.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/services */ "./resources/js/react-app/utils/services.js");
-/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
+/* harmony import */ var _common_SerialRow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/SerialRow */ "./resources/js/react-app/common/SerialRow.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _utils_services__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/services */ "./resources/js/react-app/utils/services.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
 
@@ -6714,44 +6765,55 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function SerialsPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       serials = _useState2[0],
       setSerials = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
-      isLoading = _useState4[0],
-      setIsLoading = _useState4[1];
+      semester = _useState4[0],
+      setSemester = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState6 = _slicedToArray(_useState5, 2),
+      isLoading = _useState6[0],
+      setIsLoading = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Archiv | aka-Filmclub ';
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_services__WEBPACK_IMPORTED_MODULE_4__.getSerials)().then(function (res) {
-      setSerials(res.data);
-      setIsLoading(false);
-    });
-  }, []);
-  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_5__.default, {});
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
+    if (semester.year) {
+      (0,_utils_services__WEBPACK_IMPORTED_MODULE_5__.GetSerialsBySemester)(semester).then(function (res) {
+        setSerials(res.data);
+        setIsLoading(false);
+      });
+    }
+  }, [semester]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Filmreihen"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialRowListStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
+      setSemester: setSemester
+    }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      children: "Loading"
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialRowListStyled, {
       children: serials.map(function (serial) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SerialRow__WEBPACK_IMPORTED_MODULE_2__.default, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SerialRow__WEBPACK_IMPORTED_MODULE_3__.default, {
           serial: serial
         }, serial.id);
       })
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2.withConfig({
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
   displayName: "SerialsPage__HeadlineStyled",
   componentId: "sc-4r2czp-0"
 })([""]);
-var SerialRowListStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.ul.withConfig({
+var SerialRowListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
   displayName: "SerialsPage__SerialRowListStyled",
   componentId: "sc-4r2czp-1"
 })([""]);
@@ -6871,6 +6933,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getNoticesByPage": () => /* binding */ getNoticesByPage,
 /* harmony export */   "getNoticesCount": () => /* binding */ getNoticesCount,
 /* harmony export */   "getSerials": () => /* binding */ getSerials,
+/* harmony export */   "GetSerialsBySemester": () => /* binding */ GetSerialsBySemester,
 /* harmony export */   "getSerialByUuid": () => /* binding */ getSerialByUuid,
 /* harmony export */   "getImageById": () => /* binding */ getImageById
 /* harmony export */ });
@@ -6903,6 +6966,9 @@ function getNoticesCount() {
 }
 function getSerials() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials');
+}
+function GetSerialsBySemester(semester) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/semester/' + semester.season + '/' + semester.year);
 }
 function getSerialByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/single/' + uuid);
