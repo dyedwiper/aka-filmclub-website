@@ -71,6 +71,10 @@ Route::prefix('serials')->group(function () {
         return Serial::all();
     });
 
+    Route::get('/semester/{season}/{year}', [
+        SerialController::class, 'GetSerialsBySemester'
+    ]);
+
     Route::get('/single/{uuid}', [
         SerialController::class, 'GetSerialByUuid'
     ]);
