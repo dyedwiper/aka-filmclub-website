@@ -14,9 +14,9 @@ export default function Header() {
                 <DropdownContainerStyled>
                     <NavLinkStyled to="/program">Programm</NavLinkStyled>
                     <SubNavStyled>
-                        <SubNavLinkStyled to="/programlist">Programmliste</SubNavLinkStyled>
-                        <SubNavLinkStyled to="/archive">Archiv</SubNavLinkStyled>
-                        <SubNavLinkStyled to="/serials">Filmreihen</SubNavLinkStyled>
+                        <SubNavLinkStyled to="/program/overview">Übersicht</SubNavLinkStyled>
+                        <SubNavLinkStyled to="/program/serials">Filmreihen</SubNavLinkStyled>
+                        <SubNavLinkStyled to="/program/archive">Archiv</SubNavLinkStyled>
                     </SubNavStyled>
                 </DropdownContainerStyled>
                 <DropdownContainerStyled>

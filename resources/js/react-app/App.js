@@ -10,6 +10,7 @@ import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import NoticesPage from './pages/NoticesPage';
 import PressReviewPage from './pages/PressReviewPage';
+import ProgramOverviewPage from './pages/ProgramOverviewPage';
 import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
 import SerialPage from './pages/SerialPage';
@@ -30,13 +31,16 @@ export default function App() {
                     <Route exact path="/program">
                         <ProgramPage />
                     </Route>
-                    <Route exact path="/archive">
+                    <Route exact path="/program/overview">
+                        <ProgramOverviewPage />
+                    </Route>
+                    <Route exact path="/program/archive">
                         <ArchivePage />
                     </Route>
                     <Route path="/screening">
                         <ScreeningPage />
                     </Route>
-                    <Route path="/serials">
+                    <Route exact path="/program/serials">
                         <SerialsPage />
                     </Route>
                     <Route path="/serial">
