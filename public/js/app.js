@@ -5340,11 +5340,11 @@ var PaginatorStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div
 var PageLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link).withConfig({
   displayName: "Paginator__PageLinkStyled",
   componentId: "sc-1g3uqar-1"
-})(["display:inline-block;width:30px;font-weight:bold;&.disabled{color:grey;pointer-events:none;}"]);
+})(["display:inline-block;height:30px;width:30px;border:solid 1px black;font-weight:bold;text-align:center;&.disabled{color:grey;pointer-events:none;}"]);
 var UltimoPageLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link).withConfig({
   displayName: "Paginator__UltimoPageLinkStyled",
   componentId: "sc-1g3uqar-2"
-})(["display:inline-block;width:30px;font-weight:bold;&.disabled{color:grey;pointer-events:none;}"]);
+})(["display:inline-block;height:30px;width:30px;border:solid 1px black;font-weight:bold;text-align:center;&.disabled{color:grey;pointer-events:none;}"]);
 
 /***/ }),
 
@@ -6188,7 +6188,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function NoticesPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6207,15 +6206,21 @@ function NoticesPage() {
 
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState8 = _slicedToArray(_useState7, 2),
-      isLoading = _useState8[0],
-      setIsLoading = _useState8[1];
+      isLoadingNotices = _useState8[0],
+      setIsLoadingNotices = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState10 = _slicedToArray(_useState9, 2),
+      isLoadingCount = _useState10[0],
+      setIsLoadingCount = _useState10[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    document.title = 'News | aka-Filmclub ';
+    document.title = 'News | aka-Filmclub';
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     (0,_utils_services__WEBPACK_IMPORTED_MODULE_6__.getNoticesCount)().then(function (res) {
       setNoticesCount(res.data);
+      setIsLoadingCount(false);
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -6228,11 +6233,11 @@ function NoticesPage() {
     if (page) {
       (0,_utils_services__WEBPACK_IMPORTED_MODULE_6__.getNoticesByPage)(page).then(function (res) {
         setNotices(res.data.data);
-        setIsLoading(false);
+        setIsLoadingNotices(false);
       });
     }
   }, [page]);
-  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_7__.default, {});
+  if (isLoadingNotices || isLoadingCount) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_7__.default, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "News"
@@ -6241,10 +6246,10 @@ function NoticesPage() {
         notice: notice
       }, notice.id);
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Paginator__WEBPACK_IMPORTED_MODULE_3__.default, {
-      site: "news",
+      site: window.location.pathname,
       page: page,
       setPage: setPage,
-      setIsLoading: setIsLoading,
+      setIsLoading: setIsLoadingNotices,
       limit: noticesCount,
       itemsPerPage: _constants__WEBPACK_IMPORTED_MODULE_5__.NOTICES_PER_PAGE
     })]

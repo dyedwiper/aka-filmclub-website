@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Notice from '../common/Notice';
 import Paginator from '../common/Paginator';
@@ -12,15 +11,17 @@ export default function NoticesPage() {
     const [notices, setNotices] = useState([]);
     const [page, setPage] = useState(0);
     const [noticesCount, setNoticesCount] = useState(0);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoadingNotices, setIsLoadingNotices] = useState(true);
+    const [isLoadingCount, setIsLoadingCount] = useState(true);
 
     useEffect(() => {
-        document.title = 'News | aka-Filmclub ';
+        document.title = 'News | aka-Filmclub';
     }, []);
 
     useEffect(() => {
         getNoticesCount().then((res) => {
             setNoticesCount(res.data);
+            setIsLoadingCount(false);
         });
     }, []);
 
@@ -34,12 +35,12 @@ export default function NoticesPage() {
         if (page) {
             getNoticesByPage(page).then((res) => {
                 setNotices(res.data.data);
-                setIsLoading(false);
+                setIsLoadingNotices(false);
             });
         }
     }, [page]);
 
-    if (isLoading) return <LoadingPage />;
+    if (isLoadingNotices || isLoadingCount) return <LoadingPage />;
 
     return (
         <PageStyled>
@@ -48,10 +49,10 @@ export default function NoticesPage() {
                 <Notice key={notice.id} notice={notice} />
             ))}
             <Paginator
-                site="news"
+                site={window.location.pathname}
                 page={page}
                 setPage={setPage}
-                setIsLoading={setIsLoading}
+                setIsLoading={setIsLoadingNotices}
                 limit={noticesCount}
                 itemsPerPage={NOTICES_PER_PAGE}
             />

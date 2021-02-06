@@ -61,8 +61,11 @@ const PaginatorStyled = styled.div`
 
 const PageLinkStyled = styled(Link)`
     display: inline-block;
+    height: 30px;
     width: 30px;
+    border: solid 1px black;
     font-weight: bold;
+    text-align: center;
 
     &.disabled {
         color: grey;
@@ -72,8 +75,11 @@ const PageLinkStyled = styled(Link)`
 
 const UltimoPageLinkStyled = styled(Link)`
     display: inline-block;
+    height: 30px;
     width: 30px;
+    border: solid 1px black;
     font-weight: bold;
+    text-align: center;
 
     &.disabled {
         color: grey;
