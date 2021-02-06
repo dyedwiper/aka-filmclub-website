@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { getImageById } from '../utils/services';
+import { getImageById } from '../utils/imageServices';
 
 export default function Notice({ notice }) {
     const [image, setImage] = useState({});

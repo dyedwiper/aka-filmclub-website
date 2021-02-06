@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ScreeningRow from '../common/screenings/ScreeningRow';
 import { PageStyled } from '../common/styledElements';
-import { getFutureScreenings } from '../utils/services';
+import { getFutureScreenings } from '../utils/screeningServices';
 import LoadingPage from './LoadingPage';
 
 export default function ProgramPage() {

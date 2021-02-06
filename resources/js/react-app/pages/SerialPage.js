@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
-import { getScreeningsBySerialFk, getSerialByUuid } from '../utils/services';
-import LoadingPage from './LoadingPage';
 import { formatDate } from '../utils/dateFormatters';
+import { getScreeningsBySerialFk } from '../utils/screeningServices';
+import { getSerialByUuid } from '../utils/serialServices';
+import LoadingPage from './LoadingPage';
 
 export default function SerialPage() {
     const [serial, setSerial] = useState({});

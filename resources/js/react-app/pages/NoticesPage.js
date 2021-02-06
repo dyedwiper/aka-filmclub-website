@@ -4,7 +4,7 @@ import Notice from '../common/Notice';
 import Paginator from '../common/Paginator';
 import { PageStyled } from '../common/styledElements';
 import { NOTICES_PER_PAGE } from '../constants';
-import { getNoticesByPage, getNoticesCount } from '../utils/services';
+import { getNoticesByPage, getNoticesCount } from '../utils/noticeServices';
 import LoadingPage from './LoadingPage';
 
 export default function NoticesPage() {

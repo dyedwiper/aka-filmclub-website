@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import SemesterSelect from '../common/SemesterSelect';
 import { PageStyled } from '../common/styledElements';
-import { getScreeningsBySemester } from '../utils/services';
-import LoadingPage from './LoadingPage';
+import { getScreeningsBySemester } from '../utils/screeningServices';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);

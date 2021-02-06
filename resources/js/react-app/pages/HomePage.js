@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ScreeningCard from '../common/screenings/ScreeningCard';
 import ScreeningSlide from '../common/screenings/ScreeningSlide';
 import { PageStyled } from '../common/styledElements';
-import { getScreenings } from '../utils/services';
+import { getScreenings } from '../utils/screeningServices';
 import LoadingPage from './LoadingPage';
 
 export default function HomePage() {

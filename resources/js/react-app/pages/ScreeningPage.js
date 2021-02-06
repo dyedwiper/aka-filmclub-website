@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../common/styledElements';
 import { IMAGE_FOLDER } from '../constants';
-import { getScreeningByUuid } from '../utils/services';
+import { getScreeningByUuid } from '../utils/screeningServices';
 import LoadingPage from './LoadingPage';
 
 export default function ScreeningPage() {

@@ -18,7 +18,6 @@ export default createGlobalStyle`
   }
 
   input, button, textarea {
-    border: none;
     font-family: inherit;
     font-size: 1em;
     -webkit-appearance: none;

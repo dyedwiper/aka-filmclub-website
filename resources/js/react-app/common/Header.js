@@ -26,6 +26,12 @@ export default function Header() {
                         <SubNavLinkStyled to="/press">Pressespiegel</SubNavLinkStyled>
                     </SubNavStyled>
                 </DropdownContainerStyled>
+                <DropdownContainerStyled>
+                    <NavLinkStyled to="/intern">Intern</NavLinkStyled>
+                    <SubNavStyled>
+                        <SubNavLinkStyled to="/intern/addserial">Filmreihe anlegen</SubNavLinkStyled>
+                    </SubNavStyled>
+                </DropdownContainerStyled>
             </NavStyled>
         </HeaderStyled>
     );

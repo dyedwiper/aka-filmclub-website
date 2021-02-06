@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import SemesterSelect from '../common/SemesterSelect';
 import SerialRow from '../common/SerialRow';
 import { PageStyled } from '../common/styledElements';
-import { getSerials, GetSerialsBySemester } from '../utils/services';
-import LoadingPage from './LoadingPage';
+import { GetSerialsBySemester } from '../utils/serialServices';
 
 export default function SerialsPage() {
     const [serials, setSerials] = useState([]);
