@@ -15,8 +15,10 @@ export default function SerialsPage() {
     }, []);
 
     useEffect(() => {
+        console.log('isLoading', isLoading);
         if (semester.year) {
             GetSerialsBySemester(semester).then((res) => {
+                console.log('res.data', res.data);
                 setSerials(res.data);
                 setIsLoading(false);
             });
@@ -26,7 +28,7 @@ export default function SerialsPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Filmreihen</HeadlineStyled>
-            <SemesterSelect setSemester={setSemester} />
+            <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
             {isLoading ? (
                 <div>Loading</div>
             ) : (

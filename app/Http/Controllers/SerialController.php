@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Image;
 use App\Models\Screening;
 use App\Models\Serial;
 use Illuminate\Http\Request;
@@ -54,12 +55,25 @@ class SerialController extends Controller
     public function PostSerial(Request $request)
     {
         $serial = new Serial([
+            'uuid' => uniqid(),
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'article' => $request->article,
             'author' => $request->author,
         ]);
+
+        $imageName = $serial->uuid . '_' . $serial->title . '.' . $request->image->getClientOriginalExtension();
+        $imagePath = $request->image->storeAs('images/serials', $imageName, 'public');
+        $image = new Image([
+            'uuid' => uniqid(),
+            'source' => $imagePath,
+            'title' => $request->imageTitle,
+            'alt_text' => $request->altText,
+            'copyright' => $request->copyright,
+        ]);
+        $image->save();
+        $serial->image_id = $image->id;
         $serial->save();
-        return "Serial created with id" . $serial->id;
+        return $serial->image_id;
     }
 }

@@ -3,7 +3,7 @@ import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { customSelectStyles } from '../styles/customSelectStyles';
 
-export default function SemesterSelect({ setSemester }) {
+export default function SemesterSelect({ setSemester, setIsLoading }) {
     const [semesterOptions, setSemesterOptions] = useState([]);
 
     const allSemesters = useRef([]);
@@ -66,6 +66,7 @@ export default function SemesterSelect({ setSemester }) {
 
     function handleSemesterChange(option) {
         setSemester(allSemesters.current[option.value]);
+        setIsLoading(true);
     }
 }
 
