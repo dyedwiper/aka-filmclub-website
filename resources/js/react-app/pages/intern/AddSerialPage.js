@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { PageStyled } from '../../common/styledElements';
+import { postSerial } from '../../utils/serialServices';
 
 export default function AddSerialPage() {
     return (
@@ -10,6 +11,10 @@ export default function AddSerialPage() {
                 <LabelStyled>
                     Titel
                     <InputStyled name="title" />
+                </LabelStyled>
+                <LabelStyled>
+                    Untertitle
+                    <InputStyled name="subtitle" />
                 </LabelStyled>
                 <LabelStyled>
                     Reihenartikel
@@ -28,6 +33,9 @@ export default function AddSerialPage() {
         event.preventDefault();
         const form = event.currentTarget;
         const formData = new FormData(form);
+        postSerial(formData).then((res) => {
+            console.log(res);
+        });
     }
 }
 

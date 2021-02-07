@@ -50,4 +50,16 @@ class SerialController extends Controller
             $serial->save();
         }
     }
+
+    public function PostSerial(Request $request)
+    {
+        $serial = new Serial([
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'article' => $request->article,
+            'author' => $request->author,
+        ]);
+        $serial->save();
+        return "Serial created with id" . $serial->id;
+    }
 }

@@ -8,6 +8,7 @@ use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -81,6 +82,10 @@ Route::prefix('serials')->group(function () {
 
     Route::get('/update_uuids', [
         SerialController::class, 'UpdateUuids'
+    ]);
+
+    Route::post('/', [
+        SerialController::class, 'PostSerial'
     ]);
 });
 

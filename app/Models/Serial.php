@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Serial extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'subtitle', 'article', 'author'];
 }

@@ -6874,8 +6874,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+
 
 
 
@@ -6910,29 +6912,30 @@ function AddSerialPage() {
     event.preventDefault();
     var form = event.currentTarget;
     var formData = new FormData(form);
+    (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_3__.postSerial)(formData).then(function (res) {});
   }
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h2.withConfig({
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h2.withConfig({
   displayName: "AddSerialPage__HeadlineStyled",
   componentId: "jtmdcv-0"
 })([""]);
-var SerialFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.form.withConfig({
+var SerialFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.form.withConfig({
   displayName: "AddSerialPage__SerialFormStyled",
   componentId: "jtmdcv-1"
 })([""]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
   displayName: "AddSerialPage__LabelStyled",
   componentId: "jtmdcv-2"
 })(["margin:20px 0;display:block;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
   displayName: "AddSerialPage__InputStyled",
   componentId: "jtmdcv-3"
 })([""]);
-var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.textarea.withConfig({
+var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.textarea.withConfig({
   displayName: "AddSerialPage__TextareaStyled",
   componentId: "jtmdcv-4"
 })(["display:block;width:100%;"]);
-var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.button.withConfig({
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.button.withConfig({
   displayName: "AddSerialPage__ButtonStyled",
   componentId: "jtmdcv-5"
 })([""]);
@@ -7129,7 +7132,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getSerials": () => /* binding */ getSerials,
 /* harmony export */   "GetSerialsBySemester": () => /* binding */ GetSerialsBySemester,
-/* harmony export */   "getSerialByUuid": () => /* binding */ getSerialByUuid
+/* harmony export */   "getSerialByUuid": () => /* binding */ getSerialByUuid,
+/* harmony export */   "postSerial": () => /* binding */ postSerial
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -7142,6 +7146,9 @@ function GetSerialsBySemester(semester) {
 }
 function getSerialByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/single/' + uuid);
+}
+function postSerial(data) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/serials', data);
 }
 
 /***/ }),
