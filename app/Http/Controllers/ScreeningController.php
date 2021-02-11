@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\Helper;
 use App\Models\Screening;
+use App\Services\ImageService;
 use Illuminate\Http\Request;
 
 class ScreeningController extends Controller
 {
+    private $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
     public function GetFutureScreenings()
     {
         return Screening::where('date', '>', date("Y-m-d H:i:s"))->get();
@@ -58,5 +67,15 @@ class ScreeningController extends Controller
             $screening->uuid = uniqid();
             $screening->save();
         }
+    }
+
+    public function PostScreening(Request $request)
+    {
+        $screening = new Screening($request->all());
+        $screening->uuid = uniqid();
+        $imageId = $this->imageService->storeScreeningImage($request, $screening);
+        $screening->image_id = $imageId;
+        $screening->save();
+        return $screening->id;
     }
 }

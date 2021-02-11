@@ -55,6 +55,10 @@ Route::prefix('screenings')->group(function () {
     Route::get('/update_uuids', [
         ScreeningController::class, 'UpdateUuids'
     ]);
+
+    Route::post('/', [
+        ScreeningController::class, 'PostScreening'
+    ]);
 });
 
 Route::prefix('notices')->group(function () {
@@ -76,7 +80,7 @@ Route::prefix('serials')->group(function () {
         SerialController::class, 'GetSerialsBySemester'
     ]);
 
-    Route::get('/single/{uuid}', [
+    Route::get('/uuid/{uuid}', [
         SerialController::class, 'GetSerialByUuid'
     ]);
 

@@ -7,9 +7,18 @@ use App\Models\Screening;
 use App\Models\Serial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Helpers\Helper;
+use App\Services\ImageService;
 
 class SerialController extends Controller
 {
+    private $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
     public function GetSerialsBySemester(string $season, int $year)
     {
         if ($season != 'ws' & $season != 'ss') {
@@ -35,12 +44,18 @@ class SerialController extends Controller
                 array_push($serialsFromSemester, $serial);
             }
         }
+        foreach ($serialsFromSemester as $serial) {
+            $image = Image::where('id', $serial->image_id)->first();
+        }
         return $serialsFromSemester;
     }
 
     public function GetSerialByUuid(string $uuid)
     {
-        return Serial::where('uuid', $uuid)->first();
+        $serial = Serial::where('uuid', $uuid)->first();
+        $image = Image::where('id', $serial->image_id)->first();
+        $serial->image = $image;
+        return $serial;
     }
 
     public function UpdateUuids()
@@ -62,17 +77,8 @@ class SerialController extends Controller
             'author' => $request->author,
         ]);
 
-        $imageName = $serial->uuid . '_' . $serial->title . '.' . $request->image->getClientOriginalExtension();
-        $imagePath = $request->image->storeAs('images/serials', $imageName, 'public');
-        $image = new Image([
-            'uuid' => uniqid(),
-            'source' => $imagePath,
-            'title' => $request->imageTitle,
-            'alt_text' => $request->altText,
-            'copyright' => $request->copyright,
-        ]);
-        $image->save();
-        $serial->image_id = $image->id;
+        $imageId = $this->imageService->storeSerialImage($request, $serial);
+        $serial->image_id = $imageId;
         $serial->save();
         return $serial->image_id;
     }

@@ -9,7 +9,7 @@ export function GetSerialsBySemester(semester) {
 }
 
 export function getSerialByUuid(uuid) {
-    return axios.get('/api/serials/single/' + uuid);
+    return axios.get('/api/serials/uuid/' + uuid);
 }
 
 export function postSerial(data) {
