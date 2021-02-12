@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Helpers\Helper;
 use App\Models\Image;
+use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
 use Illuminate\Http\Request;
@@ -12,15 +13,29 @@ class ImageService
 {
     public function storeSerialImage(Request $request, Serial $serial)
     {
-        $imageName = $serial->uuid . '_' . $serial->title . '.' . Helper::mime2ext($request->image->getMimeType());
+        $imageName = $serial->uuid . '_' .
+            Helper::prepareTitle($serial->title) . '.' .
+            Helper::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs('images/serials', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
     }
 
     public function storeScreeningImage(Request $request, Screening $screening)
     {
-        $imageName = $screening->uuid . '_' . $screening->title . '.' . Helper::mime2ext($request->image->getMimeType());
+        $imageName = $screening->uuid . '_' .
+            Helper::prepareTitle($screening->title) . '.' .
+            Helper::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs('images/screenings', $imageName, 'public');
+        return $this->storeImage($request, $imagePath);
+    }
+
+    public function storeNoticeImage(Request $request, Notice $notice)
+    {
+
+        $imageName = $notice->uuid . '_' .
+            Helper::prepareTitle($notice->title) . '.' .
+            Helper::convertMime2Ext($request->image->getMimeType());
+        $imagePath = $request->image->storeAs('images/notices', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
     }
 

@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
+import { HorizontalLineStyled } from '../styledElements';
 
 export default function ImageFormGroup() {
     return (
         <ImageFormGroupStyled>
+            <HorizontalLineStyled />
             <LabelStyled>
                 Bild (png oder jpg; bis 1 MB)
                 <InputStyled name="image" type="file" />

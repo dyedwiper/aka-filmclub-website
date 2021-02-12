@@ -3,23 +3,22 @@ import styled from 'styled-components';
 import { getImageById } from '../utils/imageServices';
 
 export default function Notice({ notice }) {
-    const [image, setImage] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
+    // const [image, setImage] = useState({});
 
     useEffect(() => {
-        getImageById(notice.image_id).then((res) => {
-            setImage(res.data);
-            setIsLoading(false);
-        });
-    }, []);
+        console.log(notice);
 
-    if (isLoading) return <></>;
+        // getImageById(notice.image_id).then((res) => {
+        //     setImage(res.data);
+        //     setIsLoading(false);
+        // });
+    }, []);
 
     return (
         <NoticeStyled>
             <HorizontalLineStyled />
             <NoticeTitleStyled>{notice.title}</NoticeTitleStyled>
-            {image.id && <NoticeImageStyled src={'/images/' + image.source} />}
+            {notice.image && <NoticeImageStyled src={'/images/'} />}
             <NoticeContentStyled>{notice.content}</NoticeContentStyled>
         </NoticeStyled>
     );

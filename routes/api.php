@@ -69,6 +69,10 @@ Route::prefix('notices')->group(function () {
     Route::get('/count', [
         NoticeController::class, 'GetNoticesCount'
     ]);
+
+    Route::post('/', [
+        NoticeController::class, 'PostNotice'
+    ]);
 });
 
 Route::prefix('serials')->group(function () {

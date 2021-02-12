@@ -29,6 +29,7 @@ export default function Header() {
                 <DropdownContainerStyled>
                     <NavLinkStyled to="/intern">Intern</NavLinkStyled>
                     <SubNavStyled>
+                        <SubNavLinkStyled to="/intern/addnews">News anlegen</SubNavLinkStyled>
                         <SubNavLinkStyled to="/intern/addserial">Filmreihe anlegen</SubNavLinkStyled>
                         <SubNavLinkStyled to="/intern/addscreening">Vorführung anlegen</SubNavLinkStyled>
                     </SubNavStyled>

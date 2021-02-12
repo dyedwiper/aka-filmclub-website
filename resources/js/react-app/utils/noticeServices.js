@@ -11,3 +11,7 @@ export function getNoticesByPage(page) {
 export function getNoticesCount() {
     return axios.get('/api/notices/count');
 }
+
+export function postNotice(data) {
+    return axios.post('/api/notices', data);
+}

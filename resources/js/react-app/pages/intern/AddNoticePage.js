@@ -3,24 +3,24 @@ import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import { PageStyled } from '../../common/styledElements';
-import { postSerial } from '../../utils/serialServices';
+import { postNotice } from '../../utils/noticeServices';
 
-export default function AddSerialPage() {
+export default function AddNoticePage() {
     return (
         <PageStyled>
-            <HeadlineStyled>Neue Filmreihe anlegen</HeadlineStyled>
-            <BaseForm serviceFunction={postSerial}>
+            <HeadlineStyled>Neue News anlegen</HeadlineStyled>
+            <BaseForm serviceFunction={postNotice}>
                 <LabelStyled>
                     Titel
                     <InputStyled name="title" />
                 </LabelStyled>
                 <LabelStyled>
-                    Untertitel
-                    <InputStyled name="subtitle" />
+                    Datum
+                    <InputStyled name="date" type="date" />
                 </LabelStyled>
                 <LabelStyled>
-                    Reihenartikel
-                    <TextareaStyled name="article" />
+                    Text
+                    <TextareaStyled name="content" />
                 </LabelStyled>
                 <LabelStyled>
                     Autor*in

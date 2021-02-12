@@ -91,7 +91,7 @@ class SerialController extends Controller
                 'title' => 'Titel',
                 'subtitle' => 'Untertitel',
                 'article' => 'Reihenartikel',
-                'author' => 'Autor',
+                'author' => 'Autor*in',
             ]
         );
 

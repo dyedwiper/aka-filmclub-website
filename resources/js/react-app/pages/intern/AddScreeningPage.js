@@ -103,7 +103,6 @@ export default function AddScreeningPage() {
                     Autor*in
                     <InputStyled name="author" />
                 </LabelStyled>
-                <HorizontalLineStyled />
                 <ImageFormGroup />
             </BaseForm>
         </PageStyled>
