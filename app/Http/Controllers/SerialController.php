@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Helpers\Helper;
 use App\Services\ImageService;
+use Illuminate\Support\Facades\Validator;
 
 class SerialController extends Controller
 {
@@ -69,6 +70,28 @@ class SerialController extends Controller
 
     public function PostSerial(Request $request)
     {
+        $validator = Validator::make(
+            $request->all(),
+            [
+                'title' => 'required|max:255',
+                'subtitle' => 'max:255',
+                'article' => 'required',
+                'author' => 'required|max:255',
+            ],
+            // Der leere Array muss hier stehen, weil die Parameter positioniert sind
+            [],
+            [
+                'title' => 'Titel',
+                'subtitle' => 'Untertitel',
+                'article' => 'Reihenartikel',
+                'author' => 'Autor',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json(['validationErrors' => $validator->errors()], 400);
+        }
+
         $serial = new Serial([
             'uuid' => uniqid(),
             'title' => $request->title,
@@ -77,8 +100,10 @@ class SerialController extends Controller
             'author' => $request->author,
         ]);
 
-        $imageId = $this->imageService->storeSerialImage($request, $serial);
-        $serial->image_id = $imageId;
+        if ($request->image) {
+            $imageId = $this->imageService->storeSerialImage($request, $serial);
+            $serial->image_id = $imageId;
+        }
         $serial->save();
         return $serial->image_id;
     }
