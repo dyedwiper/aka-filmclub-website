@@ -2,14 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
+import { STORAGE_FOLDER } from '../constants';
 import { formatDate } from '../utils/dateFormatters';
-import { getScreeningsBySerialId } from '../utils/screeningServices';
 import { getSerialByUuid } from '../utils/serialServices';
 import LoadingPage from './LoadingPage';
 
 export default function SerialPage() {
     const [serial, setSerial] = useState({});
-    const [screenings, setScreenings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [noSerialFound, SetNoSerialFound] = useState(false);
 
@@ -22,10 +21,7 @@ export default function SerialPage() {
                 SetNoSerialFound(true);
             }
             setSerial(res.data);
-            getScreeningsBySerialId(res.data.id).then((res) => {
-                setScreenings(res.data);
-                setIsLoading(false);
-            });
+            setIsLoading(false);
         });
     }, []);
 
@@ -35,14 +31,15 @@ export default function SerialPage() {
 
     return (
         <PageStyled>
-            <SerialTitleStyled>{serial.title}</SerialTitleStyled>
-            <SerialSubtitleStyled>{serial.subtitle}</SerialSubtitleStyled>
+            <TitleStyled>{serial.title}</TitleStyled>
+            <SubtitleStyled>{serial.subtitle}</SubtitleStyled>
             <HorizontalLineStyled />
-            <SerialArticleStyled>{serial.article}</SerialArticleStyled>
-            <SerialAuthorStyled>{serial.author}</SerialAuthorStyled>
+            {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.source} />}
+            <ArticleStyled>{serial.article}</ArticleStyled>
+            <AuthorStyled>{serial.author}</AuthorStyled>
             <HorizontalLineStyled />
             <ScreeningsListStyled>
-                {screenings.map((screening) => (
+                {serial.screenings.map((screening) => (
                     <ScreeningListItemStyled key={screening.id}>
                         <ScreeningDateStyled>{formatDate(screening.date)}</ScreeningDateStyled>
                         <ScreeningTitleLinkStyled to={'/screening/' + screening.uuid}>
@@ -54,9 +51,11 @@ export default function SerialPage() {
         </PageStyled>
     );
 }
-const SerialTitleStyled = styled.h2``;
+const TitleStyled = styled.h2``;
 
-const SerialSubtitleStyled = styled.p``;
+const SubtitleStyled = styled.p``;
+
+const ImageStyled = styled.img``;
 
 const ScreeningsListStyled = styled.ul``;
 
@@ -73,6 +72,6 @@ const ScreeningTitleLinkStyled = styled(Link)`
     font-weight: bold;
 `;
 
-const SerialArticleStyled = styled.p``;
+const ArticleStyled = styled.p``;
 
-const SerialAuthorStyled = styled.div``;
+const AuthorStyled = styled.div``;

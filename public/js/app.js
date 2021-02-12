@@ -6858,8 +6858,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
 /* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
@@ -6891,20 +6891,15 @@ function SerialPage() {
       serial = _useState2[0],
       setSerial = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
       _useState4 = _slicedToArray(_useState3, 2),
-      screenings = _useState4[0],
-      setScreenings = _useState4[1];
+      isLoading = _useState4[0],
+      setIsLoading = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      isLoading = _useState6[0],
-      setIsLoading = _useState6[1];
-
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
-      _useState8 = _slicedToArray(_useState7, 2),
-      noSerialFound = _useState8[0],
-      SetNoSerialFound = _useState8[1];
+      noSerialFound = _useState6[0],
+      SetNoSerialFound = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var path = window.location.pathname;
@@ -6916,10 +6911,7 @@ function SerialPage() {
       }
 
       setSerial(res.data);
-      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_4__.getScreeningsBySerialId)(res.data.id).then(function (res) {
-        setScreenings(res.data);
-        setIsLoading(false);
-      });
+      setIsLoading(false);
     });
   }, []);
   if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_6__.default, {});
@@ -6927,19 +6919,21 @@ function SerialPage() {
     to: "/404"
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialTitleStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleStyled, {
       children: serial.title
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialSubtitleStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubtitleStyled, {
       children: serial.subtitle
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialArticleStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), serial.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
+      src: _constants__WEBPACK_IMPORTED_MODULE_3__.STORAGE_FOLDER + serial.image.source
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ArticleStyled, {
       children: serial.article
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialAuthorStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AuthorStyled, {
       children: serial.author
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
-      children: screenings.map(function (screening) {
+      children: serial.screenings.map(function (screening) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningListItemStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
-            children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatDate)(screening.date)
+            children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_4__.formatDate)(screening.date)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleLinkStyled, {
             to: '/screening/' + screening.uuid,
             children: screening.title
@@ -6949,37 +6943,41 @@ function SerialPage() {
     })]
   });
 }
-var SerialTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2.withConfig({
-  displayName: "SerialPage__SerialTitleStyled",
+var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2.withConfig({
+  displayName: "SerialPage__TitleStyled",
   componentId: "sc-1xwsd7-0"
 })([""]);
-var SerialSubtitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.p.withConfig({
-  displayName: "SerialPage__SerialSubtitleStyled",
+var SubtitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.p.withConfig({
+  displayName: "SerialPage__SubtitleStyled",
   componentId: "sc-1xwsd7-1"
+})([""]);
+var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.img.withConfig({
+  displayName: "SerialPage__ImageStyled",
+  componentId: "sc-1xwsd7-2"
 })([""]);
 var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.ul.withConfig({
   displayName: "SerialPage__ScreeningsListStyled",
-  componentId: "sc-1xwsd7-2"
+  componentId: "sc-1xwsd7-3"
 })([""]);
 var ScreeningListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.li.withConfig({
   displayName: "SerialPage__ScreeningListItemStyled",
-  componentId: "sc-1xwsd7-3"
+  componentId: "sc-1xwsd7-4"
 })(["margin:5px 0;"]);
 var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
   displayName: "SerialPage__ScreeningDateStyled",
-  componentId: "sc-1xwsd7-4"
+  componentId: "sc-1xwsd7-5"
 })(["display:inline-block;margin-right:10px;"]);
 var ScreeningTitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_8__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link).withConfig({
   displayName: "SerialPage__ScreeningTitleLinkStyled",
-  componentId: "sc-1xwsd7-5"
-})(["font-weight:bold;"]);
-var SerialArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.p.withConfig({
-  displayName: "SerialPage__SerialArticleStyled",
   componentId: "sc-1xwsd7-6"
-})([""]);
-var SerialAuthorStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
-  displayName: "SerialPage__SerialAuthorStyled",
+})(["font-weight:bold;"]);
+var ArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.p.withConfig({
+  displayName: "SerialPage__ArticleStyled",
   componentId: "sc-1xwsd7-7"
+})([""]);
+var AuthorStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+  displayName: "SerialPage__AuthorStyled",
+  componentId: "sc-1xwsd7-8"
 })([""]);
 
 /***/ }),

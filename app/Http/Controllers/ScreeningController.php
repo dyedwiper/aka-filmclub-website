@@ -18,12 +18,12 @@ class ScreeningController extends Controller
 
     public function GetFutureScreenings()
     {
-        return Screening::where('date', '>', date("Y-m-d H:i:s"))->get();
+        return Screening::where('date', '>', date("Y-m-d H:i:s"))->with('image')->get();
     }
 
     public function GetScreeningByUuid(string $uuid)
     {
-        return Screening::where('uuid', $uuid)->first();
+        return Screening::where('uuid', $uuid)->with('image')->first();
     }
 
     public function GetScreeningsBySerialId(int $serialId)

@@ -10,4 +10,14 @@ class Serial extends Model
     use HasFactory;
 
     protected $fillable = ['uuid', 'title', 'subtitle', 'article', 'author'];
+
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
+    }
+
+    public function screenings()
+    {
+        return $this->hasMany(Screening::class);
+    }
 }

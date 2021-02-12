@@ -26,7 +26,7 @@ class SerialController extends Controller
             return response('Not a valid semester identifier', 400);
         }
 
-        $serials = Serial::where('semester', $semester)->get();
+        $serials = Serial::where('semester', $semester)->with('image')->get();
         foreach ($serials as $serial) {
             $firstScreening = Screening::where('serial_id', $serial->id)->orderBy('date')->first();
             $serial->firstDate = strtotime($firstScreening->date);
@@ -36,9 +36,7 @@ class SerialController extends Controller
 
     public function GetSerialByUuid(string $uuid)
     {
-        $serial = Serial::where('uuid', $uuid)->first();
-        // $image = Image::where('id', $serial->image_id)->orderBy('date')->first();
-        // $serial->image = $image;
+        $serial = Serial::where('uuid', $uuid)->with('image', 'screenings')->first();
         return $serial;
     }
 
