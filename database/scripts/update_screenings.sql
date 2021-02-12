@@ -11,3 +11,5 @@ UPDATE screenings SET version = NULL WHERE version = '';
 UPDATE screenings SET special = NULL WHERE special = '';
 UPDATE screenings SET tercet = NULL WHERE tercet = '';
 UPDATE screenings SET author = NULL WHERE author = '';
+
+UPDATE screenings SET serial_id = NULL WHERE serial_id = 232;

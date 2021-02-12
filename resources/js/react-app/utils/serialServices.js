@@ -5,7 +5,7 @@ export function getSerials() {
 }
 
 export function getSerialsBySemester(semester) {
-    return axios.get('/api/serials/semester/' + semester.season + '/' + semester.year);
+    return axios.get('/api/serials/semester/' + semester);
 }
 
 export function getSerialByUuid(uuid) {

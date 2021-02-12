@@ -97,7 +97,11 @@ export default function AddScreeningPage() {
                 </LabelStyled>
                 <LabelStyled>
                     Filmreihe
-                    <SerialSelect />
+                    <SerialSelect name="serial" />
+                </LabelStyled>
+                <LabelStyled>
+                    Autor*in
+                    <InputStyled name="author" />
                 </LabelStyled>
                 <HorizontalLineStyled />
                 <ImageFormGroup />
@@ -129,5 +133,3 @@ const FormRowWithThreeInputsStyled = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
 `;
-
-const ButtonStyled = styled.button``;

@@ -7,7 +7,7 @@ import { getSerialsBySemester } from '../utils/serialServices';
 
 export default function SerialsPage() {
     const [serials, setSerials] = useState([]);
-    const [semester, setSemester] = useState({});
+    const [semester, setSemester] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export default function SerialsPage() {
 
     useEffect(() => {
         console.log('isLoading', isLoading);
-        if (semester.year) {
+        if (semester) {
             getSerialsBySemester(semester).then((res) => {
                 console.log('res.data', res.data);
                 setSerials(res.data);

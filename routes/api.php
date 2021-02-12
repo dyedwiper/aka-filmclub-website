@@ -76,7 +76,7 @@ Route::prefix('serials')->group(function () {
         return Serial::all();
     });
 
-    Route::get('/semester/{season}/{year}', [
+    Route::get('/semester/{semester}', [
         SerialController::class, 'GetSerialsBySemester'
     ]);
 
@@ -86,6 +86,10 @@ Route::prefix('serials')->group(function () {
 
     Route::get('/update_uuids', [
         SerialController::class, 'UpdateUuids'
+    ]);
+
+    Route::get('/update_semesters', [
+        SerialController::class, 'UpdateSemesters'
     ]);
 
     Route::post('/', [

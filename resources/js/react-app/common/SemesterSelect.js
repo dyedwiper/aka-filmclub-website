@@ -1,27 +1,34 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { semesterSelectStyles } from '../styles/customSelectStyles';
 
 export default function SemesterSelect({ setSemester, setIsLoading }) {
-    const [semesterOptions, setSemesterOptions] = useState([]);
+    const SUMMER_SEASON_IDENTIFIER = 'SS';
+    const WINTER_SEASON_IDENTIFIER = 'WS';
 
-    const allSemesters = useRef([]);
+    const [semesterOptions, setSemesterOptions] = useState([]);
 
     useEffect(() => {
         const currentDate = new Date();
         const currentMonth = currentDate.getMonth();
         const currentYear = currentDate.getFullYear();
-        const currentSemester = {
-            //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
-            season: currentMonth < 3 || currentMonth >= 9 ? 'ws' : 'ss',
-            year: currentMonth < 3 ? currentYear - 1 : currentYear,
-        };
-        console.log(currentSemester);
-        setSemester(currentSemester);
-        allSemesters.current = computeAllSemesters(currentYear, currentMonth);
-        console.log(computeSemesterOptions(allSemesters.current));
-        setSemesterOptions(computeSemesterOptions(allSemesters.current));
+        // const currentSemester = {
+        //     //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+        //     season: currentMonth < 3 || currentMonth >= 9 ? 'ws' : SUMMER_SEASON_IDENTIFIER,
+        //     year: currentMonth < 3 ? currentYear - 1 : currentYear,
+        // };
+
+        //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+        if (currentMonth >= 3 && currentMonth < 9) {
+            setSemester(SUMMER_SEASON_IDENTIFIER + currentYear);
+        } else if (currentMonth >= 9) {
+            setSemester(WINTER_SEASON_IDENTIFIER + currentYear);
+        } else {
+            setSemester(WINTER_SEASON_IDENTIFIER + (currentYear - 1));
+        }
+        console.log(computeSemesterOptions(currentYear, currentMonth));
+        setSemesterOptions(computeSemesterOptions(currentYear, currentMonth));
     }, []);
 
     return (
@@ -36,36 +43,32 @@ export default function SemesterSelect({ setSemester, setIsLoading }) {
         </SemesterSelectLabelStyled>
     );
 
-    function computeAllSemesters(currentYear, currentMonth) {
+    function computeSemesterOptions(currentYear, currentMonth) {
         const allSemesters = [];
         allSemesters.push({ season: 'ws', year: 2000 });
         for (let year = 2001; year < currentYear; year++) {
-            allSemesters.push({ season: 'ss', year: year });
-            allSemesters.push({ season: 'ws', year: year });
+            allSemesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: year });
+            allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: year });
         }
         //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
         if (currentMonth >= 3) {
-            allSemesters.push({ season: 'ss', year: currentYear });
+            allSemesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: currentYear });
         }
         if (currentMonth >= 9) {
-            allSemesters.push({ season: 'ws', year: currentYear });
+            allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: currentYear });
         }
-        return allSemesters.reverse();
-    }
-
-    function computeSemesterOptions(allSemesters) {
         const semesterOptions = [];
-        allSemesters.forEach((semester) => {
+        allSemesters.reverse().forEach((semester) => {
             semesterOptions.push({
-                label: semester.season.toUpperCase() + ' ' + semester.year,
-                value: allSemesters.indexOf(semester),
+                label: semester.season + ' ' + semester.year,
+                value: semester.season + semester.year,
             });
         });
         return semesterOptions;
     }
 
     function handleSemesterChange(option) {
-        setSemester(allSemesters.current[option.value]);
+        setSemester(option.value);
         setIsLoading(true);
     }
 }

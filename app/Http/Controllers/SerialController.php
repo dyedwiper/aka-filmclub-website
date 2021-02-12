@@ -20,41 +20,46 @@ class SerialController extends Controller
         $this->imageService = $imageService;
     }
 
-    public function GetSerialsBySemester(string $season, int $year)
+    public function GetSerialsBySemester(string $semester)
     {
-        if ($season != 'ws' & $season != 'ss') {
-            return response('Not a valid season identifier', 400);
+        if (!preg_match('/^[WS]S\d{4}$/', $semester)) {
+            return response('Not a valid semester identifier', 400);
         }
 
-        $allSerials = Serial::orderByDesc('id')->get();
-        $serialsFromSemester = [];
-        foreach ($allSerials as $serial) {
-            $firstScreening = Screening::where('serial_id', $serial->id)->orderBy('date')->first();
-            if ($firstScreening == null) continue;
-            $firstDate = strtotime($firstScreening->date);
-            if (
-                $season == 'ws'
-                && (date('Y', $firstDate) == $year && date('m', $firstDate) >= 10
-                    || date('Y', $firstDate) == $year + 1 && date('m', $firstDate) < 4)
-            ) {
-                array_push($serialsFromSemester, $serial);
-            } elseif (
-                $season == 'ss'
-                && (date('Y', $firstDate) == $year && date('m', $firstDate) >= 4 && date('m', $firstDate) < 10)
-            ) {
-                array_push($serialsFromSemester, $serial);
-            }
-        }
-        foreach ($serialsFromSemester as $serial) {
-            $image = Image::where('id', $serial->image_id)->first();
-        }
-        return $serialsFromSemester;
+        $serials = Serial::where('semester', $semester)->get();
+
+        return $serials;
+
+
+        // $allSerials = Serial::orderByDesc('id')->get();
+        // $serialsFromSemester = [];
+        // foreach ($allSerials as $serial) {
+        //     $firstScreening = Screening::where('serial_id', $serial->id)->orderBy('date')->first();
+        //     if ($firstScreening == null) continue;
+        //     $firstDate = strtotime($firstScreening->date);
+        //     if (
+        //         $season == 'ws'
+        //         && (date('Y', $firstDate) == $year && date('m', $firstDate) >= 10
+        //             || date('Y', $firstDate) == $year + 1 && date('m', $firstDate) < 4)
+        //     ) {
+        //         array_push($serialsFromSemester, $serial);
+        //     } elseif (
+        //         $season == 'ss'
+        //         && (date('Y', $firstDate) == $year && date('m', $firstDate) >= 4 && date('m', $firstDate) < 10)
+        //     ) {
+        //         array_push($serialsFromSemester, $serial);
+        //     }
+        // }
+        // foreach ($serialsFromSemester as $serial) {
+        //     $image = Image::where('id', $serial->image_id)->first();
+        // }
+        // return $serialsFromSemester;
     }
 
     public function GetSerialByUuid(string $uuid)
     {
         $serial = Serial::where('uuid', $uuid)->first();
-        $image = Image::where('id', $serial->image_id)->first();
+        $image = Image::where('id', $serial->image_id)->orderBy('date')->first();
         $serial->image = $image;
         return $serial;
     }
@@ -64,6 +69,30 @@ class SerialController extends Controller
         $serials = Serial::all();
         foreach ($serials as $serial) {
             $serial->uuid = uniqid();
+            $serial->save();
+        }
+    }
+
+    public function UpdateSemesters()
+    {
+        $serials = Serial::all();
+        foreach ($serials as $serial) {
+            $firstScreening = Screening::where('serial_id', $serial->id)->first();
+            if ($firstScreening == null) continue;
+            $firstDate = strtotime($firstScreening->date);
+            $season = '';
+            $year = 0;
+            if (date('m', $firstDate) >= 4 && date('m', $firstDate) < 10) {
+                $season = 'SS';
+            } else {
+                $season = 'WS';
+            }
+            if (date('m', $firstDate) >= 4) {
+                $year = date('Y', $firstDate);
+            } else {
+                $year = date('Y', $firstDate) - 1;
+            }
+            $serial->semester = $season . $year;
             $serial->save();
         }
     }

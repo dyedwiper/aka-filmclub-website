@@ -5416,27 +5416,34 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function SemesterSelect(_ref) {
   var setSemester = _ref.setSemester,
       setIsLoading = _ref.setIsLoading;
+  var SUMMER_SEASON_IDENTIFIER = 'SS';
+  var WINTER_SEASON_IDENTIFIER = 'WS';
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       semesterOptions = _useState2[0],
       setSemesterOptions = _useState2[1];
 
-  var allSemesters = (0,react__WEBPACK_IMPORTED_MODULE_1__.useRef)([]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var currentDate = new Date();
     var currentMonth = currentDate.getMonth();
-    var currentYear = currentDate.getFullYear();
-    var currentSemester = {
-      //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
-      season: currentMonth < 3 || currentMonth >= 9 ? 'ws' : 'ss',
-      year: currentMonth < 3 ? currentYear - 1 : currentYear
-    };
-    console.log(currentSemester);
-    setSemester(currentSemester);
-    allSemesters.current = computeAllSemesters(currentYear, currentMonth);
-    console.log(computeSemesterOptions(allSemesters.current));
-    setSemesterOptions(computeSemesterOptions(allSemesters.current));
+    var currentYear = currentDate.getFullYear(); // const currentSemester = {
+    //     //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+    //     season: currentMonth < 3 || currentMonth >= 9 ? 'ws' : SUMMER_SEASON_IDENTIFIER,
+    //     year: currentMonth < 3 ? currentYear - 1 : currentYear,
+    // };
+    //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+
+    if (currentMonth >= 3 && currentMonth < 9) {
+      setSemester(SUMMER_SEASON_IDENTIFIER + currentYear);
+    } else if (currentMonth >= 9) {
+      setSemester(WINTER_SEASON_IDENTIFIER + currentYear);
+    } else {
+      setSemester(WINTER_SEASON_IDENTIFIER + (currentYear - 1));
+    }
+
+    console.log(computeSemesterOptions(currentYear, currentMonth));
+    setSemesterOptions(computeSemesterOptions(currentYear, currentMonth));
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
     children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_3__.default, {
@@ -5447,7 +5454,7 @@ function SemesterSelect(_ref) {
     })]
   });
 
-  function computeAllSemesters(currentYear, currentMonth) {
+  function computeSemesterOptions(currentYear, currentMonth) {
     var allSemesters = [];
     allSemesters.push({
       season: 'ws',
@@ -5456,11 +5463,11 @@ function SemesterSelect(_ref) {
 
     for (var year = 2001; year < currentYear; year++) {
       allSemesters.push({
-        season: 'ss',
+        season: SUMMER_SEASON_IDENTIFIER,
         year: year
       });
       allSemesters.push({
-        season: 'ws',
+        season: WINTER_SEASON_IDENTIFIER,
         year: year
       });
     } //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
@@ -5468,34 +5475,30 @@ function SemesterSelect(_ref) {
 
     if (currentMonth >= 3) {
       allSemesters.push({
-        season: 'ss',
+        season: SUMMER_SEASON_IDENTIFIER,
         year: currentYear
       });
     }
 
     if (currentMonth >= 9) {
       allSemesters.push({
-        season: 'ws',
+        season: WINTER_SEASON_IDENTIFIER,
         year: currentYear
       });
     }
 
-    return allSemesters.reverse();
-  }
-
-  function computeSemesterOptions(allSemesters) {
     var semesterOptions = [];
-    allSemesters.forEach(function (semester) {
+    allSemesters.reverse().forEach(function (semester) {
       semesterOptions.push({
-        label: semester.season.toUpperCase() + ' ' + semester.year,
-        value: allSemesters.indexOf(semester)
+        label: semester.season + ' ' + semester.year,
+        value: semester.season + semester.year
       });
     });
     return semesterOptions;
   }
 
   function handleSemesterChange(option) {
-    setSemester(allSemesters.current[option.value]);
+    setSemester(option.value);
     setIsLoading(true);
   }
 }
@@ -7043,7 +7046,7 @@ function SerialsPage() {
       serials = _useState2[0],
       setSerials = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
       semester = _useState4[0],
       setSemester = _useState4[1];
@@ -7059,7 +7062,7 @@ function SerialsPage() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     console.log('isLoading', isLoading);
 
-    if (semester.year) {
+    if (semester) {
       (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_5__.getSerialsBySemester)(semester).then(function (res) {
         console.log('res.data', res.data);
         setSerials(res.data);
@@ -7217,7 +7220,13 @@ function AddScreeningPage() {
           name: "tercet"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-        children: ["Filmreihe", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_SerialSelect__WEBPACK_IMPORTED_MODULE_4__.default, {})]
+        children: ["Filmreihe", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_SerialSelect__WEBPACK_IMPORTED_MODULE_4__.default, {
+          name: "serial"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
+        children: ["Autor*in", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+          name: "author"
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
@@ -7246,10 +7255,6 @@ var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_7_
   displayName: "AddScreeningPage__FormRowWithThreeInputsStyled",
   componentId: "wnuki-5"
 })(["display:grid;grid-template-columns:1fr 1fr 1fr;grid-gap:20px;"]);
-var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.button.withConfig({
-  displayName: "AddScreeningPage__ButtonStyled",
-  componentId: "wnuki-6"
-})([""]);
 
 /***/ }),
 
@@ -7298,7 +7303,7 @@ function AddSerialPage() {
           name: "article"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-        children: ["Autor", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+        children: ["Autor*in", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "author"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
@@ -7320,10 +7325,6 @@ var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.input.w
 var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.textarea.withConfig({
   displayName: "AddSerialPage__TextareaStyled",
   componentId: "jtmdcv-3"
-})([""]);
-var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.button.withConfig({
-  displayName: "AddSerialPage__ButtonStyled",
-  componentId: "jtmdcv-4"
 })([""]);
 
 /***/ }),
@@ -7547,7 +7548,7 @@ function getSerials() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials');
 }
 function getSerialsBySemester(semester) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/semester/' + semester.season + '/' + semester.year);
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/semester/' + semester);
 }
 function getSerialByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/uuid/' + uuid);

@@ -23,7 +23,7 @@ export default function AddSerialPage() {
                     <TextareaStyled name="article" />
                 </LabelStyled>
                 <LabelStyled>
-                    Autor
+                    Autor*in
                     <InputStyled name="author" />
                 </LabelStyled>
                 <HorizontalLineStyled />
@@ -43,5 +43,3 @@ const LabelStyled = styled.label`
 const InputStyled = styled.input``;
 
 const TextareaStyled = styled.textarea``;
-
-const ButtonStyled = styled.button``;
