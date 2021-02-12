@@ -9,7 +9,7 @@ export function getFutureScreenings() {
 }
 
 export function getScreeningsBySemester(semester) {
-    return axios.get('/api/screenings/semester/' + semester.season + '/' + semester.year);
+    return axios.get('/api/screenings/semester/' + semester);
 }
 
 export function getScreeningByUuid(uuid) {

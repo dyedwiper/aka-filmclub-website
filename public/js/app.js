@@ -5011,18 +5011,23 @@ function App() {
           path: "/serial",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_SerialPage__WEBPACK_IMPORTED_MODULE_16__.default, {})
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+          exact: true,
           path: "/about",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_AboutPage__WEBPACK_IMPORTED_MODULE_4__.default, {})
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+          exact: true,
           path: "/faqs",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_FaqsPage__WEBPACK_IMPORTED_MODULE_6__.default, {})
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+          exact: true,
           path: "/press",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_PressReviewPage__WEBPACK_IMPORTED_MODULE_12__.default, {})
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+          exact: true,
           path: "/intern/addserial",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddSerialPage__WEBPACK_IMPORTED_MODULE_9__.default, {})
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
+          exact: true,
           path: "/intern/addscreening",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddScreeningPage__WEBPACK_IMPORTED_MODULE_8__.default, {})
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_19__.Route, {
@@ -5427,12 +5432,12 @@ function SemesterSelect(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var currentDate = new Date();
     var currentMonth = currentDate.getMonth();
-    var currentYear = currentDate.getFullYear(); // const currentSemester = {
-    //     //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
-    //     season: currentMonth < 3 || currentMonth >= 9 ? 'ws' : SUMMER_SEASON_IDENTIFIER,
-    //     year: currentMonth < 3 ? currentYear - 1 : currentYear,
-    // };
-    //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+    var currentYear = currentDate.getFullYear();
+    var currentSemester = {
+      //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+      season: currentMonth < 3 || currentMonth >= 9 ? WINTER_SEASON_IDENTIFIER : SUMMER_SEASON_IDENTIFIER,
+      year: currentMonth < 3 ? currentYear - 1 : currentYear
+    }; //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
 
     if (currentMonth >= 3 && currentMonth < 9) {
       setSemester(SUMMER_SEASON_IDENTIFIER + currentYear);
@@ -6219,7 +6224,7 @@ function ArchivePage() {
       screenings = _useState2[0],
       setScreenings = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
       semester = _useState4[0],
       setSemester = _useState4[1];
@@ -6233,7 +6238,7 @@ function ArchivePage() {
     document.title = 'Archiv | aka-Filmclub ';
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (semester.year) {
+    if (semester) {
       (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_5__.getScreeningsBySemester)(semester).then(function (res) {
         setScreenings(res.data);
         setIsLoading(false);
@@ -6244,7 +6249,8 @@ function ArchivePage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Programmarchiv"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
-      setSemester: setSemester
+      setSemester: setSemester,
+      setIsLoading: setIsLoading
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading"
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
@@ -7514,7 +7520,7 @@ function getFutureScreenings() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/future');
 }
 function getScreeningsBySemester(semester) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/semester/' + semester.season + '/' + semester.year);
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/semester/' + semester);
 }
 function getScreeningByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/single/' + uuid);

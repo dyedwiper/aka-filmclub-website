@@ -48,19 +48,19 @@ export default function App() {
                     <Route path="/serial">
                         <SerialPage />
                     </Route>
-                    <Route path="/about">
+                    <Route exact path="/about">
                         <AboutPage />
                     </Route>
-                    <Route path="/faqs">
+                    <Route exact path="/faqs">
                         <FaqsPage />
                     </Route>
-                    <Route path="/press">
+                    <Route exact path="/press">
                         <PressReviewPage />
                     </Route>
-                    <Route path="/intern/addserial">
+                    <Route exact path="/intern/addserial">
                         <AddSerialPage />
                     </Route>
-                    <Route path="/intern/addscreening">
+                    <Route exact path="/intern/addscreening">
                         <AddScreeningPage />
                     </Route>
                     <Route path="/404">

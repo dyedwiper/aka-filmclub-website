@@ -13,11 +13,11 @@ export default function SemesterSelect({ setSemester, setIsLoading }) {
         const currentDate = new Date();
         const currentMonth = currentDate.getMonth();
         const currentYear = currentDate.getFullYear();
-        // const currentSemester = {
-        //     //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
-        //     season: currentMonth < 3 || currentMonth >= 9 ? 'ws' : SUMMER_SEASON_IDENTIFIER,
-        //     year: currentMonth < 3 ? currentYear - 1 : currentYear,
-        // };
+        const currentSemester = {
+            //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+            season: currentMonth < 3 || currentMonth >= 9 ? WINTER_SEASON_IDENTIFIER : SUMMER_SEASON_IDENTIFIER,
+            year: currentMonth < 3 ? currentYear - 1 : currentYear,
+        };
 
         //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
         if (currentMonth >= 3 && currentMonth < 9) {
