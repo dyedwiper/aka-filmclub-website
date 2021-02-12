@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import SemesterSelect from '../common/SemesterSelect';
 import SerialRow from '../common/SerialRow';
 import { PageStyled } from '../common/styledElements';
-import { GetSerialsBySemester } from '../utils/serialServices';
+import { getSerialsBySemester } from '../utils/serialServices';
 
 export default function SerialsPage() {
     const [serials, setSerials] = useState([]);
@@ -17,7 +17,7 @@ export default function SerialsPage() {
     useEffect(() => {
         console.log('isLoading', isLoading);
         if (semester.year) {
-            GetSerialsBySemester(semester).then((res) => {
+            getSerialsBySemester(semester).then((res) => {
                 console.log('res.data', res.data);
                 setSerials(res.data);
                 setIsLoading(false);

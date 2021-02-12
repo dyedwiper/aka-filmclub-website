@@ -1,19 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PageStyled } from '../../common/styledElements';
+import BaseForm from '../../common/forms/BaseForm';
+import ImageFormGroup from '../../common/forms/ImageFormGroup';
+import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
 import { postSerial } from '../../utils/serialServices';
 
 export default function AddSerialPage() {
     return (
         <PageStyled>
-            <HeadlineStyled>Neue Vorführung anlegen</HeadlineStyled>
-            <SerialFormStyled onSubmit={handleSubmit}>
+            <HeadlineStyled>Neue Filmreihe anlegen</HeadlineStyled>
+            <BaseForm>
                 <LabelStyled>
                     Titel
                     <InputStyled name="title" />
                 </LabelStyled>
                 <LabelStyled>
-                    Untertitle
+                    Untertitel
                     <InputStyled name="subtitle" />
                 </LabelStyled>
                 <LabelStyled>
@@ -24,15 +26,19 @@ export default function AddSerialPage() {
                     Autor
                     <InputStyled name="author" />
                 </LabelStyled>
-                <ButtonStyled type="submit">Speichern</ButtonStyled>
-            </SerialFormStyled>
+                <HorizontalLineStyled />
+                <ImageFormGroup />
+                <ButtonStyled type="submit" onClick={submitForm}>
+                    Speichern
+                </ButtonStyled>
+            </BaseForm>
         </PageStyled>
     );
 
-    function handleSubmit(event) {
+    function submitForm(event) {
         event.preventDefault();
-        const form = event.currentTarget;
-        const formData = new FormData(form);
+        const formElement = event.target.form;
+        const formData = new FormData(formElement);
         postSerial(formData).then((res) => {
             console.log(res);
         });
@@ -41,8 +47,6 @@ export default function AddSerialPage() {
 
 const HeadlineStyled = styled.h2``;
 
-const SerialFormStyled = styled.form``;
-
 const LabelStyled = styled.label`
     margin: 20px 0;
     display: block;
@@ -50,9 +54,6 @@ const LabelStyled = styled.label`
 
 const InputStyled = styled.input``;
 
-const TextareaStyled = styled.textarea`
-    display: block;
-    width: 100%;
-`;
+const TextareaStyled = styled.textarea``;
 
 const ButtonStyled = styled.button``;

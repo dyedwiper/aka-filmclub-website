@@ -31,6 +31,11 @@ export default createGlobalStyle`
     width: 100%;
   }
 
+  textarea{
+    display: block;
+    width: 100%;
+  }
+
   button {
     background-color: white;
     cursor: pointer;

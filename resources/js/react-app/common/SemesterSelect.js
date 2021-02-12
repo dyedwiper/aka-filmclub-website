@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
-import { customSelectStyles } from '../styles/customSelectStyles';
+import { semesterSelectStyles } from '../styles/customSelectStyles';
 
 export default function SemesterSelect({ setSemester, setIsLoading }) {
     const [semesterOptions, setSemesterOptions] = useState([]);
@@ -31,7 +31,7 @@ export default function SemesterSelect({ setSemester, setIsLoading }) {
                 options={semesterOptions}
                 defaultValue={semesterOptions[0]}
                 onChange={handleSemesterChange}
-                styles={customSelectStyles}
+                styles={semesterSelectStyles}
             />
         </SemesterSelectLabelStyled>
     );

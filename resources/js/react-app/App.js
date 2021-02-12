@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage';
 import ArchivePage from './pages/ArchivePage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
+import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import NotFoundPage from './pages/NotFoundPage';
 import NoticesPage from './pages/NoticesPage';
@@ -58,6 +59,9 @@ export default function App() {
                     </Route>
                     <Route path="/intern/addserial">
                         <AddSerialPage />
+                    </Route>
+                    <Route path="/intern/addscreening">
+                        <AddScreeningPage />
                     </Route>
                     <Route path="/404">
                         <NotFoundPage />
