@@ -5215,7 +5215,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _utils_imageServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/imageServices */ "./resources/js/react-app/utils/imageServices.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
 
 
 
@@ -5223,18 +5223,11 @@ __webpack_require__.r(__webpack_exports__);
 
 function Notice(_ref) {
   var notice = _ref.notice;
-  // const [image, setImage] = useState({});
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log(notice); // getImageById(notice.image_id).then((res) => {
-    //     setImage(res.data);
-    //     setIsLoading(false);
-    // });
-  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NoticeStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NoticeTitleStyled, {
       children: notice.title
     }), notice.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NoticeImageStyled, {
-      src: '/images/'
+      src: _constants__WEBPACK_IMPORTED_MODULE_2__.STORAGE_FOLDER + notice.image.source
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NoticeContentStyled, {
       children: notice.content
     })]
@@ -6079,11 +6072,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "UUID_LENGTH": () => /* binding */ UUID_LENGTH,
 /* harmony export */   "IMAGE_FOLDER": () => /* binding */ IMAGE_FOLDER,
 /* harmony export */   "ASSETS_FOLDER": () => /* binding */ ASSETS_FOLDER,
+/* harmony export */   "STORAGE_FOLDER": () => /* binding */ STORAGE_FOLDER,
 /* harmony export */   "NOTICES_PER_PAGE": () => /* binding */ NOTICES_PER_PAGE
 /* harmony export */ });
 var UUID_LENGTH = 13;
 var IMAGE_FOLDER = '/images/';
 var ASSETS_FOLDER = '/assets/';
+var STORAGE_FOLDER = '/storage/';
 var NOTICES_PER_PAGE = 5;
 
 /***/ }),
@@ -7495,26 +7490,6 @@ function formatDateAndTime(date) {
     hour: '2-digit',
     minute: '2-digit'
   });
-}
-
-/***/ }),
-
-/***/ "./resources/js/react-app/utils/imageServices.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/react-app/utils/imageServices.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getImageById": () => /* binding */ getImageById
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
-function getImageById(id) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/id' + id);
 }
 
 /***/ }),

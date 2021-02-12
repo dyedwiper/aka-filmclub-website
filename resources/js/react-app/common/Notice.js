@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { getImageById } from '../utils/imageServices';
+import { STORAGE_FOLDER } from '../constants';
 
 export default function Notice({ notice }) {
-    // const [image, setImage] = useState({});
-
-    useEffect(() => {
-        console.log(notice);
-
-        // getImageById(notice.image_id).then((res) => {
-        //     setImage(res.data);
-        //     setIsLoading(false);
-        // });
-    }, []);
-
     return (
         <NoticeStyled>
             <HorizontalLineStyled />
             <NoticeTitleStyled>{notice.title}</NoticeTitleStyled>
-            {notice.image && <NoticeImageStyled src={'/images/'} />}
+            {notice.image && <NoticeImageStyled src={STORAGE_FOLDER + notice.image.source} />}
             <NoticeContentStyled>{notice.content}</NoticeContentStyled>
         </NoticeStyled>
     );

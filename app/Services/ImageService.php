@@ -35,7 +35,7 @@ class ImageService
         $imageName = $notice->uuid . '_' .
             Helper::prepareTitle($notice->title) . '.' .
             Helper::convertMime2Ext($request->image->getMimeType());
-        $imagePath = $request->image->storeAs('images/notices', $imageName, 'public');
+        $imagePath = $request->image->storeAs('/images/notices', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
     }
 

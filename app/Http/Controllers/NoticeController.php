@@ -19,11 +19,14 @@ class NoticeController extends Controller
 
     public function GetNotices()
     {
-        return DB::table('notices')
-            ->orderByDesc('date')
+        $notices = Notice
+            ::orderByDesc('date')
             ->orderByDesc('updated_at')
             ->orderByDesc('created_at')
             ->paginate(5);
+
+        $notices->load('image');
+        return $notices;
     }
 
     public function GetNoticesCount()

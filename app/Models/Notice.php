@@ -16,4 +16,9 @@ class Notice extends Model
         'content',
         'author',
     ];
+
+    public function image()
+    {
+        return $this->belongsTo(Image::class);
+    }
 }
