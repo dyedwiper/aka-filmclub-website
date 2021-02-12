@@ -19,3 +19,7 @@ export function getScreeningByUuid(uuid) {
 export function getScreeningsBySerialFk(serialFk) {
     return axios.get('/api/screenings/serial/' + serialFk);
 }
+
+export function postScreening(data) {
+    return axios.post('/api/screenings', data);
+}

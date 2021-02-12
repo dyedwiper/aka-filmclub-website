@@ -4,9 +4,8 @@ import styled from 'styled-components';
 export default function ImageFormGroup() {
     return (
         <ImageFormGroupStyled>
-            <HeadlineStyled>Bild hochladen</HeadlineStyled>
             <LabelStyled>
-                Datei (png oder jpg; bis 1 MB)
+                Bild (png oder jpg; bis 1 MB)
                 <InputStyled name="image" type="file" />
             </LabelStyled>
             <LabelStyled>
@@ -33,5 +32,3 @@ const LabelStyled = styled.label`
 const InputStyled = styled.input``;
 
 const ImageFormGroupStyled = styled.div``;
-
-const HeadlineStyled = styled.h4``;

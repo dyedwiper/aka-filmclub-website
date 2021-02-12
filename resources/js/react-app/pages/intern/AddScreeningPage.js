@@ -4,12 +4,13 @@ import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import SerialSelect from '../../common/forms/SerialSelect';
 import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
+import { postScreening } from '../../utils/screeningServices';
 
 export default function AddScreeningPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Neue Vorführung anlegen</HeadlineStyled>
-            <BaseForm>
+            <BaseForm serviceFunction={postScreening}>
                 <FormRowWithTwoInputsStyled>
                     <LabelStyled>
                         Titel
@@ -100,16 +101,9 @@ export default function AddScreeningPage() {
                 </LabelStyled>
                 <HorizontalLineStyled />
                 <ImageFormGroup />
-                <HorizontalLineStyled />
-                <ButtonStyled type="submit" onClick={submitForm}>
-                    Speichern
-                </ButtonStyled>
-                <ButtonStyled type="button">Abbrechen</ButtonStyled>
             </BaseForm>
         </PageStyled>
     );
-
-    function submitForm(event) {}
 }
 
 const HeadlineStyled = styled.h2``;

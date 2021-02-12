@@ -9,7 +9,7 @@ export default function AddSerialPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Neue Filmreihe anlegen</HeadlineStyled>
-            <BaseForm>
+            <BaseForm serviceFunction={postSerial}>
                 <LabelStyled>
                     Titel
                     <InputStyled name="title" />
@@ -28,21 +28,9 @@ export default function AddSerialPage() {
                 </LabelStyled>
                 <HorizontalLineStyled />
                 <ImageFormGroup />
-                <ButtonStyled type="submit" onClick={submitForm}>
-                    Speichern
-                </ButtonStyled>
             </BaseForm>
         </PageStyled>
     );
-
-    function submitForm(event) {
-        event.preventDefault();
-        const formElement = event.target.form;
-        const formData = new FormData(formElement);
-        postSerial(formData).then((res) => {
-            console.log(res);
-        });
-    }
 }
 
 const HeadlineStyled = styled.h2``;
