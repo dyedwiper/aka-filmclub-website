@@ -18,6 +18,7 @@
         "eslint-plugin-react": "^7.22.0",
         "eslint-plugin-react-hooks": "^4.2.0",
         "laravel-mix": "^6.0.6",
+        "postcss": "^8.2.4",
         "prettier": "2.2.1"
     },
     "dependencies": {
@@ -25,6 +26,7 @@
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-router-dom": "^5.2.0",
+        "react-select": "^4.0.2",
         "styled-components": "^5.2.1"
     },
     "babel": {
@@ -44,11 +46,14 @@
             "eslint:recommended",
             "plugin:react/recommended"
         ],
-        "parser": "babel-eslint"
+        "parser": "babel-eslint",
+        "rules": {
+            "react/prop-types": 0
+        }
     },
     "prettier": {
         "singleQuote": true,
-        "tabWidth": 4
+        "printWidth": 120
     },
     "browserslist": {
         "production": [
