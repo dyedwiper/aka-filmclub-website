@@ -27,40 +27,18 @@ class SerialController extends Controller
         }
 
         $serials = Serial::where('semester', $semester)->get();
-
-        return $serials;
-
-
-        // $allSerials = Serial::orderByDesc('id')->get();
-        // $serialsFromSemester = [];
-        // foreach ($allSerials as $serial) {
-        //     $firstScreening = Screening::where('serial_id', $serial->id)->orderBy('date')->first();
-        //     if ($firstScreening == null) continue;
-        //     $firstDate = strtotime($firstScreening->date);
-        //     if (
-        //         $season == 'ws'
-        //         && (date('Y', $firstDate) == $year && date('m', $firstDate) >= 10
-        //             || date('Y', $firstDate) == $year + 1 && date('m', $firstDate) < 4)
-        //     ) {
-        //         array_push($serialsFromSemester, $serial);
-        //     } elseif (
-        //         $season == 'ss'
-        //         && (date('Y', $firstDate) == $year && date('m', $firstDate) >= 4 && date('m', $firstDate) < 10)
-        //     ) {
-        //         array_push($serialsFromSemester, $serial);
-        //     }
-        // }
-        // foreach ($serialsFromSemester as $serial) {
-        //     $image = Image::where('id', $serial->image_id)->first();
-        // }
-        // return $serialsFromSemester;
+        foreach ($serials as $serial) {
+            $firstScreening = Screening::where('serial_id', $serial->id)->orderBy('date')->first();
+            $serial->firstDate = strtotime($firstScreening->date);
+        }
+        return $serials->sortBy('firstDate')->values()->all();
     }
 
     public function GetSerialByUuid(string $uuid)
     {
         $serial = Serial::where('uuid', $uuid)->first();
-        $image = Image::where('id', $serial->image_id)->orderBy('date')->first();
-        $serial->image = $image;
+        // $image = Image::where('id', $serial->image_id)->orderBy('date')->first();
+        // $serial->image = $image;
         return $serial;
     }
 

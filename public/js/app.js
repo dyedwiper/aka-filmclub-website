@@ -6927,6 +6927,7 @@ function SerialPage() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var path = window.location.pathname;
     var serialUuid = path.slice(path.lastIndexOf('/') + 1);
+    console.log(serialUuid);
     (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_5__.getSerialByUuid)(serialUuid).then(function (res) {
       if (!res.data.uuid) {
         SetNoSerialFound(true);

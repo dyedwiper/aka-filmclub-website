@@ -16,6 +16,7 @@ export default function SerialPage() {
     useEffect(() => {
         const path = window.location.pathname;
         const serialUuid = path.slice(path.lastIndexOf('/') + 1);
+        console.log(serialUuid);
         getSerialByUuid(serialUuid).then((res) => {
             if (!res.data.uuid) {
                 SetNoSerialFound(true);
