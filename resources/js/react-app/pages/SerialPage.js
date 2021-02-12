@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import { formatDate } from '../utils/dateFormatters';
-import { getScreeningsBySerialFk } from '../utils/screeningServices';
+import { getScreeningsBySerialId } from '../utils/screeningServices';
 import { getSerialByUuid } from '../utils/serialServices';
 import LoadingPage from './LoadingPage';
 
@@ -22,7 +22,7 @@ export default function SerialPage() {
                 SetNoSerialFound(true);
             }
             setSerial(res.data);
-            getScreeningsBySerialFk(res.data.id).then((res) => {
+            getScreeningsBySerialId(res.data.id).then((res) => {
                 setScreenings(res.data);
                 setIsLoading(false);
             });

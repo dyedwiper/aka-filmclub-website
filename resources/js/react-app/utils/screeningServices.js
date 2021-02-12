@@ -16,8 +16,8 @@ export function getScreeningByUuid(uuid) {
     return axios.get('/api/screenings/single/' + uuid);
 }
 
-export function getScreeningsBySerialFk(serialFk) {
-    return axios.get('/api/screenings/serial/' + serialFk);
+export function getScreeningsBySerialId(serialId) {
+    return axios.get('/api/screenings/serial/' + serialId);
 }
 
 export function postScreening(data) {

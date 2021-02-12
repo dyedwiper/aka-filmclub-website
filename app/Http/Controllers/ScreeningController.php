@@ -26,9 +26,9 @@ class ScreeningController extends Controller
         return Screening::where('uuid', $uuid)->first();
     }
 
-    public function GetScreeningsBySerialFk(int $serialFk)
+    public function GetScreeningsBySerialId(int $serialId)
     {
-        return Screening::where('serial_fk', $serialFk)->get();
+        return Screening::where('serial_id', $serialId)->get();
     }
 
     public function GetScreeningsByYear(int $year)

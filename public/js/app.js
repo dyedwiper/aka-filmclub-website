@@ -6934,7 +6934,7 @@ function SerialPage() {
       }
 
       setSerial(res.data);
-      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_4__.getScreeningsBySerialFk)(res.data.id).then(function (res) {
+      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_4__.getScreeningsBySerialId)(res.data.id).then(function (res) {
         setScreenings(res.data);
         setIsLoading(false);
       });
@@ -7501,7 +7501,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
 /* harmony export */   "getScreeningsBySemester": () => /* binding */ getScreeningsBySemester,
 /* harmony export */   "getScreeningByUuid": () => /* binding */ getScreeningByUuid,
-/* harmony export */   "getScreeningsBySerialFk": () => /* binding */ getScreeningsBySerialFk,
+/* harmony export */   "getScreeningsBySerialId": () => /* binding */ getScreeningsBySerialId,
 /* harmony export */   "postScreening": () => /* binding */ postScreening
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -7519,8 +7519,8 @@ function getScreeningsBySemester(semester) {
 function getScreeningByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/single/' + uuid);
 }
-function getScreeningsBySerialFk(serialFk) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/serial/' + serialFk);
+function getScreeningsBySerialId(serialId) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/serial/' + serialId);
 }
 function postScreening(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/screenings', data);
