@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Image;
 use App\Models\Screening;
 use App\Models\Serial;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use App\Helpers\Helper;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class SerialController extends Controller
 {
@@ -83,7 +81,6 @@ class SerialController extends Controller
                 'article' => 'required',
                 'author' => 'required|max:255',
             ],
-            // Der leere Array muss hier stehen, weil die Parameter positioniert sind
             [],
             [
                 'title' => 'Titel',
@@ -105,10 +102,13 @@ class SerialController extends Controller
             'author' => $request->author,
         ]);
 
-        if ($request->image) {
+        try {
             $imageId = $this->imageService->storeSerialImage($request, $serial);
             $serial->image_id = $imageId;
+        } catch (ValidationException $ex) {
+            return response()->json(['validationErrors' => $ex->validator->errors()], 400);
         }
+
         $serial->save();
         return $serial->image_id;
     }

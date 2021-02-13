@@ -26,10 +26,10 @@ class ScreeningController extends Controller
         return Screening::where('uuid', $uuid)->with('image')->first();
     }
 
-    public function GetScreeningsBySerialId(int $serialId)
-    {
-        return Screening::where('serial_id', $serialId)->get();
-    }
+    // public function GetScreeningsBySerialId(int $serialId)
+    // {
+    //     return Screening::where('serial_id', $serialId)->get();
+    // }
 
     public function GetScreeningsByYear(int $year)
     {

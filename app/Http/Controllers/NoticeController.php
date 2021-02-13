@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Notice;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class NoticeController extends Controller
 {
@@ -31,8 +31,7 @@ class NoticeController extends Controller
 
     public function GetNoticesCount()
     {
-        $notices = Notice::all();
-        return count($notices);
+        return Notice::all()->count();
     }
 
     public function PostNotice(Request $request)
@@ -67,9 +66,11 @@ class NoticeController extends Controller
             'author' => $request->author,
         ]);
 
-        if ($request->image) {
+        try {
             $imageId = $this->imageService->storeNoticeImage($request, $notice);
             $notice->image_id = $imageId;
+        } catch (ValidationException $ex) {
+            return response()->json(['validationErrors' => $ex->validator->errors()], 400);
         }
 
         $notice->save();
