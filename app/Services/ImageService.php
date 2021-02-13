@@ -7,6 +7,7 @@ use App\Models\Image;
 use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
@@ -63,7 +64,7 @@ class ImageService
         );
 
         if ($validator->fails()) {
-            throw new ValidationException($validator);
+            throw new HttpResponseException(response()->json($validator->errors(), 422));
         }
     }
 

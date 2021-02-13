@@ -45,10 +45,8 @@ class NoticeController extends Controller
             'author' => $request->author,
         ]);
 
-        try {
-            $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
-        } catch (ValidationException $ex) {
-            return response()->json(['validationErrors' => $ex->validator->errors()], 422);
+        if ($request->image) {
+            $this->imageService->storeNoticeImage($request, $notice);
         }
 
         $notice->save();
@@ -64,10 +62,8 @@ class NoticeController extends Controller
         $notice->content = $request->content;
         $notice->author = $request->author;
 
-        try {
-            $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
-        } catch (ValidationException $ex) {
-            return response()->json(['validationErrors' => $ex->validator->errors()], 422);
+        if ($request->image) {
+            $this->imageService->storeNoticeImage($request, $notice);
         }
 
         $notice->save();
