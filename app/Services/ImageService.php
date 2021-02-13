@@ -48,7 +48,7 @@ class ImageService
         $validator = Validator::make(
             $request->all(),
             [
-                'image' => 'file|mimetypes:image/png,image/jpeg|max:10',
+                'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
                 'imageTitle' => 'max:255',
                 'altText' => 'max:255',
                 'copyright' => 'max:255',

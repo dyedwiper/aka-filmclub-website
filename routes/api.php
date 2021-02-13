@@ -73,6 +73,10 @@ Route::prefix('notices')->group(function () {
     Route::post('/', [
         NoticeController::class, 'PostNotice'
     ]);
+
+    Route::patch('/', [
+        NoticeController::class, 'PatchNotice'
+    ]);
 });
 
 Route::prefix('serials')->group(function () {

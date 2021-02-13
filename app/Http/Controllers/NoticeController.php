@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\NoticeFormRequest;
 use App\Models\Notice;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
@@ -34,30 +35,8 @@ class NoticeController extends Controller
         return Notice::all()->count();
     }
 
-    public function PostNotice(Request $request)
+    public function PostNotice(NoticeFormRequest $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'title' => 'required|max:255',
-                'date' => 'required|date',
-                'content' => 'required',
-                'author' => 'required|max:255',
-            ],
-            // Der leere Array muss hier stehen, weil die Parameter positioniert sind
-            [],
-            [
-                'title' => 'Titel',
-                'date' => 'Datum',
-                'content' => 'Text',
-                'author' => 'Autor*in',
-            ]
-        );
-
-        if ($validator->fails()) {
-            return response()->json(['validationErrors' => $validator->errors()], 400);
-        }
-
         $notice = new Notice([
             'uuid' => uniqid(),
             'title' => $request->title,
@@ -67,13 +46,31 @@ class NoticeController extends Controller
         ]);
 
         try {
-            $imageId = $this->imageService->storeNoticeImage($request, $notice);
-            $notice->image_id = $imageId;
+            $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
         } catch (ValidationException $ex) {
-            return response()->json(['validationErrors' => $ex->validator->errors()], 400);
+            return response()->json(['validationErrors' => $ex->validator->errors()], 422);
         }
 
         $notice->save();
-        return 'Notice created';
+        return $notice;
+    }
+
+    public function PatchNotice(NoticeFormRequest $request)
+    {
+        $notice = Notice::where('id', $request->id)->first();
+
+        $notice->title = $request->title;
+        $notice->date = $request->date;
+        $notice->content = $request->content;
+        $notice->author = $request->author;
+
+        try {
+            $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
+        } catch (ValidationException $ex) {
+            return response()->json(['validationErrors' => $ex->validator->errors()], 422);
+        }
+
+        $notice->save();
+        return $notice;
     }
 }
