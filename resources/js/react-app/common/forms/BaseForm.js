@@ -44,7 +44,7 @@ export default function BaseForm({ children, serviceFunction }) {
             })
             .catch((err) => {
                 setIsWaiting(false);
-                console.log(err);
+                console.log(err.response.data);
             });
     }
 

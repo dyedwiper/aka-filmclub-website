@@ -17,8 +17,7 @@ class ImageService
     public function storeSerialImage(Request $request, Serial $serial)
     {
         $this->validateImage($request);
-        $imageName = $serial->uuid . '_' .
-            Helper::prepareTitle($serial->title) . '.' .
+        $imageName = $serial->uuid . '.' .
             Helper::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs('images/serials', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
@@ -27,8 +26,7 @@ class ImageService
     public function storeScreeningImage(Request $request, Screening $screening)
     {
         $this->validateImage($request);
-        $imageName = $screening->uuid . '_' .
-            Helper::prepareTitle($screening->title) . '.' .
+        $imageName = $screening->uuid . '.' .
             Helper::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs('images/screenings', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
@@ -37,8 +35,7 @@ class ImageService
     public function storeNoticeImage(Request $request, Notice $notice)
     {
         $this->validateImage($request);
-        $imageName = $notice->uuid . '_' .
-            Helper::prepareTitle($notice->title) . '.' .
+        $imageName = $notice->uuid . '.' .
             Helper::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs('/images/notices', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
@@ -76,6 +73,7 @@ class ImageService
             'title' => $request->imageTitle,
             'alt_text' => $request->altText,
             'copyright' => $request->copyright,
+            'associatedEntity' => $request->associatedEntity,
         ]);
         $image->save();
         return $image->id;

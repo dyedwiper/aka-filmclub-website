@@ -27,7 +27,9 @@ class SerialController extends Controller
         $serials = Serial::where('semester', $semester)->with('image')->get();
         foreach ($serials as $serial) {
             $firstScreening = Screening::where('serial_id', $serial->id)->orderBy('date')->first();
-            $serial->firstDate = strtotime($firstScreening->date);
+            if ($firstScreening) {
+                $serial->firstDate = strtotime($firstScreening->date);
+            }
         }
         return $serials->sortBy('firstDate')->values()->all();
     }
@@ -100,13 +102,11 @@ class SerialController extends Controller
             'subtitle' => $request->subtitle,
             'article' => $request->article,
             'author' => $request->author,
+            'semester' => $request->semester,
         ]);
 
-        try {
-            $imageId = $this->imageService->storeSerialImage($request, $serial);
-            $serial->image_id = $imageId;
-        } catch (ValidationException $ex) {
-            return response()->json(['validationErrors' => $ex->validator->errors()], 400);
+        if ($request->image) {
+            $serial->image_id = $this->imageService->storeSerialImage($request, $serial);
         }
 
         $serial->save();

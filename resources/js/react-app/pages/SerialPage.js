@@ -48,6 +48,9 @@ export default function SerialPage() {
                     </ScreeningListItemStyled>
                 ))}
             </ScreeningsListStyled>
+            {serial.image && (
+                <EditImageLinkStyled to={'/intern/editimage/' + serial.image.uuid}>Bild ändern</EditImageLinkStyled>
+            )}
         </PageStyled>
     );
 }
@@ -75,3 +78,5 @@ const ScreeningTitleLinkStyled = styled(Link)`
 const ArticleStyled = styled.p``;
 
 const AuthorStyled = styled.div``;
+
+const EditImageLinkStyled = styled(Link)``;

@@ -21,6 +21,7 @@ class CreateImagesTable extends Migration
             $table->string('title')->nullable();
             $table->string('alt_text')->nullable();
             $table->string('copyright')->nullable();
+            $table->string('associatedEntity', 32);
         });
     }
 

@@ -109,4 +109,12 @@ Route::prefix('images')->group(function () {
     Route::get('/id/{id}', [
         ImageController::class, 'GetImageById'
     ]);
+
+    Route::get('/uuid/{uuid}', [
+        ImageController::class, 'GetImageByUuid'
+    ]);
+
+    Route::patch('/', [
+        ImageController::class, 'PatchImage'
+    ]);
 });

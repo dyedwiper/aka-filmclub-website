@@ -9,5 +9,5 @@ class Image extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['uuid', 'source', 'title', 'alt_text', 'copyright'];
+    protected $fillable = ['uuid', 'source', 'title', 'alt_text', 'copyright', 'associatedEntity'];
 }

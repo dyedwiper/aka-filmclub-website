@@ -46,7 +46,7 @@ class NoticeController extends Controller
         ]);
 
         if ($request->image) {
-            $this->imageService->storeNoticeImage($request, $notice);
+            $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
         }
 
         $notice->save();
@@ -63,7 +63,7 @@ class NoticeController extends Controller
         $notice->author = $request->author;
 
         if ($request->image) {
-            $this->imageService->storeNoticeImage($request, $notice);
+            $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
         }
 
         $notice->save();

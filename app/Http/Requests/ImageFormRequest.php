@@ -26,7 +26,7 @@ class ImageFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
+            'image' => 'required|file|mimetypes:image/png,image/jpeg|max:1000',
             'imageTitle' => 'max:255',
             'altText' => 'max:255',
             'copyright' => 'max:255',
@@ -45,6 +45,6 @@ class ImageFormRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
+        throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()], 422));
     }
 }

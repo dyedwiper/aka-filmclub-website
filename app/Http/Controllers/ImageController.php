@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use App\Http\Requests\ImageFormRequest;
 use App\Models\Image;
+use App\Models\Serial;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -13,18 +15,30 @@ class ImageController extends Controller
         return Image::where('id', $id)->first();
     }
 
-    public function PostImage(Request $request, string $type)
+    public function GetImageByUuid(string $uuid)
     {
-        $imageName = $request->uuid . '_' . $request->title . '.' . Helper::mime2ext($request->image->getMimeType());
-        $imagePath = $request->image->storeAs('images/serials', $imageName, 'public');
-        $image = new Image([
-            'uuid' => uniqid(),
-            'source' => $imagePath,
-            'title' => $request->imageTitle,
-            'alt_text' => $request->altText,
-            'copyright' => $request->copyright,
-        ]);
+        return Image::where('uuid', $uuid)->first();
+    }
+
+    public function PatchImage(ImageFormRequest $request)
+    {
+        $image = Image::where('uuid', $request->uuid)->first();
+
+        if ($request->associatedEntity == 'serial') {
+            $associatedEntity = Serial::where('image_id', $image->id)->first();
+            $imageFolder = '/images/serials';
+        }
+
+        $imageName = $associatedEntity->uuid . '.' .
+            Helper::convertMime2Ext($request->image->getMimeType());
+        $imagePath = $request->image->storeAs($imageFolder, $imageName, 'public');
+
+        $image->source = $imagePath;
+        $image->title = $request->imageTitle;
+        $image->alt_text = $request->altText;
+        $image->copyright = $request->copyright;
+
         $image->save();
-        return $image->id;
+        return $image;
     }
 }
