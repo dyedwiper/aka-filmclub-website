@@ -18,6 +18,11 @@ class SerialController extends Controller
         $this->imageService = $imageService;
     }
 
+    public function GetSerials()
+    {
+        return Serial::orderByDesc('id')->get();
+    }
+
     public function GetSerialsBySemester(string $semester)
     {
         if (!preg_match('/^[WS]S\d{4}$/', $semester)) {
@@ -33,6 +38,7 @@ class SerialController extends Controller
         }
         return $serials->sortBy('firstDate')->values()->all();
     }
+
 
     public function GetSerialByUuid(string $uuid)
     {

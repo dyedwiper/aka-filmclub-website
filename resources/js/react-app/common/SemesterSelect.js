@@ -2,28 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { semesterSelectStyles } from '../styles/customSelectStyles';
+import { SUMMER_SEASON_IDENTIFIER, WINTER_SEASON_IDENTIFIER } from '../constants';
+import { computeCurrentSemester } from '../utils/computeCurrentSemester';
 
 export default function SemesterSelect({ setSemester, setIsLoading }) {
-    const SUMMER_SEASON_IDENTIFIER = 'SS';
-    const WINTER_SEASON_IDENTIFIER = 'WS';
-
     const [semesterOptions, setSemesterOptions] = useState([]);
 
     useEffect(() => {
-        const currentDate = new Date();
-        const currentMonth = currentDate.getMonth();
-        const currentYear = currentDate.getFullYear();
-
-        //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
-        if (currentMonth >= 3 && currentMonth < 9) {
-            setSemester(SUMMER_SEASON_IDENTIFIER + currentYear);
-        } else if (currentMonth >= 9) {
-            setSemester(WINTER_SEASON_IDENTIFIER + currentYear);
-        } else {
-            setSemester(WINTER_SEASON_IDENTIFIER + (currentYear - 1));
-        }
-        console.log(computeSemesterOptions(currentYear, currentMonth));
-        setSemesterOptions(computeSemesterOptions(currentYear, currentMonth));
+        setSemester(computeCurrentSemester());
+        setSemesterOptions(computeSemesterOptions());
     }, []);
 
     return (
@@ -38,7 +25,11 @@ export default function SemesterSelect({ setSemester, setIsLoading }) {
         </SemesterSelectLabelStyled>
     );
 
-    function computeSemesterOptions(currentYear, currentMonth) {
+    function computeSemesterOptions() {
+        const currentDate = new Date();
+        const currentMonth = currentDate.getMonth();
+        const currentYear = currentDate.getFullYear();
+
         const allSemesters = [];
         allSemesters.push({ season: 'ws', year: 2000 });
         for (let year = 2001; year < currentYear; year++) {
@@ -52,6 +43,7 @@ export default function SemesterSelect({ setSemester, setIsLoading }) {
         if (currentMonth >= 9) {
             allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: currentYear });
         }
+
         const semesterOptions = [];
         allSemesters.reverse().forEach((semester) => {
             semesterOptions.push({

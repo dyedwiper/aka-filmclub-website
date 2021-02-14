@@ -80,9 +80,9 @@ Route::prefix('notices')->group(function () {
 });
 
 Route::prefix('serials')->group(function () {
-    Route::get('/', function () {
-        return Serial::all();
-    });
+    Route::get('/', [
+        SerialController::class, 'GetSerials'
+    ]);
 
     Route::get('/semester/{semester}', [
         SerialController::class, 'GetSerialsBySemester'

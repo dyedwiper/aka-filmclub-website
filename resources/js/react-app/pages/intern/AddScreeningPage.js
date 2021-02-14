@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
-import SerialSelect from '../../common/forms/SerialSelect';
+import SerialSelectFormGroup from '../../common/forms/SerialSelectFormGroup';
 import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
 import { postScreening } from '../../utils/screeningServices';
 
@@ -97,7 +97,7 @@ export default function AddScreeningPage() {
                 </LabelStyled>
                 <LabelStyled>
                     Filmreihe
-                    <SerialSelect name="serial" />
+                    <SerialSelectFormGroup />
                 </LabelStyled>
                 <LabelStyled>
                     Autor*in
