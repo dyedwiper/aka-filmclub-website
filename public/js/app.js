@@ -5668,9 +5668,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styledElements */ "./resources/js/react-app/common/styledElements.js");
-
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
 
@@ -5686,25 +5684,25 @@ function ImageFormGroup(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["Alternativtext (Beschreibung des Bilds f\xFCr Sehbehinderte)", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
         name: "altText",
-        defaultValue: image.alt_text
+        defaultValue: image && image.alt_text
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["Copyright", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
         name: "copyright",
-        defaultValue: image.copyright
+        defaultValue: image && image.copyright
       })]
     })]
   });
 }
-var ImageFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var ImageFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
   displayName: "ImageFormGroup__ImageFormGroupStyled",
   componentId: "szdyq5-0"
 })([""]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.label.withConfig({
   displayName: "ImageFormGroup__LabelStyled",
   componentId: "szdyq5-1"
 })(["margin:20px 0;display:block;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input.withConfig({
   displayName: "ImageFormGroup__InputStyled",
   componentId: "szdyq5-2"
 })([""]);
@@ -7140,7 +7138,7 @@ function AddNoticePage() {
         children: ["Autor*in", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "author"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 }
@@ -7292,7 +7290,7 @@ function AddScreeningPage() {
         children: ["Autor*in", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "author"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 }
@@ -7371,7 +7369,7 @@ function AddSerialPage() {
         children: ["Autor*in", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "author"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 }

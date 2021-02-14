@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HorizontalLineStyled } from '../styledElements';
 
 export default function ImageFormGroup({ image }) {
     return (
@@ -11,11 +10,11 @@ export default function ImageFormGroup({ image }) {
             </LabelStyled>
             <LabelStyled>
                 Alternativtext (Beschreibung des Bilds für Sehbehinderte)
-                <InputStyled name="altText" defaultValue={image.alt_text} />
+                <InputStyled name="altText" defaultValue={image && image.alt_text} />
             </LabelStyled>
             <LabelStyled>
                 Copyright
-                <InputStyled name="copyright" defaultValue={image.copyright} />
+                <InputStyled name="copyright" defaultValue={image && image.copyright} />
             </LabelStyled>
         </ImageFormGroupStyled>
     );

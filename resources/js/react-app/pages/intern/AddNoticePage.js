@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
-import { PageStyled } from '../../common/styledElements';
+import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
 import { postNotice } from '../../utils/noticeServices';
 
 export default function AddNoticePage() {
@@ -26,6 +26,7 @@ export default function AddNoticePage() {
                     Autor*in
                     <InputStyled name="author" />
                 </LabelStyled>
+                <HorizontalLineStyled />
                 <ImageFormGroup />
             </BaseForm>
         </PageStyled>
