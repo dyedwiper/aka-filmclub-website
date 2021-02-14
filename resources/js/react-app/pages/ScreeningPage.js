@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../common/styledElements';
-import { IMAGE_FOLDER } from '../constants';
+import { STORAGE_FOLDER } from '../constants';
 import { getScreeningByUuid } from '../utils/screeningServices';
 import LoadingPage from './LoadingPage';
 
@@ -30,7 +30,7 @@ export default function ScreeningPage() {
 
     return (
         <PageStyled>
-            <ScreeningImageStyled src={IMAGE_FOLDER + screening.image} />
+            <ScreeningImageStyled src={STORAGE_FOLDER + screening.image.path} />
             <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
             <ScreeningSynopsisStyled>{screening.synopsis}</ScreeningSynopsisStyled>
         </PageStyled>

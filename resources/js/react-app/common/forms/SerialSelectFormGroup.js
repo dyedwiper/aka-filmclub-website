@@ -22,7 +22,7 @@ export default function SerialSelectFormGroup() {
     return (
         <SerialSelectFormGroupStyled>
             <ReactSelect
-                name="serial"
+                name="serialId"
                 options={serialOptions}
                 styles={serialSelectStyles}
                 placeholder="Reihe wählen..."

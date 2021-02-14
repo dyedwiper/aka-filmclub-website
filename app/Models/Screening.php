@@ -10,6 +10,7 @@ class Screening extends Model
     use HasFactory;
 
     protected $fillable = [
+        'uuid',
         'title',
         'date',
         'original_title',

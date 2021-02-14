@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Helpers\Helper;
+use App\Http\Requests\ScreeningFormRequest;
 use App\Models\Screening;
 use App\Services\ImageService;
 use Illuminate\Http\Request;
@@ -25,11 +26,6 @@ class ScreeningController extends Controller
     {
         return Screening::where('uuid', $uuid)->with('image')->first();
     }
-
-    // public function GetScreeningsBySerialId(int $serialId)
-    // {
-    //     return Screening::where('serial_id', $serialId)->get();
-    // }
 
     public function GetScreeningsByYear(int $year)
     {
@@ -72,13 +68,36 @@ class ScreeningController extends Controller
         }
     }
 
-    public function PostScreening(Request $request)
+    public function PostScreening(ScreeningFormRequest $request)
     {
-        $screening = new Screening($request->all());
-        $screening->uuid = uniqid();
-        $imageId = $this->imageService->storeScreeningImage($request, $screening);
-        $screening->image_id = $imageId;
+        $screening = new Screening([
+            'uuid' => uniqid(),
+            'title' => $request->title,
+            'original_title' => $request->originalTitle,
+            'date' => $request->day . ' ' . $request->time,
+            'synopsis' => $request->synopsis,
+            'directed_by' => $request->directedBy,
+            'written_by' => $request->writtenBy,
+            'music_by' => $request->musicBy,
+            'shot_by' => $request->shotBy,
+            'cast' => $request->cast,
+            'country' => $request->country,
+            'year' => $request->year,
+            'length' => $request->length,
+            'medium' => $request->medium,
+            'version' => $request->version,
+            'venue' => $request->venue,
+            'special' => $request->special,
+            'tercet' => $request->tercet,
+            'serial_id' => $request->serialId,
+            'author' => $request->author,
+        ]);
+
+        if ($request->image) {
+            $screening->image_id = $this->imageService->storeScreeningImage($request, $screening);
+        }
+
         $screening->save();
-        return $screening->id;
+        return $screening;
     }
 }

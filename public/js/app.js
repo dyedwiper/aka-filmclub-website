@@ -5716,7 +5716,7 @@ function SerialSelectFormGroup() {
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialSelectFormGroupStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
-      name: "serial",
+      name: "serialId",
       options: serialOptions,
       styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_3__.serialSelectStyles,
       placeholder: "Reihe w\xE4hlen..."
@@ -6861,7 +6861,7 @@ function ScreeningPage() {
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
-      src: _constants__WEBPACK_IMPORTED_MODULE_3__.IMAGE_FOLDER + screening.image
+      src: _constants__WEBPACK_IMPORTED_MODULE_3__.STORAGE_FOLDER + screening.image.path
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleStyled, {
       children: screening.title
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningSynopsisStyled, {
@@ -7311,7 +7311,8 @@ function AddScreeningPage() {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
           children: ["Veranstaltungsort", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
-            name: "venue"
+            name: "venue",
+            defaultValue: "GHS Biologie"
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {

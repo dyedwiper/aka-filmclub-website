@@ -84,7 +84,7 @@ export default function AddScreeningPage() {
                     </LabelStyled>
                     <LabelStyled>
                         Veranstaltungsort
-                        <InputStyled name="venue" />
+                        <InputStyled name="venue" defaultValue="GHS Biologie" />
                     </LabelStyled>
                 </FormRowWithThreeInputsStyled>
                 <LabelStyled>
