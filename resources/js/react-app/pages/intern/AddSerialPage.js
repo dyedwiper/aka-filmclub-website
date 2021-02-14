@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
+import SerialSemesterSelect from '../../common/forms/SerialSemesterSelect';
 import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
 import { postSerial } from '../../utils/serialServices';
 
@@ -25,6 +26,10 @@ export default function AddSerialPage() {
                 <LabelStyled>
                     Autor*in
                     <InputStyled name="author" />
+                </LabelStyled>
+                <LabelStyled>
+                    Semester
+                    <SerialSemesterSelect />
                 </LabelStyled>
                 <HorizontalLineStyled />
                 <ImageFormGroup />

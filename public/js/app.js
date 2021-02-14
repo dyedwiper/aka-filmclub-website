@@ -5378,11 +5378,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
-/* harmony import */ var _utils_computeCurrentSemester__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/computeCurrentSemester */ "./resources/js/react-app/utils/computeCurrentSemester.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
 
 
 
@@ -5403,7 +5402,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function SemesterSelect(_ref) {
   var setSemester = _ref.setSemester,
       setIsLoading = _ref.setIsLoading;
@@ -5414,11 +5412,11 @@ function SemesterSelect(_ref) {
       setSemesterOptions = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    setSemester((0,_utils_computeCurrentSemester__WEBPACK_IMPORTED_MODULE_4__.computeCurrentSemester)());
-    setSemesterOptions(computeSemesterOptions());
+    setSemester((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeCurrentSemester)());
+    setSemesterOptions((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeSemesterOptions)());
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
-    children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
+    children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
       options: semesterOptions,
       defaultValue: semesterOptions[0],
       onChange: handleSemesterChange,
@@ -5426,58 +5424,12 @@ function SemesterSelect(_ref) {
     })]
   });
 
-  function computeSemesterOptions() {
-    var currentDate = new Date();
-    var currentMonth = currentDate.getMonth();
-    var currentYear = currentDate.getFullYear();
-    var allSemesters = [];
-    allSemesters.push({
-      season: 'ws',
-      year: 2000
-    });
-
-    for (var year = 2001; year < currentYear; year++) {
-      allSemesters.push({
-        season: _constants__WEBPACK_IMPORTED_MODULE_3__.SUMMER_SEASON_IDENTIFIER,
-        year: year
-      });
-      allSemesters.push({
-        season: _constants__WEBPACK_IMPORTED_MODULE_3__.WINTER_SEASON_IDENTIFIER,
-        year: year
-      });
-    } //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
-
-
-    if (currentMonth >= 3) {
-      allSemesters.push({
-        season: _constants__WEBPACK_IMPORTED_MODULE_3__.SUMMER_SEASON_IDENTIFIER,
-        year: currentYear
-      });
-    }
-
-    if (currentMonth >= 9) {
-      allSemesters.push({
-        season: _constants__WEBPACK_IMPORTED_MODULE_3__.WINTER_SEASON_IDENTIFIER,
-        year: currentYear
-      });
-    }
-
-    var semesterOptions = [];
-    allSemesters.reverse().forEach(function (semester) {
-      semesterOptions.push({
-        label: semester.season + ' ' + semester.year,
-        value: semester.season + semester.year
-      });
-    });
-    return semesterOptions;
-  }
-
   function handleSemesterChange(option) {
     setSemester(option.value);
     setIsLoading(true);
   }
 }
-var SemesterSelectLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.label.withConfig({
+var SemesterSelectLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.label.withConfig({
   displayName: "SemesterSelect__SemesterSelectLabelStyled",
   componentId: "sc-1w0f71e-0"
 })([""]);
@@ -5718,7 +5670,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
 /* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
 /* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
-/* harmony import */ var _utils_computeCurrentSemester__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/computeCurrentSemester */ "./resources/js/react-app/utils/computeCurrentSemester.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
@@ -5753,7 +5705,7 @@ function SerialSelectFormGroup() {
       setIsLoading = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var currentSemester = (0,_utils_computeCurrentSemester__WEBPACK_IMPORTED_MODULE_4__.computeCurrentSemester)();
+    var currentSemester = (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_4__.computeCurrentSemester)();
     (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_2__.getSerialsBySemester)(currentSemester).then(function (res) {
       setSerialOptions(computeSerialOptions(res.data));
       setIsLoading(false);
@@ -5806,6 +5758,59 @@ var LoadingNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.d
   displayName: "SerialSelectFormGroup__LoadingNoteStyled",
   componentId: "mbikx2-2"
 })(["display:grid;align-items:center;height:40px;"]);
+
+/***/ }),
+
+/***/ "./resources/js/react-app/common/forms/SerialSemesterSelect.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/react-app/common/forms/SerialSemesterSelect.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ SerialSemesterSelect
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
+/* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function SerialSemesterSelect() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      semesterOptions = _useState2[0],
+      setSemesterOptions = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setSemesterOptions((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeSemesterOptions)());
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
+    name: "semester",
+    options: semesterOptions,
+    defaultValue: semesterOptions[0],
+    styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.serialSemesterSelectStyles
+  });
+}
 
 /***/ }),
 
@@ -7367,11 +7372,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
 /* harmony import */ var _common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/ImageFormGroup */ "./resources/js/react-app/common/forms/ImageFormGroup.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+/* harmony import */ var _common_forms_SerialSemesterSelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/forms/SerialSemesterSelect */ "./resources/js/react-app/common/forms/SerialSemesterSelect.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+
 
 
 
@@ -7381,11 +7388,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AddSerialPage() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Neue Filmreihe anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_5__.postSerial,
+      serviceFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Titel", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "title"
@@ -7402,23 +7409,25 @@ function AddSerialPage() {
         children: ["Autor*in", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "author"
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
+        children: ["Semester", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_SerialSemesterSelect__WEBPACK_IMPORTED_MODULE_4__.default, {})]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2.withConfig({
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
   displayName: "AddSerialPage__HeadlineStyled",
   componentId: "jtmdcv-0"
 })([""]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.label.withConfig({
   displayName: "AddSerialPage__LabelStyled",
   componentId: "jtmdcv-1"
 })(["margin:20px 0;display:block;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.input.withConfig({
   displayName: "AddSerialPage__InputStyled",
   componentId: "jtmdcv-2"
 })([""]);
-var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.textarea.withConfig({
+var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.textarea.withConfig({
   displayName: "AddSerialPage__TextareaStyled",
   componentId: "jtmdcv-3"
 })([""]);
@@ -7544,6 +7553,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "semesterSelectStyles": () => /* binding */ semesterSelectStyles,
+/* harmony export */   "serialSemesterSelectStyles": () => /* binding */ serialSemesterSelectStyles,
 /* harmony export */   "serialSelectStyles": () => /* binding */ serialSelectStyles
 /* harmony export */ });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -7553,12 +7563,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var semesterSelectStyles = {
-  option: function option(provided, state) {
-    return _objectSpread(_objectSpread({}, provided), {}, {
-      backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
-      color: 'black'
-    });
-  },
+  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
@@ -7567,13 +7572,17 @@ var semesterSelectStyles = {
     });
   }
 };
-var serialSelectStyles = {
-  option: function option(provided, state) {
+var serialSemesterSelectStyles = {
+  option: customOptionStyles,
+  container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
-      backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
-      color: 'black'
+      display: 'block',
+      width: '250px'
     });
-  },
+  }
+};
+var serialSelectStyles = {
+  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'block',
@@ -7582,37 +7591,12 @@ var serialSelectStyles = {
   }
 };
 
-/***/ }),
-
-/***/ "./resources/js/react-app/utils/computeCurrentSemester.js":
-/*!****************************************************************!*\
-  !*** ./resources/js/react-app/utils/computeCurrentSemester.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "computeCurrentSemester": () => /* binding */ computeCurrentSemester
-/* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
-
-function computeCurrentSemester() {
-  var currentDate = new Date();
-  var currentMonth = currentDate.getMonth();
-  var currentYear = currentDate.getFullYear();
-  var currentSemester; //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
-
-  if (currentMonth >= 3 && currentMonth < 9) {
-    currentSemester = _constants__WEBPACK_IMPORTED_MODULE_0__.SUMMER_SEASON_IDENTIFIER + currentYear;
-  } else if (currentMonth >= 9) {
-    currentSemester = _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER + currentYear;
-  } else {
-    currentSemester = _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER + (currentYear - 1);
-  }
-
-  return currentSemester;
-}
+var customOptionStyles = function customOptionStyles(provided, state) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
+    color: 'black'
+  });
+};
 
 /***/ }),
 
@@ -7745,6 +7729,84 @@ function getScreeningByUuid(uuid) {
 
 function postScreening(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/screenings', data);
+}
+
+/***/ }),
+
+/***/ "./resources/js/react-app/utils/semesterUtils.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/react-app/utils/semesterUtils.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "computeCurrentSemester": () => /* binding */ computeCurrentSemester,
+/* harmony export */   "computeSemesterOptions": () => /* binding */ computeSemesterOptions
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
+
+function computeCurrentSemester() {
+  var currentDate = new Date();
+  var currentMonth = currentDate.getMonth();
+  var currentYear = currentDate.getFullYear();
+  var currentSemester; //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+
+  if (currentMonth >= 3 && currentMonth < 9) {
+    currentSemester = _constants__WEBPACK_IMPORTED_MODULE_0__.SUMMER_SEASON_IDENTIFIER + currentYear;
+  } else if (currentMonth >= 9) {
+    currentSemester = _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER + currentYear;
+  } else {
+    currentSemester = _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER + (currentYear - 1);
+  }
+
+  return currentSemester;
+}
+function computeSemesterOptions() {
+  var currentDate = new Date();
+  var currentMonth = currentDate.getMonth();
+  var currentYear = currentDate.getFullYear();
+  var allSemesters = [];
+  allSemesters.push({
+    season: 'ws',
+    year: 2000
+  });
+
+  for (var year = 2001; year < currentYear; year++) {
+    allSemesters.push({
+      season: _constants__WEBPACK_IMPORTED_MODULE_0__.SUMMER_SEASON_IDENTIFIER,
+      year: year
+    });
+    allSemesters.push({
+      season: _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER,
+      year: year
+    });
+  } //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+
+
+  if (currentMonth >= 3) {
+    allSemesters.push({
+      season: _constants__WEBPACK_IMPORTED_MODULE_0__.SUMMER_SEASON_IDENTIFIER,
+      year: currentYear
+    });
+  }
+
+  if (currentMonth >= 9) {
+    allSemesters.push({
+      season: _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER,
+      year: currentYear
+    });
+  }
+
+  var semesterOptions = [];
+  allSemesters.reverse().forEach(function (semester) {
+    semesterOptions.push({
+      label: semester.season + ' ' + semester.year,
+      value: semester.season + semester.year
+    });
+  });
+  return semesterOptions;
 }
 
 /***/ }),

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import { getSerials, getSerialsBySemester } from '../../utils/serialServices';
 import { serialSelectStyles } from '../../styles/customSelectStyles';
-import { computeCurrentSemester } from '../../utils/computeCurrentSemester';
+import { computeCurrentSemester } from '../../utils/semesterUtils';
 import styled from 'styled-components';
 
 export default function SerialSelectFormGroup() {

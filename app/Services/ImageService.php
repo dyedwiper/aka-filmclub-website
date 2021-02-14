@@ -59,7 +59,7 @@ class ImageService
         );
 
         if ($validator->fails()) {
-            throw new HttpResponseException(response()->json($validator->errors(), 422));
+            throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()], 422));
         }
     }
 

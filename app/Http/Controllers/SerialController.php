@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SerialFormRequest;
 use App\Models\Screening;
 use App\Models\Serial;
 use Illuminate\Http\Request;
@@ -79,29 +80,8 @@ class SerialController extends Controller
         }
     }
 
-    public function PostSerial(Request $request)
+    public function PostSerial(SerialFormRequest $request)
     {
-        $validator = Validator::make(
-            $request->all(),
-            [
-                'title' => 'required|max:255',
-                'subtitle' => 'max:255',
-                'article' => 'required',
-                'author' => 'required|max:255',
-            ],
-            [],
-            [
-                'title' => 'Titel',
-                'subtitle' => 'Untertitel',
-                'article' => 'Reihenartikel',
-                'author' => 'Autor*in',
-            ]
-        );
-
-        if ($validator->fails()) {
-            return response()->json(['validationErrors' => $validator->errors()], 400);
-        }
-
         $serial = new Serial([
             'uuid' => uniqid(),
             'title' => $request->title,
@@ -116,6 +96,6 @@ class SerialController extends Controller
         }
 
         $serial->save();
-        return $serial->image_id;
+        return $serial;
     }
 }

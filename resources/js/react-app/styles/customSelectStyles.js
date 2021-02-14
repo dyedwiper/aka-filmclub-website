@@ -1,9 +1,5 @@
 export const semesterSelectStyles = {
-    option: (provided, state) => ({
-        ...provided,
-        backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
-        color: 'black',
-    }),
+    option: customOptionStyles,
     container: (provided) => ({
         ...provided,
         display: 'inline-block',
@@ -12,15 +8,26 @@ export const semesterSelectStyles = {
     }),
 };
 
-export const serialSelectStyles = {
-    option: (provided, state) => ({
+export const serialSemesterSelectStyles = {
+    option: customOptionStyles,
+    container: (provided) => ({
         ...provided,
-        backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
-        color: 'black',
+        display: 'block',
+        width: '250px',
     }),
+};
+
+export const serialSelectStyles = {
+    option: customOptionStyles,
     container: (provided) => ({
         ...provided,
         display: 'block',
         width: '100%',
     }),
 };
+
+const customOptionStyles = (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
+    color: 'black',
+});
