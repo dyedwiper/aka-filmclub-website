@@ -34,7 +34,7 @@ export default function SerialPage() {
             <TitleStyled>{serial.title}</TitleStyled>
             <SubtitleStyled>{serial.subtitle}</SubtitleStyled>
             <HorizontalLineStyled />
-            {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.source} />}
+            {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
             <ArticleStyled>{serial.article}</ArticleStyled>
             <AuthorStyled>{serial.author}</AuthorStyled>
             <HorizontalLineStyled />

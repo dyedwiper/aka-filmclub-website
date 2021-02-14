@@ -26,8 +26,7 @@ class ImageFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|file|mimetypes:image/png,image/jpeg|max:1000',
-            'imageTitle' => 'max:255',
+            'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
             'altText' => 'max:255',
             'copyright' => 'max:255',
         ];
@@ -37,7 +36,6 @@ class ImageFormRequest extends FormRequest
     {
         return [
             'image' => 'Bild',
-            'imageTitle' => 'Titel des Bilds',
             'altText' => 'Alternativtext',
             'copyright' => 'Copyright',
         ];

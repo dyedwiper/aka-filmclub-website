@@ -7,7 +7,7 @@ export default function Notice({ notice }) {
         <NoticeStyled>
             <HorizontalLineStyled />
             <NoticeTitleStyled>{notice.title}</NoticeTitleStyled>
-            {notice.image && <NoticeImageStyled src={STORAGE_FOLDER + notice.image.source} />}
+            {notice.image && <NoticeImageStyled src={STORAGE_FOLDER + notice.image.path} />}
             <NoticeContentStyled>{notice.content}</NoticeContentStyled>
         </NoticeStyled>
     );

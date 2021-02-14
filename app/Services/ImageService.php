@@ -19,7 +19,7 @@ class ImageService
         $this->validateImage($request);
         $imageName = $serial->uuid . '.' .
             Helper::convertMime2Ext($request->image->getMimeType());
-        $imagePath = $request->image->storeAs('images/serials', $imageName, 'public');
+        $imagePath = $request->image->storeAs('/images/serials', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
     }
 
@@ -28,7 +28,7 @@ class ImageService
         $this->validateImage($request);
         $imageName = $screening->uuid . '.' .
             Helper::convertMime2Ext($request->image->getMimeType());
-        $imagePath = $request->image->storeAs('images/screenings', $imageName, 'public');
+        $imagePath = $request->image->storeAs('/images/screenings', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
     }
 
@@ -47,14 +47,12 @@ class ImageService
             $request->all(),
             [
                 'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
-                'imageTitle' => 'max:255',
                 'altText' => 'max:255',
                 'copyright' => 'max:255',
             ],
             [],
             [
                 'image' => 'Bild',
-                'imageTitle' => 'Titel des Bilds',
                 'altText' => 'Alternativtext',
                 'copyright' => 'Copyright',
             ]
@@ -69,11 +67,9 @@ class ImageService
     {
         $image = new Image([
             'uuid' => uniqid(),
-            'source' => $imagePath,
-            'title' => $request->imageTitle,
+            'path' => $imagePath,
             'alt_text' => $request->altText,
             'copyright' => $request->copyright,
-            'associatedEntity' => $request->associatedEntity,
         ]);
         $image->save();
         return $image->id;

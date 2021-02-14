@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Helpers\Helper;
 use App\Http\Requests\ImageFormRequest;
 use App\Models\Image;
+use App\Models\Notice;
+use App\Models\Screening;
 use App\Models\Serial;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -24,17 +27,23 @@ class ImageController extends Controller
     {
         $image = Image::where('uuid', $request->uuid)->first();
 
-        if ($request->associatedEntity == 'serial') {
-            $associatedEntity = Serial::where('image_id', $image->id)->first();
+        if ($request->image) {
+            $assocEntity = Serial::where('image_id', $image->id)->first();
             $imageFolder = '/images/serials';
+            if (!$assocEntity) {
+                $assocEntity = Screening::where('image_id', $image->id)->first();
+                $imageFolder = '/images/screenings';
+            }
+            if (!$assocEntity) {
+                $assocEntity = Notice::where('image_id', $image->id)->first();
+                $imageFolder = '/images/notices';
+            }
+            $imageName = $assocEntity->uuid . '.' .
+                Helper::convertMime2Ext($request->image->getMimeType());
+            $imagePath = $request->image->storeAs($imageFolder, $imageName, 'public');
+            $image->path = $imagePath;
         }
 
-        $imageName = $associatedEntity->uuid . '.' .
-            Helper::convertMime2Ext($request->image->getMimeType());
-        $imagePath = $request->image->storeAs($imageFolder, $imageName, 'public');
-
-        $image->source = $imagePath;
-        $image->title = $request->imageTitle;
         $image->alt_text = $request->altText;
         $image->copyright = $request->copyright;
 

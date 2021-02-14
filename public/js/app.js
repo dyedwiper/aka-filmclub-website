@@ -5232,7 +5232,7 @@ function Notice(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NoticeTitleStyled, {
       children: notice.title
     }), notice.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NoticeImageStyled, {
-      src: _constants__WEBPACK_IMPORTED_MODULE_2__.STORAGE_FOLDER + notice.image.source
+      src: _constants__WEBPACK_IMPORTED_MODULE_2__.STORAGE_FOLDER + notice.image.path
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NoticeContentStyled, {
       children: notice.content
     })]
@@ -5626,7 +5626,8 @@ function BaseForm(_ref) {
     setIsWaiting(true);
     var formElement = event.target.form;
     var formData = new FormData(formElement);
-    serviceFunction(formData).then(function () {
+    serviceFunction(formData).then(function (res) {
+      console.log(res.data);
       setIsWaiting(false);
       history.push('/intern');
     })["catch"](function (err) {
@@ -5677,18 +5678,13 @@ __webpack_require__.r(__webpack_exports__);
 function ImageFormGroup(_ref) {
   var image = _ref.image;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ImageFormGroupStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["Bild (png oder jpg; bis 1 MB)", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
         name: "image",
         type: "file"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Titel des Bilds", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
-        name: "imageTitle",
-        defaultValue: image.title
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Alternativtext zum Bild", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+      children: ["Alternativtext (Beschreibung des Bilds f\xFCr Sehbehinderte)", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
         name: "altText",
         defaultValue: image.alt_text
       })]
@@ -5700,16 +5696,16 @@ function ImageFormGroup(_ref) {
     })]
   });
 }
+var ImageFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "ImageFormGroup__ImageFormGroupStyled",
+  componentId: "szdyq5-0"
+})([""]);
 var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
   displayName: "ImageFormGroup__LabelStyled",
-  componentId: "szdyq5-0"
+  componentId: "szdyq5-1"
 })(["margin:20px 0;display:block;"]);
 var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
   displayName: "ImageFormGroup__InputStyled",
-  componentId: "szdyq5-1"
-})([""]);
-var ImageFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
-  displayName: "ImageFormGroup__ImageFormGroupStyled",
   componentId: "szdyq5-2"
 })([""]);
 
@@ -6933,7 +6929,7 @@ function SerialPage() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubtitleStyled, {
       children: serial.subtitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), serial.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
-      src: _constants__WEBPACK_IMPORTED_MODULE_3__.STORAGE_FOLDER + serial.image.source
+      src: _constants__WEBPACK_IMPORTED_MODULE_3__.STORAGE_FOLDER + serial.image.path
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ArticleStyled, {
       children: serial.article
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AuthorStyled, {
@@ -7458,9 +7454,9 @@ function EditImagePage() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_3__.default, {
       serviceFunction: _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.patchImage,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
-        name: "associatedEntity",
+        name: "_method",
         type: "hidden",
-        defaultValue: "serial"
+        value: "PATCH"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "uuid",
         type: "hidden",
@@ -7611,7 +7607,10 @@ function getImageByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/images/uuid/' + uuid);
 }
 function patchImage(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().patch('/api/images', data);
+  // HTML forms can't make PATCH requests. That's why this is a POST request.
+  // The PATCH method is spoofed with a hidden input.
+  // See https://laravel.com/docs/8.x/blade#method-field
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/images', data);
 }
 
 /***/ }),

@@ -17,11 +17,9 @@ class CreateImagesTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->timestamps();
-            $table->string('source');
-            $table->string('title')->nullable();
+            $table->string('path');
             $table->string('alt_text')->nullable();
             $table->string('copyright')->nullable();
-            $table->string('associatedEntity', 32);
         });
     }
 

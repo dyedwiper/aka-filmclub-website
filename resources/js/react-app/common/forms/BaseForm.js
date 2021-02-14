@@ -38,7 +38,8 @@ export default function BaseForm({ children, serviceFunction }) {
         const formElement = event.target.form;
         const formData = new FormData(formElement);
         serviceFunction(formData)
-            .then(() => {
+            .then((res) => {
+                console.log(res.data);
                 setIsWaiting(false);
                 history.push('/intern');
             })

@@ -62,9 +62,9 @@ class NoticeController extends Controller
         $notice->content = $request->content;
         $notice->author = $request->author;
 
-        if ($request->image) {
-            $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
-        }
+        // if ($request->image) {
+        //     $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
+        // }
 
         $notice->save();
         return $notice;

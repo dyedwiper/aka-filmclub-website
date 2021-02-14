@@ -5,17 +5,12 @@ import { HorizontalLineStyled } from '../styledElements';
 export default function ImageFormGroup({ image }) {
     return (
         <ImageFormGroupStyled>
-            <HorizontalLineStyled />
             <LabelStyled>
                 Bild (png oder jpg; bis 1 MB)
                 <InputStyled name="image" type="file" />
             </LabelStyled>
             <LabelStyled>
-                Titel des Bilds
-                <InputStyled name="imageTitle" defaultValue={image.title} />
-            </LabelStyled>
-            <LabelStyled>
-                Alternativtext zum Bild
+                Alternativtext (Beschreibung des Bilds für Sehbehinderte)
                 <InputStyled name="altText" defaultValue={image.alt_text} />
             </LabelStyled>
             <LabelStyled>
@@ -26,11 +21,11 @@ export default function ImageFormGroup({ image }) {
     );
 }
 
+const ImageFormGroupStyled = styled.div``;
+
 const LabelStyled = styled.label`
     margin: 20px 0;
     display: block;
 `;
 
 const InputStyled = styled.input``;
-
-const ImageFormGroupStyled = styled.div``;
