@@ -12,6 +12,7 @@ import AddNoticePage from './pages/intern/AddNoticePage';
 import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import EditImagePage from './pages/intern/EditImagePage';
+import EditSerialPage from './pages/intern/EditSerialPage';
 import NotFoundPage from './pages/NotFoundPage';
 import NoticesPage from './pages/NoticesPage';
 import PressReviewPage from './pages/PressReviewPage';
@@ -62,6 +63,9 @@ export default function App() {
                     </Route>
                     <Route exact path="/intern/addSerial">
                         <AddSerialPage />
+                    </Route>
+                    <Route path="/intern/editSerial">
+                        <EditSerialPage />
                     </Route>
                     <Route exact path="/intern/addScreening">
                         <AddScreeningPage />

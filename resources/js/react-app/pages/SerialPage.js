@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import { STORAGE_FOLDER } from '../constants';
 import { formatDate } from '../utils/dateFormatters';
+import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getSerialByUuid } from '../utils/serialServices';
 import LoadingPage from './LoadingPage';
 
@@ -13,9 +14,7 @@ export default function SerialPage() {
     const [noSerialFound, SetNoSerialFound] = useState(false);
 
     useEffect(() => {
-        const path = window.location.pathname;
-        const serialUuid = path.slice(path.lastIndexOf('/') + 1);
-        console.log(serialUuid);
+        const serialUuid = getLastParameterFromPath();
         getSerialByUuid(serialUuid).then((res) => {
             if (!res.data.uuid) {
                 SetNoSerialFound(true);
@@ -48,10 +47,12 @@ export default function SerialPage() {
                     </ScreeningListItemStyled>
                 ))}
             </ScreeningsListStyled>
+            <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
+            <VertialLineStyled> | </VertialLineStyled>
             {serial.image ? (
-                <ImageFormLinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild ändern</ImageFormLinkStyled>
+                <LinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild bearbeiten</LinkStyled>
             ) : (
-                <ImageFormLinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</ImageFormLinkStyled>
+                <LinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</LinkStyled>
             )}
         </PageStyled>
     );
@@ -83,4 +84,9 @@ const ArticleStyled = styled.p``;
 
 const AuthorStyled = styled.div``;
 
-const ImageFormLinkStyled = styled(Link)``;
+const LinkStyled = styled(Link)``;
+
+const VertialLineStyled = styled.span`
+    color: var(--aka-gelb);
+    font-weight: bold;
+`;

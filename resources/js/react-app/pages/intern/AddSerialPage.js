@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
-import ImageFormGroup from '../../common/forms/ImageFormGroup';
-import SerialSemesterSelect from '../../common/forms/SerialSemesterSelect';
-import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
+import SerialFormGroup from '../../common/forms/SerialFormGroup';
+import { PageStyled } from '../../common/styledElements';
 import { postSerial } from '../../utils/serialServices';
 
 export default function AddSerialPage() {
@@ -11,40 +10,10 @@ export default function AddSerialPage() {
         <PageStyled>
             <HeadlineStyled>Neue Filmreihe anlegen</HeadlineStyled>
             <BaseForm serviceFunction={postSerial}>
-                <LabelStyled>
-                    Titel
-                    <InputStyled name="title" />
-                </LabelStyled>
-                <LabelStyled>
-                    Untertitel
-                    <InputStyled name="subtitle" />
-                </LabelStyled>
-                <LabelStyled>
-                    Reihenartikel
-                    <TextareaStyled name="article" />
-                </LabelStyled>
-                <LabelStyled>
-                    Autor*in
-                    <InputStyled name="author" />
-                </LabelStyled>
-                <LabelStyled>
-                    Semester
-                    <SerialSemesterSelect />
-                </LabelStyled>
-                <HorizontalLineStyled />
-                <ImageFormGroup />
+                <SerialFormGroup />
             </BaseForm>
         </PageStyled>
     );
 }
 
 const HeadlineStyled = styled.h2``;
-
-const LabelStyled = styled.label`
-    margin: 20px 0;
-    display: block;
-`;
-
-const InputStyled = styled.input``;
-
-const TextareaStyled = styled.textarea``;
