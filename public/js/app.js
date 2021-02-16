@@ -5907,14 +5907,17 @@ function ScreeningRow(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
         to: '/screening/' + screening.uuid,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
-          src: _constants__WEBPACK_IMPORTED_MODULE_2__.IMAGE_FOLDER + screening.image
+        children: screening.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
+          src: _constants__WEBPACK_IMPORTED_MODULE_2__.STORAGE_FOLDER + screening.image.path
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningInfoStyled, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
           children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatDateAndTime)(screening.date)
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleStyled, {
-          children: screening.title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+          to: '/screening/' + screening.uuid,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleStyled, {
+            children: screening.title
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningSynopsisStyled, {
           children: screening.synopsis
         })]
@@ -5957,7 +5960,7 @@ var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.defaul
 var ScreeningSynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
   displayName: "ScreeningRow__ScreeningSynopsisStyled",
   componentId: "sc-1xbervn-8"
-})([""]);
+})(["display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;"]);
 
 /***/ }),
 

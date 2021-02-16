@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { IMAGE_FOLDER } from '../../constants';
+import { STORAGE_FOLDER } from '../../constants';
 import { formatDateAndTime } from '../../utils/dateFormatters';
 
 export default function ScreeningRow({ screening }) {
@@ -10,11 +10,13 @@ export default function ScreeningRow({ screening }) {
             <HorizontalLineStyled />
             <ScreeningContainerStyled>
                 <LinkStyled to={'/screening/' + screening.uuid}>
-                    <ScreeningImageStyled src={IMAGE_FOLDER + screening.image} />
+                    {screening.image && <ScreeningImageStyled src={STORAGE_FOLDER + screening.image.path} />}
                 </LinkStyled>
                 <ScreeningInfoStyled>
                     <ScreeningDateStyled>{formatDateAndTime(screening.date)}</ScreeningDateStyled>
-                    <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
+                    <LinkStyled to={'/screening/' + screening.uuid}>
+                        <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
+                    </LinkStyled>
                     <ScreeningSynopsisStyled>{screening.synopsis}</ScreeningSynopsisStyled>
                 </ScreeningInfoStyled>
             </ScreeningContainerStyled>
@@ -48,4 +50,9 @@ const ScreeningDateStyled = styled.div``;
 
 const ScreeningTitleStyled = styled.h3``;
 
-const ScreeningSynopsisStyled = styled.p``;
+const ScreeningSynopsisStyled = styled.p`
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+`;
