@@ -48,8 +48,10 @@ export default function SerialPage() {
                     </ScreeningListItemStyled>
                 ))}
             </ScreeningsListStyled>
-            {serial.image && (
-                <EditImageLinkStyled to={'/intern/editimage/' + serial.image.uuid}>Bild ändern</EditImageLinkStyled>
+            {serial.image ? (
+                <ImageFormLinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild ändern</ImageFormLinkStyled>
+            ) : (
+                <ImageFormLinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</ImageFormLinkStyled>
             )}
         </PageStyled>
     );
@@ -58,7 +60,9 @@ const TitleStyled = styled.h2``;
 
 const SubtitleStyled = styled.p``;
 
-const ImageStyled = styled.img``;
+const ImageStyled = styled.img`
+    width: 100%;
+`;
 
 const ScreeningsListStyled = styled.ul``;
 
@@ -79,4 +83,4 @@ const ArticleStyled = styled.p``;
 
 const AuthorStyled = styled.div``;
 
-const EditImageLinkStyled = styled(Link)``;
+const ImageFormLinkStyled = styled(Link)``;

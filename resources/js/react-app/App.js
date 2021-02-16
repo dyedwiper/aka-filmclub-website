@@ -7,6 +7,7 @@ import AboutPage from './pages/AboutPage';
 import ArchivePage from './pages/ArchivePage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
+import AddImagePage from './pages/intern/AddImagePage';
 import AddNoticePage from './pages/intern/AddNoticePage';
 import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
@@ -59,16 +60,19 @@ export default function App() {
                     <Route exact path="/press">
                         <PressReviewPage />
                     </Route>
-                    <Route exact path="/intern/addserial">
+                    <Route exact path="/intern/addSerial">
                         <AddSerialPage />
                     </Route>
-                    <Route exact path="/intern/addscreening">
+                    <Route exact path="/intern/addScreening">
                         <AddScreeningPage />
                     </Route>
-                    <Route exact path="/intern/addnews">
+                    <Route exact path="/intern/addNews">
                         <AddNoticePage />
                     </Route>
-                    <Route path="/intern/editimage">
+                    <Route path="/intern/addImage">
+                        <AddImagePage />
+                    </Route>
+                    <Route path="/intern/editImage">
                         <EditImagePage />
                     </Route>
                     <Route path="/404">

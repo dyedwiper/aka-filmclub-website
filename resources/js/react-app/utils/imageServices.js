@@ -8,9 +8,6 @@ export function getImageByUuid(uuid) {
     return axios.get('/api/images/uuid/' + uuid);
 }
 
-export function patchImage(data) {
-    // HTML forms can't make PATCH requests. That's why this is a POST request.
-    // The PATCH method is spoofed with a hidden input.
-    // See https://laravel.com/docs/8.x/blade#method-field
+export function postImage(data) {
     return axios.post('/api/images', data);
 }

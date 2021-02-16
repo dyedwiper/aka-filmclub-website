@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -29,9 +29,9 @@ export default function Header() {
                 <DropdownContainerStyled>
                     <NavLinkStyled to="/intern">Intern</NavLinkStyled>
                     <SubNavStyled>
-                        <SubNavLinkStyled to="/intern/addnews">News anlegen</SubNavLinkStyled>
-                        <SubNavLinkStyled to="/intern/addserial">Filmreihe anlegen</SubNavLinkStyled>
-                        <SubNavLinkStyled to="/intern/addscreening">Vorführung anlegen</SubNavLinkStyled>
+                        <SubNavLinkStyled to="/intern/addNews">News anlegen</SubNavLinkStyled>
+                        <SubNavLinkStyled to="/intern/addSerial">Filmreihe anlegen</SubNavLinkStyled>
+                        <SubNavLinkStyled to="/intern/addScreening">Vorführung anlegen</SubNavLinkStyled>
                     </SubNavStyled>
                 </DropdownContainerStyled>
             </NavStyled>

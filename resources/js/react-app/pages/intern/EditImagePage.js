@@ -3,7 +3,7 @@ import { PageStyled } from '../../common/styledElements';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import styled from 'styled-components';
-import { getImageByUuid, patchImage } from '../../utils/imageServices';
+import { getImageByUuid, postImage } from '../../utils/imageServices';
 
 export default function EditImagePage() {
     const [image, setImage] = useState({});
@@ -21,7 +21,7 @@ export default function EditImagePage() {
     return (
         <PageStyled>
             <HeadlineStyled>Bild ändern</HeadlineStyled>
-            <BaseForm serviceFunction={patchImage}>
+            <BaseForm serviceFunction={postImage}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

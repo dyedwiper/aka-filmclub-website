@@ -9,11 +9,13 @@ export default function SerialRow({ serial }) {
         <SerialRowStyled>
             <HorizontalLineStyled />
             <SerialContainerStyled>
-                {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
+                <LinkStyled to={'/serial/' + serial.uuid}>
+                    {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
+                </LinkStyled>
                 <InfoContainerStyled>
-                    <TitleLinkStyled to={'/serial/' + serial.uuid}>
+                    <LinkStyled to={'/serial/' + serial.uuid}>
                         <TitleStyled>{serial.title}</TitleStyled>
-                    </TitleLinkStyled>
+                    </LinkStyled>
                     <SubTitleStyled>{serial.subtitle}</SubTitleStyled>
                     <ArticleStyled>{serial.article}</ArticleStyled>
                 </InfoContainerStyled>
@@ -35,7 +37,7 @@ const ImageStyled = styled.img`
 
 const InfoContainerStyled = styled.div``;
 
-const TitleLinkStyled = styled(Link)``;
+const LinkStyled = styled(Link)``;
 
 const TitleStyled = styled.h3``;
 

@@ -114,6 +114,10 @@ Route::prefix('images')->group(function () {
         ImageController::class, 'GetImageByUuid'
     ]);
 
+    Route::post('/', [
+        ImageController::class, 'PostImage'
+    ]);
+
     Route::patch('/', [
         ImageController::class, 'PatchImage'
     ]);
