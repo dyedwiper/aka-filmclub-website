@@ -37,4 +37,9 @@ class Screening extends Model
     {
         return $this->belongsTo(Image::class);
     }
+
+    public function serial()
+    {
+        return $this->belongsTo(Serial::class);
+    }
 }
