@@ -12,13 +12,13 @@ export default function ScreeningRow({ screening }) {
                 <LinkStyled to={'/screening/' + screening.uuid}>
                     {screening.image && <ScreeningImageStyled src={STORAGE_FOLDER + screening.image.path} />}
                 </LinkStyled>
-                <ScreeningInfoStyled>
-                    <ScreeningDateStyled>{formatDateAndTime(screening.date)}</ScreeningDateStyled>
+                <InfoContainerStyled>
+                    <DateStyled>{formatDateAndTime(screening.date)}</DateStyled>
                     <LinkStyled to={'/screening/' + screening.uuid}>
-                        <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
+                        <TitleStyled>{screening.title}</TitleStyled>
                     </LinkStyled>
-                    <ScreeningSynopsisStyled>{screening.synopsis}</ScreeningSynopsisStyled>
-                </ScreeningInfoStyled>
+                    <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
+                </InfoContainerStyled>
             </ScreeningContainerStyled>
         </ScreeningRowStyled>
     );
@@ -35,7 +35,7 @@ const HorizontalLineStyled = styled.div`
 
 const ScreeningContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 360px 1fr;
+    grid-template-columns: 360px 480px;
 `;
 
 const LinkStyled = styled(Link)``;
@@ -44,13 +44,13 @@ const ScreeningImageStyled = styled.img`
     height: 200px;
 `;
 
-const ScreeningInfoStyled = styled.div``;
+const InfoContainerStyled = styled.div``;
 
-const ScreeningDateStyled = styled.div``;
+const DateStyled = styled.div``;
 
-const ScreeningTitleStyled = styled.h3``;
+const TitleStyled = styled.h3``;
 
-const ScreeningSynopsisStyled = styled.p`
+const SynopsisStyled = styled.p`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;

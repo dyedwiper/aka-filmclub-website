@@ -1,32 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { STORAGE_FOLDER } from '../constants';
 import { HorizontalLineStyled } from './styledElements';
 
 export default function SerialRow({ serial }) {
     return (
         <SerialRowStyled>
             <HorizontalLineStyled />
-            <SerialTitleLinkStyled to={'/serial/' + serial.uuid}>
-                <SerialTitleStyled>{serial.title}</SerialTitleStyled>
-            </SerialTitleLinkStyled>
-            <SerialSubTitleStyled>{serial.subtitle}</SerialSubTitleStyled>
-            <SerialArticleStyled>{serial.article}</SerialArticleStyled>
+            <SerialContainerStyled>
+                {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
+                <InfoContainerStyled>
+                    <TitleLinkStyled to={'/serial/' + serial.uuid}>
+                        <TitleStyled>{serial.title}</TitleStyled>
+                    </TitleLinkStyled>
+                    <SubTitleStyled>{serial.subtitle}</SubTitleStyled>
+                    <ArticleStyled>{serial.article}</ArticleStyled>
+                </InfoContainerStyled>
+            </SerialContainerStyled>
         </SerialRowStyled>
     );
 }
 
 const SerialRowStyled = styled.li``;
 
-const SerialTitleLinkStyled = styled(Link)``;
+const SerialContainerStyled = styled.div`
+    display: grid;
+    grid-template-columns: 360px 480px;
+`;
 
-const SerialTitleStyled = styled.h3``;
+const ImageStyled = styled.img`
+    height: 200px;
+`;
 
-const SerialSubTitleStyled = styled.p`
+const InfoContainerStyled = styled.div``;
+
+const TitleLinkStyled = styled(Link)``;
+
+const TitleStyled = styled.h3``;
+
+const SubTitleStyled = styled.p`
+    width: 100%;
     font-weight: bold;
 `;
 
-const SerialArticleStyled = styled.p`
+const ArticleStyled = styled.p`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;

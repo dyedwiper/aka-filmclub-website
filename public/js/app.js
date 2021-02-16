@@ -5449,9 +5449,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./styledElements */ "./resources/js/react-app/common/styledElements.js");
+
 
 
 
@@ -5461,37 +5463,55 @@ __webpack_require__.r(__webpack_exports__);
 function SerialRow(_ref) {
   var serial = _ref.serial;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialRowStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialTitleLinkStyled, {
-      to: '/serial/' + serial.uuid,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialTitleStyled, {
-        children: serial.title
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialSubTitleStyled, {
-      children: serial.subtitle
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialArticleStyled, {
-      children: serial.article
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialContainerStyled, {
+      children: [serial.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
+        src: _constants__WEBPACK_IMPORTED_MODULE_2__.STORAGE_FOLDER + serial.image.path
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(InfoContainerStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
+          to: '/serial/' + serial.uuid,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleStyled, {
+            children: serial.title
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubTitleStyled, {
+          children: serial.subtitle
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ArticleStyled, {
+          children: serial.article
+        })]
+      })]
     })]
   });
 }
-var SerialRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.li.withConfig({
+var SerialRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.li.withConfig({
   displayName: "SerialRow__SerialRowStyled",
   componentId: "ryf3n0-0"
 })([""]);
-var SerialTitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link).withConfig({
-  displayName: "SerialRow__SerialTitleLinkStyled",
+var SerialContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "SerialRow__SerialContainerStyled",
   componentId: "ryf3n0-1"
-})([""]);
-var SerialTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h3.withConfig({
-  displayName: "SerialRow__SerialTitleStyled",
+})(["display:grid;grid-template-columns:360px 480px;"]);
+var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
+  displayName: "SerialRow__ImageStyled",
   componentId: "ryf3n0-2"
-})([""]);
-var SerialSubTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.p.withConfig({
-  displayName: "SerialRow__SerialSubTitleStyled",
+})(["height:200px;"]);
+var InfoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "SerialRow__InfoContainerStyled",
   componentId: "ryf3n0-3"
-})(["font-weight:bold;"]);
-var SerialArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.p.withConfig({
-  displayName: "SerialRow__SerialArticleStyled",
+})([""]);
+var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link).withConfig({
+  displayName: "SerialRow__TitleLinkStyled",
   componentId: "ryf3n0-4"
+})([""]);
+var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h3.withConfig({
+  displayName: "SerialRow__TitleStyled",
+  componentId: "ryf3n0-5"
+})([""]);
+var SubTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
+  displayName: "SerialRow__SubTitleStyled",
+  componentId: "ryf3n0-6"
+})(["width:100%;font-weight:bold;"]);
+var ArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
+  displayName: "SerialRow__ArticleStyled",
+  componentId: "ryf3n0-7"
 })(["display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;"]);
 
 /***/ }),
@@ -5910,15 +5930,15 @@ function ScreeningRow(_ref) {
         children: screening.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
           src: _constants__WEBPACK_IMPORTED_MODULE_2__.STORAGE_FOLDER + screening.image.path
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningInfoStyled, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(InfoContainerStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
           children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatDateAndTime)(screening.date)
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
           to: '/screening/' + screening.uuid,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleStyled, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleStyled, {
             children: screening.title
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningSynopsisStyled, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SynopsisStyled, {
           children: screening.synopsis
         })]
       })]
@@ -5936,7 +5956,7 @@ var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.defaul
 var ScreeningContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningRow__ScreeningContainerStyled",
   componentId: "sc-1xbervn-2"
-})(["display:grid;grid-template-columns:360px 1fr;"]);
+})(["display:grid;grid-template-columns:360px 480px;"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link).withConfig({
   displayName: "ScreeningRow__LinkStyled",
   componentId: "sc-1xbervn-3"
@@ -5945,20 +5965,20 @@ var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.defaul
   displayName: "ScreeningRow__ScreeningImageStyled",
   componentId: "sc-1xbervn-4"
 })(["height:200px;"]);
-var ScreeningInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
-  displayName: "ScreeningRow__ScreeningInfoStyled",
+var InfoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "ScreeningRow__InfoContainerStyled",
   componentId: "sc-1xbervn-5"
 })([""]);
-var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
-  displayName: "ScreeningRow__ScreeningDateStyled",
+var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "ScreeningRow__DateStyled",
   componentId: "sc-1xbervn-6"
 })([""]);
-var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h3.withConfig({
-  displayName: "ScreeningRow__ScreeningTitleStyled",
+var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h3.withConfig({
+  displayName: "ScreeningRow__TitleStyled",
   componentId: "sc-1xbervn-7"
 })([""]);
-var ScreeningSynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
-  displayName: "ScreeningRow__ScreeningSynopsisStyled",
+var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
+  displayName: "ScreeningRow__SynopsisStyled",
   componentId: "sc-1xbervn-8"
 })(["display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;"]);
 
