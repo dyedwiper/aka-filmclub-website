@@ -59,6 +59,10 @@ Route::prefix('screenings')->group(function () {
     Route::post('/', [
         ScreeningController::class, 'PostScreening'
     ]);
+
+    Route::patch('/', [
+        ScreeningController::class, 'PatchScreening'
+    ]);
 });
 
 Route::prefix('notices')->group(function () {

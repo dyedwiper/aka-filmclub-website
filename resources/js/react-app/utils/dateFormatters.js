@@ -15,3 +15,14 @@ export function formatDateAndTime(date) {
         minute: '2-digit',
     });
 }
+
+export function formatTime(date) {
+    return new Date(date).toLocaleTimeString('de-DE', {
+        hour: '2-digit',
+        minute: '2-digit',
+    });
+}
+
+export function formatIsoString(date) {
+    return new Date(date).toISOString().split('T')[0];
+}

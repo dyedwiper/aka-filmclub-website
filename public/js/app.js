@@ -5794,8 +5794,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _SerialSelectFormGroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SerialSelectFormGroup */ "./resources/js/react-app/common/forms/SerialSelectFormGroup.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+/* harmony import */ var _SerialSelectFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SerialSelectFormGroup */ "./resources/js/react-app/common/forms/SerialSelectFormGroup.js");
+
 
 
 
@@ -5821,13 +5823,13 @@ function ScreeningFormGroup(_ref) {
         children: ["Datum", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "day",
           type: "date",
-          defaultValue: screening && screening.date
+          defaultValue: screening && (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatIsoString)(screening.date)
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Uhrzeit", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "time",
           type: "time",
-          defaultValue: screening ? screening.time : '20:00'
+          defaultValue: screening ? (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatTime)(screening.date) : '20:00'
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
@@ -5909,7 +5911,7 @@ function ScreeningFormGroup(_ref) {
         defaultValue: screening && screening.tercet
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Filmreihe", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SerialSelectFormGroup__WEBPACK_IMPORTED_MODULE_2__.default, {
+      children: ["Filmreihe", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SerialSelectFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {
         defaultSerial: screening && screening.serial
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
@@ -5920,27 +5922,27 @@ function ScreeningFormGroup(_ref) {
     })]
   });
 }
-var ScreeningFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var ScreeningFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningFormGroup__ScreeningFormGroupStyled",
   componentId: "sc-7lk3c0-0"
 })([""]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
   displayName: "ScreeningFormGroup__LabelStyled",
   componentId: "sc-7lk3c0-1"
 })(["display:block;margin:10px 0;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
   displayName: "ScreeningFormGroup__InputStyled",
   componentId: "sc-7lk3c0-2"
 })([""]);
-var TextAreaStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.textarea.withConfig({
+var TextAreaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.textarea.withConfig({
   displayName: "ScreeningFormGroup__TextAreaStyled",
   componentId: "sc-7lk3c0-3"
 })([""]);
-var FormRowWithTwoInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var FormRowWithTwoInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningFormGroup__FormRowWithTwoInputsStyled",
   componentId: "sc-7lk3c0-4"
 })(["display:grid;grid-template-columns:1fr 1fr;grid-gap:20px;"]);
-var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningFormGroup__FormRowWithThreeInputsStyled",
   componentId: "sc-7lk3c0-5"
 })(["display:grid;grid-template-columns:1fr 1fr 1fr;grid-gap:20px;"]);
@@ -8346,7 +8348,9 @@ var customOptionStyles = function customOptionStyles(provided, state) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "formatDate": () => /* binding */ formatDate,
-/* harmony export */   "formatDateAndTime": () => /* binding */ formatDateAndTime
+/* harmony export */   "formatDateAndTime": () => /* binding */ formatDateAndTime,
+/* harmony export */   "formatTime": () => /* binding */ formatTime,
+/* harmony export */   "formatIsoString": () => /* binding */ formatIsoString
 /* harmony export */ });
 function formatDate(date) {
   return new Date(date).toLocaleDateString('de-DE', {
@@ -8363,6 +8367,15 @@ function formatDateAndTime(date) {
     hour: '2-digit',
     minute: '2-digit'
   });
+}
+function formatTime(date) {
+  return new Date(date).toLocaleTimeString('de-DE', {
+    hour: '2-digit',
+    minute: '2-digit'
+  });
+}
+function formatIsoString(date) {
+  return new Date(date).toISOString().split('T')[0];
 }
 
 /***/ }),

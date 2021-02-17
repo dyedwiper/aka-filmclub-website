@@ -59,15 +59,6 @@ class ScreeningController extends Controller
         }
     }
 
-    public function UpdateUuids()
-    {
-        $screenings = Screening::all();
-        foreach ($screenings as $screening) {
-            $screening->uuid = uniqid();
-            $screening->save();
-        }
-    }
-
     public function PostScreening(ScreeningFormRequest $request)
     {
         $screening = new Screening([
@@ -99,5 +90,42 @@ class ScreeningController extends Controller
 
         $screening->save();
         return $screening;
+    }
+
+    public function PatchScreening(ScreeningFormRequest $request)
+    {
+        $screening = Screening::where('uuid', $request->uuid)->first();
+
+        $screening->title = $request->title;
+        $screening->original_title = $request->originalTitle;
+        $screening->date = $request->day . ' ' . $request->time;
+        $screening->synopsis = $request->synopsis;
+        $screening->directed_by = $request->directedBy;
+        $screening->written_by = $request->writtenBy;
+        $screening->music_by = $request->musicBy;
+        $screening->shot_by = $request->shotBy;
+        $screening->cast = $request->cast;
+        $screening->country = $request->country;
+        $screening->year = $request->year;
+        $screening->length = $request->length;
+        $screening->medium = $request->medium;
+        $screening->version = $request->version;
+        $screening->venue = $request->venue;
+        $screening->special = $request->special;
+        $screening->tercet = $request->tercet;
+        $screening->serial_id = $request->serialId;
+        $screening->author = $request->author;
+
+        $screening->save();
+        return $screening;
+    }
+
+    public function UpdateUuids()
+    {
+        $screenings = Screening::all();
+        foreach ($screenings as $screening) {
+            $screening->uuid = uniqid();
+            $screening->save();
+        }
     }
 }
