@@ -12,6 +12,7 @@ import AddNoticePage from './pages/intern/AddNoticePage';
 import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import EditImagePage from './pages/intern/EditImagePage';
+import EditNoticePage from './pages/intern/EditNoticePage';
 import EditSerialPage from './pages/intern/EditSerialPage';
 import NotFoundPage from './pages/NotFoundPage';
 import NoticesPage from './pages/NoticesPage';
@@ -70,8 +71,11 @@ export default function App() {
                     <Route exact path="/intern/addScreening">
                         <AddScreeningPage />
                     </Route>
-                    <Route exact path="/intern/addNews">
+                    <Route exact path="/intern/addNotice">
                         <AddNoticePage />
+                    </Route>
+                    <Route path="/intern/editNotice">
+                        <EditNoticePage />
                     </Route>
                     <Route path="/intern/addImage">
                         <AddImagePage />
@@ -89,7 +93,6 @@ export default function App() {
         </AppStyled>
     );
 }
-
 const AppStyled = styled.div`
     height: 100vh;
 `;

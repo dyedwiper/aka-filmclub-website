@@ -43,8 +43,7 @@ class SerialController extends Controller
 
     public function GetSerialByUuid(string $uuid)
     {
-        $serial = Serial::where('uuid', $uuid)->with('image', 'screenings')->first();
-        return $serial;
+        return Serial::where('uuid', $uuid)->with('image', 'screenings')->first();
     }
 
     public function PostSerial(SerialFormRequest $request)

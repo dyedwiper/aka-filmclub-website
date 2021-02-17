@@ -70,6 +70,10 @@ Route::prefix('notices')->group(function () {
         NoticeController::class, 'GetNoticesCount'
     ]);
 
+    Route::get('/uuid/{uuid}', [
+        NoticeController::class, 'GetNoticeByUuid'
+    ]);
+
     Route::post('/', [
         NoticeController::class, 'PostNotice'
     ]);

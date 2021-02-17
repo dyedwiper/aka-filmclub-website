@@ -35,6 +35,11 @@ class NoticeController extends Controller
         return Notice::all()->count();
     }
 
+    public function GetNoticeByUuid(string $uuid)
+    {
+        return Notice::where('uuid', $uuid)->with('image')->first();
+    }
+
     public function PostNotice(NoticeFormRequest $request)
     {
         $notice = new Notice([
@@ -55,16 +60,12 @@ class NoticeController extends Controller
 
     public function PatchNotice(NoticeFormRequest $request)
     {
-        $notice = Notice::where('id', $request->id)->first();
+        $notice = Notice::where('uuid', $request->uuid)->first();
 
         $notice->title = $request->title;
         $notice->date = $request->date;
         $notice->content = $request->content;
         $notice->author = $request->author;
-
-        // if ($request->image) {
-        //     $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
-        // }
 
         $notice->save();
         return $notice;

@@ -1,14 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { STORAGE_FOLDER } from '../constants';
+import { formatDate } from '../utils/dateFormatters';
 
 export default function Notice({ notice }) {
     return (
         <NoticeStyled>
             <HorizontalLineStyled />
-            <NoticeTitleStyled>{notice.title}</NoticeTitleStyled>
-            {notice.image && <NoticeImageStyled src={STORAGE_FOLDER + notice.image.path} />}
-            <NoticeContentStyled>{notice.content}</NoticeContentStyled>
+            {notice.image && <ImageStyled src={STORAGE_FOLDER + notice.image.path} />}
+            <DateStyled>{formatDate(notice.date)}</DateStyled>
+            <TitleStyled>{notice.title}</TitleStyled>
+            <ContentStyled>{notice.content}</ContentStyled>
+            <LinkStyled to={'/intern/editNotice/' + notice.uuid}>Bearbeiten</LinkStyled>
         </NoticeStyled>
     );
 }
@@ -22,10 +26,12 @@ const HorizontalLineStyled = styled.div`
     background-color: var(--aka-gelb);
 `;
 
-const NoticeImageStyled = styled.img`
-    filter: grayscale();
-`;
+const ImageStyled = styled.img``;
 
-const NoticeTitleStyled = styled.h3``;
+const DateStyled = styled.div``;
 
-const NoticeContentStyled = styled.p``;
+const TitleStyled = styled.h3``;
+
+const ContentStyled = styled.p``;
+
+const LinkStyled = styled(Link)``;
