@@ -47,6 +47,39 @@ class SerialController extends Controller
         return $serial;
     }
 
+    public function PostSerial(SerialFormRequest $request)
+    {
+        $serial = new Serial([
+            'uuid' => uniqid(),
+            'title' => $request->title,
+            'subtitle' => $request->subtitle,
+            'article' => $request->article,
+            'author' => $request->author,
+            'semester' => $request->semester,
+        ]);
+
+        if ($request->image) {
+            $serial->image_id = $this->imageService->storeSerialImage($request, $serial);
+        }
+
+        $serial->save();
+        return $serial;
+    }
+
+    public function PatchSerial(SerialFormRequest $request)
+    {
+        $serial = Serial::where('uuid', $request->uuid)->first();
+
+        $serial->title = $request->title;
+        $serial->subtitle = $request->subtitle;
+        $serial->article = $request->article;
+        $serial->semester = $request->semester;
+        $serial->author = $request->author;
+
+        $serial->save();
+        return $serial;
+    }
+
     public function UpdateUuids()
     {
         $serials = Serial::all();
@@ -78,24 +111,5 @@ class SerialController extends Controller
             $serial->semester = $season . $year;
             $serial->save();
         }
-    }
-
-    public function PostSerial(SerialFormRequest $request)
-    {
-        $serial = new Serial([
-            'uuid' => uniqid(),
-            'title' => $request->title,
-            'subtitle' => $request->subtitle,
-            'article' => $request->article,
-            'author' => $request->author,
-            'semester' => $request->semester,
-        ]);
-
-        if ($request->image) {
-            $serial->image_id = $this->imageService->storeSerialImage($request, $serial);
-        }
-
-        $serial->save();
-        return $serial;
     }
 }

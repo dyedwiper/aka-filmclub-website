@@ -7826,12 +7826,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/SerialFormGroup */ "./resources/js/react-app/common/forms/SerialFormGroup.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
-/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
-/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
+/* harmony import */ var _common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/SerialFormGroup */ "./resources/js/react-app/common/forms/SerialFormGroup.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
+/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
+
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -7851,6 +7866,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
 function EditSerialPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7863,19 +7880,33 @@ function EditSerialPage() {
       setIsLoading = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var serialUuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_4__.getLastParameterFromPath)();
-    (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_5__.getSerialByUuid)(serialUuid).then(function (res) {
+    var serialUuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__.getLastParameterFromPath)();
+    (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.getSerialByUuid)(serialUuid).then(function (res) {
       setSerial(res.data);
       setIsLoading(false);
     });
   }, []);
-  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_6__.default, {});
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serial: serial
-    })
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_7__.default, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+      children: "Filmreihe bearbeiten"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
+      serviceFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+        name: "_method",
+        type: "hidden",
+        value: "PATCH"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+        name: "uuid",
+        type: "hidden",
+        defaultValue: serial.uuid
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {
+        serial: serial
+      })]
+    })]
   });
 }
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2(_templateObject());
 
 /***/ }),
 

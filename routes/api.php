@@ -103,6 +103,10 @@ Route::prefix('serials')->group(function () {
     Route::post('/', [
         SerialController::class, 'PostSerial'
     ]);
+
+    Route::patch('/', [
+        SerialController::class, 'PatchSerial'
+    ]);
 });
 
 Route::prefix('images')->group(function () {
