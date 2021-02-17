@@ -5395,6 +5395,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -5424,7 +5425,9 @@ function SemesterSelect(_ref) {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setSemester((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeCurrentSemester)());
     setSemesterOptions((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeSemesterOptions)());
-  }, []);
+  }, []); // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird
+
+  if (!semesterOptions.length) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
     children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
       options: semesterOptions,
@@ -5926,13 +5929,12 @@ function SerialSemesterSelect(_ref) {
       setDefaultValue(semesterOptions[0]);
     }
   }, [semesterOptions]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: defaultValue && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
-      name: "semester",
-      options: semesterOptions,
-      defaultValue: defaultValue,
-      styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.serialSemesterSelectStyles
-    })
+  if (!defaultValue) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
+    name: "semester",
+    options: semesterOptions,
+    defaultValue: defaultValue,
+    styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.serialSemesterSelectStyles
   });
 }
 

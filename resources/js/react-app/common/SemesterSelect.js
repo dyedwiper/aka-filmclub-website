@@ -12,6 +12,9 @@ export default function SemesterSelect({ setSemester, setIsLoading }) {
         setSemesterOptions(computeSemesterOptions());
     }, []);
 
+    // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird
+    if (!semesterOptions.length) return <></>;
+
     return (
         <SemesterSelectLabelStyled>
             Semester:

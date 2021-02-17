@@ -24,16 +24,14 @@ export default function SerialSemesterSelect({ defaultSemester }) {
         }
     }, [semesterOptions]);
 
+    if (!defaultValue) return <></>;
+
     return (
-        <>
-            {defaultValue && (
-                <ReactSelect
-                    name="semester"
-                    options={semesterOptions}
-                    defaultValue={defaultValue}
-                    styles={serialSemesterSelectStyles}
-                />
-            )}
-        </>
+        <ReactSelect
+            name="semester"
+            options={semesterOptions}
+            defaultValue={defaultValue}
+            styles={serialSemesterSelectStyles}
+        />
     );
 }
