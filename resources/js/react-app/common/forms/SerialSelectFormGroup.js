@@ -5,7 +5,7 @@ import { serialSelectStyles } from '../../styles/customSelectStyles';
 import { computeCurrentSemester } from '../../utils/semesterUtils';
 import styled from 'styled-components';
 
-export default function SerialSelectFormGroup() {
+export default function SerialSelectFormGroup({ defaultSerial }) {
     const [serialOptions, setSerialOptions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -24,6 +24,7 @@ export default function SerialSelectFormGroup() {
             <ReactSelect
                 name="serialId"
                 options={serialOptions}
+                defaultValue={defaultSerial && { label: defaultSerial.title, value: defaultSerial.id }}
                 styles={serialSelectStyles}
                 placeholder="Reihe wählen..."
             />

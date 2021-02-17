@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { PageStyled } from '../../common/styledElements';
-import BaseForm from '../../common/forms/BaseForm';
-import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import styled from 'styled-components';
-import { getImageByUuid, postImage } from '../../utils/imageServices';
+import BaseForm from '../../common/forms/BaseForm';
+import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
+import { PageStyled } from '../../common/styledElements';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
+import { getScreeningByUuid, postScreening } from '../../utils/screeningServices';
 import LoadingPage from '../LoadingPage';
 
-export default function EditImagePage() {
-    const [image, setImage] = useState({});
+export default function EditScreeningPage() {
+    const [screening, setScreening] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
-        getImageByUuid(uuid).then((res) => {
-            setImage(res.data);
+        getScreeningByUuid(uuid).then((res) => {
+            setScreening(res.data);
             setIsLoading(false);
         });
     }, []);
@@ -23,13 +23,13 @@ export default function EditImagePage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>Bild ändern</HeadlineStyled>
-            <BaseForm serviceFunction={postImage}>
+            <HeadlineStyled>Vorführung bearbeiten</HeadlineStyled>
+            <BaseForm serviceFunction={postScreening}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />
-                <input name="uuid" type="hidden" defaultValue={image.uuid} />
-                <ImageFormGroup image={image} />
+                <input name="uuid" type="hidden" defaultValue={screening.uuid} />
+                <ScreeningFormGroup screening={screening} />
             </BaseForm>
         </PageStyled>
     );

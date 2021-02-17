@@ -13,6 +13,7 @@ import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import EditImagePage from './pages/intern/EditImagePage';
 import EditNoticePage from './pages/intern/EditNoticePage';
+import EditScreeningPage from './pages/intern/EditScreeningPage';
 import EditSerialPage from './pages/intern/EditSerialPage';
 import NotFoundPage from './pages/NotFoundPage';
 import NoticesPage from './pages/NoticesPage';
@@ -70,6 +71,9 @@ export default function App() {
                     </Route>
                     <Route exact path="/intern/addScreening">
                         <AddScreeningPage />
+                    </Route>
+                    <Route path="/intern/editScreening">
+                        <EditScreeningPage />
                     </Route>
                     <Route exact path="/intern/addNotice">
                         <AddNoticePage />

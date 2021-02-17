@@ -47,6 +47,7 @@ export default function SerialPage() {
                     </ScreeningListItemStyled>
                 ))}
             </ScreeningsListStyled>
+            <HorizontalLineStyled />
             <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
             <VertialLineStyled> | </VertialLineStyled>
             {serial.image ? (

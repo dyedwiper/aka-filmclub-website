@@ -13,8 +13,8 @@ export default function EditNoticePage() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const serialUuid = getLastParameterFromPath();
-        getNoticeByUuid(serialUuid).then((res) => {
+        const uuid = getLastParameterFromPath();
+        getNoticeByUuid(uuid).then((res) => {
             setNotice(res.data);
             setIsLoading(false);
         });

@@ -30,7 +30,7 @@ export default function ScreeningPage() {
 
     return (
         <PageStyled>
-            <ImageStyled src={STORAGE_FOLDER + screening.image.path} />
+            {screening.image && <ImageStyled src={STORAGE_FOLDER + screening.image.path} />}
             <TitleStyled>{screening.title}</TitleStyled>
             <DateStyled>Spieltermin: {formatDateAndTime(screening.date)}</DateStyled>
             <InfoContainerStyled>
@@ -89,6 +89,14 @@ export default function ScreeningPage() {
                     </SerialLinkStyled>
                 </SerialContainerStyled>
             )}
+            <HorizontalLineStyled />
+            <EditLinkStyled to={'/intern/editScreening/' + screening.uuid}>Vorführung bearbeiten</EditLinkStyled>
+            <VertialLineStyled> | </VertialLineStyled>
+            {screening.image ? (
+                <EditLinkStyled to={'/intern/editImage/' + screening.image.uuid}>Bild bearbeiten</EditLinkStyled>
+            ) : (
+                <EditLinkStyled to={'/intern/addImage/screening/' + screening.uuid}>Bild hinzufügen</EditLinkStyled>
+            )}
         </PageStyled>
     );
 }
@@ -136,3 +144,5 @@ const SerialContainerStyled = styled.div``;
 const SerialLinkStyled = styled(Link)`
     font-weight: bold;
 `;
+
+const EditLinkStyled = styled(Link)``;
