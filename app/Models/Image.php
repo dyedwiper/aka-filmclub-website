@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'uuid',
+        'path',
+        'alt_text',
+        'copyright'
+    ];
 }

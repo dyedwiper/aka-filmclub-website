@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IMAGE_FOLDER } from '../../constants';
-import { formatDate } from '../../utils/dateFormatters';
+import { formatToDateString } from '../../utils/dateFormatters';
 
 export default function ScreeningSlide({ screening }) {
     return (
@@ -9,7 +9,7 @@ export default function ScreeningSlide({ screening }) {
             <ScreeningImageStyled src={IMAGE_FOLDER + screening.image} />
             <ScreeningInfoStyled>
                 <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
-                <ScreeningDateStyled>{formatDate(screening.date)}</ScreeningDateStyled>
+                <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
             </ScreeningInfoStyled>
         </ScreeningSlideStyled>
     );

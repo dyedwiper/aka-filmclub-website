@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { IMAGE_FOLDER } from '../../constants';
-import { formatDateAndTime } from '../../utils/dateFormatters';
+import { STORAGE_FOLDER } from '../../constants';
+import { formatToDateTimeString } from '../../utils/dateFormatters';
 
 export default function ScreeningRow({ screening }) {
     return (
@@ -10,13 +10,15 @@ export default function ScreeningRow({ screening }) {
             <HorizontalLineStyled />
             <ScreeningContainerStyled>
                 <LinkStyled to={'/screening/' + screening.uuid}>
-                    <ScreeningImageStyled src={IMAGE_FOLDER + screening.image} />
+                    {screening.image && <ScreeningImageStyled src={STORAGE_FOLDER + screening.image.path} />}
                 </LinkStyled>
-                <ScreeningInfoStyled>
-                    <ScreeningDateStyled>{formatDateAndTime(screening.date)}</ScreeningDateStyled>
-                    <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
-                    <ScreeningSynopsisStyled>{screening.synopsis}</ScreeningSynopsisStyled>
-                </ScreeningInfoStyled>
+                <InfoContainerStyled>
+                    <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
+                    <LinkStyled to={'/screening/' + screening.uuid}>
+                        <TitleStyled>{screening.title}</TitleStyled>
+                    </LinkStyled>
+                    <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
+                </InfoContainerStyled>
             </ScreeningContainerStyled>
         </ScreeningRowStyled>
     );
@@ -33,7 +35,7 @@ const HorizontalLineStyled = styled.div`
 
 const ScreeningContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 360px 1fr;
+    grid-template-columns: 360px 480px;
 `;
 
 const LinkStyled = styled(Link)``;
@@ -42,10 +44,15 @@ const ScreeningImageStyled = styled.img`
     height: 200px;
 `;
 
-const ScreeningInfoStyled = styled.div``;
+const InfoContainerStyled = styled.div``;
 
-const ScreeningDateStyled = styled.div``;
+const DateStyled = styled.div``;
 
-const ScreeningTitleStyled = styled.h3``;
+const TitleStyled = styled.h3``;
 
-const ScreeningSynopsisStyled = styled.p``;
+const SynopsisStyled = styled.p`
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+`;

@@ -3,11 +3,11 @@ import styled from 'styled-components';
 import SemesterSelect from '../common/SemesterSelect';
 import SerialRow from '../common/SerialRow';
 import { PageStyled } from '../common/styledElements';
-import { GetSerialsBySemester } from '../utils/serialServices';
+import { getSerialsBySemester } from '../utils/serialServices';
 
 export default function SerialsPage() {
     const [serials, setSerials] = useState([]);
-    const [semester, setSemester] = useState({});
+    const [semester, setSemester] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -15,8 +15,10 @@ export default function SerialsPage() {
     }, []);
 
     useEffect(() => {
-        if (semester.year) {
-            GetSerialsBySemester(semester).then((res) => {
+        console.log('isLoading', isLoading);
+        if (semester) {
+            getSerialsBySemester(semester).then((res) => {
+                console.log('res.data', res.data);
                 setSerials(res.data);
                 setIsLoading(false);
             });
@@ -26,7 +28,7 @@ export default function SerialsPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Filmreihen</HeadlineStyled>
-            <SemesterSelect setSemester={setSemester} />
+            <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
             {isLoading ? (
                 <div>Loading</div>
             ) : (

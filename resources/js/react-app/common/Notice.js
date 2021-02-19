@@ -1,26 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getImageById } from '../utils/imageServices';
+import { STORAGE_FOLDER } from '../constants';
+import { formatToDateString } from '../utils/dateFormatters';
 
 export default function Notice({ notice }) {
-    const [image, setImage] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        getImageById(notice.image_id).then((res) => {
-            setImage(res.data);
-            setIsLoading(false);
-        });
-    }, []);
-
-    if (isLoading) return <></>;
-
     return (
         <NoticeStyled>
             <HorizontalLineStyled />
-            <NoticeTitleStyled>{notice.title}</NoticeTitleStyled>
-            {image.id && <NoticeImageStyled src={'/images/' + image.source} />}
-            <NoticeContentStyled>{notice.content}</NoticeContentStyled>
+            {notice.image && <ImageStyled src={STORAGE_FOLDER + notice.image.path} />}
+            <DateStyled>{formatToDateString(notice.date)}</DateStyled>
+            <TitleStyled>{notice.title}</TitleStyled>
+            <ContentStyled>{notice.content}</ContentStyled>
+            <LinkStyled to={'/intern/editNotice/' + notice.uuid}>Bearbeiten</LinkStyled>
         </NoticeStyled>
     );
 }
@@ -34,10 +26,12 @@ const HorizontalLineStyled = styled.div`
     background-color: var(--aka-gelb);
 `;
 
-const NoticeImageStyled = styled.img`
-    filter: grayscale();
-`;
+const ImageStyled = styled.img``;
 
-const NoticeTitleStyled = styled.h3``;
+const DateStyled = styled.div``;
 
-const NoticeContentStyled = styled.p``;
+const TitleStyled = styled.h3``;
+
+const ContentStyled = styled.p``;
+
+const LinkStyled = styled(Link)``;

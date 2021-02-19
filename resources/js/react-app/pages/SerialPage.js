@@ -2,29 +2,25 @@ import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
-import { formatDate } from '../utils/dateFormatters';
-import { getScreeningsBySerialFk } from '../utils/screeningServices';
+import { STORAGE_FOLDER } from '../constants';
+import { formatToDateString } from '../utils/dateFormatters';
+import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getSerialByUuid } from '../utils/serialServices';
 import LoadingPage from './LoadingPage';
 
 export default function SerialPage() {
     const [serial, setSerial] = useState({});
-    const [screenings, setScreenings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [noSerialFound, SetNoSerialFound] = useState(false);
 
     useEffect(() => {
-        const path = window.location.pathname;
-        const serialUuid = path.slice(path.lastIndexOf('/') + 1);
+        const serialUuid = getLastParameterFromPath();
         getSerialByUuid(serialUuid).then((res) => {
             if (!res.data.uuid) {
                 SetNoSerialFound(true);
             }
             setSerial(res.data);
-            getScreeningsBySerialFk(res.data.id).then((res) => {
-                setScreenings(res.data);
-                setIsLoading(false);
-            });
+            setIsLoading(false);
         });
     }, []);
 
@@ -34,28 +30,41 @@ export default function SerialPage() {
 
     return (
         <PageStyled>
-            <SerialTitleStyled>{serial.title}</SerialTitleStyled>
-            <SerialSubtitleStyled>{serial.subtitle}</SerialSubtitleStyled>
+            <TitleStyled>{serial.title}</TitleStyled>
+            <SubtitleStyled>{serial.subtitle}</SubtitleStyled>
             <HorizontalLineStyled />
-            <SerialArticleStyled>{serial.article}</SerialArticleStyled>
-            <SerialAuthorStyled>{serial.author}</SerialAuthorStyled>
+            {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
+            <ArticleStyled>{serial.article}</ArticleStyled>
+            <AuthorStyled>{serial.author}</AuthorStyled>
             <HorizontalLineStyled />
             <ScreeningsListStyled>
-                {screenings.map((screening) => (
+                {serial.screenings.map((screening) => (
                     <ScreeningListItemStyled key={screening.id}>
-                        <ScreeningDateStyled>{formatDate(screening.date)}</ScreeningDateStyled>
+                        <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
                         <ScreeningTitleLinkStyled to={'/screening/' + screening.uuid}>
                             {screening.title}
                         </ScreeningTitleLinkStyled>
                     </ScreeningListItemStyled>
                 ))}
             </ScreeningsListStyled>
+            <HorizontalLineStyled />
+            <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
+            <VertialLineStyled> | </VertialLineStyled>
+            {serial.image ? (
+                <LinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild bearbeiten</LinkStyled>
+            ) : (
+                <LinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</LinkStyled>
+            )}
         </PageStyled>
     );
 }
-const SerialTitleStyled = styled.h2``;
+const TitleStyled = styled.h2``;
 
-const SerialSubtitleStyled = styled.p``;
+const SubtitleStyled = styled.p``;
+
+const ImageStyled = styled.img`
+    width: 100%;
+`;
 
 const ScreeningsListStyled = styled.ul``;
 
@@ -72,6 +81,13 @@ const ScreeningTitleLinkStyled = styled(Link)`
     font-weight: bold;
 `;
 
-const SerialArticleStyled = styled.p``;
+const ArticleStyled = styled.p``;
 
-const SerialAuthorStyled = styled.div``;
+const AuthorStyled = styled.div``;
+
+const LinkStyled = styled(Link)``;
+
+const VertialLineStyled = styled.span`
+    color: var(--aka-gelb);
+    font-weight: bold;
+`;

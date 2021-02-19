@@ -7,7 +7,7 @@ import { getScreeningsBySemester } from '../utils/screeningServices';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
-    const [semester, setSemester] = useState({});
+    const [semester, setSemester] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -15,7 +15,7 @@ export default function ArchivePage() {
     }, []);
 
     useEffect(() => {
-        if (semester.year) {
+        if (semester) {
             getScreeningsBySemester(semester).then((res) => {
                 setScreenings(res.data);
                 setIsLoading(false);
@@ -26,7 +26,7 @@ export default function ArchivePage() {
     return (
         <PageStyled>
             <HeadlineStyled>Programmarchiv</HeadlineStyled>
-            <SemesterSelect setSemester={setSemester} />
+            <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
             {isLoading ? (
                 <div>Loading</div>
             ) : (

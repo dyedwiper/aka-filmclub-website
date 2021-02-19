@@ -5,9 +5,17 @@ import Footer from './common/Footer';
 import Header from './common/Header';
 import AboutPage from './pages/AboutPage';
 import ArchivePage from './pages/ArchivePage';
+import ErrorPage from './pages/ErrorPage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
+import AddImagePage from './pages/intern/AddImagePage';
+import AddNoticePage from './pages/intern/AddNoticePage';
+import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
+import EditImagePage from './pages/intern/EditImagePage';
+import EditNoticePage from './pages/intern/EditNoticePage';
+import EditScreeningPage from './pages/intern/EditScreeningPage';
+import EditSerialPage from './pages/intern/EditSerialPage';
 import NotFoundPage from './pages/NotFoundPage';
 import NoticesPage from './pages/NoticesPage';
 import PressReviewPage from './pages/PressReviewPage';
@@ -47,17 +55,41 @@ export default function App() {
                     <Route path="/serial">
                         <SerialPage />
                     </Route>
-                    <Route path="/about">
+                    <Route exact path="/about">
                         <AboutPage />
                     </Route>
-                    <Route path="/faqs">
+                    <Route exact path="/faqs">
                         <FaqsPage />
                     </Route>
-                    <Route path="/press">
+                    <Route exact path="/press">
                         <PressReviewPage />
                     </Route>
-                    <Route path="/intern/addserial">
+                    <Route exact path="/intern/addSerial">
                         <AddSerialPage />
+                    </Route>
+                    <Route path="/intern/editSerial">
+                        <EditSerialPage />
+                    </Route>
+                    <Route exact path="/intern/addScreening">
+                        <AddScreeningPage />
+                    </Route>
+                    <Route path="/intern/editScreening">
+                        <EditScreeningPage />
+                    </Route>
+                    <Route exact path="/intern/addNotice">
+                        <AddNoticePage />
+                    </Route>
+                    <Route path="/intern/editNotice">
+                        <EditNoticePage />
+                    </Route>
+                    <Route path="/intern/addImage">
+                        <AddImagePage />
+                    </Route>
+                    <Route path="/intern/editImage">
+                        <EditImagePage />
+                    </Route>
+                    <Route path="/error">
+                        <ErrorPage />
                     </Route>
                     <Route path="/404">
                         <NotFoundPage />
@@ -69,7 +101,6 @@ export default function App() {
         </AppStyled>
     );
 }
-
 const AppStyled = styled.div`
     height: 100vh;
 `;

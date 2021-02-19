@@ -9,13 +9,17 @@ export function getFutureScreenings() {
 }
 
 export function getScreeningsBySemester(semester) {
-    return axios.get('/api/screenings/semester/' + semester.season + '/' + semester.year);
+    return axios.get('/api/screenings/semester/' + semester);
 }
 
 export function getScreeningByUuid(uuid) {
     return axios.get('/api/screenings/single/' + uuid);
 }
 
-export function getScreeningsBySerialFk(serialFk) {
-    return axios.get('/api/screenings/serial/' + serialFk);
+// export function getScreeningsBySerialId(serialId) {
+//     return axios.get('/api/screenings/serial/' + serialId);
+// }
+
+export function postScreening(data) {
+    return axios.post('/api/screenings', data);
 }

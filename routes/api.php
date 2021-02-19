@@ -8,6 +8,7 @@ use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,19 +41,27 @@ Route::prefix('screenings')->group(function () {
     ]);
 
     Route::get('/serial/{serialFk}', [
-        ScreeningController::class, 'GetScreeningsBySerialFk'
+        ScreeningController::class, 'GetScreeningsBySerialId'
     ]);
 
     Route::get('/year/{year}', [
         ScreeningController::class, 'GetScreeningsByYear'
     ]);
 
-    Route::get('semester/{season}/{year}', [
+    Route::get('semester/{semester}', [
         ScreeningController::class, 'GetScreeningsBySemester'
     ]);
 
     Route::get('/update_uuids', [
         ScreeningController::class, 'UpdateUuids'
+    ]);
+
+    Route::post('/', [
+        ScreeningController::class, 'PostScreening'
+    ]);
+
+    Route::patch('/', [
+        ScreeningController::class, 'PatchScreening'
     ]);
 });
 
@@ -64,28 +73,64 @@ Route::prefix('notices')->group(function () {
     Route::get('/count', [
         NoticeController::class, 'GetNoticesCount'
     ]);
+
+    Route::get('/uuid/{uuid}', [
+        NoticeController::class, 'GetNoticeByUuid'
+    ]);
+
+    Route::post('/', [
+        NoticeController::class, 'PostNotice'
+    ]);
+
+    Route::patch('/', [
+        NoticeController::class, 'PatchNotice'
+    ]);
 });
 
 Route::prefix('serials')->group(function () {
-    Route::get('/', function () {
-        return Serial::all();
-    });
+    Route::get('/', [
+        SerialController::class, 'GetSerials'
+    ]);
 
-    Route::get('/semester/{season}/{year}', [
+    Route::get('/semester/{semester}', [
         SerialController::class, 'GetSerialsBySemester'
     ]);
 
-    Route::get('/single/{uuid}', [
+    Route::get('/uuid/{uuid}', [
         SerialController::class, 'GetSerialByUuid'
     ]);
 
     Route::get('/update_uuids', [
         SerialController::class, 'UpdateUuids'
     ]);
+
+    Route::get('/update_semesters', [
+        SerialController::class, 'UpdateSemesters'
+    ]);
+
+    Route::post('/', [
+        SerialController::class, 'PostSerial'
+    ]);
+
+    Route::patch('/', [
+        SerialController::class, 'PatchSerial'
+    ]);
 });
 
 Route::prefix('images')->group(function () {
     Route::get('/id/{id}', [
         ImageController::class, 'GetImageById'
+    ]);
+
+    Route::get('/uuid/{uuid}', [
+        ImageController::class, 'GetImageByUuid'
+    ]);
+
+    Route::post('/', [
+        ImageController::class, 'PostImage'
+    ]);
+
+    Route::patch('/', [
+        ImageController::class, 'PatchImage'
     ]);
 });

@@ -14,23 +14,24 @@ export default function HomePage() {
         document.title = 'aka-Filmclub ';
     }, []);
 
-    useEffect(() => {
-        getScreenings().then((res) => {
-            setScreenings(res.data);
-            setIsLoading(false);
-        });
-    }, []);
+    // useEffect(() => {
+    //     getScreenings().then((res) => {
+    //         setScreenings(res.data);
+    //         setIsLoading(false);
+    //     });
+    // }, []);
 
-    if (isLoading) return <LoadingPage />;
+    // if (isLoading) return <LoadingPage />;
 
     return (
         <PageStyled>
-            <ScreeningSlide key={screenings[0].id} screening={screenings[0]} />
+            <img src="/storage/images/VSQYG3ewaNVgksZFv6BbjOcmidri5EMIdyvlAyvF.jpg" />
+            {/* <ScreeningSlide key={screenings[0].id} screening={screenings[0]} />
             <ScreeningCardsRowStyled>
                 {screenings.map((screening) => (
                     <ScreeningCard key={screening.id} screening={screening} />
                 ))}
-            </ScreeningCardsRowStyled>
+            </ScreeningCardsRowStyled> */}
         </PageStyled>
     );
 }
