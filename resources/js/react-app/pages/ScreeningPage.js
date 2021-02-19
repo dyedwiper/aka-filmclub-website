@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import { STORAGE_FOLDER } from '../constants';
-import { formatDateAndTime } from '../utils/dateFormatters';
+import { formatToDateTimeString } from '../utils/dateFormatters';
 import { getScreeningByUuid } from '../utils/screeningServices';
 import LoadingPage from './LoadingPage';
 
@@ -32,7 +32,7 @@ export default function ScreeningPage() {
         <PageStyled>
             {screening.image && <ImageStyled src={STORAGE_FOLDER + screening.image.path} />}
             <TitleStyled>{screening.title}</TitleStyled>
-            <DateStyled>Spieltermin: {formatDateAndTime(screening.date)}</DateStyled>
+            <DateStyled>Spieltermin: {formatToDateTimeString(screening.date)}</DateStyled>
             <InfoContainerStyled>
                 <InfoValueStyled>{screening.country + ' ' + screening.year}</InfoValueStyled>
                 <VertialLineStyled> | </VertialLineStyled>

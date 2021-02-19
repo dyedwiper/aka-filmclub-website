@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { STORAGE_FOLDER } from '../constants';
-import { formatDate } from '../utils/dateFormatters';
+import { formatToDateString } from '../utils/dateFormatters';
 
 export default function Notice({ notice }) {
     return (
         <NoticeStyled>
             <HorizontalLineStyled />
             {notice.image && <ImageStyled src={STORAGE_FOLDER + notice.image.path} />}
-            <DateStyled>{formatDate(notice.date)}</DateStyled>
+            <DateStyled>{formatToDateString(notice.date)}</DateStyled>
             <TitleStyled>{notice.title}</TitleStyled>
             <ContentStyled>{notice.content}</ContentStyled>
             <LinkStyled to={'/intern/editNotice/' + notice.uuid}>Bearbeiten</LinkStyled>

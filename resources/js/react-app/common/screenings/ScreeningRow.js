@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { STORAGE_FOLDER } from '../../constants';
-import { formatDateAndTime } from '../../utils/dateFormatters';
+import { formatToDateTimeString } from '../../utils/dateFormatters';
 
 export default function ScreeningRow({ screening }) {
     return (
@@ -13,7 +13,7 @@ export default function ScreeningRow({ screening }) {
                     {screening.image && <ScreeningImageStyled src={STORAGE_FOLDER + screening.image.path} />}
                 </LinkStyled>
                 <InfoContainerStyled>
-                    <DateStyled>{formatDateAndTime(screening.date)}</DateStyled>
+                    <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
                     <LinkStyled to={'/screening/' + screening.uuid}>
                         <TitleStyled>{screening.title}</TitleStyled>
                     </LinkStyled>

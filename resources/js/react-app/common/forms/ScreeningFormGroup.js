@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { formatIsoString, formatTime } from '../../utils/dateFormatters';
+import { formatToIsoDateString, formatToTimeString } from '../../utils/dateFormatters';
 import SerialSelectFormGroup from './SerialSelectFormGroup';
 
 export default function ScreeningFormGroup({ screening }) {
@@ -19,14 +19,18 @@ export default function ScreeningFormGroup({ screening }) {
             <FormRowWithTwoInputsStyled>
                 <LabelStyled>
                     Datum
-                    <InputStyled name="day" type="date" defaultValue={screening && formatIsoString(screening.date)} />
+                    <InputStyled
+                        name="day"
+                        type="date"
+                        defaultValue={screening && formatToIsoDateString(screening.date)}
+                    />
                 </LabelStyled>
                 <LabelStyled>
                     Uhrzeit
                     <InputStyled
                         name="time"
                         type="time"
-                        defaultValue={screening ? formatTime(screening.date) : '20:00'}
+                        defaultValue={screening ? formatToTimeString(screening.date) : '20:00'}
                     />
                 </LabelStyled>
             </FormRowWithTwoInputsStyled>

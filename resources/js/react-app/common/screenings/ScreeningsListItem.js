@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { formatDate } from '../../utils/dateFormatters';
+import { formatToDateString } from '../../utils/dateFormatters';
 
 export default function ScreeningsListItem({ screening }) {
     return (
         <ScreeningsListItemStyled>
             <ScreeningLinkStyled to={'/screening/' + screening.uuid}>
-                <ScreeningDateStyled>{formatDate(screening.date)}</ScreeningDateStyled>
+                <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
                 <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
             </ScreeningLinkStyled>
         </ScreeningsListItemStyled>

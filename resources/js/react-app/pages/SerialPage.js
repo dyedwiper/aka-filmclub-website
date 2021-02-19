@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import { STORAGE_FOLDER } from '../constants';
-import { formatDate } from '../utils/dateFormatters';
+import { formatToDateString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getSerialByUuid } from '../utils/serialServices';
 import LoadingPage from './LoadingPage';
@@ -40,7 +40,7 @@ export default function SerialPage() {
             <ScreeningsListStyled>
                 {serial.screenings.map((screening) => (
                     <ScreeningListItemStyled key={screening.id}>
-                        <ScreeningDateStyled>{formatDate(screening.date)}</ScreeningDateStyled>
+                        <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
                         <ScreeningTitleLinkStyled to={'/screening/' + screening.uuid}>
                             {screening.title}
                         </ScreeningTitleLinkStyled>
