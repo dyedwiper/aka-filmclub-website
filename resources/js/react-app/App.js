@@ -5,6 +5,7 @@ import Footer from './common/Footer';
 import Header from './common/Header';
 import AboutPage from './pages/AboutPage';
 import ArchivePage from './pages/ArchivePage';
+import ErrorPage from './pages/ErrorPage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
 import AddImagePage from './pages/intern/AddImagePage';
@@ -86,6 +87,9 @@ export default function App() {
                     </Route>
                     <Route path="/intern/editImage">
                         <EditImagePage />
+                    </Route>
+                    <Route path="/error">
+                        <ErrorPage />
                     </Route>
                     <Route path="/404">
                         <NotFoundPage />

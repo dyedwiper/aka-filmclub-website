@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
+use App\Utils\ValidationUtils;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Contracts\Validation\Validator;
 
 class ScreeningFormRequest extends FormRequest
@@ -77,6 +77,6 @@ class ScreeningFormRequest extends FormRequest
 
     protected function failedValidation(Validator $validator)
     {
-        throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()], 422));
+        ValidationUtils::handleValidationError($validator);
     }
 }

@@ -23,7 +23,7 @@ export function computeSemesterOptions() {
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
     const allSemesters = [];
-    allSemesters.push({ season: 'ws', year: 2000 });
+    allSemesters.push({ season: 'WS', year: 2000 });
     for (let year = 2001; year < currentYear; year++) {
         allSemesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: year });
         allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: year });

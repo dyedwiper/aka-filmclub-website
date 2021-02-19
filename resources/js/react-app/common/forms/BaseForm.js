@@ -4,14 +4,21 @@ import styled from 'styled-components';
 import { HorizontalLineStyled } from '../styledElements';
 
 export default function BaseForm({ children, serviceFunction }) {
-    const [isWaiting, setIsWaiting] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [validationErrors, setValidationErrors] = useState([]);
+
     let history = useHistory();
 
     return (
         <BaseFormStyled onKeyPress={preventSubmitOnEnter}>
             {children}
             <HorizontalLineStyled />
-            {isWaiting ? (
+            <ValidationErrorContainerStyled>
+                {validationErrors.map((error, index) => (
+                    <ValidationErrorStyled key={index}>{error}</ValidationErrorStyled>
+                ))}
+            </ValidationErrorContainerStyled>
+            {isSubmitting ? (
                 <WaitNoteStyled>Bitte warten</WaitNoteStyled>
             ) : (
                 <>
@@ -34,23 +41,29 @@ export default function BaseForm({ children, serviceFunction }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        setIsWaiting(true);
+        setIsSubmitting(true);
         const formElement = event.target.form;
         const formData = new FormData(formElement);
         serviceFunction(formData)
             .then((res) => {
                 console.log(res.data);
-                setIsWaiting(false);
+                setIsSubmitting(false);
                 history.push('/intern');
             })
             .catch((err) => {
-                setIsWaiting(false);
+                if (err.response.status === 422) {
+                    setValidationErrors(err.response.data.validationErrors);
+                }
+                if (err.response.status === 500) {
+                    history.push('/error');
+                }
+                setIsSubmitting(false);
                 console.log(err.response.data);
             });
     }
 
     function handleAbort() {
-        history.push('/intern');
+        history.goBack();
     }
 }
 
@@ -67,4 +80,12 @@ export const WaitNoteStyled = styled.div`
             transform: rotate(360deg);
         }
     } */
+`;
+
+const ValidationErrorContainerStyled = styled.div`
+    color: red;
+`;
+
+const ValidationErrorStyled = styled.div`
+    margin-bottom: 10px;
 `;
