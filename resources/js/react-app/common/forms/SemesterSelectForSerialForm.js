@@ -3,7 +3,7 @@ import { default as ReactSelect } from 'react-select';
 import { serialSemesterSelectStyles } from '../../styles/customSelectStyles';
 import { computeSemesterOptions } from '../../utils/semesterUtils';
 
-export default function SerialSemesterSelect({ defaultSemester }) {
+export default function SemesterSelectForSerialForm({ defaultSemester }) {
     const [semesterOptions, setSemesterOptions] = useState([]);
     const [defaultValue, setDefaultValue] = useState({});
 

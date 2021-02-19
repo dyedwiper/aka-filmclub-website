@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import { STORAGE_FOLDER } from '../constants';
 import { formatToDateTimeString } from '../utils/dateFormatters';
+import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getScreeningByUuid } from '../utils/screeningServices';
 import LoadingPage from './LoadingPage';
 
@@ -13,9 +14,8 @@ export default function ScreeningPage() {
     const [noScreeningFound, setNoScreeningFound] = useState(false);
 
     useEffect(() => {
-        const path = window.location.pathname;
-        const screeningUuid = path.slice(path.lastIndexOf('/') + 1);
-        getScreeningByUuid(screeningUuid).then((res) => {
+        const uuid = getLastParameterFromPath();
+        getScreeningByUuid(uuid).then((res) => {
             if (!res.data.uuid) {
                 setNoScreeningFound(true);
             }

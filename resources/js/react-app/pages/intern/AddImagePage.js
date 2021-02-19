@@ -4,15 +4,15 @@ import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import { PageStyled } from '../../common/styledElements';
 import { postImage } from '../../utils/imageServices';
+import { getLastParameterFromPath, getSecondToLastParameterFromPath } from '../../utils/pathUtils';
 
 export default function AddImagePage() {
     const [assocType, setAssocType] = useState('');
     const [assocUuid, setAssocUuid] = useState({});
 
     useEffect(() => {
-        const path = window.location.pathname;
-        const type = path.slice(path.lastIndexOf('/', path.lastIndexOf('/') - 1) + 1, path.lastIndexOf('/'));
-        const uuid = path.slice(path.lastIndexOf('/') + 1);
+        const type = getSecondToLastParameterFromPath();
+        const uuid = getLastParameterFromPath();
         setAssocType(type);
         setAssocUuid(uuid);
     }, []);

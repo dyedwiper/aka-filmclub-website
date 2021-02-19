@@ -5981,6 +5981,80 @@ var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4_
 
 /***/ }),
 
+/***/ "./resources/js/react-app/common/forms/SemesterSelectForSerialForm.js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/react-app/common/forms/SemesterSelectForSerialForm.js ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ SemesterSelectForSerialForm
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
+/* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+function SemesterSelectForSerialForm(_ref) {
+  var defaultSemester = _ref.defaultSemester;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      semesterOptions = _useState2[0],
+      setSemesterOptions = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+      _useState4 = _slicedToArray(_useState3, 2),
+      defaultValue = _useState4[0],
+      setDefaultValue = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    setSemesterOptions((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeSemesterOptions)());
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    // Diese Bedingung muss so aussehen, weil der defaultValue von react-select sonst
+    // nicht korrekt gesetzt wird. Warum, ist mir nicht ganz klar.
+    if (!defaultValue && defaultSemester) {
+      setDefaultValue({
+        label: defaultSemester.slice(0, 2) + ' ' + defaultSemester.slice(2),
+        value: defaultSemester
+      });
+    } else {
+      setDefaultValue(semesterOptions[0]);
+    }
+  }, [semesterOptions]);
+  if (!defaultValue) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
+    name: "semester",
+    options: semesterOptions,
+    defaultValue: defaultValue,
+    styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.serialSemesterSelectStyles
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/react-app/common/forms/SerialFormGroup.js":
 /*!****************************************************************!*\
   !*** ./resources/js/react-app/common/forms/SerialFormGroup.js ***!
@@ -5995,7 +6069,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _SerialSemesterSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SerialSemesterSelect */ "./resources/js/react-app/common/forms/SerialSemesterSelect.js");
+/* harmony import */ var _SemesterSelectForSerialForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SemesterSelectForSerialForm */ "./resources/js/react-app/common/forms/SemesterSelectForSerialForm.js");
 
 
 
@@ -6025,7 +6099,7 @@ function SerialFormGroup(_ref) {
         defaultValue: serial && serial.author
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Semester", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SerialSemesterSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
+      children: ["Semester", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SemesterSelectForSerialForm__WEBPACK_IMPORTED_MODULE_2__.default, {
         defaultSemester: serial && serial.semester
       })]
     })]
@@ -6160,80 +6234,6 @@ var LoadingNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.d
   displayName: "SerialSelectFormGroup__LoadingNoteStyled",
   componentId: "mbikx2-2"
 })(["display:grid;align-items:center;height:40px;"]);
-
-/***/ }),
-
-/***/ "./resources/js/react-app/common/forms/SerialSemesterSelect.js":
-/*!*********************************************************************!*\
-  !*** ./resources/js/react-app/common/forms/SerialSemesterSelect.js ***!
-  \*********************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ SerialSemesterSelect
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
-/* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
-/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
-
-
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-
-function SerialSemesterSelect(_ref) {
-  var defaultSemester = _ref.defaultSemester;
-
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
-      _useState2 = _slicedToArray(_useState, 2),
-      semesterOptions = _useState2[0],
-      setSemesterOptions = _useState2[1];
-
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
-      _useState4 = _slicedToArray(_useState3, 2),
-      defaultValue = _useState4[0],
-      setDefaultValue = _useState4[1];
-
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    setSemesterOptions((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeSemesterOptions)());
-  }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    // Diese Bedingung muss so aussehen, weil der defaultValue von react-select sonst
-    // nicht korrekt gesetzt wird. Warum, ist mir nicht ganz klar.
-    if (!defaultValue && defaultSemester) {
-      setDefaultValue({
-        label: defaultSemester.slice(0, 2) + ' ' + defaultSemester.slice(2),
-        value: defaultSemester
-      });
-    } else {
-      setDefaultValue(semesterOptions[0]);
-    }
-  }, [semesterOptions]);
-  if (!defaultValue) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
-    name: "semester",
-    options: semesterOptions,
-    defaultValue: defaultValue,
-    styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.serialSemesterSelectStyles
-  });
-}
 
 /***/ }),
 
@@ -7249,14 +7249,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
 /* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
-/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
+/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
 
@@ -7272,6 +7273,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -7298,9 +7300,8 @@ function ScreeningPage() {
       setNoScreeningFound = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var path = window.location.pathname;
-    var screeningUuid = path.slice(path.lastIndexOf('/') + 1);
-    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_5__.getScreeningByUuid)(screeningUuid).then(function (res) {
+    var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__.getLastParameterFromPath)();
+    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningByUuid)(uuid).then(function (res) {
       if (!res.data.uuid) {
         setNoScreeningFound(true);
       }
@@ -7309,8 +7310,8 @@ function ScreeningPage() {
       setIsLoading(false);
     });
   }, []);
-  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_6__.default, {});
-  if (noScreeningFound) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Redirect, {
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_7__.default, {});
+  if (noScreeningFound) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Redirect, {
     to: "/404"
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
@@ -7399,59 +7400,59 @@ function ScreeningPage() {
     })]
   });
 }
-var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.img.withConfig({
+var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.img.withConfig({
   displayName: "ScreeningPage__ImageStyled",
   componentId: "sc-1jbdtfx-0"
 })(["width:100%;"]);
-var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2.withConfig({
+var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h2.withConfig({
   displayName: "ScreeningPage__TitleStyled",
   componentId: "sc-1jbdtfx-1"
 })([""]);
-var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
   displayName: "ScreeningPage__DateStyled",
   componentId: "sc-1jbdtfx-2"
 })(["margin-bottom:20px;font-weight:bold;"]);
-var InfoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+var InfoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
   displayName: "ScreeningPage__InfoContainerStyled",
   componentId: "sc-1jbdtfx-3"
 })(["margin-bottom:20px;"]);
-var InfoValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.span.withConfig({
+var InfoValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.span.withConfig({
   displayName: "ScreeningPage__InfoValueStyled",
   componentId: "sc-1jbdtfx-4"
 })([""]);
-var VertialLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.span.withConfig({
+var VertialLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.span.withConfig({
   displayName: "ScreeningPage__VertialLineStyled",
   componentId: "sc-1jbdtfx-5"
 })(["color:var(--aka-gelb);font-weight:bold;"]);
-var CreditsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+var CreditsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
   displayName: "ScreeningPage__CreditsContainerStyled",
   componentId: "sc-1jbdtfx-6"
 })([""]);
-var CreditKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.span.withConfig({
+var CreditKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.span.withConfig({
   displayName: "ScreeningPage__CreditKeyStyled",
   componentId: "sc-1jbdtfx-7"
 })(["font-weight:bold;"]);
-var CreditValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.span.withConfig({
+var CreditValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.span.withConfig({
   displayName: "ScreeningPage__CreditValueStyled",
   componentId: "sc-1jbdtfx-8"
 })(["display:inline-block;"]);
-var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.p.withConfig({
+var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.p.withConfig({
   displayName: "ScreeningPage__SynopsisStyled",
   componentId: "sc-1jbdtfx-9"
 })([""]);
-var AuthorStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+var AuthorStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
   displayName: "ScreeningPage__AuthorStyled",
   componentId: "sc-1jbdtfx-10"
 })(["font-style:italic;"]);
-var SerialContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+var SerialContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
   displayName: "ScreeningPage__SerialContainerStyled",
   componentId: "sc-1jbdtfx-11"
 })([""]);
-var SerialLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_8__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link).withConfig({
+var SerialLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_9__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link).withConfig({
   displayName: "ScreeningPage__SerialLinkStyled",
   componentId: "sc-1jbdtfx-12"
 })(["font-weight:bold;"]);
-var EditLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_8__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link).withConfig({
+var EditLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_9__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link).withConfig({
   displayName: "ScreeningPage__EditLinkStyled",
   componentId: "sc-1jbdtfx-13"
 })([""]);
@@ -7728,11 +7729,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
 /* harmony import */ var _common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/ImageFormGroup */ "./resources/js/react-app/common/forms/ImageFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/imageServices */ "./resources/js/react-app/utils/imageServices.js");
+/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
 
 
 
@@ -7754,6 +7756,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function AddImagePage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7766,9 +7769,8 @@ function AddImagePage() {
       setAssocUuid = _useState4[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    var path = window.location.pathname;
-    var type = path.slice(path.lastIndexOf('/', path.lastIndexOf('/') - 1) + 1, path.lastIndexOf('/'));
-    var uuid = path.slice(path.lastIndexOf('/') + 1);
+    var type = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__.getSecondToLastParameterFromPath)();
+    var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__.getLastParameterFromPath)();
     setAssocType(type);
     setAssocUuid(uuid);
   }, []);
@@ -7789,7 +7791,7 @@ function AddImagePage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2.withConfig({
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
   displayName: "AddImagePage__HeadlineStyled",
   componentId: "sc-18y0ugv-0"
 })([""]);
@@ -8599,7 +8601,7 @@ function computeSemesterOptions() {
   var currentYear = currentDate.getFullYear();
   var allSemesters = [];
   allSemesters.push({
-    season: 'WS',
+    season: _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER,
     year: 2000
   });
 

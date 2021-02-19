@@ -26,10 +26,6 @@ class SerialController extends Controller
 
     public function GetSerialsBySemester(string $semester)
     {
-        if (!preg_match('/^[WS]S\d{4}$/', $semester)) {
-            return response('Not a valid semester identifier', 400);
-        }
-
         $serials = Serial::where('semester', $semester)->with('image')->get();
         foreach ($serials as $serial) {
             $firstScreening = Screening::where('serial_id', $serial->id)->orderBy('date')->first();

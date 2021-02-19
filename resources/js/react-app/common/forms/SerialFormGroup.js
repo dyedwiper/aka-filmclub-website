@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SerialSemesterSelect from './SerialSemesterSelect';
+import SemesterSelectForSerialForm from './SemesterSelectForSerialForm';
 
 export default function SerialFormGroup({ serial }) {
     return (
@@ -23,7 +23,7 @@ export default function SerialFormGroup({ serial }) {
             </LabelStyled>
             <LabelStyled>
                 Semester
-                <SerialSemesterSelect defaultSemester={serial && serial.semester} />
+                <SemesterSelectForSerialForm defaultSemester={serial && serial.semester} />
             </LabelStyled>
         </SerialFormGroupStyled>
     );

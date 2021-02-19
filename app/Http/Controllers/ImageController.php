@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
+use App\Utils\ValidationUtils;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -35,7 +36,7 @@ class ImageController extends Controller
             ['image' => 'Bild']
         );
         if ($validator->fails()) {
-            throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()], 422));
+            ValidationUtils::handleValidationError($validator);
         }
 
         switch ($request->assocType) {

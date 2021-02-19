@@ -34,10 +34,6 @@ class ScreeningController extends Controller
 
     public function GetScreeningsBySemester(string $semester)
     {
-        if (!preg_match('/^[WS]S\d{4}$/', $semester)) {
-            return response('Not a valid semester identifier', 400);
-        }
-
         $season = substr($semester, 0, 2);
         $year = intval(substr($semester, 2, 4));
 
