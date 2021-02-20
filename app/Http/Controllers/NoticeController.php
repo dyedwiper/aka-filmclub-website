@@ -22,7 +22,6 @@ class NoticeController extends Controller
     {
         $notices = Notice
             ::orderByDesc('date')
-            ->orderByDesc('updated_at')
             ->orderByDesc('created_at')
             ->paginate(5);
 
@@ -69,5 +68,14 @@ class NoticeController extends Controller
 
         $notice->save();
         return $notice;
+    }
+
+    public function UpdateUuids()
+    {
+        $notices = Notice::all();
+        foreach ($notices as $notice) {
+            $notice->uuid = uniqid();
+            $notice->save();
+        }
     }
 }

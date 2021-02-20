@@ -79,8 +79,10 @@ class SerialController extends Controller
     {
         $serials = Serial::all();
         foreach ($serials as $serial) {
-            $serial->uuid = uniqid();
-            $serial->save();
+            if (!$serial->uuid) {
+                $serial->uuid = uniqid();
+                $serial->save();
+            }
         }
     }
 

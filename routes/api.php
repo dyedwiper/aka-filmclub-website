@@ -4,6 +4,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SerialController;
+use App\Http\Controllers\UserController;
 use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
@@ -78,6 +79,10 @@ Route::prefix('notices')->group(function () {
         NoticeController::class, 'GetNoticeByUuid'
     ]);
 
+    Route::get('/update_uuids', [
+        NoticeController::class, 'UpdateUuids'
+    ]);
+
     Route::post('/', [
         NoticeController::class, 'PostNotice'
     ]);
@@ -132,5 +137,11 @@ Route::prefix('images')->group(function () {
 
     Route::patch('/', [
         ImageController::class, 'PatchImage'
+    ]);
+});
+
+Route::prefix('users')->group(function () {
+    Route::post('/login', [
+        UserController::class, 'PostLogin'
     ]);
 });
