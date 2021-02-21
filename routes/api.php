@@ -141,6 +141,10 @@ Route::prefix('images')->group(function () {
 });
 
 Route::prefix('users')->group(function () {
+    Route::get('/', [
+        UserController::class, 'GetUsers'
+    ]);
+
     Route::post('/login', [
         UserController::class, 'PostLogin'
     ]);

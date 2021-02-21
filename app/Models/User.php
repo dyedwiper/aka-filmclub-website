@@ -11,6 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'phpbb_users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -18,7 +20,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'password',
+        'user_password',
     ];
 
     /**
@@ -27,6 +29,16 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
+        'user_password',
     ];
+
+    /**
+     * Get the password for the user.
+     *
+     * @return string
+     */
+    public function getAuthPassword()
+    {
+        return $this->user_password;
+    }
 }
