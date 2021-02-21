@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import magicGif from '../assets/ahahah.gif';
 import { PageStyled } from '../common/styledElements';
 import { getCsrfCookie, postLogin } from '../utils/userServices';
 
 export default function LoginPage() {
+    const [didLoginFail, setDidLoginFail] = useState(false);
+
     return (
         <PageStyled>
             <FormStyled onSubmit={handleSubmit}>
@@ -13,10 +16,11 @@ export default function LoginPage() {
                 </LabelStyled>
                 <LabelStyled>
                     Passwort
-                    <InputStyled name="password" />
+                    <InputStyled name="password" type="password" />
                 </LabelStyled>
                 <ButtonStyled>Login</ButtonStyled>
             </FormStyled>
+            {didLoginFail && <ImageStyled src={magicGif} alt="ah ah ah you didn't say the magic word"></ImageStyled>}
         </PageStyled>
     );
 
@@ -30,6 +34,9 @@ export default function LoginPage() {
                     console.log(res.data);
                 })
                 .catch((err) => {
+                    if (err.response.status === 403) {
+                        setDidLoginFail(true);
+                    }
                     console.log(err);
                 });
         });
@@ -49,4 +56,11 @@ const InputStyled = styled.input``;
 const ButtonStyled = styled.button`
     display: block;
     margin: 10px auto;
+`;
+
+const ImageStyled = styled.img`
+    display: block;
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
 `;

@@ -6901,9 +6901,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/userServices */ "./resources/js/react-app/utils/userServices.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _assets_ahahah_gif__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/ahahah.gif */ "./resources/js/react-app/assets/ahahah.gif");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/userServices */ "./resources/js/react-app/utils/userServices.js");
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -6911,8 +6926,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function LoginPage() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormStyled, {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      didLoginFail = _useState2[0],
+      setDidLoginFail = _useState2[1];
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormStyled, {
       onSubmit: handleSubmit,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Name", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
@@ -6920,43 +6940,55 @@ function LoginPage() {
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Passwort", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
-          name: "password"
+          name: "password",
+          type: "password"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
         children: "Login"
       })]
-    })
+    }), didLoginFail && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
+      src: _assets_ahahah_gif__WEBPACK_IMPORTED_MODULE_2__.default,
+      alt: "ah ah ah you didn't say the magic word"
+    })]
   });
 
   function handleSubmit(event) {
     event.preventDefault();
     var form = event.currentTarget;
     var formData = new FormData(form);
-    (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_3__.getCsrfCookie)().then(function () {
-      (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_3__.postLogin)(formData).then(function (res) {
+    (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_4__.getCsrfCookie)().then(function () {
+      (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_4__.postLogin)(formData).then(function (res) {
         console.log(res.data);
       })["catch"](function (err) {
+        if (err.response.status === 403) {
+          setDidLoginFail(true);
+        }
+
         console.log(err);
       });
     });
   }
 }
-var FormStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.form.withConfig({
+var FormStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.form.withConfig({
   displayName: "LoginPage__FormStyled",
   componentId: "wwjauh-0"
 })([""]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.label.withConfig({
   displayName: "LoginPage__LabelStyled",
   componentId: "wwjauh-1"
 })(["display:block;width:250px;margin:10px auto;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.input.withConfig({
   displayName: "LoginPage__InputStyled",
   componentId: "wwjauh-2"
 })([""]);
-var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.button.withConfig({
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.button.withConfig({
   displayName: "LoginPage__ButtonStyled",
   componentId: "wwjauh-3"
 })(["display:block;margin:10px auto;"]);
+var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
+  displayName: "LoginPage__ImageStyled",
+  componentId: "wwjauh-4"
+})(["display:block;width:90%;max-width:400px;margin:20px auto;"]);
 
 /***/ }),
 
@@ -8778,6 +8810,21 @@ function getCsrfCookie() {
 function postLogin(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users/login', data);
 }
+
+/***/ }),
+
+/***/ "./resources/js/react-app/assets/ahahah.gif":
+/*!**************************************************!*\
+  !*** ./resources/js/react-app/assets/ahahah.gif ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/ahahah.gif?5c4875b4e288c9165b42cfa5019a840e");
 
 /***/ }),
 
