@@ -14,10 +14,9 @@ class CreateSessionsTable extends Migration
     public function up()
     {
         Schema::create('sessions', function (Blueprint $table) {
-            $table->string('id')->primary();
+            // Die id darf höchstens 191 Zeichen lang sein, sonst gibt es einen SQL-Fehler wegen des primary Index.
+            $table->string('id', 191)->primary();
             $table->foreignId('user_id')->nullable()->index();
-            // $table->unsignedBigInteger('user_id');
-            // $table->foreign('user_id')->references('user_id')->on('phpbb_users');
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
             $table->text('payload');
