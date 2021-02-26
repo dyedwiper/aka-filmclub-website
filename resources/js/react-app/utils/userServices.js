@@ -4,6 +4,10 @@ export function getUsers() {
     return axios.get('/api/users');
 }
 
+export function getCurrentUser() {
+    return axios.get('/api/users/currentUser');
+}
+
 export function getCsrfCookie() {
     return axios.get('/sanctum/csrf-cookie');
 }

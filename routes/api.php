@@ -145,6 +145,10 @@ Route::prefix('users')->group(function () {
         UserController::class, 'GetUsers'
     ]);
 
+    Route::get('/currentUser', [
+        UserController::class, 'GetCurrentUser'
+    ]);
+
     Route::post('/login', [
         UserController::class, 'PostLogin'
     ]);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from './common/Footer';
@@ -27,8 +27,19 @@ import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
+import { getCurrentUser } from './utils/userServices';
 
 export default function App() {
+    useEffect(() => {
+        getCurrentUser()
+            .then((res) => {
+                console.log(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+
     return (
         <AppStyled>
             <Router>
