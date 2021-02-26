@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             // Aber 32 Zeichen sind auch genug.
             $table->string('username', 32)->unique();
             $table->string('password');
-            $table->integer('level')->default(1);
-            $table->integer('status')->default(1);
+            $table->integer('level')->default(0);
+            $table->integer('status')->default(0);
             $table->string('email');
             $table->string('realname')->nullable();
             $table->string('address')->nullable();

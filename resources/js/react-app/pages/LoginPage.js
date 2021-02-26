@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import magicGif from '../assets/ahahah.gif';
 import { PageStyled } from '../common/styledElements';
+import UserContext from '../UserContext';
 import { getCsrfCookie, postLogin } from '../utils/userServices';
 
 export default function LoginPage() {
     const [didLoginFail, setDidLoginFail] = useState(false);
+
+    const { setUser } = useContext(UserContext);
 
     let history = useHistory();
 
@@ -34,8 +37,9 @@ export default function LoginPage() {
         getCsrfCookie().then(() => {
             postLogin(formData)
                 .then((res) => {
-                    history.push('/intern');
                     console.log(res.data);
+                    setUser(res.data);
+                    history.push('/intern');
                 })
                 .catch((err) => {
                     if (err.response.status === 403) {

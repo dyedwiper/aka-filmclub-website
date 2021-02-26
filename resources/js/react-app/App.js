@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from './common/Footer';
 import Header from './common/Header';
+import PrivateRoute from './common/PrivateRoute';
 import AboutPage from './pages/AboutPage';
 import ArchivePage from './pages/ArchivePage';
 import ErrorPage from './pages/ErrorPage';
@@ -18,6 +19,7 @@ import EditScreeningPage from './pages/intern/EditScreeningPage';
 import EditSerialPage from './pages/intern/EditSerialPage';
 import InternPage from './pages/intern/InternPage';
 import UsersPage from './pages/intern/UsersPage';
+import LoadingPage from './pages/LoadingPage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
 import NoticesPage from './pages/NoticesPage';
@@ -27,100 +29,116 @@ import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
+import UserContext from './UserContext';
 import { getCurrentUser } from './utils/userServices';
 
 export default function App() {
+    const [user, setUser] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
+
     useEffect(() => {
         getCurrentUser()
             .then((res) => {
                 console.log(res.data);
+                setUser(res.data);
+                setIsLoading(false);
             })
             .catch((err) => {
                 console.log(err);
+                setIsLoading(false);
             });
     }, []);
 
+    if (isLoading)
+        return (
+            <AppStyled>
+                <LoadingPage />
+            </AppStyled>
+        );
+
     return (
         <AppStyled>
-            <Router>
-                <Header />
-                <Switch>
-                    <Route exact path="/">
-                        <HomePage />
-                    </Route>
-                    <Route exact path="/news">
-                        <NoticesPage />
-                    </Route>
-                    <Route exact path="/program">
-                        <ProgramPage />
-                    </Route>
-                    <Route exact path="/program/overview">
-                        <ProgramOverviewPage />
-                    </Route>
-                    <Route exact path="/program/archive">
-                        <ArchivePage />
-                    </Route>
-                    <Route path="/screening">
-                        <ScreeningPage />
-                    </Route>
-                    <Route exact path="/program/serials">
-                        <SerialsPage />
-                    </Route>
-                    <Route path="/serial">
-                        <SerialPage />
-                    </Route>
-                    <Route exact path="/about">
-                        <AboutPage />
-                    </Route>
-                    <Route exact path="/faqs">
-                        <FaqsPage />
-                    </Route>
-                    <Route exact path="/press">
-                        <PressReviewPage />
-                    </Route>
-                    <Route exact path="/login">
-                        <LoginPage />
-                    </Route>
-                    <Route exact path="/intern">
-                        <InternPage />
-                    </Route>
-                    <Route path="/intern/users">
-                        <UsersPage />
-                    </Route>
-                    <Route exact path="/intern/addSerial">
-                        <AddSerialPage />
-                    </Route>
-                    <Route path="/intern/editSerial">
-                        <EditSerialPage />
-                    </Route>
-                    <Route exact path="/intern/addScreening">
-                        <AddScreeningPage />
-                    </Route>
-                    <Route path="/intern/editScreening">
-                        <EditScreeningPage />
-                    </Route>
-                    <Route exact path="/intern/addNotice">
-                        <AddNoticePage />
-                    </Route>
-                    <Route path="/intern/editNotice">
-                        <EditNoticePage />
-                    </Route>
-                    <Route path="/intern/addImage">
-                        <AddImagePage />
-                    </Route>
-                    <Route path="/intern/editImage">
-                        <EditImagePage />
-                    </Route>
-                    <Route path="/error">
-                        <ErrorPage />
-                    </Route>
-                    <Route path="/404">
-                        <NotFoundPage />
-                    </Route>
-                    <Redirect to="/404" />
-                </Switch>
-                <Footer />
-            </Router>
+            <UserContext.Provider value={{ user, setUser }}>
+                <Router>
+                    <Header />
+                    <Switch>
+                        <Route exact path="/">
+                            <HomePage />
+                        </Route>
+                        <Route exact path="/news">
+                            <NoticesPage />
+                        </Route>
+                        <Route exact path="/program">
+                            <ProgramPage />
+                        </Route>
+                        <Route exact path="/program/overview">
+                            <ProgramOverviewPage />
+                        </Route>
+                        <Route exact path="/program/archive">
+                            <ArchivePage />
+                        </Route>
+                        <Route path="/screening">
+                            <ScreeningPage />
+                        </Route>
+                        <Route exact path="/program/serials">
+                            <SerialsPage />
+                        </Route>
+                        <Route path="/serial">
+                            <SerialPage />
+                        </Route>
+                        <Route exact path="/about">
+                            <AboutPage />
+                        </Route>
+                        <Route exact path="/faqs">
+                            <FaqsPage />
+                        </Route>
+                        <Route exact path="/press">
+                            <PressReviewPage />
+                        </Route>
+                        <Route exact path="/login">
+                            <LoginPage />
+                        </Route>
+                        <PrivateRoute exact path="/intern">
+                            <InternPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/users">
+                            <UsersPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/addSerial">
+                            <AddSerialPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editSerial">
+                            <EditSerialPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/addScreening">
+                            <AddScreeningPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editScreening">
+                            <EditScreeningPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/addNotice">
+                            <AddNoticePage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editNotice">
+                            <EditNoticePage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/addImage">
+                            <AddImagePage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editImage">
+                            <EditImagePage />
+                        </PrivateRoute>
+                        <Route path="/error">
+                            <ErrorPage />
+                        </Route>
+                        <Route path="/404">
+                            <NotFoundPage />
+                        </Route>
+                        <Redirect to="/404" />
+                    </Switch>
+                    <Footer />
+                </Router>
+            </UserContext.Provider>
         </AppStyled>
     );
 }

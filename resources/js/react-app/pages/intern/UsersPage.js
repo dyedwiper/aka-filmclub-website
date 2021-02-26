@@ -14,7 +14,7 @@ export default function UsersPage() {
     return (
         <PageStyled>
             {users.map((user) => (
-                <div key={user.user_id}>{user.username}</div>
+                <div key={user.id}>{user.username}</div>
             ))}
         </PageStyled>
     );
