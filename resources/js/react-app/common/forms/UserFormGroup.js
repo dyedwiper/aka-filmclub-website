@@ -9,43 +9,44 @@ export default function UserFormGroup({ user }) {
         <UserFormGroupStyled>
             <LabelStyled>
                 <LabelTextStyled>Name</LabelTextStyled>
-                <InputStyled name="realname" defaultValue={user.realname} />
+                <InputStyled name="realname" defaultValue={user && user.realname} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Login</LabelTextStyled>
-                <InputStyled name="username" defaultValue={user.username} />
+                <InputStyled name="username" defaultValue={user && user.username} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>E-Mail-Adresse</LabelTextStyled>
-                <InputStyled name="email" defaultValue={user.email} />
+                <InputStyled name="email" defaultValue={user && user.email} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Telefonnummer</LabelTextStyled>
-                <InputStyled name="phone" defaultValue={user.phone} />
+                <InputStyled name="phone" defaultValue={user && user.phone} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Adresse</LabelTextStyled>
-                <InputStyled name="address" defaultValue={user.address} />
+                <InputStyled name="address" defaultValue={user && user.address} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Postleitzahl</LabelTextStyled>
-                <InputStyled name="zipcode" defaultValue={user.zipcode} />
+                <InputStyled name="zipcode" defaultValue={user && user.zipcode} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Stadt</LabelTextStyled>
-                <InputStyled name="city" defaultValue={user.city} />
+                <InputStyled name="city" defaultValue={user && user.city} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Registriert</LabelTextStyled>
-                <InputStyled disabled defaultValue={formatToDateTimeString(user.created_at)} />
+                <InputStyled disabled defaultValue={user && formatToDateTimeString(user.created_at)} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Berechtigungen</LabelTextStyled>
-                <UserLevelSelect defaultLevel={user.level} />
+                <UserLevelSelect defaultLevel={user && user.level} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Status</LabelTextStyled>
-                <UserStatusSelect defaultStatus={user.status} />
+                <UserStatusSelect defaultStatus={user && 
+                    user.status} />
             </LabelStyled>
         </UserFormGroupStyled>
     );

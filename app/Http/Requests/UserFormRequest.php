@@ -26,12 +26,12 @@ class UserFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|alpha|max:32',
+            'username' => 'required|unique:users|alpha|max:32',
             'realname' => 'required|max:255',
-            'email' => 'required|max:255',
+            'email' => 'required|email|max:255',
             'phone' => 'max:255',
             'address' => 'max:255',
-            'zipcode' => 'integer',
+            'zipcode' => 'nullable|integer',
             'city' => 'max:255',
             'level' => 'required|integer',
             'status' => 'required|integer',

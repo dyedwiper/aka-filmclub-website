@@ -13,6 +13,7 @@ import AddImagePage from './pages/intern/AddImagePage';
 import AddNoticePage from './pages/intern/AddNoticePage';
 import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
+import AddUserPage from './pages/intern/AddUserPage';
 import EditImagePage from './pages/intern/EditImagePage';
 import EditNoticePage from './pages/intern/EditNoticePage';
 import EditScreeningPage from './pages/intern/EditScreeningPage';
@@ -105,7 +106,10 @@ export default function App() {
                         <PrivateRoute exact path="/intern/users">
                             <UsersPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/user">
+                        <PrivateRoute exact path="/intern/addUser">
+                            <AddUserPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editUser">
                             <EditUserPage />
                         </PrivateRoute>
                         <PrivateRoute exact path="/intern/addSerial">

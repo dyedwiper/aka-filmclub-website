@@ -15,53 +15,79 @@ export default function UsersPage() {
 
     return (
         <PageStyled>
-            <ListsContainer>
-                <ListStyled>
-                    {users
-                        .filter((user) => user.status == 0)
-                        .sort((userA, userB) => (userA.realname < userB.realname ? -1 : 1))
-                        .map((user) => (
-                            <ListItemStyled key={user.id}>
-                                <LinkStyled to={'/intern/user/' + user.uuid}>{user.realname}</LinkStyled>
-                            </ListItemStyled>
-                        ))}
-                </ListStyled>
-                <ListStyled>
-                    {users
-                        .filter((user) => user.status == 1)
-                        .sort((userA, userB) => (userA.realname < userB.realname ? -1 : 1))
-                        .map((user) => (
-                            <ListItemStyled key={user.id}>
-                                <LinkStyled to={'/intern/user/' + user.uuid}>{user.realname}</LinkStyled>
-                            </ListItemStyled>
-                        ))}
-                </ListStyled>
-                <ListStyled>
-                    {users
-                        .filter((user) => user.status == 2)
-                        .sort((userA, userB) => (userA.realname < userB.realname ? -1 : 1))
-                        .map((user) => (
-                            <ListItemStyled key={user.id}>
-                                <LinkStyled to={'/intern/user/' + user.uuid}>{user.realname}</LinkStyled>
-                            </ListItemStyled>
-                        ))}
-                </ListStyled>
-            </ListsContainer>
+            <HeadlineStyled>Mitglieder verwalten</HeadlineStyled>
+            <LinkStyled to="/intern/addUser">Neues Mitglied anlegen</LinkStyled>
+            <GridContainerStyled>
+                <ListContainerStyled>
+                    <SubheadlineStyled>Aktiv</SubheadlineStyled>
+                    <ListStyled>
+                        {users
+                            .filter((user) => user.status == 0)
+                            .sort((userA, userB) => (userA.realname < userB.realname ? -1 : 1))
+                            .map((user) => (
+                                <ListItemStyled key={user.id}>
+                                    <LinkStyled to={'/intern/editUser/' + user.uuid}>{user.realname}</LinkStyled>
+                                </ListItemStyled>
+                            ))}
+                    </ListStyled>
+                </ListContainerStyled>
+                <ListContainerStyled>
+                    <SubheadlineStyled>Pausierend/Unklar</SubheadlineStyled>
+                    <ListStyled>
+                        {users
+                            .filter((user) => user.status == 1)
+                            .sort((userA, userB) => (userA.realname < userB.realname ? -1 : 1))
+                            .map((user) => (
+                                <ListItemStyled key={user.id}>
+                                    <LinkStyled to={'/intern/editUser/' + user.uuid}>{user.realname}</LinkStyled>
+                                </ListItemStyled>
+                            ))}
+                    </ListStyled>
+                </ListContainerStyled>
+                <ListContainerStyled>
+                    <SubheadlineStyled>Alumni</SubheadlineStyled>
+                    <ListStyled>
+                        {users
+                            .filter((user) => user.status == 2)
+                            .sort((userA, userB) => (userA.realname < userB.realname ? -1 : 1))
+                            .map((user) => (
+                                <ListItemStyled key={user.id}>
+                                    <LinkStyled to={'/intern/editUser/' + user.uuid}>{user.realname}</LinkStyled>
+                                </ListItemStyled>
+                            ))}
+                    </ListStyled>
+                </ListContainerStyled>
+            </GridContainerStyled>
         </PageStyled>
     );
 }
 
-const ListsContainer = styled.div`
+const HeadlineStyled = styled.h2``;
+
+const GridContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-gap: 40px;
 `;
 
+const ListContainerStyled = styled.div``;
+
+const SubheadlineStyled = styled.h3``;
+
 const ListStyled = styled.ul`
-    height: 300px;
     overflow: auto;
-    margin: 0 20px;
+    height: 300px;
+    padding: 5px;
+    border: solid 3px black;
+    border-radius: 5px;
 `;
 
 const ListItemStyled = styled.li``;
 
-const LinkStyled = styled(Link)``;
+const LinkStyled = styled(Link)`
+    display: inline-block;
+    overflow: hidden;
+    max-width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+`;

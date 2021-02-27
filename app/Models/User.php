@@ -20,9 +20,17 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'uuid',
         'username',
         'password',
-        // 'user_password',
+        'realname',
+        'email',
+        'phone',
+        'address',
+        'zipcode',
+        'city',
+        'level',
+        'status',
     ];
 
     /**
@@ -32,17 +40,5 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        // 'user_password',
     ];
-
-    // public function getAuthPassword()
-    // {
-    //     return $this->user_password;
-    // }
-
-    // public function getAuthIdentifierName()
-    // {
-    //     Log::channel('personal')->debug($this->user_id);
-    //     return $this->user_id;
-    // }
 }
