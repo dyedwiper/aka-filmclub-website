@@ -1,29 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import UserLevelSelect from '../../common/forms/UserLevelSelect';
-import UserStatusSelect from '../../common/forms/UserStatusSelect';
-import { PageStyled } from '../../common/styledElements';
 import { formatToDateTimeString } from '../../utils/dateFormatters';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { getUserByUuid } from '../../utils/userServices';
-import LoadingPage from '../LoadingPage';
+import UserLevelSelect from './UserLevelSelect';
+import UserStatusSelect from './UserStatusSelect';
 
-export default function UserPage() {
-    const [user, setUser] = useState({});
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        const uuid = getLastParameterFromPath();
-        getUserByUuid(uuid).then((res) => {
-            setUser(res.data);
-            setIsLoading(false);
-        });
-    }, []);
-
-    if (isLoading) return <LoadingPage />;
-
+export default function UserFormGroup({ user }) {
     return (
-        <PageStyled>
+        <UserFormGroupStyled>
             <LabelStyled>
                 <LabelTextStyled>Name</LabelTextStyled>
                 <InputStyled name="realname" defaultValue={user.realname} />
@@ -37,7 +20,7 @@ export default function UserPage() {
                 <InputStyled name="email" defaultValue={user.email} />
             </LabelStyled>
             <LabelStyled>
-                <LabelTextStyled>Telefon</LabelTextStyled>
+                <LabelTextStyled>Telefonnummer</LabelTextStyled>
                 <InputStyled name="phone" defaultValue={user.phone} />
             </LabelStyled>
             <LabelStyled>
@@ -64,9 +47,11 @@ export default function UserPage() {
                 <LabelTextStyled>Status</LabelTextStyled>
                 <UserStatusSelect defaultStatus={user.status} />
             </LabelStyled>
-        </PageStyled>
+        </UserFormGroupStyled>
     );
 }
+
+const UserFormGroupStyled = styled.div``;
 
 const LabelStyled = styled.label`
     display: block;

@@ -23,3 +23,7 @@ export function postLogin(data) {
 export function getLogout() {
     return axios.get('/api/users/logout');
 }
+
+export function postUser(data) {
+    return axios.post('/api/users', data);
+}

@@ -176,4 +176,12 @@ Route::prefix('users')->group(function () {
     Route::get('/updateStati', [
         UserController::class, 'UpdateStati'
     ]);
+
+    Route::post('/', [
+        UserController::class, 'PostUser'
+    ]);
+
+    Route::patch('/', [
+        UserController::class, 'PatchUser'
+    ]);
 });
