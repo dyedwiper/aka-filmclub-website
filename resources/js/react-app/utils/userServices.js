@@ -8,6 +8,10 @@ export function getCurrentUser() {
     return axios.get('/api/users/currentUser');
 }
 
+export function getUserByUuid(uuid) {
+    return axios.get('/api/users/uuid/' + uuid);
+}
+
 export function getCsrfCookie() {
     return axios.get('/sanctum/csrf-cookie');
 }

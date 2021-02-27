@@ -153,6 +153,10 @@ Route::prefix('users')->group(function () {
         UserController::class, 'GetCurrentUser'
     ]);
 
+    Route::get('/uuid/{uuid}', [
+        UserController::class, 'GetUserByUuid'
+    ]);
+
     Route::post('/login', [
         UserController::class, 'PostLogin'
     ]);

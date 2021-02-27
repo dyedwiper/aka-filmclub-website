@@ -26,6 +26,15 @@ export const serialSelectStyles = {
     }),
 };
 
+export const userStatusSelectStyles = {
+    option: customOptionStyles,
+    container: (provided) => ({
+        ...provided,
+        display: 'inline-block',
+        width: '300px',
+    }),
+};
+
 const customOptionStyles = (provided, state) => ({
     ...provided,
     backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
