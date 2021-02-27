@@ -8604,6 +8604,8 @@ function InternPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Interner Bereich"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubheadlineStyled, {
+      children: "Sachen anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
       to: "/intern/addNotice",
       children: "News anlegen"
@@ -8613,6 +8615,11 @@ function InternPage() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
       to: "/intern/addScreening",
       children: "Vorf\xFChrung anlegen"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubheadlineStyled, {
+      children: "Mitglieder"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+      to: "/intern/users",
+      children: "Mitglieder verwalten"
     })]
   });
 }
@@ -8620,9 +8627,13 @@ var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h2.w
   displayName: "InternPage__HeadlineStyled",
   componentId: "tgyx37-0"
 })([""]);
+var SubheadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h3.withConfig({
+  displayName: "InternPage__SubheadlineStyled",
+  componentId: "tgyx37-1"
+})([""]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link).withConfig({
   displayName: "InternPage__LinkStyled",
-  componentId: "tgyx37-1"
+  componentId: "tgyx37-2"
 })(["display:block;"]);
 
 /***/ }),
@@ -8640,9 +8651,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/userServices */ "./resources/js/react-app/utils/userServices.js");
 
+
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    height: 300px;\n    overflow: auto;\n    margin: 0 20px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    display: grid;\n    grid-template-columns: 1fr 1fr 1fr;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -8659,6 +8704,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function UsersPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -8671,13 +8717,44 @@ function UsersPage() {
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
-    children: users.map(function (user) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-        children: user.username
-      }, user.id);
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListsContainer, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
+        children: users.filter(function (user) {
+          return user.status == 0;
+        }).sort(function (userA, userB) {
+          return userA.realname < userB.realname ? -1 : 1;
+        }).map(function (user) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListItemStyled, {
+            children: user.realname
+          }, user.id);
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
+        children: users.filter(function (user) {
+          return user.status == 1;
+        }).sort(function (userA, userB) {
+          return userA.realname < userB.realname ? -1 : 1;
+        }).map(function (user) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListItemStyled, {
+            children: user.realname
+          }, user.id);
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
+        children: users.filter(function (user) {
+          return user.status == 2;
+        }).sort(function (userA, userB) {
+          return userA.realname < userB.realname ? -1 : 1;
+        }).map(function (user) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListItemStyled, {
+            children: user.realname
+          }, user.id);
+        })
+      })]
     })
   });
 }
+var ListsContainer = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div(_templateObject());
+var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.ul(_templateObject2());
+var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.li(_templateObject3());
 
 /***/ }),
 

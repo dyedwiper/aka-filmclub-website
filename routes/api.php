@@ -145,6 +145,10 @@ Route::prefix('users')->group(function () {
         UserController::class, 'GetUsers'
     ]);
 
+    Route::get('/phpbb', [
+        UserController::class, 'GetPhpbbUsers'
+    ]);
+
     Route::get('/currentUser', [
         UserController::class, 'GetCurrentUser'
     ]);
@@ -159,5 +163,13 @@ Route::prefix('users')->group(function () {
 
     Route::get('/update_uuids', [
         UserController::class, 'UpdateUuids'
+    ]);
+
+    Route::get('/updateLevels', [
+        UserController::class, 'UpdateLevels'
+    ]);
+
+    Route::get('/updateStati', [
+        UserController::class, 'UpdateStati'
     ]);
 });
