@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../../common/styledElements';
+import UserContext from '../../UserContext';
 import { getUsers } from '../../utils/userServices';
 
 export default function UsersPage() {
     const [users, setUsers] = useState([]);
+
+    const { user: loggedInUser } = useContext(UserContext);
 
     useEffect(() => {
         getUsers().then((res) => {
@@ -16,7 +19,8 @@ export default function UsersPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Mitglieder verwalten</HeadlineStyled>
-            <LinkStyled to="/intern/addUser">Neues Mitglied anlegen</LinkStyled>
+            {/* Only display link when current user is admin */}
+            {loggedInUser.level === 2 && <LinkStyled to="/intern/addUser">Neues Mitglied anlegen</LinkStyled>}
             <GridContainerStyled>
                 <ListContainerStyled>
                     <SubheadlineStyled>Aktiv</SubheadlineStyled>

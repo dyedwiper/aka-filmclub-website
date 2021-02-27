@@ -26,7 +26,7 @@ class UserFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|unique:users|alpha|max:32',
+            'username' => 'required|alpha|max:32',
             'realname' => 'required|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'max:255',
@@ -48,7 +48,7 @@ class UserFormRequest extends FormRequest
             'address' => 'Adresse',
             'zipcode' => 'Postleitzahl',
             'city' => 'Stadt',
-            'level' => 'Berechtigung',
+            'level' => 'Berechtigungslevel',
             'status' => 'Status',
         ];
     }
