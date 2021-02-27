@@ -5212,14 +5212,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _UserContext__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../UserContext */ "./resources/js/react-app/UserContext.js");
+/* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/userServices */ "./resources/js/react-app/utils/userServices.js");
+
+
 
 
 
 
 
 function Header() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_UserContext__WEBPACK_IMPORTED_MODULE_2__.default),
+      user = _useContext.user,
+      setUser = _useContext.setUser;
+
+  var isLoggedIn = Object.keys(user).length !== 0;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(HeaderStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Akademischer Filmclub an der Universit\xE4t Freiburg e.V."
@@ -5261,15 +5270,12 @@ function Header() {
             children: "Pressespiegel"
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
+      }), isLoggedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
           to: "/intern",
           children: "Intern"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SubNavStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-            to: "/login",
-            children: "Login"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
             to: "/intern/users",
             children: "Mitglieder"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
@@ -5281,45 +5287,62 @@ function Header() {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
             to: "/intern/addScreening",
             children: "Vorf\xFChrung anlegen"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+            to: "/",
+            onClick: handleLogout,
+            children: "Logout"
           })]
         })]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DropdownContainerStyled, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
+          to: "/login",
+          children: "Login"
+        })
       })]
     })]
   });
+
+  function handleLogout() {
+    (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_3__.getLogout)().then(function () {
+      setUser({});
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }
 }
-var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.header.withConfig({
+var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.header.withConfig({
   displayName: "Header__HeaderStyled",
   componentId: "d7im2b-0"
 })(["position:fixed;top:0;z-index:10;display:grid;grid-template-columns:150px 1fr;height:120px;width:100%;padding:20px 100px;background-color:white;"]);
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.h1.withConfig({
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h1.withConfig({
   displayName: "Header__HeadlineStyled",
   componentId: "d7im2b-1"
 })(["position:fixed;visibility:hidden;"]);
-var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link).withConfig({
+var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link).withConfig({
   displayName: "Header__LinkStyled",
   componentId: "d7im2b-2"
 })(["height:100%;"]);
-var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.img.withConfig({
+var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
   displayName: "Header__LogoStyled",
   componentId: "d7im2b-3"
 })(["height:80px;"]);
-var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.nav.withConfig({
+var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.nav.withConfig({
   displayName: "Header__NavStyled",
   componentId: "d7im2b-4"
 })(["padding:20px;"]);
-var DropdownContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
+var DropdownContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "Header__DropdownContainerStyled",
   componentId: "d7im2b-5"
 })(["display:inline-block;position:relative;&:hover div{display:block;}"]);
-var NavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.NavLink).withConfig({
+var NavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.NavLink).withConfig({
   displayName: "Header__NavLinkStyled",
   componentId: "d7im2b-6"
 })(["margin-right:20px;font-size:2rem;font-weight:bold;"]);
-var SubNavStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
+var SubNavStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "Header__SubNavStyled",
   componentId: "d7im2b-7"
 })(["display:none;position:absolute;background-color:var(--aka-secondary-color);"]);
-var SubNavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link).withConfig({
+var SubNavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link).withConfig({
   displayName: "Header__SubNavLinkStyled",
   componentId: "d7im2b-8"
 })(["display:block;font-size:1.5em;font-weight:bold;"]);
@@ -9028,7 +9051,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getUsers": () => /* binding */ getUsers,
 /* harmony export */   "getCurrentUser": () => /* binding */ getCurrentUser,
 /* harmony export */   "getCsrfCookie": () => /* binding */ getCsrfCookie,
-/* harmony export */   "postLogin": () => /* binding */ postLogin
+/* harmony export */   "postLogin": () => /* binding */ postLogin,
+/* harmony export */   "getLogout": () => /* binding */ getLogout
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -9044,6 +9068,9 @@ function getCsrfCookie() {
 }
 function postLogin(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users/login', data);
+}
+function getLogout() {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/logout');
 }
 
 /***/ }),

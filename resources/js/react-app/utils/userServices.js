@@ -15,3 +15,7 @@ export function getCsrfCookie() {
 export function postLogin(data) {
     return axios.post('/api/users/login', data);
 }
+
+export function getLogout() {
+    return axios.get('/api/users/logout');
+}

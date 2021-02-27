@@ -152,4 +152,8 @@ Route::prefix('users')->group(function () {
     Route::post('/login', [
         UserController::class, 'PostLogin'
     ]);
+
+    Route::get('/logout', [
+        UserController::class, 'GetLogout'
+    ]);
 });
