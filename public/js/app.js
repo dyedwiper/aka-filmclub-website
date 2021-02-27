@@ -8602,7 +8602,9 @@ __webpack_require__.r(__webpack_exports__);
 
 function InternPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+      children: "Interner Bereich"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
       to: "/intern/addNotice",
       children: "News anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
@@ -8614,9 +8616,13 @@ function InternPage() {
     })]
   });
 }
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h2.withConfig({
+  displayName: "InternPage__HeadlineStyled",
+  componentId: "tgyx37-0"
+})([""]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_3__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link).withConfig({
   displayName: "InternPage__LinkStyled",
-  componentId: "tgyx37-0"
+  componentId: "tgyx37-1"
 })(["display:block;"]);
 
 /***/ }),

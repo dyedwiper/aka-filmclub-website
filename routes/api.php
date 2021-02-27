@@ -156,4 +156,8 @@ Route::prefix('users')->group(function () {
     Route::get('/logout', [
         UserController::class, 'GetLogout'
     ]);
+
+    Route::get('/update_uuids', [
+        UserController::class, 'UpdateUuids'
+    ]);
 });
