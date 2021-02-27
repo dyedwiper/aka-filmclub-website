@@ -1,16 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../../common/styledElements';
+import UserContext from '../../UserContext';
 
 export default function InternPage() {
+    const { user } = useContext(UserContext);
+    const isAuthorized = user.level >= 1;
+
     return (
         <PageStyled>
             <HeadlineStyled>Interner Bereich</HeadlineStyled>
-            <SubheadlineStyled>Sachen anlegen</SubheadlineStyled>
-            <LinkStyled to="/intern/addNotice">News anlegen</LinkStyled>
-            <LinkStyled to="/intern/addSerial">Filmreihe anlegen</LinkStyled>
-            <LinkStyled to="/intern/addScreening">Vorführung anlegen</LinkStyled>
+            {isAuthorized && (
+                <>
+                    <SubheadlineStyled>Sachen anlegen</SubheadlineStyled>
+                    <LinkStyled to="/intern/addNotice">News anlegen</LinkStyled>
+                    <LinkStyled to="/intern/addSerial">Filmreihe anlegen</LinkStyled>
+                    <LinkStyled to="/intern/addScreening">Vorführung anlegen</LinkStyled>
+                </>
+            )}
             <SubheadlineStyled>Mitglieder</SubheadlineStyled>
             <LinkStyled to="/intern/users">Mitglieder verwalten</LinkStyled>
         </PageStyled>

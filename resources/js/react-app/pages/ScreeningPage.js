@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import { STORAGE_FOLDER } from '../constants';
+import UserContext from '../UserContext';
 import { formatToDateTimeString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getScreeningByUuid } from '../utils/screeningServices';
@@ -12,6 +13,9 @@ export default function ScreeningPage() {
     const [screening, setScreening] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [noScreeningFound, setNoScreeningFound] = useState(false);
+
+    const { user } = useContext(UserContext);
+    const isAuthorized = user.level >= 1;
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
@@ -89,13 +93,23 @@ export default function ScreeningPage() {
                     </SerialLinkStyled>
                 </SerialContainerStyled>
             )}
-            <HorizontalLineStyled />
-            <EditLinkStyled to={'/intern/editScreening/' + screening.uuid}>Vorführung bearbeiten</EditLinkStyled>
-            <VertialLineStyled> | </VertialLineStyled>
-            {screening.image ? (
-                <EditLinkStyled to={'/intern/editImage/' + screening.image.uuid}>Bild bearbeiten</EditLinkStyled>
-            ) : (
-                <EditLinkStyled to={'/intern/addImage/screening/' + screening.uuid}>Bild hinzufügen</EditLinkStyled>
+            {isAuthorized && (
+                <>
+                    <HorizontalLineStyled />
+                    <EditLinkStyled to={'/intern/editScreening/' + screening.uuid}>
+                        Vorführung bearbeiten
+                    </EditLinkStyled>
+                    <VertialLineStyled> | </VertialLineStyled>
+                    {screening.image ? (
+                        <EditLinkStyled to={'/intern/editImage/' + screening.image.uuid}>
+                            Bild bearbeiten
+                        </EditLinkStyled>
+                    ) : (
+                        <EditLinkStyled to={'/intern/addImage/screening/' + screening.uuid}>
+                            Bild hinzufügen
+                        </EditLinkStyled>
+                    )}
+                </>
             )}
         </PageStyled>
     );

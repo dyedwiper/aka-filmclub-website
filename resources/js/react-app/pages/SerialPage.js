@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import { STORAGE_FOLDER } from '../constants';
+import UserContext from '../UserContext';
 import { formatToDateString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getSerialByUuid } from '../utils/serialServices';
@@ -12,6 +13,9 @@ export default function SerialPage() {
     const [serial, setSerial] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [noSerialFound, SetNoSerialFound] = useState(false);
+
+    const { user } = useContext(UserContext);
+    const isAuthorized = user.level >= 1;
 
     useEffect(() => {
         const serialUuid = getLastParameterFromPath();
@@ -47,13 +51,17 @@ export default function SerialPage() {
                     </ScreeningListItemStyled>
                 ))}
             </ScreeningsListStyled>
-            <HorizontalLineStyled />
-            <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
-            <VertialLineStyled> | </VertialLineStyled>
-            {serial.image ? (
-                <LinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild bearbeiten</LinkStyled>
-            ) : (
-                <LinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</LinkStyled>
+            {isAuthorized && (
+                <>
+                    <HorizontalLineStyled />
+                    <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
+                    <VertialLineStyled> | </VertialLineStyled>
+                    {serial.image ? (
+                        <LinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild bearbeiten</LinkStyled>
+                    ) : (
+                        <LinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</LinkStyled>
+                    )}
+                </>
             )}
         </PageStyled>
     );
