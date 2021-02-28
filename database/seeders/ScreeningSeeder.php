@@ -82,7 +82,7 @@ class ScreeningSeeder extends Seeder
             [
                 'uuid' => uniqid(),
                 'title' => 'Titanic',
-                'date' => date('Y-m-d H:i:s', strtotime('2020-11-22 20:00:00')),
+                'date' => date('Y-m-d H:i:s', strtotime('2021-03-22 20:00:00')),
                 'original_title' => null,
                 'synopsis' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, fugiat nesciunt, ipsum omnis ipsam sequi illum ullam consequuntur nisi enim sunt accusantium quasi natus cupiditate vero saepe consequatur. Doloribus, quas!',
                 'directed_by' => 'James Cameron',
@@ -99,7 +99,7 @@ class ScreeningSeeder extends Seeder
                 'special' => null,
                 'tercet' => 'Reiche Frau und armer Mann verlieben sich. Schiff geht unter. Ganz großes Kino.',
                 'author' => 'maxb',
-                'image' => 'titanic.jpg',
+                'image_id' => null,
             ],
         ]);
     }

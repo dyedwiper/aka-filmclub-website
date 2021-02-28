@@ -7,6 +7,8 @@ use App\Models\Screening;
 use App\Models\Serial;
 use Illuminate\Http\Request;
 use App\Services\ImageService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -73,6 +75,15 @@ class SerialController extends Controller
 
         $serial->save();
         return $serial;
+    }
+
+    public function DeleteSerial(Request $request)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(401);
+        }
+        $serial = Serial::firstWhere('uuid', $request->uuid);
+        $serial->delete();
     }
 
     public function UpdateUuids()

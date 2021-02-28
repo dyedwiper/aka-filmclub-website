@@ -3,9 +3,10 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { AUTH_LEVEL_ADMIN } from '../../constants';
 import UserContext from '../../UserContext';
+import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { HorizontalLineStyled } from '../styledElements';
 
-export default function BaseForm({ children, serviceFunction, isEditing }) {
+export default function BaseForm({ children, postFunction, deleteFunction, isEditing }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
     const [showDeletePrompt, setShowDeletePrompt] = useState(false);
@@ -75,7 +76,7 @@ export default function BaseForm({ children, serviceFunction, isEditing }) {
         setIsSubmitting(true);
         const formElement = event.target.form;
         const formData = new FormData(formElement);
-        serviceFunction(formData)
+        postFunction(formData)
             .then((res) => {
                 console.log(res.data);
                 setIsSubmitting(false);
@@ -93,7 +94,17 @@ export default function BaseForm({ children, serviceFunction, isEditing }) {
             });
     }
 
-    function handleDelete() {}
+    function handleDelete() {
+        const uuid = getLastParameterFromPath();
+        deleteFunction(uuid)
+            .then((res) => {
+                console.log(res);
+                history.push('/intern');
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 
     function handleAbort() {
         history.goBack();

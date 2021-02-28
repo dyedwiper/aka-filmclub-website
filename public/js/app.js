@@ -5749,11 +5749,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
 /* harmony import */ var _UserContext__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../UserContext */ "./resources/js/react-app/UserContext.js");
-/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
+/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../styledElements */ "./resources/js/react-app/common/styledElements.js");
 
 
 
@@ -5776,9 +5777,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function BaseForm(_ref) {
   var children = _ref.children,
-      serviceFunction = _ref.serviceFunction,
+      postFunction = _ref.postFunction,
+      deleteFunction = _ref.deleteFunction,
       isEditing = _ref.isEditing;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
@@ -5804,10 +5807,10 @@ function BaseForm(_ref) {
   });
   var isSelf = userForm && userForm.props.user.id === loggedInUser.id;
   var isAdmin = loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_ADMIN;
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(BaseFormStyled, {
     onKeyPress: preventSubmitOnEnter,
-    children: [children, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorContainerStyled, {
+    children: [children, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorContainerStyled, {
       children: validationErrors.map(function (error, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorStyled, {
           children: error
@@ -5861,7 +5864,7 @@ function BaseForm(_ref) {
     setIsSubmitting(true);
     var formElement = event.target.form;
     var formData = new FormData(formElement);
-    serviceFunction(formData).then(function (res) {
+    postFunction(formData).then(function (res) {
       console.log(res.data);
       setIsSubmitting(false);
       history.push('/intern');
@@ -5879,33 +5882,41 @@ function BaseForm(_ref) {
     });
   }
 
-  function handleDelete() {}
+  function handleDelete() {
+    var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_4__.getLastParameterFromPath)();
+    deleteFunction(uuid).then(function (res) {
+      console.log(res);
+      history.push('/intern');
+    })["catch"](function (err) {
+      console.log(err);
+    });
+  }
 
   function handleAbort() {
     history.goBack();
   }
 }
-var BaseFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.form.withConfig({
+var BaseFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.form.withConfig({
   displayName: "BaseForm__BaseFormStyled",
   componentId: "xfze26-0"
 })([""]);
-var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.button.withConfig({
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.button.withConfig({
   displayName: "BaseForm__ButtonStyled",
   componentId: "xfze26-1"
 })([""]);
-var WaitNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+var WaitNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "BaseForm__WaitNoteStyled",
   componentId: "xfze26-2"
 })(["margin-top:20px;"]);
-var DeletePromptStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.span.withConfig({
+var DeletePromptStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.span.withConfig({
   displayName: "BaseForm__DeletePromptStyled",
   componentId: "xfze26-3"
 })([""]);
-var ValidationErrorContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+var ValidationErrorContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "BaseForm__ValidationErrorContainerStyled",
   componentId: "xfze26-4"
 })(["color:red;"]);
-var ValidationErrorStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+var ValidationErrorStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "BaseForm__ValidationErrorStyled",
   componentId: "xfze26-5"
 })(["margin-bottom:10px;"]);
@@ -8263,11 +8274,8 @@ function SerialsPage() {
     document.title = 'Archiv | aka-Filmclub ';
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log('isLoading', isLoading);
-
     if (semester) {
       (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_5__.getSerialsBySemester)(semester).then(function (res) {
-        console.log('res.data', res.data);
         setSerials(res.data);
         setIsLoading(false);
       });
@@ -8363,7 +8371,7 @@ function AddImagePage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Bild hinzuf\xFCgen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.postImage,
+      postFunction: _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.postImage,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         type: "hidden",
         name: "assocType",
@@ -8416,7 +8424,7 @@ function AddNoticePage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Neue News anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__.postNotice,
+      postFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__.postNotice,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_NoticeFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
@@ -8461,7 +8469,7 @@ function AddScreeningPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Neue Vorf\xFChrung anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
+      postFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
@@ -8504,7 +8512,7 @@ function AddSerialPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Neue Filmreihe anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_5__.postSerial,
+      postFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_5__.postSerial,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})
     })]
   });
@@ -8545,7 +8553,7 @@ __webpack_require__.r(__webpack_exports__);
 function AddUserPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_5__.postUser,
+      postFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_5__.postUser,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
         children: "Mitglied anlegen"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_UserFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
@@ -8625,7 +8633,7 @@ function EditImagePage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Bild \xE4ndern"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_3__.default, {
-      serviceFunction: _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.postImage,
+      postFunction: _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.postImage,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -8715,7 +8723,8 @@ function EditNoticePage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "News bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_4__.postNotice,
+      postFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_4__.postNotice,
+      deleteFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_4__.deleteNotice,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -8804,7 +8813,8 @@ function EditScreeningPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Vorf\xFChrung bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
+      postFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
+      deleteFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.deleteScreening,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -8893,7 +8903,8 @@ function EditSerialPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Filmreihe bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
+      postFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
+      deleteFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.deleteSerial,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -8982,7 +8993,7 @@ function EditUserPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Mitglied bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      serviceFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_6__.postUser,
+      postFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_6__.postUser,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -9403,7 +9414,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getNoticesByPage": () => /* binding */ getNoticesByPage,
 /* harmony export */   "getNoticesCount": () => /* binding */ getNoticesCount,
 /* harmony export */   "getNoticeByUuid": () => /* binding */ getNoticeByUuid,
-/* harmony export */   "postNotice": () => /* binding */ postNotice
+/* harmony export */   "postNotice": () => /* binding */ postNotice,
+/* harmony export */   "deleteNotice": () => /* binding */ deleteNotice
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -9422,6 +9434,9 @@ function getNoticeByUuid(uuid) {
 }
 function postNotice(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/notices', data);
+}
+function deleteNotice(uuid) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/notices/uuid/' + uuid);
 }
 
 /***/ }),
@@ -9462,7 +9477,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
 /* harmony export */   "getScreeningsBySemester": () => /* binding */ getScreeningsBySemester,
 /* harmony export */   "getScreeningByUuid": () => /* binding */ getScreeningByUuid,
-/* harmony export */   "postScreening": () => /* binding */ postScreening
+/* harmony export */   "postScreening": () => /* binding */ postScreening,
+/* harmony export */   "deleteScreening": () => /* binding */ deleteScreening
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -9478,12 +9494,12 @@ function getScreeningsBySemester(semester) {
 }
 function getScreeningByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/single/' + uuid);
-} // export function getScreeningsBySerialId(serialId) {
-//     return axios.get('/api/screenings/serial/' + serialId);
-// }
-
+}
 function postScreening(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/screenings', data);
+}
+function deleteScreening(uuid) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/screenings/uuid/' + uuid);
 }
 
 /***/ }),
@@ -9578,7 +9594,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getSerials": () => /* binding */ getSerials,
 /* harmony export */   "getSerialsBySemester": () => /* binding */ getSerialsBySemester,
 /* harmony export */   "getSerialByUuid": () => /* binding */ getSerialByUuid,
-/* harmony export */   "postSerial": () => /* binding */ postSerial
+/* harmony export */   "postSerial": () => /* binding */ postSerial,
+/* harmony export */   "deleteSerial": () => /* binding */ deleteSerial
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -9594,6 +9611,9 @@ function getSerialByUuid(uuid) {
 }
 function postSerial(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/serials', data);
+}
+function deleteSerial(uuid) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/serials/uuid/' + uuid);
 }
 
 /***/ }),

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Helper;
 use App\Http\Requests\ScreeningFormRequest;
 use App\Models\Screening;
 use App\Services\ImageService;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class ScreeningController extends Controller
 {
@@ -114,6 +114,15 @@ class ScreeningController extends Controller
 
         $screening->save();
         return $screening;
+    }
+
+    public function DeleteScreening(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(401);
+        }
+        $screening = Screening::firstWhere('uuid', $uuid);
+        $screening->delete();
     }
 
     public function UpdateUuids()

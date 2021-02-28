@@ -19,7 +19,8 @@ class SerialSeeder extends Seeder
             'title' => 'Die besten Filme aller Zeiten',
             'subtitle' => 'vielleicht',
             'article' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia nostrum, nemo fugit quae aut dicta aliquid perspiciatis dolore repellendus dolores ratione nobis, accusamus, ut possimus corporis exercitationem quisquam est asperiores.',
-            'author' => 'Max'
+            'author' => 'Max',
+            'semester' => 'WS2020',
         ]]);
     }
 }

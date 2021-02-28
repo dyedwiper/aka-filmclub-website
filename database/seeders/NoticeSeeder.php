@@ -15,20 +15,26 @@ class NoticeSeeder extends Seeder
     public function run()
     {
         DB::table('notices')->insert([[
+            'uuid' => uniqid(),
             'title' => 'Neu neu neu',
+            'date' => date('Y-m-d', strtotime('2021-03-22')),
             'author' => 'Max',
             'content' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, fugiat nesciunt, ipsum omnis ipsam sequi illum ullam consequuntur nisi enim sunt accusantium quasi natus cupiditate vero saepe consequatur. Doloribus, quas!',
-            'image' => 'johnny.jpg',
+            'image_id' => null,
         ], [
+            'uuid' => uniqid(),
             'title' => 'Alt alt alt',
+            'date' => date('Y-m-d', strtotime('2021-03-23')),
             'author' => 'Max',
             'content' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, fugiat nesciunt, ipsum omnis ipsam sequi illum ullam consequuntur nisi enim sunt accusantium quasi natus cupiditate vero saepe consequatur. Doloribus, quas!',
-            'image' => 'fish_tank.jpg',
+            'image_id' => null,
         ], [
+            'uuid' => uniqid(),
             'title' => 'foo bar baz',
+            'date' => date('Y-m-d', strtotime('2021-03-24')),
             'author' => 'Max',
             'content' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officiis, fugiat nesciunt, ipsum omnis ipsam sequi illum ullam consequuntur nisi enim sunt accusantium quasi natus cupiditate vero saepe consequatur. Doloribus, quas!',
-            'image' => 'der_riss.jpg',
+            'image_id' => null,
         ]]);
     }
 }

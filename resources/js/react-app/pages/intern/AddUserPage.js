@@ -8,7 +8,7 @@ import { postUser } from '../../utils/userServices';
 export default function AddUserPage() {
     return (
         <PageStyled>
-            <BaseForm serviceFunction={postUser}>
+            <BaseForm postFunction={postUser}>
                 <HeadlineStyled>Mitglied anlegen</HeadlineStyled>
                 <UserFormGroup />
             </BaseForm>

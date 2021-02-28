@@ -19,3 +19,7 @@ export function getNoticeByUuid(uuid) {
 export function postNotice(data) {
     return axios.post('/api/notices', data);
 }
+
+export function deleteNotice(uuid) {
+    return axios.delete('/api/notices/uuid/' + uuid);
+}

@@ -60,6 +60,10 @@ Route::prefix('screenings')->group(function () {
     Route::middleware('auth:sanctum')->patch('/', [
         ScreeningController::class, 'PatchScreening'
     ]);
+
+    Route::delete('/uuid/{uuid}', [
+        ScreeningController::class, 'DeleteScreening'
+    ]);
 });
 
 Route::prefix('notices')->group(function () {
@@ -85,6 +89,10 @@ Route::prefix('notices')->group(function () {
 
     Route::middleware('auth:sanctum')->patch('/', [
         NoticeController::class, 'PatchNotice'
+    ]);
+
+    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
+        NoticeController::class, 'DeleteNotice'
     ]);
 });
 
@@ -115,6 +123,10 @@ Route::prefix('serials')->group(function () {
 
     Route::middleware('auth:sanctum')->patch('/', [
         SerialController::class, 'PatchSerial'
+    ]);
+
+    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
+        SerialController::class, 'DeleteSerial'
     ]);
 });
 
