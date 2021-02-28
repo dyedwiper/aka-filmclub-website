@@ -92,7 +92,11 @@ class UserController extends Controller
         $user->address = $request->address;
         $user->zipcode = $request->zipcode;
         $user->city = $request->city;
-        $user->level = $request->level;
+        // The level is send as null when input in the user form is disabled.
+        // That's why it is checked here first.
+        if ($user->level) {
+            $user->level = $request->level;
+        }
         $user->status = $request->status;
 
         $user->save();

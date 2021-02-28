@@ -15,7 +15,9 @@ class UserFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return $this->user()->level == 2;
+        $isSelf = $this->uuid == $this->user()->uuid;
+        $isAdmin = $this->user()->level == 2;
+        return $isSelf || $isAdmin;
     }
 
     /**
@@ -33,8 +35,8 @@ class UserFormRequest extends FormRequest
             'address' => 'max:255',
             'zipcode' => 'nullable|integer',
             'city' => 'max:255',
-            'level' => 'required|integer',
-            'status' => 'required|integer',
+            'level' => 'nullable|integer',
+            'status' => 'integer',
         ];
     }
 
