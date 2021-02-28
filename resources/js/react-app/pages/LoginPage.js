@@ -42,7 +42,7 @@ export default function LoginPage() {
                     history.push('/intern');
                 })
                 .catch((err) => {
-                    if (err.response.status === 403) {
+                    if (err.response.status === 401) {
                         setDidLoginFail(true);
                     }
                     console.log(err);

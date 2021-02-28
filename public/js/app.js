@@ -7346,7 +7346,7 @@ function LoginPage() {
         setUser(res.data);
         history.push('/intern');
       })["catch"](function (err) {
-        if (err.response.status === 403) {
+        if (err.response.status === 401) {
           setDidLoginFail(true);
         }
 

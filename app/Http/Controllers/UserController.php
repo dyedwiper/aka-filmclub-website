@@ -43,7 +43,7 @@ class UserController extends Controller
             return Auth::user();
         }
 
-        return response('false creds', 403);
+        return response('false creds', 401);
     }
 
     public function getLogout(Request $request)
