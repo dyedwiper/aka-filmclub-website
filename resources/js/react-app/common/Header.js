@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { AUTH_LEVEL_EDITOR } from '../constants';
+import UserContext from '../UserContext';
+import { getLogout } from '../utils/userServices';
 
 export default function Header() {
+    const { user, setUser } = useContext(UserContext);
+    const isLoggedIn = Object.keys(user).length !== 0;
+    const isEditor = user.level >= AUTH_LEVEL_EDITOR;
+
     return (
         <HeaderStyled>
             <HeadlineStyled>Akademischer Filmclub an der Universität Freiburg e.V.</HeadlineStyled>
@@ -26,17 +33,41 @@ export default function Header() {
                         <SubNavLinkStyled to="/press">Pressespiegel</SubNavLinkStyled>
                     </SubNavStyled>
                 </DropdownContainerStyled>
-                <DropdownContainerStyled>
-                    <NavLinkStyled to="/intern">Intern</NavLinkStyled>
-                    <SubNavStyled>
-                        <SubNavLinkStyled to="/intern/addNotice">News anlegen</SubNavLinkStyled>
-                        <SubNavLinkStyled to="/intern/addSerial">Filmreihe anlegen</SubNavLinkStyled>
-                        <SubNavLinkStyled to="/intern/addScreening">Vorführung anlegen</SubNavLinkStyled>
-                    </SubNavStyled>
-                </DropdownContainerStyled>
+                {isLoggedIn ? (
+                    <DropdownContainerStyled>
+                        <NavLinkStyled to="/intern">Intern</NavLinkStyled>
+                        <SubNavStyled>
+                            <SubNavLinkStyled to="/intern/users">Mitglieder</SubNavLinkStyled>
+                            {isEditor && (
+                                <>
+                                    <SubNavLinkStyled to="/intern/addNotice">News anlegen</SubNavLinkStyled>
+                                    <SubNavLinkStyled to="/intern/addSerial">Filmreihe anlegen</SubNavLinkStyled>
+                                    <SubNavLinkStyled to="/intern/addScreening">Vorführung anlegen</SubNavLinkStyled>
+                                </>
+                            )}
+                            <SubNavLinkStyled to="/" onClick={handleLogout}>
+                                Logout
+                            </SubNavLinkStyled>
+                        </SubNavStyled>
+                    </DropdownContainerStyled>
+                ) : (
+                    <DropdownContainerStyled>
+                        <NavLinkStyled to="/login">Login</NavLinkStyled>
+                    </DropdownContainerStyled>
+                )}
             </NavStyled>
         </HeaderStyled>
     );
+
+    function handleLogout() {
+        getLogout()
+            .then(() => {
+                setUser({});
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
 }
 
 const HeaderStyled = styled.header`

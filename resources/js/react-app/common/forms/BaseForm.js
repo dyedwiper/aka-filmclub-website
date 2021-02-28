@@ -1,13 +1,28 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { AUTH_LEVEL_ADMIN } from '../../constants';
+import UserContext from '../../UserContext';
 import { HorizontalLineStyled } from '../styledElements';
 
 export default function BaseForm({ children, serviceFunction }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
+    const [isAuthorized, setIsAuthorized] = useState(true);
+
+    const { user: loggedInUser } = useContext(UserContext);
 
     let history = useHistory();
+
+    useEffect(() => {
+        if (loggedInUser.level === AUTH_LEVEL_ADMIN) return;
+        // When displaying the user form, check if the logged in user is the same as the edited user.
+        children.forEach((child) => {
+            if (child.type.name && child.type.name === 'UserFormGroup') {
+                setIsAuthorized(child.props.user.id === loggedInUser.id);
+            }
+        });
+    }, []);
 
     return (
         <BaseFormStyled onKeyPress={preventSubmitOnEnter}>
@@ -22,11 +37,11 @@ export default function BaseForm({ children, serviceFunction }) {
                 <WaitNoteStyled>Bitte warten</WaitNoteStyled>
             ) : (
                 <>
-                    <ButtonStyled type="submit" onClick={handleSubmit}>
+                    <ButtonStyled type="submit" disabled={!isAuthorized} onClick={handleSubmit}>
                         Speichern
                     </ButtonStyled>
                     <ButtonStyled type="button" onClick={handleAbort}>
-                        Abbrechen
+                        Zurück
                     </ButtonStyled>
                 </>
             )}

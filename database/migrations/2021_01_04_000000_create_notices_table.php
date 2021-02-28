@@ -17,7 +17,7 @@ class CreateNoticesTable extends Migration
             $table->id();
             $table->uuid('uuid')->nullable();
             $table->timestamps();
-            $table->date('date');
+            $table->date('date')->nullable();
             $table->string('title');
             $table->text('content');
             $table->string('author');
