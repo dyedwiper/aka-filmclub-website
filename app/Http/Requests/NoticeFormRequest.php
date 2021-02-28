@@ -15,7 +15,7 @@ class NoticeFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->level >= 1;
     }
 
     /**
