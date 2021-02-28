@@ -23,10 +23,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::prefix('screenings')->group(function () {
 
     Route::get('/', function () {
@@ -57,11 +53,11 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'UpdateUuids'
     ]);
 
-    Route::post('/', [
+    Route::middleware('auth:sanctum')->post('/', [
         ScreeningController::class, 'PostScreening'
     ]);
 
-    Route::patch('/', [
+    Route::middleware('auth:sanctum')->patch('/', [
         ScreeningController::class, 'PatchScreening'
     ]);
 });
@@ -83,11 +79,11 @@ Route::prefix('notices')->group(function () {
         NoticeController::class, 'UpdateUuids'
     ]);
 
-    Route::post('/', [
+    Route::middleware('auth:sanctum')->post('/', [
         NoticeController::class, 'PostNotice'
     ]);
 
-    Route::patch('/', [
+    Route::middleware('auth:sanctum')->patch('/', [
         NoticeController::class, 'PatchNotice'
     ]);
 });
@@ -113,11 +109,11 @@ Route::prefix('serials')->group(function () {
         SerialController::class, 'UpdateSemesters'
     ]);
 
-    Route::post('/', [
+    Route::middleware('auth:sanctum')->post('/', [
         SerialController::class, 'PostSerial'
     ]);
 
-    Route::patch('/', [
+    Route::middleware('auth:sanctum')->patch('/', [
         SerialController::class, 'PatchSerial'
     ]);
 });
@@ -131,21 +127,21 @@ Route::prefix('images')->group(function () {
         ImageController::class, 'GetImageByUuid'
     ]);
 
-    Route::post('/', [
+    Route::middleware('auth:sanctum')->post('/', [
         ImageController::class, 'PostImage'
     ]);
 
-    Route::patch('/', [
+    Route::middleware('auth:sanctum')->patch('/', [
         ImageController::class, 'PatchImage'
     ]);
 });
 
 Route::prefix('users')->group(function () {
-    Route::get('/', [
+    Route::middleware('auth:sanctum')->get('/', [
         UserController::class, 'GetUsers'
     ]);
 
-    Route::get('/phpbb', [
+    Route::middleware('auth:sanctum')->get('/phpbb', [
         UserController::class, 'GetPhpbbUsers'
     ]);
 
@@ -153,7 +149,7 @@ Route::prefix('users')->group(function () {
         UserController::class, 'GetCurrentUser'
     ]);
 
-    Route::get('/uuid/{uuid}', [
+    Route::middleware('auth:sanctum')->get('/uuid/{uuid}', [
         UserController::class, 'GetUserByUuid'
     ]);
 
@@ -165,23 +161,23 @@ Route::prefix('users')->group(function () {
         UserController::class, 'GetLogout'
     ]);
 
-    Route::get('/update_uuids', [
+    Route::middleware('auth:sanctum')->get('/update_uuids', [
         UserController::class, 'UpdateUuids'
     ]);
 
-    Route::get('/updateLevels', [
+    Route::middleware('auth:sanctum')->get('/updateLevels', [
         UserController::class, 'UpdateLevels'
     ]);
 
-    Route::get('/updateStati', [
+    Route::middleware('auth:sanctum')->get('/updateStati', [
         UserController::class, 'UpdateStati'
     ]);
 
-    Route::post('/', [
+    Route::middleware('auth:sanctum')->post('/', [
         UserController::class, 'PostUser'
     ]);
 
-    Route::patch('/', [
+    Route::middleware('auth:sanctum')->patch('/', [
         UserController::class, 'PatchUser'
     ]);
 });
