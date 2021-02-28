@@ -25,7 +25,7 @@ export default function EditNoticePage() {
     return (
         <PageStyled>
             <HeadlineStyled>News bearbeiten</HeadlineStyled>
-            <BaseForm serviceFunction={postNotice}>
+            <BaseForm serviceFunction={postNotice} isEditing={true}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

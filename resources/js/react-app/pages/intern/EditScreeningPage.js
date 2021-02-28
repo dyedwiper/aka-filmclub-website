@@ -24,7 +24,7 @@ export default function EditScreeningPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Vorführung bearbeiten</HeadlineStyled>
-            <BaseForm serviceFunction={postScreening}>
+            <BaseForm serviceFunction={postScreening} isEditing={true}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

@@ -5778,7 +5778,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function BaseForm(_ref) {
   var children = _ref.children,
-      serviceFunction = _ref.serviceFunction;
+      serviceFunction = _ref.serviceFunction,
+      isEditing = _ref.isEditing;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -5790,24 +5791,20 @@ function BaseForm(_ref) {
       validationErrors = _useState4[0],
       setValidationErrors = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
       _useState6 = _slicedToArray(_useState5, 2),
-      isAuthorized = _useState6[0],
-      setIsAuthorized = _useState6[1];
+      showDeletePrompt = _useState6[0],
+      setShowDeletePrompt = _useState6[1];
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_UserContext__WEBPACK_IMPORTED_MODULE_3__.default),
       loggedInUser = _useContext.user;
 
+  var userForm = children.find(function (child) {
+    return child.type.name && child.type.name === 'UserFormGroup';
+  });
+  var isSelf = userForm && userForm.props.user.id === loggedInUser.id;
+  var isAdmin = loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_ADMIN;
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_ADMIN) return; // When displaying the user form, check if the logged in user is the same as the edited user.
-
-    children.forEach(function (child) {
-      if (child.type.name && child.type.name === 'UserFormGroup') {
-        setIsAuthorized(child.props.user.id === loggedInUser.id);
-      }
-    });
-  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(BaseFormStyled, {
     onKeyPress: preventSubmitOnEnter,
     children: [children, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorContainerStyled, {
@@ -5817,17 +5814,38 @@ function BaseForm(_ref) {
         }, index);
       })
     }), isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(WaitNoteStyled, {
-      children: "Bitte warten"
+      children: "Am Senden..."
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
         type: "submit",
-        disabled: !isAuthorized,
+        disabled: userForm && !isSelf && !isAdmin,
         onClick: handleSubmit,
         children: "Speichern"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
         type: "button",
         onClick: handleAbort,
         children: "Zur\xFCck"
+      }), isEditing && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+          type: "button",
+          disabled: userForm && !isAdmin,
+          onClick: function onClick() {
+            return setShowDeletePrompt(true);
+          },
+          children: "L\xF6schen"
+        }), showDeletePrompt && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DeletePromptStyled, {
+          children: ["Sischer?", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+            type: "button",
+            onClick: handleDelete,
+            children: "Ja"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+            type: "button",
+            onClick: function onClick() {
+              return setShowDeletePrompt(false);
+            },
+            children: "Nein"
+          })]
+        })]
       })]
     })]
   });
@@ -5861,6 +5879,8 @@ function BaseForm(_ref) {
     });
   }
 
+  function handleDelete() {}
+
   function handleAbort() {
     history.goBack();
   }
@@ -5877,13 +5897,17 @@ var WaitNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.
   displayName: "BaseForm__WaitNoteStyled",
   componentId: "xfze26-2"
 })(["margin-top:20px;"]);
+var DeletePromptStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.span.withConfig({
+  displayName: "BaseForm__DeletePromptStyled",
+  componentId: "xfze26-3"
+})([""]);
 var ValidationErrorContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "BaseForm__ValidationErrorContainerStyled",
-  componentId: "xfze26-3"
+  componentId: "xfze26-4"
 })(["color:red;"]);
 var ValidationErrorStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "BaseForm__ValidationErrorStyled",
-  componentId: "xfze26-4"
+  componentId: "xfze26-5"
 })(["margin-bottom:10px;"]);
 
 /***/ }),
@@ -8602,6 +8626,7 @@ function EditImagePage() {
       children: "Bild \xE4ndern"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_3__.default, {
       serviceFunction: _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.postImage,
+      isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
         type: "hidden",
@@ -8645,18 +8670,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -8703,6 +8716,7 @@ function EditNoticePage() {
       children: "News bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       serviceFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_4__.postNotice,
+      isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
         type: "hidden",
@@ -8717,7 +8731,10 @@ function EditNoticePage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2(_templateObject());
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2.withConfig({
+  displayName: "EditNoticePage__HeadlineStyled",
+  componentId: "sc-1to7neg-0"
+})([""]);
 
 /***/ }),
 
@@ -8743,18 +8760,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -8800,6 +8805,7 @@ function EditScreeningPage() {
       children: "Vorf\xFChrung bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       serviceFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
+      isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
         type: "hidden",
@@ -8814,7 +8820,10 @@ function EditScreeningPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2(_templateObject());
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2.withConfig({
+  displayName: "EditScreeningPage__HeadlineStyled",
+  componentId: "sc-1t6lq9c-0"
+})([""]);
 
 /***/ }),
 
@@ -8840,18 +8849,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -8897,6 +8894,7 @@ function EditSerialPage() {
       children: "Filmreihe bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       serviceFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
+      isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
         type: "hidden",
@@ -8911,7 +8909,10 @@ function EditSerialPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2(_templateObject());
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.h2.withConfig({
+  displayName: "EditSerialPage__HeadlineStyled",
+  componentId: "sc-1wqr710-0"
+})([""]);
 
 /***/ }),
 
@@ -8982,6 +8983,7 @@ function EditUserPage() {
       children: "Mitglied bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       serviceFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_6__.postUser,
+      isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
         type: "hidden",

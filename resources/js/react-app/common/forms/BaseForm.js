@@ -1,28 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { AUTH_LEVEL_ADMIN } from '../../constants';
 import UserContext from '../../UserContext';
 import { HorizontalLineStyled } from '../styledElements';
 
-export default function BaseForm({ children, serviceFunction }) {
+export default function BaseForm({ children, serviceFunction, isEditing }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
-    const [isAuthorized, setIsAuthorized] = useState(true);
+    const [showDeletePrompt, setShowDeletePrompt] = useState(false);
 
     const { user: loggedInUser } = useContext(UserContext);
 
-    let history = useHistory();
+    const userForm = children.find((child) => child.type.name && child.type.name === 'UserFormGroup');
+    const isSelf = userForm && userForm.props.user.id === loggedInUser.id;
+    const isAdmin = loggedInUser.level === AUTH_LEVEL_ADMIN;
 
-    useEffect(() => {
-        if (loggedInUser.level === AUTH_LEVEL_ADMIN) return;
-        // When displaying the user form, check if the logged in user is the same as the edited user.
-        children.forEach((child) => {
-            if (child.type.name && child.type.name === 'UserFormGroup') {
-                setIsAuthorized(child.props.user.id === loggedInUser.id);
-            }
-        });
-    }, []);
+    let history = useHistory();
 
     return (
         <BaseFormStyled onKeyPress={preventSubmitOnEnter}>
@@ -34,15 +28,37 @@ export default function BaseForm({ children, serviceFunction }) {
                 ))}
             </ValidationErrorContainerStyled>
             {isSubmitting ? (
-                <WaitNoteStyled>Bitte warten</WaitNoteStyled>
+                <WaitNoteStyled>Am Senden...</WaitNoteStyled>
             ) : (
                 <>
-                    <ButtonStyled type="submit" disabled={!isAuthorized} onClick={handleSubmit}>
+                    <ButtonStyled type="submit" disabled={userForm && !isSelf && !isAdmin} onClick={handleSubmit}>
                         Speichern
                     </ButtonStyled>
                     <ButtonStyled type="button" onClick={handleAbort}>
                         Zurück
                     </ButtonStyled>
+                    {isEditing && (
+                        <>
+                            <ButtonStyled
+                                type="button"
+                                disabled={userForm && !isAdmin}
+                                onClick={() => setShowDeletePrompt(true)}
+                            >
+                                Löschen
+                            </ButtonStyled>
+                            {showDeletePrompt && (
+                                <DeletePromptStyled>
+                                    Sischer?
+                                    <ButtonStyled type="button" onClick={handleDelete}>
+                                        Ja
+                                    </ButtonStyled>
+                                    <ButtonStyled type="button" onClick={() => setShowDeletePrompt(false)}>
+                                        Nein
+                                    </ButtonStyled>
+                                </DeletePromptStyled>
+                            )}
+                        </>
+                    )}
                 </>
             )}
         </BaseFormStyled>
@@ -77,6 +93,8 @@ export default function BaseForm({ children, serviceFunction }) {
             });
     }
 
+    function handleDelete() {}
+
     function handleAbort() {
         history.goBack();
     }
@@ -88,14 +106,9 @@ const ButtonStyled = styled.button``;
 
 export const WaitNoteStyled = styled.div`
     margin-top: 20px;
-    /* 
-    animation: spin 1s infinite;
-    @keyframes spin {
-        100% {
-            transform: rotate(360deg);
-        }
-    } */
 `;
+
+const DeletePromptStyled = styled.span``;
 
 const ValidationErrorContainerStyled = styled.div`
     color: red;

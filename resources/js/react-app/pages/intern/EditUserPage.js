@@ -24,7 +24,7 @@ export default function EditUserPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Mitglied bearbeiten</HeadlineStyled>
-            <BaseForm serviceFunction={postUser}>
+            <BaseForm serviceFunction={postUser} isEditing={true}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />
