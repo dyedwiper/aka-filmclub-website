@@ -6435,7 +6435,7 @@ function UserFormGroup(_ref) {
       loggedInUser = _useContext.user;
 
   var isAdmin = loggedInUser.level === 2;
-  var isSelf = user.id === loggedInUser.id;
+  var isSelf = user && user.id === loggedInUser.id;
   var isAuthorized = isAdmin || isSelf;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(UserFormGroupStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {

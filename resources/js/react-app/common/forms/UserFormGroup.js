@@ -8,7 +8,7 @@ import UserStatusSelect from './UserStatusSelect';
 export default function UserFormGroup({ user }) {
     const { user: loggedInUser } = useContext(UserContext);
     const isAdmin = loggedInUser.level === 2;
-    const isSelf = user.id === loggedInUser.id;
+    const isSelf = user && user.id === loggedInUser.id;
     const isAuthorized = isAdmin || isSelf;
 
     return (
