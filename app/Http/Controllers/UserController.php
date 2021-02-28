@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -42,7 +43,6 @@ class UserController extends Controller
             $request->session()->regenerate();
             return Auth::user();
         }
-
         return response('false creds', 401);
     }
 
@@ -56,6 +56,7 @@ class UserController extends Controller
 
     public function PostUser(UserFormRequest $request)
     {
+        // The uniqueness is checked here separately because it must not be checked on a patch request.
         $validator = Validator::make($request->all(), [
             'username' => 'unique:users',
         ]);
@@ -123,9 +124,9 @@ class UserController extends Controller
             $phpbbUser = $phpbbUsers->firstWhere('user_id', $user->id);
 
             if ($phpbbUser->user_level == 1 || $phpbbUser->user_level == 2) {
-                $user->level = 1;
+                $user->level = Config::get('constants.auth_level.editor');
             } elseif ($phpbbUser->user_level == 3) {
-                $user->level = 2;
+                $user->level = Config::get('constants.auth_level.admin');
             }
 
             $user->save();
@@ -141,9 +142,9 @@ class UserController extends Controller
             $phpbbUser = $phpbbUsers->firstWhere('user_id', $user->id);
 
             if ($phpbbUser->user_rank == 199 || $phpbbUser->user_rank == 200) {
-                $user->status = 1;
+                $user->status = Config::get('constants.user_status.paused');
             } elseif ($phpbbUser->user_rank > 200) {
-                $user->status = 2;
+                $user->status = Config::get('constants.user_status.alumni');
             }
 
             $user->save();

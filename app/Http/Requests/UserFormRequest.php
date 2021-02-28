@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Utils\ValidationUtils;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+use Illuminate\Support\Facades\Config;
 
 class UserFormRequest extends FormRequest
 {
@@ -16,7 +17,7 @@ class UserFormRequest extends FormRequest
     public function authorize()
     {
         $isSelf = $this->uuid == $this->user()->uuid;
-        $isAdmin = $this->user()->level == 2;
+        $isAdmin = $this->user()->level == Config::get('constants.auth_level.admin');
         return $isSelf || $isAdmin;
     }
 
