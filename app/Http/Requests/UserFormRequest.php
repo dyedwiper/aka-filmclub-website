@@ -29,13 +29,14 @@ class UserFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|alpha|max:32',
+            'username' => 'required|alpha_num|max:32',
             'realname' => 'required|max:255',
             'email' => 'required|email|max:255',
             'phone' => 'max:255',
             'address' => 'max:255',
             'zipcode' => 'nullable|integer',
             'city' => 'max:255',
+            // The level may be null on a patch request, i.e. when the select in the user form is disabled.
             'level' => 'nullable|integer',
             'status' => 'integer',
         ];

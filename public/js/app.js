@@ -5800,8 +5800,7 @@ function BaseForm(_ref) {
 
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_5__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    // Don't perform check if logged in user is admin.
-    if (loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_ADMIN) return; // Check if the logged in user is the same as the edited user, when displaying the user form.
+    if (loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_ADMIN) return; // When displaying the user form, check if the logged in user is the same as the edited user.
 
     children.forEach(function (child) {
       if (child.type.name && child.type.name === 'UserFormGroup') {
@@ -6955,7 +6954,6 @@ var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.defaul
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "UUID_LENGTH": () => /* binding */ UUID_LENGTH,
 /* harmony export */   "IMAGE_FOLDER": () => /* binding */ IMAGE_FOLDER,
 /* harmony export */   "ASSETS_FOLDER": () => /* binding */ ASSETS_FOLDER,
 /* harmony export */   "STORAGE_FOLDER": () => /* binding */ STORAGE_FOLDER,
@@ -6969,7 +6967,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "USER_STATUS_PAUSED": () => /* binding */ USER_STATUS_PAUSED,
 /* harmony export */   "USER_STATUS_ALUMNI": () => /* binding */ USER_STATUS_ALUMNI
 /* harmony export */ });
-var UUID_LENGTH = 13;
 var IMAGE_FOLDER = '/images/';
 var ASSETS_FOLDER = '/assets/';
 var STORAGE_FOLDER = '/storage/';

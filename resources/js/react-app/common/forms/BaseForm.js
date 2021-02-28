@@ -15,9 +15,8 @@ export default function BaseForm({ children, serviceFunction }) {
     let history = useHistory();
 
     useEffect(() => {
-        // Don't perform check if logged in user is admin.
         if (loggedInUser.level === AUTH_LEVEL_ADMIN) return;
-        // Check if the logged in user is the same as the edited user, when displaying the user form.
+        // When displaying the user form, check if the logged in user is the same as the edited user.
         children.forEach((child) => {
             if (child.type.name && child.type.name === 'UserFormGroup') {
                 setIsAuthorized(child.props.user.id === loggedInUser.id);

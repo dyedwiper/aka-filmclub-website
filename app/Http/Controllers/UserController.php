@@ -94,8 +94,8 @@ class UserController extends Controller
         $user->zipcode = $request->zipcode;
         $user->city = $request->city;
         // Check for null, because the level is send as null, when the select in the user form is disabled.
-        // Also it is checked here if the authenticated user is admin, 
-        // in order to prevent users changing their own level.
+        // Also check if the authenticated user is admin, 
+        // in order to prevent users from changing their own level.
         if ($request->level != null && Auth::user()->level == Config::get('constants.auth_level.admin')) {
             $user->level = $request->level;
         }
