@@ -13,7 +13,8 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
 
     const { user: loggedInUser } = useContext(UserContext);
 
-    const userForm = children.find((child) => child.type.name && child.type.name === 'UserFormGroup');
+    const userForm =
+        children.length && children.find((child) => child.type.name && child.type.name === 'UserFormGroup');
     const isSelf = userForm && userForm.props.user.id === loggedInUser.id;
     const isAdmin = loggedInUser.level === AUTH_LEVEL_ADMIN;
 

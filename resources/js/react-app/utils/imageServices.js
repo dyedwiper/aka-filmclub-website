@@ -11,3 +11,7 @@ export function getImageByUuid(uuid) {
 export function postImage(data) {
     return axios.post('/api/images', data);
 }
+
+export function deleteImage(uuid) {
+    return axios.delete('/api/images/uuid/' + uuid);
+}

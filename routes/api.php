@@ -146,6 +146,10 @@ Route::prefix('images')->group(function () {
     Route::middleware('auth:sanctum')->patch('/', [
         ImageController::class, 'PatchImage'
     ]);
+
+    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
+        ImageController::class, 'DeleteImage'
+    ]);
 });
 
 Route::prefix('users')->group(function () {
