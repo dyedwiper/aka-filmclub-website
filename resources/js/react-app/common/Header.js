@@ -7,6 +7,7 @@ import { getLogout } from '../utils/userServices';
 export default function Header() {
     const { user, setUser } = useContext(UserContext);
     const isLoggedIn = Object.keys(user).length !== 0;
+    const isEditor = user.level >= 1;
 
     return (
         <HeaderStyled>
@@ -36,9 +37,13 @@ export default function Header() {
                         <NavLinkStyled to="/intern">Intern</NavLinkStyled>
                         <SubNavStyled>
                             <SubNavLinkStyled to="/intern/users">Mitglieder</SubNavLinkStyled>
-                            <SubNavLinkStyled to="/intern/addNotice">News anlegen</SubNavLinkStyled>
-                            <SubNavLinkStyled to="/intern/addSerial">Filmreihe anlegen</SubNavLinkStyled>
-                            <SubNavLinkStyled to="/intern/addScreening">Vorführung anlegen</SubNavLinkStyled>
+                            {isEditor && (
+                                <>
+                                    <SubNavLinkStyled to="/intern/addNotice">News anlegen</SubNavLinkStyled>
+                                    <SubNavLinkStyled to="/intern/addSerial">Filmreihe anlegen</SubNavLinkStyled>
+                                    <SubNavLinkStyled to="/intern/addScreening">Vorführung anlegen</SubNavLinkStyled>
+                                </>
+                            )}
                             <SubNavLinkStyled to="/" onClick={handleLogout}>
                                 Logout
                             </SubNavLinkStyled>

@@ -6,12 +6,12 @@ import UserContext from '../../UserContext';
 
 export default function InternPage() {
     const { user } = useContext(UserContext);
-    const isAuthorized = user.level >= 1;
+    const isEditor = user.level >= 1;
 
     return (
         <PageStyled>
             <HeadlineStyled>Interner Bereich</HeadlineStyled>
-            {isAuthorized && (
+            {isEditor && (
                 <>
                     <SubheadlineStyled>Sachen anlegen</SubheadlineStyled>
                     <LinkStyled to="/intern/addNotice">News anlegen</LinkStyled>
