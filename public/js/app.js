@@ -9049,78 +9049,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    overflow: hidden;\n    max-width: 100%;\n    white-space: nowrap;\n    text-overflow: ellipsis;\n"]);
-
-  _templateObject7 = function _templateObject7() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject6() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject6 = function _templateObject6() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n    overflow: auto;\n    height: 300px;\n    padding: 5px;\n    border: solid 3px black;\n    border-radius: 5px;\n"]);
-
-  _templateObject5 = function _templateObject5() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject4() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    display: grid;\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n    grid-gap: 40px;\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -9166,8 +9094,8 @@ function UsersPage() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
           children: users.filter(function (user) {
             return user.status == 0;
-          }).sort(function (userA, userB) {
-            return userA.realname < userB.realname ? -1 : 1;
+          }).sort(function (a, b) {
+            return a.realname.localeCompare(b.realname);
           }).map(function (user) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListItemStyled, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
@@ -9183,8 +9111,8 @@ function UsersPage() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
           children: users.filter(function (user) {
             return user.status == 1;
-          }).sort(function (userA, userB) {
-            return userA.realname < userB.realname ? -1 : 1;
+          }).sort(function (a, b) {
+            return a.realname.localeCompare(b.realname);
           }).map(function (user) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListItemStyled, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
@@ -9200,8 +9128,8 @@ function UsersPage() {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
           children: users.filter(function (user) {
             return user.status == 2;
-          }).sort(function (userA, userB) {
-            return userA.realname < userB.realname ? -1 : 1;
+          }).sort(function (a, b) {
+            return a.realname.localeCompare(b.realname);
           }).map(function (user) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListItemStyled, {
               children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
@@ -9215,13 +9143,34 @@ function UsersPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h2(_templateObject());
-var GridContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div(_templateObject2());
-var ListContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div(_templateObject3());
-var SubheadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3(_templateObject4());
-var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.ul(_templateObject5());
-var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.li(_templateObject6());
-var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link)(_templateObject7());
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h2.withConfig({
+  displayName: "UsersPage__HeadlineStyled",
+  componentId: "sc-941gjx-0"
+})([""]);
+var GridContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+  displayName: "UsersPage__GridContainerStyled",
+  componentId: "sc-941gjx-1"
+})(["display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:40px;"]);
+var ListContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+  displayName: "UsersPage__ListContainerStyled",
+  componentId: "sc-941gjx-2"
+})([""]);
+var SubheadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3.withConfig({
+  displayName: "UsersPage__SubheadlineStyled",
+  componentId: "sc-941gjx-3"
+})([""]);
+var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.ul.withConfig({
+  displayName: "UsersPage__ListStyled",
+  componentId: "sc-941gjx-4"
+})(["overflow:auto;height:300px;padding:5px;border:solid 3px black;border-radius:5px;"]);
+var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.li.withConfig({
+  displayName: "UsersPage__ListItemStyled",
+  componentId: "sc-941gjx-5"
+})([""]);
+var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link).withConfig({
+  displayName: "UsersPage__LinkStyled",
+  componentId: "sc-941gjx-6"
+})(["display:inline-block;overflow:hidden;max-width:100%;white-space:nowrap;text-overflow:ellipsis;"]);
 
 /***/ }),
 

@@ -27,7 +27,7 @@ export default function UsersPage() {
                     <ListStyled>
                         {users
                             .filter((user) => user.status == 0)
-                            .sort((userA, userB) => (userA.realname < userB.realname ? -1 : 1))
+                            .sort((a, b) => a.realname.localeCompare(b.realname))
                             .map((user) => (
                                 <ListItemStyled key={user.id}>
                                     <LinkStyled to={'/intern/editUser/' + user.uuid}>{user.realname}</LinkStyled>
@@ -40,7 +40,7 @@ export default function UsersPage() {
                     <ListStyled>
                         {users
                             .filter((user) => user.status == 1)
-                            .sort((userA, userB) => (userA.realname < userB.realname ? -1 : 1))
+                            .sort((a, b) => a.realname.localeCompare(b.realname))
                             .map((user) => (
                                 <ListItemStyled key={user.id}>
                                     <LinkStyled to={'/intern/editUser/' + user.uuid}>{user.realname}</LinkStyled>
@@ -53,7 +53,7 @@ export default function UsersPage() {
                     <ListStyled>
                         {users
                             .filter((user) => user.status == 2)
-                            .sort((userA, userB) => (userA.realname < userB.realname ? -1 : 1))
+                            .sort((a, b) => a.realname.localeCompare(b.realname))
                             .map((user) => (
                                 <ListItemStyled key={user.id}>
                                     <LinkStyled to={'/intern/editUser/' + user.uuid}>{user.realname}</LinkStyled>
