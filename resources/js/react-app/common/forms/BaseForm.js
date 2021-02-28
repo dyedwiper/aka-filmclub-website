@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { AUTH_LEVEL_ADMIN } from '../../constants';
 import UserContext from '../../UserContext';
 import { HorizontalLineStyled } from '../styledElements';
 
@@ -15,7 +16,7 @@ export default function BaseForm({ children, serviceFunction }) {
 
     useEffect(() => {
         // Don't perform check if logged in user is admin.
-        if (loggedInUser.level === 2) return;
+        if (loggedInUser.level === AUTH_LEVEL_ADMIN) return;
         // Check if the logged in user is the same as the edited user, when displaying the user form.
         children.forEach((child) => {
             if (child.type.name && child.type.name === 'UserFormGroup') {

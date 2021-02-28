@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../../common/styledElements';
+import { AUTH_LEVEL_ADMIN, USER_STATUS_ACTIVE, USER_STATUS_ALUMNI, USER_STATUS_PAUSED } from '../../constants';
 import UserContext from '../../UserContext';
 import { getUsers } from '../../utils/userServices';
 
@@ -20,13 +21,15 @@ export default function UsersPage() {
         <PageStyled>
             <HeadlineStyled>Mitglieder verwalten</HeadlineStyled>
             {/* Only display link when current user is admin */}
-            {loggedInUser.level === 2 && <LinkStyled to="/intern/addUser">Neues Mitglied anlegen</LinkStyled>}
+            {loggedInUser.level === AUTH_LEVEL_ADMIN && (
+                <LinkStyled to="/intern/addUser">Neues Mitglied anlegen</LinkStyled>
+            )}
             <GridContainerStyled>
                 <ListContainerStyled>
                     <SubheadlineStyled>Aktiv</SubheadlineStyled>
                     <ListStyled>
                         {users
-                            .filter((user) => user.status == 0)
+                            .filter((user) => user.status == USER_STATUS_ACTIVE)
                             .sort((a, b) => a.realname.localeCompare(b.realname))
                             .map((user) => (
                                 <ListItemStyled key={user.id}>
@@ -39,7 +42,7 @@ export default function UsersPage() {
                     <SubheadlineStyled>Pausierend/Unklar</SubheadlineStyled>
                     <ListStyled>
                         {users
-                            .filter((user) => user.status == 1)
+                            .filter((user) => user.status == USER_STATUS_PAUSED)
                             .sort((a, b) => a.realname.localeCompare(b.realname))
                             .map((user) => (
                                 <ListItemStyled key={user.id}>
@@ -52,7 +55,7 @@ export default function UsersPage() {
                     <SubheadlineStyled>Alumni</SubheadlineStyled>
                     <ListStyled>
                         {users
-                            .filter((user) => user.status == 2)
+                            .filter((user) => user.status == USER_STATUS_ALUMNI)
                             .sort((a, b) => a.realname.localeCompare(b.realname))
                             .map((user) => (
                                 <ListItemStyled key={user.id}>

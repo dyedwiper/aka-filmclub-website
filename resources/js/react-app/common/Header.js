@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { AUTH_LEVEL_EDITOR } from '../constants';
 import UserContext from '../UserContext';
 import { getLogout } from '../utils/userServices';
 
 export default function Header() {
     const { user, setUser } = useContext(UserContext);
     const isLoggedIn = Object.keys(user).length !== 0;
-    const isEditor = user.level >= 1;
+    const isEditor = user.level >= AUTH_LEVEL_EDITOR;
 
     return (
         <HeaderStyled>

@@ -2,11 +2,12 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../../common/styledElements';
+import { AUTH_LEVEL_EDITOR } from '../../constants';
 import UserContext from '../../UserContext';
 
 export default function InternPage() {
     const { user } = useContext(UserContext);
-    const isEditor = user.level >= 1;
+    const isEditor = user.level >= AUTH_LEVEL_EDITOR;
 
     return (
         <PageStyled>

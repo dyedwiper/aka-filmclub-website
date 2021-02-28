@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
-import { STORAGE_FOLDER } from '../constants';
+import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import UserContext from '../UserContext';
 import { formatToDateString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
@@ -15,7 +15,7 @@ export default function SerialPage() {
     const [noSerialFound, SetNoSerialFound] = useState(false);
 
     const { user } = useContext(UserContext);
-    const isAuthorized = user.level >= 1;
+    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
 
     useEffect(() => {
         const serialUuid = getLastParameterFromPath();
