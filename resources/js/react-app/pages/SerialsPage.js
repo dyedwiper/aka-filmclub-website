@@ -30,11 +30,11 @@ export default function SerialsPage() {
             {isLoading ? (
                 <div>Loading</div>
             ) : (
-                <SerialRowListStyled>
+                <ListStyled>
                     {serials.map((serial) => (
                         <SerialRow key={serial.id} serial={serial} />
                     ))}
-                </SerialRowListStyled>
+                </ListStyled>
             )}
         </PageStyled>
     );
@@ -42,4 +42,4 @@ export default function SerialsPage() {
 
 const HeadlineStyled = styled.h2``;
 
-const SerialRowListStyled = styled.ul``;
+const ListStyled = styled.ul``;
