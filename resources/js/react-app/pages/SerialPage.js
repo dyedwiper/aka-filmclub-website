@@ -92,21 +92,25 @@ const ImageStyled = styled.img`
 const ScreeningsListStyled = styled.ul``;
 
 const ScreeningListItemStyled = styled.li`
+    display: grid;
+    grid-template-columns: 95px minmax(0, 1fr);
     margin: 5px 0;
 `;
 
-const ScreeningDateStyled = styled.div`
-    display: inline-block;
-    margin-right: 10px;
-`;
+const ScreeningDateStyled = styled.div``;
 
 const ScreeningTitleLinkStyled = styled(Link)`
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     font-weight: bold;
 `;
 
 const ArticleStyled = styled.p``;
 
-const AuthorStyled = styled.div``;
+const AuthorStyled = styled.div`
+    font-style: italic;
+`;
 
 const LinkStyled = styled(Link)``;
 

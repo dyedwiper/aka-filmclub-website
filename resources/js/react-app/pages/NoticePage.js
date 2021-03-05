@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { HorizontalLineStyled, PageStyled, VertialLineStyled } from '../common/styledElements';
+import { HorizontalLineStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import UserContext from '../UserContext';
 import { formatToDateString } from '../utils/dateFormatters';
@@ -38,7 +38,7 @@ export default function NoticePage() {
                 <>
                     <HorizontalLineStyled />
                     <LinkStyled to={'/intern/editNotice/' + notice.uuid}>News bearbeiten</LinkStyled>
-                    <VertialLineStyled> | </VertialLineStyled>
+                    <VerticalLineStyled> | </VerticalLineStyled>
                     {notice.image ? (
                         <>
                             <LinkStyled to={'/intern/editImage/' + notice.image.uuid}>Bild bearbeiten</LinkStyled>

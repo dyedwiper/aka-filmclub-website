@@ -29,11 +29,11 @@ const SerialRowStyled = styled.li``;
 const SerialContainerStyled = styled.div`
     display: grid;
     grid-template-columns: 360px 480px;
+    grid-gap: 20px;
 
     @media (max-width: 901px) {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto;
-        grid-gap: 20px;
     }
 `;
 
@@ -47,9 +47,8 @@ const LinkStyled = styled(Link)``;
 
 const TitleStyled = styled.h3``;
 
-const SubTitleStyled = styled.p`
+const SubTitleStyled = styled.div`
     width: 100%;
-    font-weight: bold;
 `;
 
 const ArticleStyled = styled.p`

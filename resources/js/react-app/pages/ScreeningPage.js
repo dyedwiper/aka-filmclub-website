@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
+import { HorizontalLineStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import UserContext from '../UserContext';
 import { formatToDateTimeString } from '../utils/dateFormatters';
@@ -36,14 +36,14 @@ export default function ScreeningPage() {
         <PageStyled>
             {screening.image && <ImageStyled src={STORAGE_FOLDER + screening.image.path} />}
             <TitleStyled>{screening.title}</TitleStyled>
-            <DateStyled>Spieltermin: {formatToDateTimeString(screening.date)}</DateStyled>
+            <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
             <InfoContainerStyled>
                 <InfoValueStyled>{screening.country + ' ' + screening.year}</InfoValueStyled>
-                <VertialLineStyled> | </VertialLineStyled>
+                <VerticalLineStyled> | </VerticalLineStyled>
                 <InfoValueStyled>{screening.length} Min</InfoValueStyled>
-                <VertialLineStyled> | </VertialLineStyled>
+                <VerticalLineStyled> | </VerticalLineStyled>
                 <InfoValueStyled>{screening.medium}</InfoValueStyled>
-                <VertialLineStyled> | </VertialLineStyled>
+                <VerticalLineStyled> | </VerticalLineStyled>
                 <InfoValueStyled>{screening.version}</InfoValueStyled>
             </InfoContainerStyled>
             <CreditsContainerStyled>
@@ -55,35 +55,35 @@ export default function ScreeningPage() {
                 )}
                 {screening.written_by && (
                     <>
-                        <VertialLineStyled> | </VertialLineStyled>
+                        <VerticalLineStyled> | </VerticalLineStyled>
                         <CreditKeyStyled>Drehbuch: </CreditKeyStyled>
                         <CreditValueStyled>{screening.written_by}</CreditValueStyled>
                     </>
                 )}
                 {screening.music_by && (
                     <>
-                        <VertialLineStyled> | </VertialLineStyled>
+                        <VerticalLineStyled> | </VerticalLineStyled>
                         <CreditKeyStyled>Musik: </CreditKeyStyled>
                         <CreditValueStyled>{screening.music_by}</CreditValueStyled>
                     </>
                 )}
                 {screening.shot_by && (
                     <>
-                        <VertialLineStyled> | </VertialLineStyled>
+                        <VerticalLineStyled> | </VerticalLineStyled>
                         <CreditKeyStyled>Kamera: </CreditKeyStyled>
                         <CreditValueStyled>{screening.shot_by}</CreditValueStyled>
                     </>
                 )}
                 {screening.cast && (
                     <>
-                        <VertialLineStyled> | </VertialLineStyled>
+                        <VerticalLineStyled> | </VerticalLineStyled>
                         <CreditKeyStyled>Besetzung: </CreditKeyStyled>
                         <CreditValueStyled>{screening.cast}</CreditValueStyled>
                     </>
                 )}
             </CreditsContainerStyled>
             <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
-            <AuthorStyled>Text: {screening.author}</AuthorStyled>
+            <AuthorStyled>{screening.author}</AuthorStyled>
             {screening.serial && (
                 <SerialContainerStyled>
                     <HorizontalLineStyled />
@@ -99,7 +99,7 @@ export default function ScreeningPage() {
                     <EditLinkStyled to={'/intern/editScreening/' + screening.uuid}>
                         Vorführung bearbeiten
                     </EditLinkStyled>
-                    <VertialLineStyled> | </VertialLineStyled>
+                    <VerticalLineStyled> | </VerticalLineStyled>
                     {screening.image ? (
                         <EditLinkStyled to={'/intern/editImage/' + screening.image.uuid}>
                             Bild bearbeiten
@@ -119,25 +119,26 @@ const ImageStyled = styled.img`
     width: 100%;
 `;
 
-const TitleStyled = styled.h2``;
+const TitleStyled = styled.h2`
+    margin: 10px 0;
+    font-size: 2.1em;
+`;
 
 const DateStyled = styled.div`
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-weight: bold;
 `;
 
 const InfoContainerStyled = styled.div`
-    margin-bottom: 20px;
+    margin-bottom: 7px;
+    font-size: 0.7em;
 `;
 
 const InfoValueStyled = styled.span``;
 
-const VertialLineStyled = styled.span`
-    color: var(--aka-gelb);
-    font-weight: bold;
+const CreditsContainerStyled = styled.div`
+    font-size: 0.7em;
 `;
-
-const CreditsContainerStyled = styled.div``;
 
 const CreditKeyStyled = styled.span`
     font-weight: bold;
@@ -147,7 +148,9 @@ const CreditValueStyled = styled.span`
     display: inline-block;
 `;
 
-const SynopsisStyled = styled.p``;
+const SynopsisStyled = styled.p`
+    margin: 10px 0;
+`;
 
 const AuthorStyled = styled.div`
     font-style: italic;
@@ -157,6 +160,10 @@ const SerialContainerStyled = styled.div``;
 
 const SerialLinkStyled = styled(Link)`
     font-weight: bold;
+
+    @media (max-width: 901px) {
+        display: block;
+    }
 `;
 
 const EditLinkStyled = styled(Link)``;
