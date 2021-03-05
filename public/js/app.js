@@ -5805,7 +5805,7 @@ function BaseForm(_ref) {
   var userForm = children.length && children.find(function (child) {
     return child.type.name && child.type.name === 'UserFormGroup';
   });
-  var isSelf = userForm && userForm.props.user.id === loggedInUser.id;
+  var isSelf = isEditing && userForm && userForm.props.user.id === loggedInUser.id;
   var isAdmin = loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_ADMIN;
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(BaseFormStyled, {
@@ -9018,6 +9018,7 @@ function EditUserPage() {
       children: "Mitglied bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       postFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_6__.postUser,
+      deleteFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_6__.deleteUser,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -9661,7 +9662,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getCsrfCookie": () => /* binding */ getCsrfCookie,
 /* harmony export */   "postLogin": () => /* binding */ postLogin,
 /* harmony export */   "getLogout": () => /* binding */ getLogout,
-/* harmony export */   "postUser": () => /* binding */ postUser
+/* harmony export */   "postUser": () => /* binding */ postUser,
+/* harmony export */   "deleteUser": () => /* binding */ deleteUser
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -9686,6 +9688,9 @@ function getLogout() {
 }
 function postUser(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users', data);
+}
+function deleteUser(uuid) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/users/uuid/' + uuid);
 }
 
 /***/ }),

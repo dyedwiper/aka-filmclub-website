@@ -196,4 +196,8 @@ Route::prefix('users')->group(function () {
     Route::middleware('auth:sanctum')->patch('/', [
         UserController::class, 'PatchUser'
     ]);
+
+    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
+        UserController::class, 'DeleteUser'
+    ]);
 });
