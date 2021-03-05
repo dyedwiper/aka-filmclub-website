@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { AUTH_LEVEL_EDITOR } from '../constants';
 import UserContext from '../UserContext';
 import { getLogout } from '../utils/userServices';
+import HamburgerButton from './HamburgerButton';
 
 export default function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function Header() {
             <LinkStyled to="/">
                 <LogoStyled src="/assets/aka_logo.png" />
             </LinkStyled>
-            <NavButtonStyled onClick={() => setIsNavOpen(!isNavOpen)}>x</NavButtonStyled>
+            <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
             <NavStyled isNavOpen={isNavOpen}>
                 <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
                     News
@@ -115,7 +116,7 @@ const HeaderStyled = styled.header`
 
     @media (max-width: 901px) {
         height: 60px;
-        padding: 10px 20px;
+        padding: 0;
     }
 `;
 
@@ -126,6 +127,7 @@ const HeadlineStyled = styled.h1`
 
 const LinkStyled = styled(Link)`
     height: 100%;
+    margin: 10px;
 `;
 
 const LogoStyled = styled.img`
@@ -133,14 +135,6 @@ const LogoStyled = styled.img`
 
     @media (max-width: 901px) {
         height: 40px;
-    }
-`;
-
-const NavButtonStyled = styled.button`
-    display: none;
-
-    @media (max-width: 901px) {
-        display: block;
     }
 `;
 
