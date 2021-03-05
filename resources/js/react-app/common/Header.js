@@ -21,32 +21,58 @@ export default function Header() {
             </LinkStyled>
             <NavButtonStyled onClick={() => setIsNavOpen(!isNavOpen)}>x</NavButtonStyled>
             <NavStyled isNavOpen={isNavOpen}>
-                <NavLinkStyled to="/news">News</NavLinkStyled>
+                <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
+                    News
+                </NavLinkStyled>
                 <DropdownContainerStyled>
-                    <NavLinkStyled to="/program">Programm</NavLinkStyled>
+                    <NavLinkStyled to="/program" onClick={() => setIsNavOpen(false)}>
+                        Programm
+                    </NavLinkStyled>
                     <SubNavStyled>
-                        <SubNavLinkStyled to="/program/overview">Übersicht</SubNavLinkStyled>
-                        <SubNavLinkStyled to="/program/serials">Filmreihen</SubNavLinkStyled>
-                        <SubNavLinkStyled to="/program/archive">Archiv</SubNavLinkStyled>
+                        <SubNavLinkStyled to="/program/overview" onClick={() => setIsNavOpen(false)}>
+                            Übersicht
+                        </SubNavLinkStyled>
+                        <SubNavLinkStyled to="/program/serials" onClick={() => setIsNavOpen(false)}>
+                            Filmreihen
+                        </SubNavLinkStyled>
+                        <SubNavLinkStyled to="/program/archive" onClick={() => setIsNavOpen(false)}>
+                            Archiv
+                        </SubNavLinkStyled>
                     </SubNavStyled>
                 </DropdownContainerStyled>
                 <DropdownContainerStyled>
-                    <NavLinkStyled to="/about">Über uns</NavLinkStyled>
+                    <NavLinkStyled to="/about" onClick={() => setIsNavOpen(false)}>
+                        Über uns
+                    </NavLinkStyled>
                     <SubNavStyled>
-                        <SubNavLinkStyled to="/faqs">FAQs</SubNavLinkStyled>
-                        <SubNavLinkStyled to="/press">Pressespiegel</SubNavLinkStyled>
+                        <SubNavLinkStyled to="/faqs" onClick={() => setIsNavOpen(false)}>
+                            FAQs
+                        </SubNavLinkStyled>
+                        <SubNavLinkStyled to="/press" onClick={() => setIsNavOpen(false)}>
+                            Pressespiegel
+                        </SubNavLinkStyled>
                     </SubNavStyled>
                 </DropdownContainerStyled>
                 {isLoggedIn ? (
                     <DropdownContainerStyled>
-                        <NavLinkStyled to="/intern">Intern</NavLinkStyled>
+                        <NavLinkStyled to="/intern" onClick={() => setIsNavOpen(false)}>
+                            Intern
+                        </NavLinkStyled>
                         <SubNavStyled>
-                            <SubNavLinkStyled to="/intern/users">Mitglieder</SubNavLinkStyled>
+                            <SubNavLinkStyled to="/intern/users" onClick={() => setIsNavOpen(false)}>
+                                Mitglieder
+                            </SubNavLinkStyled>
                             {isEditor && (
                                 <>
-                                    <SubNavLinkStyled to="/intern/addNotice">News anlegen</SubNavLinkStyled>
-                                    <SubNavLinkStyled to="/intern/addSerial">Filmreihe anlegen</SubNavLinkStyled>
-                                    <SubNavLinkStyled to="/intern/addScreening">Vorführung anlegen</SubNavLinkStyled>
+                                    <SubNavLinkStyled to="/intern/addNotice" onClick={() => setIsNavOpen(false)}>
+                                        News anlegen
+                                    </SubNavLinkStyled>
+                                    <SubNavLinkStyled to="/intern/addSerial" onClick={() => setIsNavOpen(false)}>
+                                        Filmreihe anlegen
+                                    </SubNavLinkStyled>
+                                    <SubNavLinkStyled to="/intern/addScreening" onClick={() => setIsNavOpen(false)}>
+                                        Vorführung anlegen
+                                    </SubNavLinkStyled>
                                 </>
                             )}
                             <SubNavLinkStyled to="/" onClick={handleLogout}>
@@ -56,7 +82,9 @@ export default function Header() {
                     </DropdownContainerStyled>
                 ) : (
                     <DropdownContainerStyled>
-                        <NavLinkStyled to="/login">Login</NavLinkStyled>
+                        <NavLinkStyled to="/login" onClick={() => setIsNavOpen(false)}>
+                            Login
+                        </NavLinkStyled>
                     </DropdownContainerStyled>
                 )}
             </NavStyled>

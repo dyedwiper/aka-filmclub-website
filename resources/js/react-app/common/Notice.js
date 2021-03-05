@@ -8,11 +8,15 @@ export default function Notice({ notice }) {
     return (
         <NoticeStyled>
             <HorizontalLineStyled />
-            {notice.image && <ImageStyled src={STORAGE_FOLDER + notice.image.path} />}
+            <LinkStyled to={'/news/' + notice.uuid}>
+                {notice.image && <ImageStyled src={STORAGE_FOLDER + notice.image.path} />}
+            </LinkStyled>
             <DateStyled>{formatToDateString(notice.date)}</DateStyled>
-            <TitleStyled>{notice.title}</TitleStyled>
+            <LinkStyled to={'/news/' + notice.uuid}>
+                <TitleStyled>{notice.title}</TitleStyled>
+            </LinkStyled>
             <ContentStyled>{notice.content}</ContentStyled>
-            <LinkStyled to={'/intern/editNotice/' + notice.uuid}>Bearbeiten</LinkStyled>
+            <LinkStyled to={'/news/' + notice.uuid}></LinkStyled>
         </NoticeStyled>
     );
 }
@@ -26,12 +30,19 @@ const HorizontalLineStyled = styled.div`
     background-color: var(--aka-gelb);
 `;
 
-const ImageStyled = styled.img``;
+const ImageStyled = styled.img`
+    max-width: 100%;
+`;
 
 const DateStyled = styled.div``;
 
 const TitleStyled = styled.h3``;
 
-const ContentStyled = styled.p``;
+const ContentStyled = styled.p`
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+`;
 
 const LinkStyled = styled(Link)``;

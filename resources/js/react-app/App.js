@@ -24,6 +24,7 @@ import UsersPage from './pages/intern/UsersPage';
 import LoadingPage from './pages/LoadingPage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
+import NoticePage from './pages/NoticePage';
 import NoticesPage from './pages/NoticesPage';
 import PressReviewPage from './pages/PressReviewPage';
 import ProgramOverviewPage from './pages/ProgramOverviewPage';
@@ -69,6 +70,9 @@ export default function App() {
                         </Route>
                         <Route exact path="/news">
                             <NoticesPage />
+                        </Route>
+                        <Route path="/news/">
+                            <NoticePage />
                         </Route>
                         <Route exact path="/program">
                             <ProgramPage />

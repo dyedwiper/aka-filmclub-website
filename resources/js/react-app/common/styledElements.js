@@ -17,3 +17,8 @@ export const HorizontalLineStyled = styled.div`
     margin: 20px 0;
     background-color: var(--aka-gelb);
 `;
+
+export const VertialLineStyled = styled.span`
+    color: var(--aka-gelb);
+    font-weight: bold;
+`;
