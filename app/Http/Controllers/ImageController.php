@@ -116,7 +116,7 @@ class ImageController extends Controller
         $assocEntity->image_id = null;
         $assocEntity->save();
 
+        Storage::delete($image->path);
         $image->delete();
-        return Storage::delete($image->path);
     }
 }

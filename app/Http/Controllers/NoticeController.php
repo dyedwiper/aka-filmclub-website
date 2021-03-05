@@ -7,6 +7,7 @@ use App\Models\Notice;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 
 class NoticeController extends Controller
 {
@@ -75,7 +76,11 @@ class NoticeController extends Controller
             abort(401);
         }
         $notice = Notice::firstWhere('uuid', $uuid);
+        $image = $notice->image;
+
         $notice->delete();
+        Storage::delete($image->path);
+        $image->delete();
     }
 
     public function UpdateUuids()
