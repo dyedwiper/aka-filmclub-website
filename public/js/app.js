@@ -5233,12 +5233,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
 
 
 function Header() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      isNavOpen = _useState2[0],
+      setIsNavOpen = _useState2[1];
+
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_UserContext__WEBPACK_IMPORTED_MODULE_3__.default),
       user = _useContext.user,
       setUser = _useContext.setUser;
@@ -5253,7 +5271,13 @@ function Header() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LogoStyled, {
         src: "/assets/aka_logo.png"
       })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavButtonStyled, {
+      onClick: function onClick() {
+        return setIsNavOpen(!isNavOpen);
+      },
+      children: "x"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NavStyled, {
+      isNavOpen: isNavOpen,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
         to: "/news",
         children: "News"
@@ -5331,7 +5355,7 @@ function Header() {
 var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.header.withConfig({
   displayName: "Header__HeaderStyled",
   componentId: "d7im2b-0"
-})(["position:fixed;top:0;z-index:10;display:grid;grid-template-columns:150px 1fr;height:120px;width:100%;padding:20px 100px;background-color:white;"]);
+})(["position:fixed;top:0;z-index:10;display:grid;grid-template-columns:150px 1fr;height:120px;width:100vw;padding:20px 100px;background-color:white;@media (max-width:901px){height:60px;padding:10px 20px;}"]);
 var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h1.withConfig({
   displayName: "Header__HeadlineStyled",
   componentId: "d7im2b-1"
@@ -5343,26 +5367,32 @@ var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(reac
 var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
   displayName: "Header__LogoStyled",
   componentId: "d7im2b-3"
-})(["height:80px;"]);
+})(["height:80px;@media (max-width:901px){height:40px;}"]);
+var NavButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.button.withConfig({
+  displayName: "Header__NavButtonStyled",
+  componentId: "d7im2b-4"
+})(["display:none;@media (max-width:901px){display:block;}"]);
 var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.nav.withConfig({
   displayName: "Header__NavStyled",
-  componentId: "d7im2b-4"
-})(["padding:20px;"]);
+  componentId: "d7im2b-5"
+})(["padding:20px;background-color:white;@media (max-width:901px){display:", ";grid-auto-flow:row;justify-items:right;position:absolute;top:60px;width:100vw;}"], function (props) {
+  return props.isNavOpen ? 'grid' : 'none';
+});
 var DropdownContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Header__DropdownContainerStyled",
-  componentId: "d7im2b-5"
-})(["display:inline-block;position:relative;&:hover div{display:block;}"]);
+  componentId: "d7im2b-6"
+})(["display:inline-block;position:relative;&:hover div{display:block;}@media (max-width:901px){display:grid;grid-auto-flow:row;justify-items:right;}"]);
 var NavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.NavLink).withConfig({
   displayName: "Header__NavLinkStyled",
-  componentId: "d7im2b-6"
-})(["margin-right:20px;font-size:2rem;font-weight:bold;"]);
+  componentId: "d7im2b-7"
+})(["margin-right:20px;font-size:2rem;font-weight:bold;@media (max-width:901px){display:block;}"]);
 var SubNavStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Header__SubNavStyled",
-  componentId: "d7im2b-7"
-})(["display:none;position:absolute;background-color:var(--aka-secondary-color);"]);
+  componentId: "d7im2b-8"
+})(["display:none;position:absolute;margin-right:20px;background-color:var(--aka-secondary-color);@media (max-width:901px){position:relative;display:grid;grid-auto-flow:row;justify-items:right;}"]);
 var SubNavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link).withConfig({
   displayName: "Header__SubNavLinkStyled",
-  componentId: "d7im2b-8"
+  componentId: "d7im2b-9"
 })(["display:block;font-size:1.5em;font-weight:bold;"]);
 
 /***/ }),
@@ -6972,7 +7002,7 @@ __webpack_require__.r(__webpack_exports__);
 var PageStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.main.withConfig({
   displayName: "styledElements__PageStyled",
   componentId: "sc-1sog38p-0"
-})(["min-height:100vh;max-width:1024px;margin:0 auto;padding:160px 100px 100px 100px;"]);
+})(["min-height:100vh;max-width:1024px;margin:0 auto;padding:160px 100px 100px 100px;@media (max-width:901px){padding:80px 10px 10px 10px;}"]);
 var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.div.withConfig({
   displayName: "styledElements__HorizontalLineStyled",
   componentId: "sc-1sog38p-1"

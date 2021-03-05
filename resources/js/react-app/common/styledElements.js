@@ -5,6 +5,10 @@ export const PageStyled = styled.main`
     max-width: 1024px;
     margin: 0 auto;
     padding: 160px 100px 100px 100px;
+
+    @media (max-width: 901px) {
+        padding: 80px 10px 10px 10px;
+    }
 `;
 
 export const HorizontalLineStyled = styled.div`
