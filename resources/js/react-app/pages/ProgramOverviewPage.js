@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { PageStyled } from '../common/styledElements';
+import Context from '../Context';
 import { getFutureScreenings } from '../utils/screeningServices';
 
 export default function ProgramOverviewPage() {
     const [screenings, setScreenings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+
+    const { setPageTitle } = useContext(Context);
+
+    useEffect(() => {
+        document.title = 'Programm | aka-Filmclub';
+        setPageTitle('Programm');
+    }, []);
 
     useEffect(() => {
         getFutureScreenings().then((res) => {

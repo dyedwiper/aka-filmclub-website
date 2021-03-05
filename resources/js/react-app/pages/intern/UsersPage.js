@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../../common/styledElements';
 import { AUTH_LEVEL_ADMIN, USER_STATUS_ACTIVE, USER_STATUS_ALUMNI, USER_STATUS_PAUSED } from '../../constants';
-import UserContext from '../../UserContext';
+import Context from '../../Context';
 import { getUsers } from '../../utils/userServices';
 
 export default function UsersPage() {
     const [users, setUsers] = useState([]);
 
-    const { user: loggedInUser } = useContext(UserContext);
+    const { user: loggedInUser } = useContext(Context);
 
     useEffect(() => {
         getUsers().then((res) => {

@@ -1,13 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../../common/styledElements';
 import { AUTH_LEVEL_EDITOR } from '../../constants';
-import UserContext from '../../UserContext';
+import Context from '../../Context';
 
 export default function InternPage() {
-    const { user } = useContext(UserContext);
+    const { user, setPageTitle } = useContext(Context);
     const isEditor = user.level >= AUTH_LEVEL_EDITOR;
+
+    useEffect(() => {
+        document.title = 'Intern | aka-Filmclub';
+        setPageTitle('Intern');
+    }, []);
 
     return (
         <PageStyled>

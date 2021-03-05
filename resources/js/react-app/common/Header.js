@@ -1,15 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { AUTH_LEVEL_EDITOR } from '../constants';
-import UserContext from '../UserContext';
+import Context from '../Context';
 import { getLogout } from '../utils/userServices';
 import HamburgerButton from './HamburgerButton';
 
 export default function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
 
-    const { user, setUser } = useContext(UserContext);
+    const { user, setUser, pageTitle } = useContext(Context);
     const isLoggedIn = Object.keys(user).length !== 0;
     const isEditor = user.level >= AUTH_LEVEL_EDITOR;
 
@@ -20,6 +20,7 @@ export default function Header() {
             <LinkStyled to="/">
                 <LogoStyled src="/assets/aka_logo.png" />
             </LinkStyled>
+            <PageTitleStyled>{pageTitle}</PageTitleStyled>
             <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
             <NavStyled isNavOpen={isNavOpen}>
                 <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
@@ -115,6 +116,7 @@ const HeaderStyled = styled.header`
     background-color: white;
 
     @media (max-width: 901px) {
+        grid-template-columns: 60px 1fr 60px;
         height: 60px;
         padding: 0;
     }
@@ -135,6 +137,17 @@ const LogoStyled = styled.img`
 
     @media (max-width: 901px) {
         height: 40px;
+    }
+`;
+
+const PageTitleStyled = styled.h2`
+    display: none;
+
+    @media (max-width: 901px) {
+        justify-self: center;
+        align-self: center;
+        display: block;
+        margin: 0;
     }
 `;
 

@@ -32,11 +32,12 @@ import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
-import UserContext from './UserContext';
+import Context from './Context';
 import { getCurrentUser } from './utils/userServices';
 
 export default function App() {
     const [user, setUser] = useState({});
+    const [pageTitle, setPageTitle] = useState('aka-Filmclub');
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -61,7 +62,7 @@ export default function App() {
 
     return (
         <AppStyled>
-            <UserContext.Provider value={{ user, setUser }}>
+            <Context.Provider value={{ user, setUser, pageTitle, setPageTitle }}>
                 <Router>
                     <Header />
                     <Switch>
@@ -150,7 +151,7 @@ export default function App() {
                     </Switch>
                     <Footer />
                 </Router>
-            </UserContext.Provider>
+            </Context.Provider>
         </AppStyled>
     );
 }

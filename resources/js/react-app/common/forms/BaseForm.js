@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { AUTH_LEVEL_ADMIN } from '../../constants';
-import UserContext from '../../UserContext';
+import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { HorizontalLineStyled } from '../styledElements';
 
@@ -11,7 +11,7 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
     const [validationErrors, setValidationErrors] = useState([]);
     const [showDeletePrompt, setShowDeletePrompt] = useState(false);
 
-    const { user: loggedInUser } = useContext(UserContext);
+    const { user: loggedInUser } = useContext(Context);
 
     const userForm =
         children.length && children.find((child) => child.type.name && child.type.name === 'UserFormGroup');

@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
-import UserContext from '../UserContext';
+import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
 import { deleteImage } from '../utils/imageServices';
 import { getLastParameterFromPath } from '../utils/pathUtils';
@@ -16,7 +16,7 @@ export default function SerialPage() {
     const [isDeletingImage, setIsDeletingImage] = useState(false);
     const [noSerialFound, SetNoSerialFound] = useState(false);
 
-    const { user } = useContext(UserContext);
+    const { user } = useContext(Context);
     const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
 
     useEffect(() => {

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ScreeningCard from '../common/screenings/ScreeningCard';
 import ScreeningSlide from '../common/screenings/ScreeningSlide';
 import { PageStyled } from '../common/styledElements';
+import Context from '../Context';
 import { getScreenings } from '../utils/screeningServices';
 import LoadingPage from './LoadingPage';
 
@@ -10,8 +11,11 @@ export default function HomePage() {
     const [screenings, setScreenings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const { setPageTitle } = useContext(Context);
+
     useEffect(() => {
-        document.title = 'aka-Filmclub ';
+        document.title = 'aka-Filmclub';
+        setPageTitle('');
     }, []);
 
     // useEffect(() => {

@@ -20,7 +20,7 @@ const HamburgerButtonStyled = styled.button`
         display: block;
         width: 60px;
         height: 60px;
-        margin: 0 10px 0 auto;
+        margin: 0 0 0 auto;
         padding: 10px;
         border: none;
     }
@@ -30,9 +30,6 @@ const HamburgerStyled = styled.span`
     position: relative;
     display: block;
     height: 40px;
-    /* display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: 5px; */
 `;
 
 const LineStyled = styled.div`

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
-import UserContext from '../UserContext';
+import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
 import { deleteImage } from '../utils/imageServices';
 import { getNoticeByUuid } from '../utils/noticeServices';
@@ -15,7 +15,7 @@ export default function NoticePage() {
     const [isLoading, setIsLoading] = useState(true);
     const [isDeletingImage, setIsDeletingImage] = useState(false);
 
-    const { user } = useContext(UserContext);
+    const { user } = useContext(Context);
     const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
 
     useEffect(() => {

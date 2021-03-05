@@ -3,13 +3,13 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import magicGif from '../assets/ahahah.gif';
 import { PageStyled } from '../common/styledElements';
-import UserContext from '../UserContext';
+import Context from '../Context';
 import { getCsrfCookie, postLogin } from '../utils/userServices';
 
 export default function LoginPage() {
     const [didLoginFail, setDidLoginFail] = useState(false);
 
-    const { setUser } = useContext(UserContext);
+    const { setUser } = useContext(Context);
 
     let history = useHistory();
 

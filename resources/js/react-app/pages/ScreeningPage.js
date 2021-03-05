@@ -3,7 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalLineStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
-import UserContext from '../UserContext';
+import Context from '../Context';
 import { formatToDateTimeString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getScreeningByUuid } from '../utils/screeningServices';
@@ -14,7 +14,7 @@ export default function ScreeningPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [noScreeningFound, setNoScreeningFound] = useState(false);
 
-    const { user } = useContext(UserContext);
+    const { user } = useContext(Context);
     const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
 
     useEffect(() => {
