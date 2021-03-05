@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -83,7 +84,11 @@ class SerialController extends Controller
             abort(401);
         }
         $serial = Serial::firstWhere('uuid', $request->uuid);
+        $image = $serial->image;
+
         $serial->delete();
+        Storage::delete($image->path);
+        $image->delete();
     }
 
     public function UpdateUuids()

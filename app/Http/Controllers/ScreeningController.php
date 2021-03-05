@@ -7,6 +7,7 @@ use App\Models\Screening;
 use App\Services\ImageService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 
 class ScreeningController extends Controller
 {
@@ -122,7 +123,11 @@ class ScreeningController extends Controller
             abort(401);
         }
         $screening = Screening::firstWhere('uuid', $uuid);
+        $image = $screening->image;
+
         $screening->delete();
+        Storage::delete($image->path);
+        $image->delete();
     }
 
     public function UpdateUuids()
