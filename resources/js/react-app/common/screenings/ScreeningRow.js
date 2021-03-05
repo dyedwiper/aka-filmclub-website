@@ -36,6 +36,12 @@ const HorizontalLineStyled = styled.div`
 const ScreeningContainerStyled = styled.div`
     display: grid;
     grid-template-columns: 360px 480px;
+
+    @media (max-width: 901px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        grid-gap: 20px;
+    }
 `;
 
 const LinkStyled = styled(Link)``;
@@ -55,4 +61,5 @@ const SynopsisStyled = styled.p`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
     overflow: hidden;
+    margin-top: 10px;
 `;

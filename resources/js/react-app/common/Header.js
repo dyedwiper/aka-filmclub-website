@@ -134,8 +134,10 @@ const DropdownContainerStyled = styled.div`
     display: inline-block;
     position: relative;
 
-    &:hover div {
-        display: block;
+    @media (min-width: 901px) {
+        &:hover div {
+            display: block;
+        }
     }
 
     @media (max-width: 901px) {
