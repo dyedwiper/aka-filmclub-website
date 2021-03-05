@@ -20,7 +20,7 @@ export default function AddImagePage() {
     return (
         <PageStyled>
             <HeadlineStyled>Bild hinzufügen</HeadlineStyled>
-            <BaseForm serviceFunction={postImage}>
+            <BaseForm postFunction={postImage}>
                 <input type="hidden" name="assocType" defaultValue={assocType} />
                 <input type="hidden" name="assocUuid" defaultValue={assocUuid} />
                 <ImageFormGroup />

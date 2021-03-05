@@ -15,3 +15,7 @@ export function getSerialByUuid(uuid) {
 export function postSerial(data) {
     return axios.post('/api/serials', data);
 }
+
+export function deleteSerial(uuid) {
+    return axios.delete('/api/serials/uuid/' + uuid);
+}

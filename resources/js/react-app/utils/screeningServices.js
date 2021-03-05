@@ -16,10 +16,10 @@ export function getScreeningByUuid(uuid) {
     return axios.get('/api/screenings/single/' + uuid);
 }
 
-// export function getScreeningsBySerialId(serialId) {
-//     return axios.get('/api/screenings/serial/' + serialId);
-// }
-
 export function postScreening(data) {
     return axios.post('/api/screenings', data);
+}
+
+export function deleteScreening(uuid) {
+    return axios.delete('/api/screenings/uuid/' + uuid);
 }

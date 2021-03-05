@@ -27,3 +27,7 @@ export function getLogout() {
 export function postUser(data) {
     return axios.post('/api/users', data);
 }
+
+export function deleteUser(uuid) {
+    return axios.delete('/api/users/uuid/' + uuid);
+}

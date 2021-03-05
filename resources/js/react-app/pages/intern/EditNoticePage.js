@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import BaseForm from '../../common/forms/BaseForm';
 import { PageStyled } from '../../common/styledElements';
-import { postNotice } from '../../utils/noticeServices';
+import { deleteNotice, postNotice } from '../../utils/noticeServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getNoticeByUuid } from '../../utils/noticeServices';
 import LoadingPage from '../LoadingPage';
@@ -25,7 +25,7 @@ export default function EditNoticePage() {
     return (
         <PageStyled>
             <HeadlineStyled>News bearbeiten</HeadlineStyled>
-            <BaseForm serviceFunction={postNotice}>
+            <BaseForm postFunction={postNotice} deleteFunction={deleteNotice} isEditing={true}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

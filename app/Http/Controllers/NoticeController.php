@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NoticeFormRequest;
 use App\Models\Notice;
 use App\Services\ImageService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 
 class NoticeController extends Controller
 {
@@ -68,6 +68,19 @@ class NoticeController extends Controller
 
         $notice->save();
         return $notice;
+    }
+
+    public function DeleteNotice(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(401);
+        }
+        $notice = Notice::firstWhere('uuid', $uuid);
+        $image = $notice->image;
+
+        $notice->delete();
+        Storage::delete($image->path);
+        $image->delete();
     }
 
     public function UpdateUuids()

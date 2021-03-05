@@ -4,7 +4,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import SerialFormGroup from '../../common/forms/SerialFormGroup';
 import { PageStyled } from '../../common/styledElements';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { getSerialByUuid, postSerial } from '../../utils/serialServices';
+import { getSerialByUuid, postSerial, deleteSerial } from '../../utils/serialServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditSerialPage() {
@@ -24,7 +24,7 @@ export default function EditSerialPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Filmreihe bearbeiten</HeadlineStyled>
-            <BaseForm serviceFunction={postSerial}>
+            <BaseForm postFunction={postSerial} deleteFunction={deleteSerial} isEditing={true}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

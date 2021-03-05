@@ -4,7 +4,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
 import { PageStyled } from '../../common/styledElements';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { getScreeningByUuid, postScreening } from '../../utils/screeningServices';
+import { deleteScreening, getScreeningByUuid, postScreening } from '../../utils/screeningServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditScreeningPage() {
@@ -24,7 +24,7 @@ export default function EditScreeningPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Vorführung bearbeiten</HeadlineStyled>
-            <BaseForm serviceFunction={postScreening}>
+            <BaseForm postFunction={postScreening} deleteFunction={deleteScreening} isEditing={true}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

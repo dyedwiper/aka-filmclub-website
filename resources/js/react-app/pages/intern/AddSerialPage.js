@@ -9,7 +9,7 @@ export default function AddSerialPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Neue Filmreihe anlegen</HeadlineStyled>
-            <BaseForm serviceFunction={postSerial}>
+            <BaseForm postFunction={postSerial}>
                 <SerialFormGroup />
             </BaseForm>
         </PageStyled>

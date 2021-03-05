@@ -10,7 +10,7 @@ export default function AddNoticePage() {
     return (
         <PageStyled>
             <HeadlineStyled>Neue News anlegen</HeadlineStyled>
-            <BaseForm serviceFunction={postNotice}>
+            <BaseForm postFunction={postNotice}>
                 <NoticeFormGroup />
                 <HorizontalLineStyled />
                 <ImageFormGroup />

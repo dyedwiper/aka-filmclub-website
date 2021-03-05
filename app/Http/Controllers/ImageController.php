@@ -9,8 +9,9 @@ use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
 use App\Utils\ValidationUtils;
-use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class ImageController extends Controller
@@ -55,7 +56,7 @@ class ImageController extends Controller
         }
         $imageName = $request->assocUuid . '.' .
             Helper::convertMime2Ext($request->image->getMimeType());
-        $imagePath = $request->image->storeAs($imageFolder, $imageName, 'public');
+        $imagePath = $request->image->storeAs($imageFolder, $imageName);
 
         $image = new Image([
             'uuid' => uniqid(),
@@ -86,7 +87,7 @@ class ImageController extends Controller
             }
             $imageName = $assocEntity->uuid . '.' .
                 Helper::convertMime2Ext($request->image->getMimeType());
-            $imagePath = $request->image->storeAs($imageFolder, $imageName, 'public');
+            $imagePath = $request->image->storeAs($imageFolder, $imageName);
             $image->path = $imagePath;
         }
 
@@ -95,5 +96,27 @@ class ImageController extends Controller
 
         $image->save();
         return $image;
+    }
+
+    public function DeleteImage(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(401);
+        }
+
+        $image = Image::firstWhere('uuid', $uuid);
+
+        $assocEntity = Serial::where('image_id', $image->id)->first();
+        if (!$assocEntity) {
+            $assocEntity = Screening::where('image_id', $image->id)->first();
+        }
+        if (!$assocEntity) {
+            $assocEntity = Notice::where('image_id', $image->id)->first();
+        }
+        $assocEntity->image_id = null;
+        $assocEntity->save();
+
+        Storage::delete($image->path);
+        $image->delete();
     }
 }

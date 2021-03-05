@@ -10,7 +10,7 @@ export default function AddScreeningPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Neue Vorführung anlegen</HeadlineStyled>
-            <BaseForm serviceFunction={postScreening}>
+            <BaseForm postFunction={postScreening}>
                 <ScreeningFormGroup />
                 <HorizontalLineStyled />
                 <ImageFormGroup />

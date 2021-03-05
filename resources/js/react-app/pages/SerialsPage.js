@@ -15,10 +15,8 @@ export default function SerialsPage() {
     }, []);
 
     useEffect(() => {
-        console.log('isLoading', isLoading);
         if (semester) {
             getSerialsBySemester(semester).then((res) => {
-                console.log('res.data', res.data);
                 setSerials(res.data);
                 setIsLoading(false);
             });
