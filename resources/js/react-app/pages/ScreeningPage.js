@@ -14,8 +14,13 @@ export default function ScreeningPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [noScreeningFound, setNoScreeningFound] = useState(false);
 
-    const { user } = useContext(Context);
+    const { user, setPageTitle } = useContext(Context);
     const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+
+    useEffect(() => {
+        document.title = screening.title + ' | aka-Filmclub';
+        setPageTitle('Vorführung');
+    }, [isLoading]);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();

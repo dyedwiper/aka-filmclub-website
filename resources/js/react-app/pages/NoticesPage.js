@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import NoticeRow from '../common/NoticeRow';
 import Paginator from '../common/Paginator';
-import { PageStyled } from '../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import { NOTICES_PER_PAGE } from '../constants';
 import Context from '../Context';
 import { getNoticesByPage, getNoticesCount } from '../utils/noticeServices';
@@ -48,7 +48,7 @@ export default function NoticesPage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>News</HeadlineStyled>
+            <PageHeadlineStyled>News</PageHeadlineStyled>
             <ListStyled>
                 {notices.map((notice) => (
                     <NoticeRow key={notice.id} notice={notice} />
@@ -65,7 +65,5 @@ export default function NoticesPage() {
         </PageStyled>
     );
 }
-
-const HeadlineStyled = styled.h2``;
 
 const ListStyled = styled.ul``;

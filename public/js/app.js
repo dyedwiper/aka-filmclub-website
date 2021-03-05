@@ -5472,7 +5472,7 @@ function Header() {
 var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.header.withConfig({
   displayName: "Header__HeaderStyled",
   componentId: "d7im2b-0"
-})(["position:fixed;top:0;z-index:10;display:grid;grid-template-columns:150px 1fr;height:120px;width:100vw;padding:20px 100px;background-color:white;@media (max-width:901px){grid-template-columns:60px 1fr 60px;height:60px;padding:0;}"]);
+})(["position:fixed;top:0;z-index:10;display:grid;grid-template-columns:150px 1fr;height:120px;width:100vw;padding:20px 100px;background-color:white;@media (max-width:901px){grid-template-columns:80px 1fr 80px;height:60px;padding:0;}"]);
 var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h1.withConfig({
   displayName: "Header__HeadlineStyled",
   componentId: "d7im2b-1"
@@ -5488,7 +5488,7 @@ var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.img.with
 var PageTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2.withConfig({
   displayName: "Header__PageTitleStyled",
   componentId: "d7im2b-4"
-})(["display:none;@media (max-width:901px){justify-self:center;align-self:center;display:block;margin:0;}"]);
+})(["display:none;@media (max-width:901px){justify-self:center;align-self:center;display:block;margin:0;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}"]);
 var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.nav.withConfig({
   displayName: "Header__NavStyled",
   componentId: "d7im2b-5"
@@ -7125,6 +7125,7 @@ var ScreeningTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.defaul
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PageStyled": () => /* binding */ PageStyled,
+/* harmony export */   "PageHeadlineStyled": () => /* binding */ PageHeadlineStyled,
 /* harmony export */   "HorizontalLineStyled": () => /* binding */ HorizontalLineStyled,
 /* harmony export */   "VerticalLineStyled": () => /* binding */ VerticalLineStyled
 /* harmony export */ });
@@ -7134,13 +7135,17 @@ var PageStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.main.wit
   displayName: "styledElements__PageStyled",
   componentId: "sc-1sog38p-0"
 })(["min-height:100vh;max-width:1024px;margin:0 auto;padding:160px 100px 100px 100px;@media (max-width:901px){padding:80px 10px 10px 10px;}"]);
+var PageHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.h2.withConfig({
+  displayName: "styledElements__PageHeadlineStyled",
+  componentId: "sc-1sog38p-1"
+})(["@media (max-width:901px){display:none;}"]);
 var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.div.withConfig({
   displayName: "styledElements__HorizontalLineStyled",
-  componentId: "sc-1sog38p-1"
+  componentId: "sc-1sog38p-2"
 })(["height:10px;width:80%;margin:20px 0;background-color:var(--aka-gelb);"]);
 var VerticalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.span.withConfig({
   displayName: "styledElements__VerticalLineStyled",
-  componentId: "sc-1sog38p-2"
+  componentId: "sc-1sog38p-3"
 })(["color:var(--aka-gelb);font-weight:bold;"]);
 
 /***/ }),
@@ -7240,7 +7245,7 @@ function AboutPage() {
     setPageTitle('Über uns');
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageHeadlineStyled, {
       children: "Wir \xFCber uns"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AboutParagraphStyled, {
       children: "Der \u201EAkademische Filmclub an der Universit\xE4t Freiburg e.V.\u201C \u2013 oder kurz aka-Filmclub \u2013 wurde im Jahre 1957 gegr\xFCndet und ist damit einer der \xE4ltesten studentischen Filmclubs in Deutschland. Wir sind ein als gemeinn\xFCtzig anerkannter Verein, der den Studierenden und Mitarbeiter*innen der Uni Freiburg und allen Filminteressierten in Freiburg ein abwechslungsreiches und anspruchsvolles Filmprogramm zu erschwinglichen Preisen an der Uni bieten m\xF6chte. Vieles hat sich seit der Gr\xFCndung ge\xE4ndert, doch eines hat die Jahre \xFCberdauert: Der cineastische Anspruch."
@@ -7249,13 +7254,9 @@ function AboutPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h2.withConfig({
-  displayName: "AboutPage__HeadlineStyled",
-  componentId: "b3c0bc-0"
-})([""]);
 var AboutParagraphStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
   displayName: "AboutPage__AboutParagraphStyled",
-  componentId: "b3c0bc-1"
+  componentId: "b3c0bc-0"
 })([""]);
 
 /***/ }),
@@ -7333,7 +7334,7 @@ function ArchivePage() {
     }
   }, [semester]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: "Programmarchiv"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
       setSemester: setSemester,
@@ -7349,13 +7350,9 @@ function ArchivePage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
-  displayName: "ArchivePage__HeadlineStyled",
-  componentId: "c8luhi-0"
-})([""]);
 var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
   displayName: "ArchivePage__ScreeningsListStyled",
-  componentId: "c8luhi-1"
+  componentId: "c8luhi-0"
 })([""]);
 
 /***/ }),
@@ -7589,8 +7586,13 @@ function LoginPage() {
       setDidLoginFail = _useState2[1];
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_4__.default),
-      setUser = _useContext.setUser;
+      setUser = _useContext.setUser,
+      setPageTitle = _useContext.setPageTitle;
 
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = 'Login | aka-Filmclub';
+    setPageTitle('Login');
+  }, []);
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormStyled, {
@@ -7950,7 +7952,7 @@ function NoticesPage() {
   }, [page]);
   if (isLoadingNotices || isLoadingCount) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_8__.default, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: "News"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
       children: notices.map(function (notice) {
@@ -7968,13 +7970,9 @@ function NoticesPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h2.withConfig({
-  displayName: "NoticesPage__HeadlineStyled",
-  componentId: "sc-1sivrut-0"
-})([""]);
 var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.ul.withConfig({
   displayName: "NoticesPage__ListStyled",
-  componentId: "sc-1sivrut-1"
+  componentId: "sc-1sivrut-0"
 })([""]);
 
 /***/ }),
@@ -8085,7 +8083,7 @@ function ProgramOverviewPage() {
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageHeadlineStyled, {
       children: "Programm\xFCbersicht"
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading"
@@ -8098,13 +8096,9 @@ function ProgramOverviewPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2.withConfig({
-  displayName: "ProgramOverviewPage__HeadlineStyled",
-  componentId: "sc-82twx1-0"
-})([""]);
 var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.ul.withConfig({
   displayName: "ProgramOverviewPage__ScreeningsListStyled",
-  componentId: "sc-82twx1-1"
+  componentId: "sc-82twx1-0"
 })([""]);
 
 /***/ }),
@@ -8176,7 +8170,7 @@ function ProgramPage() {
   }, []);
   if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_6__.default, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageHeadlineStyled, {
       children: "Programm"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
       children: screenings.map(function (screening) {
@@ -8187,13 +8181,9 @@ function ProgramPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
-  displayName: "ProgramPage__HeadlineStyled",
-  componentId: "udk9l7-0"
-})([""]);
 var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
   displayName: "ProgramPage__ScreeningsListStyled",
-  componentId: "udk9l7-1"
+  componentId: "udk9l7-0"
 })(["padding:0;list-style:none;"]);
 
 /***/ }),
@@ -8264,9 +8254,14 @@ function ScreeningPage() {
       setNoScreeningFound = _useState6[1];
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_4__.default),
-      user = _useContext.user;
+      user = _useContext.user,
+      setPageTitle = _useContext.setPageTitle;
 
   var isAuthorized = user.level >= _constants__WEBPACK_IMPORTED_MODULE_3__.AUTH_LEVEL_EDITOR;
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = screening.title + ' | aka-Filmclub';
+    setPageTitle('Vorführung');
+  }, [isLoading]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__.getLastParameterFromPath)();
     (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningByUuid)(uuid).then(function (res) {
@@ -8498,9 +8493,14 @@ function SerialPage() {
       SetNoSerialFound = _useState8[1];
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_4__.default),
-      user = _useContext.user;
+      user = _useContext.user,
+      setPageTitle = _useContext.setPageTitle;
 
   var isAuthorized = user.level >= _constants__WEBPACK_IMPORTED_MODULE_3__.AUTH_LEVEL_EDITOR;
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = serial.title + ' | aka-Filmclub';
+    setPageTitle('Filmreihe');
+  }, [isLoading]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var serialUuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__.getLastParameterFromPath)();
     (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_8__.getSerialByUuid)(serialUuid).then(function (res) {
@@ -8694,7 +8694,7 @@ function SerialsPage() {
     }
   }, [semester]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: "Filmreihen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
       setSemester: setSemester,
@@ -8710,13 +8710,9 @@ function SerialsPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
-  displayName: "SerialsPage__HeadlineStyled",
-  componentId: "sc-4r2czp-0"
-})([""]);
 var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
   displayName: "SerialsPage__ListStyled",
-  componentId: "sc-4r2czp-1"
+  componentId: "sc-4r2czp-0"
 })([""]);
 
 /***/ }),
@@ -9555,8 +9551,13 @@ function UsersPage() {
       setUsers = _useState2[1];
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_4__.default),
-      loggedInUser = _useContext.user;
+      loggedInUser = _useContext.user,
+      setPageTitle = _useContext.setPageTitle;
 
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = 'Mitglieder | aka-Filmclub';
+    setPageTitle('Mitglieder');
+  }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_5__.getUsers)().then(function (res) {
       setUsers(res.data);

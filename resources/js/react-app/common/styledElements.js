@@ -11,6 +11,12 @@ export const PageStyled = styled.main`
     }
 `;
 
+export const PageHeadlineStyled = styled.h2`
+    @media (max-width: 901px) {
+        display: none;
+    }
+`;
+
 export const HorizontalLineStyled = styled.div`
     height: 10px;
     width: 80%;

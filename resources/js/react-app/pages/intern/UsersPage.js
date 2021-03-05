@@ -9,7 +9,12 @@ import { getUsers } from '../../utils/userServices';
 export default function UsersPage() {
     const [users, setUsers] = useState([]);
 
-    const { user: loggedInUser } = useContext(Context);
+    const { user: loggedInUser, setPageTitle } = useContext(Context);
+
+    useEffect(() => {
+        document.title = 'Mitglieder | aka-Filmclub';
+        setPageTitle('Mitglieder');
+    }, []);
 
     useEffect(() => {
         getUsers().then((res) => {

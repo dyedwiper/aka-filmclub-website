@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SemesterSelect from '../common/SemesterSelect';
 import SerialRow from '../common/SerialRow';
-import { PageStyled } from '../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { getSerialsBySemester } from '../utils/serialServices';
 
@@ -33,7 +33,7 @@ export default function SerialsPage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>Filmreihen</HeadlineStyled>
+            <PageHeadlineStyled>Filmreihen</PageHeadlineStyled>
             <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
             {isLoading ? (
                 <div>Loading</div>
@@ -47,7 +47,5 @@ export default function SerialsPage() {
         </PageStyled>
     );
 }
-
-const HeadlineStyled = styled.h2``;
 
 const ListStyled = styled.ul``;

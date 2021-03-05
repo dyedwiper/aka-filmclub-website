@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ScreeningRow from '../common/screenings/ScreeningRow';
-import { PageStyled } from '../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { getFutureScreenings } from '../utils/screeningServices';
 import LoadingPage from './LoadingPage';
@@ -28,7 +28,7 @@ export default function ProgramPage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>Programm</HeadlineStyled>
+            <PageHeadlineStyled>Programm</PageHeadlineStyled>
             <ScreeningsListStyled>
                 {screenings.map((screening) => (
                     <ScreeningRow key={screening.id} screening={screening} />
@@ -37,8 +37,6 @@ export default function ProgramPage() {
         </PageStyled>
     );
 }
-
-const HeadlineStyled = styled.h2``;
 
 const ScreeningsListStyled = styled.ul`
     padding: 0;

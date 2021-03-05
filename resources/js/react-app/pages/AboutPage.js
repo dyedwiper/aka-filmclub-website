@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { PageStyled } from '../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 
 export default function AboutPage() {
@@ -13,7 +13,7 @@ export default function AboutPage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>Wir über uns</HeadlineStyled>
+            <PageHeadlineStyled>Wir über uns</PageHeadlineStyled>
             <AboutParagraphStyled>
                 Der „Akademische Filmclub an der Universität Freiburg e.V.“ – oder kurz aka-Filmclub – wurde im Jahre
                 1957 gegründet und ist damit einer der ältesten studentischen Filmclubs in Deutschland. Wir sind ein als
@@ -31,7 +31,5 @@ export default function AboutPage() {
         </PageStyled>
     );
 }
-
-const HeadlineStyled = styled.h2``;
 
 const AboutParagraphStyled = styled.p``;

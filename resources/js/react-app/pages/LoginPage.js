@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import magicGif from '../assets/ahahah.gif';
@@ -9,7 +9,12 @@ import { getCsrfCookie, postLogin } from '../utils/userServices';
 export default function LoginPage() {
     const [didLoginFail, setDidLoginFail] = useState(false);
 
-    const { setUser } = useContext(Context);
+    const { setUser, setPageTitle } = useContext(Context);
+
+    useEffect(() => {
+        document.title = 'Login | aka-Filmclub';
+        setPageTitle('Login');
+    }, []);
 
     let history = useHistory();
 

@@ -116,7 +116,7 @@ const HeaderStyled = styled.header`
     background-color: white;
 
     @media (max-width: 901px) {
-        grid-template-columns: 60px 1fr 60px;
+        grid-template-columns: 80px 1fr 80px;
         height: 60px;
         padding: 0;
     }
@@ -148,6 +148,10 @@ const PageTitleStyled = styled.h2`
         align-self: center;
         display: block;
         margin: 0;
+        max-width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 `;
 

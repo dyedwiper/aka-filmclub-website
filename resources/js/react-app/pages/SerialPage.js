@@ -16,8 +16,13 @@ export default function SerialPage() {
     const [isDeletingImage, setIsDeletingImage] = useState(false);
     const [noSerialFound, SetNoSerialFound] = useState(false);
 
-    const { user } = useContext(Context);
+    const { user, setPageTitle } = useContext(Context);
     const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+
+    useEffect(() => {
+        document.title = serial.title + ' | aka-Filmclub';
+        setPageTitle('Filmreihe');
+    }, [isLoading]);
 
     useEffect(() => {
         const serialUuid = getLastParameterFromPath();
