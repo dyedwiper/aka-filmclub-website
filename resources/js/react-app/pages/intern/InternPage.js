@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { PageStyled } from '../../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import { AUTH_LEVEL_EDITOR } from '../../constants';
 import Context from '../../Context';
 
@@ -16,7 +16,7 @@ export default function InternPage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>Interner Bereich</HeadlineStyled>
+            <PageHeadlineStyled>Interner Bereich</PageHeadlineStyled>
             {isEditor && (
                 <>
                     <SubheadlineStyled>Sachen anlegen</SubheadlineStyled>
@@ -31,9 +31,9 @@ export default function InternPage() {
     );
 }
 
-const HeadlineStyled = styled.h2``;
-
-const SubheadlineStyled = styled.h3``;
+const SubheadlineStyled = styled.h3`
+    margin: 20px 0 10px 0;
+`;
 
 const LinkStyled = styled(Link)`
     display: block;

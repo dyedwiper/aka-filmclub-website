@@ -5978,18 +5978,18 @@ function BaseForm(_ref) {
       })
     }), isSubmitting ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(WaitNoteStyled, {
       children: "Am Senden..."
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ButtonContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubmitButtonStyled, {
         type: "submit",
         disabled: userForm && !isSelf && !isAdmin,
         onClick: handleSubmit,
         children: "Speichern"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(BackButtonStyled, {
         type: "button",
         onClick: handleAbort,
         children: "Zur\xFCck"
       }), isEditing && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DeleteButtonStyled, {
           type: "button",
           disabled: userForm && !isAdmin,
           onClick: function onClick() {
@@ -5997,11 +5997,13 @@ function BaseForm(_ref) {
           },
           children: "L\xF6schen"
         }), showDeletePrompt && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DeletePromptStyled, {
-          children: ["Sischer?", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(QuestionStyled, {
+            children: "Sischer?"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DeleteButtonStyled, {
             type: "button",
             onClick: handleDelete,
             children: "Ja"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(BackButtonStyled, {
             type: "button",
             onClick: function onClick() {
               return setShowDeletePrompt(false);
@@ -6060,25 +6062,41 @@ var BaseFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.form
   displayName: "BaseForm__BaseFormStyled",
   componentId: "xfze26-0"
 })([""]);
-var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.button.withConfig({
-  displayName: "BaseForm__ButtonStyled",
+var ButtonContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
+  displayName: "BaseForm__ButtonContainerStyled",
   componentId: "xfze26-1"
+})(["display:grid;grid-template-columns:100px 100px 100px 200px;grid-gap:10px;@media (max-width:901px){grid-template-columns:100px 100px 100px;grid-template-rows:1fr 1fr;}"]);
+var SubmitButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.button.withConfig({
+  displayName: "BaseForm__SubmitButtonStyled",
+  componentId: "xfze26-2"
 })([""]);
+var BackButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.button.withConfig({
+  displayName: "BaseForm__BackButtonStyled",
+  componentId: "xfze26-3"
+})(["background-color:var(--aka-grau);"]);
 var WaitNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "BaseForm__WaitNoteStyled",
-  componentId: "xfze26-2"
+  componentId: "xfze26-4"
 })(["margin-top:20px;"]);
+var DeleteButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.button.withConfig({
+  displayName: "BaseForm__DeleteButtonStyled",
+  componentId: "xfze26-5"
+})(["background-color:red;color:white;"]);
 var DeletePromptStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.span.withConfig({
   displayName: "BaseForm__DeletePromptStyled",
-  componentId: "xfze26-3"
-})([""]);
+  componentId: "xfze26-6"
+})(["display:grid;grid-template-columns:70px 50px 50px;grid-gap:10px;"]);
+var QuestionStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.span.withConfig({
+  displayName: "BaseForm__QuestionStyled",
+  componentId: "xfze26-7"
+})(["justify-self:center;align-self:center;"]);
 var ValidationErrorContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "BaseForm__ValidationErrorContainerStyled",
-  componentId: "xfze26-4"
+  componentId: "xfze26-8"
 })(["color:red;"]);
 var ValidationErrorStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "BaseForm__ValidationErrorStyled",
-  componentId: "xfze26-5"
+  componentId: "xfze26-9"
 })(["margin-bottom:10px;"]);
 
 /***/ }),
@@ -9432,7 +9450,7 @@ function InternPage() {
     setPageTitle('Intern');
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageHeadlineStyled, {
       children: "Interner Bereich"
     }), isEditor && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubheadlineStyled, {
@@ -9455,17 +9473,13 @@ function InternPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h2.withConfig({
-  displayName: "InternPage__HeadlineStyled",
-  componentId: "tgyx37-0"
-})([""]);
 var SubheadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3.withConfig({
   displayName: "InternPage__SubheadlineStyled",
-  componentId: "tgyx37-1"
-})([""]);
+  componentId: "tgyx37-0"
+})(["margin:20px 0 10px 0;"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link).withConfig({
   displayName: "InternPage__LinkStyled",
-  componentId: "tgyx37-2"
+  componentId: "tgyx37-1"
 })(["display:block;"]);
 
 /***/ }),
@@ -9636,7 +9650,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise */\n    width: 100%;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  /* h1, h2, h3, h4, h5, h6, p {\n      margin: 0;\n  } */\n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: lightgrey;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise */\n    width: 100%;\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  /* h1, h2, h3, h4, h5, h6, p {\n      margin: 0;\n  } */\n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;

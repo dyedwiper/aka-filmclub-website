@@ -7,6 +7,7 @@ export default createGlobalStyle`
  
   :root{
       --aka-gelb: #ffea0d;
+      --aka-grau: lightgrey;
       --aka-secondary-color: white;
   }
 
@@ -22,6 +23,7 @@ export default createGlobalStyle`
     font-size: 1em;
     -webkit-appearance: none;
     -moz-appearance: none;
+    border: solid 1px black;
     border-radius: 5px;
     padding: 5px;
   }
@@ -29,6 +31,10 @@ export default createGlobalStyle`
   input {
     /* Fix for iPhone because inputs are somehow too wide elsewise */
     width: 100%;
+  }
+
+  input[type="file"]{
+      border: none;
   }
 
   textarea{
