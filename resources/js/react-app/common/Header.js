@@ -5,6 +5,7 @@ import { AUTH_LEVEL_EDITOR } from '../constants';
 import Context from '../Context';
 import { getLogout } from '../utils/userServices';
 import HamburgerButton from './HamburgerButton';
+import akaLogo from '../assets/aka_logo.png';
 
 export default function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -16,7 +17,7 @@ export default function Header() {
     return (
         <HeaderStyled>
             <LinkStyled to="/">
-                <LogoStyled src="/assets/aka_logo.png" />
+                <LogoStyled src={akaLogo} />
             </LinkStyled>
             <PageTitleStyled>{pageTitle}</PageTitleStyled>
             <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />

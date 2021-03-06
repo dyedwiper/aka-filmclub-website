@@ -40,6 +40,10 @@ export default function HomePage() {
 
     return (
         <PageStyled>
+            <WelcomeMessageStyled>
+                Willkommen auf der Website des aka-Filmclub. Hier könnte ein Bild stehen.
+            </WelcomeMessageStyled>
+            <HorizontalLineStyled />
             <SubHeadlineStyled>Die nächsten Vorführungen</SubHeadlineStyled>
             {screenings.length ? (
                 <CardsRowStyled>
@@ -60,6 +64,8 @@ export default function HomePage() {
         </PageStyled>
     );
 }
+
+const WelcomeMessageStyled = styled.p``;
 
 const SubHeadlineStyled = styled.h3``;
 
