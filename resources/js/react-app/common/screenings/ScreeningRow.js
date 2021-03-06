@@ -47,7 +47,6 @@ const ScreeningContainerStyled = styled.div`
 const LinkStyled = styled(Link)``;
 
 const ScreeningImageStyled = styled.img`
-    height: 200px;
     width: 100%;
     object-fit: cover;
 `;

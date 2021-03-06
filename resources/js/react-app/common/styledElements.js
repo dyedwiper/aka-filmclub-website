@@ -7,7 +7,7 @@ export const PageStyled = styled.main`
     padding: 160px 100px 100px 100px;
 
     @media (max-width: 901px) {
-        padding: 40px 10px 10px 10px;
+        padding: 80px 10px 10px 10px;
     }
 `;
 

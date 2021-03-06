@@ -16,79 +16,81 @@ export default function Header() {
 
     return (
         <HeaderStyled>
-            <LinkStyled to="/">
-                <LogoStyled src={akaLogo} />
-            </LinkStyled>
-            <PageTitleStyled>{pageTitle}</PageTitleStyled>
-            <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
-            <NavStyled isNavOpen={isNavOpen} windowHeight={window.innerHeight}>
-                <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
-                    News
-                </NavLinkStyled>
-                <DropdownContainerStyled>
-                    <NavLinkStyled to="/program" onClick={() => setIsNavOpen(false)}>
-                        Programm
+            <ContentContainerStyled>
+                <LinkStyled to="/">
+                    <LogoStyled src={akaLogo} />
+                </LinkStyled>
+                <PageTitleStyled>{pageTitle}</PageTitleStyled>
+                <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
+                <NavStyled isNavOpen={isNavOpen} windowHeight={window.innerHeight}>
+                    <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
+                        News
                     </NavLinkStyled>
-                    <SubNavStyled>
-                        <SubNavLinkStyled to="/program/overview" onClick={() => setIsNavOpen(false)}>
-                            Übersicht
-                        </SubNavLinkStyled>
-                        <SubNavLinkStyled to="/program/serials" onClick={() => setIsNavOpen(false)}>
-                            Filmreihen
-                        </SubNavLinkStyled>
-                        <SubNavLinkStyled to="/program/archive" onClick={() => setIsNavOpen(false)}>
-                            Archiv
-                        </SubNavLinkStyled>
-                    </SubNavStyled>
-                </DropdownContainerStyled>
-                <DropdownContainerStyled>
-                    <NavLinkStyled to="/about" onClick={() => setIsNavOpen(false)}>
-                        Über uns
-                    </NavLinkStyled>
-                    <SubNavStyled>
-                        <SubNavLinkStyled to="/faqs" onClick={() => setIsNavOpen(false)}>
-                            FAQs
-                        </SubNavLinkStyled>
-                        <SubNavLinkStyled to="/press" onClick={() => setIsNavOpen(false)}>
-                            Pressespiegel
-                        </SubNavLinkStyled>
-                    </SubNavStyled>
-                </DropdownContainerStyled>
-                {isLoggedIn ? (
                     <DropdownContainerStyled>
-                        <NavLinkStyled to="/intern" onClick={() => setIsNavOpen(false)}>
-                            Intern
+                        <NavLinkStyled to="/program" onClick={() => setIsNavOpen(false)}>
+                            Programm
                         </NavLinkStyled>
                         <SubNavStyled>
-                            <SubNavLinkStyled to="/intern/users" onClick={() => setIsNavOpen(false)}>
-                                Mitglieder
+                            <SubNavLinkStyled to="/program/overview" onClick={() => setIsNavOpen(false)}>
+                                Übersicht
                             </SubNavLinkStyled>
-                            {isEditor && (
-                                <>
-                                    <SubNavLinkStyled to="/intern/addNotice" onClick={() => setIsNavOpen(false)}>
-                                        News anlegen
-                                    </SubNavLinkStyled>
-                                    <SubNavLinkStyled to="/intern/addSerial" onClick={() => setIsNavOpen(false)}>
-                                        Filmreihe anlegen
-                                    </SubNavLinkStyled>
-                                    <SubNavLinkStyled to="/intern/addScreening" onClick={() => setIsNavOpen(false)}>
-                                        Vorführung anlegen
-                                    </SubNavLinkStyled>
-                                </>
-                            )}
-                            <SubNavLinkStyled to="/" onClick={handleLogout}>
-                                Logout
+                            <SubNavLinkStyled to="/program/serials" onClick={() => setIsNavOpen(false)}>
+                                Filmreihen
+                            </SubNavLinkStyled>
+                            <SubNavLinkStyled to="/program/archive" onClick={() => setIsNavOpen(false)}>
+                                Archiv
                             </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
-                ) : (
                     <DropdownContainerStyled>
-                        <NavLinkStyled to="/login" onClick={() => setIsNavOpen(false)}>
-                            Login
+                        <NavLinkStyled to="/about" onClick={() => setIsNavOpen(false)}>
+                            Über uns
                         </NavLinkStyled>
+                        <SubNavStyled>
+                            <SubNavLinkStyled to="/faqs" onClick={() => setIsNavOpen(false)}>
+                                FAQs
+                            </SubNavLinkStyled>
+                            <SubNavLinkStyled to="/press" onClick={() => setIsNavOpen(false)}>
+                                Pressespiegel
+                            </SubNavLinkStyled>
+                        </SubNavStyled>
                     </DropdownContainerStyled>
-                )}
-            </NavStyled>
+                    {isLoggedIn ? (
+                        <DropdownContainerStyled>
+                            <NavLinkStyled to="/intern" onClick={() => setIsNavOpen(false)}>
+                                Intern
+                            </NavLinkStyled>
+                            <SubNavStyled>
+                                <SubNavLinkStyled to="/intern/users" onClick={() => setIsNavOpen(false)}>
+                                    Mitglieder
+                                </SubNavLinkStyled>
+                                {isEditor && (
+                                    <>
+                                        <SubNavLinkStyled to="/intern/addNotice" onClick={() => setIsNavOpen(false)}>
+                                            News anlegen
+                                        </SubNavLinkStyled>
+                                        <SubNavLinkStyled to="/intern/addSerial" onClick={() => setIsNavOpen(false)}>
+                                            Filmreihe anlegen
+                                        </SubNavLinkStyled>
+                                        <SubNavLinkStyled to="/intern/addScreening" onClick={() => setIsNavOpen(false)}>
+                                            Vorführung anlegen
+                                        </SubNavLinkStyled>
+                                    </>
+                                )}
+                                <SubNavLinkStyled to="/" onClick={handleLogout}>
+                                    Logout
+                                </SubNavLinkStyled>
+                            </SubNavStyled>
+                        </DropdownContainerStyled>
+                    ) : (
+                        <DropdownContainerStyled>
+                            <NavLinkStyled to="/login" onClick={() => setIsNavOpen(false)}>
+                                Login
+                            </NavLinkStyled>
+                        </DropdownContainerStyled>
+                    )}
+                </NavStyled>
+            </ContentContainerStyled>
         </HeaderStyled>
     );
 
@@ -107,12 +109,16 @@ const HeaderStyled = styled.header`
     position: fixed;
     top: 0;
     z-index: 10;
+    width: 100vw;
+    background-color: white;
+`;
+
+const ContentContainerStyled = styled.div`
     display: grid;
     grid-template-columns: 150px 1fr;
     height: 120px;
-    width: 100vw;
-    padding: 20px 100px;
-    background-color: white;
+    max-width: 1024px;
+    margin: 0 auto;
 
     @media (max-width: 901px) {
         grid-template-columns: 80px 1fr 80px;

@@ -5415,126 +5415,128 @@ function Header() {
 
   var isLoggedIn = Object.keys(user).length !== 0;
   var isEditor = user.level >= _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_EDITOR;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(HeaderStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
-      to: "/",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LogoStyled, {
-        src: _assets_aka_logo_png__WEBPACK_IMPORTED_MODULE_6__.default
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageTitleStyled, {
-      children: pageTitle
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_HamburgerButton__WEBPACK_IMPORTED_MODULE_5__.default, {
-      isNavOpen: isNavOpen,
-      setIsNavOpen: setIsNavOpen
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NavStyled, {
-      isNavOpen: isNavOpen,
-      windowHeight: window.innerHeight,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
-        to: "/news",
-        onClick: function onClick() {
-          return setIsNavOpen(false);
-        },
-        children: "News"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
-          to: "/program",
-          onClick: function onClick() {
-            return setIsNavOpen(false);
-          },
-          children: "Programm"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SubNavStyled, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-            to: "/program/overview",
-            onClick: function onClick() {
-              return setIsNavOpen(false);
-            },
-            children: "\xDCbersicht"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-            to: "/program/serials",
-            onClick: function onClick() {
-              return setIsNavOpen(false);
-            },
-            children: "Filmreihen"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-            to: "/program/archive",
-            onClick: function onClick() {
-              return setIsNavOpen(false);
-            },
-            children: "Archiv"
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
-          to: "/about",
-          onClick: function onClick() {
-            return setIsNavOpen(false);
-          },
-          children: "\xDCber uns"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SubNavStyled, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-            to: "/faqs",
-            onClick: function onClick() {
-              return setIsNavOpen(false);
-            },
-            children: "FAQs"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-            to: "/press",
-            onClick: function onClick() {
-              return setIsNavOpen(false);
-            },
-            children: "Pressespiegel"
-          })]
-        })]
-      }), isLoggedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
-          to: "/intern",
-          onClick: function onClick() {
-            return setIsNavOpen(false);
-          },
-          children: "Intern"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SubNavStyled, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-            to: "/intern/users",
-            onClick: function onClick() {
-              return setIsNavOpen(false);
-            },
-            children: "Mitglieder"
-          }), isEditor && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-              to: "/intern/addNotice",
-              onClick: function onClick() {
-                return setIsNavOpen(false);
-              },
-              children: "News anlegen"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-              to: "/intern/addSerial",
-              onClick: function onClick() {
-                return setIsNavOpen(false);
-              },
-              children: "Filmreihe anlegen"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-              to: "/intern/addScreening",
-              onClick: function onClick() {
-                return setIsNavOpen(false);
-              },
-              children: "Vorf\xFChrung anlegen"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
-            to: "/",
-            onClick: handleLogout,
-            children: "Logout"
-          })]
-        })]
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DropdownContainerStyled, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
-          to: "/login",
-          onClick: function onClick() {
-            return setIsNavOpen(false);
-          },
-          children: "Login"
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeaderStyled, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ContentContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+        to: "/",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LogoStyled, {
+          src: _assets_aka_logo_png__WEBPACK_IMPORTED_MODULE_6__.default
         })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageTitleStyled, {
+        children: pageTitle
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_HamburgerButton__WEBPACK_IMPORTED_MODULE_5__.default, {
+        isNavOpen: isNavOpen,
+        setIsNavOpen: setIsNavOpen
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NavStyled, {
+        isNavOpen: isNavOpen,
+        windowHeight: window.innerHeight,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
+          to: "/news",
+          onClick: function onClick() {
+            return setIsNavOpen(false);
+          },
+          children: "News"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
+            to: "/program",
+            onClick: function onClick() {
+              return setIsNavOpen(false);
+            },
+            children: "Programm"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SubNavStyled, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+              to: "/program/overview",
+              onClick: function onClick() {
+                return setIsNavOpen(false);
+              },
+              children: "\xDCbersicht"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+              to: "/program/serials",
+              onClick: function onClick() {
+                return setIsNavOpen(false);
+              },
+              children: "Filmreihen"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+              to: "/program/archive",
+              onClick: function onClick() {
+                return setIsNavOpen(false);
+              },
+              children: "Archiv"
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
+            to: "/about",
+            onClick: function onClick() {
+              return setIsNavOpen(false);
+            },
+            children: "\xDCber uns"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SubNavStyled, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+              to: "/faqs",
+              onClick: function onClick() {
+                return setIsNavOpen(false);
+              },
+              children: "FAQs"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+              to: "/press",
+              onClick: function onClick() {
+                return setIsNavOpen(false);
+              },
+              children: "Pressespiegel"
+            })]
+          })]
+        }), isLoggedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
+            to: "/intern",
+            onClick: function onClick() {
+              return setIsNavOpen(false);
+            },
+            children: "Intern"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SubNavStyled, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+              to: "/intern/users",
+              onClick: function onClick() {
+                return setIsNavOpen(false);
+              },
+              children: "Mitglieder"
+            }), isEditor && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+                to: "/intern/addNotice",
+                onClick: function onClick() {
+                  return setIsNavOpen(false);
+                },
+                children: "News anlegen"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+                to: "/intern/addSerial",
+                onClick: function onClick() {
+                  return setIsNavOpen(false);
+                },
+                children: "Filmreihe anlegen"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+                to: "/intern/addScreening",
+                onClick: function onClick() {
+                  return setIsNavOpen(false);
+                },
+                children: "Vorf\xFChrung anlegen"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+              to: "/",
+              onClick: handleLogout,
+              children: "Logout"
+            })]
+          })]
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DropdownContainerStyled, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
+            to: "/login",
+            onClick: function onClick() {
+              return setIsNavOpen(false);
+            },
+            children: "Login"
+          })
+        })]
       })]
-    })]
+    })
   });
 
   function handleLogout() {
@@ -5548,22 +5550,26 @@ function Header() {
 var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.header.withConfig({
   displayName: "Header__HeaderStyled",
   componentId: "d7im2b-0"
-})(["position:fixed;top:0;z-index:10;display:grid;grid-template-columns:150px 1fr;height:120px;width:100vw;padding:20px 100px;background-color:white;@media (max-width:901px){grid-template-columns:80px 1fr 80px;height:60px;padding:0;}"]);
+})(["position:fixed;top:0;z-index:10;width:100vw;background-color:white;"]);
+var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
+  displayName: "Header__ContentContainerStyled",
+  componentId: "d7im2b-1"
+})(["display:grid;grid-template-columns:150px 1fr;height:120px;max-width:1024px;margin:0 auto;@media (max-width:901px){grid-template-columns:80px 1fr 80px;height:60px;padding:0;}"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link).withConfig({
   displayName: "Header__LinkStyled",
-  componentId: "d7im2b-1"
+  componentId: "d7im2b-2"
 })(["height:100%;margin:10px;"]);
 var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.img.withConfig({
   displayName: "Header__LogoStyled",
-  componentId: "d7im2b-2"
+  componentId: "d7im2b-3"
 })(["height:80px;@media (max-width:901px){height:40px;}"]);
 var PageTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
   displayName: "Header__PageTitleStyled",
-  componentId: "d7im2b-3"
+  componentId: "d7im2b-4"
 })(["display:none;@media (max-width:901px){justify-self:center;align-self:center;display:block;margin:0;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}"]);
 var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.nav.withConfig({
   displayName: "Header__NavStyled",
-  componentId: "d7im2b-4"
+  componentId: "d7im2b-5"
 })(["padding:20px;background-color:white;@media (max-width:901px){display:", ";position:absolute;top:60px;overflow:auto;height:", ";width:100vw;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
   return props.isNavOpen ? 'block' : 'none';
 }, function (props) {
@@ -5571,19 +5577,19 @@ var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.nav.withC
 });
 var DropdownContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__DropdownContainerStyled",
-  componentId: "d7im2b-5"
+  componentId: "d7im2b-6"
 })(["display:inline-block;position:relative;@media (min-width:901px){&:hover div{display:block;}}@media (max-width:901px){display:block;}"]);
 var NavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.NavLink).withConfig({
   displayName: "Header__NavLinkStyled",
-  componentId: "d7im2b-6"
+  componentId: "d7im2b-7"
 })(["margin-right:20px;font-size:2rem;font-weight:bold;@media (max-width:901px){display:block;margin:10px 0 0 0;}"]);
 var SubNavStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__SubNavStyled",
-  componentId: "d7im2b-7"
+  componentId: "d7im2b-8"
 })(["display:none;position:absolute;margin-right:20px;padding:10px;background-color:var(--aka-gelb);opacity:0.9;@media (max-width:901px){position:relative;display:block;margin-right:0;padding:0;}"]);
 var SubNavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link).withConfig({
   displayName: "Header__SubNavLinkStyled",
-  componentId: "d7im2b-8"
+  componentId: "d7im2b-9"
 })(["display:block;margin:5px 0;font-size:1.5em;font-weight:bold;white-space:nowrap;&:hover{text-decoration:underline white;}"]);
 
 /***/ }),
@@ -5709,7 +5715,7 @@ var NoticeContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.defau
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.img.withConfig({
   displayName: "NoticeRow__ImageStyled",
   componentId: "sc-1qmil5x-2"
-})(["height:200px;"]);
+})(["width:100%;object-fit:cover;"]);
 var InfoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "NoticeRow__InfoContainerStyled",
   componentId: "sc-1qmil5x-3"
@@ -6005,7 +6011,7 @@ var SerialContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.defau
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
   displayName: "SerialRow__ImageStyled",
   componentId: "ryf3n0-2"
-})(["height:200px;"]);
+})(["width:100%;object-fit:cover;"]);
 var InfoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SerialRow__InfoContainerStyled",
   componentId: "ryf3n0-3"
@@ -7137,7 +7143,7 @@ var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__.default)(reac
 var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
   displayName: "ScreeningRow__ScreeningImageStyled",
   componentId: "sc-1xbervn-4"
-})(["height:200px;width:100%;object-fit:cover;"]);
+})(["width:100%;object-fit:cover;"]);
 var InfoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningRow__InfoContainerStyled",
   componentId: "sc-1xbervn-5"
@@ -7230,7 +7236,7 @@ __webpack_require__.r(__webpack_exports__);
 var PageStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.main.withConfig({
   displayName: "styledElements__PageStyled",
   componentId: "sc-1sog38p-0"
-})(["min-height:100%;max-width:1024px;margin:0 auto;padding:160px 100px 100px 100px;@media (max-width:901px){padding:40px 10px 10px 10px;}"]);
+})(["min-height:100%;max-width:1024px;margin:0 auto;padding:160px 100px 100px 100px;@media (max-width:901px){padding:80px 10px 10px 10px;}"]);
 var PageHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.h2.withConfig({
   displayName: "styledElements__PageHeadlineStyled",
   componentId: "sc-1sog38p-1"
