@@ -6274,7 +6274,7 @@ function ScreeningFormGroup(_ref) {
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Beschreibung", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TextAreaStyled, {
+      children: ["Beschreibung", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SynopsisTextareaStyled, {
         name: "synopsis",
         defaultValue: screening && screening.synopsis
       })]
@@ -6307,7 +6307,7 @@ function ScreeningFormGroup(_ref) {
         name: "cast",
         defaultValue: screening && screening.cast
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormRowWithThreeInputsStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SmallInputsContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Prodoktionsl\xE4nder", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "country",
@@ -6323,9 +6323,7 @@ function ScreeningFormGroup(_ref) {
           name: "length",
           defaultValue: screening && screening.length
         })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormRowWithThreeInputsStyled, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Medium", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "medium",
           defaultValue: screening && screening.medium
@@ -6347,7 +6345,7 @@ function ScreeningFormGroup(_ref) {
         defaultValue: screening && screening.special
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Dreizeiler", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TextAreaStyled, {
+      children: ["Dreizeiler", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TercetTextareaStyled, {
         name: "tercet",
         defaultValue: screening && screening.tercet
       })]
@@ -6375,18 +6373,22 @@ var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.w
   displayName: "ScreeningFormGroup__InputStyled",
   componentId: "sc-7lk3c0-2"
 })([""]);
-var TextAreaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.textarea.withConfig({
-  displayName: "ScreeningFormGroup__TextAreaStyled",
+var SynopsisTextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.textarea.withConfig({
+  displayName: "ScreeningFormGroup__SynopsisTextareaStyled",
   componentId: "sc-7lk3c0-3"
-})([""]);
+})(["height:300px;"]);
+var TercetTextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.textarea.withConfig({
+  displayName: "ScreeningFormGroup__TercetTextareaStyled",
+  componentId: "sc-7lk3c0-4"
+})(["height:80px;"]);
 var FormRowWithTwoInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningFormGroup__FormRowWithTwoInputsStyled",
-  componentId: "sc-7lk3c0-4"
-})(["display:grid;grid-template-columns:1fr 1fr;grid-gap:20px;"]);
-var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
-  displayName: "ScreeningFormGroup__FormRowWithThreeInputsStyled",
   componentId: "sc-7lk3c0-5"
-})(["display:grid;grid-template-columns:1fr 1fr 1fr;grid-gap:20px;"]);
+})(["display:grid;grid-template-columns:1fr 1fr;grid-gap:20px;"]);
+var SmallInputsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "ScreeningFormGroup__SmallInputsContainerStyled",
+  componentId: "sc-7lk3c0-6"
+})(["display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;column-gap:20px;@media (max-width:901px){grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}"]);
 
 /***/ }),
 
@@ -6638,7 +6640,7 @@ var SerialSelectFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__
 var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.button.withConfig({
   displayName: "SerialSelectFormGroup__ButtonStyled",
   componentId: "mbikx2-1"
-})([""]);
+})(["height:40px;@media (max-width:901px){font-size:0.6em;}"]);
 var LoadingNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "SerialSelectFormGroup__LoadingNoteStyled",
   componentId: "mbikx2-2"
@@ -6779,7 +6781,7 @@ var LabelTextStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div
 var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.input.withConfig({
   displayName: "UserFormGroup__InputStyled",
   componentId: "sc-158x4uq-3"
-})(["width:70%;"]);
+})(["width:70%;@media (max-width:901px){width:100%;}"]);
 
 /***/ }),
 
@@ -9550,7 +9552,7 @@ function UsersPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Mitglieder verwalten"
-    }), loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_3__.AUTH_LEVEL_ADMIN && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+    }), loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_3__.AUTH_LEVEL_ADMIN && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NewUserLinkStyled, {
       to: "/intern/addUser",
       children: "Neues Mitglied anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(GridContainerStyled, {
@@ -9616,7 +9618,7 @@ var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2.w
 var GridContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "UsersPage__GridContainerStyled",
   componentId: "sc-941gjx-1"
-})(["display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:40px;"]);
+})(["display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:40px;margin-top:40px;@media (max-width:901px){grid-template-columns:1fr;grid-auto-flow:row;}"]);
 var ListContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "UsersPage__ListContainerStyled",
   componentId: "sc-941gjx-2"
@@ -9628,14 +9630,18 @@ var SubheadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h
 var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.ul.withConfig({
   displayName: "UsersPage__ListStyled",
   componentId: "sc-941gjx-4"
-})(["overflow:auto;height:300px;padding:5px;border:solid 3px black;border-radius:5px;"]);
+})(["overflow:auto;height:300px;padding:5px;border:solid 1px black;border-radius:5px;"]);
 var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.li.withConfig({
   displayName: "UsersPage__ListItemStyled",
   componentId: "sc-941gjx-5"
 })([""]);
+var NewUserLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link).withConfig({
+  displayName: "UsersPage__NewUserLinkStyled",
+  componentId: "sc-941gjx-6"
+})(["padding:5px;border:solid 1px black;border-radius:5px;box-shadow:1px 1px 1px black;&:active{background-color:var(--aka-gelb);}&:hover{text-decoration:none;}"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link).withConfig({
   displayName: "UsersPage__LinkStyled",
-  componentId: "sc-941gjx-6"
+  componentId: "sc-941gjx-7"
 })(["display:inline-block;overflow:hidden;max-width:100%;white-space:nowrap;text-overflow:ellipsis;"]);
 
 /***/ }),
@@ -9653,7 +9659,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: lightgrey;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise */\n    width: 100%;\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  /* h1, h2, h3, h4, h5, h6, p {\n      margin: 0;\n  } */\n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: lightgrey;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise */\n    width: 100%;\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  /* h1, h2, h3, h4, h5, h6, p {\n      margin: 0;\n  } */\n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -9722,7 +9728,10 @@ var userStatusSelectStyles = {
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
-      width: '300px'
+      width: '300px',
+      '@media (max-width: 901px)': {
+        width: '100%'
+      }
     });
   }
 };

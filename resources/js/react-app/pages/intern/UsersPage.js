@@ -27,7 +27,7 @@ export default function UsersPage() {
             <HeadlineStyled>Mitglieder verwalten</HeadlineStyled>
             {/* Only display link when current user is admin */}
             {loggedInUser.level === AUTH_LEVEL_ADMIN && (
-                <LinkStyled to="/intern/addUser">Neues Mitglied anlegen</LinkStyled>
+                <NewUserLinkStyled to="/intern/addUser">Neues Mitglied anlegen</NewUserLinkStyled>
             )}
             <GridContainerStyled>
                 <ListContainerStyled>
@@ -80,6 +80,12 @@ const GridContainerStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-gap: 40px;
+    margin-top: 40px;
+
+    @media (max-width: 901px) {
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+    }
 `;
 
 const ListContainerStyled = styled.div``;
@@ -90,11 +96,25 @@ const ListStyled = styled.ul`
     overflow: auto;
     height: 300px;
     padding: 5px;
-    border: solid 3px black;
+    border: solid 1px black;
     border-radius: 5px;
 `;
 
 const ListItemStyled = styled.li``;
+
+const NewUserLinkStyled = styled(Link)`
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px black;
+
+    &:active {
+        background-color: var(--aka-gelb);
+    }
+    &:hover {
+        text-decoration: none;
+    }
+`;
 
 const LinkStyled = styled(Link)`
     display: inline-block;

@@ -32,6 +32,9 @@ export const userStatusSelectStyles = {
         ...provided,
         display: 'inline-block',
         width: '300px',
+        '@media (max-width: 901px)': {
+            width: '100%',
+        },
     }),
 };
 

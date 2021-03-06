@@ -40,11 +40,17 @@ export default createGlobalStyle`
   textarea{
     display: block;
     width: 100%;
+    resize: none;
   }
 
   button {
     background-color: white;
     cursor: pointer;
+    box-shadow: 1px 1px 1px black;
+
+    &:active {
+        background-color: var(--aka-gelb)
+    }
   }
 
   img {
