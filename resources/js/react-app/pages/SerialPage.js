@@ -5,7 +5,6 @@ import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
-import { deleteImage } from '../utils/imageServices';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getSerialByUuid } from '../utils/serialServices';
 import LoadingPage from './LoadingPage';
@@ -13,7 +12,6 @@ import LoadingPage from './LoadingPage';
 export default function SerialPage() {
     const [serial, setSerial] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const [isDeletingImage, setIsDeletingImage] = useState(false);
     const [noSerialFound, SetNoSerialFound] = useState(false);
 
     const { user, setPageTitle } = useContext(Context);
@@ -33,7 +31,7 @@ export default function SerialPage() {
             setSerial(res.data);
             setIsLoading(false);
         });
-    }, [isDeletingImage]);
+    }, []);
 
     if (isLoading) return <LoadingPage />;
 
@@ -64,12 +62,7 @@ export default function SerialPage() {
                     <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
                     <VertialLineStyled> | </VertialLineStyled>
                     {serial.image ? (
-                        <>
-                            <LinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild bearbeiten</LinkStyled>
-                            <ButtonStyled type="button" onClick={handleImageDelete}>
-                                Bild löschen
-                            </ButtonStyled>
-                        </>
+                        <LinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild bearbeiten</LinkStyled>
                     ) : (
                         <LinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</LinkStyled>
                     )}
@@ -77,13 +70,6 @@ export default function SerialPage() {
             )}
         </PageStyled>
     );
-
-    function handleImageDelete() {
-        setIsDeletingImage(true);
-        deleteImage(serial.image.uuid).then(() => {
-            setIsDeletingImage(false);
-        });
-    }
 }
 
 const TitleStyled = styled.h2``;
@@ -123,5 +109,3 @@ const VertialLineStyled = styled.span`
     color: var(--aka-gelb);
     font-weight: bold;
 `;
-
-const ButtonStyled = styled.button``;
