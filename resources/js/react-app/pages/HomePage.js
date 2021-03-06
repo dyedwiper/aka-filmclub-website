@@ -41,10 +41,10 @@ export default function HomePage() {
     return (
         <PageStyled>
             <WelcomeMessageStyled>
-                Willkommen auf der Website des aka-Filmclub. Hier könnte ein Bild stehen.
+                Willkommen auf der Webseite des aka-Filmclub. Hier könnte ein Bild stehen.
             </WelcomeMessageStyled>
             <HorizontalLineStyled />
-            <SubHeadlineStyled>Die nächsten Vorführungen</SubHeadlineStyled>
+            <HeadlineStyled>Die nächsten Vorführungen</HeadlineStyled>
             {screenings.length ? (
                 <CardsRowStyled>
                     {screenings.slice(0, 3).map((screening) => (
@@ -55,7 +55,7 @@ export default function HomePage() {
                 <InfoStyled>Mehr im nächsten Semester</InfoStyled>
             )}
             <HorizontalLineStyled />
-            <SubHeadlineStyled>Die neuesten News</SubHeadlineStyled>
+            <HeadlineStyled>Die neuesten News</HeadlineStyled>
             <CardsRowStyled>
                 {notices.slice(0, 3).map((notice) => (
                     <NoticeCard key={notice.id} notice={notice} />
@@ -67,13 +67,15 @@ export default function HomePage() {
 
 const WelcomeMessageStyled = styled.p``;
 
-const SubHeadlineStyled = styled.h3``;
+const HeadlineStyled = styled.h2`
+    font-size: 1.5em;
+`;
 
 const CardsRowStyled = styled.ul`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 20px;
     margin-top: 20px;
-    /* background-color: deeppink; */
 `;
 
 const InfoStyled = styled.div``;

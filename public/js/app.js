@@ -5636,7 +5636,7 @@ function NoticeCard(_ref) {
 var NoticeCardStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.li.withConfig({
   displayName: "NoticeCard__NoticeCardStyled",
   componentId: "sc-1y7aa7k-0"
-})(["width:240px;"]);
+})([""]);
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
   displayName: "NoticeCard__ImageStyled",
   componentId: "sc-1y7aa7k-1"
@@ -7038,41 +7038,47 @@ __webpack_require__.r(__webpack_exports__);
 
 function ScreeningCard(_ref) {
   var screening = _ref.screening;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningCardStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningCardStyled, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, {
       to: '/screening/' + screening.uuid,
-      children: [screening.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
-        src: _constants__WEBPACK_IMPORTED_MODULE_2__.STORAGE_FOLDER + screening.image.path
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleStyled, {
-        children: screening.title
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ImageContainerStyled, {
+        children: [screening.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
+          src: _constants__WEBPACK_IMPORTED_MODULE_2__.STORAGE_FOLDER + screening.image.path
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleStyled, {
+          children: screening.title
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
+        children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatToDateString)(screening.date)
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SynopsisStyled, {
+        children: screening.synopsis
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
-      children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatToDateString)(screening.date)
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SynopsisStyled, {
-      children: screening.synopsis
-    })]
+    })
   });
 }
 var ScreeningCardStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.li.withConfig({
   displayName: "ScreeningCard__ScreeningCardStyled",
   componentId: "ojz13b-0"
-})(["width:240px;"]);
-var ScreeningImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
-  displayName: "ScreeningCard__ScreeningImageStyled",
+})([""]);
+var ImageContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+  displayName: "ScreeningCard__ImageContainerStyled",
   componentId: "ojz13b-1"
-})(["width:100%;height:150px;object-fit:cover;"]);
-var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h4.withConfig({
-  displayName: "ScreeningCard__TitleStyled",
+})(["position:relative;margin-bottom:10px;"]);
+var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
+  displayName: "ScreeningCard__ImageStyled",
   componentId: "ojz13b-2"
-})(["margin:10px 0;"]);
+})(["display:block;width:100%;height:150px;object-fit:cover;"]);
+var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3.withConfig({
+  displayName: "ScreeningCard__TitleStyled",
+  componentId: "ojz13b-3"
+})(["position:absolute;left:0;bottom:0;width:100%;margin:0;padding:20px 10px 5px 10px;color:var(--aka-gelb);background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1));"]);
 var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "ScreeningCard__DateStyled",
-  componentId: "ojz13b-3"
+  componentId: "ojz13b-4"
 })(["font-weight:bold;"]);
 var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.p.withConfig({
   displayName: "ScreeningCard__SynopsisStyled",
-  componentId: "ojz13b-4"
-})(["display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;"]);
+  componentId: "ojz13b-5"
+})(["margin:10px 0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;"]);
 
 /***/ }),
 
@@ -7660,8 +7666,8 @@ function HomePage() {
   if (isLoadingScreenings || isLoadingNotices) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_8__.default, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(WelcomeMessageStyled, {
-      children: "Willkommen auf der Website des aka-Filmclub. Hier k\xF6nnte ein Bild stehen."
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
+      children: "Willkommen auf der Webseite des aka-Filmclub. Hier k\xF6nnte ein Bild stehen."
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Die n\xE4chsten Vorf\xFChrungen"
     }), screenings.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CardsRowStyled, {
       children: screenings.slice(0, 3).map(function (screening) {
@@ -7671,7 +7677,7 @@ function HomePage() {
       })
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InfoStyled, {
       children: "Mehr im n\xE4chsten Semester"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Die neuesten News"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CardsRowStyled, {
       children: notices.slice(0, 3).map(function (notice) {
@@ -7686,14 +7692,14 @@ var WelcomeMessageStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.defaul
   displayName: "HomePage__WelcomeMessageStyled",
   componentId: "q2eo20-0"
 })([""]);
-var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3.withConfig({
-  displayName: "HomePage__SubHeadlineStyled",
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h2.withConfig({
+  displayName: "HomePage__HeadlineStyled",
   componentId: "q2eo20-1"
-})([""]);
+})(["font-size:1.5em;"]);
 var CardsRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.ul.withConfig({
   displayName: "HomePage__CardsRowStyled",
   componentId: "q2eo20-2"
-})(["display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:20px;"]);
+})(["display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;margin-top:20px;"]);
 var InfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
   displayName: "HomePage__InfoStyled",
   componentId: "q2eo20-3"

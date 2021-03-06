@@ -20,7 +20,7 @@ class ScreeningController extends Controller
 
     public function GetFutureScreenings()
     {
-        return Screening::where('date', '>', date("Y-m-d H:i:s"))->with('image')->get();
+        return Screening::where('date', '>', date("Y-m-d H:i:s"))->orderBy('date')->with('image')->get();
     }
 
     public function GetScreeningByUuid(string $uuid)

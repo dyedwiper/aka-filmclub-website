@@ -8,27 +8,40 @@ export default function ScreeningCard({ screening }) {
     return (
         <ScreeningCardStyled>
             <Link to={'/screening/' + screening.uuid}>
-                {screening.image && <ScreeningImageStyled src={STORAGE_FOLDER + screening.image.path} />}
-                <TitleStyled>{screening.title}</TitleStyled>
+                <ImageContainerStyled>
+                    {screening.image && <ImageStyled src={STORAGE_FOLDER + screening.image.path} />}
+                    <TitleStyled>{screening.title}</TitleStyled>
+                </ImageContainerStyled>
+                <DateStyled>{formatToDateString(screening.date)}</DateStyled>
+                <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
             </Link>
-            <DateStyled>{formatToDateString(screening.date)}</DateStyled>
-            <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
         </ScreeningCardStyled>
     );
 }
 
-const ScreeningCardStyled = styled.li`
-    width: 240px;
+const ScreeningCardStyled = styled.li``;
+
+const ImageContainerStyled = styled.div`
+    position: relative;
+    margin-bottom: 10px;
 `;
 
-const ScreeningImageStyled = styled.img`
+const ImageStyled = styled.img`
+    display: block;
     width: 100%;
     height: 150px;
     object-fit: cover;
 `;
 
-const TitleStyled = styled.h4`
-    margin: 10px 0;
+const TitleStyled = styled.h3`
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px 10px 5px 10px;
+    color: var(--aka-gelb);
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 `;
 
 const DateStyled = styled.div`
@@ -36,6 +49,7 @@ const DateStyled = styled.div`
 `;
 
 const SynopsisStyled = styled.p`
+    margin: 10px 0;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;

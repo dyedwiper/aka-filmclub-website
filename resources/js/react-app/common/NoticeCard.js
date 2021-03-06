@@ -16,9 +16,7 @@ export default function NoticeCard({ notice }) {
     );
 }
 
-const NoticeCardStyled = styled.li`
-    width: 240px;
-`;
+const NoticeCardStyled = styled.li``;
 
 const ImageStyled = styled.img`
     width: 100%;
