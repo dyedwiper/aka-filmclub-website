@@ -34,6 +34,8 @@ import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
 import Context from './Context';
 import { getCurrentUser } from './utils/userServices';
+import ContactPage from './pages/ContactPage';
+import LinksPage from './pages/LinksPage';
 
 export default function App() {
     const [user, setUser] = useState({});
@@ -101,6 +103,12 @@ export default function App() {
                         </Route>
                         <Route exact path="/press">
                             <PressReviewPage />
+                        </Route>
+                        <Route exact path="/contact">
+                            <ContactPage />
+                        </Route>
+                        <Route exact path="/links">
+                            <LinksPage />
                         </Route>
                         <Route exact path="/login">
                             <LoginPage />

@@ -15,8 +15,6 @@ export default function Header() {
 
     return (
         <HeaderStyled>
-            {/* The headline is hidden. It is set for SEO. */}
-            <HeadlineStyled>Akademischer Filmclub an der Universität Freiburg e.V.</HeadlineStyled>
             <LinkStyled to="/">
                 <LogoStyled src="/assets/aka_logo.png" />
             </LinkStyled>
@@ -120,11 +118,6 @@ const HeaderStyled = styled.header`
         height: 60px;
         padding: 0;
     }
-`;
-
-const HeadlineStyled = styled.h1`
-    position: fixed;
-    visibility: hidden;
 `;
 
 const LinkStyled = styled(Link)`

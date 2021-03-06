@@ -23,6 +23,7 @@ const HamburgerButtonStyled = styled.button`
         margin: 0 0 0 auto;
         padding: 10px;
         border: none;
+        box-shadow: none;
     }
 `;
 
