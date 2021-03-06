@@ -22,7 +22,7 @@ export default function Header() {
             </LinkStyled>
             <PageTitleStyled>{pageTitle}</PageTitleStyled>
             <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
-            <NavStyled isNavOpen={isNavOpen}>
+            <NavStyled isNavOpen={isNavOpen} windowHeight={window.innerHeight}>
                 <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
                     News
                 </NavLinkStyled>
@@ -160,12 +160,16 @@ const NavStyled = styled.nav`
     background-color: white;
 
     @media (max-width: 901px) {
-        display: ${(props) => (props.isNavOpen ? 'grid' : 'none')};
-        grid-auto-flow: row;
-        justify-items: right;
+        display: ${(props) => (props.isNavOpen ? 'block' : 'none')};
         position: absolute;
         top: 60px;
+        overflow: auto;
+        height: ${(props) => props.windowHeight - 60 + 'px'};
         width: 100vw;
+        padding-bottom: 50px;
+        background-color: var(--aka-gelb);
+        opacity: 0.9;
+        text-align: right;
     }
 `;
 
@@ -180,9 +184,7 @@ const DropdownContainerStyled = styled.div`
     }
 
     @media (max-width: 901px) {
-        display: grid;
-        grid-auto-flow: row;
-        justify-items: right;
+        display: block;
     }
 `;
 
@@ -193,6 +195,7 @@ const NavLinkStyled = styled(NavLink)`
 
     @media (max-width: 901px) {
         display: block;
+        margin: 10px 0 0 0;
     }
 `;
 
@@ -200,18 +203,26 @@ const SubNavStyled = styled.div`
     display: none;
     position: absolute;
     margin-right: 20px;
-    background-color: var(--aka-secondary-color);
+    padding: 10px;
+    background-color: var(--aka-gelb);
+    opacity: 0.9;
 
     @media (max-width: 901px) {
         position: relative;
-        display: grid;
-        grid-auto-flow: row;
-        justify-items: right;
+        display: block;
+        margin-right: 0;
+        padding: 0;
     }
 `;
 
 const SubNavLinkStyled = styled(Link)`
     display: block;
+    margin: 5px 0;
     font-size: 1.5em;
     font-weight: bold;
+    white-space: nowrap;
+
+    &:hover {
+        text-decoration: underline white;
+    }
 `;

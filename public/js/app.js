@@ -5353,6 +5353,7 @@ function Header() {
       setIsNavOpen: setIsNavOpen
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NavStyled, {
       isNavOpen: isNavOpen,
+      windowHeight: window.innerHeight,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
         to: "/news",
         onClick: function onClick() {
@@ -5492,25 +5493,27 @@ var PageTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2.
 var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.nav.withConfig({
   displayName: "Header__NavStyled",
   componentId: "d7im2b-5"
-})(["padding:20px;background-color:white;@media (max-width:901px){display:", ";grid-auto-flow:row;justify-items:right;position:absolute;top:60px;width:100vw;}"], function (props) {
-  return props.isNavOpen ? 'grid' : 'none';
+})(["padding:20px;background-color:white;@media (max-width:901px){display:", ";position:absolute;top:60px;overflow:auto;height:", ";width:100vw;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
+  return props.isNavOpen ? 'block' : 'none';
+}, function (props) {
+  return props.windowHeight - 60 + 'px';
 });
 var DropdownContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "Header__DropdownContainerStyled",
   componentId: "d7im2b-6"
-})(["display:inline-block;position:relative;@media (min-width:901px){&:hover div{display:block;}}@media (max-width:901px){display:grid;grid-auto-flow:row;justify-items:right;}"]);
+})(["display:inline-block;position:relative;@media (min-width:901px){&:hover div{display:block;}}@media (max-width:901px){display:block;}"]);
 var NavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.NavLink).withConfig({
   displayName: "Header__NavLinkStyled",
   componentId: "d7im2b-7"
-})(["margin-right:20px;font-size:2rem;font-weight:bold;@media (max-width:901px){display:block;}"]);
+})(["margin-right:20px;font-size:2rem;font-weight:bold;@media (max-width:901px){display:block;margin:10px 0 0 0;}"]);
 var SubNavStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "Header__SubNavStyled",
   componentId: "d7im2b-8"
-})(["display:none;position:absolute;margin-right:20px;background-color:var(--aka-secondary-color);@media (max-width:901px){position:relative;display:grid;grid-auto-flow:row;justify-items:right;}"]);
+})(["display:none;position:absolute;margin-right:20px;padding:10px;background-color:var(--aka-gelb);opacity:0.9;@media (max-width:901px){position:relative;display:block;margin-right:0;padding:0;}"]);
 var SubNavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link).withConfig({
   displayName: "Header__SubNavLinkStyled",
   componentId: "d7im2b-9"
-})(["display:block;font-size:1.5em;font-weight:bold;"]);
+})(["display:block;margin:5px 0;font-size:1.5em;font-weight:bold;white-space:nowrap;&:hover{text-decoration:underline white;}"]);
 
 /***/ }),
 
