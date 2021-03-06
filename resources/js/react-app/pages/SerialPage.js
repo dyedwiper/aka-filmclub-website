@@ -39,45 +39,92 @@ export default function SerialPage() {
 
     return (
         <PageStyled>
-            <TitleStyled>{serial.title}</TitleStyled>
-            <SubtitleStyled>{serial.subtitle}</SubtitleStyled>
-            <HorizontalLineStyled />
-            {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
-            <ArticleStyled>{serial.article}</ArticleStyled>
-            <AuthorStyled>{serial.author}</AuthorStyled>
-            <HorizontalLineStyled />
-            <ScreeningsListStyled>
-                {serial.screenings.map((screening) => (
-                    <ScreeningListItemStyled key={screening.id}>
-                        <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
-                        <ScreeningTitleLinkStyled to={'/screening/' + screening.uuid}>
-                            {screening.title}
-                        </ScreeningTitleLinkStyled>
-                    </ScreeningListItemStyled>
-                ))}
-            </ScreeningsListStyled>
-            {isAuthorized && (
+            {serial.image ? (
+                <ImageContainerStyled>
+                    <ImageStyled src={STORAGE_FOLDER + serial.image.path} />
+                    <TitleContainerStyled>
+                        <TitleStyled>{serial.title}</TitleStyled>
+                        <SubtitleStyled>{serial.subtitle}</SubtitleStyled>
+                    </TitleContainerStyled>
+                </ImageContainerStyled>
+            ) : (
                 <>
-                    <HorizontalLineStyled />
-                    <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
-                    <VertialLineStyled> | </VertialLineStyled>
-                    {serial.image ? (
-                        <LinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild bearbeiten</LinkStyled>
-                    ) : (
-                        <LinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</LinkStyled>
-                    )}
+                    <FallbackTitleStyled>{serial.title}</FallbackTitleStyled>
+                    <FallbackSubtitleStyled>{serial.subtitle}</FallbackSubtitleStyled>
                 </>
             )}
+            <TextContainerStyled>
+                <ArticleStyled>{serial.article}</ArticleStyled>
+                <AuthorStyled>{serial.author}</AuthorStyled>
+                <HorizontalLineStyled />
+                <ScreeningsListStyled>
+                    {serial.screenings.map((screening) => (
+                        <ScreeningListItemStyled key={screening.id}>
+                            <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
+                            <ScreeningTitleLinkStyled to={'/screening/' + screening.uuid}>
+                                {screening.title}
+                            </ScreeningTitleLinkStyled>
+                        </ScreeningListItemStyled>
+                    ))}
+                </ScreeningsListStyled>
+                {isAuthorized && (
+                    <>
+                        <HorizontalLineStyled />
+                        <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
+                        <VertialLineStyled> | </VertialLineStyled>
+                        {serial.image ? (
+                            <LinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild bearbeiten</LinkStyled>
+                        ) : (
+                            <LinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</LinkStyled>
+                        )}
+                    </>
+                )}
+            </TextContainerStyled>
         </PageStyled>
     );
 }
 
-const TitleStyled = styled.h2``;
-
-const SubtitleStyled = styled.p``;
+const ImageContainerStyled = styled.div`
+    position: relative;
+    margin-bottom: 20px;
+`;
 
 const ImageStyled = styled.img`
     width: 100%;
+`;
+
+const TitleContainerStyled = styled.div`
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 60px 20px 10px 20px;
+    color: var(--aka-gelb);
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+`;
+
+const TitleStyled = styled.h2`
+    display: inline-block;
+    margin: 0 20px 0 0;
+    font-size: 3em;
+`;
+
+const SubtitleStyled = styled.span``;
+
+const FallbackTitleStyled = styled.h2`
+    margin: 10px 0;
+    padding: 0 20px;
+    font-size: 2.1em;
+`;
+
+const FallbackSubtitleStyled = styled.div`
+    margin-bottom: 10px;
+    padding: 0 20px;
+    font-weight: bold;
+`;
+
+const TextContainerStyled = styled.div`
+    padding: 0 20px;
 `;
 
 const ScreeningsListStyled = styled.ul``;

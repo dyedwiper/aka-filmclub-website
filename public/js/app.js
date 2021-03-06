@@ -8742,86 +8742,118 @@ function SerialPage() {
     to: "/404"
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleStyled, {
-      children: serial.title
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubtitleStyled, {
-      children: serial.subtitle
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), serial.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
-      src: _constants__WEBPACK_IMPORTED_MODULE_3__.STORAGE_FOLDER + serial.image.path
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ArticleStyled, {
-      children: serial.article
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AuthorStyled, {
-      children: serial.author
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
-      children: serial.screenings.map(function (screening) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningListItemStyled, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
-            children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_5__.formatToDateString)(screening.date)
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleLinkStyled, {
-            to: '/screening/' + screening.uuid,
-            children: screening.title
-          })]
-        }, screening.id);
-      })
-    }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
-        to: '/intern/editSerial/' + serial.uuid,
-        children: "Reihe bearbeiten"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(VertialLineStyled, {
-        children: " | "
-      }), serial.image ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
-        to: '/intern/editImage/' + serial.image.uuid,
-        children: "Bild bearbeiten"
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
-        to: '/intern/addImage/serial/' + serial.uuid,
-        children: "Bild hinzuf\xFCgen"
+    children: [serial.image ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ImageContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
+        src: _constants__WEBPACK_IMPORTED_MODULE_3__.STORAGE_FOLDER + serial.image.path
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TitleContainerStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleStyled, {
+          children: serial.title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubtitleStyled, {
+          children: serial.subtitle
+        })]
+      })]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(FallbackTitleStyled, {
+        children: serial.title
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(FallbackSubtitleStyled, {
+        children: serial.subtitle
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TextContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ArticleStyled, {
+        children: serial.article
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AuthorStyled, {
+        children: serial.author
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
+        children: serial.screenings.map(function (screening) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningListItemStyled, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
+              children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_5__.formatToDateString)(screening.date)
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningTitleLinkStyled, {
+              to: '/screening/' + screening.uuid,
+              children: screening.title
+            })]
+          }, screening.id);
+        })
+      }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+          to: '/intern/editSerial/' + serial.uuid,
+          children: "Reihe bearbeiten"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(VertialLineStyled, {
+          children: " | "
+        }), serial.image ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+          to: '/intern/editImage/' + serial.image.uuid,
+          children: "Bild bearbeiten"
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+          to: '/intern/addImage/serial/' + serial.uuid,
+          children: "Bild hinzuf\xFCgen"
+        })]
       })]
     })]
   });
 }
-var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h2.withConfig({
-  displayName: "SerialPage__TitleStyled",
+var ImageContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "SerialPage__ImageContainerStyled",
   componentId: "sc-1xwsd7-0"
-})([""]);
-var SubtitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.p.withConfig({
-  displayName: "SerialPage__SubtitleStyled",
-  componentId: "sc-1xwsd7-1"
-})([""]);
+})(["position:relative;margin-bottom:20px;"]);
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.img.withConfig({
   displayName: "SerialPage__ImageStyled",
-  componentId: "sc-1xwsd7-2"
+  componentId: "sc-1xwsd7-1"
 })(["width:100%;"]);
+var TitleContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "SerialPage__TitleContainerStyled",
+  componentId: "sc-1xwsd7-2"
+})(["position:absolute;left:0;bottom:0;width:100%;padding:60px 20px 10px 20px;color:var(--aka-gelb);background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,1));"]);
+var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h2.withConfig({
+  displayName: "SerialPage__TitleStyled",
+  componentId: "sc-1xwsd7-3"
+})(["display:inline-block;margin:0 20px 0 0;font-size:3em;"]);
+var SubtitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.span.withConfig({
+  displayName: "SerialPage__SubtitleStyled",
+  componentId: "sc-1xwsd7-4"
+})([""]);
+var FallbackTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h2.withConfig({
+  displayName: "SerialPage__FallbackTitleStyled",
+  componentId: "sc-1xwsd7-5"
+})(["margin:10px 0;padding:0 20px;font-size:2.1em;"]);
+var FallbackSubtitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "SerialPage__FallbackSubtitleStyled",
+  componentId: "sc-1xwsd7-6"
+})(["margin-bottom:10px;padding:0 20px;font-weight:bold;"]);
+var TextContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "SerialPage__TextContainerStyled",
+  componentId: "sc-1xwsd7-7"
+})(["padding:0 20px;"]);
 var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
   displayName: "SerialPage__ScreeningsListStyled",
-  componentId: "sc-1xwsd7-3"
+  componentId: "sc-1xwsd7-8"
 })([""]);
 var ScreeningListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.li.withConfig({
   displayName: "SerialPage__ScreeningListItemStyled",
-  componentId: "sc-1xwsd7-4"
+  componentId: "sc-1xwsd7-9"
 })(["display:grid;grid-template-columns:95px minmax(0,1fr);margin:5px 0;"]);
 var ScreeningDateStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "SerialPage__ScreeningDateStyled",
-  componentId: "sc-1xwsd7-5"
+  componentId: "sc-1xwsd7-10"
 })([""]);
 var ScreeningTitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_10__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link).withConfig({
   displayName: "SerialPage__ScreeningTitleLinkStyled",
-  componentId: "sc-1xwsd7-6"
+  componentId: "sc-1xwsd7-11"
 })(["overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:bold;"]);
 var ArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.p.withConfig({
   displayName: "SerialPage__ArticleStyled",
-  componentId: "sc-1xwsd7-7"
+  componentId: "sc-1xwsd7-12"
 })([""]);
 var AuthorStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "SerialPage__AuthorStyled",
-  componentId: "sc-1xwsd7-8"
+  componentId: "sc-1xwsd7-13"
 })(["font-style:italic;"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_10__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link).withConfig({
   displayName: "SerialPage__LinkStyled",
-  componentId: "sc-1xwsd7-9"
+  componentId: "sc-1xwsd7-14"
 })([""]);
 var VertialLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.span.withConfig({
   displayName: "SerialPage__VertialLineStyled",
-  componentId: "sc-1xwsd7-10"
+  componentId: "sc-1xwsd7-15"
 })(["color:var(--aka-gelb);font-weight:bold;"]);
 
 /***/ }),
