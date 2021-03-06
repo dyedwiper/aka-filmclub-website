@@ -1,15 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import NoticeCard from '../common/NoticeCard';
 import ScreeningCard from '../common/screenings/ScreeningCard';
-import ScreeningSlide from '../common/screenings/ScreeningSlide';
-import { PageStyled } from '../common/styledElements';
+import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
-import { getScreenings } from '../utils/screeningServices';
+import { getNotices } from '../utils/noticeServices';
+import { getFutureScreenings } from '../utils/screeningServices';
 import LoadingPage from './LoadingPage';
 
 export default function HomePage() {
     const [screenings, setScreenings] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [notices, setNotices] = useState([]);
+    const [isLoadingScreenings, setIsLoadingScreenings] = useState(true);
+    const [isLoadingNotices, setIsLoadingNotices] = useState(true);
 
     const { setPageTitle } = useContext(Context);
 
@@ -18,31 +21,53 @@ export default function HomePage() {
         setPageTitle('');
     }, []);
 
-    // useEffect(() => {
-    //     getScreenings().then((res) => {
-    //         setScreenings(res.data);
-    //         setIsLoading(false);
-    //     });
-    // }, []);
+    useEffect(() => {
+        getFutureScreenings().then((res) => {
+            setScreenings(res.data);
+            setIsLoadingScreenings(false);
+        });
+    }, []);
 
-    // if (isLoading) return <LoadingPage />;
+    useEffect(() => {
+        getNotices().then((res) => {
+            setNotices(res.data.data);
+            console.log(res.data.data);
+            setIsLoadingNotices(false);
+        });
+    }, []);
+
+    if (isLoadingScreenings || isLoadingNotices) return <LoadingPage />;
 
     return (
         <PageStyled>
-            <img src="/storage/images/VSQYG3ewaNVgksZFv6BbjOcmidri5EMIdyvlAyvF.jpg" />
-            {/* <ScreeningSlide key={screenings[0].id} screening={screenings[0]} />
-            <ScreeningCardsRowStyled>
-                {screenings.map((screening) => (
-                    <ScreeningCard key={screening.id} screening={screening} />
+            <SubHeadlineStyled>Die nächsten Vorführungen</SubHeadlineStyled>
+            {screenings.length ? (
+                <CardsRowStyled>
+                    {screenings.slice(0, 3).map((screening) => (
+                        <ScreeningCard key={screening.id} screening={screening} />
+                    ))}
+                </CardsRowStyled>
+            ) : (
+                <InfoStyled>Mehr im nächsten Semester</InfoStyled>
+            )}
+            <HorizontalLineStyled />
+            <SubHeadlineStyled>Die neuesten News</SubHeadlineStyled>
+            <CardsRowStyled>
+                {notices.slice(0, 3).map((notice) => (
+                    <NoticeCard key={notice.id} notice={notice} />
                 ))}
-            </ScreeningCardsRowStyled> */}
+            </CardsRowStyled>
         </PageStyled>
     );
 }
 
-const ScreeningCardsRowStyled = styled.div`
+const SubHeadlineStyled = styled.h3``;
+
+const CardsRowStyled = styled.ul`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 20px;
-    background-color: deeppink;
+    /* background-color: deeppink; */
 `;
+
+const InfoStyled = styled.div``;

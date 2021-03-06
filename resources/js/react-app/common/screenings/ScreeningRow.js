@@ -36,11 +36,11 @@ const HorizontalLineStyled = styled.div`
 const ScreeningContainerStyled = styled.div`
     display: grid;
     grid-template-columns: 360px 480px;
+    grid-gap: 20px;
 
     @media (max-width: 901px) {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto;
-        grid-gap: 20px;
     }
 `;
 
@@ -48,6 +48,8 @@ const LinkStyled = styled(Link)``;
 
 const ScreeningImageStyled = styled.img`
     height: 200px;
+    width: 100%;
+    object-fit: cover;
 `;
 
 const InfoContainerStyled = styled.div``;

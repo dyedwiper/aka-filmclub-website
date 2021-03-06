@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { STORAGE_FOLDER } from '../constants';
 import { formatToDateString } from '../utils/dateFormatters';
 import { HorizontalLineStyled } from './styledElements';
+import missingImage from '../assets/missing.jpg';
 
 export default function NoticeRow({ notice }) {
     return (
@@ -11,7 +12,7 @@ export default function NoticeRow({ notice }) {
             <HorizontalLineStyled />
             <NoticeContainerStyled>
                 <LinkStyled to={'/news/' + notice.uuid}>
-                    {notice.image && <ImageStyled src={STORAGE_FOLDER + notice.image.path} />}
+                    <ImageStyled src={notice.image ? STORAGE_FOLDER + notice.image.path : missingImage} />
                 </LinkStyled>
                 <InfoContainerStyled>
                     <DateStyled>{formatToDateString(notice.date)}</DateStyled>
