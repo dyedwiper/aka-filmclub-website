@@ -82,7 +82,7 @@ const GridContainerStyled = styled.div`
     grid-gap: 40px;
     margin-top: 40px;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         grid-template-columns: 1fr;
         grid-auto-flow: row;
     }

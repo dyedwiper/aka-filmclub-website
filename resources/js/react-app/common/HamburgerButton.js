@@ -16,11 +16,12 @@ export default function HamburgerButton({ isNavOpen, setIsNavOpen }) {
 const HamburgerButtonStyled = styled.button`
     display: none;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
+        justify-self: right;
         display: block;
         width: 60px;
         height: 60px;
-        margin: 0 0 0 auto;
+        margin-right: 10px;
         padding: 10px;
         border: none;
         box-shadow: none;

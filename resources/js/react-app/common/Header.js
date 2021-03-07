@@ -120,22 +120,20 @@ const ContentContainerStyled = styled.div`
     max-width: 1024px;
     margin: 0 auto;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         grid-template-columns: 80px 1fr 80px;
         height: 60px;
-        padding: 0;
     }
 `;
 
 const LinkStyled = styled(Link)`
-    height: 100%;
-    margin: 10px;
+    margin: 10px 0 0 20px;
 `;
 
 const LogoStyled = styled.img`
     height: 80px;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         height: 40px;
     }
 `;
@@ -143,7 +141,7 @@ const LogoStyled = styled.img`
 const PageTitleStyled = styled.h2`
     display: none;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         justify-self: center;
         align-self: center;
         display: block;
@@ -159,7 +157,7 @@ const NavStyled = styled.nav`
     padding: 20px;
     background-color: white;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         display: ${(props) => (props.isNavOpen ? 'block' : 'none')};
         position: absolute;
         top: 60px;
@@ -177,13 +175,13 @@ const DropdownContainerStyled = styled.div`
     display: inline-block;
     position: relative;
 
-    @media (min-width: 899px) {
+    @media (min-width: 767px) {
         &:hover div {
             display: block;
         }
     }
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         display: block;
     }
 `;
@@ -193,7 +191,7 @@ const NavLinkStyled = styled(NavLink)`
     font-size: 2rem;
     font-weight: bold;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         display: block;
         margin: 10px 0 0 0;
     }
@@ -207,7 +205,7 @@ const SubNavStyled = styled.div`
     background-color: var(--aka-gelb);
     opacity: 0.9;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         position: relative;
         display: block;
         margin-right: 0;

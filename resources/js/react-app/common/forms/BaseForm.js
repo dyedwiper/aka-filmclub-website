@@ -119,7 +119,7 @@ const ButtonContainerStyled = styled.div`
     grid-template-columns: 100px 100px 100px 200px;
     grid-gap: 10px;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         grid-template-columns: 100px 100px 100px;
         grid-template-rows: 1fr 1fr;
     }

@@ -38,7 +38,7 @@ const ScreeningContainerStyled = styled.div`
     grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
     grid-gap: 20px;
 
-    @media (max-width: 899px) {
+    @media (max-width: 767px) {
         grid-template-columns: minmax(0, 1fr);
         grid-template-rows: auto auto;
     }
