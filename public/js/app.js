@@ -5808,20 +5808,24 @@ function Paginator(_ref) {
         className: page == 1 && 'disabled',
         children: '<<'
       }), page === 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        to: "#",
         className: "disabled"
       }), page <= 2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        to: "#",
         className: "disabled"
       }), pageNumbers.map(function (pageNumber) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
           to: site + '?page=' + pageNumber,
           onClick: handleClick,
           className: pageNumber == page && 'disabled',
-          isSet: page === pageNumber,
+          isCurrentPage: page === pageNumber,
           children: pageNumber
         }, pageNumber);
       }), page >= numberOfPages.current - 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        to: "#",
         className: "disabled"
       }), page === numberOfPages.current && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        to: "#",
         className: "disabled"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
         to: site + '?page=' + numberOfPages.current,
@@ -7672,7 +7676,6 @@ function HomePage() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     (0,_utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__.getNotices)().then(function (res) {
       setNotices(res.data.data);
-      console.log(res.data.data);
       setIsLoadingNotices(false);
     });
   }, []);
@@ -8156,7 +8159,6 @@ function NoticesPage() {
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    console.log('page', page);
     var query = new URLSearchParams(window.location.search);
     var currentPage = Number(query.get('page')); // Set page to 1 if query is empty
 
