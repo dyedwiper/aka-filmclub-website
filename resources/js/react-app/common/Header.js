@@ -127,7 +127,7 @@ const ContentContainerStyled = styled.div`
 `;
 
 const LinkStyled = styled(Link)`
-    margin: 10px 0 0 20px;
+    margin: 10px 0 0 20px;  
 `;
 
 const LogoStyled = styled.img`

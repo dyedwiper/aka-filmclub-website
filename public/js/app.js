@@ -6534,11 +6534,11 @@ var TercetTextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.defaul
 var FormRowWithTwoInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningFormGroup__FormRowWithTwoInputsStyled",
   componentId: "sc-7lk3c0-5"
-})(["display:grid;grid-template-columns:1fr 1fr;grid-gap:20px;"]);
+})(["display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-gap:20px;"]);
 var SmallInputsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningFormGroup__SmallInputsContainerStyled",
   componentId: "sc-7lk3c0-6"
-})(["display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr;column-gap:20px;@media (max-width:767px){grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;}"]);
+})(["display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));column-gap:20px;@media (max-width:767px){grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));}"]);
 
 /***/ }),
 
@@ -7255,7 +7255,7 @@ __webpack_require__.r(__webpack_exports__);
 var PageStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.main.withConfig({
   displayName: "styledElements__PageStyled",
   componentId: "sc-1sog38p-0"
-})(["min-height:100%;max-width:1024px;margin:0 auto;padding:160px 100px 100px 100px;@media (max-width:1023px){padding:80px 20px 20px 20px;}"]);
+})(["min-height:100%;max-width:1024px;margin:0 auto;padding:160px 100px 100px 100px;@media (max-width:1023px){padding:160px 20px 20px 20px;}@media (max-width:767px){padding:80px 20px 20px 20px;}"]);
 var PageHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.h2.withConfig({
   displayName: "styledElements__PageHeadlineStyled",
   componentId: "sc-1sog38p-1"

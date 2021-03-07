@@ -127,18 +127,18 @@ const TercetTextareaStyled = styled.textarea`
 
 const FormRowWithTwoInputsStyled = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-gap: 20px;
 `;
 
 const SmallInputsContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
     column-gap: 20px;
 
     @media (max-width: 767px) {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
     }
 `;
