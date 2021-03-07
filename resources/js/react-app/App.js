@@ -24,6 +24,7 @@ import UsersPage from './pages/intern/UsersPage';
 import LoadingPage from './pages/LoadingPage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
+import NoticePage from './pages/NoticePage';
 import NoticesPage from './pages/NoticesPage';
 import PressReviewPage from './pages/PressReviewPage';
 import ProgramOverviewPage from './pages/ProgramOverviewPage';
@@ -31,11 +32,14 @@ import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
-import UserContext from './UserContext';
+import Context from './Context';
 import { getCurrentUser } from './utils/userServices';
+import ContactPage from './pages/ContactPage';
+import LinksPage from './pages/LinksPage';
 
 export default function App() {
     const [user, setUser] = useState({});
+    const [pageTitle, setPageTitle] = useState('aka-Filmclub');
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -60,7 +64,7 @@ export default function App() {
 
     return (
         <AppStyled>
-            <UserContext.Provider value={{ user, setUser }}>
+            <Context.Provider value={{ user, setUser, pageTitle, setPageTitle }}>
                 <Router>
                     <Header />
                     <Switch>
@@ -69,6 +73,9 @@ export default function App() {
                         </Route>
                         <Route exact path="/news">
                             <NoticesPage />
+                        </Route>
+                        <Route path="/news/">
+                            <NoticePage />
                         </Route>
                         <Route exact path="/program">
                             <ProgramPage />
@@ -96,6 +103,12 @@ export default function App() {
                         </Route>
                         <Route exact path="/press">
                             <PressReviewPage />
+                        </Route>
+                        <Route exact path="/contact">
+                            <ContactPage />
+                        </Route>
+                        <Route exact path="/links">
+                            <LinksPage />
                         </Route>
                         <Route exact path="/login">
                             <LoginPage />
@@ -146,7 +159,7 @@ export default function App() {
                     </Switch>
                     <Footer />
                 </Router>
-            </UserContext.Provider>
+            </Context.Provider>
         </AppStyled>
     );
 }

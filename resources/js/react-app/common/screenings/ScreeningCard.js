@@ -1,40 +1,61 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { IMAGE_FOLDER } from '../../constants';
+import { STORAGE_FOLDER } from '../../constants';
 import { formatToDateString } from '../../utils/dateFormatters';
 
 export default function ScreeningCard({ screening }) {
     return (
         <ScreeningCardStyled>
-            <ScreeningImageStyled src={IMAGE_FOLDER + screening.image} />
-            <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
-            <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
-            <HorizontalLineStyled />
-            <ScreeningSynopsisStyled>{screening.synopsis}</ScreeningSynopsisStyled>
+            <Link to={'/screening/' + screening.uuid}>
+                <ImageContainerStyled>
+                    {screening.image && <ImageStyled src={STORAGE_FOLDER + screening.image.path} />}
+                    <TitleStyled>{screening.title}</TitleStyled>
+                </ImageContainerStyled>
+                <DateStyled>{formatToDateString(screening.date)}</DateStyled>
+                <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
+            </Link>
         </ScreeningCardStyled>
     );
 }
 
-const ScreeningCardStyled = styled.div`
-    width: 240px;
+const ScreeningCardStyled = styled.li``;
+
+const ImageContainerStyled = styled.div`
+    position: relative;
+    margin-bottom: 10px;
 `;
 
-const ScreeningImageStyled = styled.img`
+const ImageStyled = styled.img`
+    display: block;
     width: 100%;
+    height: 150px;
+    object-fit: cover;
+
+    @media (max-width: 767px) {
+        height: initial;
+    }
 `;
 
-const ScreeningTitleStyled = styled.div`
+const TitleStyled = styled.h3`
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px 10px 5px 10px;
+    color: var(--aka-gelb);
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+`;
+
+const DateStyled = styled.div`
     font-weight: bold;
 `;
 
-const ScreeningDateStyled = styled.div`
-    font-weight: bold;
+const SynopsisStyled = styled.p`
+    margin: 10px 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
 `;
-
-const HorizontalLineStyled = styled.div`
-    height: 10px;
-    width: 80%;
-    background-color: var(--aka-gelb);
-`;
-
-const ScreeningSynopsisStyled = styled.p``;

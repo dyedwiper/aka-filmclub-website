@@ -35,13 +35,20 @@ const HorizontalLineStyled = styled.div`
 
 const ScreeningContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 360px 480px;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+    grid-gap: 20px;
+
+    @media (max-width: 767px) {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto;
+    }
 `;
 
 const LinkStyled = styled(Link)``;
 
 const ScreeningImageStyled = styled.img`
-    height: 200px;
+    width: 100%;
+    object-fit: cover;
 `;
 
 const InfoContainerStyled = styled.div``;
@@ -55,4 +62,5 @@ const SynopsisStyled = styled.p`
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
     overflow: hidden;
+    margin-top: 10px;
 `;

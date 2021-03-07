@@ -61,7 +61,13 @@ const SerialSelectFormGroupStyled = styled.div`
     height: 40px;
 `;
 
-const ButtonStyled = styled.button``;
+const ButtonStyled = styled.button`
+    height: 40px;
+
+    @media (max-width: 767px) {
+        font-size: 0.6em;
+    }
+`;
 
 const LoadingNoteStyled = styled.div`
     display: grid;

@@ -28,11 +28,18 @@ const SerialRowStyled = styled.li``;
 
 const SerialContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 360px 480px;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
+    grid-gap: 20px;
+
+    @media (max-width: 767px) {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto auto;
+    }
 `;
 
 const ImageStyled = styled.img`
-    height: 200px;
+    width: 100%;
+    object-fit: cover;
 `;
 
 const InfoContainerStyled = styled.div``;
@@ -41,9 +48,8 @@ const LinkStyled = styled(Link)``;
 
 const TitleStyled = styled.h3``;
 
-const SubTitleStyled = styled.p`
+const SubTitleStyled = styled.div`
     width: 100%;
-    font-weight: bold;
 `;
 
 const ArticleStyled = styled.p`

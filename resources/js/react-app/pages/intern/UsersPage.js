@@ -3,13 +3,18 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../../common/styledElements';
 import { AUTH_LEVEL_ADMIN, USER_STATUS_ACTIVE, USER_STATUS_ALUMNI, USER_STATUS_PAUSED } from '../../constants';
-import UserContext from '../../UserContext';
+import Context from '../../Context';
 import { getUsers } from '../../utils/userServices';
 
 export default function UsersPage() {
     const [users, setUsers] = useState([]);
 
-    const { user: loggedInUser } = useContext(UserContext);
+    const { user: loggedInUser, setPageTitle } = useContext(Context);
+
+    useEffect(() => {
+        document.title = 'Mitglieder | aka-Filmclub';
+        setPageTitle('Mitglieder');
+    }, []);
 
     useEffect(() => {
         getUsers().then((res) => {
@@ -22,7 +27,7 @@ export default function UsersPage() {
             <HeadlineStyled>Mitglieder verwalten</HeadlineStyled>
             {/* Only display link when current user is admin */}
             {loggedInUser.level === AUTH_LEVEL_ADMIN && (
-                <LinkStyled to="/intern/addUser">Neues Mitglied anlegen</LinkStyled>
+                <NewUserLinkStyled to="/intern/addUser">Neues Mitglied anlegen</NewUserLinkStyled>
             )}
             <GridContainerStyled>
                 <ListContainerStyled>
@@ -75,6 +80,12 @@ const GridContainerStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-gap: 40px;
+    margin-top: 40px;
+
+    @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+        grid-auto-flow: row;
+    }
 `;
 
 const ListContainerStyled = styled.div``;
@@ -85,11 +96,25 @@ const ListStyled = styled.ul`
     overflow: auto;
     height: 300px;
     padding: 5px;
-    border: solid 3px black;
+    border: solid 1px black;
     border-radius: 5px;
 `;
 
 const ListItemStyled = styled.li``;
+
+const NewUserLinkStyled = styled(Link)`
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px black;
+
+    &:active {
+        background-color: var(--aka-gelb);
+    }
+    &:hover {
+        text-decoration: none;
+    }
+`;
 
 const LinkStyled = styled(Link)`
     display: inline-block;

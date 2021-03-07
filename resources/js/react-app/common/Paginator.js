@@ -23,26 +23,33 @@ export default function Paginator({ site, page, setPage, setIsLoading, limit, it
 
     return (
         <PaginatorStyled>
-            <UltimoPageLinkStyled to={site + '?page=1'} onClick={handleClick} className={page == 1 && 'disabled'}>
-                {'<<'}
-            </UltimoPageLinkStyled>
-            {pageNumbers.map((pageNumber) => (
-                <PageLinkStyled
-                    key={pageNumber}
-                    to={site + '?page=' + pageNumber}
-                    onClick={handleClick}
-                    className={pageNumber == page && 'disabled'}
-                >
-                    {pageNumber}
+            <BorderContainerStyled>
+                <PageLinkStyled to={site + '?page=1'} onClick={handleClick} className={page == 1 && 'disabled'}>
+                    {'<<'}
                 </PageLinkStyled>
-            ))}
-            <UltimoPageLinkStyled
-                to={site + '?page=' + numberOfPages.current}
-                onClick={handleClick}
-                className={page == numberOfPages.current && 'disabled'}
-            >
-                {'>>'}
-            </UltimoPageLinkStyled>
+                {page === 1 && <PageLinkStyled className="disabled" />}
+                {page <= 2 && <PageLinkStyled className="disabled" />}
+                {pageNumbers.map((pageNumber) => (
+                    <PageLinkStyled
+                        key={pageNumber}
+                        to={site + '?page=' + pageNumber}
+                        onClick={handleClick}
+                        className={pageNumber == page && 'disabled'}
+                        isSet={page === pageNumber}
+                    >
+                        {pageNumber}
+                    </PageLinkStyled>
+                ))}
+                {page >= numberOfPages.current - 1 && <PageLinkStyled className="disabled" />}
+                {page === numberOfPages.current && <PageLinkStyled className="disabled" />}
+                <PageLinkStyled
+                    to={site + '?page=' + numberOfPages.current}
+                    onClick={handleClick}
+                    className={page == numberOfPages.current && 'disabled'}
+                >
+                    {'>>'}
+                </PageLinkStyled>
+            </BorderContainerStyled>
         </PaginatorStyled>
     );
 
@@ -56,30 +63,29 @@ export default function Paginator({ site, page, setPage, setIsLoading, limit, it
 
 const PaginatorStyled = styled.div`
     width: 210px;
-    margin: 20px auto;
+    margin: 40px auto;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+`;
+
+const BorderContainerStyled = styled.div`
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    border-top: 5px dashed black;
+    border-bottom: 5px dashed black;
 `;
 
 const PageLinkStyled = styled(Link)`
-    display: inline-block;
-    height: 30px;
+    display: grid;
+    align-items: center;
+    height: 40px;
     width: 30px;
-    border: solid 1px black;
+    border: 2px solid black;
+    border-top-width: 3px;
+    border-bottom-width: 1px;
     font-weight: bold;
     text-align: center;
-
-    &.disabled {
-        color: grey;
-        pointer-events: none;
-    }
-`;
-
-const UltimoPageLinkStyled = styled(Link)`
-    display: inline-block;
-    height: 30px;
-    width: 30px;
-    border: solid 1px black;
-    font-weight: bold;
-    text-align: center;
+    background-color: ${(props) => props.isSet && 'var(--aka-gelb)'};
 
     &.disabled {
         color: grey;

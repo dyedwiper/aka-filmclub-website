@@ -1,15 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { PageStyled } from '../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import Context from '../Context';
 
 export default function AboutPage() {
+    const { setPageTitle } = useContext(Context);
+
     useEffect(() => {
-        document.title = 'Über uns | aka-Filmclub ';
+        document.title = 'Über uns | aka-Filmclub';
+        setPageTitle('Über uns');
     }, []);
 
     return (
         <PageStyled>
-            <HeadlineStyled>Wir über uns</HeadlineStyled>
+            <PageHeadlineStyled>Wir über uns</PageHeadlineStyled>
             <AboutParagraphStyled>
                 Der „Akademische Filmclub an der Universität Freiburg e.V.“ – oder kurz aka-Filmclub – wurde im Jahre
                 1957 gegründet und ist damit einer der ältesten studentischen Filmclubs in Deutschland. Wir sind ein als
@@ -27,7 +31,5 @@ export default function AboutPage() {
         </PageStyled>
     );
 }
-
-const HeadlineStyled = styled.h2``;
 
 const AboutParagraphStyled = styled.p``;

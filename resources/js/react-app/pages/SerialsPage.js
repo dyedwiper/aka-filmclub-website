@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SemesterSelect from '../common/SemesterSelect';
 import SerialRow from '../common/SerialRow';
-import { PageStyled } from '../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import Context from '../Context';
 import { getSerialsBySemester } from '../utils/serialServices';
 
 export default function SerialsPage() {
@@ -10,8 +11,11 @@ export default function SerialsPage() {
     const [semester, setSemester] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
+    const { setPageTitle } = useContext(Context);
+
     useEffect(() => {
-        document.title = 'Archiv | aka-Filmclub ';
+        document.title = 'Filmreihen | aka-Filmclub';
+        setPageTitle('Filmreihen');
     }, []);
 
     useEffect(() => {
@@ -25,21 +29,19 @@ export default function SerialsPage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>Filmreihen</HeadlineStyled>
+            <PageHeadlineStyled>Filmreihen</PageHeadlineStyled>
             <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
             {isLoading ? (
                 <div>Loading</div>
             ) : (
-                <SerialRowListStyled>
+                <ListStyled>
                     {serials.map((serial) => (
                         <SerialRow key={serial.id} serial={serial} />
                     ))}
-                </SerialRowListStyled>
+                </ListStyled>
             )}
         </PageStyled>
     );
 }
 
-const HeadlineStyled = styled.h2``;
-
-const SerialRowListStyled = styled.ul``;
+const ListStyled = styled.ul``;

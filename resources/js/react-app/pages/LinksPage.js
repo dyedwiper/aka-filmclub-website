@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from 'react';
-import styled from 'styled-components';
-import { PageStyled } from '../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 
-export default function FaqsPage() {
+export default function LinksPage() {
     const { setPageTitle } = useContext(Context);
 
     useEffect(() => {
@@ -13,9 +12,7 @@ export default function FaqsPage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>FAQs</HeadlineStyled>
+            <PageHeadlineStyled>Links</PageHeadlineStyled>
         </PageStyled>
     );
 }
-
-const HeadlineStyled = styled.h2``;

@@ -7,6 +7,7 @@ export default createGlobalStyle`
  
   :root{
       --aka-gelb: #ffea0d;
+      --aka-grau: lightgrey;
       --aka-secondary-color: white;
   }
 
@@ -22,6 +23,7 @@ export default createGlobalStyle`
     font-size: 1em;
     -webkit-appearance: none;
     -moz-appearance: none;
+    border: solid 1px black;
     border-radius: 5px;
     padding: 5px;
   }
@@ -31,14 +33,24 @@ export default createGlobalStyle`
     width: 100%;
   }
 
+  input[type="file"]{
+      border: none;
+  }
+
   textarea{
     display: block;
     width: 100%;
+    resize: none;
   }
 
   button {
     background-color: white;
     cursor: pointer;
+    box-shadow: 1px 1px 1px black;
+
+    &:active {
+        background-color: var(--aka-gelb)
+    }
   }
 
   img {
@@ -58,5 +70,17 @@ export default createGlobalStyle`
   ul {
     padding: 0;
     list-style: none;
+  }
+
+  /* h1, h2, h3, h4, h5, h6, p {
+      margin: 0;
+  } */
+
+  h2{
+      font-size: 2.1em;
+  }
+
+  h3{
+      margin: 0;
   }
 `;

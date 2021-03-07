@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Notice from '../common/Notice';
+import NoticeRow from '../common/NoticeRow';
 import Paginator from '../common/Paginator';
-import { PageStyled } from '../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import { NOTICES_PER_PAGE } from '../constants';
+import Context from '../Context';
 import { getNoticesByPage, getNoticesCount } from '../utils/noticeServices';
 import LoadingPage from './LoadingPage';
 
@@ -14,8 +15,11 @@ export default function NoticesPage() {
     const [isLoadingNotices, setIsLoadingNotices] = useState(true);
     const [isLoadingCount, setIsLoadingCount] = useState(true);
 
+    const { setPageTitle } = useContext(Context);
+
     useEffect(() => {
         document.title = 'News | aka-Filmclub';
+        setPageTitle('News');
     }, []);
 
     useEffect(() => {
@@ -44,10 +48,12 @@ export default function NoticesPage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>News</HeadlineStyled>
-            {notices.map((notice) => (
-                <Notice key={notice.id} notice={notice} />
-            ))}
+            <PageHeadlineStyled>News</PageHeadlineStyled>
+            <ListStyled>
+                {notices.map((notice) => (
+                    <NoticeRow key={notice.id} notice={notice} />
+                ))}
+            </ListStyled>
             <Paginator
                 site={window.location.pathname}
                 page={page}
@@ -60,4 +66,4 @@ export default function NoticesPage() {
     );
 }
 
-const HeadlineStyled = styled.h2``;
+const ListStyled = styled.ul``;

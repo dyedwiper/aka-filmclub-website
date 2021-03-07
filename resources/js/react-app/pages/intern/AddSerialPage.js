@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
+import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import SerialFormGroup from '../../common/forms/SerialFormGroup';
-import { PageStyled } from '../../common/styledElements';
+import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
 import { postSerial } from '../../utils/serialServices';
 
 export default function AddSerialPage() {
@@ -11,6 +12,8 @@ export default function AddSerialPage() {
             <HeadlineStyled>Neue Filmreihe anlegen</HeadlineStyled>
             <BaseForm postFunction={postSerial}>
                 <SerialFormGroup />
+                <HorizontalLineStyled />
+                <ImageFormGroup />
             </BaseForm>
         </PageStyled>
     );

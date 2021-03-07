@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import SemesterSelect from '../common/SemesterSelect';
-import { PageStyled } from '../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import Context from '../Context';
 import { getScreeningsBySemester } from '../utils/screeningServices';
 
 export default function ArchivePage() {
@@ -10,8 +11,11 @@ export default function ArchivePage() {
     const [semester, setSemester] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
+    const { setPageTitle } = useContext(Context);
+
     useEffect(() => {
-        document.title = 'Archiv | aka-Filmclub ';
+        document.title = 'Archiv | aka-Filmclub';
+        setPageTitle('Archiv');
     }, []);
 
     useEffect(() => {
@@ -25,7 +29,7 @@ export default function ArchivePage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>Programmarchiv</HeadlineStyled>
+            <PageHeadlineStyled>Programmarchiv</PageHeadlineStyled>
             <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
             {isLoading ? (
                 <div>Loading</div>
@@ -39,7 +43,5 @@ export default function ArchivePage() {
         </PageStyled>
     );
 }
-
-const HeadlineStyled = styled.h2``;
 
 const ScreeningsListStyled = styled.ul``;

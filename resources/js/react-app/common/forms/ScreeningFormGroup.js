@@ -36,7 +36,7 @@ export default function ScreeningFormGroup({ screening }) {
             </FormRowWithTwoInputsStyled>
             <LabelStyled>
                 Beschreibung
-                <TextAreaStyled name="synopsis" defaultValue={screening && screening.synopsis} />
+                <SynopsisTextareaStyled name="synopsis" defaultValue={screening && screening.synopsis} />
             </LabelStyled>
             <FormRowWithTwoInputsStyled>
                 <LabelStyled>
@@ -62,7 +62,7 @@ export default function ScreeningFormGroup({ screening }) {
                 Besetzung
                 <InputStyled name="cast" defaultValue={screening && screening.cast} />
             </LabelStyled>
-            <FormRowWithThreeInputsStyled>
+            <SmallInputsContainerStyled>
                 <LabelStyled>
                     Prodoktionsländer
                     <InputStyled name="country" defaultValue={screening && screening.country} />
@@ -75,8 +75,6 @@ export default function ScreeningFormGroup({ screening }) {
                     Länge in Minuten
                     <InputStyled name="length" defaultValue={screening && screening.length} />
                 </LabelStyled>
-            </FormRowWithThreeInputsStyled>
-            <FormRowWithThreeInputsStyled>
                 <LabelStyled>
                     Medium
                     <InputStyled name="medium" defaultValue={screening && screening.medium} />
@@ -89,14 +87,14 @@ export default function ScreeningFormGroup({ screening }) {
                     Veranstaltungsort
                     <InputStyled name="venue" defaultValue={screening ? screening.venue : 'GHS Biologie'} />
                 </LabelStyled>
-            </FormRowWithThreeInputsStyled>
+            </SmallInputsContainerStyled>
             <LabelStyled>
                 Special
                 <InputStyled name="special" defaultValue={screening && screening.special} />
             </LabelStyled>
             <LabelStyled>
                 Dreizeiler
-                <TextAreaStyled name="tercet" defaultValue={screening && screening.tercet} />
+                <TercetTextareaStyled name="tercet" defaultValue={screening && screening.tercet} />
             </LabelStyled>
             <LabelStyled>
                 Filmreihe
@@ -119,16 +117,28 @@ const LabelStyled = styled.label`
 
 const InputStyled = styled.input``;
 
-const TextAreaStyled = styled.textarea``;
+const SynopsisTextareaStyled = styled.textarea`
+    height: 300px;
+`;
+
+const TercetTextareaStyled = styled.textarea`
+    height: 80px;
+`;
 
 const FormRowWithTwoInputsStyled = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-gap: 20px;
 `;
 
-const FormRowWithThreeInputsStyled = styled.div`
+const SmallInputsContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 20px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    column-gap: 20px;
+
+    @media (max-width: 767px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+    }
 `;

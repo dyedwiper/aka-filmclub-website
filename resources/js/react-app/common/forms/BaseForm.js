@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { AUTH_LEVEL_ADMIN } from '../../constants';
-import UserContext from '../../UserContext';
+import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { HorizontalLineStyled } from '../styledElements';
 
@@ -11,7 +11,7 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
     const [validationErrors, setValidationErrors] = useState([]);
     const [showDeletePrompt, setShowDeletePrompt] = useState(false);
 
-    const { user: loggedInUser } = useContext(UserContext);
+    const { user: loggedInUser } = useContext(Context);
 
     const userForm =
         children.length && children.find((child) => child.type.name && child.type.name === 'UserFormGroup');
@@ -32,36 +32,36 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
             {isSubmitting ? (
                 <WaitNoteStyled>Am Senden...</WaitNoteStyled>
             ) : (
-                <>
-                    <ButtonStyled type="submit" disabled={userForm && !isSelf && !isAdmin} onClick={handleSubmit}>
+                <ButtonContainerStyled>
+                    <SubmitButtonStyled type="submit" disabled={userForm && !isSelf && !isAdmin} onClick={handleSubmit}>
                         Speichern
-                    </ButtonStyled>
-                    <ButtonStyled type="button" onClick={handleAbort}>
+                    </SubmitButtonStyled>
+                    <BackButtonStyled type="button" onClick={handleAbort}>
                         Zurück
-                    </ButtonStyled>
+                    </BackButtonStyled>
                     {isEditing && (
                         <>
-                            <ButtonStyled
+                            <DeleteButtonStyled
                                 type="button"
                                 disabled={userForm && !isAdmin}
                                 onClick={() => setShowDeletePrompt(true)}
                             >
                                 Löschen
-                            </ButtonStyled>
+                            </DeleteButtonStyled>
                             {showDeletePrompt && (
                                 <DeletePromptStyled>
-                                    Sischer?
-                                    <ButtonStyled type="button" onClick={handleDelete}>
+                                    <QuestionStyled>Sischer?</QuestionStyled>
+                                    <DeleteButtonStyled type="button" onClick={handleDelete}>
                                         Ja
-                                    </ButtonStyled>
-                                    <ButtonStyled type="button" onClick={() => setShowDeletePrompt(false)}>
+                                    </DeleteButtonStyled>
+                                    <BackButtonStyled type="button" onClick={() => setShowDeletePrompt(false)}>
                                         Nein
-                                    </ButtonStyled>
+                                    </BackButtonStyled>
                                 </DeletePromptStyled>
                             )}
                         </>
                     )}
-                </>
+                </ButtonContainerStyled>
             )}
         </BaseFormStyled>
     );
@@ -114,13 +114,42 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
 
 const BaseFormStyled = styled.form``;
 
-const ButtonStyled = styled.button``;
+const ButtonContainerStyled = styled.div`
+    display: grid;
+    grid-template-columns: 100px 100px 100px 200px;
+    grid-gap: 10px;
+
+    @media (max-width: 767px) {
+        grid-template-columns: 100px 100px 100px;
+        grid-template-rows: 1fr 1fr;
+    }
+`;
+
+const SubmitButtonStyled = styled.button``;
+
+const BackButtonStyled = styled.button`
+    background-color: var(--aka-grau);
+`;
 
 export const WaitNoteStyled = styled.div`
     margin-top: 20px;
 `;
 
-const DeletePromptStyled = styled.span``;
+const DeleteButtonStyled = styled.button`
+    background-color: red;
+    color: white;
+`;
+
+const DeletePromptStyled = styled.span`
+    display: grid;
+    grid-template-columns: 70px 50px 50px;
+    grid-gap: 10px;
+`;
+
+const QuestionStyled = styled.span`
+    justify-self: center;
+    align-self: center;
+`;
 
 const ValidationErrorContainerStyled = styled.div`
     color: red;
