@@ -27,21 +27,21 @@ export default function Paginator({ site, page, setPage, setIsLoading, limit, it
                 <PageLinkStyled to={site + '?page=1'} onClick={handleClick} className={page == 1 && 'disabled'}>
                     {'<<'}
                 </PageLinkStyled>
-                {page === 1 && <PageLinkStyled className="disabled" />}
-                {page <= 2 && <PageLinkStyled className="disabled" />}
+                {page === 1 && <PageLinkStyled to="#" className="disabled" />}
+                {page <= 2 && <PageLinkStyled to="#" className="disabled" />}
                 {pageNumbers.map((pageNumber) => (
                     <PageLinkStyled
                         key={pageNumber}
                         to={site + '?page=' + pageNumber}
                         onClick={handleClick}
                         className={pageNumber == page && 'disabled'}
-                        isSet={page === pageNumber}
+                        isCurrentPage={page === pageNumber}
                     >
                         {pageNumber}
                     </PageLinkStyled>
                 ))}
-                {page >= numberOfPages.current - 1 && <PageLinkStyled className="disabled" />}
-                {page === numberOfPages.current && <PageLinkStyled className="disabled" />}
+                {page >= numberOfPages.current - 1 && <PageLinkStyled to="#" className="disabled" />}
+                {page === numberOfPages.current && <PageLinkStyled to="#" className="disabled" />}
                 <PageLinkStyled
                     to={site + '?page=' + numberOfPages.current}
                     onClick={handleClick}
@@ -85,7 +85,7 @@ const PageLinkStyled = styled(Link)`
     border-bottom-width: 1px;
     font-weight: bold;
     text-align: center;
-    background-color: ${(props) => props.isSet && 'var(--aka-gelb)'};
+    background-color: ${(props) => props.isCurrentPage && 'var(--aka-gelb)'};
 
     &.disabled {
         color: grey;

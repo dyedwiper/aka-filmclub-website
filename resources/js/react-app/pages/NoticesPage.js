@@ -30,7 +30,6 @@ export default function NoticesPage() {
     }, []);
 
     useEffect(() => {
-        console.log('page', page);
         const query = new URLSearchParams(window.location.search);
         const currentPage = Number(query.get('page'));
         // Set page to 1 if query is empty

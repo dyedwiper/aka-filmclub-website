@@ -31,7 +31,6 @@ export default function HomePage() {
     useEffect(() => {
         getNotices().then((res) => {
             setNotices(res.data.data);
-            console.log(res.data.data);
             setIsLoadingNotices(false);
         });
     }, []);
