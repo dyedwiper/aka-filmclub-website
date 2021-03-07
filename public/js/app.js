@@ -5800,25 +5800,36 @@ function Paginator(_ref) {
 
     setPageNumbers(pagesArray);
   }, [page]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(PaginatorStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(UltimoPageLinkStyled, {
-      to: site + '?page=1',
-      onClick: handleClick,
-      className: page == 1 && 'disabled',
-      children: '<<'
-    }), pageNumbers.map(function (pageNumber) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
-        to: site + '?page=' + pageNumber,
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PaginatorStyled, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(BorderContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        to: site + '?page=1',
         onClick: handleClick,
-        className: pageNumber == page && 'disabled',
-        children: pageNumber
-      }, pageNumber);
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(UltimoPageLinkStyled, {
-      to: site + '?page=' + numberOfPages.current,
-      onClick: handleClick,
-      className: page == numberOfPages.current && 'disabled',
-      children: '>>'
-    })]
+        className: page == 1 && 'disabled',
+        children: '<<'
+      }), page === 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        className: "disabled"
+      }), page <= 2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        className: "disabled"
+      }), pageNumbers.map(function (pageNumber) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+          to: site + '?page=' + pageNumber,
+          onClick: handleClick,
+          className: pageNumber == page && 'disabled',
+          isSet: page === pageNumber,
+          children: pageNumber
+        }, pageNumber);
+      }), page >= numberOfPages.current - 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        className: "disabled"
+      }), page === numberOfPages.current && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        className: "disabled"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
+        to: site + '?page=' + numberOfPages.current,
+        onClick: handleClick,
+        className: page == numberOfPages.current && 'disabled',
+        children: '>>'
+      })]
+    })
   });
 
   function handleClick() {
@@ -5831,15 +5842,17 @@ function Paginator(_ref) {
 var PaginatorStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
   displayName: "Paginator__PaginatorStyled",
   componentId: "sc-1g3uqar-0"
-})(["width:210px;margin:20px auto;"]);
+})(["width:210px;margin:40px auto;border-top:3px solid black;border-bottom:3px solid black;"]);
+var BorderContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
+  displayName: "Paginator__BorderContainerStyled",
+  componentId: "sc-1g3uqar-1"
+})(["display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border-top:5px dashed black;border-bottom:5px dashed black;"]);
 var PageLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link).withConfig({
   displayName: "Paginator__PageLinkStyled",
-  componentId: "sc-1g3uqar-1"
-})(["display:inline-block;height:30px;width:30px;border:solid 1px black;font-weight:bold;text-align:center;&.disabled{color:grey;pointer-events:none;}"]);
-var UltimoPageLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link).withConfig({
-  displayName: "Paginator__UltimoPageLinkStyled",
   componentId: "sc-1g3uqar-2"
-})(["display:inline-block;height:30px;width:30px;border:solid 1px black;font-weight:bold;text-align:center;&.disabled{color:grey;pointer-events:none;}"]);
+})(["display:grid;align-items:center;height:40px;width:30px;border:2px solid black;border-top-width:3px;border-bottom-width:1px;font-weight:bold;text-align:center;background-color:", ";&.disabled{color:grey;pointer-events:none;}"], function (props) {
+  return props.isSet && 'var(--aka-gelb)';
+});
 
 /***/ }),
 
