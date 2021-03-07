@@ -28,7 +28,7 @@ const SerialRowStyled = styled.li``;
 
 const SerialContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 360px 480px;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
     grid-gap: 20px;
 
     @media (max-width: 899px) {

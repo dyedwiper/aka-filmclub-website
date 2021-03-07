@@ -35,11 +35,11 @@ const HorizontalLineStyled = styled.div`
 
 const ScreeningContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 360px 480px;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 4fr);
     grid-gap: 20px;
 
     @media (max-width: 899px) {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         grid-template-rows: auto auto;
     }
 `;
