@@ -32,7 +32,7 @@ const SerialContainerStyled = styled.div`
     grid-gap: 20px;
 
     @media (max-width: 901px) {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         grid-template-rows: auto auto;
     }
 `;

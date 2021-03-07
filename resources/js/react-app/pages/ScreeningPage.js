@@ -158,7 +158,9 @@ const TitleStyled = styled.h2`
     font-size: 3em;
 `;
 
-const DateStyled = styled.span``;
+const DateStyled = styled.span`
+    white-space: nowrap;
+`;
 
 const FallbackTitleStyled = styled.h2`
     margin: 10px 0;

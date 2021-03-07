@@ -19,10 +19,6 @@ export default function SerialsPage() {
     }, []);
 
     useEffect(() => {
-        document.title = 'Archiv | aka-Filmclub ';
-    }, []);
-
-    useEffect(() => {
         if (semester) {
             getSerialsBySemester(semester).then((res) => {
                 setSerials(res.data);

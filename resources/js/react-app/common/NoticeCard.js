@@ -22,6 +22,10 @@ const ImageStyled = styled.img`
     width: 100%;
     height: 150px;
     object-fit: cover;
+
+    @media (max-width: 901px) {
+        height: initial;
+    }
 `;
 
 const TitleStyled = styled.h4`

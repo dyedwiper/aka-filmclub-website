@@ -41,26 +41,26 @@ export default function HomePage() {
     return (
         <PageStyled>
             <WelcomeMessageStyled>
-                Willkommen auf der Webseite des aka-Filmclub. Hier könnte ein Bild stehen.
+                Willkommen auf der Webseite des aka-Filmclub. Hier könnte noch was Nettes stehen.
             </WelcomeMessageStyled>
             <HorizontalLineStyled />
             <HeadlineStyled>Die nächsten Vorführungen</HeadlineStyled>
             {screenings.length ? (
-                <CardsRowStyled>
+                <CardsListStyled>
                     {screenings.slice(0, 3).map((screening) => (
                         <ScreeningCard key={screening.id} screening={screening} />
                     ))}
-                </CardsRowStyled>
+                </CardsListStyled>
             ) : (
                 <InfoStyled>Mehr im nächsten Semester</InfoStyled>
             )}
             <HorizontalLineStyled />
             <HeadlineStyled>Die neuesten News</HeadlineStyled>
-            <CardsRowStyled>
+            <CardsListStyled>
                 {notices.slice(0, 3).map((notice) => (
                     <NoticeCard key={notice.id} notice={notice} />
                 ))}
-            </CardsRowStyled>
+            </CardsListStyled>
         </PageStyled>
     );
 }
@@ -71,11 +71,16 @@ const HeadlineStyled = styled.h2`
     font-size: 1.5em;
 `;
 
-const CardsRowStyled = styled.ul`
+const CardsListStyled = styled.ul`
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    column-gap: 20px;
+    grid-gap: 20px;
     margin-top: 20px;
+
+    @media (max-width: 901px) {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+    }
 `;
 
 const InfoStyled = styled.div``;

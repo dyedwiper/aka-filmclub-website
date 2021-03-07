@@ -5640,7 +5640,7 @@ var NoticeCardStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.li
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
   displayName: "NoticeCard__ImageStyled",
   componentId: "sc-1y7aa7k-1"
-})(["width:100%;height:150px;object-fit:cover;"]);
+})(["width:100%;height:150px;object-fit:cover;@media (max-width:901px){height:initial;}"]);
 var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h4.withConfig({
   displayName: "NoticeCard__TitleStyled",
   componentId: "sc-1y7aa7k-2"
@@ -6020,7 +6020,7 @@ var SerialRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.li.
 var SerialContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SerialRow__SerialContainerStyled",
   componentId: "ryf3n0-1"
-})(["display:grid;grid-template-columns:360px 480px;grid-gap:20px;@media (max-width:901px){grid-template-columns:1fr;grid-template-rows:auto auto;}"]);
+})(["display:grid;grid-template-columns:360px 480px;grid-gap:20px;@media (max-width:901px){grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;}"]);
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
   displayName: "SerialRow__ImageStyled",
   componentId: "ryf3n0-2"
@@ -7079,7 +7079,7 @@ var ImageContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.defaul
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
   displayName: "ScreeningCard__ImageStyled",
   componentId: "ojz13b-2"
-})(["display:block;width:100%;height:150px;object-fit:cover;"]);
+})(["display:block;width:100%;height:150px;object-fit:cover;@media (max-width:901px){height:initial;}"]);
 var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3.withConfig({
   displayName: "ScreeningCard__TitleStyled",
   componentId: "ojz13b-3"
@@ -7679,10 +7679,10 @@ function HomePage() {
   if (isLoadingScreenings || isLoadingNotices) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_8__.default, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(WelcomeMessageStyled, {
-      children: "Willkommen auf der Webseite des aka-Filmclub. Hier k\xF6nnte ein Bild stehen."
+      children: "Willkommen auf der Webseite des aka-Filmclub. Hier k\xF6nnte noch was Nettes stehen."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Die n\xE4chsten Vorf\xFChrungen"
-    }), screenings.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CardsRowStyled, {
+    }), screenings.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CardsListStyled, {
       children: screenings.slice(0, 3).map(function (screening) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_screenings_ScreeningCard__WEBPACK_IMPORTED_MODULE_3__.default, {
           screening: screening
@@ -7692,7 +7692,7 @@ function HomePage() {
       children: "Mehr im n\xE4chsten Semester"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Die neuesten News"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CardsRowStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CardsListStyled, {
       children: notices.slice(0, 3).map(function (notice) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_NoticeCard__WEBPACK_IMPORTED_MODULE_2__.default, {
           notice: notice
@@ -7709,10 +7709,10 @@ var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h2.w
   displayName: "HomePage__HeadlineStyled",
   componentId: "q2eo20-1"
 })(["font-size:1.5em;"]);
-var CardsRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.ul.withConfig({
-  displayName: "HomePage__CardsRowStyled",
+var CardsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.ul.withConfig({
+  displayName: "HomePage__CardsListStyled",
   componentId: "q2eo20-2"
-})(["display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:20px;margin-top:20px;"]);
+})(["display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-gap:20px;margin-top:20px;@media (max-width:901px){grid-template-columns:minmax(0,1fr);grid-template-rows:repeat(3,minmax(0,1fr));}"]);
 var InfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
   displayName: "HomePage__InfoStyled",
   componentId: "q2eo20-3"
@@ -8615,7 +8615,7 @@ var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h2.wit
 var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.span.withConfig({
   displayName: "ScreeningPage__DateStyled",
   componentId: "sc-1jbdtfx-4"
-})([""]);
+})(["white-space:nowrap;"]);
 var FallbackTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h2.withConfig({
   displayName: "ScreeningPage__FallbackTitleStyled",
   componentId: "sc-1jbdtfx-5"
@@ -8940,9 +8940,6 @@ function SerialsPage() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Filmreihen | aka-Filmclub';
     setPageTitle('Filmreihen');
-  }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    document.title = 'Archiv | aka-Filmclub ';
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester) {
