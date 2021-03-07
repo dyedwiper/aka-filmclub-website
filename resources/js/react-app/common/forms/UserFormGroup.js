@@ -73,7 +73,7 @@ const LabelTextStyled = styled.div`
 const InputStyled = styled.input`
     width: 70%;
 
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         width: 100%;
     }
 `;

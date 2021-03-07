@@ -31,7 +31,7 @@ const SerialContainerStyled = styled.div`
     grid-template-columns: 360px 480px;
     grid-gap: 20px;
 
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         grid-template-columns: minmax(0, 1fr);
         grid-template-rows: auto auto;
     }

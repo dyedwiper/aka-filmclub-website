@@ -210,7 +210,7 @@ const SerialContainerStyled = styled.div``;
 const SerialLinkStyled = styled(Link)`
     font-weight: bold;
 
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         display: block;
     }
 `;

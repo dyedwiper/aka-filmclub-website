@@ -6,13 +6,13 @@ export const PageStyled = styled.main`
     margin: 0 auto;
     padding: 160px 100px 100px 100px;
 
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         padding: 80px 10px 10px 10px;
     }
 `;
 
 export const PageHeadlineStyled = styled.h2`
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         display: none;
     }
 `;

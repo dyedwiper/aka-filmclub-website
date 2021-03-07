@@ -41,7 +41,7 @@ const ContentContainerStyled = styled.div`
     height: 100%;
     margin: 0 auto;
 
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         grid-template-columns: 1fr 1fr;
     }
 `;
@@ -50,7 +50,7 @@ const HeadlineStyled = styled.h1`
     max-width: 200px;
     font-size: 0.7em;
 
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         /* Hide on mobile screens, but not with 'display: none' because of SEO. */
         position: fixed;
         visibility: hidden;
@@ -60,7 +60,7 @@ const HeadlineStyled = styled.h1`
 const LinksContainerStyled = styled.div`
     justify-self: center;
 
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         justify-self: left;
     }
 `;

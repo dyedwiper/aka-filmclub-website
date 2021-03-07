@@ -137,7 +137,7 @@ const SmallInputsContainerStyled = styled.div`
     grid-template-rows: 1fr 1fr;
     column-gap: 20px;
 
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
     }

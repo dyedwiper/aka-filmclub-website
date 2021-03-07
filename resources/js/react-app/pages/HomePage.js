@@ -77,7 +77,7 @@ const CardsListStyled = styled.ul`
     grid-gap: 20px;
     margin-top: 20px;
 
-    @media (max-width: 901px) {
+    @media (max-width: 899px) {
         grid-template-columns: minmax(0, 1fr);
         grid-template-rows: repeat(3, minmax(0, 1fr));
     }
