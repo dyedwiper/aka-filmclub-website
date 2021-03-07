@@ -5711,7 +5711,7 @@ var NoticeRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.li.
 var NoticeContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "NoticeRow__NoticeContainerStyled",
   componentId: "sc-1qmil5x-1"
-})(["display:grid;grid-template-columns:360px 480px;grid-gap:20px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:auto auto;}"]);
+})(["display:grid;grid-template-columns:minmax(0,3fr) minmax(0,4fr);grid-gap:20px;@media (max-width:767px){grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto;}"]);
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.img.withConfig({
   displayName: "NoticeRow__ImageStyled",
   componentId: "sc-1qmil5x-2"
@@ -5818,7 +5818,7 @@ function Paginator(_ref) {
           to: site + '?page=' + pageNumber,
           onClick: handleClick,
           className: pageNumber == page && 'disabled',
-          isCurrentPage: page === pageNumber,
+          $isCurrentPage: pageNumber == page,
           children: pageNumber
         }, pageNumber);
       }), page >= numberOfPages.current - 1 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageLinkStyled, {
@@ -5855,7 +5855,7 @@ var PageLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(
   displayName: "Paginator__PageLinkStyled",
   componentId: "sc-1g3uqar-2"
 })(["display:grid;align-items:center;height:40px;width:30px;border:2px solid black;border-top-width:3px;border-bottom-width:1px;font-weight:bold;text-align:center;background-color:", ";&.disabled{color:grey;pointer-events:none;}"], function (props) {
-  return props.isSet && 'var(--aka-gelb)';
+  return props.$isCurrentPage && 'var(--aka-gelb)';
 });
 
 /***/ }),
@@ -9942,7 +9942,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: lightgrey;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise */\n    width: 100%;\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  /* h1, h2, h3, h4, h5, h6, p {\n      margin: 0;\n  } */\n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: lightgrey;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise. */\n    width: 100%;\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  /* Fix for Safari because empty date inputs have no height otherwise. */\n  input[type=\"date\"]{\n      min-height: 32px;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  /* h1, h2, h3, h4, h5, h6, p {\n      margin: 0;\n  } */\n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -10042,15 +10042,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "formatToTimeString": () => /* binding */ formatToTimeString,
 /* harmony export */   "formatToIsoDateString": () => /* binding */ formatToIsoDateString
 /* harmony export */ });
+// replace(' ', 'T') must be called because JavaScript throws an error on iOS elsewise.
 function formatToDateString(date) {
-  return new Date(date).toLocaleDateString('de-DE', {
+  return new Date(date.replace(' ', 'T')).toLocaleDateString('de-DE', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric'
   });
 }
 function formatToDateTimeString(date) {
-  return new Date(date).toLocaleDateString('de-DE', {
+  return new Date(date.replace(' ', 'T')).toLocaleDateString('de-DE', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
@@ -10059,13 +10060,13 @@ function formatToDateTimeString(date) {
   });
 }
 function formatToTimeString(date) {
-  return new Date(date).toLocaleTimeString('de-DE', {
+  return new Date(date.replace(' ', 'T')).toLocaleTimeString('de-DE', {
     hour: '2-digit',
     minute: '2-digit'
   });
 }
 function formatToIsoDateString(date) {
-  return new Date(date).toISOString().split('T')[0];
+  return new Date(date.replace(' ', 'T')).toISOString().split('T')[0];
 }
 
 /***/ }),

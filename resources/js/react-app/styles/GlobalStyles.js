@@ -29,12 +29,17 @@ export default createGlobalStyle`
   }
 
   input {
-    /* Fix for iPhone because inputs are somehow too wide elsewise */
+    /* Fix for iPhone because inputs are somehow too wide elsewise. */
     width: 100%;
   }
 
   input[type="file"]{
       border: none;
+  }
+
+  /* Fix for Safari because empty date inputs have no height otherwise. */
+  input[type="date"]{
+      min-height: 32px;
   }
 
   textarea{

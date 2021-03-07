@@ -35,7 +35,7 @@ export default function Paginator({ site, page, setPage, setIsLoading, limit, it
                         to={site + '?page=' + pageNumber}
                         onClick={handleClick}
                         className={pageNumber == page && 'disabled'}
-                        isCurrentPage={page === pageNumber}
+                        $isCurrentPage={pageNumber == page}
                     >
                         {pageNumber}
                     </PageLinkStyled>
@@ -85,7 +85,7 @@ const PageLinkStyled = styled(Link)`
     border-bottom-width: 1px;
     font-weight: bold;
     text-align: center;
-    background-color: ${(props) => props.isCurrentPage && 'var(--aka-gelb)'};
+    background-color: ${(props) => props.$isCurrentPage && 'var(--aka-gelb)'};
 
     &.disabled {
         color: grey;
