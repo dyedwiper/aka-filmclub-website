@@ -4,6 +4,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SerialController;
+use App\Http\Controllers\TextController;
 use App\Http\Controllers\UserController;
 use App\Models\Notice;
 use App\Models\Screening;
@@ -199,5 +200,11 @@ Route::prefix('users')->group(function () {
 
     Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
         UserController::class, 'DeleteUser'
+    ]);
+});
+
+Route::prefix('texts')->group(function () {
+    Route::get('/about', [
+        TextController::class, 'GetAboutText'
     ]);
 });
