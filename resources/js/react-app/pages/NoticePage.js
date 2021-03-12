@@ -31,7 +31,7 @@ export default function NoticePage() {
             {notice.image && <ImageStyled src={STORAGE_FOLDER + notice.image.path} />}
             <DateStyled>{formatToDateString(notice.date)}</DateStyled>
             <TitleStyled>{notice.title}</TitleStyled>
-            <ContentStyled>{notice.content}</ContentStyled>
+            <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
             {isAuthorized && (
                 <>
                     <HorizontalLineStyled />
@@ -56,6 +56,6 @@ const DateStyled = styled.div``;
 
 const TitleStyled = styled.h2``;
 
-const ContentStyled = styled.p``;
+const ContentStyled = styled.div``;
 
 const LinkStyled = styled(Link)``;
