@@ -21,10 +21,11 @@ export const PageHeadlineStyled = styled.h2`
     }
 `;
 
-export const HorizontalLineStyled = styled.div`
+export const HorizontalLineStyled = styled.hr`
     height: 10px;
     width: 80%;
     margin: 20px 0;
+    border: none;
     background-color: var(--aka-gelb);
 `;
 

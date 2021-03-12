@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import HorizontalLineToolbarButton from '../../common/forms/HorizontalLineToolbarButton';
 import { PageStyled } from '../../common/styledElements';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
@@ -51,6 +52,7 @@ export default function EditTextPage() {
                         defaultTargetOption: '_blank',
                     },
                 }}
+                toolbarCustomButtons={[<HorizontalLineToolbarButton />]}
             />
             <ButtonContainerStyled>
                 <SaveButtonStyled onClick={saveText}>Speichern</SaveButtonStyled>
