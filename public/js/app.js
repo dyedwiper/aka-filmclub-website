@@ -4907,18 +4907,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./resources/js/app.js":
-/*!*****************************!*\
-  !*** ./resources/js/app.js ***!
-  \*****************************/
-/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
-
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-__webpack_require__(/*! ./react-app/index.js */ "./resources/js/react-app/index.js");
-
-/***/ }),
-
 /***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
@@ -7057,10 +7045,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function WysiwygEditor() {
+  var toolbarStyleObject = {
+    backgroundColor: 'aquamarine'
+  };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_2__.Editor, {
-    toolbarClassName: "wysiwygToolbar",
-    wrapperClassName: "wrapperClassName",
-    editorClassName: "editorClassName",
+    toolbarStyle: toolbarStyleObject,
     toolbar: {
       options: ['inline', 'link']
     }
@@ -34204,19 +34193,6 @@ function createReactContext(defaultValue, calculateChangedBits) {
 var index = react__WEBPACK_IMPORTED_MODULE_0__.createContext || createReactContext;
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
-
-
-/***/ }),
-
-/***/ "./resources/css/wysiwygEditorStyles.css":
-/*!***********************************************!*\
-  !*** ./resources/css/wysiwygEditorStyles.css ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
 
 
 /***/ }),
@@ -75451,12 +75427,6 @@ function valueEqual(a, b) {
 /******/ 		return module.exports;
 /******/ 	}
 /******/ 	
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
-/******/ 	// the startup function
-/******/ 	// It's empty as some runtime module handles the default behavior
-/******/ 	__webpack_require__.x = x => {}
 /************************************************************************/
 /******/ 	/* webpack/runtime/compat get default export */
 /******/ 	(() => {
@@ -75510,98 +75480,15 @@ function valueEqual(a, b) {
 /******/ 		};
 /******/ 	})();
 /******/ 	
-/******/ 	/* webpack/runtime/jsonp chunk loading */
-/******/ 	(() => {
-/******/ 		// no baseURI
-/******/ 		
-/******/ 		// object to store loaded and loading chunks
-/******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
-/******/ 		// Promise = chunk loading, 0 = chunk loaded
-/******/ 		var installedChunks = {
-/******/ 			"/js/app": 0
-/******/ 		};
-/******/ 		
-/******/ 		var deferredModules = [
-/******/ 			["./resources/js/app.js"],
-/******/ 			["./resources/css/wysiwygEditorStyles.css"]
-/******/ 		];
-/******/ 		// no chunk on demand loading
-/******/ 		
-/******/ 		// no prefetching
-/******/ 		
-/******/ 		// no preloaded
-/******/ 		
-/******/ 		// no HMR
-/******/ 		
-/******/ 		// no HMR manifest
-/******/ 		
-/******/ 		var checkDeferredModules = x => {};
-/******/ 		
-/******/ 		// install a JSONP callback for chunk loading
-/******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
-/******/ 			var [chunkIds, moreModules, runtime, executeModules] = data;
-/******/ 			// add "moreModules" to the modules object,
-/******/ 			// then flag all "chunkIds" as loaded and fire callback
-/******/ 			var moduleId, chunkId, i = 0, resolves = [];
-/******/ 			for(;i < chunkIds.length; i++) {
-/******/ 				chunkId = chunkIds[i];
-/******/ 				if(__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
-/******/ 					resolves.push(installedChunks[chunkId][0]);
-/******/ 				}
-/******/ 				installedChunks[chunkId] = 0;
-/******/ 			}
-/******/ 			for(moduleId in moreModules) {
-/******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
-/******/ 					__webpack_require__.m[moduleId] = moreModules[moduleId];
-/******/ 				}
-/******/ 			}
-/******/ 			if(runtime) runtime(__webpack_require__);
-/******/ 			if(parentChunkLoadingFunction) parentChunkLoadingFunction(data);
-/******/ 			while(resolves.length) {
-/******/ 				resolves.shift()();
-/******/ 			}
-/******/ 		
-/******/ 			// add entry modules from loaded chunk to deferred list
-/******/ 			if(executeModules) deferredModules.push.apply(deferredModules, executeModules);
-/******/ 		
-/******/ 			// run deferred modules when all chunks ready
-/******/ 			return checkDeferredModules();
-/******/ 		}
-/******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunk"] = globalThis["webpackChunk"] || [];
-/******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
-/******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 		
-/******/ 		function checkDeferredModulesImpl() {
-/******/ 			var result;
-/******/ 			for(var i = 0; i < deferredModules.length; i++) {
-/******/ 				var deferredModule = deferredModules[i];
-/******/ 				var fulfilled = true;
-/******/ 				for(var j = 1; j < deferredModule.length; j++) {
-/******/ 					var depId = deferredModule[j];
-/******/ 					if(installedChunks[depId] !== 0) fulfilled = false;
-/******/ 				}
-/******/ 				if(fulfilled) {
-/******/ 					deferredModules.splice(i--, 1);
-/******/ 					result = __webpack_require__(__webpack_require__.s = deferredModule[0]);
-/******/ 				}
-/******/ 			}
-/******/ 			if(deferredModules.length === 0) {
-/******/ 				__webpack_require__.x();
-/******/ 				__webpack_require__.x = x => {};
-/******/ 			}
-/******/ 			return result;
-/******/ 		}
-/******/ 		var startup = __webpack_require__.x;
-/******/ 		__webpack_require__.x = () => {
-/******/ 			// reset startup function so it can be called again when more startup code is added
-/******/ 			__webpack_require__.x = startup || (x => {});
-/******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
-/******/ 		};
-/******/ 	})();
-/******/ 	
 /************************************************************************/
-/******/ 	// run startup
-/******/ 	__webpack_require__.x();
+(() => {
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+
+__webpack_require__(/*! ./react-app/index.js */ "./resources/js/react-app/index.js");
+})();
+
 /******/ })()
 ;
