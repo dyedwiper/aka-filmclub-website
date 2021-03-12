@@ -5249,15 +5249,13 @@ function EditTextLink(_ref) {
       user = _useContext.user;
 
   var isAuthorized = user.level >= _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_EDITOR;
-
-  if (isAuthorized) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
-        to: '/intern/editText/' + page,
-        children: "Text bearbeiten"
-      })]
-    });
-  }
+  if (!isAuthorized) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+      to: '/intern/editText/' + page,
+      children: "Text bearbeiten"
+    })]
+  });
 }
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link).withConfig({
   displayName: "EditTextLink__LinkStyled",
@@ -9927,9 +9925,9 @@ function EditTextPage() {
     var textObject = {
       text: draftjs_to_html__WEBPACK_IMPORTED_MODULE_2___default()((0,draft_js__WEBPACK_IMPORTED_MODULE_1__.convertToRaw)(editorState.getCurrentContent()))
     };
-    console.log(textObject); // postText(assocPage, textObject).then(() => {
-    //     history.goBack();
-    // });
+    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_7__.postText)(assocPage, textObject).then(function () {
+      history.goBack();
+    });
   }
 }
 var wrapperStyleObject = {

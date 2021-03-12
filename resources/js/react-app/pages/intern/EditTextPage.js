@@ -51,10 +51,9 @@ export default function EditTextPage() {
 
     function saveText() {
         const textObject = { text: draftToHtml(convertToRaw(editorState.getCurrentContent())) };
-        console.log(textObject);
-        // postText(assocPage, textObject).then(() => {
-        //     history.goBack();
-        // });
+        postText(assocPage, textObject).then(() => {
+            history.goBack();
+        });
     }
 }
 

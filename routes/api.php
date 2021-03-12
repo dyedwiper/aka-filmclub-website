@@ -204,11 +204,11 @@ Route::prefix('users')->group(function () {
 });
 
 Route::prefix('texts')->group(function () {
-    Route::get('/about', [
-        TextController::class, 'GetAboutText'
+    Route::get('/{page}', [
+        TextController::class, 'GetText'
     ]);
 
-    Route::post('/about', [
-        TextController::class, 'PostAboutText'
+    Route::post('/{page}', [
+        TextController::class, 'PostText'
     ]);
 });
