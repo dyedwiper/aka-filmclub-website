@@ -5,6 +5,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { PageStyled } from '../../common/styledElements';
+import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getText, postText } from '../../utils/textServices';
 import LoadingPage from '../LoadingPage';
@@ -21,8 +22,8 @@ export default function EditTextPage() {
         const page = getLastParameterFromPath();
         getText(page).then((res) => {
             setDefaultText(res.data);
-            setIsLoading(false);
             setAssocPage(page);
+            setIsLoading(false);
         });
     }, []);
 
@@ -40,7 +41,16 @@ export default function EditTextPage() {
                 wrapperStyle={wrapperStyleObject}
                 toolbarStyle={toolbarStyleObject}
                 editorStyle={editorStyleObject}
-                toolbar={{ options: ['inline', 'link'] }}
+                toolbar={{
+                    options: ['inline', 'blockType', 'link'],
+                    blockType: {
+                        options: ['Normal', 'H3', 'H4', 'H5', 'H6'],
+                    },
+                    link: {
+                        showOpenOptionOnHover: false,
+                        defaultTargetOption: '_blank',
+                    },
+                }}
             />
             <ButtonContainerStyled>
                 <SaveButtonStyled onClick={saveText}>Speichern</SaveButtonStyled>
@@ -56,19 +66,6 @@ export default function EditTextPage() {
         });
     }
 }
-
-const wrapperStyleObject = {
-    border: '1px solid black',
-    borderRadius: '5px',
-};
-
-const toolbarStyleObject = {
-    backgroundColor: 'var(--aka-gelb)',
-};
-
-const editorStyleObject = {
-    padding: '5px',
-};
 
 const ButtonContainerStyled = styled.div`
     display: grid;

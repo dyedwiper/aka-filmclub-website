@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
+import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 
 export default function WysiwygEditorFormGroup({ inputName, defaultValue }) {
     const [editorState, setEditorState] = useState(() =>
@@ -20,7 +21,13 @@ export default function WysiwygEditorFormGroup({ inputName, defaultValue }) {
                 wrapperStyle={wrapperStyleObject}
                 toolbarStyle={toolbarStyleObject}
                 editorStyle={editorStyleObject}
-                toolbar={{ options: ['inline', 'link'] }}
+                toolbar={{
+                    options: ['inline', 'link'],
+                    link: {
+                        showOpenOptionOnHover: false,
+                        defaultTargetOption: '_blank',
+                    },
+                }}
             />
             <input type="hidden" name={inputName} value={draftToHtml(convertToRaw(editorState.getCurrentContent()))} />
         </WysiwygEditorFormGroupStyled>
@@ -28,16 +35,3 @@ export default function WysiwygEditorFormGroup({ inputName, defaultValue }) {
 }
 
 const WysiwygEditorFormGroupStyled = styled.div``;
-
-const wrapperStyleObject = {
-    border: '1px solid black',
-    borderRadius: '5px',
-};
-
-const toolbarStyleObject = {
-    backgroundColor: 'var(--aka-gelb)',
-};
-
-const editorStyleObject = {
-    padding: '5px',
-};
