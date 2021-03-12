@@ -207,4 +207,8 @@ Route::prefix('texts')->group(function () {
     Route::get('/about', [
         TextController::class, 'GetAboutText'
     ]);
+
+    Route::post('/about', [
+        TextController::class, 'PostAboutText'
+    ]);
 });

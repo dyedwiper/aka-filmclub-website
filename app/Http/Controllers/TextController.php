@@ -11,4 +11,11 @@ class TextController extends Controller
     {
         return Storage::disk('texts')->get('about.txt');
     }
+
+    public function PostAboutText(Request $request)
+    {
+        Storage::disk('texts')->delete('about_backup.txt');
+        Storage::disk('texts')->copy('about.txt', 'about_backup.txt');
+        Storage::disk('texts')->put('about.txt', $request->text);
+    }
 }

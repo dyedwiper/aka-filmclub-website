@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import EditTextLink from '../common/EditTextLink';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
-import { getAboutText } from '../utils/textServices';
+import { getText } from '../utils/textServices';
 
 export default function AboutPage() {
     const [text, setText] = useState('');
@@ -11,7 +11,7 @@ export default function AboutPage() {
     const { setPageTitle } = useContext(Context);
 
     useEffect(() => {
-        getAboutText().then((res) => {
+        getText('about').then((res) => {
             setText(res.data);
         });
     }, []);

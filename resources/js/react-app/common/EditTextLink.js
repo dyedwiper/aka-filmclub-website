@@ -14,7 +14,7 @@ export default function EditTextLink({ page }) {
         return (
             <>
                 <HorizontalLineStyled />
-                <LinkStyled to={'/intern/editText/' + page}>News bearbeiten</LinkStyled>
+                <LinkStyled to={'/intern/editText/' + page}>Text bearbeiten</LinkStyled>
             </>
         );
     }

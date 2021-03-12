@@ -89,13 +89,22 @@ export default createGlobalStyle`
       margin: 0;
   }
 
-  /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */
   input[id="openLinkInNewWindow"] {
-      width: initial;
+    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */
+    width: initial;
+
+    &:checked {
+        background-color: black;
+    }
+  }
+
+  div[class="rdw-editor-main"] a {
+      color:  #757575;
   }
 
   /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/
   div[class="rdw-link-modal"] {
       box-sizing: initial;
   }
+
 `;

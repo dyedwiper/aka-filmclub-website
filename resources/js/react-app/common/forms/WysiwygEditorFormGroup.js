@@ -1,5 +1,5 @@
-import { ContentState, convertFromHTML, EditorState } from 'draft-js';
-import { stateToHTML } from 'draft-js-export-html';
+import { ContentState, convertFromHTML, convertToRaw, EditorState } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
 import React, { useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
@@ -22,7 +22,7 @@ export default function WysiwygEditorFormGroup({ inputName, defaultValue }) {
                 editorStyle={editorStyleObject}
                 toolbar={{ options: ['inline', 'link'] }}
             />
-            <input type="hidden" name={inputName} value={stateToHTML(editorState.getCurrentContent())} />
+            <input type="hidden" name={inputName} value={draftToHtml(convertToRaw(editorState.getCurrentContent()))} />
         </WysiwygEditorFormGroupStyled>
     );
 }
