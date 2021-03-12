@@ -53,6 +53,9 @@ export default function Header() {
                             <SubNavLinkStyled to="/press" onClick={() => setIsNavOpen(false)}>
                                 Pressespiegel
                             </SubNavLinkStyled>
+                            <SubNavLinkStyled to="/awards" onClick={() => setIsNavOpen(false)}>
+                                Auszeichnungen
+                            </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
                     {isLoggedIn ? (
@@ -127,7 +130,7 @@ const ContentContainerStyled = styled.div`
 `;
 
 const LinkStyled = styled(Link)`
-    margin: 10px 0 0 20px;  
+    margin: 10px 0 0 20px;
 `;
 
 const LogoStyled = styled.img`

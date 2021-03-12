@@ -1,10 +1,20 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { PageStyled } from '../common/styledElements';
+import EditTextLink from '../common/EditTextLink';
+import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
+import { getText } from '../utils/textServices';
 
 export default function FaqsPage() {
+    const [text, setText] = useState('');
+
     const { setPageTitle } = useContext(Context);
+
+    useEffect(() => {
+        getText('faq').then((res) => {
+            setText(res.data);
+        });
+    }, []);
 
     useEffect(() => {
         document.title = 'FAQs | aka-Filmclub';
@@ -13,9 +23,11 @@ export default function FaqsPage() {
 
     return (
         <PageStyled>
-            <HeadlineStyled>FAQs</HeadlineStyled>
+            <PageHeadlineStyled>FAQs</PageHeadlineStyled>
+            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
+            <EditTextLink page="faq" />
         </PageStyled>
     );
 }
 
-const HeadlineStyled = styled.h2``;
+const TextContainerStyled = styled.div``;

@@ -7,6 +7,7 @@ import PrivateRoute from './common/PrivateRoute';
 import Context from './Context';
 import AboutPage from './pages/AboutPage';
 import ArchivePage from './pages/ArchivePage';
+import AwardsPage from './pages/AwardsPage';
 import ContactPage from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
 import FaqsPage from './pages/FaqsPage';
@@ -104,6 +105,9 @@ export default function App() {
                         </Route>
                         <Route exact path="/press">
                             <PressReviewPage />
+                        </Route>
+                        <Route exact path="/awards">
+                            <AwardsPage />
                         </Route>
                         <Route exact path="/contact">
                             <ContactPage />

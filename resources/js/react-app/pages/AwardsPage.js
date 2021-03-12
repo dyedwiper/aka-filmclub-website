@@ -5,27 +5,27 @@ import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { getText } from '../utils/textServices';
 
-export default function PressReviewPage() {
+export default function ContactPage() {
     const [text, setText] = useState('');
 
     const { setPageTitle } = useContext(Context);
 
     useEffect(() => {
-        getText('press').then((res) => {
+        getText('awards').then((res) => {
             setText(res.data);
         });
     }, []);
 
     useEffect(() => {
-        document.title = 'Pressespiegel | aka-Filmclub';
-        setPageTitle('Pressespiegel');
+        document.title = 'Auszeichnungen | aka-Filmclub';
+        setPageTitle('Auszeichnungen');
     }, []);
 
     return (
         <PageStyled>
-            <PageHeadlineStyled>Pressespiegel</PageHeadlineStyled>
+            <PageHeadlineStyled>Auszeichnungen</PageHeadlineStyled>
             <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
-            <EditTextLink page="press" />
+            <EditTextLink page="awards" />
         </PageStyled>
     );
 }
