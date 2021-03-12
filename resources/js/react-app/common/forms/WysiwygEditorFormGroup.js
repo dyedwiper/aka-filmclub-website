@@ -1,16 +1,16 @@
-import { EditorState } from 'draft-js';
+import { ContentState, convertFromHTML, EditorState } from 'draft-js';
 import { stateToHTML } from 'draft-js-export-html';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
-import styled from 'styled-components';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+import styled from 'styled-components';
 
-export default function WysiwygEditorFormGroup({ inputName }) {
-    const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
-
-    // useEffect(() => {
-    //     console.log(stateToHTML(editorState.getCurrentContent()));
-    // }, [editorState]);
+export default function WysiwygEditorFormGroup({ inputName, defaultValue }) {
+    const [editorState, setEditorState] = useState(() =>
+        defaultValue
+            ? EditorState.createWithContent(ContentState.createFromBlockArray(convertFromHTML(defaultValue)))
+            : EditorState.createEmpty()
+    );
 
     return (
         <WysiwygEditorFormGroupStyled>

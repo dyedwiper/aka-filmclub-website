@@ -88,4 +88,14 @@ export default createGlobalStyle`
   h3{
       margin: 0;
   }
+
+  /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */
+  input[id="openLinkInNewWindow"] {
+      width: initial;
+  }
+
+  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/
+  div[class="rdw-link-modal"] {
+      box-sizing: initial;
+  }
 `;
