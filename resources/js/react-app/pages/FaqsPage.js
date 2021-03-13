@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
 import FaqRow from '../common/FaqRow';
 import { HorizontalLineStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
@@ -36,7 +37,9 @@ export default function FaqsPage() {
             <QuestionsListStyled>
                 {faqs.map((faq) => (
                     <QuestionLinkItemStyled key={faq.id}>
-                        <Link to={'#' + faq.uuid}>{faq.question}</Link>
+                        <HashLink smooth to={'#' + faq.uuid}>
+                            {faq.question}
+                        </HashLink>
                     </QuestionLinkItemStyled>
                 ))}
             </QuestionsListStyled>
