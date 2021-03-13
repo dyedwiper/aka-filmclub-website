@@ -6667,7 +6667,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _WysiwygEditorFormGroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WysiwygEditorFormGroup */ "./resources/js/react-app/common/forms/WysiwygEditorFormGroup.js");
+/* harmony import */ var _WysiwygEditor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./WysiwygEditor */ "./resources/js/react-app/common/forms/WysiwygEditor.js");
 
 
 
@@ -6688,7 +6688,7 @@ function NoticeFormGroup(_ref) {
         defaultValue: notice && notice.date
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Text", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_WysiwygEditorFormGroup__WEBPACK_IMPORTED_MODULE_2__.default, {
+      children: ["Text", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_WysiwygEditor__WEBPACK_IMPORTED_MODULE_2__.default, {
         inputName: "content",
         defaultValue: notice && notice.content
       })]
@@ -7368,16 +7368,16 @@ function UserStatusSelect(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/react-app/common/forms/WysiwygEditorFormGroup.js":
-/*!***********************************************************************!*\
-  !*** ./resources/js/react-app/common/forms/WysiwygEditorFormGroup.js ***!
-  \***********************************************************************/
+/***/ "./resources/js/react-app/common/forms/WysiwygEditor.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/react-app/common/forms/WysiwygEditor.js ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ WysiwygEditorFormGroup
+/* harmony export */   "default": () => /* binding */ WysiwygEditor
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var draft_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! draft-js */ "./node_modules/draft-js/lib/Draft.js");
@@ -7412,7 +7412,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function WysiwygEditorFormGroup(_ref) {
+function WysiwygEditor(_ref) {
   var inputName = _ref.inputName,
       defaultValue = _ref.defaultValue;
 
@@ -7423,7 +7423,7 @@ function WysiwygEditorFormGroup(_ref) {
       editorState = _useState2[0],
       setEditorState = _useState2[1];
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(WysiwygEditorFormGroupStyled, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(WysiwygEditorStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_4__.Editor, {
       editorState: editorState,
       onEditorStateChange: setEditorState,
@@ -7444,9 +7444,9 @@ function WysiwygEditorFormGroup(_ref) {
     })]
   });
 }
-var WysiwygEditorFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
-  displayName: "WysiwygEditorFormGroup__WysiwygEditorFormGroupStyled",
-  componentId: "sc-1yzx90k-0"
+var WysiwygEditorStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
+  displayName: "WysiwygEditor__WysiwygEditorStyled",
+  componentId: "iziz5i-0"
 })([""]);
 
 /***/ }),

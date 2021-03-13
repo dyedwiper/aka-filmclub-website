@@ -6,7 +6,7 @@ import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 
-export default function WysiwygEditorFormGroup({ inputName, defaultValue }) {
+export default function WysiwygEditor({ inputName, defaultValue }) {
     const [editorState, setEditorState] = useState(() =>
         defaultValue
             ? EditorState.createWithContent(ContentState.createFromBlockArray(convertFromHTML(defaultValue)))
@@ -14,7 +14,7 @@ export default function WysiwygEditorFormGroup({ inputName, defaultValue }) {
     );
 
     return (
-        <WysiwygEditorFormGroupStyled>
+        <WysiwygEditorStyled>
             <Editor
                 editorState={editorState}
                 onEditorStateChange={setEditorState}
@@ -30,8 +30,8 @@ export default function WysiwygEditorFormGroup({ inputName, defaultValue }) {
                 }}
             />
             <input type="hidden" name={inputName} value={draftToHtml(convertToRaw(editorState.getCurrentContent()))} />
-        </WysiwygEditorFormGroupStyled>
+        </WysiwygEditorStyled>
     );
 }
 
-const WysiwygEditorFormGroupStyled = styled.div``;
+const WysiwygEditorStyled = styled.div``;
