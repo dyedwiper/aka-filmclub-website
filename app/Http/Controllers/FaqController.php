@@ -12,6 +12,11 @@ class FaqController extends Controller
         return Faq::orderBy('position')->get();
     }
 
+    public function GetFaqByUuid(string $uuid)
+    {
+        return Faq::firstWhere('uuid', $uuid);
+    }
+
     public function PostFaq(FaqFormRequest $request)
     {
         $faq = new Faq([
@@ -22,5 +27,14 @@ class FaqController extends Controller
         ]);
         $faq->save();
         return $faq;
+    }
+
+    public function PatchFaq(FaqFormRequest $request)
+    {
+        $faq = Faq::firstWhere('uuid', $request->uuid);
+        $faq->question = $request->question;
+        $faq->answer = $request->answer;
+        $faq->position = $request->position;
+        $faq->save();
     }
 }

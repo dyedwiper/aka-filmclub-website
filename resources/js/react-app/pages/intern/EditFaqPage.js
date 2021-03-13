@@ -1,15 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { PageStyled } from '../../common/styledElements';
+import BaseForm from '../../common/forms/BaseForm';
+import FaqFormGroup from '../../common/forms/FaqFormGroup';
+import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
+import { getFaqByUuid, postFaq } from '../../utils/faqServices';
+import { getLastParameterFromPath } from '../../utils/pathUtils';
 
 export default function EditFaqPage() {
-    const [faqs, setFaqs] = useState([]);
+    const [faq, setFaq] = useState([]);
 
-    const { setPageTitle } = useContext(Context);
+    const { pageTitle, setPageTitle } = useContext(Context);
 
     useEffect(() => {
-        getFaqByUuid().then((res) => {
-            setText(res.data);
+        const uuid = getLastParameterFromPath();
+        getFaqByUuid(uuid).then((res) => {
+            setFaq(res.data);
         });
     }, []);
 
@@ -18,7 +23,16 @@ export default function EditFaqPage() {
         setPageTitle('FAQs');
     }, []);
 
-    return <PageStyled>
-
-    </PageStyled>;
+    return (
+        <PageStyled>
+            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+            <BaseForm postFunction={postFaq}>
+                {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
+                See https://laravel.com/docs/8.x/blade#method-field */}
+                <input name="_method" type="hidden" value="PATCH" />
+                <input name="uuid" type="hidden" defaultValue={faq.uuid} />
+                <FaqFormGroup faq={faq} />
+            </BaseForm>
+        </PageStyled>
+    );
 }

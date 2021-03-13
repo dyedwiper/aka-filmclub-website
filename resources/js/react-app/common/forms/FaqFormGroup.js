@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function FaqFormGroup({ faq, isEditing }) {
+export default function FaqFormGroup({ faq }) {
     return (
         <FaqFormGroupStyled>
             <LabelStyled>
@@ -14,7 +14,7 @@ export default function FaqFormGroup({ faq, isEditing }) {
             </LabelStyled>
             <LabelStyled>
                 Position
-                <InputStyled disabled={!isEditing} name="position" defaultValue={faq && faq.position} />
+                <InputStyled disabled={!faq} name="position" defaultValue={faq && faq.position} />
             </LabelStyled>
         </FaqFormGroupStyled>
     );

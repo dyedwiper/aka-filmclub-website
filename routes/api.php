@@ -209,8 +209,16 @@ Route::prefix('faqs')->group(function () {
         FaqController::class, 'GetFaqs'
     ]);
 
+    Route::get('/uuid/{uuid}', [
+        FaqController::class, 'GetFaqByUuid'
+    ]);
+
     Route::middleware('auth:sanctum')->post('/', [
         FaqController::class, 'PostFaq'
+    ]);
+
+    Route::middleware('auth:sanctum')->patch('/', [
+        FaqController::class, 'PatchFaq'
     ]);
 });
 

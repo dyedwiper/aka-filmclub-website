@@ -5294,13 +5294,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
+
+
+
 
 
 
 
 function FaqRow(_ref) {
   var faq = _ref.faq;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_3__.default),
+      user = _useContext.user;
+
+  var isAuthorized = user.level >= _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_EDITOR;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FaqRowStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(QuestionStyled, {
       id: faq.uuid,
@@ -5309,20 +5320,27 @@ function FaqRow(_ref) {
       dangerouslySetInnerHTML: {
         __html: faq.answer
       }
+    }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+      to: '/intern/editFaq/' + faq.uuid,
+      children: "Bearbeiten"
     })]
   });
 }
-var FaqRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.li.withConfig({
+var FaqRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.li.withConfig({
   displayName: "FaqRow__FaqRowStyled",
   componentId: "sc-1n6z7oj-0"
 })(["margin:20px 0;"]);
-var QuestionStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.h3.withConfig({
+var QuestionStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h3.withConfig({
   displayName: "FaqRow__QuestionStyled",
   componentId: "sc-1n6z7oj-1"
 })([""]);
-var AnswerStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
+var AnswerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "FaqRow__AnswerStyled",
   componentId: "sc-1n6z7oj-2"
+})([""]);
+var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link).withConfig({
+  displayName: "FaqRow__LinkStyled",
+  componentId: "sc-1n6z7oj-3"
 })([""]);
 
 /***/ }),
@@ -6400,8 +6418,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function FaqFormGroup(_ref) {
-  var faq = _ref.faq,
-      isEditing = _ref.isEditing;
+  var faq = _ref.faq;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FaqFormGroupStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["Frage", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
@@ -6415,7 +6432,7 @@ function FaqFormGroup(_ref) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["Position", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
-        disabled: !isEditing,
+        disabled: !faq,
         name: "position",
         defaultValue: faq && faq.position
       })]
@@ -9921,8 +9938,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
+/* harmony import */ var _common_forms_FaqFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/FaqFormGroup */ "./resources/js/react-app/common/forms/FaqFormGroup.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/faqServices */ "./resources/js/react-app/utils/faqServices.js");
+/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
+
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -9940,25 +9962,48 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
+
 function EditFaqPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      faqs = _useState2[0],
-      setFaqs = _useState2[1];
+      faq = _useState2[0],
+      setFaq = _useState2[1];
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_3__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
+      pageTitle = _useContext.pageTitle,
       setPageTitle = _useContext.setPageTitle;
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    getFaqByUuid().then(function (res) {
-      setText(res.data);
+    var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__.getLastParameterFromPath)();
+    (0,_utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.getFaqByUuid)(uuid).then(function (res) {
+      setFaq(res.data);
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'FAQs | aka-Filmclub';
     setPageTitle('FAQs');
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
+      children: pageTitle
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
+      postFunction: _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.postFaq,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+        name: "_method",
+        type: "hidden",
+        value: "PATCH"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+        name: "uuid",
+        type: "hidden",
+        defaultValue: faq.uuid
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_FaqFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {
+        faq: faq
+      })]
+    })]
+  });
 }
 
 /***/ }),
@@ -11074,6 +11119,7 @@ function formatToIsoDateString(date) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getFaqs": () => /* binding */ getFaqs,
+/* harmony export */   "getFaqByUuid": () => /* binding */ getFaqByUuid,
 /* harmony export */   "postFaq": () => /* binding */ postFaq
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
@@ -11081,6 +11127,9 @@ __webpack_require__.r(__webpack_exports__);
 
 function getFaqs() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/faqs');
+}
+function getFaqByUuid(uuid) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/faqs/uuid/' + uuid);
 }
 function postFaq(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/faqs', data);
