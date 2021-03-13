@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TextFormRequest;
 use App\Models\Text;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class TextController extends Controller
 {
@@ -13,7 +12,7 @@ class TextController extends Controller
         return Text::firstWhere('page', $page)->text;
     }
 
-    public function PostText(Request $request, string $page)
+    public function PostText(TextFormRequest $request, string $page)
     {
         $text = Text::firstWhere('page', $page);
         $text->text = $request->text;

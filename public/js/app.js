@@ -10141,6 +10141,11 @@ function EditTextPage() {
       isLoading = _useState8[0],
       setIsLoading = _useState8[1];
 
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      validationErrors = _useState10[0],
+      setValidationErrors = _useState10[1];
+
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_12__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
     var page = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_9__.getLastParameterFromPath)();
@@ -10185,6 +10190,12 @@ function EditTextPage() {
         }
       },
       toolbarCustomButtons: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_HorizontalLineToolbarButton__WEBPACK_IMPORTED_MODULE_6__.default, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorContainerStyled, {
+      children: validationErrors.map(function (error, index) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorStyled, {
+          children: error
+        }, index);
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ButtonContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SaveButtonStyled, {
         onClick: saveText,
@@ -10205,6 +10216,16 @@ function EditTextPage() {
     };
     (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_10__.postText)(assocPage, textObject).then(function () {
       history.goBack();
+    })["catch"](function (err) {
+      if (err.response.status === 422) {
+        setValidationErrors(err.response.data.validationErrors);
+      }
+
+      if (err.response.status === 500) {
+        history.push('/error');
+      }
+
+      console.log(err.response.data);
     });
   }
 
@@ -10235,17 +10256,25 @@ function EditTextPage() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {});
   }
 }
+var ValidationErrorContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.div.withConfig({
+  displayName: "EditTextPage__ValidationErrorContainerStyled",
+  componentId: "sc-1lkm474-0"
+})(["color:red;"]);
+var ValidationErrorStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.div.withConfig({
+  displayName: "EditTextPage__ValidationErrorStyled",
+  componentId: "sc-1lkm474-1"
+})(["margin-bottom:10px;"]);
 var ButtonContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.div.withConfig({
   displayName: "EditTextPage__ButtonContainerStyled",
-  componentId: "sc-1lkm474-0"
+  componentId: "sc-1lkm474-2"
 })(["display:grid;grid-template-columns:100px 100px;grid-gap:10px;margin-top:20px;"]);
 var SaveButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.button.withConfig({
   displayName: "EditTextPage__SaveButtonStyled",
-  componentId: "sc-1lkm474-1"
+  componentId: "sc-1lkm474-3"
 })([""]);
 var BackButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.button.withConfig({
   displayName: "EditTextPage__BackButtonStyled",
-  componentId: "sc-1lkm474-2"
+  componentId: "sc-1lkm474-4"
 })(["background-color:var(--aka-grau);"]);
 
 /***/ }),

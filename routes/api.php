@@ -208,7 +208,7 @@ Route::prefix('texts')->group(function () {
         TextController::class, 'GetText'
     ]);
 
-    Route::post('/{page}', [
+    Route::middleware('auth:sanctum')->post('/{page}', [
         TextController::class, 'PostText'
     ]);
 });

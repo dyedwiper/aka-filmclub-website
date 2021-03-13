@@ -6,7 +6,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import HorizontalLineToolbarButton from '../../common/forms/HorizontalLineToolbarButton';
-import { PageStyled } from '../../common/styledElements';
+import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getText, postText } from '../../utils/textServices';
@@ -17,6 +17,7 @@ export default function EditTextPage() {
     const [assocPage, setAssocPage] = useState('');
     const [defaultText, setDefaultText] = useState('');
     const [isLoading, setIsLoading] = useState(true);
+    const [validationErrors, setValidationErrors] = useState([]);
 
     let history = useHistory();
 
@@ -68,6 +69,11 @@ export default function EditTextPage() {
                 }}
                 toolbarCustomButtons={[<HorizontalLineToolbarButton />]}
             />
+            <ValidationErrorContainerStyled>
+                {validationErrors.map((error, index) => (
+                    <ValidationErrorStyled key={index}>{error}</ValidationErrorStyled>
+                ))}
+            </ValidationErrorContainerStyled>
             <ButtonContainerStyled>
                 <SaveButtonStyled onClick={saveText}>Speichern</SaveButtonStyled>
                 <BackButtonStyled onClick={() => history.goBack()}>Zurück</BackButtonStyled>
@@ -78,9 +84,19 @@ export default function EditTextPage() {
     function saveText() {
         const html = draftToHtml(convertToRaw(editorState.getCurrentContent()), null, null, customEntityTransform);
         const textObject = { text: html };
-        postText(assocPage, textObject).then(() => {
-            history.goBack();
-        });
+        postText(assocPage, textObject)
+            .then(() => {
+                history.goBack();
+            })
+            .catch((err) => {
+                if (err.response.status === 422) {
+                    setValidationErrors(err.response.data.validationErrors);
+                }
+                if (err.response.status === 500) {
+                    history.push('/error');
+                }
+                console.log(err.response.data);
+            });
     }
 
     function customEntityTransform(entity) {
@@ -108,6 +124,14 @@ export default function EditTextPage() {
         return <hr />;
     }
 }
+
+const ValidationErrorContainerStyled = styled.div`
+    color: red;
+`;
+
+const ValidationErrorStyled = styled.div`
+    margin-bottom: 10px;
+`;
 
 const ButtonContainerStyled = styled.div`
     display: grid;
