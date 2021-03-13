@@ -1,18 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import EditTextLink from '../common/EditTextLink';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import FaqRow from '../common/FaqRow';
+import { HorizontalLineStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import { AUTH_LEVEL_EDITOR } from '../constants';
 import Context from '../Context';
-import { getText } from '../utils/textServices';
+import { getFaqs } from '../utils/faqServices';
+import LoadingPage from './LoadingPage';
 
 export default function FaqsPage() {
-    const [text, setText] = useState('');
+    const [faqs, setFaqs] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-    const { setPageTitle } = useContext(Context);
+    const { user, pageTitle, setPageTitle } = useContext(Context);
+
+    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
 
     useEffect(() => {
-        getText('faq').then((res) => {
-            setText(res.data);
+        getFaqs().then((res) => {
+            setFaqs(res.data);
+            setIsLoading(false);
         });
     }, []);
 
@@ -21,13 +28,40 @@ export default function FaqsPage() {
         setPageTitle('FAQs');
     }, []);
 
+    if (isLoading) return <LoadingPage />;
+
     return (
         <PageStyled>
-            <PageHeadlineStyled>FAQs</PageHeadlineStyled>
-            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
-            <EditTextLink page="faq" />
+            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+            <QuestionsListStyled>
+                {faqs.map((faq) => (
+                    <QuestionLinkItemStyled key={faq.id}>
+                        <Link to={'#' + faq.uuid}>{faq.question}</Link>
+                    </QuestionLinkItemStyled>
+                ))}
+            </QuestionsListStyled>
+            <HorizontalLineStyled />
+            <AnswersListStyled>
+                {faqs.map((faq) => (
+                    <FaqRow key={faq.id} faq={faq} />
+                ))}
+            </AnswersListStyled>
+            {isAuthorized && (
+                <>
+                    <HorizontalLineStyled />
+                    <LinkStyled to="/intern/addFaq">FAQ hinzufügen</LinkStyled>
+                </>
+            )}
         </PageStyled>
     );
 }
 
-const TextContainerStyled = styled.div``;
+const QuestionsListStyled = styled.ul``;
+
+const QuestionLinkItemStyled = styled.li`
+    margin: 10px 0;
+`;
+
+const AnswersListStyled = styled.ul``;
+
+const LinkStyled = styled(Link)``;

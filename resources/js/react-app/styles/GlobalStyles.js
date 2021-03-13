@@ -31,6 +31,10 @@ export default createGlobalStyle`
   input {
     /* Fix for iPhone because inputs are somehow too wide elsewise. */
     width: 100%;
+
+    &:disabled {
+        border-color: var(--aka-grau);
+    }
   }
 
   input[type="file"]{

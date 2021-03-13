@@ -12,11 +12,13 @@ import ContactPage from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
+import AddFaqPage from './pages/intern/AddFaqPage';
 import AddImagePage from './pages/intern/AddImagePage';
 import AddNoticePage from './pages/intern/AddNoticePage';
 import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import AddUserPage from './pages/intern/AddUserPage';
+import EditFaqPage from './pages/intern/EditFaqPage';
 import EditImagePage from './pages/intern/EditImagePage';
 import EditNoticePage from './pages/intern/EditNoticePage';
 import EditScreeningPage from './pages/intern/EditScreeningPage';
@@ -153,6 +155,12 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path="/intern/editImage">
                             <EditImagePage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/addFaq">
+                            <AddFaqPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editFaq">
+                            <EditFaqPage />
                         </PrivateRoute>
                         <PrivateRoute path="/intern/editText">
                             <EditTextPage />

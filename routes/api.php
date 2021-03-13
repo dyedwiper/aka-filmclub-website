@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ScreeningController;
@@ -200,6 +201,16 @@ Route::prefix('users')->group(function () {
 
     Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
         UserController::class, 'DeleteUser'
+    ]);
+});
+
+Route::prefix('faqs')->group(function () {
+    Route::get('/', [
+        FaqController::class, 'GetFaqs'
+    ]);
+
+    Route::middleware('auth:sanctum')->post('/', [
+        FaqController::class, 'PostFaq'
     ]);
 });
 
