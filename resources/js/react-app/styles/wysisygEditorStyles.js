@@ -8,7 +8,7 @@ export const toolbarStyleObject = {
 };
 
 export const editorStyleObject = {
-    maxHeight: '400px',
+    maxHeight: '300px',
     overflow: 'scroll',
     padding: '5px',
 };

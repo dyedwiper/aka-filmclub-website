@@ -6339,6 +6339,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var draft_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! draft-js */ "./node_modules/draft-js/lib/Draft.js");
 /* harmony import */ var draft_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(draft_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    height: 5px;\n    width: 60px;\n    background-color: var(--aka-gelb);\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 
@@ -6350,7 +6365,7 @@ function HorizontalLineToolbarButton(_ref) {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "rdw-option-wrapper",
       onClick: addHorizontalRuleRemovingSelection,
-      children: "Hori"
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HorizontalRulePreviewStyled, {})
     })
   });
 
@@ -6361,6 +6376,7 @@ function HorizontalLineToolbarButton(_ref) {
     onChange(draft_js__WEBPACK_IMPORTED_MODULE_1__.AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' '));
   }
 }
+var HorizontalRulePreviewStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div(_templateObject());
 
 /***/ }),
 
@@ -7446,7 +7462,7 @@ __webpack_require__.r(__webpack_exports__);
 var PageStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.main.withConfig({
   displayName: "styledElements__PageStyled",
   componentId: "sc-1sog38p-0"
-})(["min-height:100%;max-width:1024px;margin:0 auto;padding:160px 100px 100px 100px;@media (max-width:1023px){padding:160px 20px 20px 20px;}@media (max-width:767px){padding:80px 20px 20px 20px;}"]);
+})(["min-height:100%;max-width:1024px;margin:0 auto;padding:120px 100px 100px 100px;@media (max-width:1023px){padding:120px 20px 20px 20px;}@media (max-width:767px){padding:80px 20px 20px 20px;}"]);
 var PageHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.h2.withConfig({
   displayName: "styledElements__PageHeadlineStyled",
   componentId: "sc-1sog38p-1"
@@ -10082,14 +10098,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-draft-wysiwyg */ "./node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.js");
 /* harmony import */ var react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_forms_HorizontalLineToolbarButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/forms/HorizontalLineToolbarButton */ "./resources/js/react-app/common/forms/HorizontalLineToolbarButton.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../styles/wysisygEditorStyles */ "./resources/js/react-app/styles/wysisygEditorStyles.js");
-/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
-/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
-/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../styles/wysisygEditorStyles */ "./resources/js/react-app/styles/wysisygEditorStyles.js");
+/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
+/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
 
@@ -10104,6 +10121,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -10146,17 +10164,32 @@ function EditTextPage() {
       validationErrors = _useState10[0],
       setValidationErrors = _useState10[1];
 
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_12__.useHistory)();
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_4__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_8__.default),
+      pageTitle = _useContext.pageTitle,
+      setPageTitle = _useContext.setPageTitle;
+
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_13__.useHistory)();
+  var pageTitleMap = {
+    about: 'Über uns',
+    contact: 'Kontakt',
+    links: 'Links',
+    press: 'Pressespiegel',
+    awards: 'Auszeichnungen'
+  };
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
-    var page = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_9__.getLastParameterFromPath)();
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_10__.getText)(page).then(function (res) {
+    document.title = pageTitleMap[assocPage] + ' bearbeiten | aka-Filmclub';
+    setPageTitle(pageTitleMap[assocPage] + ' bearbeiten');
+  }, [assocPage]);
+  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
+    var page = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_10__.getLastParameterFromPath)();
+    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_11__.getText)(page).then(function (res) {
       setDefaultText(res.data);
       setAssocPage(page);
       setIsLoading(false);
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
-    var draftFromHtml = html_to_draftjs__WEBPACK_IMPORTED_MODULE_3___default()(defaultText, function (nodeName, node) {
+    var draftFromHtml = html_to_draftjs__WEBPACK_IMPORTED_MODULE_3___default()(defaultText, function (nodeName) {
       if (nodeName === 'hr') {
         return {
           type: 'HORIZONTAL_RULE',
@@ -10167,15 +10200,17 @@ function EditTextPage() {
     });
     setEditorState(draft_js__WEBPACK_IMPORTED_MODULE_1__.EditorState.createWithContent(draft_js__WEBPACK_IMPORTED_MODULE_1__.ContentState.createFromBlockArray(draftFromHtml)));
   }, [defaultText]);
-  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_11__.default, {});
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_12__.default, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_7__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5__.Editor, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_7__.PageHeadlineStyled, {
+      children: pageTitle
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5__.Editor, {
       editorState: editorState,
       onEditorStateChange: setEditorState,
       customBlockRenderFunc: customBlockRenderer,
-      wrapperStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_8__.wrapperStyleObject,
-      toolbarStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_8__.toolbarStyleObject,
-      editorStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_8__.editorStyleObject,
+      wrapperStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_9__.wrapperStyleObject,
+      toolbarStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_9__.toolbarStyleObject,
+      editorStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_9__.editorStyleObject,
       toolbar: {
         options: ['inline', 'blockType', 'link'],
         inline: {
@@ -10189,7 +10224,7 @@ function EditTextPage() {
           defaultTargetOption: '_blank'
         }
       },
-      toolbarCustomButtons: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_HorizontalLineToolbarButton__WEBPACK_IMPORTED_MODULE_6__.default, {})]
+      toolbarCustomButtons: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_HorizontalLineToolbarButton__WEBPACK_IMPORTED_MODULE_6__.default, {}, "1")]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorContainerStyled, {
       children: validationErrors.map(function (error, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorStyled, {
@@ -10214,7 +10249,7 @@ function EditTextPage() {
     var textObject = {
       text: html
     };
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_10__.postText)(assocPage, textObject).then(function () {
+    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_11__.postText)(assocPage, textObject).then(function () {
       history.goBack();
     })["catch"](function (err) {
       if (err.response.status === 422) {
@@ -10256,23 +10291,23 @@ function EditTextPage() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {});
   }
 }
-var ValidationErrorContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.div.withConfig({
+var ValidationErrorContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.div.withConfig({
   displayName: "EditTextPage__ValidationErrorContainerStyled",
   componentId: "sc-1lkm474-0"
 })(["color:red;"]);
-var ValidationErrorStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.div.withConfig({
+var ValidationErrorStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.div.withConfig({
   displayName: "EditTextPage__ValidationErrorStyled",
   componentId: "sc-1lkm474-1"
 })(["margin-bottom:10px;"]);
-var ButtonContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.div.withConfig({
+var ButtonContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.div.withConfig({
   displayName: "EditTextPage__ButtonContainerStyled",
   componentId: "sc-1lkm474-2"
 })(["display:grid;grid-template-columns:100px 100px;grid-gap:10px;margin-top:20px;"]);
-var SaveButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.button.withConfig({
+var SaveButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.button.withConfig({
   displayName: "EditTextPage__SaveButtonStyled",
   componentId: "sc-1lkm474-3"
 })([""]);
-var BackButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.button.withConfig({
+var BackButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.button.withConfig({
   displayName: "EditTextPage__BackButtonStyled",
   componentId: "sc-1lkm474-4"
 })(["background-color:var(--aka-grau);"]);
@@ -10718,7 +10753,7 @@ var toolbarStyleObject = {
   backgroundColor: 'var(--aka-gelb)'
 };
 var editorStyleObject = {
-  maxHeight: '400px',
+  maxHeight: '300px',
   overflow: 'scroll',
   padding: '5px'
 };

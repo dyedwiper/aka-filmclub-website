@@ -1,12 +1,13 @@
 import { ContentState, convertToRaw, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import HorizontalLineToolbarButton from '../../common/forms/HorizontalLineToolbarButton';
-import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
+import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import Context from '../../Context';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getText, postText } from '../../utils/textServices';
@@ -19,7 +20,22 @@ export default function EditTextPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [validationErrors, setValidationErrors] = useState([]);
 
+    const { pageTitle, setPageTitle } = useContext(Context);
+
     let history = useHistory();
+
+    const pageTitleMap = {
+        about: 'Über uns',
+        contact: 'Kontakt',
+        links: 'Links',
+        press: 'Pressespiegel',
+        awards: 'Auszeichnungen',
+    };
+
+    useEffect(() => {
+        document.title = pageTitleMap[assocPage] + ' bearbeiten | aka-Filmclub';
+        setPageTitle(pageTitleMap[assocPage] + ' bearbeiten');
+    }, [assocPage]);
 
     useEffect(() => {
         const page = getLastParameterFromPath();
@@ -31,7 +47,7 @@ export default function EditTextPage() {
     }, []);
 
     useEffect(() => {
-        const draftFromHtml = htmlToDraft(defaultText, (nodeName, node) => {
+        const draftFromHtml = htmlToDraft(defaultText, (nodeName) => {
             if (nodeName === 'hr') {
                 return {
                     type: 'HORIZONTAL_RULE',
@@ -47,6 +63,7 @@ export default function EditTextPage() {
 
     return (
         <PageStyled>
+            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <Editor
                 editorState={editorState}
                 onEditorStateChange={setEditorState}
@@ -67,7 +84,7 @@ export default function EditTextPage() {
                         defaultTargetOption: '_blank',
                     },
                 }}
-                toolbarCustomButtons={[<HorizontalLineToolbarButton />]}
+                toolbarCustomButtons={[<HorizontalLineToolbarButton key="1" />]}
             />
             <ValidationErrorContainerStyled>
                 {validationErrors.map((error, index) => (

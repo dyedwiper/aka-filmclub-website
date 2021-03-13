@@ -1,11 +1,12 @@
 import { AtomicBlockUtils } from 'draft-js';
 import React from 'react';
+import styled from 'styled-components';
 
 export default function HorizontalLineToolbarButton({ onChange, editorState }) {
     return (
         <div className="rdw-inline-wrapper">
             <div className="rdw-option-wrapper" onClick={addHorizontalRuleRemovingSelection}>
-                Hori
+                <HorizontalRulePreviewStyled />
             </div>
         </div>
     );
@@ -17,3 +18,9 @@ export default function HorizontalLineToolbarButton({ onChange, editorState }) {
         onChange(AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' '));
     }
 }
+
+const HorizontalRulePreviewStyled = styled.div`
+    height: 5px;
+    width: 60px;
+    background-color: var(--aka-gelb);
+`;
