@@ -6338,12 +6338,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var draft_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! draft-js */ "./node_modules/draft-js/lib/Draft.js");
 /* harmony import */ var draft_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(draft_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var html_to_draftjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! html-to-draftjs */ "./node_modules/html-to-draftjs/dist/html-to-draftjs.js");
-/* harmony import */ var html_to_draftjs__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(html_to_draftjs__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../styledElements */ "./resources/js/react-app/common/styledElements.js");
-
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 
 
@@ -6354,20 +6349,16 @@ function HorizontalLineToolbarButton(_ref) {
     className: "rdw-inline-wrapper",
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       className: "rdw-option-wrapper",
-      onClick: handleClick,
+      onClick: addHorizontalRuleRemovingSelection,
       children: "Hori"
     })
   });
 
-  function handleClick() {
-    var _htmlToDraft = html_to_draftjs__WEBPACK_IMPORTED_MODULE_2___default()('<h3>hello world</h3><div>foo</div>'),
-        contentBlocks = _htmlToDraft.contentBlocks,
-        entityMap = _htmlToDraft.entityMap;
-
-    var blockMap = draft_js__WEBPACK_IMPORTED_MODULE_1__.ContentState.createFromBlockArray(contentBlocks, entityMap).getBlockMap();
-    console.log(blockMap);
-    var contentState = draft_js__WEBPACK_IMPORTED_MODULE_1__.Modifier.replaceWithFragment(editorState.getCurrentContent(), editorState.getSelection(), blockMap);
-    onChange(draft_js__WEBPACK_IMPORTED_MODULE_1__.EditorState.push(editorState, contentState, 'insert-fragment'));
+  function addHorizontalRuleRemovingSelection() {
+    var contentState = editorState.getCurrentContent();
+    var contentStateWithEntity = contentState.createEntity('HORIZONTAL_RULE', 'IMMUTABLE', {});
+    var entityKey = contentStateWithEntity.getLastCreatedEntityKey();
+    onChange(draft_js__WEBPACK_IMPORTED_MODULE_1__.AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' '));
   }
 }
 
@@ -10086,17 +10077,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var draft_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(draft_js__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var draftjs_to_html__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! draftjs-to-html */ "./node_modules/draftjs-to-html/lib/draftjs-to-html.js");
 /* harmony import */ var draftjs_to_html__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(draftjs_to_html__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-draft-wysiwyg */ "./node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.js");
-/* harmony import */ var react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _common_forms_HorizontalLineToolbarButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/forms/HorizontalLineToolbarButton */ "./resources/js/react-app/common/forms/HorizontalLineToolbarButton.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../styles/wysisygEditorStyles */ "./resources/js/react-app/styles/wysisygEditorStyles.js");
-/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
-/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
-/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+/* harmony import */ var html_to_draftjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! html-to-draftjs */ "./node_modules/html-to-draftjs/dist/html-to-draftjs.js");
+/* harmony import */ var html_to_draftjs__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(html_to_draftjs__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-draft-wysiwyg */ "./node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.js");
+/* harmony import */ var react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_forms_HorizontalLineToolbarButton__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../common/forms/HorizontalLineToolbarButton */ "./resources/js/react-app/common/forms/HorizontalLineToolbarButton.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../styles/wysisygEditorStyles */ "./resources/js/react-app/styles/wysisygEditorStyles.js");
+/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
+/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
 
@@ -10124,51 +10117,65 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function EditTextPage() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(function () {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(function () {
     return draft_js__WEBPACK_IMPORTED_MODULE_1__.EditorState.createEmpty();
   }),
       _useState2 = _slicedToArray(_useState, 2),
       editorState = _useState2[0],
       setEditorState = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(''),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
       assocPage = _useState4[0],
       setAssocPage = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(''),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
       defaultText = _useState6[0],
       setDefaultText = _useState6[1];
 
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_3__.useState)(true),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(true),
       _useState8 = _slicedToArray(_useState7, 2),
       isLoading = _useState8[0],
       setIsLoading = _useState8[1];
 
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_11__.useHistory)();
-  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
-    var page = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_8__.getLastParameterFromPath)();
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_9__.getText)(page).then(function (res) {
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_12__.useHistory)();
+  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
+    var page = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_9__.getLastParameterFromPath)();
+    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_10__.getText)(page).then(function (res) {
       setDefaultText(res.data);
       setAssocPage(page);
       setIsLoading(false);
     });
   }, []);
-  (0,react__WEBPACK_IMPORTED_MODULE_3__.useEffect)(function () {
-    setEditorState(draft_js__WEBPACK_IMPORTED_MODULE_1__.EditorState.createWithContent(draft_js__WEBPACK_IMPORTED_MODULE_1__.ContentState.createFromBlockArray((0,draft_js__WEBPACK_IMPORTED_MODULE_1__.convertFromHTML)(defaultText))));
+  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
+    var draftFromHtml = html_to_draftjs__WEBPACK_IMPORTED_MODULE_3___default()(defaultText, function (nodeName, node) {
+      if (nodeName === 'hr') {
+        return {
+          type: 'HORIZONTAL_RULE',
+          mutability: 'IMMUTABLE',
+          data: {}
+        };
+      }
+    });
+    setEditorState(draft_js__WEBPACK_IMPORTED_MODULE_1__.EditorState.createWithContent(draft_js__WEBPACK_IMPORTED_MODULE_1__.ContentState.createFromBlockArray(draftFromHtml)));
   }, [defaultText]);
-  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_10__.default, {});
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_6__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_4__.Editor, {
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_11__.default, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_7__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5__.Editor, {
       editorState: editorState,
       onEditorStateChange: setEditorState,
-      wrapperStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_7__.wrapperStyleObject,
-      toolbarStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_7__.toolbarStyleObject,
-      editorStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_7__.editorStyleObject,
+      customBlockRenderFunc: customBlockRenderer,
+      wrapperStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_8__.wrapperStyleObject,
+      toolbarStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_8__.toolbarStyleObject,
+      editorStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_8__.editorStyleObject,
       toolbar: {
         options: ['inline', 'blockType', 'link'],
+        inline: {
+          options: ['bold', 'italic', 'underline', 'strikethrough']
+        },
         blockType: {
           options: ['Normal', 'H3', 'H4', 'H5', 'H6']
         },
@@ -10177,7 +10184,7 @@ function EditTextPage() {
           defaultTargetOption: '_blank'
         }
       },
-      toolbarCustomButtons: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_HorizontalLineToolbarButton__WEBPACK_IMPORTED_MODULE_5__.default, {})]
+      toolbarCustomButtons: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_HorizontalLineToolbarButton__WEBPACK_IMPORTED_MODULE_6__.default, {})]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ButtonContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SaveButtonStyled, {
         onClick: saveText,
@@ -10192,23 +10199,51 @@ function EditTextPage() {
   });
 
   function saveText() {
+    var html = draftjs_to_html__WEBPACK_IMPORTED_MODULE_2___default()((0,draft_js__WEBPACK_IMPORTED_MODULE_1__.convertToRaw)(editorState.getCurrentContent()), null, null, customEntityTransform);
     var textObject = {
-      text: draftjs_to_html__WEBPACK_IMPORTED_MODULE_2___default()((0,draft_js__WEBPACK_IMPORTED_MODULE_1__.convertToRaw)(editorState.getCurrentContent()))
+      text: html
     };
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_9__.postText)(assocPage, textObject).then(function () {
+    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_10__.postText)(assocPage, textObject).then(function () {
       history.goBack();
     });
   }
+
+  function customEntityTransform(entity) {
+    if (entity && entity.type === 'HORIZONTAL_RULE') {
+      return '<hr/>';
+    }
+  }
+
+  function customBlockRenderer(block) {
+    if (block.getType() === 'atomic') {
+      var contentState = editorState.getCurrentContent();
+      var entityKey = block.getEntityAt(0);
+      var entity = contentState.getEntity(entityKey);
+
+      if (entity && entity.type === 'HORIZONTAL_RULE') {
+        return {
+          component: HorizontalRule,
+          editable: false
+        };
+      }
+    }
+
+    return undefined;
+  }
+
+  function HorizontalRule() {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {});
+  }
 }
-var ButtonContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_12__.default.div.withConfig({
+var ButtonContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.div.withConfig({
   displayName: "EditTextPage__ButtonContainerStyled",
   componentId: "sc-1lkm474-0"
 })(["display:grid;grid-template-columns:100px 100px;grid-gap:10px;margin-top:20px;"]);
-var SaveButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_12__.default.button.withConfig({
+var SaveButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.button.withConfig({
   displayName: "EditTextPage__SaveButtonStyled",
   componentId: "sc-1lkm474-1"
 })([""]);
-var BackButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_12__.default.button.withConfig({
+var BackButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_13__.default.button.withConfig({
   displayName: "EditTextPage__BackButtonStyled",
   componentId: "sc-1lkm474-2"
 })(["background-color:var(--aka-grau);"]);
@@ -10547,7 +10582,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: lightgrey;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise. */\n    width: 100%;\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  /* Fix for Safari because empty date inputs have no height otherwise. */\n  input[type=\"date\"]{\n      min-height: 32px;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  /* h1, h2, h3, h4, h5, h6, p {\n      margin: 0;\n  } */\n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n\n  input[id=\"openLinkInNewWindow\"] {\n    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */\n    width: initial;\n\n    &:checked {\n        background-color: black;\n    }\n  }\n\n  div[class=\"rdw-editor-main\"] a {\n      color:  #757575;\n  }\n\n  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/\n  div[class=\"rdw-link-modal\"] {\n      box-sizing: initial;\n  }\n\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: lightgrey;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise. */\n    width: 100%;\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  /* Fix for Safari because empty date inputs have no height otherwise. */\n  input[type=\"date\"]{\n      min-height: 32px;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  /* h1, h2, h3, h4, h5, h6, p {\n      margin: 0;\n  } */\n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n\n  hr {\n    height: 10px;\n    width: 80%;\n    margin: 20px 0;\n    border: none;\n    background-color: var(--aka-gelb);\n  }\n\n  input[id=\"openLinkInNewWindow\"] {\n    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */\n    width: initial;\n\n    &:checked {\n        background-color: black;\n    }\n  }\n\n  div[class=\"rdw-editor-main\"] a {\n      color:  #757575;\n  }\n\n  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/\n  div[class=\"rdw-link-modal\"] {\n      box-sizing: initial;\n  }\n\n"]);
 
   _templateObject = function _templateObject() {
     return data;

@@ -89,6 +89,14 @@ export default createGlobalStyle`
       margin: 0;
   }
 
+  hr {
+    height: 10px;
+    width: 80%;
+    margin: 20px 0;
+    border: none;
+    background-color: var(--aka-gelb);
+  }
+
   input[id="openLinkInNewWindow"] {
     /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */
     width: initial;
