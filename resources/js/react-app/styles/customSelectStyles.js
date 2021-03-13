@@ -38,6 +38,18 @@ export const userStatusSelectStyles = {
     }),
 };
 
+export const positionSelectStyles = {
+    option: customOptionStyles,
+    container: (provided) => ({
+        ...provided,
+        display: 'inline-block',
+        width: '200px',
+        '@media (max-width: 767px)': {
+            width: '100%',
+        },
+    }),
+};
+
 const customOptionStyles = (provided, state) => ({
     ...provided,
     backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',

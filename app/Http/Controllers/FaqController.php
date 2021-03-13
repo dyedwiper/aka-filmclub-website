@@ -34,6 +34,25 @@ class FaqController extends Controller
         $faq = Faq::firstWhere('uuid', $request->uuid);
         $faq->question = $request->question;
         $faq->answer = $request->answer;
+        if ($faq->position > $request->position) {
+            $afterPositionedFaqs = Faq
+                ::where('position', '>=', $request->position)
+                ->where('position', '<', $faq->position)
+                ->get();
+            foreach ($afterPositionedFaqs as $afterFaq) {
+                $afterFaq->position = $afterFaq->position + 1;
+                $afterFaq->save();
+            }
+        } else {
+            $beforePositionedFaqs = Faq
+                ::where('position', '<=', $request->position)
+                ->where('position', '>', $faq->position)
+                ->get();
+            foreach ($beforePositionedFaqs as $beforeFaq) {
+                $beforeFaq->position = $beforeFaq->position - 1;
+                $beforeFaq->save();
+            }
+        }
         $faq->position = $request->position;
         $faq->save();
     }

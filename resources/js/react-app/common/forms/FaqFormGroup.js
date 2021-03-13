@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import FaqPositionSelect from './FaqPositionSelect';
 
 export default function FaqFormGroup({ faq }) {
     return (
@@ -12,10 +13,10 @@ export default function FaqFormGroup({ faq }) {
                 Antwort
                 <InputStyled name="answer" defaultValue={faq && faq.answer} />
             </LabelStyled>
-            <LabelStyled>
+            <PositionLabelStyled>
                 Position
-                <InputStyled disabled={!faq} name="position" defaultValue={faq && faq.position} />
-            </LabelStyled>
+                <FaqPositionSelect disabled={!faq} defaultPosition={faq && faq.position} />
+            </PositionLabelStyled>
         </FaqFormGroupStyled>
     );
 }
@@ -23,8 +24,14 @@ export default function FaqFormGroup({ faq }) {
 const FaqFormGroupStyled = styled.div``;
 
 const LabelStyled = styled.label`
-    margin: 20px 0;
     display: block;
+    margin: 20px 0;
+`;
+
+const PositionLabelStyled = styled.label`
+    display: grid;
+    grid-template-columns: 80px 100px;
+    align-items: center;
 `;
 
 const InputStyled = styled.input``;

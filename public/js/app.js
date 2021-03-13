@@ -6412,7 +6412,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _FaqPositionSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FaqPositionSelect */ "./resources/js/react-app/common/forms/FaqPositionSelect.js");
+
 
 
 
@@ -6430,27 +6432,114 @@ function FaqFormGroup(_ref) {
         name: "answer",
         defaultValue: faq && faq.answer
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Position", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(PositionLabelStyled, {
+      children: ["Position", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_FaqPositionSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
         disabled: !faq,
-        name: "position",
-        defaultValue: faq && faq.position
+        defaultPosition: faq && faq.position
       })]
     })]
   });
 }
-var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
+var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
   displayName: "FaqFormGroup__FaqFormGroupStyled",
   componentId: "sc-1rm9hsg-0"
 })([""]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
   displayName: "FaqFormGroup__LabelStyled",
   componentId: "sc-1rm9hsg-1"
-})(["margin:20px 0;display:block;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input.withConfig({
-  displayName: "FaqFormGroup__InputStyled",
+})(["display:block;margin:20px 0;"]);
+var PositionLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
+  displayName: "FaqFormGroup__PositionLabelStyled",
   componentId: "sc-1rm9hsg-2"
+})(["display:grid;grid-template-columns:80px 100px;align-items:center;"]);
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
+  displayName: "FaqFormGroup__InputStyled",
+  componentId: "sc-1rm9hsg-3"
 })([""]);
+
+/***/ }),
+
+/***/ "./resources/js/react-app/common/forms/FaqPositionSelect.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/react-app/common/forms/FaqPositionSelect.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ FaqPositionSelect
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
+/* harmony import */ var _utils_faqServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/faqServices */ "./resources/js/react-app/utils/faqServices.js");
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+function FaqPositionSelect(_ref) {
+  var defaultPosition = _ref.defaultPosition,
+      disabled = _ref.disabled;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      positionOptions = _useState2[0],
+      setPositionOptions = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isLoading = _useState4[0],
+      setIsLoading = _useState4[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    (0,_utils_faqServices__WEBPACK_IMPORTED_MODULE_3__.getFaqs)().then(function (res) {
+      var numberOfFaqs = res.data.length;
+      var options = [];
+
+      for (var i = 0; i < numberOfFaqs; i++) {
+        options.push({
+          label: i + 1,
+          value: i
+        });
+      }
+
+      setPositionOptions(options);
+      setIsLoading(false);
+    });
+  }, []);
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LoadingNoteStyled, {
+    children: "Am Laden..."
+  });
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
+    name: "position",
+    options: positionOptions,
+    isDisabled: disabled,
+    defaultValue: positionOptions[defaultPosition],
+    styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.positionSelectStyles
+  });
+}
+var LoadingNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+  displayName: "FaqPositionSelect__LoadingNoteStyled",
+  componentId: "sc-28qdbl-0"
+})(["display:grid;align-items:center;height:40px;"]);
 
 /***/ }),
 
@@ -10980,7 +11069,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "semesterSelectStyles": () => /* binding */ semesterSelectStyles,
 /* harmony export */   "serialSemesterSelectStyles": () => /* binding */ serialSemesterSelectStyles,
 /* harmony export */   "serialSelectStyles": () => /* binding */ serialSelectStyles,
-/* harmony export */   "userStatusSelectStyles": () => /* binding */ userStatusSelectStyles
+/* harmony export */   "userStatusSelectStyles": () => /* binding */ userStatusSelectStyles,
+/* harmony export */   "positionSelectStyles": () => /* binding */ positionSelectStyles
 /* harmony export */ });
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
@@ -11022,6 +11112,18 @@ var userStatusSelectStyles = {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
       width: '300px',
+      '@media (max-width: 767px)': {
+        width: '100%'
+      }
+    });
+  }
+};
+var positionSelectStyles = {
+  option: customOptionStyles,
+  container: function container(provided) {
+    return _objectSpread(_objectSpread({}, provided), {}, {
+      display: 'inline-block',
+      width: '200px',
       '@media (max-width: 767px)': {
         width: '100%'
       }
