@@ -5,9 +5,11 @@ import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { getFaqByUuid, postFaq } from '../../utils/faqServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
+import LoadingPage from '../LoadingPage';
 
 export default function EditFaqPage() {
     const [faq, setFaq] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const { pageTitle, setPageTitle } = useContext(Context);
 
@@ -15,6 +17,7 @@ export default function EditFaqPage() {
         const uuid = getLastParameterFromPath();
         getFaqByUuid(uuid).then((res) => {
             setFaq(res.data);
+            setIsLoading(false);
         });
     }, []);
 
@@ -22,6 +25,8 @@ export default function EditFaqPage() {
         document.title = 'FAQs | aka-Filmclub';
         setPageTitle('FAQs');
     }, []);
+
+    if (isLoading) return <LoadingPage />;
 
     return (
         <PageStyled>

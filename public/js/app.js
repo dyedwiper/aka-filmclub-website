@@ -6412,8 +6412,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _FaqPositionSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./FaqPositionSelect */ "./resources/js/react-app/common/forms/FaqPositionSelect.js");
+/* harmony import */ var _WysiwygEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WysiwygEditor */ "./resources/js/react-app/common/forms/WysiwygEditor.js");
+
 
 
 
@@ -6428,8 +6430,8 @@ function FaqFormGroup(_ref) {
         defaultValue: faq && faq.question
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Antwort", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
-        name: "answer",
+      children: ["Antwort", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_WysiwygEditor__WEBPACK_IMPORTED_MODULE_3__.default, {
+        inputName: "answer",
         defaultValue: faq && faq.answer
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(PositionLabelStyled, {
@@ -6440,19 +6442,19 @@ function FaqFormGroup(_ref) {
     })]
   });
 }
-var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "FaqFormGroup__FaqFormGroupStyled",
   componentId: "sc-1rm9hsg-0"
 })([""]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
   displayName: "FaqFormGroup__LabelStyled",
   componentId: "sc-1rm9hsg-1"
 })(["display:block;margin:20px 0;"]);
-var PositionLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
+var PositionLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
   displayName: "FaqFormGroup__PositionLabelStyled",
   componentId: "sc-1rm9hsg-2"
 })(["display:grid;grid-template-columns:80px 100px;align-items:center;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
   displayName: "FaqFormGroup__InputStyled",
   componentId: "sc-1rm9hsg-3"
 })([""]);
@@ -7432,6 +7434,9 @@ function WysiwygEditor(_ref) {
       editorStyle: _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_6__.editorStyleObject,
       toolbar: {
         options: ['inline', 'link'],
+        inline: {
+          options: ['bold', 'italic', 'underline', 'strikethrough']
+        },
         link: {
           showOpenOptionOnHover: false,
           defaultTargetOption: '_blank'
@@ -10033,6 +10038,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
 /* harmony import */ var _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/faqServices */ "./resources/js/react-app/utils/faqServices.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
 
@@ -10055,11 +10061,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function EditFaqPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       faq = _useState2[0],
       setFaq = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isLoading = _useState4[0],
+      setIsLoading = _useState4[1];
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
       pageTitle = _useContext.pageTitle,
@@ -10069,12 +10081,14 @@ function EditFaqPage() {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__.getLastParameterFromPath)();
     (0,_utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.getFaqByUuid)(uuid).then(function (res) {
       setFaq(res.data);
+      setIsLoading(false);
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'FAQs | aka-Filmclub';
     setPageTitle('FAQs');
   }, []);
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_8__.default, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: pageTitle

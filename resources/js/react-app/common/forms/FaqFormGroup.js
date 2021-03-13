@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FaqPositionSelect from './FaqPositionSelect';
+import WysiwygEditor from './WysiwygEditor';
 
 export default function FaqFormGroup({ faq }) {
     return (
@@ -11,7 +12,7 @@ export default function FaqFormGroup({ faq }) {
             </LabelStyled>
             <LabelStyled>
                 Antwort
-                <InputStyled name="answer" defaultValue={faq && faq.answer} />
+                <WysiwygEditor inputName="answer" defaultValue={faq && faq.answer} />
             </LabelStyled>
             <PositionLabelStyled>
                 Position

@@ -23,6 +23,9 @@ export default function WysiwygEditor({ inputName, defaultValue }) {
                 editorStyle={editorStyleObject}
                 toolbar={{
                     options: ['inline', 'link'],
+                    inline: {
+                        options: ['bold', 'italic', 'underline', 'strikethrough'],
+                    },
                     link: {
                         showOpenOptionOnHover: false,
                         defaultTargetOption: '_blank',
