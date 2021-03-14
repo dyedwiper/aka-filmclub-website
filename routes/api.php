@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SerialController;
+use App\Http\Controllers\TextController;
 use App\Http\Controllers\UserController;
 use App\Models\Notice;
 use App\Models\Screening;
@@ -199,5 +201,37 @@ Route::prefix('users')->group(function () {
 
     Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
         UserController::class, 'DeleteUser'
+    ]);
+});
+
+Route::prefix('faqs')->group(function () {
+    Route::get('/', [
+        FaqController::class, 'GetFaqs'
+    ]);
+
+    Route::get('/uuid/{uuid}', [
+        FaqController::class, 'GetFaqByUuid'
+    ]);
+
+    Route::middleware('auth:sanctum')->post('/', [
+        FaqController::class, 'PostFaq'
+    ]);
+
+    Route::middleware('auth:sanctum')->patch('/', [
+        FaqController::class, 'PatchFaq'
+    ]);
+
+    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
+        FaqController::class, 'DeleteFaq'
+    ]);
+});
+
+Route::prefix('texts')->group(function () {
+    Route::get('/{page}', [
+        TextController::class, 'GetText'
+    ]);
+
+    Route::middleware('auth:sanctum')->post('/{page}', [
+        TextController::class, 'PostText'
     ]);
 });

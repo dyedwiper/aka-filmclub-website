@@ -13,7 +13,7 @@ export default function ScreeningCard({ screening }) {
                     <TitleStyled>{screening.title}</TitleStyled>
                 </ImageContainerStyled>
                 <DateStyled>{formatToDateString(screening.date)}</DateStyled>
-                <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
+                <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
             </Link>
         </ScreeningCardStyled>
     );
@@ -52,7 +52,7 @@ const DateStyled = styled.div`
     font-weight: bold;
 `;
 
-const SynopsisStyled = styled.p`
+const SynopsisStyled = styled.div`
     margin: 10px 0;
     display: -webkit-box;
     -webkit-box-orient: vertical;

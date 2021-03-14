@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { STORAGE_FOLDER } from '../constants';
 import { formatToDateString } from '../utils/dateFormatters';
-import { HorizontalLineStyled } from './styledElements';
+import { HorizontalRuleStyled } from './styledElements';
 import missingImage from '../assets/missing.jpg';
 
 export default function NoticeRow({ notice }) {
     return (
         <NoticeRowStyled>
-            <HorizontalLineStyled />
+            <HorizontalRuleStyled />
             <NoticeContainerStyled>
                 <LinkStyled to={'/news/' + notice.uuid}>
                     <ImageStyled src={notice.image ? STORAGE_FOLDER + notice.image.path : missingImage} />
@@ -19,7 +19,7 @@ export default function NoticeRow({ notice }) {
                     <LinkStyled to={'/news/' + notice.uuid}>
                         <TitleStyled>{notice.title}</TitleStyled>
                     </LinkStyled>
-                    <ContentStyled>{notice.content}</ContentStyled>
+                    <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
                 </InfoContainerStyled>
             </NoticeContainerStyled>
         </NoticeRowStyled>
@@ -52,7 +52,7 @@ const LinkStyled = styled(Link)``;
 
 const TitleStyled = styled.h3``;
 
-const ContentStyled = styled.p`
+const ContentStyled = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;

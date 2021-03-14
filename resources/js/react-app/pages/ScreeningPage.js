@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import { HorizontalLineStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
+import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import Context from '../Context';
 import { formatToDateTimeString } from '../utils/dateFormatters';
@@ -99,11 +99,11 @@ export default function ScreeningPage() {
                         </>
                     )}
                 </CreditsContainerStyled>
-                <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
+                <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
                 {screening.serial && (
                     <SerialContainerStyled>
-                        <HorizontalLineStyled />
+                        <HorizontalRuleStyled />
                         Gezeigt im Rahmen der Filmreihe:{' '}
                         <SerialLinkStyled to={'/serial/' + screening.serial.uuid}>
                             {screening.serial.title}
@@ -112,7 +112,7 @@ export default function ScreeningPage() {
                 )}
                 {isAuthorized && (
                     <>
-                        <HorizontalLineStyled />
+                        <HorizontalRuleStyled />
                         <EditLinkStyled to={'/intern/editScreening/' + screening.uuid}>
                             Vorführung bearbeiten
                         </EditLinkStyled>
@@ -197,7 +197,7 @@ const CreditValueStyled = styled.span`
     display: inline-block;
 `;
 
-const SynopsisStyled = styled.p`
+const SynopsisStyled = styled.div`
     margin: 10px 0;
 `;
 

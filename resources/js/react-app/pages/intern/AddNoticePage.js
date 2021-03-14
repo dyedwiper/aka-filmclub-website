@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import NoticeFormGroup from '../../common/forms/NoticeFormGroup';
-import { HorizontalLineStyled, PageStyled } from '../../common/styledElements';
+import { HorizontalRuleStyled, PageStyled } from '../../common/styledElements';
 import { postNotice } from '../../utils/noticeServices';
 
 export default function AddNoticePage() {
@@ -12,7 +12,7 @@ export default function AddNoticePage() {
             <HeadlineStyled>Neue News anlegen</HeadlineStyled>
             <BaseForm postFunction={postNotice}>
                 <NoticeFormGroup />
-                <HorizontalLineStyled />
+                <HorizontalRuleStyled />
                 <ImageFormGroup />
             </BaseForm>
         </PageStyled>

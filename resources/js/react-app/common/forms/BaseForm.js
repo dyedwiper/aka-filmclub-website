@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { AUTH_LEVEL_ADMIN } from '../../constants';
 import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { HorizontalLineStyled } from '../styledElements';
+import { HorizontalRuleStyled } from '../styledElements';
 
 export default function BaseForm({ children, postFunction, deleteFunction, isEditing }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -23,7 +23,7 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
     return (
         <BaseFormStyled onKeyPress={preventSubmitOnEnter}>
             {children}
-            <HorizontalLineStyled />
+            <HorizontalRuleStyled />
             <ValidationErrorContainerStyled>
                 {validationErrors.map((error, index) => (
                     <ValidationErrorStyled key={index}>{error}</ValidationErrorStyled>

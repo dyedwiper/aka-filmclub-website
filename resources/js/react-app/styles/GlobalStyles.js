@@ -31,6 +31,10 @@ export default createGlobalStyle`
   input {
     /* Fix for iPhone because inputs are somehow too wide elsewise. */
     width: 100%;
+
+    &:disabled {
+        border-color: var(--aka-grau);
+    }
   }
 
   input[type="file"]{
@@ -88,4 +92,31 @@ export default createGlobalStyle`
   h3{
       margin: 0;
   }
+
+  hr {
+    height: 10px;
+    width: 80%;
+    margin: 20px 0;
+    border: none;
+    background-color: var(--aka-gelb);
+  }
+
+  input[id="openLinkInNewWindow"] {
+    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */
+    width: initial;
+
+    &:checked {
+        background-color: black;
+    }
+  }
+
+  div[class="rdw-editor-main"] a {
+      color:  #757575;
+  }
+
+  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/
+  div[class="rdw-link-modal"] {
+      box-sizing: initial;
+  }
+
 `;

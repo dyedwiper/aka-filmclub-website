@@ -4,23 +4,30 @@ import styled from 'styled-components';
 import Footer from './common/Footer';
 import Header from './common/Header';
 import PrivateRoute from './common/PrivateRoute';
+import Context from './Context';
 import AboutPage from './pages/AboutPage';
 import ArchivePage from './pages/ArchivePage';
+import AwardsPage from './pages/AwardsPage';
+import ContactPage from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
+import AddFaqPage from './pages/intern/AddFaqPage';
 import AddImagePage from './pages/intern/AddImagePage';
 import AddNoticePage from './pages/intern/AddNoticePage';
 import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import AddUserPage from './pages/intern/AddUserPage';
+import EditFaqPage from './pages/intern/EditFaqPage';
 import EditImagePage from './pages/intern/EditImagePage';
 import EditNoticePage from './pages/intern/EditNoticePage';
 import EditScreeningPage from './pages/intern/EditScreeningPage';
 import EditSerialPage from './pages/intern/EditSerialPage';
+import EditTextPage from './pages/intern/EditTextPage';
 import EditUserPage from './pages/intern/EditUserPage';
 import InternPage from './pages/intern/InternPage';
 import UsersPage from './pages/intern/UsersPage';
+import LinksPage from './pages/LinksPage';
 import LoadingPage from './pages/LoadingPage';
 import LoginPage from './pages/LoginPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -32,10 +39,7 @@ import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
-import Context from './Context';
 import { getCurrentUser } from './utils/userServices';
-import ContactPage from './pages/ContactPage';
-import LinksPage from './pages/LinksPage';
 
 export default function App() {
     const [user, setUser] = useState({});
@@ -104,6 +108,9 @@ export default function App() {
                         <Route exact path="/press">
                             <PressReviewPage />
                         </Route>
+                        <Route exact path="/awards">
+                            <AwardsPage />
+                        </Route>
                         <Route exact path="/contact">
                             <ContactPage />
                         </Route>
@@ -148,6 +155,15 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path="/intern/editImage">
                             <EditImagePage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/addFaq">
+                            <AddFaqPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editFaq">
+                            <EditFaqPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editText">
+                            <EditTextPage />
                         </PrivateRoute>
                         <Route path="/error">
                             <ErrorPage />

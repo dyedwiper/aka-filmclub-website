@@ -8,24 +8,24 @@ import { getText } from '../utils/textServices';
 export default function ContactPage() {
     const [text, setText] = useState('');
 
-    const { pageTitle, setPageTitle } = useContext(Context);
+    const { setPageTitle } = useContext(Context);
 
     useEffect(() => {
-        getText('contact').then((res) => {
+        getText('awards').then((res) => {
             setText(res.data);
         });
     }, []);
 
     useEffect(() => {
-        document.title = 'Kontakt | aka-Filmclub';
-        setPageTitle('Kontakt');
+        document.title = 'Auszeichnungen | aka-Filmclub';
+        setPageTitle('Auszeichnungen');
     }, []);
 
     return (
         <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+            <PageHeadlineStyled>Auszeichnungen</PageHeadlineStyled>
             <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
-            <EditTextLink page="contact" />
+            <EditTextLink page="awards" />
         </PageStyled>
     );
 }

@@ -4,10 +4,10 @@ export const PageStyled = styled.main`
     min-height: 100%;
     max-width: 1024px;
     margin: 0 auto;
-    padding: 160px 100px 100px 100px;
+    padding: 120px 100px 100px 100px;
 
     @media (max-width: 1023px) {
-        padding: 160px 20px 20px 20px;
+        padding: 120px 20px 20px 20px;
     }
 
     @media (max-width: 767px) {
@@ -21,12 +21,7 @@ export const PageHeadlineStyled = styled.h2`
     }
 `;
 
-export const HorizontalLineStyled = styled.div`
-    height: 10px;
-    width: 80%;
-    margin: 20px 0;
-    background-color: var(--aka-gelb);
-`;
+export const HorizontalRuleStyled = styled.hr``;
 
 export const VerticalLineStyled = styled.span`
     color: var(--aka-gelb);

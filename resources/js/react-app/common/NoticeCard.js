@@ -11,7 +11,7 @@ export default function NoticeCard({ notice }) {
                 <ImageStyled src={notice.image ? STORAGE_FOLDER + notice.image.path : missingImage} />
                 <TitleStyled>{notice.title}</TitleStyled>
             </Link>
-            <ContentStyled>{notice.content}</ContentStyled>
+            <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
         </NoticeCardStyled>
     );
 }
@@ -32,7 +32,7 @@ const TitleStyled = styled.h4`
     margin: 10px 0;
 `;
 
-const ContentStyled = styled.p`
+const ContentStyled = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
