@@ -32,7 +32,7 @@ const TitleStyled = styled.h4`
     margin: 10px 0;
 `;
 
-const ContentStyled = styled.p`
+const ContentStyled = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;

@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { STORAGE_FOLDER } from '../constants';
-import { HorizontalLineStyled } from './styledElements';
+import { HorizontalRuleStyled } from './styledElements';
 
 export default function SerialRow({ serial }) {
     return (
         <SerialRowStyled>
-            <HorizontalLineStyled />
+            <HorizontalRuleStyled />
             <SerialContainerStyled>
                 <LinkStyled to={'/serial/' + serial.uuid}>
                     {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
@@ -52,7 +52,7 @@ const SubTitleStyled = styled.div`
     width: 100%;
 `;
 
-const ArticleStyled = styled.p`
+const ArticleStyled = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;

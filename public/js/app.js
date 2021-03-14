@@ -5268,7 +5268,7 @@ function EditTextLink(_ref) {
   var isAuthorized = user.level >= _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_EDITOR;
   if (!isAuthorized) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
       to: '/intern/editText/' + page,
       children: "Text bearbeiten"
     })]
@@ -5788,7 +5788,7 @@ var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h4.with
   displayName: "NoticeCard__TitleStyled",
   componentId: "sc-1y7aa7k-2"
 })(["margin:10px 0;"]);
-var ContentStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.p.withConfig({
+var ContentStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "NoticeCard__ContentStyled",
   componentId: "sc-1y7aa7k-3"
 })(["display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;"]);
@@ -5826,7 +5826,7 @@ __webpack_require__.r(__webpack_exports__);
 function NoticeRow(_ref) {
   var notice = _ref.notice;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NoticeRowStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NoticeContainerStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NoticeContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
         to: '/news/' + notice.uuid,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
@@ -5877,7 +5877,7 @@ var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h3.with
   displayName: "NoticeRow__TitleStyled",
   componentId: "sc-1qmil5x-6"
 })([""]);
-var ContentStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.p.withConfig({
+var ContentStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "NoticeRow__ContentStyled",
   componentId: "sc-1qmil5x-7"
 })(["display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;overflow:hidden;"]);
@@ -6141,7 +6141,7 @@ __webpack_require__.r(__webpack_exports__);
 function SerialRow(_ref) {
   var serial = _ref.serial;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialRowStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialContainerStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
         to: '/serial/' + serial.uuid,
         children: serial.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
@@ -6192,7 +6192,7 @@ var SubTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.
   displayName: "SerialRow__SubTitleStyled",
   componentId: "ryf3n0-6"
 })(["width:100%;"]);
-var ArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
+var ArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SerialRow__ArticleStyled",
   componentId: "ryf3n0-7"
 })(["display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;"]);
@@ -6274,7 +6274,7 @@ function BaseForm(_ref) {
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(BaseFormStyled, {
     onKeyPress: preventSubmitOnEnter,
-    children: [children, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorContainerStyled, {
+    children: [children, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorContainerStyled, {
       children: validationErrors.map(function (error, index) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorStyled, {
           children: error
@@ -7523,7 +7523,7 @@ var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.with
   displayName: "ScreeningCard__DateStyled",
   componentId: "ojz13b-4"
 })(["font-weight:bold;"]);
-var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.p.withConfig({
+var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "ScreeningCard__SynopsisStyled",
   componentId: "ojz13b-5"
 })(["margin:10px 0;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;"]);
@@ -7557,7 +7557,7 @@ __webpack_require__.r(__webpack_exports__);
 function ScreeningRow(_ref) {
   var screening = _ref.screening;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningRowStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningContainerStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
         to: '/screening/' + screening.uuid,
         children: screening.image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningImageStyled, {
@@ -7584,8 +7584,8 @@ var ScreeningRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.
   displayName: "ScreeningRow__ScreeningRowStyled",
   componentId: "sc-1xbervn-0"
 })([""]);
-var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
-  displayName: "ScreeningRow__HorizontalLineStyled",
+var HorizontalRuleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "ScreeningRow__HorizontalRuleStyled",
   componentId: "sc-1xbervn-1"
 })(["height:10px;width:80%;margin:20px 0;background-color:var(--aka-gelb);"]);
 var ScreeningContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
@@ -7612,7 +7612,7 @@ var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h3.with
   displayName: "ScreeningRow__TitleStyled",
   componentId: "sc-1xbervn-7"
 })([""]);
-var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.p.withConfig({
+var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "ScreeningRow__SynopsisStyled",
   componentId: "sc-1xbervn-8"
 })(["display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;overflow:hidden;margin-top:10px;"]);
@@ -7684,7 +7684,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "PageStyled": () => /* binding */ PageStyled,
 /* harmony export */   "PageHeadlineStyled": () => /* binding */ PageHeadlineStyled,
-/* harmony export */   "HorizontalLineStyled": () => /* binding */ HorizontalLineStyled,
+/* harmony export */   "HorizontalRuleStyled": () => /* binding */ HorizontalRuleStyled,
 /* harmony export */   "VerticalLineStyled": () => /* binding */ VerticalLineStyled
 /* harmony export */ });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
@@ -7697,10 +7697,10 @@ var PageHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.
   displayName: "styledElements__PageHeadlineStyled",
   componentId: "sc-1sog38p-1"
 })(["@media (max-width:767px){display:none;}"]);
-var HorizontalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.hr.withConfig({
-  displayName: "styledElements__HorizontalLineStyled",
+var HorizontalRuleStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.hr.withConfig({
+  displayName: "styledElements__HorizontalRuleStyled",
   componentId: "sc-1sog38p-2"
-})(["height:10px;width:80%;margin:20px 0;border:none;background-color:var(--aka-gelb);"]);
+})([""]);
 var VerticalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.span.withConfig({
   displayName: "styledElements__VerticalLineStyled",
   componentId: "sc-1sog38p-3"
@@ -8041,18 +8041,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -8078,6 +8066,7 @@ function ContactPage() {
       setText = _useState2[1];
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_4__.default),
+      pageTitle = _useContext.pageTitle,
       setPageTitle = _useContext.setPageTitle;
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -8091,7 +8080,7 @@ function ContactPage() {
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageHeadlineStyled, {
-      children: "Kontakt"
+      children: pageTitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TextContainerStyled, {
       dangerouslySetInnerHTML: {
         __html: text
@@ -8101,7 +8090,10 @@ function ContactPage() {
     })]
   });
 }
-var TextContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div(_templateObject());
+var TextContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+  displayName: "ContactPage__TextContainerStyled",
+  componentId: "sc-1x70nl2-0"
+})([""]);
 
 /***/ }),
 
@@ -8228,14 +8220,14 @@ function FaqsPage() {
           })
         }, faq.id);
       })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AnswersListStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AnswersListStyled, {
       children: faqs.map(function (faq) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_FaqRow__WEBPACK_IMPORTED_MODULE_2__.default, {
           faq: faq
         }, faq.id);
       })
     }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
         to: "/intern/addFaq",
         children: "FAQ hinzuf\xFCgen"
       })]
@@ -8350,7 +8342,7 @@ function HomePage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(WelcomeMessageStyled, {
       children: "Willkommen auf der Webseite des aka-Filmclub. Hier k\xF6nnte noch was Nettes stehen."
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Die n\xE4chsten Vorf\xFChrungen"
     }), screenings.length ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CardsListStyled, {
       children: screenings.slice(0, 3).map(function (screening) {
@@ -8360,7 +8352,7 @@ function HomePage() {
       })
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InfoStyled, {
       children: "Mehr im n\xE4chsten Semester"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Die neuesten News"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CardsListStyled, {
       children: notices.slice(0, 3).map(function (notice) {
@@ -8745,7 +8737,7 @@ function NoticePage() {
         __html: notice.content
       }
     }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
         to: '/intern/editNotice/' + notice.uuid,
         children: "News bearbeiten"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.VerticalLineStyled, {
@@ -9322,12 +9314,12 @@ function ScreeningPage() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AuthorStyled, {
         children: screening.author
       }), screening.serial && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialContainerStyled, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), "Gezeigt im Rahmen der Filmreihe:", ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialLinkStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalRuleStyled, {}), "Gezeigt im Rahmen der Filmreihe:", ' ', /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SerialLinkStyled, {
           to: '/serial/' + screening.serial.uuid,
           children: screening.serial.title
         })]
       }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(EditLinkStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(EditLinkStyled, {
           to: '/intern/editScreening/' + screening.uuid,
           children: "Vorf\xFChrung bearbeiten"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.VerticalLineStyled, {
@@ -9395,7 +9387,7 @@ var CreditValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.
   displayName: "ScreeningPage__CreditValueStyled",
   componentId: "sc-1jbdtfx-12"
 })(["display:inline-block;"]);
-var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.p.withConfig({
+var SynopsisStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "ScreeningPage__SynopsisStyled",
   componentId: "sc-1jbdtfx-13"
 })(["margin:10px 0;"]);
@@ -9531,7 +9523,7 @@ function SerialPage() {
         }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AuthorStyled, {
         children: serial.author
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
         children: serial.screenings.map(function (screening) {
           return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ScreeningListItemStyled, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningDateStyled, {
@@ -9543,7 +9535,7 @@ function SerialPage() {
           }, screening.id);
         })
       }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
           to: '/intern/editSerial/' + serial.uuid,
           children: "Reihe bearbeiten"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(VertialLineStyled, {
@@ -9607,7 +9599,7 @@ var ScreeningTitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_10_
   displayName: "SerialPage__ScreeningTitleLinkStyled",
   componentId: "sc-1xwsd7-11"
 })(["overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-weight:bold;"]);
-var ArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.p.withConfig({
+var ArticleStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "SerialPage__ArticleStyled",
   componentId: "sc-1xwsd7-12"
 })([""]);
@@ -9885,7 +9877,7 @@ function AddNoticePage() {
       children: "Neue News anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       postFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__.postNotice,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_NoticeFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_NoticeFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 }
@@ -9930,7 +9922,7 @@ function AddScreeningPage() {
       children: "Neue Vorf\xFChrung anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       postFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 }
@@ -9975,7 +9967,7 @@ function AddSerialPage() {
       children: "Neue Filmreihe anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       postFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 }
@@ -10666,12 +10658,12 @@ function EditTextPage() {
   });
 
   function saveText() {
-    var html = draftjs_to_html__WEBPACK_IMPORTED_MODULE_2___default()((0,draft_js__WEBPACK_IMPORTED_MODULE_1__.convertToRaw)(editorState.getCurrentContent()), null, null, customEntityTransform);
+    var htmlFromDraft = draftjs_to_html__WEBPACK_IMPORTED_MODULE_2___default()((0,draft_js__WEBPACK_IMPORTED_MODULE_1__.convertToRaw)(editorState.getCurrentContent()), null, null, customEntityTransform);
     var textObject = {
-      text: html
+      text: htmlFromDraft
     };
     (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_11__.postText)(assocPage, textObject).then(function () {
-      history.goBack();
+      history.push('/' + assocPage);
     })["catch"](function (err) {
       if (err.response.status === 422) {
         setValidationErrors(err.response.data.validationErrors);

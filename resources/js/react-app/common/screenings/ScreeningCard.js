@@ -52,7 +52,7 @@ const DateStyled = styled.div`
     font-weight: bold;
 `;
 
-const SynopsisStyled = styled.p`
+const SynopsisStyled = styled.div`
     margin: 10px 0;
     display: -webkit-box;
     -webkit-box-orient: vertical;

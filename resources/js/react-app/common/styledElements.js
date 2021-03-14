@@ -21,13 +21,7 @@ export const PageHeadlineStyled = styled.h2`
     }
 `;
 
-export const HorizontalLineStyled = styled.hr`
-    height: 10px;
-    width: 80%;
-    margin: 20px 0;
-    border: none;
-    background-color: var(--aka-gelb);
-`;
+export const HorizontalRuleStyled = styled.hr``;
 
 export const VerticalLineStyled = styled.span`
     color: var(--aka-gelb);

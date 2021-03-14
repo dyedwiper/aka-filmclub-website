@@ -42,10 +42,6 @@ return [
             'visibility' => 'public',
         ],
 
-        'texts' => [
-            'driver' => 'local',
-            'root' => storage_path('app/texts'),
-        ],
     ],
 
     /*

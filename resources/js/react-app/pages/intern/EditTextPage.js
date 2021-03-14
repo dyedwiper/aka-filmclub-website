@@ -105,11 +105,16 @@ export default function EditTextPage() {
     );
 
     function saveText() {
-        const html = draftToHtml(convertToRaw(editorState.getCurrentContent()), null, null, customEntityTransform);
-        const textObject = { text: html };
+        const htmlFromDraft = draftToHtml(
+            convertToRaw(editorState.getCurrentContent()),
+            null,
+            null,
+            customEntityTransform
+        );
+        const textObject = { text: htmlFromDraft };
         postText(assocPage, textObject)
             .then(() => {
-                history.goBack();
+                history.push('/' + assocPage);
             })
             .catch((err) => {
                 if (err.response.status === 422) {

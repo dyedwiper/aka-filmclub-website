@@ -43,7 +43,7 @@ class FaqController extends Controller
                 $afterFaq->position = $afterFaq->position + 1;
                 $afterFaq->save();
             }
-        } else {
+        } elseif ($faq->position < $request->position) {
             $beforePositionedFaqs = Faq
                 ::where('position', '<=', $request->position)
                 ->where('position', '>', $faq->position)

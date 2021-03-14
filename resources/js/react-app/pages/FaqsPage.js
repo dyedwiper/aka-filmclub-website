@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
 import FaqRow from '../common/FaqRow';
-import { HorizontalLineStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR } from '../constants';
 import Context from '../Context';
 import { getFaqs } from '../utils/faqServices';
@@ -43,7 +43,7 @@ export default function FaqsPage() {
                     </QuestionLinkItemStyled>
                 ))}
             </QuestionsListStyled>
-            <HorizontalLineStyled />
+            <HorizontalRuleStyled />
             <AnswersListStyled>
                 {faqs.map((faq) => (
                     <FaqRow key={faq.id} faq={faq} />
@@ -51,7 +51,7 @@ export default function FaqsPage() {
             </AnswersListStyled>
             {isAuthorized && (
                 <>
-                    <HorizontalLineStyled />
+                    <HorizontalRuleStyled />
                     <LinkStyled to="/intern/addFaq">FAQ hinzufügen</LinkStyled>
                 </>
             )}

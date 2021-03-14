@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
+import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
@@ -56,7 +56,7 @@ export default function SerialPage() {
             <TextContainerStyled>
                 <ArticleStyled dangerouslySetInnerHTML={{ __html: serial.article }} />
                 <AuthorStyled>{serial.author}</AuthorStyled>
-                <HorizontalLineStyled />
+                <HorizontalRuleStyled />
                 <ScreeningsListStyled>
                     {serial.screenings.map((screening) => (
                         <ScreeningListItemStyled key={screening.id}>
@@ -69,7 +69,7 @@ export default function SerialPage() {
                 </ScreeningsListStyled>
                 {isAuthorized && (
                     <>
-                        <HorizontalLineStyled />
+                        <HorizontalRuleStyled />
                         <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
                         <VertialLineStyled> | </VertialLineStyled>
                         {serial.image ? (
@@ -144,7 +144,7 @@ const ScreeningTitleLinkStyled = styled(Link)`
     font-weight: bold;
 `;
 
-const ArticleStyled = styled.p``;
+const ArticleStyled = styled.div``;
 
 const AuthorStyled = styled.div`
     font-style: italic;

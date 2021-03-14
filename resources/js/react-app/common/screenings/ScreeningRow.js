@@ -7,7 +7,7 @@ import { formatToDateTimeString } from '../../utils/dateFormatters';
 export default function ScreeningRow({ screening }) {
     return (
         <ScreeningRowStyled>
-            <HorizontalLineStyled />
+            <HorizontalRuleStyled />
             <ScreeningContainerStyled>
                 <LinkStyled to={'/screening/' + screening.uuid}>
                     {screening.image && <ScreeningImageStyled src={STORAGE_FOLDER + screening.image.path} />}
@@ -26,7 +26,7 @@ export default function ScreeningRow({ screening }) {
 
 const ScreeningRowStyled = styled.li``;
 
-const HorizontalLineStyled = styled.div`
+const HorizontalRuleStyled = styled.div`
     height: 10px;
     width: 80%;
     margin: 20px 0;
@@ -57,7 +57,7 @@ const DateStyled = styled.div``;
 
 const TitleStyled = styled.h3``;
 
-const SynopsisStyled = styled.p`
+const SynopsisStyled = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;

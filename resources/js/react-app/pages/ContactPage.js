@@ -8,7 +8,7 @@ import { getText } from '../utils/textServices';
 export default function ContactPage() {
     const [text, setText] = useState('');
 
-    const { setPageTitle } = useContext(Context);
+    const { pageTitle, setPageTitle } = useContext(Context);
 
     useEffect(() => {
         getText('contact').then((res) => {
@@ -23,7 +23,7 @@ export default function ContactPage() {
 
     return (
         <PageStyled>
-            <PageHeadlineStyled>Kontakt</PageHeadlineStyled>
+            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
             <EditTextLink page="contact" />
         </PageStyled>

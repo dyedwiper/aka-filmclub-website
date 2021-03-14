@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AUTH_LEVEL_EDITOR } from '../constants';
 import Context from '../Context';
-import { HorizontalLineStyled } from './styledElements';
+import { HorizontalRuleStyled } from './styledElements';
 
 export default function EditTextLink({ page }) {
     const { user } = useContext(Context);
@@ -14,7 +14,7 @@ export default function EditTextLink({ page }) {
 
     return (
         <>
-            <HorizontalLineStyled />
+            <HorizontalRuleStyled />
             <LinkStyled to={'/intern/editText/' + page}>Text bearbeiten</LinkStyled>
         </>
     );

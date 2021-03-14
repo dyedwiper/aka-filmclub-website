@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import NoticeCard from '../common/NoticeCard';
 import ScreeningCard from '../common/screenings/ScreeningCard';
-import { HorizontalLineStyled, PageStyled } from '../common/styledElements';
+import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { getNotices } from '../utils/noticeServices';
 import { getFutureScreenings } from '../utils/screeningServices';
@@ -42,7 +42,7 @@ export default function HomePage() {
             <WelcomeMessageStyled>
                 Willkommen auf der Webseite des aka-Filmclub. Hier könnte noch was Nettes stehen.
             </WelcomeMessageStyled>
-            <HorizontalLineStyled />
+            <HorizontalRuleStyled />
             <HeadlineStyled>Die nächsten Vorführungen</HeadlineStyled>
             {screenings.length ? (
                 <CardsListStyled>
@@ -53,7 +53,7 @@ export default function HomePage() {
             ) : (
                 <InfoStyled>Mehr im nächsten Semester</InfoStyled>
             )}
-            <HorizontalLineStyled />
+            <HorizontalRuleStyled />
             <HeadlineStyled>Die neuesten News</HeadlineStyled>
             <CardsListStyled>
                 {notices.slice(0, 3).map((notice) => (

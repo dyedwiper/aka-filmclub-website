@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { HorizontalLineStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
+import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
@@ -34,7 +34,7 @@ export default function NoticePage() {
             <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
             {isAuthorized && (
                 <>
-                    <HorizontalLineStyled />
+                    <HorizontalRuleStyled />
                     <LinkStyled to={'/intern/editNotice/' + notice.uuid}>News bearbeiten</LinkStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>
                     {notice.image ? (
