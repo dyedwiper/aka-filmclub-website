@@ -58,6 +58,9 @@ export default function Header() {
                             </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
+                    <NavLinkStyled to="/videos" onClick={() => setIsNavOpen(false)}>
+                        Eigenproduktionen
+                    </NavLinkStyled>
                     {isLoggedIn ? (
                         <DropdownContainerStyled>
                             <NavLinkStyled to="/intern" onClick={() => setIsNavOpen(false)}>

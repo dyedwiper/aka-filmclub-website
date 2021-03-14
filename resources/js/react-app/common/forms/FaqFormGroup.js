@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FaqPositionSelect from './FaqPositionSelect';
+import PositionSelect from './PositionSelect';
 import WysiwygEditor from './WysiwygEditor';
 
 export default function FaqFormGroup({ faq }) {
@@ -16,7 +16,7 @@ export default function FaqFormGroup({ faq }) {
             </LabelStyled>
             <PositionLabelStyled>
                 Position
-                <FaqPositionSelect disabled={!faq} defaultPosition={faq && faq.position} />
+                <PositionSelect type="faq" disabled={!faq} defaultPosition={faq && faq.position} />
             </PositionLabelStyled>
         </FaqFormGroupStyled>
     );
