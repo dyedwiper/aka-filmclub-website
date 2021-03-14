@@ -5,7 +5,7 @@ import { positionSelectStyles } from '../../styles/customSelectStyles';
 import { getFaqs } from '../../utils/faqServices';
 import { getVideos } from '../../utils/videoServices';
 
-export default function PositionSelect({ type, defaultPosition, disabled }) {
+export default function PositionSelect({ type, defaultPosition }) {
     const [positionOptions, setPositionOptions] = useState([]);
     const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +38,6 @@ export default function PositionSelect({ type, defaultPosition, disabled }) {
         <ReactSelect
             name="position"
             options={positionOptions}
-            isDisabled={disabled}
             defaultValue={{ value: defaultPosition, label: defaultPosition + 1 }}
             styles={positionSelectStyles}
         />

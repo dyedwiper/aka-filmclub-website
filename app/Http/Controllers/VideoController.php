@@ -68,6 +68,11 @@ class VideoController extends Controller
             abort(401);
         }
         $video = Video::firstWhere('uuid', $uuid);
+        $afterPositionedVideos = Video::where('position', '>', $video->position)->get();
+        foreach ($afterPositionedVideos as $afterVideo) {
+            $afterVideo->position = $afterVideo->position - 1;
+            $afterVideo->save();
+        }
         $video->delete();
     }
 }

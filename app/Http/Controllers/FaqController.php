@@ -65,6 +65,11 @@ class FaqController extends Controller
             abort(401);
         }
         $faq = Faq::firstWhere('uuid', $uuid);
+        $afterPositionedFaqs = Faq::where('position', '>', $faq->position)->get();
+        foreach ($afterPositionedFaqs as $afterFaq) {
+            $afterFaq->position = $afterFaq->position - 1;
+            $afterFaq->save();
+        }
         $faq->delete();
     }
 }

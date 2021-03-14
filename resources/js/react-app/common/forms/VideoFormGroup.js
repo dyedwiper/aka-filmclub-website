@@ -17,10 +17,12 @@ export default function VideoFormGroup({ video }) {
                 Beschreibung (optional)
                 <TextareaStyled name="description" defaultValue={video && video.description} />
             </LabelStyled>
-            <PositionLabelStyled>
-                Position
-                <PositionSelect type="video" disabled={!video} defaultPosition={video && video.position} />
-            </PositionLabelStyled>
+            {video && (
+                <PositionLabelStyled>
+                    Position
+                    <PositionSelect type="video" defaultPosition={video.position} />
+                </PositionLabelStyled>
+            )}
         </VideoFormGroupStyled>
     );
 }

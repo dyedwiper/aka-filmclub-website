@@ -6531,11 +6531,10 @@ function FaqFormGroup(_ref) {
         inputName: "answer",
         defaultValue: faq && faq.answer
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(PositionLabelStyled, {
+    }), faq && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(PositionLabelStyled, {
       children: ["Position", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_PositionSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
         type: "faq",
-        disabled: !faq,
-        defaultPosition: faq && faq.position
+        defaultPosition: faq.position
       })]
     })]
   });
@@ -6771,8 +6770,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function PositionSelect(_ref) {
   var type = _ref.type,
-      defaultPosition = _ref.defaultPosition,
-      disabled = _ref.disabled;
+      defaultPosition = _ref.defaultPosition;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -6820,7 +6818,6 @@ function PositionSelect(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
     name: "position",
     options: positionOptions,
-    isDisabled: disabled,
     defaultValue: {
       value: defaultPosition,
       label: defaultPosition + 1
@@ -7522,11 +7519,10 @@ function VideoFormGroup(_ref) {
         name: "description",
         defaultValue: video && video.description
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(PositionLabelStyled, {
+    }), video && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(PositionLabelStyled, {
       children: ["Position", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_PositionSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
         type: "video",
-        disabled: !video,
-        defaultPosition: video && video.position
+        defaultPosition: video.position
       })]
     })]
   });

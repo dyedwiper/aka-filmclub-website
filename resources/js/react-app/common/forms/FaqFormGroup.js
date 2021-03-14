@@ -14,10 +14,12 @@ export default function FaqFormGroup({ faq }) {
                 Antwort
                 <WysiwygEditor inputName="answer" defaultValue={faq && faq.answer} />
             </LabelStyled>
-            <PositionLabelStyled>
-                Position
-                <PositionSelect type="faq" disabled={!faq} defaultPosition={faq && faq.position} />
-            </PositionLabelStyled>
+            {faq && (
+                <PositionLabelStyled>
+                    Position
+                    <PositionSelect type="faq" defaultPosition={faq.position} />
+                </PositionLabelStyled>
+            )}
         </FaqFormGroupStyled>
     );
 }
