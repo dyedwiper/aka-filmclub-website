@@ -6235,15 +6235,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./styledElements */ "./resources/js/react-app/common/styledElements.js");
+
+
+
+
 
 
 
 
 function VideoContainer(_ref) {
   var video = _ref.video;
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_3__.default),
+      user = _useContext.user;
+
+  var isAuthorized = user.level >= _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_EDITOR;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(VideoContainerStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("iframe", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("iframe", {
       src: video.source,
       width: "640",
       height: "361",
@@ -6252,20 +6265,27 @@ function VideoContainer(_ref) {
       children: video.title
     }), video.description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DescriptionStyled, {
       children: video.description
+    }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+      to: '/intern/editVideo/' + video.uuid,
+      children: "Bearbeiten"
     })]
   });
 }
-var VideoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.li.withConfig({
+var VideoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.li.withConfig({
   displayName: "VideoContainer__VideoContainerStyled",
   componentId: "sc-12kgx08-0"
-})([""]);
-var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.h3.withConfig({
+})(["margin:40px 0;"]);
+var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3.withConfig({
   displayName: "VideoContainer__TitleStyled",
   componentId: "sc-12kgx08-1"
 })([""]);
-var DescriptionStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.p.withConfig({
+var DescriptionStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.p.withConfig({
   displayName: "VideoContainer__DescriptionStyled",
   componentId: "sc-12kgx08-2"
+})([""]);
+var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link).withConfig({
+  displayName: "VideoContainer__LinkStyled",
+  componentId: "sc-12kgx08-3"
 })([""]);
 
 /***/ }),
@@ -7492,12 +7512,12 @@ function VideoFormGroup(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["Titel", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
         name: "title",
-        defaultValue: video && video.question
+        defaultValue: video && video.title
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["Beschreibung (optional)", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TextareaStyled, {
         name: "description",
-        defaultValue: video && video.answer
+        defaultValue: video && video.description
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(PositionLabelStyled, {
       children: ["Position", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_PositionSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
@@ -7527,7 +7547,7 @@ var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.w
 var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.textarea.withConfig({
   displayName: "VideoFormGroup__TextareaStyled",
   componentId: "hlhdm9-4"
-})([""]);
+})(["height:160px;"]);
 
 /***/ }),
 
@@ -7844,9 +7864,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "PageStyled": () => /* binding */ PageStyled,
 /* harmony export */   "PageHeadlineStyled": () => /* binding */ PageHeadlineStyled,
 /* harmony export */   "HorizontalRuleStyled": () => /* binding */ HorizontalRuleStyled,
-/* harmony export */   "VerticalLineStyled": () => /* binding */ VerticalLineStyled
+/* harmony export */   "VerticalLineStyled": () => /* binding */ VerticalLineStyled,
+/* harmony export */   "AddItemLinkStyled": () => /* binding */ AddItemLinkStyled
 /* harmony export */ });
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
 
 var PageStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.main.withConfig({
   displayName: "styledElements__PageStyled",
@@ -7864,6 +7887,10 @@ var VerticalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.
   displayName: "styledElements__VerticalLineStyled",
   componentId: "sc-1sog38p-3"
 })(["color:var(--aka-gelb);font-weight:bold;"]);
+var AddItemLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link).withConfig({
+  displayName: "styledElements__AddItemLinkStyled",
+  componentId: "sc-1sog38p-4"
+})(["padding:5px;border:solid 1px black;border-radius:5px;box-shadow:1px 1px 1px black;&:active{background-color:var(--aka-gelb);}&:hover{text-decoration:none;}"]);
 
 /***/ }),
 
@@ -9886,7 +9913,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _common_VideoContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/VideoContainer */ "./resources/js/react-app/common/VideoContainer.js");
@@ -9896,28 +9922,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -9971,7 +9975,7 @@ function VideosPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageHeadlineStyled, {
       children: pageTitle
-    }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
+    }), isAuthorized && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.AddItemLinkStyled, {
       to: "/intern/addVideo",
       children: "Video hinzuf\xFCgen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(VideosListStyled, {
@@ -9983,8 +9987,10 @@ function VideosPage() {
     })]
   });
 }
-var VideosListStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.ul(_templateObject());
-var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_8__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link)(_templateObject2());
+var VideosListStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.ul.withConfig({
+  displayName: "VideosPage__VideosListStyled",
+  componentId: "pnu486-0"
+})([""]);
 
 /***/ }),
 
@@ -11157,10 +11163,83 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
+/* harmony import */ var _common_forms_VideoFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/VideoFormGroup */ "./resources/js/react-app/common/forms/VideoFormGroup.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_videoServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/videoServices */ "./resources/js/react-app/utils/videoServices.js");
+/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+
+
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
 
 
 function EditVideoPage() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {});
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
+      _useState2 = _slicedToArray(_useState, 2),
+      video = _useState2[0],
+      setVideo = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isLoading = _useState4[0],
+      setIsLoading = _useState4[1];
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
+      pageTitle = _useContext.pageTitle,
+      setPageTitle = _useContext.setPageTitle;
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__.getLastParameterFromPath)();
+    (0,_utils_videoServices__WEBPACK_IMPORTED_MODULE_6__.getVideoByUuid)(uuid).then(function (res) {
+      setVideo(res.data);
+      setIsLoading(false);
+    });
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = 'Video bearbeiten | aka-Filmclub';
+    setPageTitle('Video bearbeiten');
+  }, []);
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_8__.default, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
+      children: pageTitle
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
+      postFunction: _utils_videoServices__WEBPACK_IMPORTED_MODULE_6__.postVideo,
+      deleteFunction: _utils_videoServices__WEBPACK_IMPORTED_MODULE_6__.deleteVideo,
+      isEditing: true,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+        name: "_method",
+        type: "hidden",
+        value: "PATCH"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+        name: "uuid",
+        type: "hidden",
+        defaultValue: video.uuid
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_VideoFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {
+        video: video
+      })]
+    })]
+  });
 }
 
 /***/ }),
@@ -11300,9 +11379,9 @@ function UsersPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Mitglieder verwalten"
-    }), loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_3__.AUTH_LEVEL_ADMIN && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NewUserLinkStyled, {
+    }), loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_3__.AUTH_LEVEL_ADMIN && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.AddItemLinkStyled, {
       to: "/intern/addUser",
-      children: "Neues Mitglied anlegen"
+      children: "Mitglied hinzuf\xFCgen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(GridContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListContainerStyled, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubheadlineStyled, {
@@ -11383,13 +11462,9 @@ var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.li.w
   displayName: "UsersPage__ListItemStyled",
   componentId: "sc-941gjx-5"
 })([""]);
-var NewUserLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link).withConfig({
-  displayName: "UsersPage__NewUserLinkStyled",
-  componentId: "sc-941gjx-6"
-})(["padding:5px;border:solid 1px black;border-radius:5px;box-shadow:1px 1px 1px black;&:active{background-color:var(--aka-gelb);}&:hover{text-decoration:none;}"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link).withConfig({
   displayName: "UsersPage__LinkStyled",
-  componentId: "sc-941gjx-7"
+  componentId: "sc-941gjx-6"
 })(["display:inline-block;overflow:hidden;max-width:100%;white-space:nowrap;text-overflow:ellipsis;"]);
 
 /***/ }),

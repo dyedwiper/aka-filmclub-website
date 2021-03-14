@@ -11,11 +11,11 @@ export default function VideoFormGroup({ video }) {
             </LabelStyled>
             <LabelStyled>
                 Titel
-                <InputStyled name="title" defaultValue={video && video.question} />
+                <InputStyled name="title" defaultValue={video && video.title} />
             </LabelStyled>
             <LabelStyled>
                 Beschreibung (optional)
-                <TextareaStyled name="description" defaultValue={video && video.answer} />
+                <TextareaStyled name="description" defaultValue={video && video.description} />
             </LabelStyled>
             <PositionLabelStyled>
                 Position
@@ -40,4 +40,6 @@ const PositionLabelStyled = styled.label`
 
 const InputStyled = styled.input``;
 
-const TextareaStyled = styled.textarea``;
+const TextareaStyled = styled.textarea`
+    height: 160px;
+`;

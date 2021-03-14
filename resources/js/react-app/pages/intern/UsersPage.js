@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { PageStyled } from '../../common/styledElements';
+import { AddItemLinkStyled, PageStyled } from '../../common/styledElements';
 import { AUTH_LEVEL_ADMIN, USER_STATUS_ACTIVE, USER_STATUS_ALUMNI, USER_STATUS_PAUSED } from '../../constants';
 import Context from '../../Context';
 import { getUsers } from '../../utils/userServices';
@@ -27,7 +27,7 @@ export default function UsersPage() {
             <HeadlineStyled>Mitglieder verwalten</HeadlineStyled>
             {/* Only display link when current user is admin */}
             {loggedInUser.level === AUTH_LEVEL_ADMIN && (
-                <NewUserLinkStyled to="/intern/addUser">Neues Mitglied anlegen</NewUserLinkStyled>
+                <AddItemLinkStyled to="/intern/addUser">Mitglied hinzufügen</AddItemLinkStyled>
             )}
             <GridContainerStyled>
                 <ListContainerStyled>
@@ -101,20 +101,6 @@ const ListStyled = styled.ul`
 `;
 
 const ListItemStyled = styled.li``;
-
-const NewUserLinkStyled = styled(Link)`
-    padding: 5px;
-    border: solid 1px black;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px black;
-
-    &:active {
-        background-color: var(--aka-gelb);
-    }
-    &:hover {
-        text-decoration: none;
-    }
-`;
 
 const LinkStyled = styled(Link)`
     display: inline-block;

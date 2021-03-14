@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const PageStyled = styled.main`
@@ -26,4 +27,18 @@ export const HorizontalRuleStyled = styled.hr``;
 export const VerticalLineStyled = styled.span`
     color: var(--aka-gelb);
     font-weight: bold;
+`;
+
+export const AddItemLinkStyled = styled(Link)`
+    padding: 5px;
+    border: solid 1px black;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px black;
+
+    &:active {
+        background-color: var(--aka-gelb);
+    }
+    &:hover {
+        text-decoration: none;
+    }
 `;

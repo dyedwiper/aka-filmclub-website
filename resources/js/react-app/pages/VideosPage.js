@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import { AddItemLinkStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import VideoContainer from '../common/VideoContainer';
 import { AUTH_LEVEL_EDITOR } from '../constants';
 import Context from '../Context';
@@ -33,7 +33,7 @@ export default function VideosPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            {isAuthorized && <LinkStyled to="/intern/addVideo">Video hinzufügen</LinkStyled>}
+            {isAuthorized && <AddItemLinkStyled to="/intern/addVideo">Video hinzufügen</AddItemLinkStyled>}
             <VideosListStyled>
                 {videos.map((video) => (
                     <VideoContainer key={video.id} video={video} />
@@ -44,5 +44,3 @@ export default function VideosPage() {
 }
 
 const VideosListStyled = styled.ul``;
-
-const LinkStyled = styled(Link)``;
