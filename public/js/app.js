@@ -6256,11 +6256,11 @@ function VideoContainer(_ref) {
 
   var isAuthorized = user.level >= _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_EDITOR;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(VideoContainerStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("iframe", {
-      src: video.source,
-      width: "640",
-      height: "361",
-      allow: "fullscreen; picture-in-picture"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(IFrameContainerStyled, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(IFrameStyled, {
+        src: video.source,
+        allow: "fullscreen; picture-in-picture"
+      })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleStyled, {
       children: video.title
     }), video.description && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DescriptionStyled, {
@@ -6275,17 +6275,25 @@ var VideoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.defaul
   displayName: "VideoContainer__VideoContainerStyled",
   componentId: "sc-12kgx08-0"
 })(["margin:40px 0;"]);
+var IFrameContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+  displayName: "VideoContainer__IFrameContainerStyled",
+  componentId: "sc-12kgx08-1"
+})(["position:relative;padding-bottom:56.25%;"]);
+var IFrameStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.iframe.withConfig({
+  displayName: "VideoContainer__IFrameStyled",
+  componentId: "sc-12kgx08-2"
+})(["position:absolute;width:100%;height:100%;border:none;"]);
 var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3.withConfig({
   displayName: "VideoContainer__TitleStyled",
-  componentId: "sc-12kgx08-1"
+  componentId: "sc-12kgx08-3"
 })([""]);
 var DescriptionStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.p.withConfig({
   displayName: "VideoContainer__DescriptionStyled",
-  componentId: "sc-12kgx08-2"
+  componentId: "sc-12kgx08-4"
 })([""]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link).withConfig({
   displayName: "VideoContainer__LinkStyled",
-  componentId: "sc-12kgx08-3"
+  componentId: "sc-12kgx08-5"
 })([""]);
 
 /***/ }),

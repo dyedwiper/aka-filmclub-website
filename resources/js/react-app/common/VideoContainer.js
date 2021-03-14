@@ -12,7 +12,9 @@ export default function VideoContainer({ video }) {
     return (
         <VideoContainerStyled>
             <HorizontalRuleStyled />
-            <iframe src={video.source} width="640" height="361" allow="fullscreen; picture-in-picture" />
+            <IFrameContainerStyled>
+                <IFrameStyled src={video.source} allow="fullscreen; picture-in-picture" />
+            </IFrameContainerStyled>
             <TitleStyled>{video.title}</TitleStyled>
             {video.description && <DescriptionStyled>{video.description}</DescriptionStyled>}
             {isAuthorized && <LinkStyled to={'/intern/editVideo/' + video.uuid}>Bearbeiten</LinkStyled>}
@@ -22,6 +24,19 @@ export default function VideoContainer({ video }) {
 
 const VideoContainerStyled = styled.li`
     margin: 40px 0;
+`;
+
+const IFrameContainerStyled = styled.div`
+    position: relative;
+    /* Padding in percent is calculated of parent's width. 56.25% stands for aspect ration 16:9. */
+    padding-bottom: 56.25%;
+`;
+
+const IFrameStyled = styled.iframe`
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: none;
 `;
 
 const TitleStyled = styled.h3``;
