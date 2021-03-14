@@ -6821,7 +6821,10 @@ function PositionSelect(_ref) {
     name: "position",
     options: positionOptions,
     isDisabled: disabled,
-    defaultValue: positionOptions[defaultPosition],
+    defaultValue: {
+      value: defaultPosition,
+      label: defaultPosition + 1
+    },
     styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.positionSelectStyles
   });
 }

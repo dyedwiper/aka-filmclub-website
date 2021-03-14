@@ -39,7 +39,7 @@ export default function PositionSelect({ type, defaultPosition, disabled }) {
             name="position"
             options={positionOptions}
             isDisabled={disabled}
-            defaultValue={positionOptions[defaultPosition]}
+            defaultValue={{ value: defaultPosition, label: defaultPosition + 1 }}
             styles={positionSelectStyles}
         />
     );
