@@ -5,7 +5,7 @@ import { serialSelectStyles } from '../../styles/customSelectStyles';
 import { computeCurrentSemester } from '../../utils/semesterUtils';
 import styled from 'styled-components';
 
-export default function SerialSelectFormGroup({ defaultSerial }) {
+export default function SerialSelect({ defaultSerial }) {
     const [serialOptions, setSerialOptions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -20,7 +20,7 @@ export default function SerialSelectFormGroup({ defaultSerial }) {
     if (isLoading) return <LoadingNoteStyled>Am Laden...</LoadingNoteStyled>;
 
     return (
-        <SerialSelectFormGroupStyled>
+        <SerialSelectStyled>
             <ReactSelect
                 name="serialId"
                 options={serialOptions}
@@ -31,7 +31,7 @@ export default function SerialSelectFormGroup({ defaultSerial }) {
             <ButtonStyled type="button " onClick={loadAllSerials}>
                 Alle Reihen laden
             </ButtonStyled>
-        </SerialSelectFormGroupStyled>
+        </SerialSelectStyled>
     );
 
     function loadAllSerials() {
@@ -54,7 +54,7 @@ export default function SerialSelectFormGroup({ defaultSerial }) {
     }
 }
 
-const SerialSelectFormGroupStyled = styled.div`
+const SerialSelectStyled = styled.div`
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-gap: 20px;

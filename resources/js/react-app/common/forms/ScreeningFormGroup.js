@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { formatToIsoDateString, formatToTimeString } from '../../utils/dateFormatters';
-import SerialSelectFormGroup from './SerialSelectFormGroup';
+import SerialSelect from './SerialSelect';
 
 export default function ScreeningFormGroup({ screening }) {
     return (
@@ -98,7 +98,7 @@ export default function ScreeningFormGroup({ screening }) {
             </LabelStyled>
             <LabelStyled>
                 Filmreihe
-                <SerialSelectFormGroup defaultSerial={screening && screening.serial} />
+                <SerialSelect defaultSerial={screening && screening.serial} />
             </LabelStyled>
             <LabelStyled>
                 Autor*in

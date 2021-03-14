@@ -6732,7 +6732,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
-/* harmony import */ var _SerialSelectFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SerialSelectFormGroup */ "./resources/js/react-app/common/forms/SerialSelectFormGroup.js");
+/* harmony import */ var _SerialSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SerialSelect */ "./resources/js/react-app/common/forms/SerialSelect.js");
 
 
 
@@ -6845,7 +6845,7 @@ function ScreeningFormGroup(_ref) {
         defaultValue: screening && screening.tercet
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Filmreihe", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SerialSelectFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: ["Filmreihe", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_SerialSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
         defaultSerial: screening && screening.serial
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
@@ -7030,16 +7030,16 @@ var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.text
 
 /***/ }),
 
-/***/ "./resources/js/react-app/common/forms/SerialSelectFormGroup.js":
-/*!**********************************************************************!*\
-  !*** ./resources/js/react-app/common/forms/SerialSelectFormGroup.js ***!
-  \**********************************************************************/
+/***/ "./resources/js/react-app/common/forms/SerialSelect.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/react-app/common/forms/SerialSelect.js ***!
+  \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ SerialSelectFormGroup
+/* harmony export */   "default": () => /* binding */ SerialSelect
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -7069,7 +7069,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-function SerialSelectFormGroup(_ref) {
+function SerialSelect(_ref) {
   var defaultSerial = _ref.defaultSerial;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -7092,7 +7092,7 @@ function SerialSelectFormGroup(_ref) {
   if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LoadingNoteStyled, {
     children: "Am Laden..."
   });
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialSelectFormGroupStyled, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialSelectStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_5__.default, {
       name: "serialId",
       options: serialOptions,
@@ -7128,17 +7128,17 @@ function SerialSelectFormGroup(_ref) {
     return options;
   }
 }
-var SerialSelectFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
-  displayName: "SerialSelectFormGroup__SerialSelectFormGroupStyled",
-  componentId: "mbikx2-0"
+var SerialSelectStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+  displayName: "SerialSelect__SerialSelectStyled",
+  componentId: "sc-1fyaya5-0"
 })(["display:grid;grid-template-columns:3fr 1fr;grid-gap:20px;height:40px;"]);
 var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.button.withConfig({
-  displayName: "SerialSelectFormGroup__ButtonStyled",
-  componentId: "mbikx2-1"
+  displayName: "SerialSelect__ButtonStyled",
+  componentId: "sc-1fyaya5-1"
 })(["height:40px;@media (max-width:767px){font-size:0.6em;}"]);
 var LoadingNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
-  displayName: "SerialSelectFormGroup__LoadingNoteStyled",
-  componentId: "mbikx2-2"
+  displayName: "SerialSelect__LoadingNoteStyled",
+  componentId: "sc-1fyaya5-2"
 })(["display:grid;align-items:center;height:40px;"]);
 
 /***/ }),
