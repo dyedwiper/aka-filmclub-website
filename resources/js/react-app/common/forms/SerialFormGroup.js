@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import SemesterSelectForSerialForm from './SemesterSelectForSerialForm';
+import WysiwygEditor from './WysiwygEditor';
 
 export default function SerialFormGroup({ serial }) {
     return (
@@ -15,7 +16,7 @@ export default function SerialFormGroup({ serial }) {
             </LabelStyled>
             <LabelStyled>
                 Reihenartikel
-                <TextareaStyled name="article" defaultValue={serial && serial.article} />
+                <WysiwygEditor inputName="article" defaultValue={serial && serial.article} />
             </LabelStyled>
             <LabelStyled>
                 Autor*in
@@ -37,5 +38,3 @@ const LabelStyled = styled.label`
 `;
 
 const InputStyled = styled.input``;
-
-const TextareaStyled = styled.textarea``;

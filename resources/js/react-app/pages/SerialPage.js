@@ -54,7 +54,7 @@ export default function SerialPage() {
                 </>
             )}
             <TextContainerStyled>
-                <ArticleStyled>{serial.article}</ArticleStyled>
+                <ArticleStyled dangerouslySetInnerHTML={{ __html: serial.article }} />
                 <AuthorStyled>{serial.author}</AuthorStyled>
                 <HorizontalLineStyled />
                 <ScreeningsListStyled>

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { formatToIsoDateString, formatToTimeString } from '../../utils/dateFormatters';
 import SerialSelect from './SerialSelect';
+import WysiwygEditor from './WysiwygEditor';
 
 export default function ScreeningFormGroup({ screening }) {
     return (
@@ -36,7 +37,7 @@ export default function ScreeningFormGroup({ screening }) {
             </FormRowWithTwoInputsStyled>
             <LabelStyled>
                 Beschreibung
-                <SynopsisTextareaStyled name="synopsis" defaultValue={screening && screening.synopsis} />
+                <WysiwygEditor inputName="synopsis" defaultValue={screening && screening.synopsis} />
             </LabelStyled>
             <FormRowWithTwoInputsStyled>
                 <LabelStyled>
@@ -116,10 +117,6 @@ const LabelStyled = styled.label`
 `;
 
 const InputStyled = styled.input``;
-
-const SynopsisTextareaStyled = styled.textarea`
-    height: 300px;
-`;
 
 const TercetTextareaStyled = styled.textarea`
     height: 80px;

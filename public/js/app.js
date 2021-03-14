@@ -5770,7 +5770,9 @@ function NoticeCard(_ref) {
         children: notice.title
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ContentStyled, {
-      children: notice.content
+      dangerouslySetInnerHTML: {
+        __html: notice.content
+      }
     })]
   });
 }
@@ -5839,7 +5841,9 @@ function NoticeRow(_ref) {
             children: notice.title
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ContentStyled, {
-          children: notice.content
+          dangerouslySetInnerHTML: {
+            __html: notice.content
+          }
         })]
       })]
     })]
@@ -6152,7 +6156,9 @@ function SerialRow(_ref) {
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubTitleStyled, {
           children: serial.subtitle
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ArticleStyled, {
-          children: serial.article
+          dangerouslySetInnerHTML: {
+            __html: serial.article
+          }
         })]
       })]
     })]
@@ -6730,9 +6736,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
 /* harmony import */ var _SerialSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./SerialSelect */ "./resources/js/react-app/common/forms/SerialSelect.js");
+/* harmony import */ var _WysiwygEditor__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./WysiwygEditor */ "./resources/js/react-app/common/forms/WysiwygEditor.js");
+
 
 
 
@@ -6769,8 +6777,8 @@ function ScreeningFormGroup(_ref) {
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Beschreibung", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SynopsisTextareaStyled, {
-        name: "synopsis",
+      children: ["Beschreibung", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_WysiwygEditor__WEBPACK_IMPORTED_MODULE_4__.default, {
+        inputName: "synopsis",
         defaultValue: screening && screening.synopsis
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormRowWithTwoInputsStyled, {
@@ -6856,33 +6864,29 @@ function ScreeningFormGroup(_ref) {
     })]
   });
 }
-var ScreeningFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var ScreeningFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "ScreeningFormGroup__ScreeningFormGroupStyled",
   componentId: "sc-7lk3c0-0"
 })([""]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.label.withConfig({
   displayName: "ScreeningFormGroup__LabelStyled",
   componentId: "sc-7lk3c0-1"
 })(["display:block;margin:10px 0;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.input.withConfig({
   displayName: "ScreeningFormGroup__InputStyled",
   componentId: "sc-7lk3c0-2"
 })([""]);
-var SynopsisTextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.textarea.withConfig({
-  displayName: "ScreeningFormGroup__SynopsisTextareaStyled",
-  componentId: "sc-7lk3c0-3"
-})(["height:300px;"]);
-var TercetTextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.textarea.withConfig({
+var TercetTextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.textarea.withConfig({
   displayName: "ScreeningFormGroup__TercetTextareaStyled",
-  componentId: "sc-7lk3c0-4"
+  componentId: "sc-7lk3c0-3"
 })(["height:80px;"]);
-var FormRowWithTwoInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var FormRowWithTwoInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "ScreeningFormGroup__FormRowWithTwoInputsStyled",
-  componentId: "sc-7lk3c0-5"
+  componentId: "sc-7lk3c0-4"
 })(["display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-gap:20px;"]);
-var SmallInputsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var SmallInputsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "ScreeningFormGroup__SmallInputsContainerStyled",
-  componentId: "sc-7lk3c0-6"
+  componentId: "sc-7lk3c0-5"
 })(["display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));column-gap:20px;@media (max-width:767px){grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));}"]);
 
 /***/ }),
@@ -6974,8 +6978,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _SemesterSelectForSerialForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SemesterSelectForSerialForm */ "./resources/js/react-app/common/forms/SemesterSelectForSerialForm.js");
+/* harmony import */ var _WysiwygEditor__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./WysiwygEditor */ "./resources/js/react-app/common/forms/WysiwygEditor.js");
+
 
 
 
@@ -6995,8 +7001,8 @@ function SerialFormGroup(_ref) {
         defaultValue: serial && serial.subtitle
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-      children: ["Reihenartikel", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TextareaStyled, {
-        name: "article",
+      children: ["Reihenartikel", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_WysiwygEditor__WEBPACK_IMPORTED_MODULE_3__.default, {
+        inputName: "article",
         defaultValue: serial && serial.article
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
@@ -7011,21 +7017,17 @@ function SerialFormGroup(_ref) {
     })]
   });
 }
-var SerialFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var SerialFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SerialFormGroup__SerialFormGroupStyled",
   componentId: "sc-1bqm8i3-0"
 })([""]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
   displayName: "SerialFormGroup__LabelStyled",
   componentId: "sc-1bqm8i3-1"
 })(["margin:20px 0;display:block;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
   displayName: "SerialFormGroup__InputStyled",
   componentId: "sc-1bqm8i3-2"
-})([""]);
-var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.textarea.withConfig({
-  displayName: "SerialFormGroup__TextareaStyled",
-  componentId: "sc-1bqm8i3-3"
 })([""]);
 
 /***/ }),
@@ -7494,7 +7496,9 @@ function ScreeningCard(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
         children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatToDateString)(screening.date)
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SynopsisStyled, {
-        children: screening.synopsis
+        dangerouslySetInnerHTML: {
+          __html: screening.synopsis
+        }
       })]
     })
   });
@@ -7568,7 +7572,9 @@ function ScreeningRow(_ref) {
             children: screening.title
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SynopsisStyled, {
-          children: screening.synopsis
+          dangerouslySetInnerHTML: {
+            __html: screening.synopsis
+          }
         })]
       })]
     })]
@@ -9310,7 +9316,9 @@ function ScreeningPage() {
           })]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SynopsisStyled, {
-        children: screening.synopsis
+        dangerouslySetInnerHTML: {
+          __html: screening.synopsis
+        }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AuthorStyled, {
         children: screening.author
       }), screening.serial && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SerialContainerStyled, {
@@ -9518,7 +9526,9 @@ function SerialPage() {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TextContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ArticleStyled, {
-        children: serial.article
+        dangerouslySetInnerHTML: {
+          __html: serial.article
+        }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AuthorStyled, {
         children: serial.author
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.HorizontalLineStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {

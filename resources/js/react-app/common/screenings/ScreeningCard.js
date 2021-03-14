@@ -13,7 +13,7 @@ export default function ScreeningCard({ screening }) {
                     <TitleStyled>{screening.title}</TitleStyled>
                 </ImageContainerStyled>
                 <DateStyled>{formatToDateString(screening.date)}</DateStyled>
-                <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
+                <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
             </Link>
         </ScreeningCardStyled>
     );

@@ -99,7 +99,7 @@ export default function ScreeningPage() {
                         </>
                     )}
                 </CreditsContainerStyled>
-                <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
+                <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
                 {screening.serial && (
                     <SerialContainerStyled>

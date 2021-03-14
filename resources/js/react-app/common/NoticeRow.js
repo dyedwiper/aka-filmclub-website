@@ -19,7 +19,7 @@ export default function NoticeRow({ notice }) {
                     <LinkStyled to={'/news/' + notice.uuid}>
                         <TitleStyled>{notice.title}</TitleStyled>
                     </LinkStyled>
-                    <ContentStyled>{notice.content}</ContentStyled>
+                    <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
                 </InfoContainerStyled>
             </NoticeContainerStyled>
         </NoticeRowStyled>

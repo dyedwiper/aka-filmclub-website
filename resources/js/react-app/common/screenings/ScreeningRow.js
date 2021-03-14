@@ -17,7 +17,7 @@ export default function ScreeningRow({ screening }) {
                     <LinkStyled to={'/screening/' + screening.uuid}>
                         <TitleStyled>{screening.title}</TitleStyled>
                     </LinkStyled>
-                    <SynopsisStyled>{screening.synopsis}</SynopsisStyled>
+                    <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 </InfoContainerStyled>
             </ScreeningContainerStyled>
         </ScreeningRowStyled>

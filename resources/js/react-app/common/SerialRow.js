@@ -17,7 +17,7 @@ export default function SerialRow({ serial }) {
                         <TitleStyled>{serial.title}</TitleStyled>
                     </LinkStyled>
                     <SubTitleStyled>{serial.subtitle}</SubTitleStyled>
-                    <ArticleStyled>{serial.article}</ArticleStyled>
+                    <ArticleStyled dangerouslySetInnerHTML={{ __html: serial.article }} />
                 </InfoContainerStyled>
             </SerialContainerStyled>
         </SerialRowStyled>

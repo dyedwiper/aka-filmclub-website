@@ -11,7 +11,7 @@ export default function NoticeCard({ notice }) {
                 <ImageStyled src={notice.image ? STORAGE_FOLDER + notice.image.path : missingImage} />
                 <TitleStyled>{notice.title}</TitleStyled>
             </Link>
-            <ContentStyled>{notice.content}</ContentStyled>
+            <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
         </NoticeCardStyled>
     );
 }
