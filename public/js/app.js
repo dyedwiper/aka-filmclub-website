@@ -10623,6 +10623,8 @@ function EditTextPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_7__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_7__.PageHeadlineStyled, {
       children: pageTitle
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HintStyled, {
+      children: "Hinweis: Das Einf\xFCgen und Entfernen der gelben Linie kann etwas hakelig sein. Beim Entfernen ist die Linie manchmal im Editor schon verschwunden, aber taucht nach dem Speichern wieder auf. Dann muss die R\xFCcktaste beim Entfernen wahrscheinlich noch einmal mehr gedr\xFCckt werden. Beim Einf\xFCgen empfiehlt es sich, direkt in den bestehenden Absatz einzuf\xFCgen und keinen neuen Absatz f\xFCr die Linie zu machen."
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_draft_wysiwyg__WEBPACK_IMPORTED_MODULE_5__.Editor, {
       editorState: editorState,
       onEditorStateChange: setEditorState,
@@ -10710,25 +10712,29 @@ function EditTextPage() {
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("hr", {});
   }
 }
+var HintStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.div.withConfig({
+  displayName: "EditTextPage__HintStyled",
+  componentId: "sc-1lkm474-0"
+})(["margin-bottom:20px;font-size:0.7em;font-style:italic;"]);
 var ValidationErrorContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.div.withConfig({
   displayName: "EditTextPage__ValidationErrorContainerStyled",
-  componentId: "sc-1lkm474-0"
+  componentId: "sc-1lkm474-1"
 })(["color:red;"]);
 var ValidationErrorStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.div.withConfig({
   displayName: "EditTextPage__ValidationErrorStyled",
-  componentId: "sc-1lkm474-1"
+  componentId: "sc-1lkm474-2"
 })(["margin-bottom:10px;"]);
 var ButtonContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.div.withConfig({
   displayName: "EditTextPage__ButtonContainerStyled",
-  componentId: "sc-1lkm474-2"
+  componentId: "sc-1lkm474-3"
 })(["display:grid;grid-template-columns:100px 100px;grid-gap:10px;margin-top:20px;"]);
 var SaveButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.button.withConfig({
   displayName: "EditTextPage__SaveButtonStyled",
-  componentId: "sc-1lkm474-3"
+  componentId: "sc-1lkm474-4"
 })([""]);
 var BackButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.button.withConfig({
   displayName: "EditTextPage__BackButtonStyled",
-  componentId: "sc-1lkm474-4"
+  componentId: "sc-1lkm474-5"
 })(["background-color:var(--aka-grau);"]);
 
 /***/ }),

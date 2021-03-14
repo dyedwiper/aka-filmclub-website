@@ -64,6 +64,12 @@ export default function EditTextPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+            <HintStyled>
+                Hinweis: Das Einfügen und Entfernen der gelben Linie kann etwas hakelig sein. Beim Entfernen ist die
+                Linie manchmal im Editor schon verschwunden, aber taucht nach dem Speichern wieder auf. Dann muss die
+                Rücktaste beim Entfernen wahrscheinlich noch einmal mehr gedrückt werden. Beim Einfügen empfiehlt es
+                sich, direkt in den bestehenden Absatz einzufügen und keinen neuen Absatz für die Linie zu machen.
+            </HintStyled>
             <Editor
                 editorState={editorState}
                 onEditorStateChange={setEditorState}
@@ -141,6 +147,12 @@ export default function EditTextPage() {
         return <hr />;
     }
 }
+
+const HintStyled = styled.div`
+    margin-bottom: 20px;
+    font-size: 0.7em;
+    font-style: italic;
+`;
 
 const ValidationErrorContainerStyled = styled.div`
     color: red;
