@@ -220,6 +220,10 @@ Route::prefix('faqs')->group(function () {
     Route::middleware('auth:sanctum')->patch('/', [
         FaqController::class, 'PatchFaq'
     ]);
+
+    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
+        FaqController::class, 'DeleteFaq'
+    ]);
 });
 
 Route::prefix('texts')->group(function () {

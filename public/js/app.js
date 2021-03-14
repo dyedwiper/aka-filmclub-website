@@ -10096,6 +10096,8 @@ function EditFaqPage() {
       children: pageTitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       postFunction: _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.postFaq,
+      deleteFunction: _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.deleteFaq,
+      isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
         type: "hidden",
@@ -11244,7 +11246,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "getFaqs": () => /* binding */ getFaqs,
 /* harmony export */   "getFaqByUuid": () => /* binding */ getFaqByUuid,
-/* harmony export */   "postFaq": () => /* binding */ postFaq
+/* harmony export */   "postFaq": () => /* binding */ postFaq,
+/* harmony export */   "deleteFaq": () => /* binding */ deleteFaq
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
@@ -11257,6 +11260,9 @@ function getFaqByUuid(uuid) {
 }
 function postFaq(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/faqs', data);
+}
+function deleteFaq(uuid) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/faqs/uuid/' + uuid);
 }
 
 /***/ }),

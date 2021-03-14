@@ -11,3 +11,7 @@ export function getFaqByUuid(uuid) {
 export function postFaq(data) {
     return axios.post('/api/faqs', data);
 }
+
+export function deleteFaq(uuid) {
+    return axios.delete('/api/faqs/uuid/' + uuid);
+}

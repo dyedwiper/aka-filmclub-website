@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FaqFormRequest;
 use App\Models\Faq;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class FaqController extends Controller
 {
@@ -55,5 +57,14 @@ class FaqController extends Controller
         }
         $faq->position = $request->position;
         $faq->save();
+    }
+
+    public function DeleteFaq(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(401);
+        }
+        $faq = Faq::firstWhere('uuid', $uuid);
+        $faq->delete();
     }
 }
