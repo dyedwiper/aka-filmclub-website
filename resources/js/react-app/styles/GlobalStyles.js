@@ -8,6 +8,7 @@ export default createGlobalStyle`
   :root{
       --aka-gelb: #ffea0d;
       --aka-grau: #616161;
+      --aka-red: darkred;
       --aka-secondary-color: white;
   }
 
@@ -59,6 +60,11 @@ export default createGlobalStyle`
 
     &:active {
         background-color: var(--aka-gelb)
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
     }
   }
 

@@ -128,6 +128,7 @@ const ButtonContainerStyled = styled.div`
 const SubmitButtonStyled = styled.button``;
 
 const BackButtonStyled = styled.button`
+    color: white;
     background-color: var(--aka-grau);
 `;
 
@@ -136,7 +137,7 @@ export const WaitNoteStyled = styled.div`
 `;
 
 const DeleteButtonStyled = styled.button`
-    background-color: red;
+    background-color: var(--aka-red);
     color: white;
 `;
 
@@ -152,7 +153,7 @@ const QuestionStyled = styled.span`
 `;
 
 const ValidationErrorContainerStyled = styled.div`
-    color: red;
+    color: var(--aka-red);
 `;
 
 const ValidationErrorStyled = styled.div`

@@ -108,4 +108,5 @@ const LinkStyled = styled(Link)`
     max-width: 100%;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: black;
 `;
