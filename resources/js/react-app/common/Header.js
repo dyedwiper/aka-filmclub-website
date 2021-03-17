@@ -56,6 +56,9 @@ export default function Header() {
                             <SubNavLinkStyled to="/awards" onClick={() => setIsNavOpen(false)}>
                                 Auszeichnungen
                             </SubNavLinkStyled>
+                            <SubNavLinkStyled to="/videos" onClick={() => setIsNavOpen(false)}>
+                                Eigenproduktionen
+                            </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
                     {isLoggedIn ? (

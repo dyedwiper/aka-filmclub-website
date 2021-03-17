@@ -7,6 +7,7 @@ use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SerialController;
 use App\Http\Controllers\TextController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VideoController;
 use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
@@ -223,6 +224,28 @@ Route::prefix('faqs')->group(function () {
 
     Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
         FaqController::class, 'DeleteFaq'
+    ]);
+});
+
+Route::prefix('videos')->group(function () {
+    Route::get('/', [
+        VideoController::class, 'GetVideos'
+    ]);
+
+    Route::get('/uuid/{uuid}', [
+        VideoController::class, 'GetVideoByUuid'
+    ]);
+
+    Route::middleware('auth:sanctum')->post('/', [
+        VideoController::class, 'PostVideo'
+    ]);
+
+    Route::middleware('auth:sanctum')->patch('/', [
+        VideoController::class, 'PatchVideo'
+    ]);
+
+    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
+        VideoController::class, 'DeleteVideo'
     ]);
 });
 

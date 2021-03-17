@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import FaqPositionSelect from './FaqPositionSelect';
+import PositionSelect from './PositionSelect';
 import WysiwygEditor from './WysiwygEditor';
 
 export default function FaqFormGroup({ faq }) {
@@ -14,10 +14,12 @@ export default function FaqFormGroup({ faq }) {
                 Antwort
                 <WysiwygEditor inputName="answer" defaultValue={faq && faq.answer} />
             </LabelStyled>
-            <PositionLabelStyled>
-                Position
-                <FaqPositionSelect disabled={!faq} defaultPosition={faq && faq.position} />
-            </PositionLabelStyled>
+            {faq && (
+                <PositionLabelStyled>
+                    Position
+                    <PositionSelect type="faq" defaultPosition={faq.position} />
+                </PositionLabelStyled>
+            )}
         </FaqFormGroupStyled>
     );
 }

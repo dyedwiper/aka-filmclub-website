@@ -3,22 +3,33 @@ import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { positionSelectStyles } from '../../styles/customSelectStyles';
 import { getFaqs } from '../../utils/faqServices';
+import { getVideos } from '../../utils/videoServices';
 
-export default function FaqPositionSelect({ defaultPosition, disabled }) {
+export default function PositionSelect({ type, defaultPosition }) {
     const [positionOptions, setPositionOptions] = useState([]);
+    const [items, setItems] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getFaqs().then((res) => {
-            const numberOfFaqs = res.data.length;
-            const options = [];
-            for (let i = 0; i < numberOfFaqs; i++) {
-                options.push({ label: i + 1, value: i });
-            }
-            setPositionOptions(options);
-            setIsLoading(false);
-        });
+        if (type === 'faq') {
+            getFaqs().then((res) => {
+                setItems(res.data);
+            });
+        } else if (type === 'video') {
+            getVideos().then((res) => {
+                setItems(res.data);
+            });
+        }
     }, []);
+
+    useEffect(() => {
+        const options = [];
+        for (let i = 0; i < items.length; i++) {
+            options.push({ label: i + 1, value: i });
+        }
+        setPositionOptions(options);
+        setIsLoading(false);
+    }, [items]);
 
     if (isLoading) return <LoadingNoteStyled>Am Laden...</LoadingNoteStyled>;
 
@@ -26,8 +37,7 @@ export default function FaqPositionSelect({ defaultPosition, disabled }) {
         <ReactSelect
             name="position"
             options={positionOptions}
-            isDisabled={disabled}
-            defaultValue={positionOptions[defaultPosition]}
+            defaultValue={{ value: defaultPosition, label: defaultPosition + 1 }}
             styles={positionSelectStyles}
         />
     );

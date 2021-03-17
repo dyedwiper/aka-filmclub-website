@@ -18,6 +18,7 @@ import AddNoticePage from './pages/intern/AddNoticePage';
 import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import AddUserPage from './pages/intern/AddUserPage';
+import AddVideoPage from './pages/intern/AddVideoPage';
 import EditFaqPage from './pages/intern/EditFaqPage';
 import EditImagePage from './pages/intern/EditImagePage';
 import EditNoticePage from './pages/intern/EditNoticePage';
@@ -25,6 +26,7 @@ import EditScreeningPage from './pages/intern/EditScreeningPage';
 import EditSerialPage from './pages/intern/EditSerialPage';
 import EditTextPage from './pages/intern/EditTextPage';
 import EditUserPage from './pages/intern/EditUserPage';
+import EditVideoPage from './pages/intern/EditVideoPage';
 import InternPage from './pages/intern/InternPage';
 import UsersPage from './pages/intern/UsersPage';
 import LinksPage from './pages/LinksPage';
@@ -39,6 +41,7 @@ import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
+import VideosPage from './pages/VideosPage';
 import { getCurrentUser } from './utils/userServices';
 
 export default function App() {
@@ -111,6 +114,9 @@ export default function App() {
                         <Route exact path="/awards">
                             <AwardsPage />
                         </Route>
+                        <Route exact path="/videos">
+                            <VideosPage />
+                        </Route>
                         <Route exact path="/contact">
                             <ContactPage />
                         </Route>
@@ -161,6 +167,12 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path="/intern/editFaq">
                             <EditFaqPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/addVideo">
+                            <AddVideoPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editVideo">
+                            <EditVideoPage />
                         </PrivateRoute>
                         <PrivateRoute path="/intern/editText">
                             <EditTextPage />
