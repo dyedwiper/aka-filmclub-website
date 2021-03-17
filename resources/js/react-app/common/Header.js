@@ -22,7 +22,7 @@ export default function Header() {
                 </LinkStyled>
                 <PageTitleStyled>{pageTitle}</PageTitleStyled>
                 <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
-                <NavStyled isNavOpen={isNavOpen} windowHeight={window.innerHeight}>
+                <NavStyled isNavOpen={isNavOpen}>
                     <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
                         News
                     </NavLinkStyled>
@@ -166,7 +166,7 @@ const NavStyled = styled.nav`
         position: absolute;
         top: 60px;
         overflow: auto;
-        height: ${(props) => props.windowHeight - 60 + 'px'};
+        height: calc(100vh - 60px);
         width: 100vw;
         padding-bottom: 50px;
         background-color: var(--aka-gelb);

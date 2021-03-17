@@ -5588,7 +5588,6 @@ function Header() {
         setIsNavOpen: setIsNavOpen
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NavStyled, {
         isNavOpen: isNavOpen,
-        windowHeight: window.innerHeight,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
           to: "/news",
           onClick: function onClick() {
@@ -5741,10 +5740,8 @@ var PageTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.
 var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.nav.withConfig({
   displayName: "Header__NavStyled",
   componentId: "d7im2b-5"
-})(["padding:20px;background-color:white;@media (max-width:767px){display:", ";position:absolute;top:60px;overflow:auto;height:", ";width:100vw;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
+})(["padding:20px;background-color:white;@media (max-width:767px){display:", ";position:absolute;top:60px;overflow:auto;height:calc(100vh - 60px);width:100vw;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
   return props.isNavOpen ? 'block' : 'none';
-}, function (props) {
-  return props.windowHeight - 60 + 'px';
 });
 var DropdownContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__DropdownContainerStyled",
