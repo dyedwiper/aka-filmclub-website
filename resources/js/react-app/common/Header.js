@@ -121,26 +121,26 @@ const HeaderStyled = styled.header`
 
 const ContentContainerStyled = styled.div`
     display: grid;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 180px 1fr;
+    align-items: center;
     height: 120px;
     max-width: 1024px;
     margin: 0 auto;
 
     @media (max-width: 767px) {
         grid-template-columns: 80px 1fr 80px;
+        justify-items: center;
         height: 60px;
     }
 `;
 
-const LinkStyled = styled(Link)`
-    margin: 10px 0 0 20px;
-`;
+const LinkStyled = styled(Link)``;
 
 const LogoStyled = styled.img`
-    height: 80px;
+    height: 100px;
 
     @media (max-width: 767px) {
-        height: 40px;
+        height: 45px;
     }
 `;
 
@@ -148,8 +148,6 @@ const PageTitleStyled = styled.h2`
     display: none;
 
     @media (max-width: 767px) {
-        justify-self: center;
-        align-self: center;
         display: block;
         margin: 0;
         max-width: 100%;
@@ -193,8 +191,9 @@ const DropdownContainerStyled = styled.div`
 `;
 
 const NavLinkStyled = styled(NavLink)`
-    margin-right: 20px;
-    font-size: 2rem;
+    margin-right: 30px;
+    color: black;
+    font-size: 1.7em;
     font-weight: bold;
 
     @media (max-width: 767px) {
@@ -222,7 +221,8 @@ const SubNavStyled = styled.div`
 const SubNavLinkStyled = styled(Link)`
     display: block;
     margin: 5px 0;
-    font-size: 1.5em;
+    color: black;
+    font-size: 1.3em;
     font-weight: bold;
     white-space: nowrap;
 
