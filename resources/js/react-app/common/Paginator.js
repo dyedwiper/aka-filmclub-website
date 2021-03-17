@@ -66,6 +66,7 @@ const PaginatorStyled = styled.div`
     margin: 40px auto;
     border-top: 3px solid black;
     border-bottom: 3px solid black;
+    border-radius: 5px;
 `;
 
 const BorderContainerStyled = styled.div`
@@ -83,8 +84,10 @@ const PageLinkStyled = styled(Link)`
     border: 2px solid black;
     border-top-width: 3px;
     border-bottom-width: 1px;
+    color: black;
     font-weight: bold;
     text-align: center;
+    writing-mode: vertical-rl;
     background-color: ${(props) => props.$isCurrentPage && 'var(--aka-gelb)'};
 
     &.disabled {

@@ -6018,7 +6018,7 @@ function Paginator(_ref) {
 var PaginatorStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
   displayName: "Paginator__PaginatorStyled",
   componentId: "sc-1g3uqar-0"
-})(["width:210px;margin:40px auto;border-top:3px solid black;border-bottom:3px solid black;"]);
+})(["width:210px;margin:40px auto;border-top:3px solid black;border-bottom:3px solid black;border-radius:5px;"]);
 var BorderContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
   displayName: "Paginator__BorderContainerStyled",
   componentId: "sc-1g3uqar-1"
@@ -6026,7 +6026,7 @@ var BorderContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.defau
 var PageLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_2__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link).withConfig({
   displayName: "Paginator__PageLinkStyled",
   componentId: "sc-1g3uqar-2"
-})(["display:grid;align-items:center;height:40px;width:30px;border:2px solid black;border-top-width:3px;border-bottom-width:1px;font-weight:bold;text-align:center;background-color:", ";&.disabled{color:grey;pointer-events:none;}"], function (props) {
+})(["display:grid;align-items:center;height:40px;width:30px;border:2px solid black;border-top-width:3px;border-bottom-width:1px;color:black;font-weight:bold;text-align:center;writing-mode:vertical-rl;background-color:", ";&.disabled{color:grey;pointer-events:none;}"], function (props) {
   return props.$isCurrentPage && 'var(--aka-gelb)';
 });
 
