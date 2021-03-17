@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import facebookIcon from '../assets/facebook_icon.png';
 import instagramIcon from '../assets/instagram_icon.png';
+import twitterIcon from '../assets/twitter_icon.png';
 
 export default function Footer() {
     return (
@@ -19,6 +20,9 @@ export default function Footer() {
                     </IconLinkStyled>
                     <IconLinkStyled href="https://www.instagram.com/akafilmclub/" target="_blank">
                         <ImageStyled src={instagramIcon} />
+                    </IconLinkStyled>
+                    <IconLinkStyled href="https://twitter.com/akafilmclub" target="_blank">
+                        <ImageStyled src={twitterIcon} />
                     </IconLinkStyled>
                 </IconLinksContainerStyled>
             </ContentContainerStyled>

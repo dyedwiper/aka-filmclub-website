@@ -5374,10 +5374,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _assets_facebook_icon_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/facebook_icon.png */ "./resources/js/react-app/assets/facebook_icon.png");
 /* harmony import */ var _assets_instagram_icon_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/instagram_icon.png */ "./resources/js/react-app/assets/instagram_icon.png");
+/* harmony import */ var _assets_twitter_icon_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/twitter_icon.png */ "./resources/js/react-app/assets/twitter_icon.png");
+
 
 
 
@@ -5411,40 +5413,46 @@ function Footer() {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
             src: _assets_instagram_icon_png__WEBPACK_IMPORTED_MODULE_3__.default
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(IconLinkStyled, {
+          href: "https://twitter.com/akafilmclub",
+          target: "_blank",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
+            src: _assets_twitter_icon_png__WEBPACK_IMPORTED_MODULE_4__.default
+          })
         })]
       })]
     })
   });
 }
-var FooterStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.footer.withConfig({
+var FooterStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.footer.withConfig({
   displayName: "Footer__FooterStyled",
   componentId: "d2i78s-0"
 })(["height:60px;width:100%;padding:0 20px;background-color:var(--aka-gelb);"]);
-var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__ContentContainerStyled",
   componentId: "d2i78s-1"
 })(["display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;max-width:1024px;height:100%;margin:0 auto;@media (max-width:767px){grid-template-columns:1fr 1fr;}"]);
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h1.withConfig({
+var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h1.withConfig({
   displayName: "Footer__HeadlineStyled",
   componentId: "d2i78s-2"
 })(["max-width:200px;font-size:0.7em;@media (max-width:767px){position:fixed;visibility:hidden;}"]);
-var LinksContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var LinksContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__LinksContainerStyled",
   componentId: "d2i78s-3"
 })(["justify-self:center;@media (max-width:767px){justify-self:left;}"]);
-var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_4__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link).withConfig({
+var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link).withConfig({
   displayName: "Footer__LinkStyled",
   componentId: "d2i78s-4"
 })(["display:inline-block;margin:0 5px;color:black;&:hover{text-decoration:underline white;}"]);
-var IconLinksContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var IconLinksContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__IconLinksContainerStyled",
   componentId: "d2i78s-5"
 })(["justify-self:right;"]);
-var IconLinkStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.a.withConfig({
+var IconLinkStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.a.withConfig({
   displayName: "Footer__IconLinkStyled",
   componentId: "d2i78s-6"
 })(["display:inline-block;margin:0 5px;"]);
-var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
+var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
   displayName: "Footer__ImageStyled",
   componentId: "d2i78s-7"
 })(["height:32px;"]);
@@ -6917,7 +6925,7 @@ function ScreeningFormGroup(_ref) {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SmallInputsContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-        children: ["Prodoktionsl\xE4nder", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+        children: ["Produktionsl\xE4nder", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "country",
           defaultValue: screening && screening.country
         })]
@@ -30341,6 +30349,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/missing.jpg?55cdee89e6392e62e38a8c0e116fdbbf");
+
+/***/ }),
+
+/***/ "./resources/js/react-app/assets/twitter_icon.png":
+/*!********************************************************!*\
+  !*** ./resources/js/react-app/assets/twitter_icon.png ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/twitter_icon.png?1504b7626ea5a05c7df4ce90f28eddfa");
 
 /***/ }),
 
