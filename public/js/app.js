@@ -8338,7 +8338,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_router_hash_link__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-hash-link */ "./node_modules/react-router-hash-link/dist/react-router-hash-link.esm.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_FaqRow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/FaqRow */ "./resources/js/react-app/common/FaqRow.js");
@@ -8361,7 +8360,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -8436,10 +8434,6 @@ var QuestionLinkItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.defa
 var AnswersListStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.ul.withConfig({
   displayName: "FaqsPage__AnswersListStyled",
   componentId: "sc-498z6i-2"
-})([""]);
-var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_9__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_10__.Link).withConfig({
-  displayName: "FaqsPage__LinkStyled",
-  componentId: "sc-498z6i-3"
 })([""]);
 
 /***/ }),
