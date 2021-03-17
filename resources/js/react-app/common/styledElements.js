@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const PageStyled = styled.main`
-    min-height: 100%;
+    min-height: calc(100vh - 60px);
     max-width: 1024px;
     margin: 0 auto;
     padding: 120px 100px 100px 100px;
@@ -35,6 +35,7 @@ export const AddItemLinkStyled = styled(Link)`
     border: solid 1px black;
     border-radius: 5px;
     box-shadow: 1px 1px 1px black;
+    color: black;
 
     &:active {
         background-color: var(--aka-gelb);

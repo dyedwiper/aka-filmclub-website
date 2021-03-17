@@ -148,18 +148,19 @@ const TitleContainerStyled = styled.div`
     bottom: 0;
     width: 100%;
     padding: 60px 20px 10px 20px;
-    color: var(--aka-gelb);
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 `;
 
 const TitleStyled = styled.h2`
     display: inline-block;
     margin: 0 20px 0 0;
+    color: var(--aka-gelb);
     font-size: 3em;
 `;
 
 const DateStyled = styled.span`
     white-space: nowrap;
+    color: var(--aka-gelb);
 `;
 
 const FallbackTitleStyled = styled.h2`

@@ -7,7 +7,7 @@ export default createGlobalStyle`
  
   :root{
       --aka-gelb: #ffea0d;
-      --aka-grau: lightgrey;
+      --aka-grau: #616161;
       --aka-secondary-color: white;
   }
 
@@ -33,7 +33,7 @@ export default createGlobalStyle`
     width: 100%;
 
     &:disabled {
-        border-color: var(--aka-grau);
+        border-color: lightgrey;
     }
   }
 
@@ -68,7 +68,7 @@ export default createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: black;
+    color: var(--aka-grau);
 
     &.active,
     &:hover {
@@ -83,6 +83,7 @@ export default createGlobalStyle`
 
   p {
       margin: 0;
+      color: black;
   } 
 
   h2{
@@ -91,6 +92,10 @@ export default createGlobalStyle`
 
   h3{
       margin: 0;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+      color: black;
   }
 
   hr {
@@ -108,10 +113,6 @@ export default createGlobalStyle`
     &:checked {
         background-color: black;
     }
-  }
-
-  div[class="rdw-editor-main"] a {
-      color:  #757575;
   }
 
   /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/

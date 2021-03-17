@@ -52,7 +52,6 @@ export default function App() {
     useEffect(() => {
         getCurrentUser()
             .then((res) => {
-                console.log(res.data);
                 setUser(res.data);
                 setIsLoading(false);
             })

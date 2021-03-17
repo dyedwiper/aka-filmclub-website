@@ -68,6 +68,7 @@ const LinksContainerStyled = styled.div`
 const LinkStyled = styled(Link)`
     display: inline-block;
     margin: 0 5px;
+    color: black;
 
     &:hover {
         text-decoration: underline white;
