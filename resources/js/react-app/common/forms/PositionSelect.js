@@ -27,7 +27,6 @@ export default function PositionSelect({ type, defaultPosition }) {
         for (let i = 0; i < items.length; i++) {
             options.push({ label: i + 1, value: i });
         }
-        console.log(defaultPosition);
         setPositionOptions(options);
         setIsLoading(false);
     }, [items]);

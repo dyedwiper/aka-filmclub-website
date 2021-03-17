@@ -7,6 +7,9 @@ export default function VideoFormGroup({ video }) {
         <VideoFormGroupStyled>
             <LabelStyled>
                 Link
+                <HintSyled>
+                    Hinweis: Der Link muss die Form <em>https://player.vimeo.com/video/210599507</em> haben.
+                </HintSyled>
                 <InputStyled name="source" defaultValue={video && video.source} />
             </LabelStyled>
             <LabelStyled>
@@ -32,6 +35,10 @@ const VideoFormGroupStyled = styled.div``;
 const LabelStyled = styled.label`
     display: block;
     margin: 20px 0;
+`;
+
+const HintSyled = styled.div`
+    font-size: 0.7em;
 `;
 
 const PositionLabelStyled = styled.label`

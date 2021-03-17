@@ -30,6 +30,7 @@ export const VerticalLineStyled = styled.span`
 `;
 
 export const AddItemLinkStyled = styled(Link)`
+    display: inline-block;
     padding: 5px;
     border: solid 1px black;
     border-radius: 5px;
