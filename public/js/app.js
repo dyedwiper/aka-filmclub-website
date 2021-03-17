@@ -6009,8 +6009,8 @@ function Paginator(_ref) {
   });
 
   function handleClick() {
-    // Set page to initial value of 0 so that the component rerenders
-    // The actual page number will be gotten from the query parameter
+    // Set page to initial value of 0 so that the component rerenders.
+    // The actual page number will be gotten from the query parameter.
     setPage(0);
     setIsLoading(true);
   }
