@@ -39,13 +39,13 @@ class ScreeningFormRequest extends FormRequest
             'cast' => 'max:255',
             'country' => 'max:255',
             'year' => 'integer',
-            'length' => 'integer',
+            'length' => 'nullable|integer',
             'medium' => 'max:255',
             'version' => 'max:255',
             'venue' => 'max:255',
             'special' => 'max:65535',
             'tercet' => 'max:65535',
-            'serialId' => 'integer',
+            'serialId' => 'nullable|integer',
             'author' => 'max:255',
         ];
     }

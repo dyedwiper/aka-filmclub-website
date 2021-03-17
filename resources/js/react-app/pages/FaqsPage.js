@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
 import FaqRow from '../common/FaqRow';
@@ -63,5 +62,3 @@ const QuestionLinkItemStyled = styled.li`
 `;
 
 const AnswersListStyled = styled.ul``;
-
-const LinkStyled = styled(Link)``;

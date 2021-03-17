@@ -6,8 +6,8 @@ import { formatToDateString } from '../../utils/dateFormatters';
 export default function ScreeningsListItem({ screening }) {
     return (
         <ScreeningsListItemStyled>
+            <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
             <ScreeningLinkStyled to={'/screening/' + screening.uuid}>
-                <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
                 <ScreeningTitleStyled>{screening.title}</ScreeningTitleStyled>
             </ScreeningLinkStyled>
         </ScreeningsListItemStyled>

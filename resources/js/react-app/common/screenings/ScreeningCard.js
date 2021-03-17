@@ -49,6 +49,7 @@ const TitleStyled = styled.h3`
 `;
 
 const DateStyled = styled.div`
+    color: black;
     font-weight: bold;
 `;
 

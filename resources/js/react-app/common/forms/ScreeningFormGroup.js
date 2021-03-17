@@ -65,7 +65,7 @@ export default function ScreeningFormGroup({ screening }) {
             </LabelStyled>
             <SmallInputsContainerStyled>
                 <LabelStyled>
-                    Prodoktionsländer
+                    Produktionsländer
                     <InputStyled name="country" defaultValue={screening && screening.country} />
                 </LabelStyled>
                 <LabelStyled>
