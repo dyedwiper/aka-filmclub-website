@@ -28,7 +28,7 @@ class VideoFormRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'description' => 'max:65,535',
+            'description' => 'max:65535',
             'source' => 'required|max:255',
             'position' => 'nullable|integer',
         ];

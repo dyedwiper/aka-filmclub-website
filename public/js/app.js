@@ -5642,14 +5642,14 @@ function Header() {
                 return setIsNavOpen(false);
               },
               children: "Auszeichnungen"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+              to: "/videos",
+              onClick: function onClick() {
+                return setIsNavOpen(false);
+              },
+              children: "Eigenproduktionen"
             })]
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
-          to: "/videos",
-          onClick: function onClick() {
-            return setIsNavOpen(false);
-          },
-          children: "Eigenproduktionen"
         }), isLoggedIn ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
             to: "/intern",
@@ -6286,7 +6286,7 @@ var IFrameStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.iframe
 var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3.withConfig({
   displayName: "VideoContainer__TitleStyled",
   componentId: "sc-12kgx08-3"
-})([""]);
+})(["margin-top:10px;"]);
 var DescriptionStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.p.withConfig({
   displayName: "VideoContainer__DescriptionStyled",
   componentId: "sc-12kgx08-4"
@@ -6584,19 +6584,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 
 
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    height: 5px;\n    width: 60px;\n    background-color: var(--aka-gelb);\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
 
 
 function HorizontalLineToolbarButton(_ref) {
@@ -6618,7 +6605,10 @@ function HorizontalLineToolbarButton(_ref) {
     onChange(draft_js__WEBPACK_IMPORTED_MODULE_1__.AtomicBlockUtils.insertAtomicBlock(editorState, entityKey, ' '));
   }
 }
-var HorizontalRulePreviewStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div(_templateObject());
+var HorizontalRulePreviewStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "HorizontalLineToolbarButton__HorizontalRulePreviewStyled",
+  componentId: "sc-1xz6ua0-0"
+})(["height:5px;width:60px;background-color:var(--aka-gelb);"]);
 
 /***/ }),
 
@@ -11489,7 +11479,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: lightgrey;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise. */\n    width: 100%;\n\n    &:disabled {\n        border-color: var(--aka-grau);\n    }\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  /* Fix for Safari because empty date inputs have no height otherwise. */\n  input[type=\"date\"]{\n      min-height: 32px;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  /* h1, h2, h3, h4, h5, h6, p {\n      margin: 0;\n  } */\n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n\n  hr {\n    height: 10px;\n    width: 80%;\n    margin: 20px 0;\n    border: none;\n    background-color: var(--aka-gelb);\n  }\n\n  input[id=\"openLinkInNewWindow\"] {\n    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */\n    width: initial;\n\n    &:checked {\n        background-color: black;\n    }\n  }\n\n  div[class=\"rdw-editor-main\"] a {\n      color:  #757575;\n  }\n\n  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/\n  div[class=\"rdw-link-modal\"] {\n      box-sizing: initial;\n  }\n\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: lightgrey;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise. */\n    width: 100%;\n\n    &:disabled {\n        border-color: var(--aka-grau);\n    }\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  /* Fix for Safari because empty date inputs have no height otherwise. */\n  input[type=\"date\"]{\n      min-height: 32px;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: black;\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  p {\n      margin: 0;\n  } \n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n\n  hr {\n    height: 10px;\n    width: 80%;\n    margin: 20px 0;\n    border: none;\n    background-color: var(--aka-gelb);\n  }\n\n  input[id=\"openLinkInNewWindow\"] {\n    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */\n    width: initial;\n\n    &:checked {\n        background-color: black;\n    }\n  }\n\n  div[class=\"rdw-editor-main\"] a {\n      color:  #757575;\n  }\n\n  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/\n  div[class=\"rdw-link-modal\"] {\n      box-sizing: initial;\n  }\n\n"]);
 
   _templateObject = function _templateObject() {
     return data;

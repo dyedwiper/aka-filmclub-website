@@ -39,7 +39,9 @@ const IFrameStyled = styled.iframe`
     border: none;
 `;
 
-const TitleStyled = styled.h3``;
+const TitleStyled = styled.h3`
+    margin-top: 10px;
+`;
 
 const DescriptionStyled = styled.p``;
 
