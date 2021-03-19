@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import SearchBar from '../common/SearchBar';
 import SemesterSelect from '../common/SemesterSelect';
 import SerialRow from '../common/SerialRow';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import { ArchiveSearchContainerStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { computeCurrentSemester } from '../utils/semesterUtils';
 import { getSerialsBySemester, getSerialsBySearchString } from '../utils/serialServices';
@@ -63,10 +63,10 @@ export default function SerialsPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>Filmreihen</PageHeadlineStyled>
-            <FormsContainerStyled>
+            <ArchiveSearchContainerStyled>
                 <SemesterSelect semester={semester} setSemester={setSemester} setIsLoading={setIsLoading} />
                 <SearchBar search={search} setSearch={setSearch} setIsLoading={setIsLoading} />
-            </FormsContainerStyled>
+            </ArchiveSearchContainerStyled>
             {isLoading ? (
                 <div>Loading</div>
             ) : (
@@ -79,16 +79,5 @@ export default function SerialsPage() {
         </PageStyled>
     );
 }
-
-const FormsContainerStyled = styled.div`
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    column-gap: 40px;
-
-    @media (max-width: 767px) {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
-`;
 
 const ListStyled = styled.ul``;

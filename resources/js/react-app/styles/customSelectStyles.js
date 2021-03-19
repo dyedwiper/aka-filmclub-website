@@ -1,33 +1,47 @@
 export const semesterSelectStyles = {
-    option: customOptionStyles,
     container: (provided) => ({
         ...provided,
         display: 'inline-block',
         width: '150px',
         marginLeft: '20px',
     }),
+    control: customControlStyles,
+    dropdownIndicator: customDropdownIndicatorStyles,
+    indicatorSeparator: customIndicatorSeparatorStyles,
+    singleValue: customSingleValueStyles,
+    menu: customMenuStyles,
+    option: customOptionStyles,
 };
 
 export const serialSemesterSelectStyles = {
-    option: customOptionStyles,
     container: (provided) => ({
         ...provided,
         display: 'block',
         width: '250px',
     }),
+    control: customControlStyles,
+    dropdownIndicator: customDropdownIndicatorStyles,
+    indicatorSeparator: customIndicatorSeparatorStyles,
+    singleValue: customSingleValueStyles,
+    menu: customMenuStyles,
+    option: customOptionStyles,
 };
 
 export const serialSelectStyles = {
-    option: customOptionStyles,
     container: (provided) => ({
         ...provided,
         display: 'block',
         width: '100%',
     }),
+    control: customControlStyles,
+    dropdownIndicator: customDropdownIndicatorStyles,
+    indicatorSeparator: customIndicatorSeparatorStyles,
+    singleValue: customSingleValueStyles,
+    menu: customMenuStyles,
+    option: customOptionStyles,
 };
 
 export const userStatusSelectStyles = {
-    option: customOptionStyles,
     container: (provided) => ({
         ...provided,
         display: 'inline-block',
@@ -36,22 +50,78 @@ export const userStatusSelectStyles = {
             width: '100%',
         },
     }),
+    control: customControlStyles,
+    dropdownIndicator: customDropdownIndicatorStyles,
+    indicatorSeparator: customIndicatorSeparatorStyles,
+    singleValue: customSingleValueStyles,
+    menu: customMenuStyles,
+    option: customOptionStyles,
 };
 
 export const positionSelectStyles = {
-    option: customOptionStyles,
     container: (provided) => ({
         ...provided,
         display: 'inline-block',
-        width: '200px',
+        width: '100px',
         '@media (max-width: 767px)': {
             width: '100%',
         },
     }),
+    control: customControlStyles,
+    dropdownIndicator: customDropdownIndicatorStyles,
+    indicatorSeparator: customIndicatorSeparatorStyles,
+    singleValue: customSingleValueStyles,
+    menu: customMenuStyles,
+    option: customOptionStyles,
 };
 
-const customOptionStyles = (provided, state) => ({
-    ...provided,
-    backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
-    color: 'black',
-});
+function customControlStyles(provided) {
+    return {
+        ...provided,
+        borderColor: 'black',
+        borderRadius: '0',
+        cursor: 'pointer',
+        '&:hover': {
+            borderColor: 'var(--aka-grau)',
+        },
+    };
+}
+
+function customDropdownIndicatorStyles(provided) {
+    return {
+        ...provided,
+        color: 'black',
+        '&:hover': {
+            color: 'var(--aka-grau)',
+        },
+    };
+}
+
+function customIndicatorSeparatorStyles(provided) {
+    return {
+        ...provided,
+        backgroundColor: 'var(--aka-gelb)',
+    };
+}
+
+function customSingleValueStyles(provided) {
+    return {
+        ...provided,
+        color: 'black',
+    };
+}
+
+function customMenuStyles(provided) {
+    return {
+        ...provided,
+        borderRadius: '=',
+    };
+}
+
+function customOptionStyles(provided, state) {
+    return {
+        ...provided,
+        backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
+        color: 'black',
+    };
+}

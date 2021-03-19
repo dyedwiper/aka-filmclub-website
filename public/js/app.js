@@ -5396,6 +5396,8 @@ function Footer() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
           to: "/contact",
           children: "Kontakt"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(VerticalLineStyled, {
+          children: "|"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
           to: "/links",
           children: "Links"
@@ -5444,17 +5446,21 @@ var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(reac
   displayName: "Footer__LinkStyled",
   componentId: "d2i78s-4"
 })(["display:inline-block;margin:0 5px;color:black;&:hover{text-decoration:underline white;}"]);
+var VerticalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.span.withConfig({
+  displayName: "Footer__VerticalLineStyled",
+  componentId: "d2i78s-5"
+})([""]);
 var IconLinksContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__IconLinksContainerStyled",
-  componentId: "d2i78s-5"
+  componentId: "d2i78s-6"
 })(["justify-self:right;"]);
 var IconLinkStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.a.withConfig({
   displayName: "Footer__IconLinkStyled",
-  componentId: "d2i78s-6"
+  componentId: "d2i78s-7"
 })(["display:inline-block;margin:0 5px;"]);
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
   displayName: "Footer__ImageStyled",
-  componentId: "d2i78s-7"
+  componentId: "d2i78s-8"
 })(["height:32px;"]);
 
 /***/ }),
@@ -6179,7 +6185,7 @@ function SemesterSelect(_ref) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     setSemesterOptions((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeSemesterOptions)());
-  }, []); // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird
+  }, []); // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird.
 
   if (!semesterOptions.length) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
@@ -7940,7 +7946,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "PageHeadlineStyled": () => /* binding */ PageHeadlineStyled,
 /* harmony export */   "HorizontalRuleStyled": () => /* binding */ HorizontalRuleStyled,
 /* harmony export */   "VerticalLineStyled": () => /* binding */ VerticalLineStyled,
-/* harmony export */   "AddItemLinkStyled": () => /* binding */ AddItemLinkStyled
+/* harmony export */   "AddItemLinkStyled": () => /* binding */ AddItemLinkStyled,
+/* harmony export */   "ArchiveSearchContainerStyled": () => /* binding */ ArchiveSearchContainerStyled
 /* harmony export */ });
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
@@ -7965,7 +7972,11 @@ var VerticalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.
 var AddItemLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link).withConfig({
   displayName: "styledElements__AddItemLinkStyled",
   componentId: "sc-1sog38p-4"
-})(["display:inline-block;padding:5px;border:solid 1px black;border-radius:5px;box-shadow:1px 1px 1px black;color:black;&:active{background-color:var(--aka-gelb);}&:hover{text-decoration:none;}"]);
+})(["display:inline-block;padding:5px;border:solid 1px black;box-shadow:1px 1px 1px black;color:black;&:active{background-color:var(--aka-gelb);}&:hover{text-decoration:none;}"]);
+var ArchiveSearchContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.div.withConfig({
+  displayName: "styledElements__ArchiveSearchContainerStyled",
+  componentId: "sc-1sog38p-5"
+})(["display:grid;grid-template-columns:280px 1fr;align-items:center;column-gap:40px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:1fr 1fr;}"]);
 
 /***/ }),
 
@@ -8227,7 +8238,7 @@ function ArchivePage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageHeadlineStyled, {
       children: "Programmarchiv"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormsContainerStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.ArchiveSearchContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_4__.default, {
         semester: semester,
         setSemester: setSemester,
@@ -8248,13 +8259,9 @@ function ArchivePage() {
     })]
   });
 }
-var FormsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "ArchivePage__FormsContainerStyled",
-  componentId: "c8luhi-0"
-})(["display:grid;grid-template-columns:280px 1fr;column-gap:40px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:1fr 1fr;}"]);
 var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
   displayName: "ArchivePage__ListStyled",
-  componentId: "c8luhi-1"
+  componentId: "c8luhi-0"
 })([""]);
 
 /***/ }),
@@ -10042,7 +10049,7 @@ function SerialsPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageHeadlineStyled, {
       children: "Filmreihen"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormsContainerStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.ArchiveSearchContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
         semester: semester,
         setSemester: setSemester,
@@ -10063,13 +10070,9 @@ function SerialsPage() {
     })]
   });
 }
-var FormsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "SerialsPage__FormsContainerStyled",
-  componentId: "sc-4r2czp-0"
-})(["display:grid;grid-template-columns:280px 1fr;column-gap:40px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:1fr 1fr;}"]);
 var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
   displayName: "SerialsPage__ListStyled",
-  componentId: "sc-4r2czp-1"
+  componentId: "sc-4r2czp-0"
 })([""]);
 
 /***/ }),
@@ -11631,7 +11634,7 @@ var SubheadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h
 var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.ul.withConfig({
   displayName: "UsersPage__ListStyled",
   componentId: "sc-941gjx-4"
-})(["overflow:auto;height:300px;padding:5px;border:solid 1px black;border-radius:5px;"]);
+})(["overflow:auto;height:300px;padding:5px;border:solid 1px black;"]);
 var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.li.withConfig({
   displayName: "UsersPage__ListItemStyled",
   componentId: "sc-941gjx-5"
@@ -11656,7 +11659,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: #616161;\n      --aka-red: darkred;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise. */\n    width: 100%;\n\n    &:disabled {\n        border-color: lightgrey;\n    }\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  /* Fix for Safari because empty date inputs have no height otherwise. */\n  input[type=\"date\"]{\n      min-height: 32px;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n\n    &:disabled {\n        cursor: not-allowed;\n        opacity: 0.5;\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: var(--aka-grau);\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  p {\n      margin: 0;\n      color: black;\n  } \n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n\n  h1, h2, h3, h4, h5, h6 {\n      color: black;\n  }\n\n  hr {\n    height: 10px;\n    width: 80%;\n    margin: 20px 0;\n    border: none;\n    background-color: var(--aka-gelb);\n  }\n\n  input[id=\"openLinkInNewWindow\"] {\n    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */\n    width: initial;\n\n    &:checked {\n        background-color: black;\n    }\n  }\n\n  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/\n  div[class=\"rdw-link-modal\"] {\n      box-sizing: initial;\n  }\n\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: #616161;\n      --aka-red: darkred;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise. */\n    width: 100%;\n\n    &:disabled {\n        border-color: lightgrey;\n    }\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  /* Fix for Safari because empty date inputs have no height otherwise. */\n  input[type=\"date\"]{\n      min-height: 32px;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n\n    &:disabled {\n        cursor: not-allowed;\n        opacity: 0.5;\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: var(--aka-grau);\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  p {\n      margin: 0;\n      color: black;\n  } \n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n\n  h1, h2, h3, h4, h5, h6 {\n      color: black;\n  }\n\n  hr {\n    height: 10px;\n    width: 80%;\n    margin: 20px 0;\n    border: none;\n    background-color: var(--aka-gelb);\n  }\n\n  input[id=\"openLinkInNewWindow\"] {\n    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */\n    width: initial;\n\n    &:checked {\n        background-color: black;\n    }\n  }\n\n  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/\n  div[class=\"rdw-link-modal\"] {\n      box-sizing: initial;\n  }\n\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -11694,35 +11697,49 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var semesterSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
       width: '150px',
       marginLeft: '20px'
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 var serialSemesterSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'block',
       width: '250px'
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 var serialSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'block',
       width: '100%'
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 var userStatusSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
@@ -11731,27 +11748,76 @@ var userStatusSelectStyles = {
         width: '100%'
       }
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 var positionSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
-      width: '200px',
+      width: '100px',
       '@media (max-width: 767px)': {
         width: '100%'
       }
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 
-var customOptionStyles = function customOptionStyles(provided, state) {
+function customControlStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    borderColor: 'black',
+    borderRadius: '0',
+    cursor: 'pointer',
+    '&:hover': {
+      borderColor: 'var(--aka-grau)'
+    }
+  });
+}
+
+function customDropdownIndicatorStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    color: 'black',
+    '&:hover': {
+      color: 'var(--aka-grau)'
+    }
+  });
+}
+
+function customIndicatorSeparatorStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    backgroundColor: 'var(--aka-gelb)'
+  });
+}
+
+function customSingleValueStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    color: 'black'
+  });
+}
+
+function customMenuStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    borderRadius: '='
+  });
+}
+
+function customOptionStyles(provided, state) {
   return _objectSpread(_objectSpread({}, provided), {}, {
     backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
     color: 'black'
   });
-};
+}
 
 /***/ }),
 
@@ -11769,8 +11835,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "editorStyleObject": () => /* binding */ editorStyleObject
 /* harmony export */ });
 var wrapperStyleObject = {
-  border: '1px solid black',
-  borderRadius: '5px'
+  border: '1px solid black'
 };
 var toolbarStyleObject = {
   backgroundColor: 'var(--aka-gelb)'

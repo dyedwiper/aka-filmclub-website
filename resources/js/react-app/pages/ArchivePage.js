@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import SearchBar from '../common/SearchBar';
 import SemesterSelect from '../common/SemesterSelect';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import { ArchiveSearchContainerStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/screeningServices';
 import { computeCurrentSemester } from '../utils/semesterUtils';
@@ -63,10 +63,10 @@ export default function ArchivePage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>Programmarchiv</PageHeadlineStyled>
-            <FormsContainerStyled>
+            <ArchiveSearchContainerStyled>
                 <SemesterSelect semester={semester} setSemester={setSemester} setIsLoading={setIsLoading} />
                 <SearchBar search={search} setSearch={setSearch} setIsLoading={setIsLoading} />
-            </FormsContainerStyled>
+            </ArchiveSearchContainerStyled>
             {isLoading ? (
                 <div>Loading</div>
             ) : (
@@ -79,16 +79,5 @@ export default function ArchivePage() {
         </PageStyled>
     );
 }
-
-const FormsContainerStyled = styled.div`
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    column-gap: 40px;
-
-    @media (max-width: 767px) {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
-`;
 
 const ListStyled = styled.ul``;

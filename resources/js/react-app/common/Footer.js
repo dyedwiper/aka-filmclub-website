@@ -12,6 +12,7 @@ export default function Footer() {
                 <HeadlineStyled>Akademischer Filmclub an der Universität Freiburg e.V. (seit 1957)</HeadlineStyled>
                 <LinksContainerStyled>
                     <LinkStyled to="/contact">Kontakt</LinkStyled>
+                    <VerticalLineStyled>|</VerticalLineStyled>
                     <LinkStyled to="/links">Links</LinkStyled>
                 </LinksContainerStyled>
                 <IconLinksContainerStyled>
@@ -78,6 +79,8 @@ const LinkStyled = styled(Link)`
         text-decoration: underline white;
     }
 `;
+
+const VerticalLineStyled = styled.span``;
 
 const IconLinksContainerStyled = styled.div`
     justify-self: right;

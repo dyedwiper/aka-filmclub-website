@@ -11,7 +11,7 @@ export default function SemesterSelect({ semester, setSemester, setIsLoading }) 
         setSemesterOptions(computeSemesterOptions());
     }, []);
 
-    // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird
+    // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird.
     if (!semesterOptions.length) return <></>;
 
     return (
