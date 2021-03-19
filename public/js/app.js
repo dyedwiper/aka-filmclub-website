@@ -8117,9 +8117,21 @@ function ArchivePage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: "Programmarchiv"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
-      setSemester: setSemester,
-      setIsLoading: setIsLoading
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormsContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
+        setSemester: setSemester,
+        setIsLoading: setIsLoading
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchFormStyled, {
+        onSubmit: handleSubmit,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchLabelStyled, {
+          children: ["Suchbegriff:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchInputStyled, {
+            name: "search"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchButtonStyled, {
+          type: "submit",
+          children: "Suchen"
+        })]
+      })]
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading"
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
@@ -8130,10 +8142,38 @@ function ArchivePage() {
       })
     })]
   });
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    var searchString = event.target.search.value;
+    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySearchString)(searchString).then(function (res) {
+      setScreenings(res.data);
+    });
+  }
 }
+var FormsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
+  displayName: "ArchivePage__FormsContainerStyled",
+  componentId: "c8luhi-0"
+})(["display:grid;grid-template-columns:280px 1fr;column-gap:40px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:1fr 1fr;}"]);
+var SearchFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.form.withConfig({
+  displayName: "ArchivePage__SearchFormStyled",
+  componentId: "c8luhi-1"
+})([""]);
+var SearchLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.label.withConfig({
+  displayName: "ArchivePage__SearchLabelStyled",
+  componentId: "c8luhi-2"
+})([""]);
+var SearchInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.input.withConfig({
+  displayName: "ArchivePage__SearchInputStyled",
+  componentId: "c8luhi-3"
+})(["width:150px;margin-left:20px;"]);
+var SearchButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.button.withConfig({
+  displayName: "ArchivePage__SearchButtonStyled",
+  componentId: "c8luhi-4"
+})(["margin-left:20px;"]);
 var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
   displayName: "ArchivePage__ScreeningsListStyled",
-  componentId: "c8luhi-0"
+  componentId: "c8luhi-5"
 })([""]);
 
 /***/ }),
@@ -11791,6 +11831,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
 /* harmony export */   "getScreeningsBySemester": () => /* binding */ getScreeningsBySemester,
 /* harmony export */   "getScreeningByUuid": () => /* binding */ getScreeningByUuid,
+/* harmony export */   "getScreeningsBySearchString": () => /* binding */ getScreeningsBySearchString,
 /* harmony export */   "postScreening": () => /* binding */ postScreening,
 /* harmony export */   "deleteScreening": () => /* binding */ deleteScreening
 /* harmony export */ });
@@ -11808,6 +11849,9 @@ function getScreeningsBySemester(semester) {
 }
 function getScreeningByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/single/' + uuid);
+}
+function getScreeningsBySearchString(search) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/search/' + search);
 }
 function postScreening(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/screenings', data);

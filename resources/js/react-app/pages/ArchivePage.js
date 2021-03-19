@@ -4,7 +4,7 @@ import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import SemesterSelect from '../common/SemesterSelect';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
-import { getScreeningsBySemester } from '../utils/screeningServices';
+import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/screeningServices';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
@@ -30,7 +30,16 @@ export default function ArchivePage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>Programmarchiv</PageHeadlineStyled>
-            <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
+            <FormsContainerStyled>
+                <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
+                <SearchFormStyled onSubmit={handleSubmit}>
+                    <SearchLabelStyled>
+                        Suchbegriff:
+                        <SearchInputStyled name="search" />
+                    </SearchLabelStyled>
+                    <SearchButtonStyled type="submit">Suchen</SearchButtonStyled>
+                </SearchFormStyled>
+            </FormsContainerStyled>
             {isLoading ? (
                 <div>Loading</div>
             ) : (
@@ -42,6 +51,38 @@ export default function ArchivePage() {
             )}
         </PageStyled>
     );
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        const searchString = event.target.search.value;
+        getScreeningsBySearchString(searchString).then((res) => {
+            setScreenings(res.data);
+        });
+    }
 }
+
+const FormsContainerStyled = styled.div`
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    column-gap: 40px;
+
+    @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+`;
+
+const SearchFormStyled = styled.form``;
+
+const SearchLabelStyled = styled.label``;
+
+const SearchInputStyled = styled.input`
+    width: 150px;
+    margin-left: 20px;
+`;
+
+const SearchButtonStyled = styled.button`
+    margin-left: 20px;
+`;
 
 const ScreeningsListStyled = styled.ul``;

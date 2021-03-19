@@ -56,6 +56,11 @@ class ScreeningController extends Controller
         }
     }
 
+    public function GetScreeningsBySearchString(string $search)
+    {
+        return Screening::where('title', 'like', '%' . $search . '%')->get();
+    }
+
     public function PostScreening(ScreeningFormRequest $request)
     {
         $screening = new Screening([
