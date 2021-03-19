@@ -5261,17 +5261,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+/* harmony import */ var _assets_calendar_icon_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../assets/calendar_icon.png */ "./resources/js/react-app/assets/calendar_icon.png");
+
+
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    height: 16px;\n    margin-right: 10px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    display: block;\n    margin-bottom: 10px;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
 
 
 
 function CalendarDownloadLink(_ref) {
   var screening = _ref.screening;
-  var icsString = "\n        BEGIN:VCALENDAR\n        VERSION:2.0\n        PRODID:-//aka-Filmclub e.V.//aka-Filmclub e.V. iCalendar 2.0//EN\n        CALSCALE:GREGORIAN\n        METHOD:PUBLISH\n        X-WR-CALNAME:aka-Filmclub\n        X-WR-TIMEZONE:Europe/Berlin\n        BEGIN:VEVENT\n        SUMMARY:aka-Filmclub: ".concat(screening.title, "\n        LOCATION:").concat(screening.venue, "\n        DESCRIPTION:https://aka-filmclub.de/screenings/").concat(screening.uuid, "\n        DTSTART:").concat((0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToIcsString)(screening.date), "\n        DTEND:").concat((0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToIcsString)(screening.date, screening.length), "\n        END:VEVENT\n        END:VCALENDAR\n    ");
-  console.log((0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToIcsString)(screening.date));
-  console.log(icsString);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {});
+  // The template string must be unindented like this.
+  var icsString = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//aka-Filmclub e.V.//aka-Filmclub e.V. iCalendar 2.0//EN\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nX-WR-CALNAME:aka-Filmclub\nX-WR-TIMEZONE:Europe/Berlin\nBEGIN:VEVENT\nSUMMARY:aka-Filmclub: ".concat(screening.title, "\nLOCATION:").concat(screening.venue, "\nDESCRIPTION:https://aka-filmclub.de/screenings/").concat(screening.uuid, "\nDTSTART:").concat((0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToIcsString)(screening.date), "\nDTEND:").concat((0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToIcsString)(screening.date, screening.length), "\nEND:VEVENT\nEND:VCALENDAR");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(CalendarDownloadLinkStyled, {
+    href: 'data:text/calendar,' + icsString,
+    download: 'aka-Filmclub_' + screening.title,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(IconStyled, {
+      src: _assets_calendar_icon_png__WEBPACK_IMPORTED_MODULE_3__.default
+    }), "akalender-Eintrag runterladen"]
+  });
 }
+var CalendarDownloadLinkStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.a(_templateObject());
+var IconStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img(_templateObject2());
 
 /***/ }),
 
@@ -30597,6 +30632,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/aka_logo.png?3edbd179dc772c6863ebf08797cb1e34");
+
+/***/ }),
+
+/***/ "./resources/js/react-app/assets/calendar_icon.png":
+/*!*********************************************************!*\
+  !*** ./resources/js/react-app/assets/calendar_icon.png ***!
+  \*********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/calendar_icon.png?cb9b984a9f128cee61e5b6642dd45ad3");
 
 /***/ }),
 
