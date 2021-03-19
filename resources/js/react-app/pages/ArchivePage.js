@@ -7,13 +7,13 @@ import SemesterSelect from '../common/SemesterSelect';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/screeningServices';
+import { computeCurrentSemester } from '../utils/semesterUtils';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
+    // The semester and search states are stored in an object,
+    // so that also a setting of state with an unchanged value is recognized as an update.
     const [semester, setSemester] = useState({});
-    // The search state is stored in an object,
-    // so that also a search with an unchanged value is recognized as a state update.
-    // A changed string would not be recognized.
     const [search, setSearch] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
@@ -35,12 +35,11 @@ export default function ArchivePage() {
             setSearch({ value: searchFromQuery });
         } else if (semesterFromQuery) {
             setSemester({ value: semesterFromQuery });
+        } else {
+            setSemester({ value: computeCurrentSemester() });
         }
     }, []);
 
-    // The useEffect-hook for semester must be above the hook for search.
-    // Otherwise the semester select overwrites the search.
-    // This is not ideal but I haven't found a nicer solution.
     useEffect(() => {
         if (semester.value) {
             getScreeningsBySemester(semester.value).then((res) => {
@@ -71,11 +70,11 @@ export default function ArchivePage() {
             {isLoading ? (
                 <div>Loading</div>
             ) : (
-                <ScreeningsListStyled>
+                <ListStyled>
                     {screenings.map((screening) => (
                         <ScreeningsListItem key={screening.id} screening={screening} />
                     ))}
-                </ScreeningsListStyled>
+                </ListStyled>
             )}
         </PageStyled>
     );
@@ -92,4 +91,4 @@ const FormsContainerStyled = styled.div`
     }
 `;
 
-const ScreeningsListStyled = styled.ul``;
+const ListStyled = styled.ul``;

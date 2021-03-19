@@ -12,6 +12,10 @@ export function getSerialByUuid(uuid) {
     return axios.get('/api/serials/uuid/' + uuid);
 }
 
+export function getSerialsBySearchString(search) {
+    return axios.get('/api/serials/search/' + search);
+}
+
 export function postSerial(data) {
     return axios.post('/api/serials', data);
 }

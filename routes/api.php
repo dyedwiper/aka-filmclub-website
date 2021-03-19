@@ -116,6 +116,10 @@ Route::prefix('serials')->group(function () {
         SerialController::class, 'GetSerialByUuid'
     ]);
 
+    Route::get('search/{search}', [
+        SerialController::class, 'GetSerialsBySearchString'
+    ]);
+
     Route::get('/update_uuids', [
         SerialController::class, 'UpdateUuids'
     ]);

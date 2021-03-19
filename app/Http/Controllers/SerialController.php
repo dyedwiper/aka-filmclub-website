@@ -45,6 +45,15 @@ class SerialController extends Controller
         return Serial::where('uuid', $uuid)->with('image', 'screenings')->first();
     }
 
+    public function GetSerialsBySearchString(string $search)
+    {
+        return Serial::where('title', 'like', '%' . $search . '%')
+            ->orWhere('subtitle', 'like', '%' . $search . '%')
+            ->orWhere('article', 'like', '%' . $search . '%')
+            ->orWhere('author', 'like', '%' . $search . '%')
+            ->get();
+    }
+
     public function PostSerial(SerialFormRequest $request)
     {
         $serial = new Serial([

@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { semesterSelectStyles } from '../styles/customSelectStyles';
-import { computeCurrentSemester, computeSemesterOptions } from '../utils/semesterUtils';
+import { computeSemesterOptions } from '../utils/semesterUtils';
 
 export default function SemesterSelect({ semester, setSemester, setIsLoading }) {
     const [semesterOptions, setSemesterOptions] = useState([]);
 
     useEffect(() => {
-        setSemester(computeCurrentSemester());
         setSemesterOptions(computeSemesterOptions());
     }, []);
 
