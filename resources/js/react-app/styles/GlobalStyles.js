@@ -25,7 +25,6 @@ export default createGlobalStyle`
     -webkit-appearance: none;
     -moz-appearance: none;
     border: solid 1px black;
-    border-radius: 5px;
     padding: 5px;
   }
 

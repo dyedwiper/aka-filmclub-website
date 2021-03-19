@@ -1,6 +1,5 @@
 export const wrapperStyleObject = {
     border: '1px solid black',
-    borderRadius: '5px',
 };
 
 export const toolbarStyleObject = {

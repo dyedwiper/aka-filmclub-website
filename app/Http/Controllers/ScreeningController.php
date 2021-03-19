@@ -43,7 +43,7 @@ class ScreeningController extends Controller
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
                 ->whereMonth('date', '<', 4)
-                ->orderBy('date')
+                ->orderByDesc('date')
                 ->get();
         }
 
@@ -51,9 +51,25 @@ class ScreeningController extends Controller
             return Screening::whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)
-                ->orderBy('date')
+                ->orderByDesc('date')
                 ->get();
         }
+    }
+
+    public function GetScreeningsBySearchString(string $search)
+    {
+        return Screening::where('title', 'like', '%' . $search . '%')
+            ->orWhere('original_title', 'like', '%' . $search . '%')
+            ->orWhere('synopsis', 'like', '%' . $search . '%')
+            ->orWhere('directed_by', 'like', '%' . $search . '%')
+            ->orWhere('written_by', 'like', '%' . $search . '%')
+            ->orWhere('music_by', 'like', '%' . $search . '%')
+            ->orWhere('shot_by', 'like', '%' . $search . '%')
+            ->orWhere('cast', 'like', '%' . $search . '%')
+            ->orWhere('special', 'like', '%' . $search . '%')
+            ->orWhere('author', 'like', '%' . $search . '%')
+            ->orderByDesc('date')
+            ->get();
     }
 
     public function PostScreening(ScreeningFormRequest $request)

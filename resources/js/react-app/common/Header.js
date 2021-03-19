@@ -125,16 +125,23 @@ const ContentContainerStyled = styled.div`
     align-items: center;
     height: 120px;
     max-width: 1024px;
+    padding: 0 20px;
     margin: 0 auto;
 
     @media (max-width: 767px) {
         grid-template-columns: 80px 1fr 80px;
         justify-items: center;
         height: 60px;
+        padding: 0;
     }
 `;
 
-const LinkStyled = styled(Link)``;
+const LinkStyled = styled(Link)`
+    @media (max-width: 767px) {
+        justify-self: left;
+        margin-left: 20px;
+    }
+`;
 
 const LogoStyled = styled.img`
     height: 100px;
@@ -158,7 +165,7 @@ const PageTitleStyled = styled.h2`
 `;
 
 const NavStyled = styled.nav`
-    padding: 20px;
+    padding: 20px 60px;
     background-color: white;
 
     @media (max-width: 767px) {
@@ -168,6 +175,7 @@ const NavStyled = styled.nav`
         overflow: auto;
         height: calc(100vh - 60px);
         width: 100vw;
+        padding: 20px;
         padding-bottom: 50px;
         background-color: var(--aka-gelb);
         opacity: 0.9;

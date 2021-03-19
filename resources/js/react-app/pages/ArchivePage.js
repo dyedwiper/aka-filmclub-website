@@ -1,17 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
+import SearchBar from '../common/SearchBar';
 import SemesterSelect from '../common/SemesterSelect';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
+import { ArchiveSearchContainerStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
-import { getScreeningsBySemester } from '../utils/screeningServices';
+import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/screeningServices';
+import { computeCurrentSemester } from '../utils/semesterUtils';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
-    const [semester, setSemester] = useState('');
+    // The semester and search states are stored in an object,
+    // so that also a setting of state with an unchanged value is recognized as an update.
+    const [semester, setSemester] = useState({});
+    const [search, setSearch] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
     const { setPageTitle } = useContext(Context);
+
+    let history = useHistory();
 
     useEffect(() => {
         document.title = 'Archiv | aka-Filmclub';
@@ -19,29 +27,56 @@ export default function ArchivePage() {
     }, []);
 
     useEffect(() => {
-        if (semester) {
-            getScreeningsBySemester(semester).then((res) => {
+        const queryParams = new URLSearchParams(window.location.search);
+        const searchFromQuery = queryParams.get('search');
+        const semesterFromQuery = queryParams.get('semester');
+        if (searchFromQuery) {
+            setSearch({ value: searchFromQuery });
+        } else if (semesterFromQuery) {
+            setSemester({ value: semesterFromQuery });
+        } else {
+            setSemester({ value: computeCurrentSemester() });
+        }
+    }, []);
+
+    useEffect(() => {
+        if (semester.value) {
+            getScreeningsBySemester(semester.value).then((res) => {
+                history.push('/program/archive?semester=' + semester.value);
                 setScreenings(res.data);
                 setIsLoading(false);
             });
         }
     }, [semester]);
 
+    useEffect(() => {
+        if (search.value) {
+            getScreeningsBySearchString(search.value).then((res) => {
+                history.push('/program/archive?search=' + search.value);
+                setScreenings(res.data);
+                setIsLoading(false);
+            });
+        }
+    }, [search]);
+
     return (
         <PageStyled>
             <PageHeadlineStyled>Programmarchiv</PageHeadlineStyled>
-            <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
+            <ArchiveSearchContainerStyled>
+                <SemesterSelect semester={semester} setSemester={setSemester} setIsLoading={setIsLoading} />
+                <SearchBar search={search} setSearch={setSearch} setIsLoading={setIsLoading} />
+            </ArchiveSearchContainerStyled>
             {isLoading ? (
                 <div>Loading</div>
             ) : (
-                <ScreeningsListStyled>
+                <ListStyled>
                     {screenings.map((screening) => (
                         <ScreeningsListItem key={screening.id} screening={screening} />
                     ))}
-                </ScreeningsListStyled>
+                </ListStyled>
             )}
         </PageStyled>
     );
 }
 
-const ScreeningsListStyled = styled.ul``;
+const ListStyled = styled.ul``;

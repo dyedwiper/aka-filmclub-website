@@ -52,6 +52,10 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'GetScreeningsBySemester'
     ]);
 
+    Route::get('search/{search}', [
+        ScreeningController::class, 'GetScreeningsBySearchString'
+    ]);
+
     Route::get('/update_uuids', [
         ScreeningController::class, 'UpdateUuids'
     ]);
@@ -110,6 +114,10 @@ Route::prefix('serials')->group(function () {
 
     Route::get('/uuid/{uuid}', [
         SerialController::class, 'GetSerialByUuid'
+    ]);
+
+    Route::get('search/{search}', [
+        SerialController::class, 'GetSerialsBySearchString'
     ]);
 
     Route::get('/update_uuids', [

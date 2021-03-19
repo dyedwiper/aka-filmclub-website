@@ -5396,6 +5396,8 @@ function Footer() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
           to: "/contact",
           children: "Kontakt"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(VerticalLineStyled, {
+          children: "|"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
           to: "/links",
           children: "Links"
@@ -5427,11 +5429,11 @@ function Footer() {
 var FooterStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.footer.withConfig({
   displayName: "Footer__FooterStyled",
   componentId: "d2i78s-0"
-})(["height:60px;width:100%;padding:0 20px;background-color:var(--aka-gelb);"]);
+})(["height:60px;width:100vw;background-color:var(--aka-gelb);"]);
 var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__ContentContainerStyled",
   componentId: "d2i78s-1"
-})(["display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;max-width:1024px;height:100%;margin:0 auto;@media (max-width:767px){grid-template-columns:1fr 1fr;}"]);
+})(["display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;max-width:1024px;height:100%;margin:0 auto;padding:0 20px;@media (max-width:767px){grid-template-columns:1fr 1fr;}"]);
 var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h1.withConfig({
   displayName: "Footer__HeadlineStyled",
   componentId: "d2i78s-2"
@@ -5439,22 +5441,26 @@ var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h1.w
 var LinksContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__LinksContainerStyled",
   componentId: "d2i78s-3"
-})(["justify-self:center;@media (max-width:767px){justify-self:left;}"]);
+})(["justify-self:center;@media (max-width:767px){justify-self:left;margin-left:-5px;}"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link).withConfig({
   displayName: "Footer__LinkStyled",
   componentId: "d2i78s-4"
 })(["display:inline-block;margin:0 5px;color:black;&:hover{text-decoration:underline white;}"]);
+var VerticalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.span.withConfig({
+  displayName: "Footer__VerticalLineStyled",
+  componentId: "d2i78s-5"
+})([""]);
 var IconLinksContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__IconLinksContainerStyled",
-  componentId: "d2i78s-5"
+  componentId: "d2i78s-6"
 })(["justify-self:right;"]);
 var IconLinkStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.a.withConfig({
   displayName: "Footer__IconLinkStyled",
-  componentId: "d2i78s-6"
+  componentId: "d2i78s-7"
 })(["display:inline-block;margin:0 5px;"]);
 var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
   displayName: "Footer__ImageStyled",
-  componentId: "d2i78s-7"
+  componentId: "d2i78s-8"
 })(["height:32px;"]);
 
 /***/ }),
@@ -5724,11 +5730,11 @@ var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.header
 var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__ContentContainerStyled",
   componentId: "d7im2b-1"
-})(["display:grid;grid-template-columns:180px 1fr;align-items:center;height:120px;max-width:1024px;margin:0 auto;@media (max-width:767px){grid-template-columns:80px 1fr 80px;justify-items:center;height:60px;}"]);
+})(["display:grid;grid-template-columns:180px 1fr;align-items:center;height:120px;max-width:1024px;padding:0 20px;margin:0 auto;@media (max-width:767px){grid-template-columns:80px 1fr 80px;justify-items:center;height:60px;padding:0;}"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link).withConfig({
   displayName: "Header__LinkStyled",
   componentId: "d7im2b-2"
-})([""]);
+})(["@media (max-width:767px){justify-self:left;margin-left:20px;}"]);
 var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.img.withConfig({
   displayName: "Header__LogoStyled",
   componentId: "d7im2b-3"
@@ -5740,7 +5746,7 @@ var PageTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.
 var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.nav.withConfig({
   displayName: "Header__NavStyled",
   componentId: "d7im2b-5"
-})(["padding:20px;background-color:white;@media (max-width:767px){display:", ";position:absolute;top:60px;overflow:auto;height:calc(100vh - 60px);width:100vw;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
+})(["padding:20px 60px;background-color:white;@media (max-width:767px){display:", ";position:absolute;top:60px;overflow:auto;height:calc(100vh - 60px);width:100vw;padding:20px;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
   return props.isNavOpen ? 'block' : 'none';
 });
 var DropdownContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
@@ -6018,7 +6024,7 @@ function Paginator(_ref) {
 var PaginatorStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
   displayName: "Paginator__PaginatorStyled",
   componentId: "sc-1g3uqar-0"
-})(["width:210px;margin:40px auto;border-top:3px solid black;border-bottom:3px solid black;border-radius:5px;"]);
+})(["width:210px;margin:40px auto;border-top:3px solid black;border-bottom:3px solid black;"]);
 var BorderContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
   displayName: "Paginator__BorderContainerStyled",
   componentId: "sc-1g3uqar-1"
@@ -6067,6 +6073,73 @@ function PrivateRoute(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/react-app/common/SearchBar.js":
+/*!****************************************************!*\
+  !*** ./resources/js/react-app/common/SearchBar.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ SearchBar
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+
+
+function SearchBar(_ref) {
+  var search = _ref.search,
+      setSearch = _ref.setSearch,
+      setIsLoading = _ref.setIsLoading;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchFormStyled, {
+    htmlFor: "archiveSearchInput",
+    onSubmit: handleSubmit,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      children: "Suchbegriff:"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+      id: "archiveSearchInput",
+      name: "search",
+      defaultValue: search.value
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+      type: "submit",
+      children: "Suchen"
+    })]
+  });
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    if (event.target.search.value) {
+      setSearch({
+        value: event.target.search.value
+      });
+      setIsLoading(true);
+    }
+  }
+}
+var SearchFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.form.withConfig({
+  displayName: "SearchBar__SearchFormStyled",
+  componentId: "t3oy12-0"
+})([""]);
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.label.withConfig({
+  displayName: "SearchBar__LabelStyled",
+  componentId: "t3oy12-1"
+})(["margin-right:20px;@media (max-width:767px){display:none;}"]);
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input.withConfig({
+  displayName: "SearchBar__InputStyled",
+  componentId: "t3oy12-2"
+})(["width:150px;"]);
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.button.withConfig({
+  displayName: "SearchBar__ButtonStyled",
+  componentId: "t3oy12-3"
+})(["margin-left:20px;"]);
+
+/***/ }),
+
 /***/ "./resources/js/react-app/common/SemesterSelect.js":
 /*!*********************************************************!*\
   !*** ./resources/js/react-app/common/SemesterSelect.js ***!
@@ -6106,7 +6179,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SemesterSelect(_ref) {
-  var setSemester = _ref.setSemester,
+  var semester = _ref.semester,
+      setSemester = _ref.setSemester,
       setIsLoading = _ref.setIsLoading;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -6115,29 +6189,41 @@ function SemesterSelect(_ref) {
       setSemesterOptions = _useState2[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    setSemester((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeCurrentSemester)());
     setSemesterOptions((0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeSemesterOptions)());
-  }, []); // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird
+  }, []); // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird.
 
   if (!semesterOptions.length) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
-    children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      htmlFor: "semesterSelect",
+      children: "Semester:"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
+      id: "semesterSelect",
       options: semesterOptions,
-      defaultValue: semesterOptions[0],
+      defaultValue: semester.value ? {
+        label: semester.value.slice(0, 2) + ' ' + semester.value.slice(2),
+        value: semester.value
+      } : semesterOptions[0],
       onChange: handleSemesterChange,
       styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.semesterSelectStyles
     })]
   });
 
   function handleSemesterChange(option) {
-    setSemester(option.value);
+    setSemester({
+      value: option.value
+    });
     setIsLoading(true);
   }
 }
-var SemesterSelectLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.label.withConfig({
-  displayName: "SemesterSelect__SemesterSelectLabelStyled",
+var SemesterSelectStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+  displayName: "SemesterSelect__SemesterSelectStyled",
   componentId: "sc-1w0f71e-0"
 })([""]);
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.label.withConfig({
+  displayName: "SemesterSelect__LabelStyled",
+  componentId: "sc-1w0f71e-1"
+})(["margin-right:20px;@media (max-width:767px){display:none;}"]);
 
 /***/ }),
 
@@ -7873,7 +7959,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "PageHeadlineStyled": () => /* binding */ PageHeadlineStyled,
 /* harmony export */   "HorizontalRuleStyled": () => /* binding */ HorizontalRuleStyled,
 /* harmony export */   "VerticalLineStyled": () => /* binding */ VerticalLineStyled,
-/* harmony export */   "AddItemLinkStyled": () => /* binding */ AddItemLinkStyled
+/* harmony export */   "AddItemLinkStyled": () => /* binding */ AddItemLinkStyled,
+/* harmony export */   "ArchiveSearchContainerStyled": () => /* binding */ ArchiveSearchContainerStyled
 /* harmony export */ });
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
@@ -7898,7 +7985,11 @@ var VerticalLineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.
 var AddItemLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_1__.Link).withConfig({
   displayName: "styledElements__AddItemLinkStyled",
   componentId: "sc-1sog38p-4"
-})(["display:inline-block;padding:5px;border:solid 1px black;border-radius:5px;box-shadow:1px 1px 1px black;color:black;&:active{background-color:var(--aka-gelb);}&:hover{text-decoration:none;}"]);
+})(["display:inline-block;padding:5px;border:solid 1px black;box-shadow:1px 1px 1px black;color:black;&:active{background-color:var(--aka-gelb);}&:hover{text-decoration:none;}"]);
+var ArchiveSearchContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.div.withConfig({
+  displayName: "styledElements__ArchiveSearchContainerStyled",
+  componentId: "sc-1sog38p-5"
+})(["display:grid;grid-template-columns:280px 1fr;align-items:center;grid-gap:40px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:1fr 1fr;grid-gap:20px;}"]);
 
 /***/ }),
 
@@ -8055,12 +8146,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/screenings/ScreeningsListItem */ "./resources/js/react-app/common/screenings/ScreeningsListItem.js");
-/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _common_SearchBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/SearchBar */ "./resources/js/react-app/common/SearchBar.js");
+/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
 
 
 
@@ -8083,46 +8177,93 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
 function ArchivePage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       screenings = _useState2[0],
-      setScreenings = _useState2[1];
+      setScreenings = _useState2[1]; // The semester and search states are stored in an object,
+  // so that also a setting of state with an unchanged value is recognized as an update.
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
       semester = _useState4[0],
       setSemester = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState6 = _slicedToArray(_useState5, 2),
-      isLoading = _useState6[0],
-      setIsLoading = _useState6[1];
+      search = _useState6[0],
+      setSearch = _useState6[1];
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState8 = _slicedToArray(_useState7, 2),
+      isLoading = _useState8[0],
+      setIsLoading = _useState8[1];
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_6__.default),
       setPageTitle = _useContext.setPageTitle;
 
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Archiv | aka-Filmclub';
     setPageTitle('Archiv');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (semester) {
-      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySemester)(semester).then(function (res) {
+    var queryParams = new URLSearchParams(window.location.search);
+    var searchFromQuery = queryParams.get('search');
+    var semesterFromQuery = queryParams.get('semester');
+
+    if (searchFromQuery) {
+      setSearch({
+        value: searchFromQuery
+      });
+    } else if (semesterFromQuery) {
+      setSemester({
+        value: semesterFromQuery
+      });
+    } else {
+      setSemester({
+        value: (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_8__.computeCurrentSemester)()
+      });
+    }
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (semester.value) {
+      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySemester)(semester.value).then(function (res) {
+        history.push('/program/archive?semester=' + semester.value);
         setScreenings(res.data);
         setIsLoading(false);
       });
     }
   }, [semester]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (search.value) {
+      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySearchString)(search.value).then(function (res) {
+        history.push('/program/archive?search=' + search.value);
+        setScreenings(res.data);
+        setIsLoading(false);
+      });
+    }
+  }, [search]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageHeadlineStyled, {
       children: "Programmarchiv"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
-      setSemester: setSemester,
-      setIsLoading: setIsLoading
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.ArchiveSearchContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_4__.default, {
+        semester: semester,
+        setSemester: setSemester,
+        setIsLoading: setIsLoading
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SearchBar__WEBPACK_IMPORTED_MODULE_3__.default, {
+        search: search,
+        setSearch: setSearch,
+        setIsLoading: setIsLoading
+      })]
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading"
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
       children: screenings.map(function (screening) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_2__.default, {
           screening: screening
@@ -8131,8 +8272,8 @@ function ArchivePage() {
     })]
   });
 }
-var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
-  displayName: "ArchivePage__ScreeningsListStyled",
+var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
+  displayName: "ArchivePage__ListStyled",
   componentId: "c8luhi-0"
 })([""]);
 
@@ -9816,12 +9957,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
-/* harmony import */ var _common_SerialRow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/SerialRow */ "./resources/js/react-app/common/SerialRow.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_SearchBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/SearchBar */ "./resources/js/react-app/common/SearchBar.js");
+/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
+/* harmony import */ var _common_SerialRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/SerialRow */ "./resources/js/react-app/common/SerialRow.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
+/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
 
 
 
@@ -9844,55 +9988,102 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
 function SerialsPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
       serials = _useState2[0],
-      setSerials = _useState2[1];
+      setSerials = _useState2[1]; // The semester and search states are stored in an object,
+  // so that also a setting of state with an unchanged value is recognized as an update.
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
       semester = _useState4[0],
       setSemester = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState6 = _slicedToArray(_useState5, 2),
-      isLoading = _useState6[0],
-      setIsLoading = _useState6[1];
+      search = _useState6[0],
+      setSearch = _useState6[1];
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState8 = _slicedToArray(_useState7, 2),
+      isLoading = _useState8[0],
+      setIsLoading = _useState8[1];
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_6__.default),
       setPageTitle = _useContext.setPageTitle;
 
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Filmreihen | aka-Filmclub';
     setPageTitle('Filmreihen');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (semester) {
-      (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.getSerialsBySemester)(semester).then(function (res) {
+    var queryParams = new URLSearchParams(window.location.search);
+    var searchFromQuery = queryParams.get('search');
+    var semesterFromQuery = queryParams.get('semester');
+
+    if (searchFromQuery) {
+      setSearch({
+        value: searchFromQuery
+      });
+    } else if (semesterFromQuery) {
+      setSemester({
+        value: semesterFromQuery
+      });
+    } else {
+      setSemester({
+        value: (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_7__.computeCurrentSemester)()
+      });
+    }
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (semester.value) {
+      (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_8__.getSerialsBySemester)(semester.value).then(function (res) {
+        history.push('/program/serials?semester=' + semester.value);
         setSerials(res.data);
         setIsLoading(false);
       });
     }
   }, [semester]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (search.value) {
+      (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_8__.getSerialsBySearchString)(search.value).then(function (res) {
+        history.push('/program/serials?search=' + search.value);
+        setSerials(res.data);
+        setIsLoading(false);
+      });
+    }
+  }, [search]);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageHeadlineStyled, {
       children: "Filmreihen"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
-      setSemester: setSemester,
-      setIsLoading: setIsLoading
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.ArchiveSearchContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
+        semester: semester,
+        setSemester: setSemester,
+        setIsLoading: setIsLoading
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SearchBar__WEBPACK_IMPORTED_MODULE_2__.default, {
+        search: search,
+        setSearch: setSearch,
+        setIsLoading: setIsLoading
+      })]
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading"
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
       children: serials.map(function (serial) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SerialRow__WEBPACK_IMPORTED_MODULE_3__.default, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SerialRow__WEBPACK_IMPORTED_MODULE_4__.default, {
           serial: serial
         }, serial.id);
       })
     })]
   });
 }
-var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
+var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
   displayName: "SerialsPage__ListStyled",
   componentId: "sc-4r2czp-0"
 })([""]);
@@ -11456,7 +11647,7 @@ var SubheadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h
 var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.ul.withConfig({
   displayName: "UsersPage__ListStyled",
   componentId: "sc-941gjx-4"
-})(["overflow:auto;height:300px;padding:5px;border:solid 1px black;border-radius:5px;"]);
+})(["overflow:auto;height:300px;padding:5px;border:solid 1px black;"]);
 var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.li.withConfig({
   displayName: "UsersPage__ListItemStyled",
   componentId: "sc-941gjx-5"
@@ -11481,7 +11672,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: #616161;\n      --aka-red: darkred;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    border-radius: 5px;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise. */\n    width: 100%;\n\n    &:disabled {\n        border-color: lightgrey;\n    }\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  /* Fix for Safari because empty date inputs have no height otherwise. */\n  input[type=\"date\"]{\n      min-height: 32px;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n\n    &:disabled {\n        cursor: not-allowed;\n        opacity: 0.5;\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: var(--aka-grau);\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  p {\n      margin: 0;\n      color: black;\n  } \n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n\n  h1, h2, h3, h4, h5, h6 {\n      color: black;\n  }\n\n  hr {\n    height: 10px;\n    width: 80%;\n    margin: 20px 0;\n    border: none;\n    background-color: var(--aka-gelb);\n  }\n\n  input[id=\"openLinkInNewWindow\"] {\n    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */\n    width: initial;\n\n    &:checked {\n        background-color: black;\n    }\n  }\n\n  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/\n  div[class=\"rdw-link-modal\"] {\n      box-sizing: initial;\n  }\n\n"]);
+  var data = _taggedTemplateLiteral(["\n  * {\n    box-sizing: border-box;\n  }\n \n  :root{\n      --aka-gelb: #ffea0d;\n      --aka-grau: #616161;\n      --aka-red: darkred;\n      --aka-secondary-color: white;\n  }\n\n  body {\n    margin: 0;\n    font-family: 'Open Sans', 'Segoe UI', sans-serif;\n    font-size: 16px;\n    overflow-wrap: break-word;\n  }\n\n  input, button, textarea {\n    font-family: inherit;\n    font-size: 1em;\n    -webkit-appearance: none;\n    -moz-appearance: none;\n    border: solid 1px black;\n    padding: 5px;\n  }\n\n  input {\n    /* Fix for iPhone because inputs are somehow too wide elsewise. */\n    width: 100%;\n\n    &:disabled {\n        border-color: lightgrey;\n    }\n  }\n\n  input[type=\"file\"]{\n      border: none;\n  }\n\n  /* Fix for Safari because empty date inputs have no height otherwise. */\n  input[type=\"date\"]{\n      min-height: 32px;\n  }\n\n  textarea{\n    display: block;\n    width: 100%;\n    resize: none;\n  }\n\n  button {\n    background-color: white;\n    cursor: pointer;\n    box-shadow: 1px 1px 1px black;\n\n    &:active {\n        background-color: var(--aka-gelb)\n    }\n\n    &:disabled {\n        cursor: not-allowed;\n        opacity: 0.5;\n    }\n  }\n\n  img {\n    filter: grayscale();\n  }\n\n  a {\n    text-decoration: none;\n    color: var(--aka-grau);\n\n    &.active,\n    &:hover {\n        text-decoration: underline var(--aka-gelb);\n    }\n  }\n\n  ul {\n    padding: 0;\n    list-style: none;\n  }\n\n  p {\n      margin: 0;\n      color: black;\n  } \n\n  h2{\n      font-size: 2.1em;\n  }\n\n  h3{\n      margin: 0;\n  }\n\n  h1, h2, h3, h4, h5, h6 {\n      color: black;\n  }\n\n  hr {\n    height: 10px;\n    width: 80%;\n    margin: 20px 0;\n    border: none;\n    background-color: var(--aka-gelb);\n  }\n\n  input[id=\"openLinkInNewWindow\"] {\n    /* Fix for react-draft-wysiwyg, undoing the iPhone fix above. */\n    width: initial;\n\n    &:checked {\n        background-color: black;\n    }\n  }\n\n  /* Fix for link modal of react-draft-wysiwyg, because it is otherwise too small.*/\n  div[class=\"rdw-link-modal\"] {\n      box-sizing: initial;\n  }\n\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -11519,35 +11710,48 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var semesterSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
-      width: '150px',
-      marginLeft: '20px'
+      width: '150px'
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 var serialSemesterSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'block',
       width: '250px'
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 var serialSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'block',
       width: '100%'
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 var userStatusSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
@@ -11556,27 +11760,76 @@ var userStatusSelectStyles = {
         width: '100%'
       }
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 var positionSelectStyles = {
-  option: customOptionStyles,
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
-      width: '200px',
+      width: '100px',
       '@media (max-width: 767px)': {
         width: '100%'
       }
     });
-  }
+  },
+  control: customControlStyles,
+  dropdownIndicator: customDropdownIndicatorStyles,
+  indicatorSeparator: customIndicatorSeparatorStyles,
+  singleValue: customSingleValueStyles,
+  menu: customMenuStyles,
+  option: customOptionStyles
 };
 
-var customOptionStyles = function customOptionStyles(provided, state) {
+function customControlStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    borderColor: 'black',
+    borderRadius: '0',
+    cursor: 'pointer',
+    '&:hover': {
+      borderColor: 'var(--aka-grau)'
+    }
+  });
+}
+
+function customDropdownIndicatorStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    color: 'black',
+    '&:hover': {
+      color: 'var(--aka-grau)'
+    }
+  });
+}
+
+function customIndicatorSeparatorStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    backgroundColor: 'var(--aka-gelb)'
+  });
+}
+
+function customSingleValueStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    color: 'black'
+  });
+}
+
+function customMenuStyles(provided) {
+  return _objectSpread(_objectSpread({}, provided), {}, {
+    borderRadius: '='
+  });
+}
+
+function customOptionStyles(provided, state) {
   return _objectSpread(_objectSpread({}, provided), {}, {
     backgroundColor: state.isSelected ? 'var(--aka-gelb)' : 'white',
     color: 'black'
   });
-};
+}
 
 /***/ }),
 
@@ -11594,8 +11847,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "editorStyleObject": () => /* binding */ editorStyleObject
 /* harmony export */ });
 var wrapperStyleObject = {
-  border: '1px solid black',
-  borderRadius: '5px'
+  border: '1px solid black'
 };
 var toolbarStyleObject = {
   backgroundColor: 'var(--aka-gelb)'
@@ -11791,6 +12043,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
 /* harmony export */   "getScreeningsBySemester": () => /* binding */ getScreeningsBySemester,
 /* harmony export */   "getScreeningByUuid": () => /* binding */ getScreeningByUuid,
+/* harmony export */   "getScreeningsBySearchString": () => /* binding */ getScreeningsBySearchString,
 /* harmony export */   "postScreening": () => /* binding */ postScreening,
 /* harmony export */   "deleteScreening": () => /* binding */ deleteScreening
 /* harmony export */ });
@@ -11808,6 +12061,9 @@ function getScreeningsBySemester(semester) {
 }
 function getScreeningByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/single/' + uuid);
+}
+function getScreeningsBySearchString(search) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/search/' + search);
 }
 function postScreening(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/screenings', data);
@@ -11853,12 +12109,8 @@ function computeSemesterOptions() {
   var currentMonth = currentDate.getMonth();
   var currentYear = currentDate.getFullYear();
   var allSemesters = [];
-  allSemesters.push({
-    season: _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER,
-    year: 2000
-  });
 
-  for (var year = 2001; year < currentYear; year++) {
+  for (var year = 1998; year < currentYear; year++) {
     allSemesters.push({
       season: _constants__WEBPACK_IMPORTED_MODULE_0__.SUMMER_SEASON_IDENTIFIER,
       year: year
@@ -11867,7 +12119,7 @@ function computeSemesterOptions() {
       season: _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER,
       year: year
     });
-  } //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+  } // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
 
 
   if (currentMonth >= 3) {
@@ -11908,6 +12160,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getSerials": () => /* binding */ getSerials,
 /* harmony export */   "getSerialsBySemester": () => /* binding */ getSerialsBySemester,
 /* harmony export */   "getSerialByUuid": () => /* binding */ getSerialByUuid,
+/* harmony export */   "getSerialsBySearchString": () => /* binding */ getSerialsBySearchString,
 /* harmony export */   "postSerial": () => /* binding */ postSerial,
 /* harmony export */   "deleteSerial": () => /* binding */ deleteSerial
 /* harmony export */ });
@@ -11922,6 +12175,9 @@ function getSerialsBySemester(semester) {
 }
 function getSerialByUuid(uuid) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/uuid/' + uuid);
+}
+function getSerialsBySearchString(search) {
+  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/search/' + search);
 }
 function postSerial(data) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/serials', data);

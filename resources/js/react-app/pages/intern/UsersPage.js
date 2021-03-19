@@ -97,7 +97,6 @@ const ListStyled = styled.ul`
     height: 300px;
     padding: 5px;
     border: solid 1px black;
-    border-radius: 5px;
 `;
 
 const ListItemStyled = styled.li``;

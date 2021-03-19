@@ -33,7 +33,6 @@ export const AddItemLinkStyled = styled(Link)`
     display: inline-block;
     padding: 5px;
     border: solid 1px black;
-    border-radius: 5px;
     box-shadow: 1px 1px 1px black;
     color: black;
 
@@ -42,5 +41,18 @@ export const AddItemLinkStyled = styled(Link)`
     }
     &:hover {
         text-decoration: none;
+    }
+`;
+
+export const ArchiveSearchContainerStyled = styled.div`
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: center;
+    grid-gap: 40px;
+
+    @media (max-width: 767px) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-gap: 20px;
     }
 `;

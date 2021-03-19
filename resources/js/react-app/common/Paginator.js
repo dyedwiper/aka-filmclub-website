@@ -66,7 +66,6 @@ const PaginatorStyled = styled.div`
     margin: 40px auto;
     border-top: 3px solid black;
     border-bottom: 3px solid black;
-    border-radius: 5px;
 `;
 
 const BorderContainerStyled = styled.div`

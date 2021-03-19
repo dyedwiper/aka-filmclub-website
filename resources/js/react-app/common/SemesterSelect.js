@@ -2,35 +2,47 @@ import React, { useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { semesterSelectStyles } from '../styles/customSelectStyles';
-import { computeCurrentSemester, computeSemesterOptions } from '../utils/semesterUtils';
+import { computeSemesterOptions } from '../utils/semesterUtils';
 
-export default function SemesterSelect({ setSemester, setIsLoading }) {
+export default function SemesterSelect({ semester, setSemester, setIsLoading }) {
     const [semesterOptions, setSemesterOptions] = useState([]);
 
     useEffect(() => {
-        setSemester(computeCurrentSemester());
         setSemesterOptions(computeSemesterOptions());
     }, []);
 
-    // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird
+    // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird.
     if (!semesterOptions.length) return <></>;
 
     return (
-        <SemesterSelectLabelStyled>
-            Semester:
+        <SemesterSelectStyled>
+            <LabelStyled htmlFor="semesterSelect">Semester:</LabelStyled>
             <ReactSelect
+                id="semesterSelect"
                 options={semesterOptions}
-                defaultValue={semesterOptions[0]}
+                defaultValue={
+                    semester.value
+                        ? { label: semester.value.slice(0, 2) + ' ' + semester.value.slice(2), value: semester.value }
+                        : semesterOptions[0]
+                }
                 onChange={handleSemesterChange}
                 styles={semesterSelectStyles}
             />
-        </SemesterSelectLabelStyled>
+        </SemesterSelectStyled>
     );
 
     function handleSemesterChange(option) {
-        setSemester(option.value);
+        setSemester({ value: option.value });
         setIsLoading(true);
     }
 }
 
-const SemesterSelectLabelStyled = styled.label``;
+const SemesterSelectStyled = styled.div``;
+
+const LabelStyled = styled.label`
+    margin-right: 20px;
+
+    @media (max-width: 767px) {
+        display: none;
+    }
+`;
