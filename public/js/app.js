@@ -6067,6 +6067,68 @@ function PrivateRoute(_ref) {
 
 /***/ }),
 
+/***/ "./resources/js/react-app/common/SearchBar.js":
+/*!****************************************************!*\
+  !*** ./resources/js/react-app/common/SearchBar.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ SearchBar
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+
+
+function SearchBar(_ref) {
+  var search = _ref.search,
+      setSearch = _ref.setSearch,
+      setIsLoading = _ref.setIsLoading;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchFormStyled, {
+    onSubmit: handleSubmit,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchLabelStyled, {
+      children: ["Suchbegriff:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchInputStyled, {
+        name: "search",
+        defaultValue: search.value
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchButtonStyled, {
+      type: "submit",
+      children: "Suchen"
+    })]
+  });
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    setSearch({
+      value: event.target.search.value
+    });
+    setIsLoading(true);
+  }
+}
+var SearchFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.form.withConfig({
+  displayName: "SearchBar__SearchFormStyled",
+  componentId: "t3oy12-0"
+})([""]);
+var SearchLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.label.withConfig({
+  displayName: "SearchBar__SearchLabelStyled",
+  componentId: "t3oy12-1"
+})([""]);
+var SearchInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input.withConfig({
+  displayName: "SearchBar__SearchInputStyled",
+  componentId: "t3oy12-2"
+})(["width:150px;margin-left:20px;"]);
+var SearchButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.button.withConfig({
+  displayName: "SearchBar__SearchButtonStyled",
+  componentId: "t3oy12-3"
+})(["margin-left:20px;"]);
+
+/***/ }),
+
 /***/ "./resources/js/react-app/common/SemesterSelect.js":
 /*!*********************************************************!*\
   !*** ./resources/js/react-app/common/SemesterSelect.js ***!
@@ -8059,13 +8121,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/screenings/ScreeningsListItem */ "./resources/js/react-app/common/screenings/ScreeningsListItem.js");
-/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _common_SearchBar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/SearchBar */ "./resources/js/react-app/common/SearchBar.js");
+/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
 
 
 
@@ -8089,6 +8152,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function ArchivePage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -8098,9 +8162,12 @@ function ArchivePage() {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState4 = _slicedToArray(_useState3, 2),
       semester = _useState4[0],
-      setSemester = _useState4[1];
+      setSemester = _useState4[1]; // The search state is stored in an object,
+  // so that also a search with an unchanged value is recognized as a state update.
+  // A changed string would not be recognized.
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState6 = _slicedToArray(_useState5, 2),
       search = _useState6[0],
       setSearch = _useState6[1];
@@ -8110,10 +8177,10 @@ function ArchivePage() {
       isLoading = _useState8[0],
       setIsLoading = _useState8[1];
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_6__.default),
       setPageTitle = _useContext.setPageTitle;
 
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Archiv | aka-Filmclub';
     setPageTitle('Archiv');
@@ -8124,14 +8191,19 @@ function ArchivePage() {
     var semesterFromQuery = queryParams.get('semester'); // It is only possible to search by string or semester, not by both at the same time.
 
     if (searchFromQuery) {
-      setSearch(searchFromQuery);
+      setSearch({
+        value: searchFromQuery
+      });
     } else if (semesterFromQuery) {
       setSemester(semesterFromQuery);
     }
-  }, []);
+  }, []); // The useEffect-hook for semester must be above the hook for search.
+  // Otherwise the semester select overwrites the search.
+  // This is not ideal but I haven't found a nicer solution.
+
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester) {
-      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySemester)(semester).then(function (res) {
+      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySemester)(semester).then(function (res) {
         history.push('/program/archive?semester=' + semester);
         setScreenings(res.data);
         setIsLoading(false);
@@ -8139,33 +8211,26 @@ function ArchivePage() {
     }
   }, [semester]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (search) {
-      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySearchString)(search).then(function (res) {
-        history.push('/program/archive?search=' + search);
+    if (search.value) {
+      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySearchString)(search.value).then(function (res) {
+        history.push('/program/archive?search=' + search.value);
         setScreenings(res.data);
         setIsLoading(false);
       });
     }
   }, [search]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageHeadlineStyled, {
       children: "Programmarchiv"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormsContainerStyled, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_4__.default, {
         semester: semester,
         setSemester: setSemester,
         setIsLoading: setIsLoading
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchFormStyled, {
-        onSubmit: handleSubmit,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchLabelStyled, {
-          children: ["Suchbegriff:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchInputStyled, {
-            name: "search",
-            defaultValue: search
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchButtonStyled, {
-          type: "submit",
-          children: "Suchen"
-        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SearchBar__WEBPACK_IMPORTED_MODULE_3__.default, {
+        search: search,
+        setSearch: setSearch,
+        setIsLoading: setIsLoading
       })]
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading"
@@ -8177,35 +8242,14 @@ function ArchivePage() {
       })
     })]
   });
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    setSearch(event.target.search.value);
-  }
 }
-var FormsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+var FormsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
   displayName: "ArchivePage__FormsContainerStyled",
   componentId: "c8luhi-0"
 })(["display:grid;grid-template-columns:280px 1fr;column-gap:40px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:1fr 1fr;}"]);
-var SearchFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.form.withConfig({
-  displayName: "ArchivePage__SearchFormStyled",
-  componentId: "c8luhi-1"
-})([""]);
-var SearchLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.label.withConfig({
-  displayName: "ArchivePage__SearchLabelStyled",
-  componentId: "c8luhi-2"
-})([""]);
-var SearchInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.input.withConfig({
-  displayName: "ArchivePage__SearchInputStyled",
-  componentId: "c8luhi-3"
-})(["width:150px;margin-left:20px;"]);
-var SearchButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.button.withConfig({
-  displayName: "ArchivePage__SearchButtonStyled",
-  componentId: "c8luhi-4"
-})(["margin-left:20px;"]);
-var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.ul.withConfig({
+var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.ul.withConfig({
   displayName: "ArchivePage__ScreeningsListStyled",
-  componentId: "c8luhi-5"
+  componentId: "c8luhi-1"
 })([""]);
 
 /***/ }),
