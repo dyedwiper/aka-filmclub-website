@@ -5730,7 +5730,7 @@ var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.header
 var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__ContentContainerStyled",
   componentId: "d7im2b-1"
-})(["display:grid;grid-template-columns:180px 1fr;align-items:center;height:120px;max-width:1024px;padding:0 20px;margin:0 auto;@media (max-width:767px){grid-template-columns:80px 1fr 80px;height:60px;justify-items:center;padding:0;}"]);
+})(["display:grid;grid-template-columns:180px 1fr;align-items:center;height:120px;max-width:1024px;padding:0 20px;margin:0 auto;@media (max-width:767px){grid-template-columns:80px 1fr 80px;justify-items:center;height:60px;padding:0;}"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link).withConfig({
   displayName: "Header__LinkStyled",
   componentId: "d7im2b-2"
@@ -8214,7 +8214,7 @@ function ArchivePage() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var queryParams = new URLSearchParams(window.location.search);
     var searchFromQuery = queryParams.get('search');
-    var semesterFromQuery = queryParams.get('semester'); // It is only possible to search by string or semester, not by both at the same time.
+    var semesterFromQuery = queryParams.get('semester');
 
     if (searchFromQuery) {
       setSearch({
@@ -10025,7 +10025,7 @@ function SerialsPage() {
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var queryParams = new URLSearchParams(window.location.search);
     var searchFromQuery = queryParams.get('search');
-    var semesterFromQuery = queryParams.get('semester'); // It is only possible to search by string or semester, not by both at the same time.
+    var semesterFromQuery = queryParams.get('semester');
 
     if (searchFromQuery) {
       setSearch({

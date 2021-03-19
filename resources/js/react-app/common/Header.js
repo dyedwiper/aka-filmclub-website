@@ -130,8 +130,8 @@ const ContentContainerStyled = styled.div`
 
     @media (max-width: 767px) {
         grid-template-columns: 80px 1fr 80px;
-        height: 60px;
         justify-items: center;
+        height: 60px;
         padding: 0;
     }
 `;

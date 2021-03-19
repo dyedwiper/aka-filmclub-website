@@ -30,7 +30,6 @@ export default function ArchivePage() {
         const queryParams = new URLSearchParams(window.location.search);
         const searchFromQuery = queryParams.get('search');
         const semesterFromQuery = queryParams.get('semester');
-        // It is only possible to search by string or semester, not by both at the same time.
         if (searchFromQuery) {
             setSearch({ value: searchFromQuery });
         } else if (semesterFromQuery) {
