@@ -8100,10 +8100,15 @@ function ArchivePage() {
       semester = _useState4[0],
       setSemester = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
       _useState6 = _slicedToArray(_useState5, 2),
-      isLoading = _useState6[0],
-      setIsLoading = _useState6[1];
+      search = _useState6[0],
+      setSearch = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState8 = _slicedToArray(_useState7, 2),
+      isLoading = _useState8[0],
+      setIsLoading = _useState8[1];
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
       setPageTitle = _useContext.setPageTitle;
@@ -8115,15 +8120,13 @@ function ArchivePage() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var queryParams = new URLSearchParams(window.location.search);
-    var search = queryParams.get('search');
-    var semester = queryParams.get('semester');
+    var searchFromQuery = queryParams.get('search');
+    var semesterFromQuery = queryParams.get('semester'); // It is only possible to search by string or semester, not by both at the same time.
 
-    if (search) {
-      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySearchString)(search).then(function (res) {
-        setScreenings(res.data);
-      });
-    } else if (semester) {
-      setSemester(semester);
+    if (searchFromQuery) {
+      setSearch(searchFromQuery);
+    } else if (semesterFromQuery) {
+      setSemester(semesterFromQuery);
     }
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -8135,6 +8138,15 @@ function ArchivePage() {
       });
     }
   }, [semester]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (search) {
+      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySearchString)(search).then(function (res) {
+        history.push('/program/archive?search=' + search);
+        setScreenings(res.data);
+        setIsLoading(false);
+      });
+    }
+  }, [search]);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: "Programmarchiv"
@@ -8147,7 +8159,8 @@ function ArchivePage() {
         onSubmit: handleSubmit,
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchLabelStyled, {
           children: ["Suchbegriff:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchInputStyled, {
-            name: "search"
+            name: "search",
+            defaultValue: search
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchButtonStyled, {
           type: "submit",
@@ -8167,11 +8180,7 @@ function ArchivePage() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    var searchString = event.target.search.value;
-    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySearchString)(searchString).then(function (res) {
-      setScreenings(res.data);
-      history.push('/program/archive?search=' + searchString);
-    });
+    setSearch(event.target.search.value);
   }
 }
 var FormsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({

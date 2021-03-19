@@ -10,6 +10,7 @@ import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/s
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
     const [semester, setSemester] = useState('');
+    const [search, setSearch] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     const { setPageTitle } = useContext(Context);
@@ -23,14 +24,13 @@ export default function ArchivePage() {
 
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
-        const search = queryParams.get('search');
-        const semester = queryParams.get('semester');
-        if (search) {
-            getScreeningsBySearchString(search).then((res) => {
-                setScreenings(res.data);
-            });
-        } else if (semester) {
-            setSemester(semester);
+        const searchFromQuery = queryParams.get('search');
+        const semesterFromQuery = queryParams.get('semester');
+        // It is only possible to search by string or semester, not by both at the same time.
+        if (searchFromQuery) {
+            setSearch(searchFromQuery);
+        } else if (semesterFromQuery) {
+            setSemester(semesterFromQuery);
         }
     }, []);
 
@@ -44,6 +44,16 @@ export default function ArchivePage() {
         }
     }, [semester]);
 
+    useEffect(() => {
+        if (search) {
+            getScreeningsBySearchString(search).then((res) => {
+                history.push('/program/archive?search=' + search);
+                setScreenings(res.data);
+                setIsLoading(false);
+            });
+        }
+    }, [search]);
+
     return (
         <PageStyled>
             <PageHeadlineStyled>Programmarchiv</PageHeadlineStyled>
@@ -52,7 +62,7 @@ export default function ArchivePage() {
                 <SearchFormStyled onSubmit={handleSubmit}>
                     <SearchLabelStyled>
                         Suchbegriff:
-                        <SearchInputStyled name="search" />
+                        <SearchInputStyled name="search" defaultValue={search} />
                     </SearchLabelStyled>
                     <SearchButtonStyled type="submit">Suchen</SearchButtonStyled>
                 </SearchFormStyled>
@@ -71,11 +81,7 @@ export default function ArchivePage() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        const searchString = event.target.search.value;
-        getScreeningsBySearchString(searchString).then((res) => {
-            setScreenings(res.data);
-            history.push('/program/archive?search=' + searchString);
-        });
+        setSearch(event.target.search.value);
     }
 }
 
