@@ -6186,9 +6186,9 @@ function SemesterSelect(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
     children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
       options: semesterOptions,
-      defaultValue: semester ? {
-        label: semester.slice(0, 2) + ' ' + semester.slice(2),
-        value: semester
+      defaultValue: semester.value ? {
+        label: semester.value.slice(0, 2) + ' ' + semester.value.slice(2),
+        value: semester.value
       } : semesterOptions[0],
       onChange: handleSemesterChange,
       styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.semesterSelectStyles
@@ -6196,7 +6196,9 @@ function SemesterSelect(_ref) {
   });
 
   function handleSemesterChange(option) {
-    setSemester(option.value);
+    setSemester({
+      value: option.value
+    });
     setIsLoading(true);
   }
 }
@@ -8159,7 +8161,7 @@ function ArchivePage() {
       screenings = _useState2[0],
       setScreenings = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
       semester = _useState4[0],
       setSemester = _useState4[1]; // The search state is stored in an object,
@@ -8195,16 +8197,18 @@ function ArchivePage() {
         value: searchFromQuery
       });
     } else if (semesterFromQuery) {
-      setSemester(semesterFromQuery);
+      setSemester({
+        value: semesterFromQuery
+      });
     }
   }, []); // The useEffect-hook for semester must be above the hook for search.
   // Otherwise the semester select overwrites the search.
   // This is not ideal but I haven't found a nicer solution.
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (semester) {
-      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySemester)(semester).then(function (res) {
-        history.push('/program/archive?semester=' + semester);
+    if (semester.value) {
+      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySemester)(semester.value).then(function (res) {
+        history.push('/program/archive?semester=' + semester.value);
         setScreenings(res.data);
         setIsLoading(false);
       });
@@ -9966,7 +9970,7 @@ function SerialsPage() {
       serials = _useState2[0],
       setSerials = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(''),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
       semester = _useState4[0],
       setSemester = _useState4[1];
@@ -9984,8 +9988,8 @@ function SerialsPage() {
     setPageTitle('Filmreihen');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    if (semester) {
-      (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.getSerialsBySemester)(semester).then(function (res) {
+    if (semester.value) {
+      (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.getSerialsBySemester)(semester.value).then(function (res) {
         setSerials(res.data);
         setIsLoading(false);
       });
@@ -9995,6 +9999,7 @@ function SerialsPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: "Filmreihen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
+      semester: semester,
       setSemester: setSemester,
       setIsLoading: setIsLoading
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {

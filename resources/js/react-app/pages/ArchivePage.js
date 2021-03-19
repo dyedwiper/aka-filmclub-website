@@ -10,7 +10,7 @@ import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/s
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
-    const [semester, setSemester] = useState('');
+    const [semester, setSemester] = useState({});
     // The search state is stored in an object,
     // so that also a search with an unchanged value is recognized as a state update.
     // A changed string would not be recognized.
@@ -34,7 +34,7 @@ export default function ArchivePage() {
         if (searchFromQuery) {
             setSearch({ value: searchFromQuery });
         } else if (semesterFromQuery) {
-            setSemester(semesterFromQuery);
+            setSemester({ value: semesterFromQuery });
         }
     }, []);
 
@@ -42,9 +42,9 @@ export default function ArchivePage() {
     // Otherwise the semester select overwrites the search.
     // This is not ideal but I haven't found a nicer solution.
     useEffect(() => {
-        if (semester) {
-            getScreeningsBySemester(semester).then((res) => {
-                history.push('/program/archive?semester=' + semester);
+        if (semester.value) {
+            getScreeningsBySemester(semester.value).then((res) => {
+                history.push('/program/archive?semester=' + semester.value);
                 setScreenings(res.data);
                 setIsLoading(false);
             });

@@ -21,8 +21,8 @@ export default function SemesterSelect({ semester, setSemester, setIsLoading }) 
             <ReactSelect
                 options={semesterOptions}
                 defaultValue={
-                    semester
-                        ? { label: semester.slice(0, 2) + ' ' + semester.slice(2), value: semester }
+                    semester.value
+                        ? { label: semester.value.slice(0, 2) + ' ' + semester.value.slice(2), value: semester.value }
                         : semesterOptions[0]
                 }
                 onChange={handleSemesterChange}
@@ -32,7 +32,7 @@ export default function SemesterSelect({ semester, setSemester, setIsLoading }) 
     );
 
     function handleSemesterChange(option) {
-        setSemester(option.value);
+        setSemester({ value: option.value });
         setIsLoading(true);
     }
 }
