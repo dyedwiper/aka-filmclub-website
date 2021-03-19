@@ -6024,7 +6024,7 @@ function Paginator(_ref) {
 var PaginatorStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
   displayName: "Paginator__PaginatorStyled",
   componentId: "sc-1g3uqar-0"
-})(["width:210px;margin:40px auto;border-top:3px solid black;border-bottom:3px solid black;border-radius:5px;"]);
+})(["width:210px;margin:40px auto;border-top:3px solid black;border-bottom:3px solid black;"]);
 var BorderContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
   displayName: "Paginator__BorderContainerStyled",
   componentId: "sc-1g3uqar-1"
