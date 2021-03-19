@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { semesterSelectStyles } from '../styles/customSelectStyles';
 import { computeCurrentSemester, computeSemesterOptions } from '../utils/semesterUtils';
 
-export default function SemesterSelect({ setSemester, setIsLoading }) {
+export default function SemesterSelect({ semester, setSemester, setIsLoading }) {
     const [semesterOptions, setSemesterOptions] = useState([]);
 
     useEffect(() => {
@@ -20,7 +20,11 @@ export default function SemesterSelect({ setSemester, setIsLoading }) {
             Semester:
             <ReactSelect
                 options={semesterOptions}
-                defaultValue={semesterOptions[0]}
+                defaultValue={
+                    semester
+                        ? { label: semester.slice(0, 2) + ' ' + semester.slice(2), value: semester }
+                        : semesterOptions[0]
+                }
                 onChange={handleSemesterChange}
                 styles={semesterSelectStyles}
             />

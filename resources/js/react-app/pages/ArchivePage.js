@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import SemesterSelect from '../common/SemesterSelect';
@@ -13,14 +14,30 @@ export default function ArchivePage() {
 
     const { setPageTitle } = useContext(Context);
 
+    let history = useHistory();
+
     useEffect(() => {
         document.title = 'Archiv | aka-Filmclub';
         setPageTitle('Archiv');
     }, []);
 
     useEffect(() => {
+        const queryParams = new URLSearchParams(window.location.search);
+        const search = queryParams.get('search');
+        const semester = queryParams.get('semester');
+        if (search) {
+            getScreeningsBySearchString(search).then((res) => {
+                setScreenings(res.data);
+            });
+        } else if (semester) {
+            setSemester(semester);
+        }
+    }, []);
+
+    useEffect(() => {
         if (semester) {
             getScreeningsBySemester(semester).then((res) => {
+                history.push('/program/archive?semester=' + semester);
                 setScreenings(res.data);
                 setIsLoading(false);
             });
@@ -31,7 +48,7 @@ export default function ArchivePage() {
         <PageStyled>
             <PageHeadlineStyled>Programmarchiv</PageHeadlineStyled>
             <FormsContainerStyled>
-                <SemesterSelect setSemester={setSemester} setIsLoading={setIsLoading} />
+                <SemesterSelect semester={semester} setSemester={setSemester} setIsLoading={setIsLoading} />
                 <SearchFormStyled onSubmit={handleSubmit}>
                     <SearchLabelStyled>
                         Suchbegriff:
@@ -57,6 +74,7 @@ export default function ArchivePage() {
         const searchString = event.target.search.value;
         getScreeningsBySearchString(searchString).then((res) => {
             setScreenings(res.data);
+            history.push('/program/archive?search=' + searchString);
         });
     }
 }

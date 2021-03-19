@@ -6106,7 +6106,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function SemesterSelect(_ref) {
-  var setSemester = _ref.setSemester,
+  var semester = _ref.semester,
+      setSemester = _ref.setSemester,
       setIsLoading = _ref.setIsLoading;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
@@ -6123,7 +6124,10 @@ function SemesterSelect(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
     children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
       options: semesterOptions,
-      defaultValue: semesterOptions[0],
+      defaultValue: semester ? {
+        label: semester.slice(0, 2) + ' ' + semester.slice(2),
+        value: semester
+      } : semesterOptions[0],
       onChange: handleSemesterChange,
       styles: _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__.semesterSelectStyles
     })]
@@ -8055,7 +8059,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/screenings/ScreeningsListItem */ "./resources/js/react-app/common/screenings/ScreeningsListItem.js");
 /* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
@@ -8083,6 +8088,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function ArchivePage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -8102,13 +8108,28 @@ function ArchivePage() {
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
       setPageTitle = _useContext.setPageTitle;
 
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Archiv | aka-Filmclub';
     setPageTitle('Archiv');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var queryParams = new URLSearchParams(window.location.search);
+    var search = queryParams.get('search');
+    var semester = queryParams.get('semester');
+
+    if (search) {
+      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySearchString)(search).then(function (res) {
+        setScreenings(res.data);
+      });
+    } else if (semester) {
+      setSemester(semester);
+    }
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester) {
       (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySemester)(semester).then(function (res) {
+        history.push('/program/archive?semester=' + semester);
         setScreenings(res.data);
         setIsLoading(false);
       });
@@ -8119,6 +8140,7 @@ function ArchivePage() {
       children: "Programmarchiv"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormsContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
+        semester: semester,
         setSemester: setSemester,
         setIsLoading: setIsLoading
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchFormStyled, {
@@ -8148,30 +8170,31 @@ function ArchivePage() {
     var searchString = event.target.search.value;
     (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningsBySearchString)(searchString).then(function (res) {
       setScreenings(res.data);
+      history.push('/program/archive?search=' + searchString);
     });
   }
 }
-var FormsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
+var FormsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
   displayName: "ArchivePage__FormsContainerStyled",
   componentId: "c8luhi-0"
 })(["display:grid;grid-template-columns:280px 1fr;column-gap:40px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:1fr 1fr;}"]);
-var SearchFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.form.withConfig({
+var SearchFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.form.withConfig({
   displayName: "ArchivePage__SearchFormStyled",
   componentId: "c8luhi-1"
 })([""]);
-var SearchLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.label.withConfig({
+var SearchLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.label.withConfig({
   displayName: "ArchivePage__SearchLabelStyled",
   componentId: "c8luhi-2"
 })([""]);
-var SearchInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.input.withConfig({
+var SearchInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.input.withConfig({
   displayName: "ArchivePage__SearchInputStyled",
   componentId: "c8luhi-3"
 })(["width:150px;margin-left:20px;"]);
-var SearchButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.button.withConfig({
+var SearchButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.button.withConfig({
   displayName: "ArchivePage__SearchButtonStyled",
   componentId: "c8luhi-4"
 })(["margin-left:20px;"]);
-var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
+var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.ul.withConfig({
   displayName: "ArchivePage__ScreeningsListStyled",
   componentId: "c8luhi-5"
 })([""]);
