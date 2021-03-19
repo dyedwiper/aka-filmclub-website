@@ -3,12 +3,10 @@ import styled from 'styled-components';
 
 export default function SearchBar({ search, setSearch, setIsLoading }) {
     return (
-        <SearchFormStyled onSubmit={handleSubmit}>
-            <SearchLabelStyled>
-                Suchbegriff:
-                <SearchInputStyled name="search" defaultValue={search.value} />
-            </SearchLabelStyled>
-            <SearchButtonStyled type="submit">Suchen</SearchButtonStyled>
+        <SearchFormStyled htmlFor="archiveSearchInput" onSubmit={handleSubmit}>
+            <LabelStyled>Suchbegriff:</LabelStyled>
+            <InputStyled id="archiveSearchInput" name="search" defaultValue={search.value} />
+            <ButtonStyled type="submit">Suchen</ButtonStyled>
         </SearchFormStyled>
     );
 
@@ -21,13 +19,18 @@ export default function SearchBar({ search, setSearch, setIsLoading }) {
 
 const SearchFormStyled = styled.form``;
 
-const SearchLabelStyled = styled.label``;
+const LabelStyled = styled.label`
+    margin-right: 20px;
 
-const SearchInputStyled = styled.input`
-    width: 150px;
-    margin-left: 20px;
+    @media (max-width: 767px) {
+        display: none;
+    }
 `;
 
-const SearchButtonStyled = styled.button`
+const InputStyled = styled.input`
+    width: 150px;
+`;
+
+const ButtonStyled = styled.button`
     margin-left: 20px;
 `;

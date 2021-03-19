@@ -5429,11 +5429,11 @@ function Footer() {
 var FooterStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.footer.withConfig({
   displayName: "Footer__FooterStyled",
   componentId: "d2i78s-0"
-})(["height:60px;width:100%;padding:0 20px;background-color:var(--aka-gelb);"]);
+})(["height:60px;width:100vw;background-color:var(--aka-gelb);"]);
 var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__ContentContainerStyled",
   componentId: "d2i78s-1"
-})(["display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;max-width:1024px;height:100%;margin:0 auto;@media (max-width:767px){grid-template-columns:1fr 1fr;}"]);
+})(["display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;max-width:1024px;height:100%;margin:0 auto;padding:0 20px;@media (max-width:767px){grid-template-columns:1fr 1fr;}"]);
 var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h1.withConfig({
   displayName: "Footer__HeadlineStyled",
   componentId: "d2i78s-2"
@@ -5441,7 +5441,7 @@ var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h1.w
 var LinksContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__LinksContainerStyled",
   componentId: "d2i78s-3"
-})(["justify-self:center;@media (max-width:767px){justify-self:left;}"]);
+})(["justify-self:center;@media (max-width:767px){justify-self:left;margin-left:-5px;}"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link).withConfig({
   displayName: "Footer__LinkStyled",
   componentId: "d2i78s-4"
@@ -5730,11 +5730,11 @@ var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.header
 var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__ContentContainerStyled",
   componentId: "d7im2b-1"
-})(["display:grid;grid-template-columns:180px 1fr;align-items:center;height:120px;max-width:1024px;margin:0 auto;@media (max-width:767px){grid-template-columns:80px 1fr 80px;justify-items:center;height:60px;}"]);
+})(["display:grid;grid-template-columns:180px 1fr;align-items:center;height:120px;max-width:1024px;padding:0 20px;margin:0 auto;@media (max-width:767px){grid-template-columns:80px 1fr 80px;height:60px;justify-items:center;padding:0;}"]);
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link).withConfig({
   displayName: "Header__LinkStyled",
   componentId: "d7im2b-2"
-})([""]);
+})(["@media (max-width:767px){justify-self:left;margin-left:20px;}"]);
 var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.img.withConfig({
   displayName: "Header__LogoStyled",
   componentId: "d7im2b-3"
@@ -5746,7 +5746,7 @@ var PageTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.
 var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.nav.withConfig({
   displayName: "Header__NavStyled",
   componentId: "d7im2b-5"
-})(["padding:20px;background-color:white;@media (max-width:767px){display:", ";position:absolute;top:60px;overflow:auto;height:calc(100vh - 60px);width:100vw;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
+})(["padding:20px 60px;background-color:white;@media (max-width:767px){display:", ";position:absolute;top:60px;overflow:auto;height:calc(100vh - 60px);width:100vw;padding:20px;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
   return props.isNavOpen ? 'block' : 'none';
 });
 var DropdownContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
@@ -6096,13 +6096,15 @@ function SearchBar(_ref) {
       setSearch = _ref.setSearch,
       setIsLoading = _ref.setIsLoading;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchFormStyled, {
+    htmlFor: "archiveSearchInput",
     onSubmit: handleSubmit,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SearchLabelStyled, {
-      children: ["Suchbegriff:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchInputStyled, {
-        name: "search",
-        defaultValue: search.value
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SearchButtonStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      children: "Suchbegriff:"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+      id: "archiveSearchInput",
+      name: "search",
+      defaultValue: search.value
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
       type: "submit",
       children: "Suchen"
     })]
@@ -6120,16 +6122,16 @@ var SearchFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.fo
   displayName: "SearchBar__SearchFormStyled",
   componentId: "t3oy12-0"
 })([""]);
-var SearchLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.label.withConfig({
-  displayName: "SearchBar__SearchLabelStyled",
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.label.withConfig({
+  displayName: "SearchBar__LabelStyled",
   componentId: "t3oy12-1"
-})([""]);
-var SearchInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input.withConfig({
-  displayName: "SearchBar__SearchInputStyled",
+})(["margin-right:20px;@media (max-width:767px){display:none;}"]);
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input.withConfig({
+  displayName: "SearchBar__InputStyled",
   componentId: "t3oy12-2"
-})(["width:150px;margin-left:20px;"]);
-var SearchButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.button.withConfig({
-  displayName: "SearchBar__SearchButtonStyled",
+})(["width:150px;"]);
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.button.withConfig({
+  displayName: "SearchBar__ButtonStyled",
   componentId: "t3oy12-3"
 })(["margin-left:20px;"]);
 
@@ -6188,8 +6190,12 @@ function SemesterSelect(_ref) {
   }, []); // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird.
 
   if (!semesterOptions.length) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {});
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectLabelStyled, {
-    children: ["Semester:", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterSelectStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      htmlFor: "semesterSelect",
+      children: "Semester:"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
+      id: "semesterSelect",
       options: semesterOptions,
       defaultValue: semester.value ? {
         label: semester.value.slice(0, 2) + ' ' + semester.value.slice(2),
@@ -6207,10 +6213,14 @@ function SemesterSelect(_ref) {
     setIsLoading(true);
   }
 }
-var SemesterSelectLabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.label.withConfig({
-  displayName: "SemesterSelect__SemesterSelectLabelStyled",
+var SemesterSelectStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+  displayName: "SemesterSelect__SemesterSelectStyled",
   componentId: "sc-1w0f71e-0"
 })([""]);
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.label.withConfig({
+  displayName: "SemesterSelect__LabelStyled",
+  componentId: "sc-1w0f71e-1"
+})(["margin-right:20px;@media (max-width:767px){display:none;}"]);
 
 /***/ }),
 
@@ -7976,7 +7986,7 @@ var AddItemLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_0__.defaul
 var ArchiveSearchContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.div.withConfig({
   displayName: "styledElements__ArchiveSearchContainerStyled",
   componentId: "sc-1sog38p-5"
-})(["display:grid;grid-template-columns:280px 1fr;align-items:center;column-gap:40px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:1fr 1fr;}"]);
+})(["display:grid;grid-template-columns:280px 1fr;align-items:center;grid-gap:40px;@media (max-width:767px){grid-template-columns:1fr;grid-template-rows:1fr 1fr;grid-gap:20px;}"]);
 
 /***/ }),
 
@@ -11700,8 +11710,7 @@ var semesterSelectStyles = {
   container: function container(provided) {
     return _objectSpread(_objectSpread({}, provided), {}, {
       display: 'inline-block',
-      width: '150px',
-      marginLeft: '20px'
+      width: '150px'
     });
   },
   control: customControlStyles,

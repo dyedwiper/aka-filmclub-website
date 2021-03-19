@@ -3,7 +3,6 @@ export const semesterSelectStyles = {
         ...provided,
         display: 'inline-block',
         width: '150px',
-        marginLeft: '20px',
     }),
     control: customControlStyles,
     dropdownIndicator: customDropdownIndicatorStyles,

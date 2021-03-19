@@ -15,9 +15,10 @@ export default function SemesterSelect({ semester, setSemester, setIsLoading }) 
     if (!semesterOptions.length) return <></>;
 
     return (
-        <SemesterSelectLabelStyled>
-            Semester:
+        <SemesterSelectStyled>
+            <LabelStyled htmlFor="semesterSelect">Semester:</LabelStyled>
             <ReactSelect
+                id="semesterSelect"
                 options={semesterOptions}
                 defaultValue={
                     semester.value
@@ -27,7 +28,7 @@ export default function SemesterSelect({ semester, setSemester, setIsLoading }) 
                 onChange={handleSemesterChange}
                 styles={semesterSelectStyles}
             />
-        </SemesterSelectLabelStyled>
+        </SemesterSelectStyled>
     );
 
     function handleSemesterChange(option) {
@@ -36,4 +37,12 @@ export default function SemesterSelect({ semester, setSemester, setIsLoading }) 
     }
 }
 
-const SemesterSelectLabelStyled = styled.label``;
+const SemesterSelectStyled = styled.div``;
+
+const LabelStyled = styled.label`
+    margin-right: 20px;
+
+    @media (max-width: 767px) {
+        display: none;
+    }
+`;

@@ -48,10 +48,11 @@ export const ArchiveSearchContainerStyled = styled.div`
     display: grid;
     grid-template-columns: 280px 1fr;
     align-items: center;
-    column-gap: 40px;
+    grid-gap: 40px;
 
     @media (max-width: 767px) {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
+        grid-gap: 20px;
     }
 `;
