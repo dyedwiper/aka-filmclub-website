@@ -6112,10 +6112,13 @@ function SearchBar(_ref) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setSearch({
-      value: event.target.search.value
-    });
-    setIsLoading(true);
+
+    if (event.target.search.value) {
+      setSearch({
+        value: event.target.search.value
+      });
+      setIsLoading(true);
+    }
   }
 }
 var SearchFormStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.form.withConfig({
@@ -12106,12 +12109,8 @@ function computeSemesterOptions() {
   var currentMonth = currentDate.getMonth();
   var currentYear = currentDate.getFullYear();
   var allSemesters = [];
-  allSemesters.push({
-    season: _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER,
-    year: 2000
-  });
 
-  for (var year = 2001; year < currentYear; year++) {
+  for (var year = 1998; year < currentYear; year++) {
     allSemesters.push({
       season: _constants__WEBPACK_IMPORTED_MODULE_0__.SUMMER_SEASON_IDENTIFIER,
       year: year
@@ -12120,7 +12119,7 @@ function computeSemesterOptions() {
       season: _constants__WEBPACK_IMPORTED_MODULE_0__.WINTER_SEASON_IDENTIFIER,
       year: year
     });
-  } //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+  } // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
 
 
   if (currentMonth >= 3) {

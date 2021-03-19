@@ -23,12 +23,11 @@ export function computeSemesterOptions() {
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
     const allSemesters = [];
-    allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: 2000 });
-    for (let year = 2001; year < currentYear; year++) {
+    for (let year = 1998; year < currentYear; year++) {
         allSemesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: year });
         allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: year });
     }
-    //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+    // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
     if (currentMonth >= 3) {
         allSemesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: currentYear });
     }

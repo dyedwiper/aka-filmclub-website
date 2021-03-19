@@ -12,8 +12,10 @@ export default function SearchBar({ search, setSearch, setIsLoading }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        setSearch({ value: event.target.search.value });
-        setIsLoading(true);
+        if (event.target.search.value) {
+            setSearch({ value: event.target.search.value });
+            setIsLoading(true);
+        }
     }
 }
 
