@@ -58,7 +58,17 @@ class ScreeningController extends Controller
 
     public function GetScreeningsBySearchString(string $search)
     {
-        return Screening::where('title', 'like', '%' . $search . '%')->get();
+        return Screening::where('title', 'like', '%' . $search . '%')
+            ->orWhere('original_title', 'like', '%' . $search . '%')
+            ->orWhere('synopsis', 'like', '%' . $search . '%')
+            ->orWhere('directed_by', 'like', '%' . $search . '%')
+            ->orWhere('written_by', 'like', '%' . $search . '%')
+            ->orWhere('music_by', 'like', '%' . $search . '%')
+            ->orWhere('shot_by', 'like', '%' . $search . '%')
+            ->orWhere('cast', 'like', '%' . $search . '%')
+            ->orWhere('special', 'like', '%' . $search . '%')
+            ->orWhere('author', 'like', '%' . $search . '%')
+            ->get();
     }
 
     public function PostScreening(ScreeningFormRequest $request)
