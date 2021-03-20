@@ -4981,7 +4981,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_SerialPage__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./pages/SerialPage */ "./resources/js/react-app/pages/SerialPage.js");
 /* harmony import */ var _pages_SerialsPage__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./pages/SerialsPage */ "./resources/js/react-app/pages/SerialsPage.js");
 /* harmony import */ var _pages_VideosPage__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./pages/VideosPage */ "./resources/js/react-app/pages/VideosPage.js");
-/* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./utils/userServices */ "./resources/js/react-app/utils/userServices.js");
+/* harmony import */ var _utils_services_userServices__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./utils/services/userServices */ "./resources/js/react-app/utils/services/userServices.js");
 
 
 
@@ -5059,7 +5059,7 @@ function App() {
       setIsLoading = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_43__.getCurrentUser)().then(function (res) {
+    (0,_utils_services_userServices__WEBPACK_IMPORTED_MODULE_43__.getCurrentUser)().then(function (res) {
       setUser(res.data);
       setIsLoading(false);
     })["catch"](function (err) {
@@ -5634,7 +5634,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/userServices */ "./resources/js/react-app/utils/userServices.js");
+/* harmony import */ var _utils_services_userServices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/services/userServices */ "./resources/js/react-app/utils/services/userServices.js");
 /* harmony import */ var _HamburgerButton__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./HamburgerButton */ "./resources/js/react-app/common/HamburgerButton.js");
 /* harmony import */ var _assets_aka_logo_png__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../assets/aka_logo.png */ "./resources/js/react-app/assets/aka_logo.png");
 
@@ -5810,7 +5810,7 @@ function Header() {
   });
 
   function handleLogout() {
-    (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_4__.getLogout)().then(function () {
+    (0,_utils_services_userServices__WEBPACK_IMPORTED_MODULE_4__.getLogout)().then(function () {
       setUser({});
     })["catch"](function (err) {
       console.log(err);
@@ -6932,8 +6932,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
-/* harmony import */ var _utils_faqServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/faqServices */ "./resources/js/react-app/utils/faqServices.js");
-/* harmony import */ var _utils_videoServices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/videoServices */ "./resources/js/react-app/utils/videoServices.js");
+/* harmony import */ var _utils_services_faqServices__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/services/faqServices */ "./resources/js/react-app/utils/services/faqServices.js");
+/* harmony import */ var _utils_services_videoServices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/services/videoServices */ "./resources/js/react-app/utils/services/videoServices.js");
 
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
@@ -6975,11 +6975,11 @@ function PositionSelect(_ref) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (type === 'faq') {
-      (0,_utils_faqServices__WEBPACK_IMPORTED_MODULE_3__.getFaqs)().then(function (res) {
+      (0,_utils_services_faqServices__WEBPACK_IMPORTED_MODULE_3__.getFaqs)().then(function (res) {
         setItems(res.data);
       });
     } else if (type === 'video') {
-      (0,_utils_videoServices__WEBPACK_IMPORTED_MODULE_4__.getVideos)().then(function (res) {
+      (0,_utils_services_videoServices__WEBPACK_IMPORTED_MODULE_4__.getVideos)().then(function (res) {
         setItems(res.data);
       });
     }
@@ -7340,7 +7340,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_select__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-select */ "./node_modules/react-select/dist/react-select.browser.esm.js");
-/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+/* harmony import */ var _utils_services_serialServices__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/services/serialServices */ "./resources/js/react-app/utils/services/serialServices.js");
 /* harmony import */ var _styles_customSelectStyles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../styles/customSelectStyles */ "./resources/js/react-app/styles/customSelectStyles.js");
 /* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
@@ -7380,7 +7380,7 @@ function SerialSelect(_ref) {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var currentSemester = (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_4__.computeCurrentSemester)();
-    (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_2__.getSerialsBySemester)(currentSemester).then(function (res) {
+    (0,_utils_services_serialServices__WEBPACK_IMPORTED_MODULE_2__.getSerialsBySemester)(currentSemester).then(function (res) {
       setSerialOptions(computeSerialOptions(res.data));
       setIsLoading(false);
     });
@@ -7407,7 +7407,7 @@ function SerialSelect(_ref) {
 
   function loadAllSerials() {
     setIsLoading(true);
-    (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_2__.getSerials)().then(function (res) {
+    (0,_utils_services_serialServices__WEBPACK_IMPORTED_MODULE_2__.getSerials)().then(function (res) {
       setSerialOptions(computeSerialOptions(res.data));
       setIsLoading(false);
     });
@@ -8172,7 +8172,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_EditTextLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/EditTextLink */ "./resources/js/react-app/common/EditTextLink.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
+/* harmony import */ var _utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/services/textServices */ "./resources/js/react-app/utils/services/textServices.js");
 
 
 
@@ -8204,7 +8204,7 @@ function AboutPage() {
       setPageTitle = _useContext.setPageTitle;
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('about').then(function (res) {
+    (0,_utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('about').then(function (res) {
       setText(res.data);
     });
   }, []);
@@ -8251,7 +8251,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
 /* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
 
 
@@ -8330,7 +8330,7 @@ function ArchivePage() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester.value) {
-      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySemester)(semester.value).then(function (res) {
+      (0,_utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySemester)(semester.value).then(function (res) {
         history.push('/program/archive?semester=' + semester.value);
         setScreenings(res.data);
         setIsLoading(false);
@@ -8339,7 +8339,7 @@ function ArchivePage() {
   }, [semester]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (search.value) {
-      (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySearchString)(search.value).then(function (res) {
+      (0,_utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getScreeningsBySearchString)(search.value).then(function (res) {
         history.push('/program/archive?search=' + search.value);
         setScreenings(res.data);
         setIsLoading(false);
@@ -8396,7 +8396,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_EditTextLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/EditTextLink */ "./resources/js/react-app/common/EditTextLink.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
+/* harmony import */ var _utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/services/textServices */ "./resources/js/react-app/utils/services/textServices.js");
 
 
 
@@ -8428,7 +8428,7 @@ function ContactPage() {
       setPageTitle = _useContext.setPageTitle;
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('awards').then(function (res) {
+    (0,_utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('awards').then(function (res) {
       setText(res.data);
     });
   }, []);
@@ -8472,7 +8472,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_EditTextLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/EditTextLink */ "./resources/js/react-app/common/EditTextLink.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
+/* harmony import */ var _utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/services/textServices */ "./resources/js/react-app/utils/services/textServices.js");
 
 
 
@@ -8505,7 +8505,7 @@ function ContactPage() {
       setPageTitle = _useContext.setPageTitle;
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('contact').then(function (res) {
+    (0,_utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('contact').then(function (res) {
       setText(res.data);
     });
   }, []);
@@ -8595,7 +8595,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/faqServices */ "./resources/js/react-app/utils/faqServices.js");
+/* harmony import */ var _utils_services_faqServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/services/faqServices */ "./resources/js/react-app/utils/services/faqServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -8639,7 +8639,7 @@ function FaqsPage() {
 
   var isAuthorized = user.level >= _constants__WEBPACK_IMPORTED_MODULE_4__.AUTH_LEVEL_EDITOR;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.getFaqs)().then(function (res) {
+    (0,_utils_services_faqServices__WEBPACK_IMPORTED_MODULE_6__.getFaqs)().then(function (res) {
       setFaqs(res.data);
       setIsLoading(false);
     });
@@ -8707,8 +8707,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_screenings_ScreeningCard__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/screenings/ScreeningCard */ "./resources/js/react-app/common/screenings/ScreeningCard.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/noticeServices */ "./resources/js/react-app/utils/noticeServices.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/services/noticeServices */ "./resources/js/react-app/utils/services/noticeServices.js");
+/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -8763,13 +8763,13 @@ function HomePage() {
     setPageTitle('');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getFutureScreenings)().then(function (res) {
+    (0,_utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_7__.getFutureScreenings)().then(function (res) {
       setScreenings(res.data);
       setIsLoadingScreenings(false);
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__.getNotices)().then(function (res) {
+    (0,_utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_6__.getNotices)().then(function (res) {
       setNotices(res.data.data);
       setIsLoadingNotices(false);
     });
@@ -8835,7 +8835,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_EditTextLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/EditTextLink */ "./resources/js/react-app/common/EditTextLink.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
+/* harmony import */ var _utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/services/textServices */ "./resources/js/react-app/utils/services/textServices.js");
 
 
 
@@ -8867,7 +8867,7 @@ function LinksPage() {
       setPageTitle = _useContext.setPageTitle;
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('links').then(function (res) {
+    (0,_utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('links').then(function (res) {
       setText(res.data);
     });
   }, []);
@@ -8937,7 +8937,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_ahahah_gif__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/ahahah.gif */ "./resources/js/react-app/assets/ahahah.gif");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/userServices */ "./resources/js/react-app/utils/userServices.js");
+/* harmony import */ var _utils_services_userServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/services/userServices */ "./resources/js/react-app/utils/services/userServices.js");
 
 
 
@@ -9003,8 +9003,8 @@ function LoginPage() {
     event.preventDefault();
     var form = event.currentTarget;
     var formData = new FormData(form);
-    (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_5__.getCsrfCookie)().then(function () {
-      (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_5__.postLogin)(formData).then(function (res) {
+    (0,_utils_services_userServices__WEBPACK_IMPORTED_MODULE_5__.getCsrfCookie)().then(function () {
+      (0,_utils_services_userServices__WEBPACK_IMPORTED_MODULE_5__.postLogin)(formData).then(function (res) {
         console.log(res.data);
         setUser(res.data);
         history.push('/intern');
@@ -9112,7 +9112,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
 /* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
-/* harmony import */ var _utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/noticeServices */ "./resources/js/react-app/utils/noticeServices.js");
+/* harmony import */ var _utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/services/noticeServices */ "./resources/js/react-app/utils/services/noticeServices.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
@@ -9158,7 +9158,7 @@ function NoticePage() {
   var isAuthorized = user.level >= _constants__WEBPACK_IMPORTED_MODULE_3__.AUTH_LEVEL_EDITOR;
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__.getLastParameterFromPath)();
-    (0,_utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__.getNoticeByUuid)(uuid).then(function (res) {
+    (0,_utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_6__.getNoticeByUuid)(uuid).then(function (res) {
       setNotice(res.data);
       setIsLoading(false);
     });
@@ -9233,7 +9233,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_noticeServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/noticeServices */ "./resources/js/react-app/utils/noticeServices.js");
+/* harmony import */ var _utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/services/noticeServices */ "./resources/js/react-app/utils/services/noticeServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -9293,7 +9293,7 @@ function NoticesPage() {
     setPageTitle('News');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_noticeServices__WEBPACK_IMPORTED_MODULE_7__.getNoticesCount)().then(function (res) {
+    (0,_utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_7__.getNoticesCount)().then(function (res) {
       setNoticesCount(res.data);
       setIsLoadingCount(false);
     });
@@ -9305,7 +9305,7 @@ function NoticesPage() {
     currentPage ? setPage(currentPage) : setPage(1); // Only perform request when page has not initial value of 0
 
     if (page) {
-      (0,_utils_noticeServices__WEBPACK_IMPORTED_MODULE_7__.getNoticesByPage)(page).then(function (res) {
+      (0,_utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_7__.getNoticesByPage)(page).then(function (res) {
         setNotices(res.data.data);
         setIsLoadingNotices(false);
       });
@@ -9355,7 +9355,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_EditTextLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/EditTextLink */ "./resources/js/react-app/common/EditTextLink.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
+/* harmony import */ var _utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/services/textServices */ "./resources/js/react-app/utils/services/textServices.js");
 
 
 
@@ -9387,7 +9387,7 @@ function PressReviewPage() {
       setPageTitle = _useContext.setPageTitle;
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('press').then(function (res) {
+    (0,_utils_services_textServices__WEBPACK_IMPORTED_MODULE_5__.getText)('press').then(function (res) {
       setText(res.data);
     });
   }, []);
@@ -9432,7 +9432,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/screenings/ScreeningsListItem */ "./resources/js/react-app/common/screenings/ScreeningsListItem.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
 
 
 
@@ -9475,7 +9475,7 @@ function ProgramOverviewPage() {
     setPageTitle('Programm');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getFutureScreenings)().then(function (res) {
+    (0,_utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getFutureScreenings)().then(function (res) {
       setScreenings(res.data);
       setIsLoading(false);
     });
@@ -9522,7 +9522,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_screenings_ScreeningRow__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/screenings/ScreeningRow */ "./resources/js/react-app/common/screenings/ScreeningRow.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -9565,7 +9565,7 @@ function ProgramPage() {
     setPageTitle('Programm');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_5__.getFutureScreenings)().then(function (res) {
+    (0,_utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_5__.getFutureScreenings)().then(function (res) {
       setScreenings(res.data);
       setIsLoading(false);
     });
@@ -9612,7 +9612,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
 /* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -9668,7 +9668,7 @@ function ScreeningPage() {
   }, [isLoading]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__.getLastParameterFromPath)();
-    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_8__.getScreeningByUuid)(uuid).then(function (res) {
+    (0,_utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_8__.getScreeningByUuid)(uuid).then(function (res) {
       if (!res.data.uuid) {
         setNoScreeningFound(true);
       }
@@ -9881,7 +9881,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
 /* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
-/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+/* harmony import */ var _utils_services_serialServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/services/serialServices */ "./resources/js/react-app/utils/services/serialServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -9936,7 +9936,7 @@ function SerialPage() {
   }, [isLoading]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var serialUuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__.getLastParameterFromPath)();
-    (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_7__.getSerialByUuid)(serialUuid).then(function (res) {
+    (0,_utils_services_serialServices__WEBPACK_IMPORTED_MODULE_7__.getSerialByUuid)(serialUuid).then(function (res) {
       if (!res.data.uuid) {
         SetNoSerialFound(true);
       }
@@ -10089,7 +10089,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
 /* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
-/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+/* harmony import */ var _utils_services_serialServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/services/serialServices */ "./resources/js/react-app/utils/services/serialServices.js");
 
 
 
@@ -10167,7 +10167,7 @@ function SerialsPage() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester.value) {
-      (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_8__.getSerialsBySemester)(semester.value).then(function (res) {
+      (0,_utils_services_serialServices__WEBPACK_IMPORTED_MODULE_8__.getSerialsBySemester)(semester.value).then(function (res) {
         history.push('/program/serials?semester=' + semester.value);
         setSerials(res.data);
         setIsLoading(false);
@@ -10176,7 +10176,7 @@ function SerialsPage() {
   }, [semester]);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (search.value) {
-      (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_8__.getSerialsBySearchString)(search.value).then(function (res) {
+      (0,_utils_services_serialServices__WEBPACK_IMPORTED_MODULE_8__.getSerialsBySearchString)(search.value).then(function (res) {
         history.push('/program/serials?search=' + search.value);
         setSerials(res.data);
         setIsLoading(false);
@@ -10232,7 +10232,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_VideoContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/VideoContainer */ "./resources/js/react-app/common/VideoContainer.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../constants */ "./resources/js/react-app/constants.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_videoServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/videoServices */ "./resources/js/react-app/utils/videoServices.js");
+/* harmony import */ var _utils_services_videoServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/services/videoServices */ "./resources/js/react-app/utils/services/videoServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -10248,7 +10248,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -10280,7 +10279,7 @@ function VideosPage() {
     setPageTitle('Eigenproduktionen');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_videoServices__WEBPACK_IMPORTED_MODULE_6__.getVideos)().then(function (res) {
+    (0,_utils_services_videoServices__WEBPACK_IMPORTED_MODULE_6__.getVideos)().then(function (res) {
       setVideos(res.data);
       setIsLoading(false);
     });
@@ -10325,7 +10324,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_FaqFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/FaqFormGroup */ "./resources/js/react-app/common/forms/FaqFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/faqServices */ "./resources/js/react-app/utils/faqServices.js");
+/* harmony import */ var _utils_services_faqServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/faqServices */ "./resources/js/react-app/utils/services/faqServices.js");
 
 
 
@@ -10347,7 +10346,7 @@ function AddFaqPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: pageTitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.postFaq,
+      postFunction: _utils_services_faqServices__WEBPACK_IMPORTED_MODULE_6__.postFaq,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_FaqFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})
     })]
   });
@@ -10372,7 +10371,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
 /* harmony import */ var _common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/ImageFormGroup */ "./resources/js/react-app/common/forms/ImageFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/imageServices */ "./resources/js/react-app/utils/imageServices.js");
+/* harmony import */ var _utils_services_imageServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/services/imageServices */ "./resources/js/react-app/utils/services/imageServices.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
 
 
@@ -10417,7 +10416,7 @@ function AddImagePage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Bild hinzuf\xFCgen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.postImage,
+      postFunction: _utils_services_imageServices__WEBPACK_IMPORTED_MODULE_5__.postImage,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         type: "hidden",
         name: "assocType",
@@ -10455,7 +10454,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/ImageFormGroup */ "./resources/js/react-app/common/forms/ImageFormGroup.js");
 /* harmony import */ var _common_forms_NoticeFormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/forms/NoticeFormGroup */ "./resources/js/react-app/common/forms/NoticeFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/noticeServices */ "./resources/js/react-app/utils/noticeServices.js");
+/* harmony import */ var _utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/noticeServices */ "./resources/js/react-app/utils/services/noticeServices.js");
 
 
 
@@ -10470,7 +10469,7 @@ function AddNoticePage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Neue News anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_6__.postNotice,
+      postFunction: _utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_6__.postNotice,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_NoticeFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
@@ -10500,7 +10499,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/ImageFormGroup */ "./resources/js/react-app/common/forms/ImageFormGroup.js");
 /* harmony import */ var _common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/forms/ScreeningFormGroup */ "./resources/js/react-app/common/forms/ScreeningFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
 
 
 
@@ -10515,7 +10514,7 @@ function AddScreeningPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Neue Vorf\xFChrung anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
+      postFunction: _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
@@ -10545,7 +10544,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/ImageFormGroup */ "./resources/js/react-app/common/forms/ImageFormGroup.js");
 /* harmony import */ var _common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/forms/SerialFormGroup */ "./resources/js/react-app/common/forms/SerialFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+/* harmony import */ var _utils_services_serialServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/serialServices */ "./resources/js/react-app/utils/services/serialServices.js");
 
 
 
@@ -10560,7 +10559,7 @@ function AddSerialPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Neue Filmreihe anlegen"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
+      postFunction: _utils_services_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
@@ -10589,7 +10588,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
 /* harmony import */ var _common_forms_UserFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/UserFormGroup */ "./resources/js/react-app/common/forms/UserFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/userServices */ "./resources/js/react-app/utils/userServices.js");
+/* harmony import */ var _utils_services_userServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/services/userServices */ "./resources/js/react-app/utils/services/userServices.js");
 
 
 
@@ -10601,7 +10600,7 @@ __webpack_require__.r(__webpack_exports__);
 function AddUserPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_5__.postUser,
+      postFunction: _utils_services_userServices__WEBPACK_IMPORTED_MODULE_5__.postUser,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
         children: "Mitglied anlegen"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_UserFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
@@ -10632,7 +10631,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_VideoFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/VideoFormGroup */ "./resources/js/react-app/common/forms/VideoFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_videoServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/videoServices */ "./resources/js/react-app/utils/videoServices.js");
+/* harmony import */ var _utils_services_videoServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/videoServices */ "./resources/js/react-app/utils/services/videoServices.js");
 
 
 
@@ -10654,7 +10653,7 @@ function AddVideoPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: pageTitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_videoServices__WEBPACK_IMPORTED_MODULE_6__.postVideo,
+      postFunction: _utils_services_videoServices__WEBPACK_IMPORTED_MODULE_6__.postVideo,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_VideoFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})
     })]
   });
@@ -10679,7 +10678,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_FaqFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/FaqFormGroup */ "./resources/js/react-app/common/forms/FaqFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/faqServices */ "./resources/js/react-app/utils/faqServices.js");
+/* harmony import */ var _utils_services_faqServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/faqServices */ "./resources/js/react-app/utils/services/faqServices.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
@@ -10722,7 +10721,7 @@ function EditFaqPage() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__.getLastParameterFromPath)();
-    (0,_utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.getFaqByUuid)(uuid).then(function (res) {
+    (0,_utils_services_faqServices__WEBPACK_IMPORTED_MODULE_6__.getFaqByUuid)(uuid).then(function (res) {
       setFaq(res.data);
       setIsLoading(false);
     });
@@ -10736,8 +10735,8 @@ function EditFaqPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: pageTitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.postFaq,
-      deleteFunction: _utils_faqServices__WEBPACK_IMPORTED_MODULE_6__.deleteFaq,
+      postFunction: _utils_services_faqServices__WEBPACK_IMPORTED_MODULE_6__.postFaq,
+      deleteFunction: _utils_services_faqServices__WEBPACK_IMPORTED_MODULE_6__.deleteFaq,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -10773,7 +10772,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
 /* harmony import */ var _common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/forms/ImageFormGroup */ "./resources/js/react-app/common/forms/ImageFormGroup.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/imageServices */ "./resources/js/react-app/utils/imageServices.js");
+/* harmony import */ var _utils_services_imageServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/services/imageServices */ "./resources/js/react-app/utils/services/imageServices.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
@@ -10814,7 +10813,7 @@ function EditImagePage() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__.getLastParameterFromPath)();
-    (0,_utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.getImageByUuid)(uuid).then(function (res) {
+    (0,_utils_services_imageServices__WEBPACK_IMPORTED_MODULE_5__.getImageByUuid)(uuid).then(function (res) {
       setImage(res.data);
       setIsLoading(false);
     });
@@ -10828,8 +10827,8 @@ function EditImagePage() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HintStyled, {
       children: "(Das ist das momentan gespeicherte Bild und keine Vorschau des hochgeladenen.)"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_3__.default, {
-      postFunction: _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.postImage,
-      deleteFunction: _utils_imageServices__WEBPACK_IMPORTED_MODULE_5__.deleteImage,
+      postFunction: _utils_services_imageServices__WEBPACK_IMPORTED_MODULE_5__.postImage,
+      deleteFunction: _utils_services_imageServices__WEBPACK_IMPORTED_MODULE_5__.deleteImage,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -10875,7 +10874,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_noticeServices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/noticeServices */ "./resources/js/react-app/utils/noticeServices.js");
+/* harmony import */ var _utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/services/noticeServices */ "./resources/js/react-app/utils/services/noticeServices.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 /* harmony import */ var _common_forms_NoticeFormGroup__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../common/forms/NoticeFormGroup */ "./resources/js/react-app/common/forms/NoticeFormGroup.js");
@@ -10917,7 +10916,7 @@ function EditNoticePage() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__.getLastParameterFromPath)();
-    (0,_utils_noticeServices__WEBPACK_IMPORTED_MODULE_4__.getNoticeByUuid)(uuid).then(function (res) {
+    (0,_utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_4__.getNoticeByUuid)(uuid).then(function (res) {
       setNotice(res.data);
       setIsLoading(false);
     });
@@ -10927,8 +10926,8 @@ function EditNoticePage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "News bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_4__.postNotice,
-      deleteFunction: _utils_noticeServices__WEBPACK_IMPORTED_MODULE_4__.deleteNotice,
+      postFunction: _utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_4__.postNotice,
+      deleteFunction: _utils_services_noticeServices__WEBPACK_IMPORTED_MODULE_4__.deleteNotice,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -10969,7 +10968,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/ScreeningFormGroup */ "./resources/js/react-app/common/forms/ScreeningFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -11007,7 +11006,7 @@ function EditScreeningPage() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__.getLastParameterFromPath)();
-    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningByUuid)(uuid).then(function (res) {
+    (0,_utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getScreeningByUuid)(uuid).then(function (res) {
       setScreening(res.data);
       setIsLoading(false);
     });
@@ -11017,8 +11016,8 @@ function EditScreeningPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Vorf\xFChrung bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
-      deleteFunction: _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.deleteScreening,
+      postFunction: _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
+      deleteFunction: _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__.deleteScreening,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -11059,7 +11058,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_SerialFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/SerialFormGroup */ "./resources/js/react-app/common/forms/SerialFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
-/* harmony import */ var _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/serialServices */ "./resources/js/react-app/utils/serialServices.js");
+/* harmony import */ var _utils_services_serialServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/serialServices */ "./resources/js/react-app/utils/services/serialServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -11097,7 +11096,7 @@ function EditSerialPage() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var serialUuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__.getLastParameterFromPath)();
-    (0,_utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.getSerialByUuid)(serialUuid).then(function (res) {
+    (0,_utils_services_serialServices__WEBPACK_IMPORTED_MODULE_6__.getSerialByUuid)(serialUuid).then(function (res) {
       setSerial(res.data);
       setIsLoading(false);
     });
@@ -11107,8 +11106,8 @@ function EditSerialPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Filmreihe bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
-      deleteFunction: _utils_serialServices__WEBPACK_IMPORTED_MODULE_6__.deleteSerial,
+      postFunction: _utils_services_serialServices__WEBPACK_IMPORTED_MODULE_6__.postSerial,
+      deleteFunction: _utils_services_serialServices__WEBPACK_IMPORTED_MODULE_6__.deleteSerial,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -11159,7 +11158,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
 /* harmony import */ var _styles_wysisygEditorStyles__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../styles/wysisygEditorStyles */ "./resources/js/react-app/styles/wysisygEditorStyles.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
-/* harmony import */ var _utils_textServices__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/textServices */ "./resources/js/react-app/utils/textServices.js");
+/* harmony import */ var _utils_services_textServices__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/services/textServices */ "./resources/js/react-app/utils/services/textServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -11236,7 +11235,7 @@ function EditTextPage() {
   }, [assocPage]);
   (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
     var page = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_10__.getLastParameterFromPath)();
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_11__.getText)(page).then(function (res) {
+    (0,_utils_services_textServices__WEBPACK_IMPORTED_MODULE_11__.getText)(page).then(function (res) {
       setDefaultText(res.data);
       setAssocPage(page);
       setIsLoading(false);
@@ -11305,7 +11304,7 @@ function EditTextPage() {
     var textObject = {
       text: htmlFromDraft
     };
-    (0,_utils_textServices__WEBPACK_IMPORTED_MODULE_11__.postText)(assocPage, textObject).then(function () {
+    (0,_utils_services_textServices__WEBPACK_IMPORTED_MODULE_11__.postText)(assocPage, textObject).then(function () {
       history.push('/' + assocPage);
     })["catch"](function (err) {
       if (err.response.status === 422) {
@@ -11392,7 +11391,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_UserFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/UserFormGroup */ "./resources/js/react-app/common/forms/UserFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
-/* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/userServices */ "./resources/js/react-app/utils/userServices.js");
+/* harmony import */ var _utils_services_userServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/userServices */ "./resources/js/react-app/utils/services/userServices.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
 
@@ -11430,7 +11429,7 @@ function EditUserPage() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_5__.getLastParameterFromPath)();
-    (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_6__.getUserByUuid)(uuid).then(function (res) {
+    (0,_utils_services_userServices__WEBPACK_IMPORTED_MODULE_6__.getUserByUuid)(uuid).then(function (res) {
       setUser(res.data);
       setIsLoading(false);
     });
@@ -11440,8 +11439,8 @@ function EditUserPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
       children: "Mitglied bearbeiten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_6__.postUser,
-      deleteFunction: _utils_userServices__WEBPACK_IMPORTED_MODULE_6__.deleteUser,
+      postFunction: _utils_services_userServices__WEBPACK_IMPORTED_MODULE_6__.postUser,
+      deleteFunction: _utils_services_userServices__WEBPACK_IMPORTED_MODULE_6__.deleteUser,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -11481,7 +11480,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_forms_VideoFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/VideoFormGroup */ "./resources/js/react-app/common/forms/VideoFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_videoServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/videoServices */ "./resources/js/react-app/utils/videoServices.js");
+/* harmony import */ var _utils_services_videoServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/videoServices */ "./resources/js/react-app/utils/services/videoServices.js");
 /* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
 /* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
 
@@ -11524,7 +11523,7 @@ function EditVideoPage() {
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_7__.getLastParameterFromPath)();
-    (0,_utils_videoServices__WEBPACK_IMPORTED_MODULE_6__.getVideoByUuid)(uuid).then(function (res) {
+    (0,_utils_services_videoServices__WEBPACK_IMPORTED_MODULE_6__.getVideoByUuid)(uuid).then(function (res) {
       setVideo(res.data);
       setIsLoading(false);
     });
@@ -11538,8 +11537,8 @@ function EditVideoPage() {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: pageTitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_videoServices__WEBPACK_IMPORTED_MODULE_6__.postVideo,
-      deleteFunction: _utils_videoServices__WEBPACK_IMPORTED_MODULE_6__.deleteVideo,
+      postFunction: _utils_services_videoServices__WEBPACK_IMPORTED_MODULE_6__.postVideo,
+      deleteFunction: _utils_services_videoServices__WEBPACK_IMPORTED_MODULE_6__.deleteVideo,
       isEditing: true,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
         name: "_method",
@@ -11648,7 +11647,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_userServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/userServices */ "./resources/js/react-app/utils/userServices.js");
+/* harmony import */ var _utils_services_userServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/services/userServices */ "./resources/js/react-app/utils/services/userServices.js");
 
 
 
@@ -11686,7 +11685,7 @@ function UsersPage() {
     setPageTitle('Mitglieder');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_userServices__WEBPACK_IMPORTED_MODULE_5__.getUsers)().then(function (res) {
+    (0,_utils_services_userServices__WEBPACK_IMPORTED_MODULE_5__.getUsers)().then(function (res) {
       setUsers(res.data);
     });
   }, []);
@@ -11984,42 +11983,6 @@ var editorStyleObject = {
 
 /***/ }),
 
-/***/ "./resources/js/react-app/utils/baseService.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/react-app/utils/baseService.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "makeApiCall": () => /* binding */ makeApiCall
-/* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
-function makeApiCall(url) {
-  var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
-  var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
-  return axios__WEBPACK_IMPORTED_MODULE_0___default()({
-    method: method,
-    url: url,
-    data: data
-  })["catch"](function (err) {
-    if (err.response) {
-      if (err.response.status >= 500) {
-        window.location = '/error';
-      } else {
-        throw err;
-      }
-    } else {
-      window.location = '/error';
-    }
-  });
-}
-
-/***/ }),
-
 /***/ "./resources/js/react-app/utils/dateFormatters.js":
 /*!********************************************************!*\
   !*** ./resources/js/react-app/utils/dateFormatters.js ***!
@@ -12078,107 +12041,6 @@ function addMinutes(date, minutes) {
 
 /***/ }),
 
-/***/ "./resources/js/react-app/utils/faqServices.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/react-app/utils/faqServices.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getFaqs": () => /* binding */ getFaqs,
-/* harmony export */   "getFaqByUuid": () => /* binding */ getFaqByUuid,
-/* harmony export */   "postFaq": () => /* binding */ postFaq,
-/* harmony export */   "deleteFaq": () => /* binding */ deleteFaq
-/* harmony export */ });
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
-
-function getFaqs() {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs');
-}
-function getFaqByUuid(uuid) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs/uuid/' + uuid);
-}
-function postFaq(data) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs', 'POST', data);
-}
-function deleteFaq(uuid) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs/uuid/' + uuid, 'DELETE');
-}
-
-/***/ }),
-
-/***/ "./resources/js/react-app/utils/imageServices.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/react-app/utils/imageServices.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getImageById": () => /* binding */ getImageById,
-/* harmony export */   "getImageByUuid": () => /* binding */ getImageByUuid,
-/* harmony export */   "postImage": () => /* binding */ postImage,
-/* harmony export */   "deleteImage": () => /* binding */ deleteImage
-/* harmony export */ });
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
-
-function getImageById(id) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images/id/' + id);
-}
-function getImageByUuid(uuid) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images/uuid/' + uuid);
-}
-function postImage(data) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images', 'POST', data);
-}
-function deleteImage(uuid) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images/uuid/' + uuid, 'DELETE');
-}
-
-/***/ }),
-
-/***/ "./resources/js/react-app/utils/noticeServices.js":
-/*!********************************************************!*\
-  !*** ./resources/js/react-app/utils/noticeServices.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getNotices": () => /* binding */ getNotices,
-/* harmony export */   "getNoticesByPage": () => /* binding */ getNoticesByPage,
-/* harmony export */   "getNoticesCount": () => /* binding */ getNoticesCount,
-/* harmony export */   "getNoticeByUuid": () => /* binding */ getNoticeByUuid,
-/* harmony export */   "postNotice": () => /* binding */ postNotice,
-/* harmony export */   "deleteNotice": () => /* binding */ deleteNotice
-/* harmony export */ });
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
-
-function getNotices() {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices');
-}
-function getNoticesByPage(page) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices?page=' + page);
-}
-function getNoticesCount() {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices/count');
-}
-function getNoticeByUuid(uuid) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices/uuid/' + uuid);
-}
-function postNotice(data) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices', 'POST', data);
-}
-function deleteNotice(uuid) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices/uuid/' + uuid, 'DELETE');
-}
-
-/***/ }),
-
 /***/ "./resources/js/react-app/utils/pathUtils.js":
 /*!***************************************************!*\
   !*** ./resources/js/react-app/utils/pathUtils.js ***!
@@ -12198,45 +12060,6 @@ function getLastParameterFromPath() {
 function getSecondToLastParameterFromPath() {
   var path = window.location.pathname;
   return path.slice(path.lastIndexOf('/', path.lastIndexOf('/') - 1) + 1, path.lastIndexOf('/'));
-}
-
-/***/ }),
-
-/***/ "./resources/js/react-app/utils/screeningServices.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/react-app/utils/screeningServices.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
-/* harmony export */   "getScreeningsBySemester": () => /* binding */ getScreeningsBySemester,
-/* harmony export */   "getScreeningByUuid": () => /* binding */ getScreeningByUuid,
-/* harmony export */   "getScreeningsBySearchString": () => /* binding */ getScreeningsBySearchString,
-/* harmony export */   "postScreening": () => /* binding */ postScreening,
-/* harmony export */   "deleteScreening": () => /* binding */ deleteScreening
-/* harmony export */ });
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
-
-function getFutureScreenings() {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/future');
-}
-function getScreeningsBySemester(semester) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/semester/' + semester);
-}
-function getScreeningByUuid(uuid) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/single/' + uuid);
-}
-function getScreeningsBySearchString(search) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/search/' + search);
-}
-function postScreening(data) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings', 'POST', data);
-}
-function deleteScreening(uuid) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/uuid/' + uuid, 'DELETE');
 }
 
 /***/ }),
@@ -12315,10 +12138,186 @@ function computeSemesterOptions() {
 
 /***/ }),
 
-/***/ "./resources/js/react-app/utils/serialServices.js":
-/*!********************************************************!*\
-  !*** ./resources/js/react-app/utils/serialServices.js ***!
-  \********************************************************/
+/***/ "./resources/js/react-app/utils/services/baseService.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/react-app/utils/services/baseService.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "makeApiCall": () => /* binding */ makeApiCall
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+function makeApiCall(url) {
+  var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
+  var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: method,
+    url: url,
+    data: data
+  })["catch"](function (err) {
+    if (err.response) {
+      if (err.response.status >= 500) {
+        window.location = '/error';
+      } else {
+        throw err;
+      }
+    } else {
+      window.location = '/error';
+    }
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/react-app/utils/services/faqServices.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/react-app/utils/services/faqServices.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getFaqs": () => /* binding */ getFaqs,
+/* harmony export */   "getFaqByUuid": () => /* binding */ getFaqByUuid,
+/* harmony export */   "postFaq": () => /* binding */ postFaq,
+/* harmony export */   "deleteFaq": () => /* binding */ deleteFaq
+/* harmony export */ });
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/services/baseService.js");
+
+function getFaqs() {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs');
+}
+function getFaqByUuid(uuid) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs/uuid/' + uuid);
+}
+function postFaq(data) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs', 'POST', data);
+}
+function deleteFaq(uuid) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs/uuid/' + uuid, 'DELETE');
+}
+
+/***/ }),
+
+/***/ "./resources/js/react-app/utils/services/imageServices.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/react-app/utils/services/imageServices.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getImageById": () => /* binding */ getImageById,
+/* harmony export */   "getImageByUuid": () => /* binding */ getImageByUuid,
+/* harmony export */   "postImage": () => /* binding */ postImage,
+/* harmony export */   "deleteImage": () => /* binding */ deleteImage
+/* harmony export */ });
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/services/baseService.js");
+
+function getImageById(id) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images/id/' + id);
+}
+function getImageByUuid(uuid) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images/uuid/' + uuid);
+}
+function postImage(data) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images', 'POST', data);
+}
+function deleteImage(uuid) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images/uuid/' + uuid, 'DELETE');
+}
+
+/***/ }),
+
+/***/ "./resources/js/react-app/utils/services/noticeServices.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/react-app/utils/services/noticeServices.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getNotices": () => /* binding */ getNotices,
+/* harmony export */   "getNoticesByPage": () => /* binding */ getNoticesByPage,
+/* harmony export */   "getNoticesCount": () => /* binding */ getNoticesCount,
+/* harmony export */   "getNoticeByUuid": () => /* binding */ getNoticeByUuid,
+/* harmony export */   "postNotice": () => /* binding */ postNotice,
+/* harmony export */   "deleteNotice": () => /* binding */ deleteNotice
+/* harmony export */ });
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/services/baseService.js");
+
+function getNotices() {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices');
+}
+function getNoticesByPage(page) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices?page=' + page);
+}
+function getNoticesCount() {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices/count');
+}
+function getNoticeByUuid(uuid) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices/uuid/' + uuid);
+}
+function postNotice(data) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices', 'POST', data);
+}
+function deleteNotice(uuid) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices/uuid/' + uuid, 'DELETE');
+}
+
+/***/ }),
+
+/***/ "./resources/js/react-app/utils/services/screeningServices.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/react-app/utils/services/screeningServices.js ***!
+  \********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
+/* harmony export */   "getScreeningsBySemester": () => /* binding */ getScreeningsBySemester,
+/* harmony export */   "getScreeningByUuid": () => /* binding */ getScreeningByUuid,
+/* harmony export */   "getScreeningsBySearchString": () => /* binding */ getScreeningsBySearchString,
+/* harmony export */   "postScreening": () => /* binding */ postScreening,
+/* harmony export */   "deleteScreening": () => /* binding */ deleteScreening
+/* harmony export */ });
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/services/baseService.js");
+
+function getFutureScreenings() {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/future');
+}
+function getScreeningsBySemester(semester) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/semester/' + semester);
+}
+function getScreeningByUuid(uuid) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/single/' + uuid);
+}
+function getScreeningsBySearchString(search) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/search/' + search);
+}
+function postScreening(data) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings', 'POST', data);
+}
+function deleteScreening(uuid) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/uuid/' + uuid, 'DELETE');
+}
+
+/***/ }),
+
+/***/ "./resources/js/react-app/utils/services/serialServices.js":
+/*!*****************************************************************!*\
+  !*** ./resources/js/react-app/utils/services/serialServices.js ***!
+  \*****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -12331,7 +12330,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postSerial": () => /* binding */ postSerial,
 /* harmony export */   "deleteSerial": () => /* binding */ deleteSerial
 /* harmony export */ });
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/services/baseService.js");
 
 function getSerials() {
   return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/serials');
@@ -12354,10 +12353,10 @@ function deleteSerial(uuid) {
 
 /***/ }),
 
-/***/ "./resources/js/react-app/utils/textServices.js":
-/*!******************************************************!*\
-  !*** ./resources/js/react-app/utils/textServices.js ***!
-  \******************************************************/
+/***/ "./resources/js/react-app/utils/services/textServices.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/react-app/utils/services/textServices.js ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -12366,7 +12365,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getText": () => /* binding */ getText,
 /* harmony export */   "postText": () => /* binding */ postText
 /* harmony export */ });
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/services/baseService.js");
 
 function getText(page) {
   return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/texts/' + page);
@@ -12377,10 +12376,10 @@ function postText(page, data) {
 
 /***/ }),
 
-/***/ "./resources/js/react-app/utils/userServices.js":
-/*!******************************************************!*\
-  !*** ./resources/js/react-app/utils/userServices.js ***!
-  \******************************************************/
+/***/ "./resources/js/react-app/utils/services/userServices.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/react-app/utils/services/userServices.js ***!
+  \***************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -12395,7 +12394,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postUser": () => /* binding */ postUser,
 /* harmony export */   "deleteUser": () => /* binding */ deleteUser
 /* harmony export */ });
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/services/baseService.js");
 
 function getUsers() {
   return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/users');
@@ -12424,10 +12423,10 @@ function deleteUser(uuid) {
 
 /***/ }),
 
-/***/ "./resources/js/react-app/utils/videoServices.js":
-/*!*******************************************************!*\
-  !*** ./resources/js/react-app/utils/videoServices.js ***!
-  \*******************************************************/
+/***/ "./resources/js/react-app/utils/services/videoServices.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/react-app/utils/services/videoServices.js ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -12438,7 +12437,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postVideo": () => /* binding */ postVideo,
 /* harmony export */   "deleteVideo": () => /* binding */ deleteVideo
 /* harmony export */ });
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/services/baseService.js");
 
 function getVideos() {
   return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/videos');

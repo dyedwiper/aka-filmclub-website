@@ -10,7 +10,7 @@ import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { getText, postText } from '../../utils/textServices';
+import { getText, postText } from '../../utils/services/textServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditTextPage() {

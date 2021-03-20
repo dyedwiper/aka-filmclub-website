@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import ScreeningRow from '../common/screenings/ScreeningRow';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
-import { getFutureScreenings } from '../utils/screeningServices';
+import { getFutureScreenings } from '../utils/services/screeningServices';
 import LoadingPage from './LoadingPage';
 
 export default function ProgramPage() {

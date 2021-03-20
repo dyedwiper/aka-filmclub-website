@@ -3,7 +3,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import FaqFormGroup from '../../common/forms/FaqFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { deleteFaq, getFaqByUuid, postFaq } from '../../utils/faqServices';
+import { deleteFaq, getFaqByUuid, postFaq } from '../../utils/services/faqServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import LoadingPage from '../LoadingPage';
 

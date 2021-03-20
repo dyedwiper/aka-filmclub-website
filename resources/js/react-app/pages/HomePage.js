@@ -4,8 +4,8 @@ import NoticeCard from '../common/NoticeCard';
 import ScreeningCard from '../common/screenings/ScreeningCard';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
-import { getNotices } from '../utils/noticeServices';
-import { getFutureScreenings } from '../utils/screeningServices';
+import { getNotices } from '../utils/services/noticeServices';
+import { getFutureScreenings } from '../utils/services/screeningServices';
 import LoadingPage from './LoadingPage';
 
 export default function HomePage() {

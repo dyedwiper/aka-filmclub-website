@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { AUTH_LEVEL_EDITOR } from '../constants';
 import Context from '../Context';
-import { getLogout } from '../utils/userServices';
+import { getLogout } from '../utils/services/userServices';
 import HamburgerButton from './HamburgerButton';
 import akaLogo from '../assets/aka_logo.png';
 

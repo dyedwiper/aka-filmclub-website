@@ -3,7 +3,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import FaqFormGroup from '../../common/forms/FaqFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { postFaq } from '../../utils/faqServices';
+import { postFaq } from '../../utils/services/faqServices';
 
 export default function AddFaqPage() {
     const { pageTitle, setPageTitle } = useContext(Context);

@@ -6,7 +6,7 @@ import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
-import { getSerialByUuid } from '../utils/serialServices';
+import { getSerialByUuid } from '../utils/services/serialServices';
 import LoadingPage from './LoadingPage';
 
 export default function SerialPage() {

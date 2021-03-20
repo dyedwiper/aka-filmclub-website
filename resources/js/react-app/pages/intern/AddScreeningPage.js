@@ -4,7 +4,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
 import { HorizontalRuleStyled, PageStyled } from '../../common/styledElements';
-import { postScreening } from '../../utils/screeningServices';
+import { postScreening } from '../../utils/services/screeningServices';
 
 export default function AddScreeningPage() {
     return (

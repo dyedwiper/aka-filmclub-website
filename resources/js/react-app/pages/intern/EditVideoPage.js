@@ -3,7 +3,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import VideoFormGroup from '../../common/forms/VideoFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { deleteVideo, getVideoByUuid, postVideo } from '../../utils/videoServices';
+import { deleteVideo, getVideoByUuid, postVideo } from '../../utils/services/videoServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import LoadingPage from '../LoadingPage';
 

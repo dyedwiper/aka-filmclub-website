@@ -6,7 +6,7 @@ import SearchBar from '../common/SearchBar';
 import SemesterSelect from '../common/SemesterSelect';
 import { ArchiveSearchContainerStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
-import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/screeningServices';
+import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/services/screeningServices';
 import { computeCurrentSemester } from '../utils/semesterUtils';
 
 export default function ArchivePage() {

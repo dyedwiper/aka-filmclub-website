@@ -5,7 +5,7 @@ import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
-import { getNoticeByUuid } from '../utils/noticeServices';
+import { getNoticeByUuid } from '../utils/services/noticeServices';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import LoadingPage from './LoadingPage';
 

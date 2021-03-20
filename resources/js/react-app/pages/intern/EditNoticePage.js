@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import BaseForm from '../../common/forms/BaseForm';
 import { PageStyled } from '../../common/styledElements';
-import { deleteNotice, postNotice } from '../../utils/noticeServices';
+import { deleteNotice, postNotice } from '../../utils/services/noticeServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { getNoticeByUuid } from '../../utils/noticeServices';
+import { getNoticeByUuid } from '../../utils/services/noticeServices';
 import LoadingPage from '../LoadingPage';
 import NoticeFormGroup from '../../common/forms/NoticeFormGroup';
 import styled from 'styled-components';

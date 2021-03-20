@@ -5,7 +5,7 @@ import Paginator from '../common/Paginator';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import { NOTICES_PER_PAGE } from '../constants';
 import Context from '../Context';
-import { getNoticesByPage, getNoticesCount } from '../utils/noticeServices';
+import { getNoticesByPage, getNoticesCount } from '../utils/services/noticeServices';
 import LoadingPage from './LoadingPage';
 
 export default function NoticesPage() {
