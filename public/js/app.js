@@ -5523,7 +5523,7 @@ function Footer() {
 var FooterStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.footer.withConfig({
   displayName: "Footer__FooterStyled",
   componentId: "d2i78s-0"
-})(["height:60px;width:100vw;background-color:var(--aka-gelb);"]);
+})(["height:60px;width:100%;background-color:var(--aka-gelb);"]);
 var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "Footer__ContentContainerStyled",
   componentId: "d2i78s-1"
@@ -5820,7 +5820,7 @@ function Header() {
 var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.header.withConfig({
   displayName: "Header__HeaderStyled",
   componentId: "d7im2b-0"
-})(["position:fixed;top:0;z-index:10;width:100vw;background-color:white;"]);
+})(["position:fixed;top:0;z-index:10;width:100%;background-color:white;"]);
 var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__ContentContainerStyled",
   componentId: "d7im2b-1"
@@ -5832,7 +5832,7 @@ var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(reac
 var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.img.withConfig({
   displayName: "Header__LogoStyled",
   componentId: "d7im2b-3"
-})(["height:100px;@media (max-width:767px){height:45px;}"]);
+})(["height:100px;@media (max-width:767px){height:40px;}"]);
 var PageTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
   displayName: "Header__PageTitleStyled",
   componentId: "d7im2b-4"
@@ -8063,7 +8063,7 @@ __webpack_require__.r(__webpack_exports__);
 var PageStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.main.withConfig({
   displayName: "styledElements__PageStyled",
   componentId: "sc-1sog38p-0"
-})(["min-height:calc(100vh - 60px);max-width:1024px;margin:0 auto;padding:120px 100px 100px 100px;@media (max-width:1023px){padding:120px 20px 20px 20px;}@media (max-width:767px){padding:80px 20px 20px 20px;}"]);
+})(["min-height:100vh;max-width:1024px;margin:0 auto;padding:120px 100px 100px 100px;@media (max-width:1023px){padding:120px 20px 20px 20px;}@media (max-width:767px){padding:80px 20px 20px 20px;}"]);
 var PageHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_0__.default.h2.withConfig({
   displayName: "styledElements__PageHeadlineStyled",
   componentId: "sc-1sog38p-1"
