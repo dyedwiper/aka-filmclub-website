@@ -5267,29 +5267,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    height: 16px;\n    margin-right: 10px;\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    display: block;\n    margin-bottom: 10px;\n"]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
 
 
 
@@ -5302,11 +5279,17 @@ function CalendarDownloadLink(_ref) {
     download: 'aka-Filmclub_' + screening.title,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(IconStyled, {
       src: _assets_calendar_icon_png__WEBPACK_IMPORTED_MODULE_3__.default
-    }), "akalender-Eintrag runterladen"]
+    }), "aKalender-Eintrag runterladen"]
   });
 }
-var CalendarDownloadLinkStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.a(_templateObject());
-var IconStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img(_templateObject2());
+var CalendarDownloadLinkStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.a.withConfig({
+  displayName: "CalendarDownloadLink__CalendarDownloadLinkStyled",
+  componentId: "s74670-0"
+})(["display:block;margin-bottom:10px;"]);
+var IconStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.withConfig({
+  displayName: "CalendarDownloadLink__IconStyled",
+  componentId: "s74670-1"
+})(["height:16px;margin-right:10px;"]);
 
 /***/ }),
 
@@ -8326,7 +8309,9 @@ function ArchivePage() {
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading"
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
-      children: screenings.map(function (screening) {
+      children: screenings.filter(function (screening) {
+        return new Date(screening.date) < Date.now();
+      }).map(function (screening) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_2__.default, {
           screening: screening
         }, screening.id);
@@ -9641,7 +9626,7 @@ function ScreeningPage() {
         children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__.formatToDateTimeString)(screening.date)
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TextContainerStyled, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_CalendarDownloadLink__WEBPACK_IMPORTED_MODULE_2__.default, {
+      children: [new Date(screening.date) >= Date.now() && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_CalendarDownloadLink__WEBPACK_IMPORTED_MODULE_2__.default, {
         screening: screening
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(InfoContainerStyled, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InfoValueStyled, {

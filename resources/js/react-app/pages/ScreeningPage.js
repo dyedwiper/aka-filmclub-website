@@ -55,7 +55,7 @@ export default function ScreeningPage() {
                 </>
             )}
             <TextContainerStyled>
-                <CalendarDownloadLink screening={screening} />
+                {new Date(screening.date) >= Date.now() && <CalendarDownloadLink screening={screening} />}
                 <InfoContainerStyled>
                     <InfoValueStyled>{screening.country + ' ' + screening.year}</InfoValueStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>

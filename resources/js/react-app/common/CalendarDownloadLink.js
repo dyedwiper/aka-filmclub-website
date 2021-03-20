@@ -27,7 +27,7 @@ END:VCALENDAR`;
             download={'aka-Filmclub_' + screening.title}
         >
             <IconStyled src={calendarIcon} />
-            akalender-Eintrag runterladen
+            aKalender-Eintrag runterladen
         </CalendarDownloadLinkStyled>
     );
 }
