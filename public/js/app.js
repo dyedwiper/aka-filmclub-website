@@ -6555,6 +6555,10 @@ function BaseForm(_ref) {
   var isSelf = isEditing && userForm && userForm.props.user.id === loggedInUser.id;
   var isAdmin = loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_ADMIN;
   var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    // This does not work for editing because of loading delay, but that's okay I'd say.
+    document.querySelector('input').focus();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(BaseFormStyled, {
     onKeyPress: preventSubmitOnEnter,
     children: [children, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValidationErrorContainerStyled, {
@@ -8956,11 +8960,14 @@ function LoginPage() {
       setUser = _useContext.setUser,
       setPageTitle = _useContext.setPageTitle;
 
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Login | aka-Filmclub';
     setPageTitle('Login');
   }, []);
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useHistory)();
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.querySelector('input').focus();
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormStyled, {
       onSubmit: handleSubmit,

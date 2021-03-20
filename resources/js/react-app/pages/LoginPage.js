@@ -11,12 +11,16 @@ export default function LoginPage() {
 
     const { setUser, setPageTitle } = useContext(Context);
 
+    let history = useHistory();
+
     useEffect(() => {
         document.title = 'Login | aka-Filmclub';
         setPageTitle('Login');
     }, []);
 
-    let history = useHistory();
+    useEffect(() => {
+        document.querySelector('input').focus();
+    }, []);
 
     return (
         <PageStyled>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import { AUTH_LEVEL_ADMIN } from '../../constants';
@@ -19,6 +19,11 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
     const isAdmin = loggedInUser.level === AUTH_LEVEL_ADMIN;
 
     let history = useHistory();
+
+    useEffect(() => {
+        // This does not work for editing because of loading delay, but that's okay I'd say.
+        document.querySelector('input').focus();
+    }, []);
 
     return (
         <BaseFormStyled onKeyPress={preventSubmitOnEnter}>
