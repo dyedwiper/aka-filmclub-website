@@ -20,7 +20,7 @@ class ScreeningController extends Controller
 
     public function GetFutureScreenings()
     {
-        return Screening::where('date', '>', date("Y-m-d H:i:s"))->orderBy('date')->with('image')->get;
+        return Screening::where('date', '>', date("Y-m-d H:i:s"))->orderBy('date')->with('image')->get();
     }
 
     public function GetScreeningByUuid(string $uuid)
@@ -142,8 +142,10 @@ class ScreeningController extends Controller
         $image = $screening->image;
 
         $screening->delete();
-        Storage::delete($image->path);
-        $image->delete();
+        if ($image) {
+            Storage::delete($image->path);
+            $image->delete();
+        }
     }
 
     public function UpdateUuids()

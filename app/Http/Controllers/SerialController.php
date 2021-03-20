@@ -96,8 +96,10 @@ class SerialController extends Controller
         $image = $serial->image;
 
         $serial->delete();
-        Storage::delete($image->path);
-        $image->delete();
+        if ($image) {
+            Storage::delete($image->path);
+            $image->delete();
+        }
     }
 
     public function UpdateUuids()
