@@ -1,25 +1,25 @@
-import axios from 'axios';
+import { makeApiCall } from './baseService';
 
 export function getNotices() {
-    return axios.get('/api/notices');
+    return makeApiCall('/api/notices');
 }
 
 export function getNoticesByPage(page) {
-    return axios.get('/api/notices?page=' + page);
+    return makeApiCall('/api/notices?page=' + page);
 }
 
 export function getNoticesCount() {
-    return axios.get('/api/notices/count');
+    return makeApiCall('/api/notices/count');
 }
 
 export function getNoticeByUuid(uuid) {
-    return axios.get('/api/notices/uuid/' + uuid);
+    return makeApiCall('/api/notices/uuid/' + uuid);
 }
 
 export function postNotice(data) {
-    return axios.post('/api/notices', data);
+    return makeApiCall('/api/notices', 'POST', data);
 }
 
 export function deleteNotice(uuid) {
-    return axios.delete('/api/notices/uuid/' + uuid);
+    return makeApiCall('/api/notices/uuid/' + uuid, 'DELETE');
 }

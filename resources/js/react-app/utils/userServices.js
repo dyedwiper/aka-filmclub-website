@@ -1,35 +1,33 @@
-import axios from 'axios';
 import { makeApiCall } from './baseService';
 
 export function getUsers() {
-    return axios.get('/api/users');
+    return makeApiCall('/api/users');
 }
 
 export function getCurrentUser() {
-    return axios.get('/api/users/currentUser');
+    return makeApiCall('/api/users/currentUser');
 }
 
 export function getUserByUuid(uuid) {
-    return axios.get('/api/users/uuid/' + uuid);
+    return makeApiCall('/api/users/uuid/' + uuid);
 }
 
 export function getCsrfCookie() {
-    return axios.get('/sanctum/csrf-cookie');
+    return makeApiCall('/sanctum/csrf-cookie');
 }
 
 export function postLogin(data) {
-    // return axios.post('/api/users/login', data);
     return makeApiCall('/api/users/login', 'POST', data);
 }
 
 export function getLogout() {
-    return axios.get('/api/users/logout');
+    return makeApiCall('/api/users/logout');
 }
 
 export function postUser(data) {
-    return axios.post('/api/users', data);
+    return makeApiCall('/api/users', 'POST', data);
 }
 
 export function deleteUser(uuid) {
-    return axios.delete('/api/users/uuid/' + uuid);
+    return makeApiCall('/api/users/uuid/' + uuid, 'DELETE');
 }

@@ -1,17 +1,17 @@
-import axios from 'axios';
+import { makeApiCall } from './baseService';
 
 export function getVideos() {
-    return axios.get('/api/videos');
+    return makeApiCall('/api/videos');
 }
 
 export function getVideoByUuid(uuid) {
-    return axios.get('/api/videos/uuid/' + uuid);
+    return makeApiCall('/api/videos/uuid/' + uuid);
 }
 
 export function postVideo(data) {
-    return axios.post('/api/videos', data);
+    return makeApiCall('/api/videos', 'POST', data);
 }
 
 export function deleteVideo(uuid) {
-    return axios.delete('/api/videos/uuid/' + uuid);
+    return makeApiCall('/api/videos/uuid/' + uuid, 'DELETE');
 }

@@ -12092,20 +12092,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postFaq": () => /* binding */ postFaq,
 /* harmony export */   "deleteFaq": () => /* binding */ deleteFaq
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
 
 function getFaqs() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/faqs');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs');
 }
 function getFaqByUuid(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/faqs/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs/uuid/' + uuid);
 }
 function postFaq(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/faqs', data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs', 'POST', data);
 }
 function deleteFaq(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/faqs/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/faqs/uuid/' + uuid, 'DELETE');
 }
 
 /***/ }),
@@ -12124,20 +12123,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postImage": () => /* binding */ postImage,
 /* harmony export */   "deleteImage": () => /* binding */ deleteImage
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
 
 function getImageById(id) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/images/id/' + id);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images/id/' + id);
 }
 function getImageByUuid(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/images/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images/uuid/' + uuid);
 }
 function postImage(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/images', data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images', 'POST', data);
 }
 function deleteImage(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/images/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/images/uuid/' + uuid, 'DELETE');
 }
 
 /***/ }),
@@ -12158,26 +12156,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postNotice": () => /* binding */ postNotice,
 /* harmony export */   "deleteNotice": () => /* binding */ deleteNotice
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
 
 function getNotices() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/notices');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices');
 }
 function getNoticesByPage(page) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/notices?page=' + page);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices?page=' + page);
 }
 function getNoticesCount() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/notices/count');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices/count');
 }
 function getNoticeByUuid(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/notices/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices/uuid/' + uuid);
 }
 function postNotice(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/notices', data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices', 'POST', data);
 }
 function deleteNotice(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/notices/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/notices/uuid/' + uuid, 'DELETE');
 }
 
 /***/ }),
@@ -12221,29 +12218,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postScreening": () => /* binding */ postScreening,
 /* harmony export */   "deleteScreening": () => /* binding */ deleteScreening
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
-
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
 
 function getFutureScreenings() {
-  // return axios.get('/api/screenings/future');
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_1__.makeApiCall)('/api/screenings/future');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/future');
 }
 function getScreeningsBySemester(semester) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/semester/' + semester);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/semester/' + semester);
 }
 function getScreeningByUuid(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/single/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/single/' + uuid);
 }
 function getScreeningsBySearchString(search) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/search/' + search);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/search/' + search);
 }
 function postScreening(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/screenings', data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings', 'POST', data);
 }
 function deleteScreening(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/screenings/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/screenings/uuid/' + uuid, 'DELETE');
 }
 
 /***/ }),
@@ -12338,26 +12331,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postSerial": () => /* binding */ postSerial,
 /* harmony export */   "deleteSerial": () => /* binding */ deleteSerial
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
 
 function getSerials() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/serials');
 }
 function getSerialsBySemester(semester) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/semester/' + semester);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/serials/semester/' + semester);
 }
 function getSerialByUuid(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/serials/uuid/' + uuid);
 }
 function getSerialsBySearchString(search) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/serials/search/' + search);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/serials/search/' + search);
 }
 function postSerial(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/serials', data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/serials', 'POST', data);
 }
 function deleteSerial(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/serials/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/serials/uuid/' + uuid, 'DELETE');
 }
 
 /***/ }),
@@ -12374,14 +12366,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "getText": () => /* binding */ getText,
 /* harmony export */   "postText": () => /* binding */ postText
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
 
 function getText(page) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/texts/' + page);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/texts/' + page);
 }
 function postText(page, data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/texts/' + page, data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/texts/' + page, 'POST', data);
 }
 
 /***/ }),
@@ -12404,35 +12395,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postUser": () => /* binding */ postUser,
 /* harmony export */   "deleteUser": () => /* binding */ deleteUser
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
-
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
 
 function getUsers() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/users');
 }
 function getCurrentUser() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/currentUser');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/users/currentUser');
 }
 function getUserByUuid(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/users/uuid/' + uuid);
 }
 function getCsrfCookie() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/sanctum/csrf-cookie');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/sanctum/csrf-cookie');
 }
 function postLogin(data) {
-  // return axios.post('/api/users/login', data);
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_1__.makeApiCall)('/api/users/login', 'POST', data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/users/login', 'POST', data);
 }
 function getLogout() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/logout');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/users/logout');
 }
 function postUser(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users', data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/users', 'POST', data);
 }
 function deleteUser(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/users/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/users/uuid/' + uuid, 'DELETE');
 }
 
 /***/ }),
@@ -12451,20 +12438,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "postVideo": () => /* binding */ postVideo,
 /* harmony export */   "deleteVideo": () => /* binding */ deleteVideo
 /* harmony export */ });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
 
 function getVideos() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/videos');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/videos');
 }
 function getVideoByUuid(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/videos/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/videos/uuid/' + uuid);
 }
 function postVideo(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/videos', data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/videos', 'POST', data);
 }
 function deleteVideo(uuid) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().delete('/api/videos/uuid/' + uuid);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/videos/uuid/' + uuid, 'DELETE');
 }
 
 /***/ }),

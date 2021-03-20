@@ -1,9 +1,9 @@
-import axios from 'axios';
+import { makeApiCall } from './baseService';
 
 export function getText(page) {
-    return axios.get('/api/texts/' + page);
+    return makeApiCall('/api/texts/' + page);
 }
 
 export function postText(page, data) {
-    return axios.post('/api/texts/' + page, data);
+    return makeApiCall('/api/texts/' + page, 'POST', data);
 }

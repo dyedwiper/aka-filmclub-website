@@ -1,17 +1,17 @@
-import axios from 'axios';
+import { makeApiCall } from './baseService';
 
 export function getImageById(id) {
-    return axios.get('/api/images/id/' + id);
+    return makeApiCall('/api/images/id/' + id);
 }
 
 export function getImageByUuid(uuid) {
-    return axios.get('/api/images/uuid/' + uuid);
+    return makeApiCall('/api/images/uuid/' + uuid);
 }
 
 export function postImage(data) {
-    return axios.post('/api/images', data);
+    return makeApiCall('/api/images', 'POST', data);
 }
 
 export function deleteImage(uuid) {
-    return axios.delete('/api/images/uuid/' + uuid);
+    return makeApiCall('/api/images/uuid/' + uuid, 'DELETE');
 }

@@ -1,17 +1,17 @@
-import axios from 'axios';
+import { makeApiCall } from './baseService';
 
 export function getFaqs() {
-    return axios.get('/api/faqs');
+    return makeApiCall('/api/faqs');
 }
 
 export function getFaqByUuid(uuid) {
-    return axios.get('/api/faqs/uuid/' + uuid);
+    return makeApiCall('/api/faqs/uuid/' + uuid);
 }
 
 export function postFaq(data) {
-    return axios.post('/api/faqs', data);
+    return makeApiCall('/api/faqs', 'POST', data);
 }
 
 export function deleteFaq(uuid) {
-    return axios.delete('/api/faqs/uuid/' + uuid);
+    return makeApiCall('/api/faqs/uuid/' + uuid, 'DELETE');
 }

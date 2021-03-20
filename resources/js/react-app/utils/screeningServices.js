@@ -1,27 +1,25 @@
-import axios from 'axios';
 import { makeApiCall } from './baseService';
 
 export function getFutureScreenings() {
-    // return axios.get('/api/screenings/future');
     return makeApiCall('/api/screenings/future');
 }
 
 export function getScreeningsBySemester(semester) {
-    return axios.get('/api/screenings/semester/' + semester);
+    return makeApiCall('/api/screenings/semester/' + semester);
 }
 
 export function getScreeningByUuid(uuid) {
-    return axios.get('/api/screenings/single/' + uuid);
+    return makeApiCall('/api/screenings/single/' + uuid);
 }
 
 export function getScreeningsBySearchString(search) {
-    return axios.get('/api/screenings/search/' + search);
+    return makeApiCall('/api/screenings/search/' + search);
 }
 
 export function postScreening(data) {
-    return axios.post('/api/screenings', data);
+    return makeApiCall('/api/screenings', 'POST', data);
 }
 
 export function deleteScreening(uuid) {
-    return axios.delete('/api/screenings/uuid/' + uuid);
+    return makeApiCall('/api/screenings/uuid/' + uuid, 'DELETE');
 }
