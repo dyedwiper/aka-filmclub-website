@@ -9419,6 +9419,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -9465,16 +9466,18 @@ function ProgramOverviewPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: "Programm\xFCbersicht"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_CalendarSeriesDownloadLink__WEBPACK_IMPORTED_MODULE_2__.default, {
-      screenings: screenings
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading"
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
-      children: screenings.map(function (screening) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_3__.default, {
-          screening: screening
-        }, screening.id);
-      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [screenings.length > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_CalendarSeriesDownloadLink__WEBPACK_IMPORTED_MODULE_2__.default, {
+        screenings: screenings
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
+        children: screenings.map(function (screening) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_3__.default, {
+            screening: screening
+          }, screening.id);
+        })
+      })]
     })]
   });
 }

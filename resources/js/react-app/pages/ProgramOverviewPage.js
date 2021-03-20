@@ -27,15 +27,17 @@ export default function ProgramOverviewPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>Programmübersicht</PageHeadlineStyled>
-            <CalendarSeriesDownloadLink screenings={screenings} />
             {isLoading ? (
                 <div>Loading</div>
             ) : (
-                <ScreeningsListStyled>
-                    {screenings.map((screening) => (
-                        <ScreeningsListItem key={screening.id} screening={screening} />
-                    ))}
-                </ScreeningsListStyled>
+                <>
+                    {screenings.length > 0 && <CalendarSeriesDownloadLink screenings={screenings} />}
+                    <ScreeningsListStyled>
+                        {screenings.map((screening) => (
+                            <ScreeningsListItem key={screening.id} screening={screening} />
+                        ))}
+                    </ScreeningsListStyled>
+                </>
             )}
         </PageStyled>
     );
