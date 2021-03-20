@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import CalendarDownloadLink from '../common/CalendarDownloadLink';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import Context from '../Context';
@@ -54,6 +55,7 @@ export default function ScreeningPage() {
                 </>
             )}
             <TextContainerStyled>
+                {new Date(screening.date) >= Date.now() && <CalendarDownloadLink screening={screening} />}
                 <InfoContainerStyled>
                     <InfoValueStyled>{screening.country + ' ' + screening.year}</InfoValueStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>

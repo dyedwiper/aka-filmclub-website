@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import CalendarSeriesDownloadLink from '../common/CalendarSeriesDownloadLink';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
@@ -29,11 +30,14 @@ export default function ProgramOverviewPage() {
             {isLoading ? (
                 <div>Loading</div>
             ) : (
-                <ScreeningsListStyled>
-                    {screenings.map((screening) => (
-                        <ScreeningsListItem key={screening.id} screening={screening} />
-                    ))}
-                </ScreeningsListStyled>
+                <>
+                    {screenings.length > 0 && <CalendarSeriesDownloadLink screenings={screenings} />}
+                    <ScreeningsListStyled>
+                        {screenings.map((screening) => (
+                            <ScreeningsListItem key={screening.id} screening={screening} />
+                        ))}
+                    </ScreeningsListStyled>
+                </>
             )}
         </PageStyled>
     );

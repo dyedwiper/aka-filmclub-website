@@ -115,7 +115,7 @@ const HeaderStyled = styled.header`
     position: fixed;
     top: 0;
     z-index: 10;
-    width: 100vw;
+    width: 100%;
     background-color: white;
 `;
 
@@ -147,7 +147,7 @@ const LogoStyled = styled.img`
     height: 100px;
 
     @media (max-width: 767px) {
-        height: 45px;
+        height: 40px;
     }
 `;
 

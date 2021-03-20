@@ -28,3 +28,17 @@ export function formatToTimeString(date) {
 export function formatToIsoDateString(date) {
     return new Date(date.replace(' ', 'T')).toISOString().split('T')[0];
 }
+
+export function formatToIcsString(date, surplusMinutes = 0) {
+    const dateObject = new Date(date.replace(' ', 'T'));
+    const offsetInHours = -dateObject.getTimezoneOffset() / 60;
+    dateObject.setHours(dateObject.getHours() + offsetInHours);
+    const newDateObject = addMinutes(dateObject, surplusMinutes);
+    const isoString = newDateObject.toISOString();
+    const icsString = isoString.slice(0, 19).replaceAll('-', '').replaceAll(':', '');
+    return icsString;
+}
+
+function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes * 60000);
+}

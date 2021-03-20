@@ -70,9 +70,11 @@ export default function ArchivePage() {
                 <div>Loading</div>
             ) : (
                 <ListStyled>
-                    {screenings.map((screening) => (
-                        <ScreeningsListItem key={screening.id} screening={screening} />
-                    ))}
+                    {screenings
+                        .filter((screening) => new Date(screening.date) < Date.now())
+                        .map((screening) => (
+                            <ScreeningsListItem key={screening.id} screening={screening} />
+                        ))}
                 </ListStyled>
             )}
         </PageStyled>

@@ -33,7 +33,7 @@ export default function Footer() {
 
 const FooterStyled = styled.footer`
     height: 60px;
-    width: 100vw;
+    width: 100%;
     background-color: var(--aka-gelb);
 `;
 
