@@ -5293,6 +5293,55 @@ var IconStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.img.with
 
 /***/ }),
 
+/***/ "./resources/js/react-app/common/CalendarSeriesDownloadLink.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/react-app/common/CalendarSeriesDownloadLink.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ CalendarSeriesDownloadLink
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
+/* harmony import */ var _assets_calendar_icon_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/calendar_icon.png */ "./resources/js/react-app/assets/calendar_icon.png");
+
+
+
+
+
+
+
+function CalendarSeriesDownloadLink(_ref) {
+  var screenings = _ref.screenings;
+  // The template string must be unindented like this.
+  var icsString = "BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//aka-Filmclub e.V.//aka-Filmclub e.V. iCalendar 2.0//EN\nCALSCALE:GREGORIAN\nMETHOD:PUBLISH\nX-WR-CALNAME:aka-Filmclub\nX-WR-TIMEZONE:Europe/Berlin\n".concat(screenings.map(function (screening) {
+    return "BEGIN:VEVENT\nSUMMARY:aka-Filmclub: ".concat(screening.title, "\nLOCATION:").concat(screening.venue, "\nDESCRIPTION:https://aka-filmclub.de/screenings/").concat(screening.uuid, "\nDTSTART:").concat((0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToIcsString)(screening.date), "\nDTEND:").concat((0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToIcsString)(screening.date, screening.length), "\nEND:VEVENT");
+  }).join('\n'), "\nEND:VCALENDAR");
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(CalendarSeriesDownloadLinkStyled, {
+    href: 'data:text/calendar,' + icsString,
+    download: 'aka-Filmclub_' + (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_3__.computeCurrentSemester)(),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(IconStyled, {
+      src: _assets_calendar_icon_png__WEBPACK_IMPORTED_MODULE_4__.default
+    }), "aKalender-Serie runterladen"]
+  });
+}
+var CalendarSeriesDownloadLinkStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.a.withConfig({
+  displayName: "CalendarSeriesDownloadLink__CalendarSeriesDownloadLinkStyled",
+  componentId: "sc-18ms1x3-0"
+})(["display:block;margin-bottom:10px;"]);
+var IconStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
+  displayName: "CalendarSeriesDownloadLink__IconStyled",
+  componentId: "sc-18ms1x3-1"
+})(["height:16px;margin-right:10px;"]);
+
+/***/ }),
+
 /***/ "./resources/js/react-app/common/EditTextLink.js":
 /*!*******************************************************!*\
   !*** ./resources/js/react-app/common/EditTextLink.js ***!
@@ -9361,11 +9410,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/screenings/ScreeningsListItem */ "./resources/js/react-app/common/screenings/ScreeningsListItem.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_CalendarSeriesDownloadLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/CalendarSeriesDownloadLink */ "./resources/js/react-app/common/CalendarSeriesDownloadLink.js");
+/* harmony import */ var _common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/screenings/ScreeningsListItem */ "./resources/js/react-app/common/screenings/ScreeningsListItem.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/screeningServices */ "./resources/js/react-app/utils/screeningServices.js");
 
 
 
@@ -9387,6 +9437,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function ProgramOverviewPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -9398,7 +9449,7 @@ function ProgramOverviewPage() {
       isLoading = _useState4[0],
       setIsLoading = _useState4[1];
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_4__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
       setPageTitle = _useContext.setPageTitle;
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -9406,26 +9457,28 @@ function ProgramOverviewPage() {
     setPageTitle('Programm');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_5__.getFutureScreenings)().then(function (res) {
+    (0,_utils_screeningServices__WEBPACK_IMPORTED_MODULE_6__.getFutureScreenings)().then(function (res) {
       setScreenings(res.data);
       setIsLoading(false);
     });
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageHeadlineStyled, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: "Programm\xFCbersicht"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_CalendarSeriesDownloadLink__WEBPACK_IMPORTED_MODULE_2__.default, {
+      screenings: screenings
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading"
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ScreeningsListStyled, {
       children: screenings.map(function (screening) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_2__.default, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_screenings_ScreeningsListItem__WEBPACK_IMPORTED_MODULE_3__.default, {
           screening: screening
         }, screening.id);
       })
     })]
   });
 }
-var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.ul.withConfig({
+var ScreeningsListStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.ul.withConfig({
   displayName: "ProgramOverviewPage__ScreeningsListStyled",
   componentId: "sc-82twx1-0"
 })([""]);

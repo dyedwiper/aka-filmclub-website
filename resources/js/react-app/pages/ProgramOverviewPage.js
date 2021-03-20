@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import CalendarSeriesDownloadLink from '../common/CalendarSeriesDownloadLink';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
@@ -26,6 +27,7 @@ export default function ProgramOverviewPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>Programmübersicht</PageHeadlineStyled>
+            <CalendarSeriesDownloadLink screenings={screenings} />
             {isLoading ? (
                 <div>Loading</div>
             ) : (
