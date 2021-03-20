@@ -1,11 +1,9 @@
 import axios from 'axios';
-
-export function getScreenings() {
-    return axios.get('/api/screenings');
-}
+import { makeApiCall } from './baseService';
 
 export function getFutureScreenings() {
-    return axios.get('/api/screenings/future');
+    // return axios.get('/api/screenings/future');
+    return makeApiCall('/api/screenings/future');
 }
 
 export function getScreeningsBySemester(semester) {

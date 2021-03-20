@@ -11984,6 +11984,42 @@ var editorStyleObject = {
 
 /***/ }),
 
+/***/ "./resources/js/react-app/utils/baseService.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/react-app/utils/baseService.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "makeApiCall": () => /* binding */ makeApiCall
+/* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
+function makeApiCall(url) {
+  var method = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
+  var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  return axios__WEBPACK_IMPORTED_MODULE_0___default()({
+    method: method,
+    url: url,
+    data: data
+  })["catch"](function (err) {
+    if (err.response) {
+      if (err.response.status >= 500) {
+        window.location = '/error';
+      } else {
+        throw err;
+      }
+    } else {
+      window.location = '/error';
+    }
+  });
+}
+
+/***/ }),
+
 /***/ "./resources/js/react-app/utils/dateFormatters.js":
 /*!********************************************************!*\
   !*** ./resources/js/react-app/utils/dateFormatters.js ***!
@@ -12178,7 +12214,6 @@ function getSecondToLastParameterFromPath() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getScreenings": () => /* binding */ getScreenings,
 /* harmony export */   "getFutureScreenings": () => /* binding */ getFutureScreenings,
 /* harmony export */   "getScreeningsBySemester": () => /* binding */ getScreeningsBySemester,
 /* harmony export */   "getScreeningByUuid": () => /* binding */ getScreeningByUuid,
@@ -12188,12 +12223,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
 
-function getScreenings() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings');
-}
+
 function getFutureScreenings() {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/future');
+  // return axios.get('/api/screenings/future');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_1__.makeApiCall)('/api/screenings/future');
 }
 function getScreeningsBySemester(semester) {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/screenings/semester/' + semester);
@@ -12371,6 +12406,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/baseService.js");
+
 
 function getUsers() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users');
@@ -12385,7 +12422,8 @@ function getCsrfCookie() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/sanctum/csrf-cookie');
 }
 function postLogin(data) {
-  return axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/users/login', data);
+  // return axios.post('/api/users/login', data);
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_1__.makeApiCall)('/api/users/login', 'POST', data);
 }
 function getLogout() {
   return axios__WEBPACK_IMPORTED_MODULE_0___default().get('/api/users/logout');

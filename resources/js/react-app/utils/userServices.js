@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { makeApiCall } from './baseService';
 
 export function getUsers() {
     return axios.get('/api/users');
@@ -17,7 +18,8 @@ export function getCsrfCookie() {
 }
 
 export function postLogin(data) {
-    return axios.post('/api/users/login', data);
+    // return axios.post('/api/users/login', data);
+    return makeApiCall('/api/users/login', 'POST', data);
 }
 
 export function getLogout() {
