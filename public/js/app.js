@@ -6626,10 +6626,6 @@ function BaseForm(_ref) {
         setValidationErrors(err.response.data.validationErrors);
       }
 
-      if (err.response.status === 500) {
-        history.push('/error');
-      }
-
       setIsSubmitting(false);
       console.log(err.response.data);
     });
@@ -11309,10 +11305,6 @@ function EditTextPage() {
     })["catch"](function (err) {
       if (err.response.status === 422) {
         setValidationErrors(err.response.data.validationErrors);
-      }
-
-      if (err.response.status === 500) {
-        history.push('/error');
       }
 
       console.log(err.response.data);
