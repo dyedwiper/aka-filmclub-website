@@ -7,7 +7,7 @@ import SerialRow from '../common/SerialRow';
 import { ArchiveSearchContainerStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { computeCurrentSemester } from '../utils/semesterUtils';
-import { getSerialsBySemester, getSerialsBySearchString } from '../utils/serialServices';
+import { getSerialsBySemester, getSerialsBySearchString } from '../utils/services/serialServices';
 
 export default function SerialsPage() {
     const [serials, setSerials] = useState([]);

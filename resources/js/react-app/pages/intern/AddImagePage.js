@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import { PageStyled } from '../../common/styledElements';
-import { postImage } from '../../utils/imageServices';
+import { postImage } from '../../utils/services/imageServices';
 import { getLastParameterFromPath, getSecondToLastParameterFromPath } from '../../utils/pathUtils';
 
 export default function AddImagePage() {

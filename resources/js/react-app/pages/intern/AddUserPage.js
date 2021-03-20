@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
 import UserFormGroup from '../../common/forms/UserFormGroup';
 import { PageStyled } from '../../common/styledElements';
-import { postUser } from '../../utils/userServices';
+import { postUser } from '../../utils/services/userServices';
 
 export default function AddUserPage() {
     return (

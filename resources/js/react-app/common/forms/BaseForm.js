@@ -92,9 +92,6 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
                 if (err.response.status === 422) {
                     setValidationErrors(err.response.data.validationErrors);
                 }
-                if (err.response.status === 500) {
-                    history.push('/error');
-                }
                 setIsSubmitting(false);
                 console.log(err.response.data);
             });

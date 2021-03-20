@@ -4,7 +4,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import UserFormGroup from '../../common/forms/UserFormGroup';
 import { PageStyled } from '../../common/styledElements';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { deleteUser, getUserByUuid, postUser } from '../../utils/userServices';
+import { deleteUser, getUserByUuid, postUser } from '../../utils/services/userServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditUserPage() {

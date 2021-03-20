@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import { PageStyled } from '../common/styledElements';
 import Context from '../Context';
+import ooopsImage from '../assets/ooops.jpg';
+import styled from 'styled-components';
 
 export default function ErrorPage() {
     const { setPageTitle } = useContext(Context);
@@ -10,5 +12,14 @@ export default function ErrorPage() {
         setPageTitle('Oooops');
     }, []);
 
-    return <PageStyled>oooops</PageStyled>;
+    return (
+        <PageStyled>
+            <ImageStyled src={ooopsImage} />
+        </PageStyled>
+    );
 }
+
+const ImageStyled = styled.img`
+    display: block;
+    margin: 10px auto;
+`;

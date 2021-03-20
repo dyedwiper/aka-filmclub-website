@@ -5,7 +5,7 @@ import FaqRow from '../common/FaqRow';
 import { AddItemLinkStyled, HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR } from '../constants';
 import Context from '../Context';
-import { getFaqs } from '../utils/faqServices';
+import { getFaqs } from '../utils/services/faqServices';
 import LoadingPage from './LoadingPage';
 
 export default function FaqsPage() {

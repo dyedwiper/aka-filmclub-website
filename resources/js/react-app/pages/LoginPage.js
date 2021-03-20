@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import magicGif from '../assets/ahahah.gif';
 import { PageStyled } from '../common/styledElements';
 import Context from '../Context';
-import { getCsrfCookie, postLogin } from '../utils/userServices';
+import { getCsrfCookie, postLogin } from '../utils/services/userServices';
 
 export default function LoginPage() {
     const [didLoginFail, setDidLoginFail] = useState(false);

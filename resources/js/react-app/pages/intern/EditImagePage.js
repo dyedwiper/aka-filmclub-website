@@ -3,7 +3,7 @@ import { PageStyled } from '../../common/styledElements';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import styled from 'styled-components';
-import { deleteImage, getImageByUuid, postImage } from '../../utils/imageServices';
+import { deleteImage, getImageByUuid, postImage } from '../../utils/services/imageServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import LoadingPage from '../LoadingPage';
 import { STORAGE_FOLDER } from '../../constants';

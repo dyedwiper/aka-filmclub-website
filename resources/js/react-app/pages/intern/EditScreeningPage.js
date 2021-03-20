@@ -4,7 +4,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
 import { PageStyled } from '../../common/styledElements';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { deleteScreening, getScreeningByUuid, postScreening } from '../../utils/screeningServices';
+import { deleteScreening, getScreeningByUuid, postScreening } from '../../utils/services/screeningServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditScreeningPage() {

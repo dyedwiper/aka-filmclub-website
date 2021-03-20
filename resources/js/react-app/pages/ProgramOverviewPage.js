@@ -4,7 +4,7 @@ import CalendarSeriesDownloadLink from '../common/CalendarSeriesDownloadLink';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
-import { getFutureScreenings } from '../utils/screeningServices';
+import { getFutureScreenings } from '../utils/services/screeningServices';
 
 export default function ProgramOverviewPage() {
     const [screenings, setScreenings] = useState([]);

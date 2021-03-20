@@ -79,8 +79,10 @@ class NoticeController extends Controller
         $image = $notice->image;
 
         $notice->delete();
-        Storage::delete($image->path);
-        $image->delete();
+        if ($image) {
+            Storage::delete($image->path);
+            $image->delete();
+        }
     }
 
     public function UpdateUuids()

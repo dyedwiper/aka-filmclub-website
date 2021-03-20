@@ -7,7 +7,7 @@ import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
 import Context from '../Context';
 import { formatToDateTimeString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
-import { getScreeningByUuid } from '../utils/screeningServices';
+import { getScreeningByUuid } from '../utils/services/screeningServices';
 import LoadingPage from './LoadingPage';
 
 export default function ScreeningPage() {

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { AddItemLinkStyled, PageStyled } from '../../common/styledElements';
 import { AUTH_LEVEL_ADMIN, USER_STATUS_ACTIVE, USER_STATUS_ALUMNI, USER_STATUS_PAUSED } from '../../constants';
 import Context from '../../Context';
-import { getUsers } from '../../utils/userServices';
+import { getUsers } from '../../utils/services/userServices';
 
 export default function UsersPage() {
     const [users, setUsers] = useState([]);

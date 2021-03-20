@@ -4,7 +4,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import SerialFormGroup from '../../common/forms/SerialFormGroup';
 import { PageStyled } from '../../common/styledElements';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { getSerialByUuid, postSerial, deleteSerial } from '../../utils/serialServices';
+import { getSerialByUuid, postSerial, deleteSerial } from '../../utils/services/serialServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditSerialPage() {

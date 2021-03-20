@@ -42,7 +42,7 @@ import ScreeningPage from './pages/ScreeningPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
 import VideosPage from './pages/VideosPage';
-import { getCurrentUser } from './utils/userServices';
+import { getCurrentUser } from './utils/services/userServices';
 
 export default function App() {
     const [user, setUser] = useState({});
