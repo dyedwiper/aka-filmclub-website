@@ -8547,6 +8547,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _assets_ooops_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../assets/ooops.jpg */ "./resources/js/react-app/assets/ooops.jpg");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
 
 
 
@@ -8560,9 +8564,15 @@ function ErrorPage() {
     setPageTitle('Oooops');
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
-    children: "oooops"
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ImageStyled, {
+      src: _assets_ooops_jpg__WEBPACK_IMPORTED_MODULE_4__.default
+    })
   });
 }
+var ImageStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.img.withConfig({
+  displayName: "ErrorPage__ImageStyled",
+  componentId: "sc-1k7os69-0"
+})(["display:block;margin:10px auto;"]);
 
 /***/ }),
 
@@ -30740,6 +30750,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/missing.jpg?55cdee89e6392e62e38a8c0e116fdbbf");
+
+/***/ }),
+
+/***/ "./resources/js/react-app/assets/ooops.jpg":
+/*!*************************************************!*\
+  !*** ./resources/js/react-app/assets/ooops.jpg ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/ooops.jpg?163733816af0a9b2fc3de71eed7d86b5");
 
 /***/ }),
 
