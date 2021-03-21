@@ -41,6 +41,7 @@ export default function AddScreeningPage() {
     function handleOmdbCall(event) {
         event.preventDefault();
         const imdbId = event.target.form.imdbId.value;
+        // Here fetch is used instead of axios, because axios is configured globally for calls to the aka-API.
         fetch('http://www.omdbapi.com/?apikey=8d78dce8&i=' + imdbId)
             .then((res) => res.json())
             .then((json) => {
