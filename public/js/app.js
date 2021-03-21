@@ -11685,6 +11685,7 @@ function UsersPage() {
 
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_4__.default),
       loggedInUser = _useContext.user,
+      pageTitle = _useContext.pageTitle,
       setPageTitle = _useContext.setPageTitle;
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
@@ -11697,8 +11698,11 @@ function UsersPage() {
     });
   }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
-      children: "Mitglieder verwalten"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.PageHeadlineStyled, {
+      children: pageTitle
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(EditOwnDataLinkStyled, {
+      to: '/intern/editUser/' + loggedInUser.uuid,
+      children: "Eigene Daten bearbeiten"
     }), loggedInUser.level === _constants__WEBPACK_IMPORTED_MODULE_3__.AUTH_LEVEL_ADMIN && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_2__.AddItemLinkStyled, {
       to: "/intern/addUser",
       children: "Mitglied hinzuf\xFCgen"
@@ -11758,10 +11762,10 @@ function UsersPage() {
     })]
   });
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h2.withConfig({
-  displayName: "UsersPage__HeadlineStyled",
+var EditOwnDataLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link).withConfig({
+  displayName: "UsersPage__EditOwnDataLinkStyled",
   componentId: "sc-941gjx-0"
-})([""]);
+})(["display:block;margin-bottom:20px;"]);
 var GridContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "UsersPage__GridContainerStyled",
   componentId: "sc-941gjx-1"
