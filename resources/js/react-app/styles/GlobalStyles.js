@@ -8,6 +8,7 @@ export default createGlobalStyle`
   :root{
       --aka-gelb: #ffea0d;
       --aka-grau: #616161;
+      --aka-hellgrau: lightgrey;
       --aka-red: darkred;
       --aka-secondary-color: white;
   }
@@ -33,7 +34,7 @@ export default createGlobalStyle`
     width: 100%;
 
     &:disabled {
-        border-color: lightgrey;
+        border-color: var(--aka-hellgrau);
     }
   }
 

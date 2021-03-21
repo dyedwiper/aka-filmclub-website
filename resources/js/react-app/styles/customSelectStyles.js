@@ -74,10 +74,10 @@ export const positionSelectStyles = {
     option: customOptionStyles,
 };
 
-function customControlStyles(provided) {
+function customControlStyles(provided, state) {
     return {
         ...provided,
-        borderColor: 'black',
+        borderColor: state.isDisabled ? 'var(--aka-hellgrau)' : 'black',
         borderRadius: '0',
         cursor: 'pointer',
         '&:hover': {
@@ -86,10 +86,10 @@ function customControlStyles(provided) {
     };
 }
 
-function customDropdownIndicatorStyles(provided) {
+function customDropdownIndicatorStyles(provided, state) {
     return {
         ...provided,
-        color: 'black',
+        color: state.isDisabled ? 'var(--aka-grau)' : 'black',
         '&:hover': {
             color: 'var(--aka-grau)',
         },
@@ -103,10 +103,10 @@ function customIndicatorSeparatorStyles(provided) {
     };
 }
 
-function customSingleValueStyles(provided) {
+function customSingleValueStyles(provided, state) {
     return {
         ...provided,
-        color: 'black',
+        color: state.isDisabled ? 'var(--aka-grau)' : 'black',
     };
 }
 
