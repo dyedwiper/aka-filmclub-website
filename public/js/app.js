@@ -5667,6 +5667,11 @@ function Header() {
       isNavOpen = _useState2[0],
       setIsNavOpen = _useState2[1];
 
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(120),
+      _useState4 = _slicedToArray(_useState3, 2),
+      headerHeight = _useState4[0],
+      setHeaderHeight = _useState4[1];
+
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_3__.default),
       user = _useContext.user,
       setUser = _useContext.setUser,
@@ -5674,12 +5679,18 @@ function Header() {
 
   var isLoggedIn = Object.keys(user).length !== 0;
   var isEditor = user.level >= _constants__WEBPACK_IMPORTED_MODULE_2__.AUTH_LEVEL_EDITOR;
+  window.addEventListener('scroll', function () {
+    var height = window.scrollY < 160 ? 120 - window.scrollY / 4 : 80;
+    setHeaderHeight(height);
+  });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeaderStyled, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ContentContainerStyled, {
+      headerHeight: headerHeight,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
         to: "/",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LogoStyled, {
-          src: _assets_aka_logo_png__WEBPACK_IMPORTED_MODULE_6__.default
+          src: _assets_aka_logo_png__WEBPACK_IMPORTED_MODULE_6__.default,
+          headerHeight: headerHeight
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PageTitleStyled, {
         children: pageTitle
@@ -5824,7 +5835,9 @@ var HeaderStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.header
 var ContentContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__ContentContainerStyled",
   componentId: "d7im2b-1"
-})(["display:grid;grid-template-columns:180px 1fr;align-items:center;height:120px;max-width:1024px;padding:0 20px;margin:0 auto;@media (max-width:767px){grid-template-columns:80px 1fr 80px;justify-items:center;height:60px;padding:0;}"]);
+})(["display:grid;grid-template-columns:180px 1fr;align-items:center;height:", ";max-width:1024px;padding:0 20px;margin:0 auto;@media (max-width:767px){grid-template-columns:80px 1fr 80px;justify-items:center;height:60px;padding:0;}"], function (props) {
+  return props.headerHeight + 'px';
+});
 var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Link).withConfig({
   displayName: "Header__LinkStyled",
   componentId: "d7im2b-2"
@@ -5832,7 +5845,9 @@ var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(reac
 var LogoStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.img.withConfig({
   displayName: "Header__LogoStyled",
   componentId: "d7im2b-3"
-})(["height:100px;@media (max-width:767px){height:40px;}"]);
+})(["height:", ";@media (max-width:767px){height:40px;}"], function (props) {
+  return props.headerHeight - 20 + 'px';
+});
 var PageTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
   displayName: "Header__PageTitleStyled",
   componentId: "d7im2b-4"

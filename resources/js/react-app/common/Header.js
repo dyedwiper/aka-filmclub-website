@@ -9,16 +9,22 @@ import akaLogo from '../assets/aka_logo.png';
 
 export default function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
+    const [headerHeight, setHeaderHeight] = useState(120);
 
     const { user, setUser, pageTitle } = useContext(Context);
     const isLoggedIn = Object.keys(user).length !== 0;
     const isEditor = user.level >= AUTH_LEVEL_EDITOR;
 
+    window.addEventListener('scroll', () => {
+        const height = window.scrollY < 160 ? 120 - window.scrollY / 4 : 80;
+        setHeaderHeight(height);
+    });
+
     return (
         <HeaderStyled>
-            <ContentContainerStyled>
+            <ContentContainerStyled headerHeight={headerHeight}>
                 <LinkStyled to="/">
-                    <LogoStyled src={akaLogo} />
+                    <LogoStyled src={akaLogo} headerHeight={headerHeight} />
                 </LinkStyled>
                 <PageTitleStyled>{pageTitle}</PageTitleStyled>
                 <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
@@ -123,7 +129,7 @@ const ContentContainerStyled = styled.div`
     display: grid;
     grid-template-columns: 180px 1fr;
     align-items: center;
-    height: 120px;
+    height: ${(props) => props.headerHeight + 'px'};
     max-width: 1024px;
     padding: 0 20px;
     margin: 0 auto;
@@ -144,7 +150,7 @@ const LinkStyled = styled(Link)`
 `;
 
 const LogoStyled = styled.img`
-    height: 100px;
+    height: ${(props) => props.headerHeight - 20 + 'px'};
 
     @media (max-width: 767px) {
         height: 40px;
