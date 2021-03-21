@@ -10505,12 +10505,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
 /* harmony import */ var _common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/ImageFormGroup */ "./resources/js/react-app/common/forms/ImageFormGroup.js");
 /* harmony import */ var _common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/forms/ScreeningFormGroup */ "./resources/js/react-app/common/forms/ScreeningFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_services_baseService__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/services/baseService */ "./resources/js/react-app/utils/services/baseService.js");
+/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
+
+
 
 
 
@@ -10521,18 +10525,61 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AddScreeningPage() {
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_6__.default),
+      pageTitle = _useContext.pageTitle,
+      setPageTitle = _useContext.setPageTitle;
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    document.title = 'Vorstellung hinzufügen | aka-Filmclub';
+    setPageTitle('Vorstellung hinzufügen');
+  }, []);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(HeadlineStyled, {
-      children: "Neue Vorf\xFChrung anlegen"
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageHeadlineStyled, {
+      children: pageTitle
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FormStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+        htmlFor: "imdbIdInput",
+        children: "OMDb mit IMDb-ID abfragen"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+        id: "imdbIdInput",
+        name: "imdbId",
+        placeholder: "tt0091299"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+        type: "submit",
+        onClick: handleOmdbCall,
+        children: "Abfragen"
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_6__.postScreening,
+      postFunction: _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_8__.postScreening,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
+
+  function handleOmdbCall(event) {
+    event.preventDefault();
+    var imdbId = event.target.form.imdbId.value;
+    fetch('http://www.omdbapi.com/?apikey=8d78dce8&i=' + imdbId).then(function (res) {
+      return res.json();
+    }).then(function (json) {
+      console.log(json);
+    });
+  }
 }
-var HeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.withConfig({
-  displayName: "AddScreeningPage__HeadlineStyled",
+var FormStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.form.withConfig({
+  displayName: "AddScreeningPage__FormStyled",
   componentId: "wnuki-0"
+})(["margin-bottom:20px;"]);
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.label.withConfig({
+  displayName: "AddScreeningPage__LabelStyled",
+  componentId: "wnuki-1"
+})(["margin-right:20px;"]);
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.input.withConfig({
+  displayName: "AddScreeningPage__InputStyled",
+  componentId: "wnuki-2"
+})(["width:100px;margin-right:20px;"]);
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.button.withConfig({
+  displayName: "AddScreeningPage__ButtonStyled",
+  componentId: "wnuki-3"
 })([""]);
 
 /***/ }),
