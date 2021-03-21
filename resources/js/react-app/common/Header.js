@@ -29,9 +29,11 @@ export default function Header() {
                 <PageTitleStyled>{pageTitle}</PageTitleStyled>
                 <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
                 <NavStyled isNavOpen={isNavOpen}>
-                    <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
-                        News
-                    </NavLinkStyled>
+                    <DropdownContainerStyled>
+                        <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
+                            News
+                        </NavLinkStyled>
+                    </DropdownContainerStyled>
                     <DropdownContainerStyled>
                         <NavLinkStyled to="/program" onClick={() => setIsNavOpen(false)}>
                             Programm
@@ -171,7 +173,7 @@ const PageTitleStyled = styled.h2`
 `;
 
 const NavStyled = styled.nav`
-    padding: 20px 60px;
+    padding: 20px;
     background-color: white;
 
     @media (max-width: 767px) {
@@ -192,6 +194,11 @@ const NavStyled = styled.nav`
 const DropdownContainerStyled = styled.div`
     display: inline-block;
     position: relative;
+    margin-right: 30px;
+
+    &:last-child {
+        margin-right: 0;
+    }
 
     @media (min-width: 767px) {
         &:hover div {
@@ -200,12 +207,12 @@ const DropdownContainerStyled = styled.div`
     }
 
     @media (max-width: 767px) {
+        margin-right: 0;
         display: block;
     }
 `;
 
 const NavLinkStyled = styled(NavLink)`
-    margin-right: 30px;
     color: black;
     font-size: 1.7em;
     font-weight: bold;

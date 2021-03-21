@@ -23,7 +23,7 @@ export default function VideoContainer({ video }) {
 }
 
 const VideoContainerStyled = styled.li`
-    margin: 40px 0;
+    margin: 20px 0 40px 0;
 `;
 
 const IFrameContainerStyled = styled.div`

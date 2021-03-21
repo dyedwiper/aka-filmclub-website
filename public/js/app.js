@@ -5699,12 +5699,14 @@ function Header() {
         setIsNavOpen: setIsNavOpen
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NavStyled, {
         isNavOpen: isNavOpen,
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
-          to: "/news",
-          onClick: function onClick() {
-            return setIsNavOpen(false);
-          },
-          children: "News"
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DropdownContainerStyled, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
+            to: "/news",
+            onClick: function onClick() {
+              return setIsNavOpen(false);
+            },
+            children: "News"
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DropdownContainerStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NavLinkStyled, {
             to: "/program",
@@ -5855,17 +5857,17 @@ var PageTitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.h2.
 var NavStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.nav.withConfig({
   displayName: "Header__NavStyled",
   componentId: "d7im2b-5"
-})(["padding:20px 60px;background-color:white;@media (max-width:767px){display:", ";position:absolute;top:60px;overflow:auto;height:calc(100vh - 60px);width:100vw;padding:20px;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
+})(["padding:20px;background-color:white;@media (max-width:767px){display:", ";position:absolute;top:60px;overflow:auto;height:calc(100vh - 60px);width:100vw;padding:20px;padding-bottom:50px;background-color:var(--aka-gelb);opacity:0.9;text-align:right;}"], function (props) {
   return props.isNavOpen ? 'block' : 'none';
 });
 var DropdownContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__DropdownContainerStyled",
   componentId: "d7im2b-6"
-})(["display:inline-block;position:relative;@media (min-width:767px){&:hover div{display:block;}}@media (max-width:767px){display:block;}"]);
+})(["display:inline-block;position:relative;margin-right:30px;&:last-child{margin-right:0;}@media (min-width:767px){&:hover div{display:block;}}@media (max-width:767px){margin-right:0;display:block;}"]);
 var NavLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_7__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.NavLink).withConfig({
   displayName: "Header__NavLinkStyled",
   componentId: "d7im2b-7"
-})(["margin-right:30px;color:black;font-size:1.7em;font-weight:bold;@media (max-width:767px){display:block;margin:10px 0 0 0;}"]);
+})(["color:black;font-size:1.7em;font-weight:bold;@media (max-width:767px){display:block;margin:10px 0 0 0;}"]);
 var SubNavStyled = styled_components__WEBPACK_IMPORTED_MODULE_7__.default.div.withConfig({
   displayName: "Header__SubNavStyled",
   componentId: "d7im2b-8"
@@ -6473,7 +6475,7 @@ function VideoContainer(_ref) {
 var VideoContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.li.withConfig({
   displayName: "VideoContainer__VideoContainerStyled",
   componentId: "sc-12kgx08-0"
-})(["margin:40px 0;"]);
+})(["margin:20px 0 40px 0;"]);
 var IFrameContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "VideoContainer__IFrameContainerStyled",
   componentId: "sc-12kgx08-1"
@@ -7703,7 +7705,7 @@ function VideoFormGroup(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["Link", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(HintSyled, {
         children: ["Hinweis: Der Link muss die Form ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("em", {
-          children: "https://player.vimeo.com/video/210599507"
+          children: "https://player.vimeo.com/video/467070172"
         }), " haben."]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
         name: "source",
@@ -11470,7 +11472,7 @@ var SaveButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.b
 var BackButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_14__.default.button.withConfig({
   displayName: "EditTextPage__BackButtonStyled",
   componentId: "sc-1lkm474-5"
-})(["background-color:var(--aka-grau);"]);
+})(["color:white;background-color:var(--aka-grau);"]);
 
 /***/ }),
 

@@ -174,5 +174,6 @@ const ButtonContainerStyled = styled.div`
 const SaveButtonStyled = styled.button``;
 
 const BackButtonStyled = styled.button`
+    color: white;
     background-color: var(--aka-grau);
 `;

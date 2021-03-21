@@ -8,7 +8,7 @@ export default function VideoFormGroup({ video }) {
             <LabelStyled>
                 Link
                 <HintSyled>
-                    Hinweis: Der Link muss die Form <em>https://player.vimeo.com/video/210599507</em> haben.
+                    Hinweis: Der Link muss die Form <em>https://player.vimeo.com/video/467070172</em> haben.
                 </HintSyled>
                 <InputStyled name="source" defaultValue={video && video.source} />
             </LabelStyled>
