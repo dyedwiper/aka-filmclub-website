@@ -1,14 +1,16 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
 import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { makeApiCall } from '../../utils/services/baseService';
 import { postScreening } from '../../utils/services/screeningServices';
 
 export default function AddScreeningPage() {
+    const [omdbData, setOmdbData] = useState({});
+    const [omdbError, setOmdbError] = useState(false);
+
     const { pageTitle, setPageTitle } = useContext(Context);
 
     useEffect(() => {
@@ -25,9 +27,11 @@ export default function AddScreeningPage() {
                 <ButtonStyled type="submit" onClick={handleOmdbCall}>
                     Abfragen
                 </ButtonStyled>
+                {omdbError && <OmdbErrorStyled>Fehler bei der Abfrage</OmdbErrorStyled>}
             </FormStyled>
+            <HorizontalRuleStyled />
             <BaseForm postFunction={postScreening}>
-                <ScreeningFormGroup />
+                <ScreeningFormGroup screening={omdbData} />
                 <HorizontalRuleStyled />
                 <ImageFormGroup />
             </BaseForm>
@@ -40,7 +44,24 @@ export default function AddScreeningPage() {
         fetch('http://www.omdbapi.com/?apikey=8d78dce8&i=' + imdbId)
             .then((res) => res.json())
             .then((json) => {
-                console.log(json);
+                if (!json.response === 'True') {
+                    return setOmdbError(true);
+                }
+                const dataMap = {
+                    title: json.Title,
+                    directed_by: json.Director,
+                    written_by: json.Writer,
+                    cast: json.Actors,
+                    year: json.Year,
+                    country: json.Country,
+                    length: json.Runtime.slice(0, -4),
+                };
+                setOmdbData(dataMap);
+                setOmdbError(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setOmdbError(true);
             });
     }
 }
@@ -51,6 +72,11 @@ const FormStyled = styled.form`
 
 const LabelStyled = styled.label`
     margin-right: 20px;
+
+    @media (max-width: 767px) {
+        display: block;
+        margin-bottom: 10px;
+    }
 `;
 
 const InputStyled = styled.input`
@@ -59,3 +85,7 @@ const InputStyled = styled.input`
 `;
 
 const ButtonStyled = styled.button``;
+
+const OmdbErrorStyled = styled.div`
+    color: var(--aka-red);
+`;

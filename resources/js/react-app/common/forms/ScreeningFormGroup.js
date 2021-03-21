@@ -23,7 +23,7 @@ export default function ScreeningFormGroup({ screening }) {
                     <InputStyled
                         name="day"
                         type="date"
-                        defaultValue={screening && formatToIsoDateString(screening.date)}
+                        defaultValue={screening && screening.date && formatToIsoDateString(screening.date)}
                     />
                 </LabelStyled>
                 <LabelStyled>
@@ -31,7 +31,7 @@ export default function ScreeningFormGroup({ screening }) {
                     <InputStyled
                         name="time"
                         type="time"
-                        defaultValue={screening ? formatToTimeString(screening.date) : '20:00'}
+                        defaultValue={screening && screening.date ? formatToTimeString(screening.date) : '20:00'}
                     />
                 </LabelStyled>
             </FormRowWithTwoInputsStyled>

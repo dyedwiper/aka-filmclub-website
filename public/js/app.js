@@ -7072,13 +7072,13 @@ function ScreeningFormGroup(_ref) {
         children: ["Datum", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "day",
           type: "date",
-          defaultValue: screening && (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToIsoDateString)(screening.date)
+          defaultValue: screening && screening.date && (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToIsoDateString)(screening.date)
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Uhrzeit", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "time",
           type: "time",
-          defaultValue: screening ? (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToTimeString)(screening.date) : '20:00'
+          defaultValue: screening && screening.date ? (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_2__.formatToTimeString)(screening.date) : '20:00'
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
@@ -10505,16 +10505,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/forms/BaseForm */ "./resources/js/react-app/common/forms/BaseForm.js");
 /* harmony import */ var _common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/forms/ImageFormGroup */ "./resources/js/react-app/common/forms/ImageFormGroup.js");
 /* harmony import */ var _common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/forms/ScreeningFormGroup */ "./resources/js/react-app/common/forms/ScreeningFormGroup.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_services_baseService__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/services/baseService */ "./resources/js/react-app/utils/services/baseService.js");
-/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
+/* harmony import */ var _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/services/screeningServices */ "./resources/js/react-app/utils/services/screeningServices.js");
 
 
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -10525,6 +10536,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function AddScreeningPage() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      omdbData = _useState2[0],
+      setOmdbData = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState4 = _slicedToArray(_useState3, 2),
+      omdbError = _useState4[0],
+      setOmdbError = _useState4[1];
+
   var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_6__.default),
       pageTitle = _useContext.pageTitle,
       setPageTitle = _useContext.setPageTitle;
@@ -10548,10 +10569,14 @@ function AddScreeningPage() {
         type: "submit",
         onClick: handleOmdbCall,
         children: "Abfragen"
+      }), omdbError && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(OmdbErrorStyled, {
+        children: "Fehler bei der Abfrage"
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
-      postFunction: _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_8__.postScreening,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
+      postFunction: _utils_services_screeningServices__WEBPACK_IMPORTED_MODULE_7__.postScreening,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ScreeningFormGroup__WEBPACK_IMPORTED_MODULE_4__.default, {
+        screening: omdbData
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_ImageFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})]
     })]
   });
 
@@ -10561,26 +10586,47 @@ function AddScreeningPage() {
     fetch('http://www.omdbapi.com/?apikey=8d78dce8&i=' + imdbId).then(function (res) {
       return res.json();
     }).then(function (json) {
-      console.log(json);
+      if (!json.response === 'True') {
+        return setOmdbError(true);
+      }
+
+      var dataMap = {
+        title: json.Title,
+        directed_by: json.Director,
+        written_by: json.Writer,
+        cast: json.Actors,
+        year: json.Year,
+        country: json.Country,
+        length: json.Runtime.slice(0, -4)
+      };
+      setOmdbData(dataMap);
+      setOmdbError(false);
+    })["catch"](function (err) {
+      console.log(err);
+      setOmdbError(true);
     });
   }
 }
-var FormStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.form.withConfig({
+var FormStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.form.withConfig({
   displayName: "AddScreeningPage__FormStyled",
   componentId: "wnuki-0"
 })(["margin-bottom:20px;"]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.label.withConfig({
   displayName: "AddScreeningPage__LabelStyled",
   componentId: "wnuki-1"
-})(["margin-right:20px;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.input.withConfig({
+})(["margin-right:20px;@media (max-width:767px){display:block;margin-bottom:10px;}"]);
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.input.withConfig({
   displayName: "AddScreeningPage__InputStyled",
   componentId: "wnuki-2"
 })(["width:100px;margin-right:20px;"]);
-var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.button.withConfig({
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.button.withConfig({
   displayName: "AddScreeningPage__ButtonStyled",
   componentId: "wnuki-3"
 })([""]);
+var OmdbErrorStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+  displayName: "AddScreeningPage__OmdbErrorStyled",
+  componentId: "wnuki-4"
+})(["color:var(--aka-red);"]);
 
 /***/ }),
 
