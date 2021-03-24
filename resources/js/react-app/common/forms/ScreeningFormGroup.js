@@ -86,7 +86,10 @@ export default function ScreeningFormGroup({ screening }) {
                 </LabelStyled>
                 <LabelStyled>
                     Veranstaltungsort
-                    <InputStyled name="venue" defaultValue={screening ? screening.venue : 'GHS Biologie'} />
+                    <InputStyled
+                        name="venue"
+                        defaultValue={screening && screening.venue ? screening.venue : 'GHS Biologie'}
+                    />
                 </LabelStyled>
             </SmallInputsContainerStyled>
             <LabelStyled>

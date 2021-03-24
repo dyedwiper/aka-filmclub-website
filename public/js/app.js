@@ -7146,7 +7146,7 @@ function ScreeningFormGroup(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Veranstaltungsort", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           name: "venue",
-          defaultValue: screening ? screening.venue : 'GHS Biologie'
+          defaultValue: screening && screening.venue ? screening.venue : 'GHS Biologie'
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
