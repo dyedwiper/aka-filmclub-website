@@ -17,16 +17,18 @@ export default function InternPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>Interner Bereich</PageHeadlineStyled>
+            <SubheadlineStyled>Mitglieder</SubheadlineStyled>
+            <LinkStyled to="/intern/users">Mitglieder verwalten</LinkStyled>
             {isEditor && (
                 <>
                     <SubheadlineStyled>Sachen anlegen</SubheadlineStyled>
                     <LinkStyled to="/intern/addNotice">News anlegen</LinkStyled>
                     <LinkStyled to="/intern/addSerial">Filmreihe anlegen</LinkStyled>
                     <LinkStyled to="/intern/addScreening">Vorführung anlegen</LinkStyled>
+                    <SubheadlineStyled>Abrechnung</SubheadlineStyled>
+                    <LinkStyled to="/intern/distributors">Verleihe</LinkStyled>
                 </>
             )}
-            <SubheadlineStyled>Mitglieder</SubheadlineStyled>
-            <LinkStyled to="/intern/users">Mitglieder verwalten</LinkStyled>
         </PageStyled>
     );
 }

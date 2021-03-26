@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NoticeController;
@@ -264,5 +265,15 @@ Route::prefix('texts')->group(function () {
 
     Route::middleware('auth:sanctum')->post('/{page}', [
         TextController::class, 'PostText'
+    ]);
+});
+
+Route::prefix('distributors')->group(function () {
+    Route::get('/', [
+        DistributorController::class, 'GetDistributors'
+    ]);
+
+    Route::get('/uuid/{uuid}', [
+        DistributorController::class, 'GetDistributorByUuid'
     ]);
 });

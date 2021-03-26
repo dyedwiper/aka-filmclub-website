@@ -15,10 +15,11 @@ class CreateDistributorsTable extends Migration
     {
         Schema::create('distributors', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid');
             $table->timestamps();
             $table->string('name');
             $table->string('address')->nullable();
-            $table->integer('zipcode')->nullable();
+            $table->string('zipcode', 15)->nullable();
             $table->string('city')->nullable();
             $table->string('phone')->nullable();
             $table->string('fax')->nullable();

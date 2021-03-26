@@ -19,6 +19,7 @@ import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import AddUserPage from './pages/intern/AddUserPage';
 import AddVideoPage from './pages/intern/AddVideoPage';
+import DistributorsPage from './pages/intern/DistributorsPage';
 import EditFaqPage from './pages/intern/EditFaqPage';
 import EditImagePage from './pages/intern/EditImagePage';
 import EditNoticePage from './pages/intern/EditNoticePage';
@@ -175,6 +176,9 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path="/intern/editText">
                             <EditTextPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/distributors">
+                            <DistributorsPage />
                         </PrivateRoute>
                         <Route path="/error">
                             <ErrorPage />
