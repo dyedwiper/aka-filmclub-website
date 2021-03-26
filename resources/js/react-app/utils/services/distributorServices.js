@@ -9,7 +9,7 @@ export function getDistributorByUuid(uuid) {
 }
 
 export function postDistributor(data) {
-    return makeApiCall('/api/distributors/', 'POST', data);
+    return makeApiCall('/api/distributors', 'POST', data);
 }
 
 export function deleteDistributor(uuid) {
