@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import { AddItemLinkStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { getDistributors } from '../../utils/services/distributorServices';
 
@@ -11,8 +11,8 @@ export default function DistributorsPage() {
     const { pageTitle, setPageTitle } = useContext(Context);
 
     useEffect(() => {
-        document.title = 'Verleihe | aka-Filmclub';
-        setPageTitle('Verleihe');
+        document.title = 'Filmverleihe | aka-Filmclub';
+        setPageTitle('Filmverleihe');
     }, []);
 
     useEffect(() => {
@@ -24,14 +24,23 @@ export default function DistributorsPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            {distributors.map((distributor) => (
-                <LinkStyled key={distributor.id} to={'/intern/editDistributor/' + distributor.uuid}>
-                    {distributor.name}
-                </LinkStyled>
-            ))}
+            <AddItemLinkStyled to="/intern/addDistributor">Filmverleih hinzufügen</AddItemLinkStyled>
+            <ListStyled>
+                {distributors.map((distributor) => (
+                    <ListItemStyled key={distributor.id}>
+                        <LinkStyled to={'/intern/editDistributor/' + distributor.uuid}>{distributor.name}</LinkStyled>
+                    </ListItemStyled>
+                ))}
+            </ListStyled>
         </PageStyled>
     );
 }
+
+const ListStyled = styled.ul`
+    margin-top: 20px;
+`;
+
+const ListItemStyled = styled.li``;
 
 const LinkStyled = styled(Link)`
     display: block;

@@ -26,7 +26,7 @@ export default function InternPage() {
                     <LinkStyled to="/intern/addSerial">Filmreihe anlegen</LinkStyled>
                     <LinkStyled to="/intern/addScreening">Vorführung anlegen</LinkStyled>
                     <SubheadlineStyled>Abrechnung</SubheadlineStyled>
-                    <LinkStyled to="/intern/distributors">Verleihe</LinkStyled>
+                    <LinkStyled to="/intern/distributors">Filmverleihe</LinkStyled>
                 </>
             )}
         </PageStyled>

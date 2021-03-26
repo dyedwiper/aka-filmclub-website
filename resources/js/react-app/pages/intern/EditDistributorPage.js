@@ -22,8 +22,8 @@ export default function EditDistributorPage() {
     }, []);
 
     useEffect(() => {
-        document.title = 'Verleih bearbeiten | aka-Filmclub';
-        setPageTitle('Verleih bearbeiten');
+        document.title = 'Filmverleih bearbeiten | aka-Filmclub';
+        setPageTitle('Filmverleih bearbeiten');
     }, []);
 
     if (isLoading) return <LoadingPage />;

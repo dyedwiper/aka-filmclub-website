@@ -12,6 +12,7 @@ import ContactPage from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
+import AddDistributorPage from './pages/intern/AddDistributorPage';
 import AddFaqPage from './pages/intern/AddFaqPage';
 import AddImagePage from './pages/intern/AddImagePage';
 import AddNoticePage from './pages/intern/AddNoticePage';
@@ -180,6 +181,9 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute exact path="/intern/distributors">
                             <DistributorsPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/addDistributor">
+                            <AddDistributorPage />
                         </PrivateRoute>
                         <PrivateRoute path="/intern/editDistributor">
                             <EditDistributorPage />

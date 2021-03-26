@@ -277,6 +277,10 @@ Route::prefix('distributors')->group(function () {
         DistributorController::class, 'GetDistributorByUuid'
     ]);
 
+    Route::post('/', [
+        DistributorController::class, 'PostDistributor'
+    ]);
+    
     Route::patch('/', [
         DistributorController::class, 'PatchDistributor'
     ]);

@@ -18,6 +18,30 @@ class DistributorController extends Controller
         return Distributor::firstWhere('uuid', $uuid);
     }
 
+    public function PostDistributor(DistributorFormRequest $request)
+    {
+        $distributor = new Distributor([
+            'uuid' => uniqid(),
+            'name' => $request->name,
+            'address' => $request->address,
+            'zipcode' => $request->zipcode,
+            'city' => $request->city,
+            'phone' => $request->phone,
+            'fax' => $request->fax,
+            'email' => $request->email,
+            'taxId' => $request->taxId,
+            'customerId' => $request->customerId,
+            'accountOwner' => $request->accountOwner,
+            'iban' => $request->iban,
+            'bic' => $request->bic,
+            'bank' => $request->bank,
+            'accountNumberOldFormat' => $request->accountNumberOldFormat,
+            'bankIdOldFormat' => $request->bankIdOldFormat,
+        ]);
+        $distributor->save();
+        return $distributor;
+    }
+
     public function PatchDistributor(DistributorFormRequest $request)
     {
         $distributor = Distributor::firstWhere('uuid', $request->uuid);
