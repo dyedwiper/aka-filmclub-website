@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DistributorFormRequest;
 use App\Models\Distributor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class DistributorController extends Controller
 {
@@ -64,6 +66,15 @@ class DistributorController extends Controller
 
         $distributor->save();
         return $distributor;
+    }
+
+    public function DeleteDistributor(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(401);
+        }
+        $distributor = Distributor::firstWhere('uuid', $uuid);
+        $distributor->delete();
     }
 
     public function UpdateUuids()

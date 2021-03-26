@@ -12732,7 +12732,7 @@ function postDistributor(data) {
   return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/distributors', 'POST', data);
 }
 function deleteDistributor(uuid) {
-  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/distributors/' + uuid, 'DELETE');
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/distributors/uuid/' + uuid, 'DELETE');
 }
 
 /***/ }),

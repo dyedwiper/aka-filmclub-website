@@ -13,5 +13,5 @@ export function postDistributor(data) {
 }
 
 export function deleteDistributor(uuid) {
-    return makeApiCall('/api/distributors/' + uuid, 'DELETE');
+    return makeApiCall('/api/distributors/uuid/' + uuid, 'DELETE');
 }

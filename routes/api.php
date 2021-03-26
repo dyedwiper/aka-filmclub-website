@@ -280,9 +280,13 @@ Route::prefix('distributors')->group(function () {
     Route::post('/', [
         DistributorController::class, 'PostDistributor'
     ]);
-    
+
     Route::patch('/', [
         DistributorController::class, 'PatchDistributor'
+    ]);
+
+    Route::delete('/uuid/{uuid}', [
+        DistributorController::class, 'DeleteDistributor'
     ]);
 
     Route::get('/updateUuids', [
