@@ -1,29 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react';
 import BaseForm from '../../common/forms/BaseForm';
-import FaqFormGroup from '../../common/forms/FaqFormGroup';
+import DistributorFormGroup from '../../common/forms/DistributorFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { deleteFaq, getFaqByUuid, postFaq } from '../../utils/services/faqServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
+import { deleteDistributor, getDistributorByUuid, postDistributor } from '../../utils/services/distributorServices';
 import LoadingPage from '../LoadingPage';
 
-export default function EditFaqPage() {
-    const [faq, setFaq] = useState({});
+export default function EditDistributorPage() {
+    const [distributor, setDistributor] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
     const { pageTitle, setPageTitle } = useContext(Context);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
-        getFaqByUuid(uuid).then((res) => {
-            setFaq(res.data);
+        getDistributorByUuid(uuid).then((res) => {
+            setDistributor(res.data);
             setIsLoading(false);
         });
     }, []);
 
     useEffect(() => {
-        document.title = 'FAQ bearbeiten | aka-Filmclub';
-        setPageTitle('FAQ bearbeiten');
+        document.title = 'Verleih bearbeiten | aka-Filmclub';
+        setPageTitle('Verleih bearbeiten');
     }, []);
 
     if (isLoading) return <LoadingPage />;
@@ -31,12 +31,12 @@ export default function EditFaqPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <BaseForm postFunction={postFaq} deleteFunction={deleteFaq} isEditing={true}>
+            <BaseForm postFunction={postDistributor} deleteFunction={deleteDistributor} isEditing={true}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />
-                <input name="uuid" type="hidden" defaultValue={faq.uuid} />
-                <FaqFormGroup faq={faq} />
+                <input name="uuid" type="hidden" defaultValue={distributor.uuid} />
+                <DistributorFormGroup distributor={distributor} />
             </BaseForm>
         </PageStyled>
     );

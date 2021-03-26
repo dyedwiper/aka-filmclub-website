@@ -9,7 +9,7 @@ class DistributorController extends Controller
 {
     public function GetDistributors()
     {
-        return Distributor::all();
+        return Distributor::orderBy('name')->get();
     }
 
     public function GetDistributorByUuid(string $uuid)
@@ -17,5 +17,12 @@ class DistributorController extends Controller
         return Distributor::firstWhere('uuid', $uuid);
     }
 
-    
+    public function UpdateUuids()
+    {
+        $distributors = Distributor::all();
+        foreach ($distributors as $distributor) {
+            $distributor->uuid = uniqid();
+            $distributor->save();
+        }
+    }
 }

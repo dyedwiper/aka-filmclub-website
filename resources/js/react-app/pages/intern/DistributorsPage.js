@@ -25,7 +25,9 @@ export default function DistributorsPage() {
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             {distributors.map((distributor) => (
-                <LinkStyled key={distributor.id}>{distributor.name}</LinkStyled>
+                <LinkStyled key={distributor.id} to={'/intern/editDistributor/' + distributor.uuid}>
+                    {distributor.name}
+                </LinkStyled>
             ))}
         </PageStyled>
     );

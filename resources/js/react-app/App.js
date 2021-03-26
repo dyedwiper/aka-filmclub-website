@@ -20,6 +20,7 @@ import AddSerialPage from './pages/intern/AddSerialPage';
 import AddUserPage from './pages/intern/AddUserPage';
 import AddVideoPage from './pages/intern/AddVideoPage';
 import DistributorsPage from './pages/intern/DistributorsPage';
+import EditDistributorPage from './pages/intern/EditDistributorPage';
 import EditFaqPage from './pages/intern/EditFaqPage';
 import EditImagePage from './pages/intern/EditImagePage';
 import EditNoticePage from './pages/intern/EditNoticePage';
@@ -177,8 +178,11 @@ export default function App() {
                         <PrivateRoute path="/intern/editText">
                             <EditTextPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/distributors">
+                        <PrivateRoute exact path="/intern/distributors">
                             <DistributorsPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editDistributor">
+                            <EditDistributorPage />
                         </PrivateRoute>
                         <Route path="/error">
                             <ErrorPage />

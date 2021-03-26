@@ -276,4 +276,8 @@ Route::prefix('distributors')->group(function () {
     Route::get('/uuid/{uuid}', [
         DistributorController::class, 'GetDistributorByUuid'
     ]);
+
+    Route::get('/updateUuids', [
+        DistributorController::class, 'UpdateUuids'
+    ]);
 });
