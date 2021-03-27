@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Billing;
 use App\Models\Screening;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class BillingController extends Controller
 {
@@ -14,22 +15,27 @@ class BillingController extends Controller
         $year = intval(substr($semester, 2, 4));
 
         if ($season == 'WS') {
-            return $screenings = Screening::whereYear('date', $year)
+            $screenings = Screening::select('id', 'title', 'date')
+                ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
                 ->whereMonth('date', '<', 4)
                 ->orderByDesc('date')
-                ->with('billing')
                 ->get();
+            $billings = $screenings->map([$this, 'convertToBilling']);
+            return $billings;
         }
 
         if ($season == 'SS') {
-            return Screening::whereYear('date', $year)
+            $screenings = Screening::select('id', 'title', 'date')
+                ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)
                 ->orderByDesc('date')
                 ->with('billing')
                 ->get();
+            $billings = $screenings->map([$this, 'convertToBilling']);
+            return $billings;
         }
     }
 
@@ -40,5 +46,14 @@ class BillingController extends Controller
             $billing->uuid = uniqid();
             $billing->save();
         }
+    }
+
+    // This method must be public. Otherwise the callback does not work.
+    public function convertToBilling($screening)
+    {
+        $billing = $screening->billing;
+        $billing->title = $screening->title;
+        $billing->date = $screening->date;
+        return $billing;
     }
 }
