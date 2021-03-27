@@ -11095,7 +11095,7 @@ function AdmissionsPage() {
       children: billings.map(function (billing) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
-            children: billing.tickets
+            children: billing.soldTickets
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
             to: '/screening/' + billing.screeningUuid,
             children: billing.screeningTitle
@@ -11116,7 +11116,7 @@ var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.li.w
 var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
   displayName: "AdmissionsPage__AdmissionsStyled",
   componentId: "d839r0-2"
-})(["display:inline-block;width:50px;"]);
+})(["display:inline-block;width:40px;margin-right:10px;text-align:right;"]);
 var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_8__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link).withConfig({
   displayName: "AdmissionsPage__TitleLinkStyled",
   componentId: "d839r0-3"

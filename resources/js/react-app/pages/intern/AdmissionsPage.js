@@ -51,7 +51,7 @@ export default function AdmissionsPage() {
                 <ListStyled>
                     {billings.map((billing) => (
                         <ListItemStyled key={billing.id}>
-                            <AdmissionsStyled>{billing.tickets}</AdmissionsStyled>
+                            <AdmissionsStyled>{billing.soldTickets}</AdmissionsStyled>
                             <TitleLinkStyled to={'/screening/' + billing.screeningUuid}>
                                 {billing.screeningTitle}
                             </TitleLinkStyled>
@@ -69,7 +69,9 @@ const ListItemStyled = styled.li``;
 
 const AdmissionsStyled = styled.div`
     display: inline-block;
-    width: 50px;
+    width: 40px;
+    margin-right: 10px;
+    text-align: right;
 `;
 
 const TitleLinkStyled = styled(Link)``;

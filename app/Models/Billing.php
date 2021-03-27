@@ -18,4 +18,14 @@ class Billing extends Model
     {
         return $this->belongsTo(Distributor::class);
     }
+
+    public function tickets()
+    {
+        return $this->hasMany(BillingTickets::class);
+    }
+
+    public function passes()
+    {
+        return $this->hasMany(BillingPasses::class);
+    }
 }

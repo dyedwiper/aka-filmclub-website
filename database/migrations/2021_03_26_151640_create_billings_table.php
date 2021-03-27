@@ -22,9 +22,7 @@ class CreateBillingsTable extends Migration
             $table->unsignedBigInteger('distributor_id')->nullable();
             $table->foreign('distributor_id')->references('id')->on('distributors');
             $table->string('confirmationNumber')->nullable();
-            $table->integer('tickets');
             $table->integer('freeTickets');
-            $table->integer('passes');
             $table->decimal('guarantee', 8, 2);
             $table->float('percentage');
             $table->decimal('incidentals', 8, 2);

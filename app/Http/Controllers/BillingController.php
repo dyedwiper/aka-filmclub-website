@@ -50,9 +50,36 @@ class BillingController extends Controller
     public function convertToBilling($screening)
     {
         $billing = $screening->billing;
+        $billing->soldTickets = $this->calculateTicketSum($billing);
+        $billing->soldPasses = $this->calculatePassesSum($billing);
         $billing->screeningTitle = $screening->title;
         $billing->screeningDate = $screening->date;
         $billing->screeningUuid = $screening->uuid;
-        return $billing;
+        // The tickets and passes fields are populated by the calculate methods. Thus they are removed here.
+        // In order to call the forget method, $billing must be first turned into a collection.
+        $billingCollection = collect($billing);
+        $billingCollection->forget('tickets');
+        $billingCollection->forget('passes');
+        return $billingCollection;
+    }
+
+    private function calculateTicketSum($billing)
+    {
+        $ticketStacks = $billing->tickets;
+        $sum = 0;
+        foreach ($ticketStacks as $stack) {
+            $sum += $stack->lastNumber - $stack->firstNumber + 1;
+        }
+        return $sum;
+    }
+
+    private function calculatePassesSum($billing)
+    {
+        $passStacks = $billing->passes;
+        $sum = 0;
+        foreach ($passStacks as $stack) {
+            $sum += $stack->lastNumber - $stack->firstNumber + 1;
+        }
+        return $sum;
     }
 }

@@ -18,8 +18,8 @@ class CreateBillingTicketsTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('billing_id');
             $table->foreign('billing_id')->references('id')->on('billings');
-            $table->integer('firstTicketNumber');
-            $table->integer('lastTicketNumber');
+            $table->integer('firstNumber');
+            $table->integer('lastNumber');
             $table->decimal('price', 8, 2);
         });
     }
