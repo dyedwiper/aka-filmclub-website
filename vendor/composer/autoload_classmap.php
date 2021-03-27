@@ -39,6 +39,7 @@ return array(
     'App\\Http\\Requests\\UserFormRequest' => $baseDir . '/app/Http/Requests/UserFormRequest.php',
     'App\\Http\\Requests\\VideoFormRequest' => $baseDir . '/app/Http/Requests/VideoFormRequest.php',
     'App\\Models\\Billing' => $baseDir . '/app/Models/Billing.php',
+    'App\\Models\\BillingPasses' => $baseDir . '/app/Models/BillingPasses.php',
     'App\\Models\\BillingTickets' => $baseDir . '/app/Models/BillingTickets.php',
     'App\\Models\\Booking' => $baseDir . '/app/Models/Booking.php',
     'App\\Models\\Distributor' => $baseDir . '/app/Models/Distributor.php',

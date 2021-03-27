@@ -546,6 +546,7 @@ class ComposerStaticInit71d8cec2e72248168484e6d0aba63634
         'App\\Http\\Requests\\UserFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UserFormRequest.php',
         'App\\Http\\Requests\\VideoFormRequest' => __DIR__ . '/../..' . '/app/Http/Requests/VideoFormRequest.php',
         'App\\Models\\Billing' => __DIR__ . '/../..' . '/app/Models/Billing.php',
+        'App\\Models\\BillingPasses' => __DIR__ . '/../..' . '/app/Models/BillingPasses.php',
         'App\\Models\\BillingTickets' => __DIR__ . '/../..' . '/app/Models/BillingTickets.php',
         'App\\Models\\Booking' => __DIR__ . '/../..' . '/app/Models/Booking.php',
         'App\\Models\\Distributor' => __DIR__ . '/../..' . '/app/Models/Distributor.php',
