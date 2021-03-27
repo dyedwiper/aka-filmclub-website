@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BillingController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ImageController;
@@ -9,11 +10,7 @@ use App\Http\Controllers\SerialController;
 use App\Http\Controllers\TextController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
-use App\Models\Notice;
 use App\Models\Screening;
-use App\Models\Serial;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -291,5 +288,31 @@ Route::prefix('distributors')->group(function () {
 
     Route::get('/updateUuids', [
         DistributorController::class, 'UpdateUuids'
+    ]);
+});
+
+Route::prefix('billings')->group(function () {
+    Route::get('/', [
+        BillingController::class, 'GetBillings'
+    ]);
+
+    Route::get('/uuid/{uuid}', [
+        BillingController::class, 'GetBillingByUuid'
+    ]);
+
+    Route::post('/', [
+        BillingController::class, 'PostBilling'
+    ]);
+
+    Route::patch('/', [
+        BillingController::class, 'PatchBilling'
+    ]);
+
+    Route::delete('/uuid/{uuid}', [
+        BillingController::class, 'DeleteBilling'
+    ]);
+
+    Route::get('/updateUuids', [
+        BillingController::class, 'UpdateUuids'
     ]);
 });
