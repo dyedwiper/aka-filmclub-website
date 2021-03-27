@@ -11004,6 +11004,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
@@ -11076,7 +11077,6 @@ function AdmissionsPage() {
     if (semester.value) {
       (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_6__.getBillingsBySemester)(semester.value).then(function (res) {
         history.push('/intern/admissions?semester=' + semester.value);
-        console.log(res.data);
         setBillings(res.data);
         setIsLoading(false);
       });
@@ -11096,8 +11096,9 @@ function AdmissionsPage() {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
             children: billing.tickets
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleStyled, {
-            children: billing.title
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
+            to: '/screening/' + billing.screeningUuid,
+            children: billing.screeningTitle
           })]
         }, billing.id);
       })
@@ -11112,12 +11113,12 @@ var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.li.w
   displayName: "AdmissionsPage__ListItemStyled",
   componentId: "d839r0-1"
 })([""]);
-var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.span.withConfig({
+var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
   displayName: "AdmissionsPage__AdmissionsStyled",
   componentId: "d839r0-2"
-})([""]);
-var TitleStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.span.withConfig({
-  displayName: "AdmissionsPage__TitleStyled",
+})(["display:inline-block;width:50px;"]);
+var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_8__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link).withConfig({
+  displayName: "AdmissionsPage__TitleLinkStyled",
   componentId: "d839r0-3"
 })([""]);
 

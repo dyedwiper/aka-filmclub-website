@@ -15,8 +15,7 @@ class BillingController extends Controller
         $year = intval(substr($semester, 2, 4));
 
         if ($season == 'WS') {
-            $screenings = Screening::select('id', 'title', 'date')
-                ->whereYear('date', $year)
+            $screenings = Screening::whereYear('date', $year)
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
                 ->whereMonth('date', '<', 4)
@@ -27,8 +26,7 @@ class BillingController extends Controller
         }
 
         if ($season == 'SS') {
-            $screenings = Screening::select('id', 'title', 'date')
-                ->whereYear('date', $year)
+            $screenings = Screening::whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)
                 ->orderByDesc('date')
@@ -52,8 +50,9 @@ class BillingController extends Controller
     public function convertToBilling($screening)
     {
         $billing = $screening->billing;
-        $billing->title = $screening->title;
-        $billing->date = $screening->date;
+        $billing->screeningTitle = $screening->title;
+        $billing->screeningDate = $screening->date;
+        $billing->screeningUuid = $screening->uuid;
         return $billing;
     }
 }

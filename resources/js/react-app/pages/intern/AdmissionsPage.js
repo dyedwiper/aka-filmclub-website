@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import SemesterSelect from '../../common/SemesterSelect';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
@@ -35,7 +35,6 @@ export default function AdmissionsPage() {
         if (semester.value) {
             getBillingsBySemester(semester.value).then((res) => {
                 history.push('/intern/admissions?semester=' + semester.value);
-                console.log(res.data);
                 setBillings(res.data);
                 setIsLoading(false);
             });
@@ -53,7 +52,9 @@ export default function AdmissionsPage() {
                     {billings.map((billing) => (
                         <ListItemStyled key={billing.id}>
                             <AdmissionsStyled>{billing.tickets}</AdmissionsStyled>
-                            <TitleStyled>{billing.title}</TitleStyled>
+                            <TitleLinkStyled to={'/screening/' + billing.screeningUuid}>
+                                {billing.screeningTitle}
+                            </TitleLinkStyled>
                         </ListItemStyled>
                     ))}
                 </ListStyled>
@@ -66,6 +67,9 @@ const ListStyled = styled.ul``;
 
 const ListItemStyled = styled.li``;
 
-const AdmissionsStyled = styled.span``;
+const AdmissionsStyled = styled.div`
+    display: inline-block;
+    width: 50px;
+`;
 
-const TitleStyled = styled.span``;
+const TitleLinkStyled = styled(Link)``;
