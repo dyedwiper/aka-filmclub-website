@@ -1,1 +1,3 @@
-INSERT INTO `billings`(`screening_id`, `distributor_id`, `confirmationNumber`, `admissions`, `freeTickets`, `passes`, `guarantee`, `percentage`, `incidentals`, `valueAddedTax`, `cashInlay`, `cashOut`, `additionalEarnings`, `comment`) SELECT id, verleiherId, tbnr, eintritte, freikarten, ausweise, mindestgarantie, prozentsatz, nebenkosten, abrechnungmwst, kasseneinlage, kassenauslage, andereEinnahmen, abrechnungKommentar FROM aka_pgh_filme
+INSERT INTO `billings`(`screening_id`, `distributor_id`, `confirmationNumber`, `tickets`, `freeTickets`, `passes`, `guarantee`, `percentage`, `incidentals`, `valueAddedTax`, `cashInlay`, `cashOut`, `additionalEarnings`, `comment`) 
+SELECT id, verleiherId, tbnr, eintritte, freikarten, ausweise, mindestgarantie, prozentsatz, nebenkosten, abrechnungmwst, kasseneinlage, kassenauslage, andereEinnahmen, abrechnungKommentar 
+FROM aka_pgh_filme

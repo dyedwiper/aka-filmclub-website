@@ -38,10 +38,6 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'GetScreeningByUuid'
     ]);
 
-    Route::get('/serial/{serialFk}', [
-        ScreeningController::class, 'GetScreeningsBySerialId'
-    ]);
-
     Route::get('/year/{year}', [
         ScreeningController::class, 'GetScreeningsByYear'
     ]);
@@ -292,8 +288,8 @@ Route::prefix('distributors')->group(function () {
 });
 
 Route::prefix('billings')->group(function () {
-    Route::get('/', [
-        BillingController::class, 'GetBillings'
+    Route::get('/semester/{semester}', [
+        BillingController::class, 'GetBillingsBySemester'
     ]);
 
     Route::get('/uuid/{uuid}', [

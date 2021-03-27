@@ -42,4 +42,9 @@ class Screening extends Model
     {
         return $this->belongsTo(Serial::class);
     }
+
+    public function billing()
+    {
+        return $this->hasOne(Billing::class);
+    }
 }
