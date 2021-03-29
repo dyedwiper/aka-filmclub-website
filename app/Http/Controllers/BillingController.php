@@ -103,6 +103,7 @@ class BillingController extends Controller
         if ($rent < $billing->guarantee) {
             $rent = $billing->guarantee;
         }
+        $rent += $billing->incidentals;
         return round($rent);
     }
 

@@ -11018,6 +11018,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11097,30 +11098,104 @@ function AdmissionsPage() {
       setIsLoading: setIsLoading
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading..."
-    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
-      children: billings.map(function (billing) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
-            children: billing.soldTickets + billing.freeTickets
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
-            children: '(' + billing.soldPasses + ')'
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
-            isNegative: billing.profit < 0,
-            children: billing.profit + ' €'
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
-              admissions: billing.soldTickets + billing.freeTickets
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
+        children: billings.map(function (billing) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
+              children: billing.soldTickets + billing.freeTickets
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
+              children: '(' + billing.soldPasses + ')'
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
+              isNegative: billing.profit < 0,
+              children: Number(billing.profit).toLocaleString('de-DE', {
+                style: 'currency',
+                currency: 'EUR'
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
+                admissions: billing.soldTickets + billing.freeTickets
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
+              children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__.formatToDateString)(billing.screeningDate)
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
+              to: '/screening/' + billing.screeningUuid,
+              children: billing.screeningTitle
+            })]
+          }, billing.id);
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LegendStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
+          children: "Legende"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
+          children: "1. Spalte: Verkaufte Tickets"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
+          children: "2. Spalte: Verkaufte Ausweise"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
+          children: "3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten"
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(OverviewContainerStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
+          children: "Auswertung f\xFCr das Semester"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+            children: "Mittlere Besuchszahl"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+            children: (calculateTicketsSum(billings) / billings.length).toLocaleString('de-DE', {
+              maximumFractionDigits: 2
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
-            children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__.formatToDateString)(billing.screeningDate)
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
-            to: '/screening/' + billing.screeningUuid,
-            children: billing.screeningTitle
           })]
-        }, billing.id);
-      })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+            children: "Verkaufte Tickets"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+            children: calculateTicketsSum(billings)
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+            children: "Verkaufte Ausweise"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+            children: calculatePassesSum(billings)
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+            children: "Bilanz"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ValueStyled, {
+            children: [calculateBalance(billings).toLocaleString('de-DE', {
+              style: 'currency',
+              currency: 'EUR'
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueInfoStyled, {
+              children: "(Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)"
+            })]
+          })]
+        })]
+      })]
     })]
   });
+
+  function calculateTicketsSum(billings) {
+    var sum = 0;
+    billings.forEach(function (billing) {
+      sum += billing.soldTickets;
+    });
+    return sum;
+  }
+
+  function calculatePassesSum(billings) {
+    var sum = 0;
+    billings.forEach(function (billing) {
+      sum += billing.soldPasses;
+    });
+    return sum;
+  }
+
+  function calculateBalance(billings) {
+    var sum = 0;
+    billings.forEach(function (billing) {
+      sum += Number(billing.profit);
+    });
+    return sum;
+  }
 }
 var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
   displayName: "AdmissionsPage__ListStyled",
@@ -11161,7 +11236,39 @@ var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.wit
 var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_10__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link).withConfig({
   displayName: "AdmissionsPage__TitleLinkStyled",
   componentId: "d839r0-8"
-})(["display:inline-block;max-width:300px;white-space:nowrap;overflow-x:hidden;text-overflow:ellipsis;vertical-align:bottom;"]);
+})(["display:inline-block;max-width:300px;overflow-x:hidden;white-space:nowrap;text-overflow:ellipsis;vertical-align:bottom;"]);
+var LegendStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.section.withConfig({
+  displayName: "AdmissionsPage__LegendStyled",
+  componentId: "d839r0-9"
+})([""]);
+var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h3.withConfig({
+  displayName: "AdmissionsPage__SubHeadlineStyled",
+  componentId: "d839r0-10"
+})(["margin:20px 0 10px 0;"]);
+var LegendEntryStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "AdmissionsPage__LegendEntryStyled",
+  componentId: "d839r0-11"
+})([""]);
+var OverviewContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.section.withConfig({
+  displayName: "AdmissionsPage__OverviewContainerStyled",
+  componentId: "d839r0-12"
+})([""]);
+var KeyValueContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "AdmissionsPage__KeyValueContainerStyled",
+  componentId: "d839r0-13"
+})([""]);
+var KeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "AdmissionsPage__KeyStyled",
+  componentId: "d839r0-14"
+})(["display:inline-block;width:180px;"]);
+var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "AdmissionsPage__ValueStyled",
+  componentId: "d839r0-15"
+})(["display:inline-block;font-weight:bold;"]);
+var ValueInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.span.withConfig({
+  displayName: "AdmissionsPage__ValueInfoStyled",
+  componentId: "d839r0-16"
+})(["margin-left:5px;font-weight:normal;"]);
 
 /***/ }),
 
