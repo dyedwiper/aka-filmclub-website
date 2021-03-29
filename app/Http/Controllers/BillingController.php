@@ -19,7 +19,7 @@ class BillingController extends Controller
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
                 ->whereMonth('date', '<', 4)
-                ->orderByDesc('date')
+                ->orderBy('date')
                 ->get();
             $billings = $screenings->map([$this, 'convertToBilling']);
             return $billings;
@@ -29,7 +29,7 @@ class BillingController extends Controller
             $screenings = Screening::whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)
-                ->orderByDesc('date')
+                ->orderBy('date')
                 ->with('billing')
                 ->get();
             $billings = $screenings->map([$this, 'convertToBilling']);
@@ -52,6 +52,9 @@ class BillingController extends Controller
         $billing = $screening->billing;
         $billing->soldTickets = $this->calculateTicketSum($billing);
         $billing->soldPasses = $this->calculatePassesSum($billing);
+        $billing->earnings = $this->calculateEarnings($billing);
+        $billing->rent = $this->calculateRent($billing);
+        $billing->profit = $this->calculateProfit($billing);
         $billing->screeningTitle = $screening->title;
         $billing->screeningDate = $screening->date;
         $billing->screeningUuid = $screening->uuid;
@@ -81,5 +84,31 @@ class BillingController extends Controller
             $sum += $stack->lastNumber - $stack->firstNumber + 1;
         }
         return $sum;
+    }
+
+    private function calculateEarnings($billing)
+    {
+        $ticketStacks = $billing->tickets;
+        $earnings = 0;
+        foreach ($ticketStacks as $stack) {
+            $earnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
+        }
+        return $earnings;
+    }
+
+    public function calculateRent($billing)
+    {
+        $earnings = $this->calculateEarnings($billing);
+        $rent = $billing->percentage / 100 * $earnings;
+        if ($rent < $billing->guarantee) {
+            $rent = $billing->guarantee;
+        }
+        return round($rent);
+    }
+
+    private function calculateProfit($billing)
+    {
+        $profit = ($this->calculateEarnings($billing) - $this->calculateRent($billing)) / 100;
+        return number_format($profit, 2);
     }
 }

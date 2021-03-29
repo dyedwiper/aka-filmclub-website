@@ -11096,6 +11096,11 @@ function AdmissionsPage() {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
             children: billing.soldTickets
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
+            children: '(' + billing.soldPasses + ')'
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
+            isNegative: billing.profit < 0,
+            children: billing.profit + ' €'
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
             to: '/screening/' + billing.screeningUuid,
             children: billing.screeningTitle
@@ -11116,10 +11121,20 @@ var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.li.w
 var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
   displayName: "AdmissionsPage__AdmissionsStyled",
   componentId: "d839r0-2"
+})(["display:inline-block;width:40px;margin-right:5px;text-align:right;font-weight:bold;"]);
+var PassesStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+  displayName: "AdmissionsPage__PassesStyled",
+  componentId: "d839r0-3"
 })(["display:inline-block;width:40px;margin-right:10px;text-align:right;"]);
+var ProfitStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+  displayName: "AdmissionsPage__ProfitStyled",
+  componentId: "d839r0-4"
+})(["display:inline-block;width:70px;margin-right:10px;text-align:right;font-weight:bold;color:", ";"], function (props) {
+  return props.isNegative && 'var(--aka-red)';
+});
 var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_8__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link).withConfig({
   displayName: "AdmissionsPage__TitleLinkStyled",
-  componentId: "d839r0-3"
+  componentId: "d839r0-5"
 })([""]);
 
 /***/ }),

@@ -52,6 +52,8 @@ export default function AdmissionsPage() {
                     {billings.map((billing) => (
                         <ListItemStyled key={billing.id}>
                             <AdmissionsStyled>{billing.soldTickets}</AdmissionsStyled>
+                            <PassesStyled>{'(' + billing.soldPasses + ')'}</PassesStyled>
+                            <ProfitStyled isNegative={billing.profit < 0}>{billing.profit + ' €'}</ProfitStyled>
                             <TitleLinkStyled to={'/screening/' + billing.screeningUuid}>
                                 {billing.screeningTitle}
                             </TitleLinkStyled>
@@ -70,8 +72,25 @@ const ListItemStyled = styled.li``;
 const AdmissionsStyled = styled.div`
     display: inline-block;
     width: 40px;
+    margin-right: 5px;
+    text-align: right;
+    font-weight: bold;
+`;
+
+const PassesStyled = styled.div`
+    display: inline-block;
+    width: 40px;
     margin-right: 10px;
     text-align: right;
+`;
+
+const ProfitStyled = styled.div`
+    display: inline-block;
+    width: 70px;
+    margin-right: 10px;
+    text-align: right;
+    font-weight: bold;
+    color: ${(props) => props.isNegative && 'var(--aka-red)'};
 `;
 
 const TitleLinkStyled = styled(Link)``;

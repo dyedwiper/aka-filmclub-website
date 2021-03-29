@@ -20,7 +20,7 @@ class CreateBillingPassesTable extends Migration
             $table->foreign('billing_id')->references('id')->on('billings');
             $table->integer('firstNumber');
             $table->integer('lastNumber');
-            $table->decimal('price', 8, 2);
+            $table->integer('price');
         });
     }
 

@@ -23,13 +23,13 @@ class CreateBillingsTable extends Migration
             $table->foreign('distributor_id')->references('id')->on('distributors');
             $table->string('confirmationNumber')->nullable();
             $table->integer('freeTickets');
-            $table->decimal('guarantee', 8, 2);
+            $table->integer('guarantee');
             $table->float('percentage');
-            $table->decimal('incidentals', 8, 2);
+            $table->integer('incidentals');
             $table->float('valueAddedTax');
-            $table->decimal('cashInlay', 8, 2);
-            $table->decimal('cashOut', 8, 2);
-            $table->decimal('additionalEarnings', 8, 2);
+            $table->integer('cashInlay');
+            $table->integer('cashOut');
+            $table->integer('additionalEarnings');
             $table->string('comment')->nullable();
         });
     }
