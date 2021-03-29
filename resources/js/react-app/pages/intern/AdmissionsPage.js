@@ -3,7 +3,9 @@ import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import SemesterSelect from '../../common/SemesterSelect';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import { NUMBER_OF_SEEDS_IN_GHS_BIO } from '../../constants';
 import Context from '../../Context';
+import { formatToDateString } from '../../utils/dateFormatters';
 import { computeCurrentSemester } from '../../utils/semesterUtils';
 import { getBillingsBySemester } from '../../utils/services/billingServices';
 
@@ -51,9 +53,13 @@ export default function AdmissionsPage() {
                 <ListStyled>
                     {billings.map((billing) => (
                         <ListItemStyled key={billing.id}>
-                            <AdmissionsStyled>{billing.soldTickets}</AdmissionsStyled>
+                            <AdmissionsStyled>{billing.soldTickets + billing.freeTickets}</AdmissionsStyled>
                             <PassesStyled>{'(' + billing.soldPasses + ')'}</PassesStyled>
                             <ProfitStyled isNegative={billing.profit < 0}>{billing.profit + ' €'}</ProfitStyled>
+                            <DiagramContainerStyled>
+                                <DiagramStyled admissions={billing.soldTickets + billing.freeTickets} />
+                            </DiagramContainerStyled>
+                            <DateStyled>{formatToDateString(billing.screeningDate)}</DateStyled>
                             <TitleLinkStyled to={'/screening/' + billing.screeningUuid}>
                                 {billing.screeningTitle}
                             </TitleLinkStyled>
@@ -71,7 +77,7 @@ const ListItemStyled = styled.li``;
 
 const AdmissionsStyled = styled.div`
     display: inline-block;
-    width: 40px;
+    width: 30px;
     margin-right: 5px;
     text-align: right;
     font-weight: bold;
@@ -93,4 +99,28 @@ const ProfitStyled = styled.div`
     color: ${(props) => props.isNegative && 'var(--aka-red)'};
 `;
 
-const TitleLinkStyled = styled(Link)``;
+const DiagramContainerStyled = styled.div`
+    display: inline-block;
+    width: 150px;
+    margin-right: 10px;
+`;
+
+const DiagramStyled = styled.div`
+    width: ${(props) => (props.admissions / NUMBER_OF_SEEDS_IN_GHS_BIO) * 100 + '%'};
+    height: 10px;
+    background-color: var(--aka-gelb);
+`;
+
+const DateStyled = styled.div`
+    display: inline-block;
+    margin-right: 10px;
+`;
+
+const TitleLinkStyled = styled(Link)`
+    display: inline-block;
+    max-width: 300px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    vertical-align: bottom;
+`;

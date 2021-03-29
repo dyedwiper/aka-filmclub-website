@@ -8299,7 +8299,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "AUTH_LEVEL_ADMIN": () => /* binding */ AUTH_LEVEL_ADMIN,
 /* harmony export */   "USER_STATUS_ACTIVE": () => /* binding */ USER_STATUS_ACTIVE,
 /* harmony export */   "USER_STATUS_PAUSED": () => /* binding */ USER_STATUS_PAUSED,
-/* harmony export */   "USER_STATUS_ALUMNI": () => /* binding */ USER_STATUS_ALUMNI
+/* harmony export */   "USER_STATUS_ALUMNI": () => /* binding */ USER_STATUS_ALUMNI,
+/* harmony export */   "NUMBER_OF_SEEDS_IN_GHS_BIO": () => /* binding */ NUMBER_OF_SEEDS_IN_GHS_BIO
 /* harmony export */ });
 var IMAGE_FOLDER = '/images/';
 var ASSETS_FOLDER = '/assets/';
@@ -8313,6 +8314,7 @@ var AUTH_LEVEL_ADMIN = 2;
 var USER_STATUS_ACTIVE = 0;
 var USER_STATUS_PAUSED = 1;
 var USER_STATUS_ALUMNI = 2;
+var NUMBER_OF_SEEDS_IN_GHS_BIO = 460;
 
 /***/ }),
 
@@ -11003,14 +11005,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
-/* harmony import */ var _utils_services_billingServices__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/services/billingServices */ "./resources/js/react-app/utils/services/billingServices.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
+/* harmony import */ var _utils_services_billingServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/services/billingServices */ "./resources/js/react-app/utils/services/billingServices.js");
 
 
 
@@ -11025,6 +11029,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -11050,11 +11056,11 @@ function AdmissionsPage() {
       isLoading = _useState6[0],
       setIsLoading = _useState6[1];
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_4__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
       pageTitle = _useContext.pageTitle,
       setPageTitle = _useContext.setPageTitle;
 
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useHistory)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Besuchszahlen | aka-Filmclub';
     setPageTitle('Besuchszahlen');
@@ -11069,13 +11075,13 @@ function AdmissionsPage() {
       });
     } else {
       setSemester({
-        value: (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_5__.computeCurrentSemester)()
+        value: (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_7__.computeCurrentSemester)()
       });
     }
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester.value) {
-      (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_6__.getBillingsBySemester)(semester.value).then(function (res) {
+      (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_8__.getBillingsBySemester)(semester.value).then(function (res) {
         history.push('/intern/admissions?semester=' + semester.value);
         setBillings(res.data);
         setIsLoading(false);
@@ -11095,12 +11101,18 @@ function AdmissionsPage() {
       children: billings.map(function (billing) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
-            children: billing.soldTickets
+            children: billing.soldTickets + billing.freeTickets
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
             children: '(' + billing.soldPasses + ')'
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
             isNegative: billing.profit < 0,
             children: billing.profit + ' €'
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
+              admissions: billing.soldTickets + billing.freeTickets
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
+            children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__.formatToDateString)(billing.screeningDate)
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
             to: '/screening/' + billing.screeningUuid,
             children: billing.screeningTitle
@@ -11110,32 +11122,46 @@ function AdmissionsPage() {
     })]
   });
 }
-var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.ul.withConfig({
+var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
   displayName: "AdmissionsPage__ListStyled",
   componentId: "d839r0-0"
 })([""]);
-var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.li.withConfig({
+var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.li.withConfig({
   displayName: "AdmissionsPage__ListItemStyled",
   componentId: "d839r0-1"
 })([""]);
-var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "AdmissionsPage__AdmissionsStyled",
   componentId: "d839r0-2"
-})(["display:inline-block;width:40px;margin-right:5px;text-align:right;font-weight:bold;"]);
-var PassesStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+})(["display:inline-block;width:30px;margin-right:5px;text-align:right;font-weight:bold;"]);
+var PassesStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "AdmissionsPage__PassesStyled",
   componentId: "d839r0-3"
 })(["display:inline-block;width:40px;margin-right:10px;text-align:right;"]);
-var ProfitStyled = styled_components__WEBPACK_IMPORTED_MODULE_8__.default.div.withConfig({
+var ProfitStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "AdmissionsPage__ProfitStyled",
   componentId: "d839r0-4"
 })(["display:inline-block;width:70px;margin-right:10px;text-align:right;font-weight:bold;color:", ";"], function (props) {
   return props.isNegative && 'var(--aka-red)';
 });
-var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_8__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Link).withConfig({
-  displayName: "AdmissionsPage__TitleLinkStyled",
+var DiagramContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "AdmissionsPage__DiagramContainerStyled",
   componentId: "d839r0-5"
-})([""]);
+})(["display:inline-block;width:150px;margin-right:10px;"]);
+var DiagramStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "AdmissionsPage__DiagramStyled",
+  componentId: "d839r0-6"
+})(["width:", ";height:10px;background-color:var(--aka-gelb);"], function (props) {
+  return props.admissions / _constants__WEBPACK_IMPORTED_MODULE_4__.NUMBER_OF_SEEDS_IN_GHS_BIO * 100 + '%';
+});
+var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+  displayName: "AdmissionsPage__DateStyled",
+  componentId: "d839r0-7"
+})(["display:inline-block;margin-right:10px;"]);
+var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_10__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link).withConfig({
+  displayName: "AdmissionsPage__TitleLinkStyled",
+  componentId: "d839r0-8"
+})(["display:inline-block;max-width:300px;white-space:nowrap;overflow-x:hidden;text-overflow:ellipsis;vertical-align:bottom;"]);
 
 /***/ }),
 

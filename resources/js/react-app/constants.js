@@ -14,3 +14,5 @@ export const AUTH_LEVEL_ADMIN = 2;
 export const USER_STATUS_ACTIVE = 0;
 export const USER_STATUS_PAUSED = 1;
 export const USER_STATUS_ALUMNI = 2;
+
+export const NUMBER_OF_SEEDS_IN_GHS_BIO = 460;
