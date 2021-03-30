@@ -11120,7 +11120,7 @@ function AdmissionsPage() {
                   admissions: billing.soldTickets + billing.freeTickets
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
-                children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__.formatToDateString)(billing.screeningDate)
+                children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__.formatToDateTimeString)(billing.screeningDate)
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
                 to: '/screening/' + billing.screeningUuid,
                 children: billing.screeningTitle
@@ -11144,9 +11144,10 @@ function AdmissionsPage() {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
               children: "Mittlere Besuchszahl"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
-              children: (calculateTicketsSum(billings) / billings.length).toLocaleString('de-DE', {
+              children: calculateAverageAdmissions(billings).toLocaleString('de-DE', {
+                minimumFractionDigits: 1,
                 maximumFractionDigits: 1
-              })
+              }) + ' bei ' + billings.length + ' Vorführungen'
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
@@ -11182,6 +11183,7 @@ function AdmissionsPage() {
                   children: weekday.nameOfDay
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AverageAdmissionsStyled, {
                   children: weekday.averageAdmissions.toLocaleString('de-DE', {
+                    minimumFractionDigits: 1,
                     maximumFractionDigits: 1
                   })
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberOfScreeningsStyled, {
@@ -11214,6 +11216,14 @@ function AdmissionsPage() {
       sum += billing.soldPasses;
     });
     return sum;
+  }
+
+  function calculateAverageAdmissions(billings) {
+    var sum = 0;
+    billings.forEach(function (billing) {
+      sum += billing.soldTickets + billing.freeTickets;
+    });
+    return sum / billings.length;
   }
 
   function calculateBalance(billings) {
@@ -11266,7 +11276,7 @@ function AdmissionsPage() {
         return new Date(billing.screeningDate).getDay() === weekdayValues.indexOf(weekdayValue);
       });
       weekdayValue.numberOfScreenings = weekdayBillings.length;
-      weekdayValue.averageAdmissions = calculateTicketsSum(weekdayBillings) / weekdayBillings.length;
+      weekdayValue.averageAdmissions = calculateAverageAdmissions(weekdayBillings);
       weekdayValue.balance = calculateBalance(weekdayBillings);
     });
     return weekdayValues;
@@ -11343,7 +11353,7 @@ var KeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.with
 var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "AdmissionsPage__ValueStyled",
   componentId: "d839r0-16"
-})(["display:inline-block;font-weight:bold;"]);
+})(["display:inline-block;"]);
 var ValueInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.span.withConfig({
   displayName: "AdmissionsPage__ValueInfoStyled",
   componentId: "d839r0-17"

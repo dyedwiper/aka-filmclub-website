@@ -5,7 +5,7 @@ import SemesterSelect from '../../common/SemesterSelect';
 import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import { NUMBER_OF_SEEDS_IN_GHS_BIO } from '../../constants';
 import Context from '../../Context';
-import { formatToDateString } from '../../utils/dateFormatters';
+import { formatToDateTimeString } from '../../utils/dateFormatters';
 import { computeCurrentSemester } from '../../utils/semesterUtils';
 import { getBillingsBySemester } from '../../utils/services/billingServices';
 
@@ -69,7 +69,7 @@ export default function AdmissionsPage() {
                                         <DiagramContainerStyled>
                                             <DiagramStyled admissions={billing.soldTickets + billing.freeTickets} />
                                         </DiagramContainerStyled>
-                                        <DateStyled>{formatToDateString(billing.screeningDate)}</DateStyled>
+                                        <DateStyled>{formatToDateTimeString(billing.screeningDate)}</DateStyled>
                                         <TitleLinkStyled to={'/screening/' + billing.screeningUuid}>
                                             {billing.screeningTitle}
                                         </TitleLinkStyled>
@@ -90,9 +90,13 @@ export default function AdmissionsPage() {
                                 <KeyValueContainerStyled>
                                     <KeyStyled>Mittlere Besuchszahl</KeyStyled>
                                     <ValueStyled>
-                                        {(calculateTicketsSum(billings) / billings.length).toLocaleString('de-DE', {
+                                        {calculateAverageAdmissions(billings).toLocaleString('de-DE', {
+                                            minimumFractionDigits: 1,
                                             maximumFractionDigits: 1,
-                                        })}
+                                        }) +
+                                            ' bei ' +
+                                            billings.length +
+                                            ' Vorführungen'}
                                     </ValueStyled>
                                 </KeyValueContainerStyled>
                                 <KeyValueContainerStyled>
@@ -124,6 +128,7 @@ export default function AdmissionsPage() {
                                                 <NameOfDayStyled>{weekday.nameOfDay}</NameOfDayStyled>
                                                 <AverageAdmissionsStyled>
                                                     {weekday.averageAdmissions.toLocaleString('de-DE', {
+                                                        minimumFractionDigits: 1,
                                                         maximumFractionDigits: 1,
                                                     })}
                                                 </AverageAdmissionsStyled>
@@ -163,6 +168,14 @@ export default function AdmissionsPage() {
         return sum;
     }
 
+    function calculateAverageAdmissions(billings) {
+        let sum = 0;
+        billings.forEach((billing) => {
+            sum += billing.soldTickets + billing.freeTickets;
+        });
+        return sum / billings.length;
+    }
+
     function calculateBalance(billings) {
         let sum = 0;
         billings.forEach((billing) => {
@@ -186,7 +199,7 @@ export default function AdmissionsPage() {
                 (billing) => new Date(billing.screeningDate).getDay() === weekdayValues.indexOf(weekdayValue)
             );
             weekdayValue.numberOfScreenings = weekdayBillings.length;
-            weekdayValue.averageAdmissions = calculateTicketsSum(weekdayBillings) / weekdayBillings.length;
+            weekdayValue.averageAdmissions = calculateAverageAdmissions(weekdayBillings);
             weekdayValue.balance = calculateBalance(weekdayBillings);
         });
         return weekdayValues;
@@ -272,7 +285,6 @@ const KeyStyled = styled.div`
 
 const ValueStyled = styled.div`
     display: inline-block;
-    font-weight: bold;
 `;
 
 const ValueInfoStyled = styled.span`
