@@ -109,7 +109,6 @@ class BillingController extends Controller
 
     private function calculateProfit($billing)
     {
-        $profit = ($this->calculateEarnings($billing) - $this->calculateRent($billing)) / 100;
-        return number_format($profit, 2);
+        return ($this->calculateEarnings($billing) - $this->calculateRent($billing));
     }
 }

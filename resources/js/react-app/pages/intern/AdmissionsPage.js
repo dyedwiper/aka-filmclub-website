@@ -51,67 +51,97 @@ export default function AdmissionsPage() {
                 <div>Loading...</div>
             ) : (
                 <>
-                    <ListStyled>
-                        {billings.map((billing) => (
-                            <ListItemStyled key={billing.id}>
-                                <AdmissionsStyled>{billing.soldTickets + billing.freeTickets}</AdmissionsStyled>
-                                <PassesStyled>{'(' + billing.soldPasses + ')'}</PassesStyled>
-                                <ProfitStyled isNegative={billing.profit < 0}>
-                                    {Number(billing.profit).toLocaleString('de-DE', {
-                                        style: 'currency',
-                                        currency: 'EUR',
-                                    })}
-                                </ProfitStyled>
-                                <DiagramContainerStyled>
-                                    <DiagramStyled admissions={billing.soldTickets + billing.freeTickets} />
-                                </DiagramContainerStyled>
-                                <DateStyled>{formatToDateString(billing.screeningDate)}</DateStyled>
-                                <TitleLinkStyled to={'/screening/' + billing.screeningUuid}>
-                                    {billing.screeningTitle}
-                                </TitleLinkStyled>
-                            </ListItemStyled>
-                        ))}
-                    </ListStyled>
-                    <HorizontalRuleStyled />
-                    <LegendStyled>
-                        <SubHeadlineStyled>Legende</SubHeadlineStyled>
-                        <LegendEntryStyled>1. Spalte: Verkaufte Tickets</LegendEntryStyled>
-                        <LegendEntryStyled>2. Spalte: Verkaufte Ausweise</LegendEntryStyled>
-                        <LegendEntryStyled>
-                            3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten
-                        </LegendEntryStyled>
-                    </LegendStyled>
-                    <OverviewContainerStyled>
-                        <SubHeadlineStyled>Auswertung für das Semester</SubHeadlineStyled>
-                        <KeyValueContainerStyled>
-                            <KeyStyled>Mittlere Besuchszahl</KeyStyled>
-                            <ValueStyled>
-                                {(calculateTicketsSum(billings) / billings.length).toLocaleString('de-DE', {
-                                    maximumFractionDigits: 2,
-                                })}
-                            </ValueStyled>
-                        </KeyValueContainerStyled>
-                        <KeyValueContainerStyled>
-                            <KeyStyled>Verkaufte Tickets</KeyStyled>
-                            <ValueStyled>{calculateTicketsSum(billings)}</ValueStyled>
-                        </KeyValueContainerStyled>
-                        <KeyValueContainerStyled>
-                            <KeyStyled>Verkaufte Ausweise</KeyStyled>
-                            <ValueStyled>{calculatePassesSum(billings)}</ValueStyled>
-                        </KeyValueContainerStyled>
-                        <KeyValueContainerStyled>
-                            <KeyStyled>Bilanz</KeyStyled>
-                            <ValueStyled>
-                                {calculateBalance(billings).toLocaleString('de-DE', {
-                                    style: 'currency',
-                                    currency: 'EUR',
-                                })}
-                                <ValueInfoStyled>
-                                    (Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)
-                                </ValueInfoStyled>
-                            </ValueStyled>
-                        </KeyValueContainerStyled>
-                    </OverviewContainerStyled>
+                    {billings.length === 0 ? (
+                        <NoScreeningsInfoStyled>In diesem Semester gab es keine Vorführungen.</NoScreeningsInfoStyled>
+                    ) : (
+                        <>
+                            <ListStyled>
+                                {billings.map((billing) => (
+                                    <ListItemStyled key={billing.id}>
+                                        <AdmissionsStyled>{billing.soldTickets + billing.freeTickets}</AdmissionsStyled>
+                                        <PassesStyled>{'(' + billing.soldPasses + ')'}</PassesStyled>
+                                        <ProfitStyled isNegative={billing.profit < 0}>
+                                            {Number(billing.profit / 100).toLocaleString('de-DE', {
+                                                style: 'currency',
+                                                currency: 'EUR',
+                                            })}
+                                        </ProfitStyled>
+                                        <DiagramContainerStyled>
+                                            <DiagramStyled admissions={billing.soldTickets + billing.freeTickets} />
+                                        </DiagramContainerStyled>
+                                        <DateStyled>{formatToDateString(billing.screeningDate)}</DateStyled>
+                                        <TitleLinkStyled to={'/screening/' + billing.screeningUuid}>
+                                            {billing.screeningTitle}
+                                        </TitleLinkStyled>
+                                    </ListItemStyled>
+                                ))}
+                            </ListStyled>
+                            <HorizontalRuleStyled />
+                            <LegendStyled>
+                                <SubHeadlineStyled>Legende</SubHeadlineStyled>
+                                <LegendEntryStyled>1. Spalte: Verkaufte Eintrittskarten + Freikarten</LegendEntryStyled>
+                                <LegendEntryStyled>2. Spalte: Verkaufte Ausweise</LegendEntryStyled>
+                                <LegendEntryStyled>
+                                    3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten
+                                </LegendEntryStyled>
+                            </LegendStyled>
+                            <OverviewContainerStyled>
+                                <SubHeadlineStyled>Auswertung für das Semester</SubHeadlineStyled>
+                                <KeyValueContainerStyled>
+                                    <KeyStyled>Mittlere Besuchszahl</KeyStyled>
+                                    <ValueStyled>
+                                        {(calculateTicketsSum(billings) / billings.length).toLocaleString('de-DE', {
+                                            maximumFractionDigits: 1,
+                                        })}
+                                    </ValueStyled>
+                                </KeyValueContainerStyled>
+                                <KeyValueContainerStyled>
+                                    <KeyStyled>Verkaufte Tickets</KeyStyled>
+                                    <ValueStyled>{calculateTicketsSum(billings)}</ValueStyled>
+                                </KeyValueContainerStyled>
+                                <KeyValueContainerStyled>
+                                    <KeyStyled>Verkaufte Ausweise</KeyStyled>
+                                    <ValueStyled>{calculatePassesSum(billings)}</ValueStyled>
+                                </KeyValueContainerStyled>
+                                <KeyValueContainerStyled>
+                                    <KeyStyled>Bilanz</KeyStyled>
+                                    <ValueStyled>
+                                        {calculateBalance(billings).toLocaleString('de-DE', {
+                                            style: 'currency',
+                                            currency: 'EUR',
+                                        })}
+                                        <ValueInfoStyled>
+                                            (Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)
+                                        </ValueInfoStyled>
+                                    </ValueStyled>
+                                </KeyValueContainerStyled>
+                                <SubSubHeadlineStyled>Auswertung nach Wochentagen</SubSubHeadlineStyled>
+                                <WeekdayListStyled>
+                                    {getWeekdayValues(billings)
+                                        .filter((weekday) => weekday.numberOfScreenings > 0)
+                                        .map((weekday) => (
+                                            <WeekdayListItemStyled key={weekday.nameOfDay}>
+                                                <NameOfDayStyled>{weekday.nameOfDay}</NameOfDayStyled>
+                                                <AverageAdmissionsStyled>
+                                                    {weekday.averageAdmissions.toLocaleString('de-DE', {
+                                                        maximumFractionDigits: 1,
+                                                    })}
+                                                </AverageAdmissionsStyled>
+                                                <NumberOfScreeningsStyled>
+                                                    {weekday.numberOfScreenings}
+                                                </NumberOfScreeningsStyled>
+                                                <BalanceStyled>
+                                                    {weekday.balance.toLocaleString('de-DE', {
+                                                        style: 'currency',
+                                                        currency: 'EUR',
+                                                    })}
+                                                </BalanceStyled>
+                                            </WeekdayListItemStyled>
+                                        ))}
+                                </WeekdayListStyled>
+                            </OverviewContainerStyled>
+                        </>
+                    )}
                 </>
             )}
         </PageStyled>
@@ -136,11 +166,37 @@ export default function AdmissionsPage() {
     function calculateBalance(billings) {
         let sum = 0;
         billings.forEach((billing) => {
-            sum += Number(billing.profit);
+            sum += Number(billing.profit) / 100;
         });
         return sum;
     }
+
+    function getWeekdayValues(billings) {
+        const weekdayValues = [
+            { nameOfDay: 'So', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
+            { nameOfDay: 'Mo', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
+            { nameOfDay: 'Di', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
+            { nameOfDay: 'Mi', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
+            { nameOfDay: 'Do', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
+            { nameOfDay: 'Fr', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
+            { nameOfDay: 'Sa', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
+        ];
+        weekdayValues.forEach((weekdayValue) => {
+            const weekdayBillings = billings.filter(
+                (billing) => new Date(billing.screeningDate).getDay() === weekdayValues.indexOf(weekdayValue)
+            );
+            weekdayValue.numberOfScreenings = weekdayBillings.length;
+            weekdayValue.averageAdmissions = calculateTicketsSum(weekdayBillings) / weekdayBillings.length;
+            weekdayValue.balance = calculateBalance(weekdayBillings);
+        });
+        return weekdayValues;
+    }
 }
+
+const NoScreeningsInfoStyled = styled.div`
+    margin-top: 20px;
+    color: var(--aka-red);
+`;
 
 const ListStyled = styled.ul``;
 
@@ -163,7 +219,7 @@ const PassesStyled = styled.div`
 
 const ProfitStyled = styled.div`
     display: inline-block;
-    width: 70px;
+    width: 80px;
     margin-right: 10px;
     text-align: right;
     font-weight: bold;
@@ -222,4 +278,33 @@ const ValueStyled = styled.div`
 const ValueInfoStyled = styled.span`
     margin-left: 5px;
     font-weight: normal;
+`;
+
+const SubSubHeadlineStyled = styled.h4``;
+
+const WeekdayListStyled = styled.ul``;
+
+const WeekdayListItemStyled = styled.li``;
+
+const NameOfDayStyled = styled.div`
+    display: inline-block;
+    width: 30px;
+`;
+
+const AverageAdmissionsStyled = styled.div`
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+`;
+
+const NumberOfScreeningsStyled = styled.div`
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+`;
+
+const BalanceStyled = styled.div`
+    display: inline-block;
+    width: 100px;
+    text-align: right;
 `;
