@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import SemesterAnalysis from '../../common/accounting/SemesterAnalysis';
 import SemesterSelect from '../../common/SemesterSelect';
 import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import { NUMBER_OF_SEEDS_IN_GHS_BIO } from '../../constants';
@@ -19,8 +20,8 @@ export default function AdmissionsPage() {
     let history = useHistory();
 
     useEffect(() => {
-        document.title = 'Besuchszahlen | aka-Filmclub';
-        setPageTitle('Besuchszahlen');
+        document.title = 'Besuchizahlen | aka-Filmclub';
+        setPageTitle('Besuchizahlen');
     }, []);
 
     useEffect(() => {
@@ -79,131 +80,21 @@ export default function AdmissionsPage() {
                             <HorizontalRuleStyled />
                             <LegendStyled>
                                 <SubHeadlineStyled>Legende</SubHeadlineStyled>
-                                <LegendEntryStyled>1. Spalte: Verkaufte Eintrittskarten + Freikarten</LegendEntryStyled>
+                                <LegendEntryStyled>
+                                    1. Spalte: Verkaufte Eintrittskarten plus Freikarten
+                                </LegendEntryStyled>
                                 <LegendEntryStyled>2. Spalte: Verkaufte Ausweise</LegendEntryStyled>
                                 <LegendEntryStyled>
                                     3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten
                                 </LegendEntryStyled>
                             </LegendStyled>
-                            <OverviewContainerStyled>
-                                <SubHeadlineStyled>Auswertung für das Semester</SubHeadlineStyled>
-                                <KeyValueContainerStyled>
-                                    <KeyStyled>Mittlere Besuchszahl</KeyStyled>
-                                    <ValueStyled>
-                                        {calculateAverageAdmissions(billings).toLocaleString('de-DE', {
-                                            minimumFractionDigits: 1,
-                                            maximumFractionDigits: 1,
-                                        }) +
-                                            ' bei ' +
-                                            billings.length +
-                                            ' Vorführungen'}
-                                    </ValueStyled>
-                                </KeyValueContainerStyled>
-                                <KeyValueContainerStyled>
-                                    <KeyStyled>Verkaufte Tickets</KeyStyled>
-                                    <ValueStyled>{calculateTicketsSum(billings)}</ValueStyled>
-                                </KeyValueContainerStyled>
-                                <KeyValueContainerStyled>
-                                    <KeyStyled>Verkaufte Ausweise</KeyStyled>
-                                    <ValueStyled>{calculatePassesSum(billings)}</ValueStyled>
-                                </KeyValueContainerStyled>
-                                <KeyValueContainerStyled>
-                                    <KeyStyled>Bilanz</KeyStyled>
-                                    <ValueStyled>
-                                        {calculateBalance(billings).toLocaleString('de-DE', {
-                                            style: 'currency',
-                                            currency: 'EUR',
-                                        })}
-                                        <ValueInfoStyled>
-                                            (Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)
-                                        </ValueInfoStyled>
-                                    </ValueStyled>
-                                </KeyValueContainerStyled>
-                                <SubSubHeadlineStyled>Auswertung nach Wochentagen</SubSubHeadlineStyled>
-                                <WeekdayListStyled>
-                                    {getWeekdayValues(billings)
-                                        .filter((weekday) => weekday.numberOfScreenings > 0)
-                                        .map((weekday) => (
-                                            <WeekdayListItemStyled key={weekday.nameOfDay}>
-                                                <NameOfDayStyled>{weekday.nameOfDay}</NameOfDayStyled>
-                                                <AverageAdmissionsStyled>
-                                                    {weekday.averageAdmissions.toLocaleString('de-DE', {
-                                                        minimumFractionDigits: 1,
-                                                        maximumFractionDigits: 1,
-                                                    })}
-                                                </AverageAdmissionsStyled>
-                                                <NumberOfScreeningsStyled>
-                                                    {weekday.numberOfScreenings}
-                                                </NumberOfScreeningsStyled>
-                                                <BalanceStyled>
-                                                    {weekday.balance.toLocaleString('de-DE', {
-                                                        style: 'currency',
-                                                        currency: 'EUR',
-                                                    })}
-                                                </BalanceStyled>
-                                            </WeekdayListItemStyled>
-                                        ))}
-                                </WeekdayListStyled>
-                            </OverviewContainerStyled>
+                            <SemesterAnalysis billings={billings} />
                         </>
                     )}
                 </>
             )}
         </PageStyled>
     );
-
-    function calculateTicketsSum(billings) {
-        let sum = 0;
-        billings.forEach((billing) => {
-            sum += billing.soldTickets;
-        });
-        return sum;
-    }
-
-    function calculatePassesSum(billings) {
-        let sum = 0;
-        billings.forEach((billing) => {
-            sum += billing.soldPasses;
-        });
-        return sum;
-    }
-
-    function calculateAverageAdmissions(billings) {
-        let sum = 0;
-        billings.forEach((billing) => {
-            sum += billing.soldTickets + billing.freeTickets;
-        });
-        return sum / billings.length;
-    }
-
-    function calculateBalance(billings) {
-        let sum = 0;
-        billings.forEach((billing) => {
-            sum += Number(billing.profit) / 100;
-        });
-        return sum;
-    }
-
-    function getWeekdayValues(billings) {
-        const weekdayValues = [
-            { nameOfDay: 'So', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
-            { nameOfDay: 'Mo', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
-            { nameOfDay: 'Di', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
-            { nameOfDay: 'Mi', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
-            { nameOfDay: 'Do', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
-            { nameOfDay: 'Fr', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
-            { nameOfDay: 'Sa', numberOfScreenings: 0, averageAdmissions: 0, balance: 0 },
-        ];
-        weekdayValues.forEach((weekdayValue) => {
-            const weekdayBillings = billings.filter(
-                (billing) => new Date(billing.screeningDate).getDay() === weekdayValues.indexOf(weekdayValue)
-            );
-            weekdayValue.numberOfScreenings = weekdayBillings.length;
-            weekdayValue.averageAdmissions = calculateAverageAdmissions(weekdayBillings);
-            weekdayValue.balance = calculateBalance(weekdayBillings);
-        });
-        return weekdayValues;
-    }
 }
 
 const NoScreeningsInfoStyled = styled.div`
@@ -273,50 +164,3 @@ const SubHeadlineStyled = styled.h3`
 `;
 
 const LegendEntryStyled = styled.div``;
-
-const OverviewContainerStyled = styled.section``;
-
-const KeyValueContainerStyled = styled.div``;
-
-const KeyStyled = styled.div`
-    display: inline-block;
-    width: 180px;
-`;
-
-const ValueStyled = styled.div`
-    display: inline-block;
-`;
-
-const ValueInfoStyled = styled.span`
-    margin-left: 5px;
-    font-weight: normal;
-`;
-
-const SubSubHeadlineStyled = styled.h4``;
-
-const WeekdayListStyled = styled.ul``;
-
-const WeekdayListItemStyled = styled.li``;
-
-const NameOfDayStyled = styled.div`
-    display: inline-block;
-    width: 30px;
-`;
-
-const AverageAdmissionsStyled = styled.div`
-    display: inline-block;
-    width: 60px;
-    text-align: right;
-`;
-
-const NumberOfScreeningsStyled = styled.div`
-    display: inline-block;
-    width: 60px;
-    text-align: right;
-`;
-
-const BalanceStyled = styled.div`
-    display: inline-block;
-    width: 100px;
-    text-align: right;
-`;

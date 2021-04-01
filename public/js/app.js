@@ -6526,6 +6526,237 @@ var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(reac
 
 /***/ }),
 
+/***/ "./resources/js/react-app/common/accounting/SemesterAnalysis.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/react-app/common/accounting/SemesterAnalysis.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ SemesterAnalysis
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styledElements */ "./resources/js/react-app/common/styledElements.js");
+
+
+
+
+
+function SemesterAnalysis(_ref) {
+  var billings = _ref.billings;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(SemesterAnalysisStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
+      children: "Auswertung f\xFCr das bisherige Semester"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Anzahl Vorf\xFChrungen"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: billings.length
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Mittlere Besuchszahl"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: calculateAverageAdmissions(billings).toLocaleString('de-DE', {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1
+        }) + ' (Verkaufte Eintrittskarten plus Freikarten)'
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Verkaufte Tickets"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: calculateTicketsSum(billings)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Verkaufte Ausweise"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: calculatePassesSum(billings)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Bilanz"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ValueStyled, {
+        children: [calculateBalance(billings).toLocaleString('de-DE', {
+          style: 'currency',
+          currency: 'EUR'
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueInfoStyled, {
+          children: "(Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubSubHeadlineStyled, {
+      children: "Auswertung nach Wochentagen"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(WeekdayListStyled, {
+      children: getWeekdayValues(billings).filter(function (weekday) {
+        return weekday.numberOfScreenings > 0;
+      }).map(function (weekday) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(WeekdayListItemStyled, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NameOfDayStyled, {
+            children: weekday.nameOfDay
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_2__.VerticalLineStyled, {
+            children: "|"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(AverageAdmissionsStyled, {
+            children: [weekday.averageAdmissions.toLocaleString('de-DE', {
+              minimumFractionDigits: 1,
+              maximumFractionDigits: 1
+            }), ' ', "\xD8 Besuchis"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_2__.VerticalLineStyled, {
+            children: "|"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberOfScreeningsStyled, {
+            children: weekday.numberOfScreenings + ' Vorführungen'
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_2__.VerticalLineStyled, {
+            children: "|"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(BalanceStyled, {
+            children: weekday.balance.toLocaleString('de-DE', {
+              style: 'currency',
+              currency: 'EUR'
+            }) + ' Profite'
+          })]
+        }, weekday.nameOfDay);
+      })
+    })]
+  });
+
+  function calculateTicketsSum(billings) {
+    var sum = 0;
+    billings.forEach(function (billing) {
+      sum += billing.soldTickets;
+    });
+    return sum;
+  }
+
+  function calculatePassesSum(billings) {
+    var sum = 0;
+    billings.forEach(function (billing) {
+      sum += billing.soldPasses;
+    });
+    return sum;
+  }
+
+  function calculateAverageAdmissions(billings) {
+    var sum = 0;
+    billings.forEach(function (billing) {
+      sum += billing.soldTickets + billing.freeTickets;
+    });
+    return sum / billings.length;
+  }
+
+  function calculateBalance(billings) {
+    var sum = 0;
+    billings.forEach(function (billing) {
+      sum += Number(billing.profit) / 100;
+    });
+    return sum;
+  }
+
+  function getWeekdayValues(billings) {
+    var weekdayValues = [{
+      nameOfDay: 'So',
+      numberOfScreenings: 0,
+      averageAdmissions: 0,
+      balance: 0
+    }, {
+      nameOfDay: 'Mo',
+      numberOfScreenings: 0,
+      averageAdmissions: 0,
+      balance: 0
+    }, {
+      nameOfDay: 'Di',
+      numberOfScreenings: 0,
+      averageAdmissions: 0,
+      balance: 0
+    }, {
+      nameOfDay: 'Mi',
+      numberOfScreenings: 0,
+      averageAdmissions: 0,
+      balance: 0
+    }, {
+      nameOfDay: 'Do',
+      numberOfScreenings: 0,
+      averageAdmissions: 0,
+      balance: 0
+    }, {
+      nameOfDay: 'Fr',
+      numberOfScreenings: 0,
+      averageAdmissions: 0,
+      balance: 0
+    }, {
+      nameOfDay: 'Sa',
+      numberOfScreenings: 0,
+      averageAdmissions: 0,
+      balance: 0
+    }];
+    weekdayValues.forEach(function (weekdayValue) {
+      var weekdayBillings = billings.filter(function (billing) {
+        return new Date(billing.screeningDate).getDay() === weekdayValues.indexOf(weekdayValue);
+      });
+      weekdayValue.numberOfScreenings = weekdayBillings.length;
+      weekdayValue.averageAdmissions = calculateAverageAdmissions(weekdayBillings);
+      weekdayValue.balance = calculateBalance(weekdayBillings);
+    });
+    return weekdayValues;
+  }
+}
+var SemesterAnalysisStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.section.withConfig({
+  displayName: "SemesterAnalysis__SemesterAnalysisStyled",
+  componentId: "ggo4v0-0"
+})([""]);
+var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h3.withConfig({
+  displayName: "SemesterAnalysis__SubHeadlineStyled",
+  componentId: "ggo4v0-1"
+})(["margin:20px 0 10px 0;"]);
+var KeyValueContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "SemesterAnalysis__KeyValueContainerStyled",
+  componentId: "ggo4v0-2"
+})([""]);
+var KeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "SemesterAnalysis__KeyStyled",
+  componentId: "ggo4v0-3"
+})(["display:inline-block;width:180px;"]);
+var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "SemesterAnalysis__ValueStyled",
+  componentId: "ggo4v0-4"
+})(["display:inline-block;"]);
+var ValueInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.span.withConfig({
+  displayName: "SemesterAnalysis__ValueInfoStyled",
+  componentId: "ggo4v0-5"
+})(["margin-left:5px;font-weight:normal;"]);
+var SubSubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h4.withConfig({
+  displayName: "SemesterAnalysis__SubSubHeadlineStyled",
+  componentId: "ggo4v0-6"
+})([""]);
+var WeekdayListStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.ul.withConfig({
+  displayName: "SemesterAnalysis__WeekdayListStyled",
+  componentId: "ggo4v0-7"
+})([""]);
+var WeekdayListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.li.withConfig({
+  displayName: "SemesterAnalysis__WeekdayListItemStyled",
+  componentId: "ggo4v0-8"
+})(["display:grid;grid-template-columns:25px repeat(3,5px 140px);grid-gap:5px;"]);
+var NameOfDayStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "SemesterAnalysis__NameOfDayStyled",
+  componentId: "ggo4v0-9"
+})(["font-weight:bold;"]);
+var AverageAdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "SemesterAnalysis__AverageAdmissionsStyled",
+  componentId: "ggo4v0-10"
+})(["text-align:right;"]);
+var NumberOfScreeningsStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "SemesterAnalysis__NumberOfScreeningsStyled",
+  componentId: "ggo4v0-11"
+})(["text-align:right;"]);
+var BalanceStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "SemesterAnalysis__BalanceStyled",
+  componentId: "ggo4v0-12"
+})(["text-align:right;"]);
+
+/***/ }),
+
 /***/ "./resources/js/react-app/common/forms/BaseForm.js":
 /*!*********************************************************!*\
   !*** ./resources/js/react-app/common/forms/BaseForm.js ***!
@@ -11005,16 +11236,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
-/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
-/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
-/* harmony import */ var _utils_services_billingServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/services/billingServices */ "./resources/js/react-app/utils/services/billingServices.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_accounting_SemesterAnalysis__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/accounting/SemesterAnalysis */ "./resources/js/react-app/common/accounting/SemesterAnalysis.js");
+/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
+/* harmony import */ var _utils_services_billingServices__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/services/billingServices */ "./resources/js/react-app/utils/services/billingServices.js");
 
 
 
@@ -11030,6 +11262,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -11057,14 +11290,14 @@ function AdmissionsPage() {
       isLoading = _useState6[0],
       setIsLoading = _useState6[1];
 
-  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_5__.default),
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_6__.default),
       pageTitle = _useContext.pageTitle,
       setPageTitle = _useContext.setPageTitle;
 
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    document.title = 'Besuchszahlen | aka-Filmclub';
-    setPageTitle('Besuchszahlen');
+    document.title = 'Besuchizahlen | aka-Filmclub';
+    setPageTitle('Besuchizahlen');
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     var queryParams = new URLSearchParams(window.location.search);
@@ -11076,23 +11309,23 @@ function AdmissionsPage() {
       });
     } else {
       setSemester({
-        value: (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_7__.computeCurrentSemester)()
+        value: (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_8__.computeCurrentSemester)()
       });
     }
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester.value) {
-      (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_8__.getBillingsBySemester)(semester.value).then(function (res) {
+      (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_9__.getBillingsBySemester)(semester.value).then(function (res) {
         history.push('/intern/admissions?semester=' + semester.value);
         setBillings(res.data);
         setIsLoading(false);
       });
     }
   }, [semester]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageHeadlineStyled, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
       children: pageTitle
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_2__.default, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
       semester: semester,
       setSemester: setSemester,
       setIsLoading: setIsLoading
@@ -11120,272 +11353,86 @@ function AdmissionsPage() {
                   admissions: billing.soldTickets + billing.freeTickets
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
-                children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_6__.formatToDateTimeString)(billing.screeningDate)
+                children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_7__.formatToDateTimeString)(billing.screeningDate)
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
                 to: '/screening/' + billing.screeningUuid,
                 children: billing.screeningTitle
               })]
             }, billing.id);
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LegendStyled, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LegendStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
             children: "Legende"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
-            children: "1. Spalte: Verkaufte Eintrittskarten + Freikarten"
+            children: "1. Spalte: Verkaufte Eintrittskarten plus Freikarten"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
             children: "2. Spalte: Verkaufte Ausweise"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
             children: "3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(OverviewContainerStyled, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
-            children: "Auswertung f\xFCr das Semester"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
-              children: "Mittlere Besuchszahl"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
-              children: calculateAverageAdmissions(billings).toLocaleString('de-DE', {
-                minimumFractionDigits: 1,
-                maximumFractionDigits: 1
-              }) + ' bei ' + billings.length + ' Vorführungen'
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
-              children: "Verkaufte Tickets"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
-              children: calculateTicketsSum(billings)
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
-              children: "Verkaufte Ausweise"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
-              children: calculatePassesSum(billings)
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
-              children: "Bilanz"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ValueStyled, {
-              children: [calculateBalance(billings).toLocaleString('de-DE', {
-                style: 'currency',
-                currency: 'EUR'
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueInfoStyled, {
-                children: "(Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)"
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubSubHeadlineStyled, {
-            children: "Auswertung nach Wochentagen"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(WeekdayListStyled, {
-            children: getWeekdayValues(billings).filter(function (weekday) {
-              return weekday.numberOfScreenings > 0;
-            }).map(function (weekday) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(WeekdayListItemStyled, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NameOfDayStyled, {
-                  children: weekday.nameOfDay
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AverageAdmissionsStyled, {
-                  children: weekday.averageAdmissions.toLocaleString('de-DE', {
-                    minimumFractionDigits: 1,
-                    maximumFractionDigits: 1
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberOfScreeningsStyled, {
-                  children: weekday.numberOfScreenings
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(BalanceStyled, {
-                  children: weekday.balance.toLocaleString('de-DE', {
-                    style: 'currency',
-                    currency: 'EUR'
-                  })
-                })]
-              }, weekday.nameOfDay);
-            })
-          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_SemesterAnalysis__WEBPACK_IMPORTED_MODULE_2__.default, {
+          billings: billings
         })]
       })
     })]
   });
-
-  function calculateTicketsSum(billings) {
-    var sum = 0;
-    billings.forEach(function (billing) {
-      sum += billing.soldTickets;
-    });
-    return sum;
-  }
-
-  function calculatePassesSum(billings) {
-    var sum = 0;
-    billings.forEach(function (billing) {
-      sum += billing.soldPasses;
-    });
-    return sum;
-  }
-
-  function calculateAverageAdmissions(billings) {
-    var sum = 0;
-    billings.forEach(function (billing) {
-      sum += billing.soldTickets + billing.freeTickets;
-    });
-    return sum / billings.length;
-  }
-
-  function calculateBalance(billings) {
-    var sum = 0;
-    billings.forEach(function (billing) {
-      sum += Number(billing.profit) / 100;
-    });
-    return sum;
-  }
-
-  function getWeekdayValues(billings) {
-    var weekdayValues = [{
-      nameOfDay: 'So',
-      numberOfScreenings: 0,
-      averageAdmissions: 0,
-      balance: 0
-    }, {
-      nameOfDay: 'Mo',
-      numberOfScreenings: 0,
-      averageAdmissions: 0,
-      balance: 0
-    }, {
-      nameOfDay: 'Di',
-      numberOfScreenings: 0,
-      averageAdmissions: 0,
-      balance: 0
-    }, {
-      nameOfDay: 'Mi',
-      numberOfScreenings: 0,
-      averageAdmissions: 0,
-      balance: 0
-    }, {
-      nameOfDay: 'Do',
-      numberOfScreenings: 0,
-      averageAdmissions: 0,
-      balance: 0
-    }, {
-      nameOfDay: 'Fr',
-      numberOfScreenings: 0,
-      averageAdmissions: 0,
-      balance: 0
-    }, {
-      nameOfDay: 'Sa',
-      numberOfScreenings: 0,
-      averageAdmissions: 0,
-      balance: 0
-    }];
-    weekdayValues.forEach(function (weekdayValue) {
-      var weekdayBillings = billings.filter(function (billing) {
-        return new Date(billing.screeningDate).getDay() === weekdayValues.indexOf(weekdayValue);
-      });
-      weekdayValue.numberOfScreenings = weekdayBillings.length;
-      weekdayValue.averageAdmissions = calculateAverageAdmissions(weekdayBillings);
-      weekdayValue.balance = calculateBalance(weekdayBillings);
-    });
-    return weekdayValues;
-  }
 }
-var NoScreeningsInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+var NoScreeningsInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
   displayName: "AdmissionsPage__NoScreeningsInfoStyled",
   componentId: "d839r0-0"
 })(["margin-top:20px;color:var(--aka-red);"]);
-var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
+var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.ul.withConfig({
   displayName: "AdmissionsPage__ListStyled",
   componentId: "d839r0-1"
 })([""]);
-var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.li.withConfig({
+var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.li.withConfig({
   displayName: "AdmissionsPage__ListItemStyled",
   componentId: "d839r0-2"
 })([""]);
-var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
   displayName: "AdmissionsPage__AdmissionsStyled",
   componentId: "d839r0-3"
 })(["display:inline-block;width:30px;margin-right:5px;text-align:right;font-weight:bold;"]);
-var PassesStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+var PassesStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
   displayName: "AdmissionsPage__PassesStyled",
   componentId: "d839r0-4"
 })(["display:inline-block;width:40px;margin-right:10px;text-align:right;"]);
-var ProfitStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+var ProfitStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
   displayName: "AdmissionsPage__ProfitStyled",
   componentId: "d839r0-5"
 })(["display:inline-block;width:80px;margin-right:10px;text-align:right;font-weight:bold;color:", ";"], function (props) {
   return props.isNegative && 'var(--aka-red)';
 });
-var DiagramContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+var DiagramContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
   displayName: "AdmissionsPage__DiagramContainerStyled",
   componentId: "d839r0-6"
 })(["display:inline-block;width:150px;margin-right:10px;"]);
-var DiagramStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+var DiagramStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
   displayName: "AdmissionsPage__DiagramStyled",
   componentId: "d839r0-7"
 })(["width:", ";height:10px;background-color:var(--aka-gelb);"], function (props) {
-  return props.admissions / _constants__WEBPACK_IMPORTED_MODULE_4__.NUMBER_OF_SEEDS_IN_GHS_BIO * 100 + '%';
+  return props.admissions / _constants__WEBPACK_IMPORTED_MODULE_5__.NUMBER_OF_SEEDS_IN_GHS_BIO * 100 + '%';
 });
-var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
   displayName: "AdmissionsPage__DateStyled",
   componentId: "d839r0-8"
 })(["display:inline-block;margin-right:10px;"]);
-var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_10__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_11__.Link).withConfig({
+var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_11__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link).withConfig({
   displayName: "AdmissionsPage__TitleLinkStyled",
   componentId: "d839r0-9"
 })(["display:inline-block;max-width:300px;overflow-x:hidden;white-space:nowrap;text-overflow:ellipsis;vertical-align:bottom;"]);
-var LegendStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.section.withConfig({
+var LegendStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.section.withConfig({
   displayName: "AdmissionsPage__LegendStyled",
   componentId: "d839r0-10"
 })([""]);
-var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h3.withConfig({
+var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.h3.withConfig({
   displayName: "AdmissionsPage__SubHeadlineStyled",
   componentId: "d839r0-11"
 })(["margin:20px 0 10px 0;"]);
-var LegendEntryStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
+var LegendEntryStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
   displayName: "AdmissionsPage__LegendEntryStyled",
   componentId: "d839r0-12"
 })([""]);
-var OverviewContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.section.withConfig({
-  displayName: "AdmissionsPage__OverviewContainerStyled",
-  componentId: "d839r0-13"
-})([""]);
-var KeyValueContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "AdmissionsPage__KeyValueContainerStyled",
-  componentId: "d839r0-14"
-})([""]);
-var KeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "AdmissionsPage__KeyStyled",
-  componentId: "d839r0-15"
-})(["display:inline-block;width:180px;"]);
-var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "AdmissionsPage__ValueStyled",
-  componentId: "d839r0-16"
-})(["display:inline-block;"]);
-var ValueInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.span.withConfig({
-  displayName: "AdmissionsPage__ValueInfoStyled",
-  componentId: "d839r0-17"
-})(["margin-left:5px;font-weight:normal;"]);
-var SubSubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h4.withConfig({
-  displayName: "AdmissionsPage__SubSubHeadlineStyled",
-  componentId: "d839r0-18"
-})([""]);
-var WeekdayListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
-  displayName: "AdmissionsPage__WeekdayListStyled",
-  componentId: "d839r0-19"
-})([""]);
-var WeekdayListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.li.withConfig({
-  displayName: "AdmissionsPage__WeekdayListItemStyled",
-  componentId: "d839r0-20"
-})([""]);
-var NameOfDayStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "AdmissionsPage__NameOfDayStyled",
-  componentId: "d839r0-21"
-})(["display:inline-block;width:30px;"]);
-var AverageAdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "AdmissionsPage__AverageAdmissionsStyled",
-  componentId: "d839r0-22"
-})(["display:inline-block;width:60px;text-align:right;"]);
-var NumberOfScreeningsStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "AdmissionsPage__NumberOfScreeningsStyled",
-  componentId: "d839r0-23"
-})(["display:inline-block;width:60px;text-align:right;"]);
-var BalanceStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "AdmissionsPage__BalanceStyled",
-  componentId: "d839r0-24"
-})(["display:inline-block;width:100px;text-align:right;"]);
 
 /***/ }),
 
@@ -12550,7 +12597,7 @@ function InternPage() {
         children: "Abrechnung"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
         to: "/intern/admissions",
-        children: "Besuchszahlen"
+        children: "Besuchizahlen"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LinkStyled, {
         to: "/intern/distributors",
         children: "Filmverleihe"
