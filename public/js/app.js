@@ -11588,26 +11588,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n"]);
-
-  _templateObject8 = function _templateObject8() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    margin-right: 10px;\n    font-size: 1em;\n    font-weight: bold;\n"]);
-
-  _templateObject7 = function _templateObject7() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject6() {
   var data = _taggedTemplateLiteral(["\n    margin-top: 10px;\n"]);
 
@@ -11649,7 +11629,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    width: 150px;\n    font-size: 1em;\n    font-weight: bold;\n"]);
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    width: 180px;\n    font-size: 1em;\n    font-weight: bold;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -11723,24 +11703,6 @@ function BillingPage() {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageHeadlineStyled, {
       children: pageTitle
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
-        children: "Mindestgarantie"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
-        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.guarantee)
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
-        children: "Prozentsatz"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
-        children: billing.percentage + ' %'
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
-        children: "Nebenkosten"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
-        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.incidentals)
-      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackKeyStyled, {
       children: "Eintrittskarten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StacksListStyled, {
@@ -11758,10 +11720,82 @@ function BillingPage() {
         }, stack.id);
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(EarningsContainerStyled, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(EarningsKeyStyled, {
-        children: "Errechnete Einnahmen aus Eintrittskarten und Ausweisen"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(EarningsValueStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Errechnete Einnahmen"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.earnings)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Sonstige Einnahmen"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.additionalEarnings)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Kasseneinlage"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.cashInlay)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Kassenauslage"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.cashOut)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Tats\xE4chliche Einnahmen"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.cashOut - billing.cashInlay)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Kassendifferenz"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.cashOut - billing.cashInlay - billing.earnings)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Mindestgarantie"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.guarantee)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Prozentsatz"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: billing.percentage + ' %'
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Nebenkosten"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.incidentals)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Filmmiete"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.rent)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyStyled, {
+        children: ["MWSt (", billing.valueAddedTax, " %)"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.rent * billing.valueAddedTax / 100)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyStyled, {
+        children: ["Filmmiete + MWSt (", billing.valueAddedTax, " %)"]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.rent * (billing.valueAddedTax + 100) / 100)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Bilanz"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.ticketEarnings - billing.rent + billing.cashOut - billing.cashInlay - billing.earnings)
       })]
     })]
   });
@@ -11772,8 +11806,6 @@ var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_te
 var StackKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3(_templateObject4());
 var StacksListStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.ul(_templateObject5());
 var EarningsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_templateObject6());
-var EarningsKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3(_templateObject7());
-var EarningsValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_templateObject8());
 
 /***/ }),
 

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import StackListItem from '../../common/accounting/StackListItem';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { toEuro } from '../../utils/moneyUtils';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
@@ -34,18 +34,6 @@ export default function BillingPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <KeyValueContainerStyled>
-                <KeyStyled>Mindestgarantie</KeyStyled>
-                <ValueStyled>{toEuro(billing.guarantee)}</ValueStyled>
-            </KeyValueContainerStyled>
-            <KeyValueContainerStyled>
-                <KeyStyled>Prozentsatz</KeyStyled>
-                <ValueStyled>{billing.percentage + ' %'}</ValueStyled>
-            </KeyValueContainerStyled>
-            <KeyValueContainerStyled>
-                <KeyStyled>Nebenkosten</KeyStyled>
-                <ValueStyled>{toEuro(billing.incidentals)}</ValueStyled>
-            </KeyValueContainerStyled>
             <StackKeyStyled>Eintrittskarten</StackKeyStyled>
             <StacksListStyled>
                 {billing.tickets.map((stack) => (
@@ -59,9 +47,64 @@ export default function BillingPage() {
                 ))}
             </StacksListStyled>
             <EarningsContainerStyled>
-                <EarningsKeyStyled>Errechnete Einnahmen aus Eintrittskarten und Ausweisen</EarningsKeyStyled>
-                <EarningsValueStyled>{toEuro(billing.earnings)}</EarningsValueStyled>
+                <KeyStyled>Errechnete Einnahmen</KeyStyled>
+                <ValueStyled>{toEuro(billing.earnings)}</ValueStyled>
             </EarningsContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Sonstige Einnahmen</KeyStyled>
+                <ValueStyled>{toEuro(billing.additionalEarnings)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <HorizontalRuleStyled />
+            <KeyValueContainerStyled>
+                <KeyStyled>Kasseneinlage</KeyStyled>
+                <ValueStyled>{toEuro(billing.cashInlay)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Kassenauslage</KeyStyled>
+                <ValueStyled>{toEuro(billing.cashOut)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Tatsächliche Einnahmen</KeyStyled>
+                <ValueStyled>{toEuro(billing.cashOut - billing.cashInlay)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Kassendifferenz</KeyStyled>
+                <ValueStyled>{toEuro(billing.cashOut - billing.cashInlay - billing.earnings)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <HorizontalRuleStyled />
+            <KeyValueContainerStyled>
+                <KeyStyled>Mindestgarantie</KeyStyled>
+                <ValueStyled>{toEuro(billing.guarantee)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Prozentsatz</KeyStyled>
+                <ValueStyled>{billing.percentage + ' %'}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Nebenkosten</KeyStyled>
+                <ValueStyled>{toEuro(billing.incidentals)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Filmmiete</KeyStyled>
+                <ValueStyled>{toEuro(billing.rent)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>MWSt ({billing.valueAddedTax} %)</KeyStyled>
+                <ValueStyled>{toEuro((billing.rent * billing.valueAddedTax) / 100)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Filmmiete + MWSt ({billing.valueAddedTax} %)</KeyStyled>
+                <ValueStyled>{toEuro((billing.rent * (billing.valueAddedTax + 100)) / 100)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <HorizontalRuleStyled />
+            <KeyValueContainerStyled>
+                <KeyStyled>Bilanz</KeyStyled>
+                <ValueStyled>
+                    {toEuro(
+                        billing.ticketEarnings - billing.rent + billing.cashOut - billing.cashInlay - billing.earnings
+                    )}
+                </ValueStyled>
+            </KeyValueContainerStyled>
         </PageStyled>
     );
 }
@@ -70,7 +113,7 @@ const KeyValueContainerStyled = styled.div``;
 
 const KeyStyled = styled.h3`
     display: inline-block;
-    width: 150px;
+    width: 180px;
     font-size: 1em;
     font-weight: bold;
 `;
@@ -93,15 +136,4 @@ const StacksListStyled = styled.ul`
 
 const EarningsContainerStyled = styled.div`
     margin-top: 10px;
-`;
-
-const EarningsKeyStyled = styled.h3`
-    display: inline-block;
-    margin-right: 10px;
-    font-size: 1em;
-    font-weight: bold;
-`;
-
-const EarningsValueStyled = styled.div`
-    display: inline-block;
 `;

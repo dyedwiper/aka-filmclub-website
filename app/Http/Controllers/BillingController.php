@@ -41,6 +41,8 @@ class BillingController extends Controller
             ->with('tickets', 'passes')
             ->first();
         $billing->earnings = $this->calculateEarnings($billing);
+        $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
+        $billing->rent = $this->calculateRent($billing);
         return $billing;
     }
 
