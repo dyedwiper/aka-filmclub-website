@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import AdmissionListItem from '../../common/accounting/AdmissionListItem';
 import SemesterAnalysis from '../../common/accounting/SemesterAnalysis';
 import SemesterSelect from '../../common/SemesterSelect';
 import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import { NUMBER_OF_SEEDS_IN_GHS_BIO } from '../../constants';
 import Context from '../../Context';
-import { formatToDateTimeString } from '../../utils/dateFormatters';
 import { computeCurrentSemester } from '../../utils/semesterUtils';
 import { getScreeningsWithBillingsBySemester } from '../../utils/services/billingServices';
 
@@ -58,43 +57,7 @@ export default function AdmissionsPage() {
                         <>
                             <ListStyled>
                                 {screenings.map((screening) => (
-                                    <ListItemStyled key={screening.id}>
-                                        {screening.billing ? (
-                                            <>
-                                                <AdmissionsStyled>
-                                                    {screening.billing.soldTickets + screening.billing.freeTickets}
-                                                </AdmissionsStyled>
-                                                <PassesStyled>{'(' + screening.billing.soldPasses + ')'}</PassesStyled>
-                                                <ProfitStyled isNegative={screening.billing.profit < 0}>
-                                                    {Number(screening.billing.profit / 100).toLocaleString('de-DE', {
-                                                        style: 'currency',
-                                                        currency: 'EUR',
-                                                    })}
-                                                </ProfitStyled>
-                                                <DiagramContainerStyled>
-                                                    <DiagramStyled
-                                                        admissions={
-                                                            screening.billing.soldTickets +
-                                                            screening.billing.freeTickets
-                                                        }
-                                                    />
-                                                </DiagramContainerStyled>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <AdmissionsStyled>?</AdmissionsStyled>
-                                                <PassesStyled>?</PassesStyled>
-                                                <ProfitStyled>?</ProfitStyled>
-                                                <DiagramContainerStyled>
-                                                    <DiagramStyled admissions={0} />
-                                                </DiagramContainerStyled>
-                                            </>
-                                        )}
-                                        <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
-                                        <TitleLinkStyled to={'/screening/' + screening.uuid}>
-                                            {screening.title}
-                                        </TitleLinkStyled>
-                                    </ListItemStyled>
+                                    <AdmissionListItem key={screening.id} screening={screening} />
                                 ))}
                             </ListStyled>
                             <HorizontalRuleStyled />
@@ -108,6 +71,7 @@ export default function AdmissionsPage() {
                                     3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten
                                 </LegendEntryStyled>
                             </LegendStyled>
+                            <HorizontalRuleStyled />
                             <SemesterAnalysis
                                 billings={screenings
                                     .filter((screening) => screening.billing)
@@ -129,59 +93,6 @@ const NoScreeningsInfoStyled = styled.div`
 `;
 
 const ListStyled = styled.ul``;
-
-const ListItemStyled = styled.li``;
-
-const AdmissionsStyled = styled.div`
-    display: inline-block;
-    width: 30px;
-    margin-right: 5px;
-    text-align: right;
-    font-weight: bold;
-`;
-
-const PassesStyled = styled.div`
-    display: inline-block;
-    width: 40px;
-    margin-right: 10px;
-    text-align: right;
-`;
-
-const ProfitStyled = styled.div`
-    display: inline-block;
-    width: 80px;
-    margin-right: 10px;
-    text-align: right;
-    font-weight: bold;
-    color: ${(props) => props.isNegative && 'var(--aka-red)'};
-`;
-
-const DiagramContainerStyled = styled.div`
-    display: inline-block;
-    width: 150px;
-    margin-right: 10px;
-`;
-
-const DiagramStyled = styled.div`
-    width: ${(props) => (props.admissions / NUMBER_OF_SEEDS_IN_GHS_BIO) * 100 + '%'};
-    height: 10px;
-    background-color: var(--aka-gelb);
-`;
-
-const DateStyled = styled.div`
-    display: inline-block;
-    margin-right: 10px;
-`;
-
-const TitleLinkStyled = styled(Link)`
-    display: inline-block;
-    max-width: 300px;
-    overflow-x: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    // The alignment must be set here, see https://stackoverflow.com/questions/9273016.
-    vertical-align: bottom;
-`;
 
 const LegendStyled = styled.section``;
 

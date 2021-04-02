@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { toEuro } from '../../utils/moneyUtils';
 import { VerticalLineStyled } from '../styledElements';
 
 export default function SemesterAnalysis({ billings }) {
@@ -30,10 +31,7 @@ export default function SemesterAnalysis({ billings }) {
             <KeyValueContainerStyled>
                 <KeyStyled>Bilanz</KeyStyled>
                 <ValueStyled>
-                    {calculateBalance(billings).toLocaleString('de-DE', {
-                        style: 'currency',
-                        currency: 'EUR',
-                    })}
+                    {toEuro(calculateBalance(billings))}
                     <ValueInfoStyled>(Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)</ValueInfoStyled>
                 </ValueStyled>
             </KeyValueContainerStyled>
@@ -46,23 +44,14 @@ export default function SemesterAnalysis({ billings }) {
                             <NameOfDayStyled>{weekday.nameOfDay}</NameOfDayStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
                             <AverageAdmissionsStyled>
-                                {weekday.averageAdmissions.toLocaleString('de-DE', {
-                                    minimumFractionDigits: 1,
-                                    maximumFractionDigits: 1,
-                                })}{' '}
-                                &Oslash; Besuchis
+                                {toEuro(weekday.averageAdmissions)} &Oslash; Besuchis
                             </AverageAdmissionsStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
                             <NumberOfScreeningsStyled>
                                 {weekday.numberOfScreenings + ' Vorführungen'}
                             </NumberOfScreeningsStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
-                            <BalanceStyled>
-                                {weekday.balance.toLocaleString('de-DE', {
-                                    style: 'currency',
-                                    currency: 'EUR',
-                                }) + ' Profite'}
-                            </BalanceStyled>
+                            <BalanceStyled>{toEuro(weekday.balance) + ' Profite'}</BalanceStyled>
                         </WeekdayListItemStyled>
                     ))}
             </WeekdayListStyled>
@@ -96,7 +85,7 @@ export default function SemesterAnalysis({ billings }) {
     function calculateBalance(billings) {
         let sum = 0;
         billings.forEach((billing) => {
-            sum += Number(billing.profit) / 100;
+            sum += Number(billing.profit);
         });
         return sum;
     }
@@ -155,9 +144,7 @@ const WeekdayListItemStyled = styled.li`
     grid-gap: 5px;
 `;
 
-const NameOfDayStyled = styled.div`
-    font-weight: bold;
-`;
+const NameOfDayStyled = styled.div``;
 
 const AverageAdmissionsStyled = styled.div`
     text-align: right;
@@ -168,7 +155,5 @@ const NumberOfScreeningsStyled = styled.div`
 `;
 
 const BalanceStyled = styled.div`
-    /* display: inline-block; */
-    /* width: 150px; */
     text-align: right;
 `;

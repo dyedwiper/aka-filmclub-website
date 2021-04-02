@@ -36,7 +36,12 @@ class BillingController extends Controller
 
     public function GetBillingByUuid(string $uuid)
     {
-        return Billing::where('uuid', $uuid)->with('screening:id,uuid,title,date')->first();
+        $billing = Billing::where('uuid', $uuid)
+            ->with('screening:id,uuid,title,date')
+            ->with('tickets', 'passes')
+            ->first();
+        $billing->earnings = $this->calculateEarnings($billing);
+        return $billing;
     }
 
     public function UpdateUuids()
@@ -49,7 +54,7 @@ class BillingController extends Controller
     }
 
     //---------------------------------------------//
-    // Below are service methods
+    // Below are service methods which don't belong to a route.
 
     // This method must be public. Otherwise the callback does not work.
     public function addCalculatedFieldsToBilling($screening)
@@ -91,11 +96,21 @@ class BillingController extends Controller
         return $sum;
     }
 
-    private function calculateEarnings($billing)
+    private function calculateTicketEarnings($billing)
     {
         $ticketStacks = $billing->tickets;
-        $earnings = 0;
+        $ticketEarnings = 0;
         foreach ($ticketStacks as $stack) {
+            $ticketEarnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
+        }
+        return $ticketEarnings;
+    }
+
+    private function calculateEarnings($billing)
+    {
+        $earnings = $this->calculateTicketEarnings($billing);
+        $passStacks = $billing->passes;
+        foreach ($passStacks as $stack) {
             $earnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
         }
         return $earnings;
@@ -103,7 +118,7 @@ class BillingController extends Controller
 
     public function calculateRent($billing)
     {
-        $earnings = $this->calculateEarnings($billing);
+        $earnings = $this->calculateTicketEarnings($billing);
         $rent = $billing->percentage / 100 * $earnings;
         if ($rent < $billing->guarantee) {
             $rent = $billing->guarantee;
@@ -114,6 +129,6 @@ class BillingController extends Controller
 
     private function calculateProfit($billing)
     {
-        return ($this->calculateEarnings($billing) - $this->calculateRent($billing));
+        return ($this->calculateTicketEarnings($billing) - $this->calculateRent($billing));
     }
 }

@@ -21,6 +21,7 @@ import AddSerialPage from './pages/intern/AddSerialPage';
 import AddUserPage from './pages/intern/AddUserPage';
 import AddVideoPage from './pages/intern/AddVideoPage';
 import AdmissionsPage from './pages/intern/AdmissionsPage';
+import BillingPage from './pages/intern/BillingPage';
 import DistributorsPage from './pages/intern/DistributorsPage';
 import EditDistributorPage from './pages/intern/EditDistributorPage';
 import EditFaqPage from './pages/intern/EditFaqPage';
@@ -182,6 +183,9 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute exact path="/intern/admissions">
                             <AdmissionsPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/billing">
+                            <BillingPage />
                         </PrivateRoute>
                         <PrivateRoute exact path="/intern/distributors">
                             <DistributorsPage />

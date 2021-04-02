@@ -4937,9 +4937,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_49__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_50__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_51__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _common_Footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./common/Footer */ "./resources/js/react-app/common/Footer.js");
 /* harmony import */ var _common_Header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./common/Header */ "./resources/js/react-app/common/Header.js");
 /* harmony import */ var _common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./common/PrivateRoute */ "./resources/js/react-app/common/PrivateRoute.js");
@@ -4960,32 +4960,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_intern_AddUserPage__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./pages/intern/AddUserPage */ "./resources/js/react-app/pages/intern/AddUserPage.js");
 /* harmony import */ var _pages_intern_AddVideoPage__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./pages/intern/AddVideoPage */ "./resources/js/react-app/pages/intern/AddVideoPage.js");
 /* harmony import */ var _pages_intern_AdmissionsPage__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./pages/intern/AdmissionsPage */ "./resources/js/react-app/pages/intern/AdmissionsPage.js");
-/* harmony import */ var _pages_intern_DistributorsPage__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/intern/DistributorsPage */ "./resources/js/react-app/pages/intern/DistributorsPage.js");
-/* harmony import */ var _pages_intern_EditDistributorPage__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/intern/EditDistributorPage */ "./resources/js/react-app/pages/intern/EditDistributorPage.js");
-/* harmony import */ var _pages_intern_EditFaqPage__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/intern/EditFaqPage */ "./resources/js/react-app/pages/intern/EditFaqPage.js");
-/* harmony import */ var _pages_intern_EditImagePage__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages/intern/EditImagePage */ "./resources/js/react-app/pages/intern/EditImagePage.js");
-/* harmony import */ var _pages_intern_EditNoticePage__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pages/intern/EditNoticePage */ "./resources/js/react-app/pages/intern/EditNoticePage.js");
-/* harmony import */ var _pages_intern_EditScreeningPage__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./pages/intern/EditScreeningPage */ "./resources/js/react-app/pages/intern/EditScreeningPage.js");
-/* harmony import */ var _pages_intern_EditSerialPage__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./pages/intern/EditSerialPage */ "./resources/js/react-app/pages/intern/EditSerialPage.js");
-/* harmony import */ var _pages_intern_EditTextPage__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./pages/intern/EditTextPage */ "./resources/js/react-app/pages/intern/EditTextPage.js");
-/* harmony import */ var _pages_intern_EditUserPage__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./pages/intern/EditUserPage */ "./resources/js/react-app/pages/intern/EditUserPage.js");
-/* harmony import */ var _pages_intern_EditVideoPage__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./pages/intern/EditVideoPage */ "./resources/js/react-app/pages/intern/EditVideoPage.js");
-/* harmony import */ var _pages_intern_InternPage__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/intern/InternPage */ "./resources/js/react-app/pages/intern/InternPage.js");
-/* harmony import */ var _pages_intern_UsersPage__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/intern/UsersPage */ "./resources/js/react-app/pages/intern/UsersPage.js");
-/* harmony import */ var _pages_LinksPage__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pages/LinksPage */ "./resources/js/react-app/pages/LinksPage.js");
-/* harmony import */ var _pages_LoadingPage__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./pages/LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
-/* harmony import */ var _pages_LoginPage__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./pages/LoginPage */ "./resources/js/react-app/pages/LoginPage.js");
-/* harmony import */ var _pages_NotFoundPage__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./pages/NotFoundPage */ "./resources/js/react-app/pages/NotFoundPage.js");
-/* harmony import */ var _pages_NoticePage__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./pages/NoticePage */ "./resources/js/react-app/pages/NoticePage.js");
-/* harmony import */ var _pages_NoticesPage__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./pages/NoticesPage */ "./resources/js/react-app/pages/NoticesPage.js");
-/* harmony import */ var _pages_PressReviewPage__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./pages/PressReviewPage */ "./resources/js/react-app/pages/PressReviewPage.js");
-/* harmony import */ var _pages_ProgramOverviewPage__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./pages/ProgramOverviewPage */ "./resources/js/react-app/pages/ProgramOverviewPage.js");
-/* harmony import */ var _pages_ProgramPage__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./pages/ProgramPage */ "./resources/js/react-app/pages/ProgramPage.js");
-/* harmony import */ var _pages_ScreeningPage__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./pages/ScreeningPage */ "./resources/js/react-app/pages/ScreeningPage.js");
-/* harmony import */ var _pages_SerialPage__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./pages/SerialPage */ "./resources/js/react-app/pages/SerialPage.js");
-/* harmony import */ var _pages_SerialsPage__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./pages/SerialsPage */ "./resources/js/react-app/pages/SerialsPage.js");
-/* harmony import */ var _pages_VideosPage__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./pages/VideosPage */ "./resources/js/react-app/pages/VideosPage.js");
-/* harmony import */ var _utils_services_userServices__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./utils/services/userServices */ "./resources/js/react-app/utils/services/userServices.js");
+/* harmony import */ var _pages_intern_BillingPage__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./pages/intern/BillingPage */ "./resources/js/react-app/pages/intern/BillingPage.js");
+/* harmony import */ var _pages_intern_DistributorsPage__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./pages/intern/DistributorsPage */ "./resources/js/react-app/pages/intern/DistributorsPage.js");
+/* harmony import */ var _pages_intern_EditDistributorPage__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./pages/intern/EditDistributorPage */ "./resources/js/react-app/pages/intern/EditDistributorPage.js");
+/* harmony import */ var _pages_intern_EditFaqPage__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./pages/intern/EditFaqPage */ "./resources/js/react-app/pages/intern/EditFaqPage.js");
+/* harmony import */ var _pages_intern_EditImagePage__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./pages/intern/EditImagePage */ "./resources/js/react-app/pages/intern/EditImagePage.js");
+/* harmony import */ var _pages_intern_EditNoticePage__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./pages/intern/EditNoticePage */ "./resources/js/react-app/pages/intern/EditNoticePage.js");
+/* harmony import */ var _pages_intern_EditScreeningPage__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! ./pages/intern/EditScreeningPage */ "./resources/js/react-app/pages/intern/EditScreeningPage.js");
+/* harmony import */ var _pages_intern_EditSerialPage__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! ./pages/intern/EditSerialPage */ "./resources/js/react-app/pages/intern/EditSerialPage.js");
+/* harmony import */ var _pages_intern_EditTextPage__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./pages/intern/EditTextPage */ "./resources/js/react-app/pages/intern/EditTextPage.js");
+/* harmony import */ var _pages_intern_EditUserPage__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./pages/intern/EditUserPage */ "./resources/js/react-app/pages/intern/EditUserPage.js");
+/* harmony import */ var _pages_intern_EditVideoPage__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./pages/intern/EditVideoPage */ "./resources/js/react-app/pages/intern/EditVideoPage.js");
+/* harmony import */ var _pages_intern_InternPage__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./pages/intern/InternPage */ "./resources/js/react-app/pages/intern/InternPage.js");
+/* harmony import */ var _pages_intern_UsersPage__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pages/intern/UsersPage */ "./resources/js/react-app/pages/intern/UsersPage.js");
+/* harmony import */ var _pages_LinksPage__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! ./pages/LinksPage */ "./resources/js/react-app/pages/LinksPage.js");
+/* harmony import */ var _pages_LoadingPage__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ./pages/LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+/* harmony import */ var _pages_LoginPage__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! ./pages/LoginPage */ "./resources/js/react-app/pages/LoginPage.js");
+/* harmony import */ var _pages_NotFoundPage__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! ./pages/NotFoundPage */ "./resources/js/react-app/pages/NotFoundPage.js");
+/* harmony import */ var _pages_NoticePage__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! ./pages/NoticePage */ "./resources/js/react-app/pages/NoticePage.js");
+/* harmony import */ var _pages_NoticesPage__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! ./pages/NoticesPage */ "./resources/js/react-app/pages/NoticesPage.js");
+/* harmony import */ var _pages_PressReviewPage__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! ./pages/PressReviewPage */ "./resources/js/react-app/pages/PressReviewPage.js");
+/* harmony import */ var _pages_ProgramOverviewPage__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! ./pages/ProgramOverviewPage */ "./resources/js/react-app/pages/ProgramOverviewPage.js");
+/* harmony import */ var _pages_ProgramPage__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! ./pages/ProgramPage */ "./resources/js/react-app/pages/ProgramPage.js");
+/* harmony import */ var _pages_ScreeningPage__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! ./pages/ScreeningPage */ "./resources/js/react-app/pages/ScreeningPage.js");
+/* harmony import */ var _pages_SerialPage__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! ./pages/SerialPage */ "./resources/js/react-app/pages/SerialPage.js");
+/* harmony import */ var _pages_SerialsPage__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! ./pages/SerialsPage */ "./resources/js/react-app/pages/SerialsPage.js");
+/* harmony import */ var _pages_VideosPage__WEBPACK_IMPORTED_MODULE_47__ = __webpack_require__(/*! ./pages/VideosPage */ "./resources/js/react-app/pages/VideosPage.js");
+/* harmony import */ var _utils_services_userServices__WEBPACK_IMPORTED_MODULE_48__ = __webpack_require__(/*! ./utils/services/userServices */ "./resources/js/react-app/utils/services/userServices.js");
 
 
 
@@ -5000,6 +5001,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
 
@@ -5067,7 +5069,7 @@ function App() {
       setIsLoading = _useState6[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    (0,_utils_services_userServices__WEBPACK_IMPORTED_MODULE_47__.getCurrentUser)().then(function (res) {
+    (0,_utils_services_userServices__WEBPACK_IMPORTED_MODULE_48__.getCurrentUser)().then(function (res) {
       setUser(res.data);
       setIsLoading(false);
     })["catch"](function (err) {
@@ -5076,7 +5078,7 @@ function App() {
     });
   }, []);
   if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AppStyled, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_LoadingPage__WEBPACK_IMPORTED_MODULE_35__.default, {})
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_LoadingPage__WEBPACK_IMPORTED_MODULE_36__.default, {})
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AppStyled, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Context__WEBPACK_IMPORTED_MODULE_5__.default.Provider, {
@@ -5086,158 +5088,161 @@ function App() {
         pageTitle: pageTitle,
         setPageTitle: setPageTitle
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_48__.BrowserRouter, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Switch, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.BrowserRouter, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Header__WEBPACK_IMPORTED_MODULE_3__.default, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Switch, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_HomePage__WEBPACK_IMPORTED_MODULE_12__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/news",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_NoticesPage__WEBPACK_IMPORTED_MODULE_39__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_NoticesPage__WEBPACK_IMPORTED_MODULE_40__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             path: "/news/",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_NoticePage__WEBPACK_IMPORTED_MODULE_38__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_NoticePage__WEBPACK_IMPORTED_MODULE_39__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/program",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ProgramPage__WEBPACK_IMPORTED_MODULE_42__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ProgramPage__WEBPACK_IMPORTED_MODULE_43__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/program/overview",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ProgramOverviewPage__WEBPACK_IMPORTED_MODULE_41__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ProgramOverviewPage__WEBPACK_IMPORTED_MODULE_42__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/program/archive",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ArchivePage__WEBPACK_IMPORTED_MODULE_7__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             path: "/screening",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ScreeningPage__WEBPACK_IMPORTED_MODULE_43__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ScreeningPage__WEBPACK_IMPORTED_MODULE_44__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/program/serials",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_SerialsPage__WEBPACK_IMPORTED_MODULE_45__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_SerialsPage__WEBPACK_IMPORTED_MODULE_46__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             path: "/serial",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_SerialPage__WEBPACK_IMPORTED_MODULE_44__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_SerialPage__WEBPACK_IMPORTED_MODULE_45__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/about",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_AboutPage__WEBPACK_IMPORTED_MODULE_6__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/faqs",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_FaqsPage__WEBPACK_IMPORTED_MODULE_11__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/press",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_PressReviewPage__WEBPACK_IMPORTED_MODULE_40__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_PressReviewPage__WEBPACK_IMPORTED_MODULE_41__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/awards",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_AwardsPage__WEBPACK_IMPORTED_MODULE_8__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/videos",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_VideosPage__WEBPACK_IMPORTED_MODULE_46__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_VideosPage__WEBPACK_IMPORTED_MODULE_47__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/contact",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ContactPage__WEBPACK_IMPORTED_MODULE_9__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/links",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_LinksPage__WEBPACK_IMPORTED_MODULE_34__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_LinksPage__WEBPACK_IMPORTED_MODULE_35__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             exact: true,
             path: "/login",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_LoginPage__WEBPACK_IMPORTED_MODULE_36__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_LoginPage__WEBPACK_IMPORTED_MODULE_37__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_InternPage__WEBPACK_IMPORTED_MODULE_32__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_InternPage__WEBPACK_IMPORTED_MODULE_33__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/users",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_UsersPage__WEBPACK_IMPORTED_MODULE_33__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_UsersPage__WEBPACK_IMPORTED_MODULE_34__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/addUser",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddUserPage__WEBPACK_IMPORTED_MODULE_19__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/editUser",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditUserPage__WEBPACK_IMPORTED_MODULE_30__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditUserPage__WEBPACK_IMPORTED_MODULE_31__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/addSerial",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddSerialPage__WEBPACK_IMPORTED_MODULE_18__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/editSerial",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditSerialPage__WEBPACK_IMPORTED_MODULE_28__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditSerialPage__WEBPACK_IMPORTED_MODULE_29__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/addScreening",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddScreeningPage__WEBPACK_IMPORTED_MODULE_17__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/editScreening",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditScreeningPage__WEBPACK_IMPORTED_MODULE_27__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditScreeningPage__WEBPACK_IMPORTED_MODULE_28__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/addNotice",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddNoticePage__WEBPACK_IMPORTED_MODULE_16__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/editNotice",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditNoticePage__WEBPACK_IMPORTED_MODULE_26__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditNoticePage__WEBPACK_IMPORTED_MODULE_27__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/addImage",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddImagePage__WEBPACK_IMPORTED_MODULE_15__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/editImage",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditImagePage__WEBPACK_IMPORTED_MODULE_25__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditImagePage__WEBPACK_IMPORTED_MODULE_26__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/addFaq",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddFaqPage__WEBPACK_IMPORTED_MODULE_14__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/editFaq",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditFaqPage__WEBPACK_IMPORTED_MODULE_24__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditFaqPage__WEBPACK_IMPORTED_MODULE_25__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/addVideo",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddVideoPage__WEBPACK_IMPORTED_MODULE_20__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/editVideo",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditVideoPage__WEBPACK_IMPORTED_MODULE_31__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditVideoPage__WEBPACK_IMPORTED_MODULE_32__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/editText",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditTextPage__WEBPACK_IMPORTED_MODULE_29__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditTextPage__WEBPACK_IMPORTED_MODULE_30__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/admissions",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AdmissionsPage__WEBPACK_IMPORTED_MODULE_21__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
-            exact: true,
-            path: "/intern/distributors",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_DistributorsPage__WEBPACK_IMPORTED_MODULE_22__.default, {})
+            path: "/intern/billing",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_BillingPage__WEBPACK_IMPORTED_MODULE_22__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/distributors",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_DistributorsPage__WEBPACK_IMPORTED_MODULE_22__.default, {})
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_DistributorsPage__WEBPACK_IMPORTED_MODULE_23__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
+            exact: true,
+            path: "/intern/distributors",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_DistributorsPage__WEBPACK_IMPORTED_MODULE_23__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             exact: true,
             path: "/intern/addDistributor",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_AddDistributorPage__WEBPACK_IMPORTED_MODULE_13__.default, {})
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_PrivateRoute__WEBPACK_IMPORTED_MODULE_4__.default, {
             path: "/intern/editDistributor",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditDistributorPage__WEBPACK_IMPORTED_MODULE_23__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_intern_EditDistributorPage__WEBPACK_IMPORTED_MODULE_24__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             path: "/error",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_ErrorPage__WEBPACK_IMPORTED_MODULE_10__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Route, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Route, {
             path: "/404",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_NotFoundPage__WEBPACK_IMPORTED_MODULE_37__.default, {})
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_49__.Redirect, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_pages_NotFoundPage__WEBPACK_IMPORTED_MODULE_38__.default, {})
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_50__.Redirect, {
             to: "/404"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_Footer__WEBPACK_IMPORTED_MODULE_2__.default, {})]
@@ -5245,7 +5250,7 @@ function App() {
     })
   });
 }
-var AppStyled = styled_components__WEBPACK_IMPORTED_MODULE_50__.default.div.withConfig({
+var AppStyled = styled_components__WEBPACK_IMPORTED_MODULE_51__.default.div.withConfig({
   displayName: "App__AppStyled",
   componentId: "sc-1i0elua-0"
 })(["height:100vh;"]);
@@ -6526,6 +6531,127 @@ var LinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_5__.default)(reac
 
 /***/ }),
 
+/***/ "./resources/js/react-app/common/accounting/AdmissionListItem.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/react-app/common/accounting/AdmissionListItem.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ AdmissionListItem
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
+/* harmony import */ var _assets_billing_icon_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../assets/billing_icon.png */ "./resources/js/react-app/assets/billing_icon.png");
+/* harmony import */ var _utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/moneyUtils */ "./resources/js/react-app/utils/moneyUtils.js");
+
+
+
+
+
+
+
+
+
+
+function AdmissionListItem(_ref) {
+  var screening = _ref.screening;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
+    children: [screening.billing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
+        children: screening.billing.soldTickets + screening.billing.freeTickets
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
+        children: '(' + screening.billing.soldPasses + ')'
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
+        isNegative: screening.billing.profit < 0,
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(screening.billing.profit)
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
+          admissions: screening.billing.soldTickets + screening.billing.freeTickets
+        })
+      })]
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
+        children: "?"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
+        children: "?"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
+        children: "?"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
+          admissions: 0
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
+      children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_3__.formatToDateTimeString)(screening.date)
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
+      to: '/screening/' + screening.uuid,
+      children: screening.title
+    }), screening.billing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(BillingLinkStyled, {
+      to: '/intern/billing/' + screening.billing.uuid,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(IconStyled, {
+        src: _assets_billing_icon_png__WEBPACK_IMPORTED_MODULE_4__.default
+      })
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(BillingLinkStyled, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(IconStyled, {
+        src: _assets_billing_icon_png__WEBPACK_IMPORTED_MODULE_4__.default
+      })
+    })]
+  });
+}
+var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.li.withConfig({
+  displayName: "AdmissionListItem__ListItemStyled",
+  componentId: "sc-1n9rarm-0"
+})([""]);
+var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+  displayName: "AdmissionListItem__AdmissionsStyled",
+  componentId: "sc-1n9rarm-1"
+})(["display:inline-block;width:30px;margin-right:5px;text-align:right;font-weight:bold;"]);
+var PassesStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+  displayName: "AdmissionListItem__PassesStyled",
+  componentId: "sc-1n9rarm-2"
+})(["display:inline-block;width:40px;margin-right:10px;text-align:right;"]);
+var ProfitStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+  displayName: "AdmissionListItem__ProfitStyled",
+  componentId: "sc-1n9rarm-3"
+})(["display:inline-block;width:80px;margin-right:10px;text-align:right;font-weight:bold;color:", ";"], function (props) {
+  return props.isNegative && 'var(--aka-red)';
+});
+var DiagramContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+  displayName: "AdmissionListItem__DiagramContainerStyled",
+  componentId: "sc-1n9rarm-4"
+})(["display:inline-block;width:100px;margin-right:10px;"]);
+var DiagramStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+  displayName: "AdmissionListItem__DiagramStyled",
+  componentId: "sc-1n9rarm-5"
+})(["width:", ";height:10px;background-color:var(--aka-gelb);"], function (props) {
+  return props.admissions / _constants__WEBPACK_IMPORTED_MODULE_2__.NUMBER_OF_SEEDS_IN_GHS_BIO * 100 + '%';
+});
+var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+  displayName: "AdmissionListItem__DateStyled",
+  componentId: "sc-1n9rarm-6"
+})(["display:inline-block;margin-right:10px;"]);
+var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link).withConfig({
+  displayName: "AdmissionListItem__TitleLinkStyled",
+  componentId: "sc-1n9rarm-7"
+})(["display:inline-block;max-width:300px;overflow-x:hidden;white-space:nowrap;text-overflow:ellipsis;vertical-align:bottom;"]);
+var BillingLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_6__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link).withConfig({
+  displayName: "AdmissionListItem__BillingLinkStyled",
+  componentId: "sc-1n9rarm-8"
+})(["margin-left:5px;"]);
+var IconStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.img.withConfig({
+  displayName: "AdmissionListItem__IconStyled",
+  componentId: "sc-1n9rarm-9"
+})(["height:16px;"]);
+
+/***/ }),
+
 /***/ "./resources/js/react-app/common/accounting/SemesterAnalysis.js":
 /*!**********************************************************************!*\
   !*** ./resources/js/react-app/common/accounting/SemesterAnalysis.js ***!
@@ -6539,8 +6665,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/moneyUtils */ "./resources/js/react-app/utils/moneyUtils.js");
+/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../styledElements */ "./resources/js/react-app/common/styledElements.js");
+
 
 
 
@@ -6582,10 +6710,7 @@ function SemesterAnalysis(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
         children: "Bilanz"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ValueStyled, {
-        children: [calculateBalance(billings).toLocaleString('de-DE', {
-          style: 'currency',
-          currency: 'EUR'
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueInfoStyled, {
+        children: [(0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(calculateBalance(billings)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueInfoStyled, {
           children: "(Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)"
         })]
       })]
@@ -6598,24 +6723,18 @@ function SemesterAnalysis(_ref) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(WeekdayListItemStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NameOfDayStyled, {
             children: weekday.nameOfDay
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_2__.VerticalLineStyled, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.VerticalLineStyled, {
             children: "|"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(AverageAdmissionsStyled, {
-            children: [weekday.averageAdmissions.toLocaleString('de-DE', {
-              minimumFractionDigits: 1,
-              maximumFractionDigits: 1
-            }), ' ', "\xD8 Besuchis"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_2__.VerticalLineStyled, {
+            children: [(0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(weekday.averageAdmissions), " \xD8 Besuchis"]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.VerticalLineStyled, {
             children: "|"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberOfScreeningsStyled, {
             children: weekday.numberOfScreenings + ' Vorführungen'
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_2__.VerticalLineStyled, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.VerticalLineStyled, {
             children: "|"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(BalanceStyled, {
-            children: weekday.balance.toLocaleString('de-DE', {
-              style: 'currency',
-              currency: 'EUR'
-            }) + ' Profite'
+            children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(weekday.balance) + ' Profite'
           })]
         }, weekday.nameOfDay);
       })
@@ -6649,7 +6768,7 @@ function SemesterAnalysis(_ref) {
   function calculateBalance(billings) {
     var sum = 0;
     billings.forEach(function (billing) {
-      sum += Number(billing.profit) / 100;
+      sum += Number(billing.profit);
     });
     return sum;
   }
@@ -6702,58 +6821,113 @@ function SemesterAnalysis(_ref) {
     return weekdayValues;
   }
 }
-var SemesterAnalysisStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.section.withConfig({
+var SemesterAnalysisStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.section.withConfig({
   displayName: "SemesterAnalysis__SemesterAnalysisStyled",
   componentId: "ggo4v0-0"
 })([""]);
-var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h3.withConfig({
+var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h3.withConfig({
   displayName: "SemesterAnalysis__SubHeadlineStyled",
   componentId: "ggo4v0-1"
 })(["margin:20px 0 10px 0;"]);
-var KeyValueContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var KeyValueContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SemesterAnalysis__KeyValueContainerStyled",
   componentId: "ggo4v0-2"
 })([""]);
-var KeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var KeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SemesterAnalysis__KeyStyled",
   componentId: "ggo4v0-3"
 })(["display:inline-block;width:180px;"]);
-var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SemesterAnalysis__ValueStyled",
   componentId: "ggo4v0-4"
 })(["display:inline-block;"]);
-var ValueInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.span.withConfig({
+var ValueInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.span.withConfig({
   displayName: "SemesterAnalysis__ValueInfoStyled",
   componentId: "ggo4v0-5"
 })(["margin-left:5px;font-weight:normal;"]);
-var SubSubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.h4.withConfig({
+var SubSubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h4.withConfig({
   displayName: "SemesterAnalysis__SubSubHeadlineStyled",
   componentId: "ggo4v0-6"
 })([""]);
-var WeekdayListStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.ul.withConfig({
+var WeekdayListStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.ul.withConfig({
   displayName: "SemesterAnalysis__WeekdayListStyled",
   componentId: "ggo4v0-7"
 })([""]);
-var WeekdayListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.li.withConfig({
+var WeekdayListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.li.withConfig({
   displayName: "SemesterAnalysis__WeekdayListItemStyled",
   componentId: "ggo4v0-8"
 })(["display:grid;grid-template-columns:25px repeat(3,5px 140px);grid-gap:5px;"]);
-var NameOfDayStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var NameOfDayStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SemesterAnalysis__NameOfDayStyled",
   componentId: "ggo4v0-9"
-})(["font-weight:bold;"]);
-var AverageAdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+})([""]);
+var AverageAdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SemesterAnalysis__AverageAdmissionsStyled",
   componentId: "ggo4v0-10"
 })(["text-align:right;"]);
-var NumberOfScreeningsStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var NumberOfScreeningsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SemesterAnalysis__NumberOfScreeningsStyled",
   componentId: "ggo4v0-11"
 })(["text-align:right;"]);
-var BalanceStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var BalanceStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "SemesterAnalysis__BalanceStyled",
   componentId: "ggo4v0-12"
 })(["text-align:right;"]);
+
+/***/ }),
+
+/***/ "./resources/js/react-app/common/accounting/StackListItem.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/react-app/common/accounting/StackListItem.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ StackListItem
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/moneyUtils */ "./resources/js/react-app/utils/moneyUtils.js");
+/* harmony import */ var _styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../styledElements */ "./resources/js/react-app/common/styledElements.js");
+
+
+
+
+
+
+function StackListItem(_ref) {
+  var stack = _ref.stack;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StackListItemStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackNumbersStyled, {
+      children: stack.firstNumber + ' - ' + stack.lastNumber
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.VerticalLineStyled, {
+      children: "|"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackInfoStyled, {
+      children: stack.lastNumber - stack.firstNumber + 1 + ' x ' + (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(stack.price) + ' = '
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackBalanceStyled, {
+      children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)((stack.lastNumber - stack.firstNumber + 1) * stack.price)
+    })]
+  });
+}
+var StackListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "StackListItem__StackListItemStyled",
+  componentId: "sc-13cdsto-0"
+})(["display:grid;grid-template-columns:110px 5px 110px 80px;"]);
+var StackNumbersStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "StackListItem__StackNumbersStyled",
+  componentId: "sc-13cdsto-1"
+})([""]);
+var StackInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "StackListItem__StackInfoStyled",
+  componentId: "sc-13cdsto-2"
+})(["justify-self:right;"]);
+var StackBalanceStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+  displayName: "StackListItem__StackBalanceStyled",
+  componentId: "sc-13cdsto-3"
+})(["justify-self:right;"]);
 
 /***/ }),
 
@@ -11236,17 +11410,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _common_accounting_SemesterAnalysis__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/accounting/SemesterAnalysis */ "./resources/js/react-app/common/accounting/SemesterAnalysis.js");
-/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
-/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/esm/react-router.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_accounting_AdmissionListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/accounting/AdmissionListItem */ "./resources/js/react-app/common/accounting/AdmissionListItem.js");
+/* harmony import */ var _common_accounting_SemesterAnalysis__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/accounting/SemesterAnalysis */ "./resources/js/react-app/common/accounting/SemesterAnalysis.js");
+/* harmony import */ var _common_SemesterSelect__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../common/SemesterSelect */ "./resources/js/react-app/common/SemesterSelect.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
-/* harmony import */ var _utils_dateFormatters__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/dateFormatters */ "./resources/js/react-app/utils/dateFormatters.js");
-/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
-/* harmony import */ var _utils_services_billingServices__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils/services/billingServices */ "./resources/js/react-app/utils/services/billingServices.js");
+/* harmony import */ var _utils_semesterUtils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/semesterUtils */ "./resources/js/react-app/utils/semesterUtils.js");
+/* harmony import */ var _utils_services_billingServices__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils/services/billingServices */ "./resources/js/react-app/utils/services/billingServices.js");
 
 
 
@@ -11279,7 +11451,6 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 function AdmissionsPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -11300,7 +11471,7 @@ function AdmissionsPage() {
       pageTitle = _useContext.pageTitle,
       setPageTitle = _useContext.setPageTitle;
 
-  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_10__.useHistory)();
+  var history = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_9__.useHistory)();
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     document.title = 'Besuchizahlen | aka-Filmclub';
     setPageTitle('Besuchizahlen');
@@ -11315,23 +11486,23 @@ function AdmissionsPage() {
       });
     } else {
       setSemester({
-        value: (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_8__.computeCurrentSemester)()
+        value: (0,_utils_semesterUtils__WEBPACK_IMPORTED_MODULE_7__.computeCurrentSemester)()
       });
     }
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester.value) {
-      (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_9__.getScreeningsWithBillingsBySemester)(semester.value).then(function (res) {
+      (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_8__.getScreeningsWithBillingsBySemester)(semester.value).then(function (res) {
         history.push('/intern/admissions?semester=' + semester.value);
         setScreenings(res.data);
         setIsLoading(false);
       });
     }
   }, [semester]);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.PageHeadlineStyled, {
       children: pageTitle
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_SemesterSelect__WEBPACK_IMPORTED_MODULE_4__.default, {
       semester: semester,
       setSemester: setSemester,
       setIsLoading: setIsLoading
@@ -11343,44 +11514,11 @@ function AdmissionsPage() {
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
           children: screenings.map(function (screening) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
-              children: [screening.billing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
-                  children: screening.billing.soldTickets + screening.billing.freeTickets
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
-                  children: '(' + screening.billing.soldPasses + ')'
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
-                  isNegative: screening.billing.profit < 0,
-                  children: Number(screening.billing.profit / 100).toLocaleString('de-DE', {
-                    style: 'currency',
-                    currency: 'EUR'
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
-                    admissions: screening.billing.soldTickets + screening.billing.freeTickets
-                  })
-                })]
-              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
-                  children: "?"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
-                  children: "?"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
-                  children: "?"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
-                    admissions: 0
-                  })
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
-                children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_7__.formatToDateTimeString)(screening.date)
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
-                to: '/screening/' + screening.uuid,
-                children: screening.title
-              })]
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_AdmissionListItem__WEBPACK_IMPORTED_MODULE_2__.default, {
+              screening: screening
             }, screening.id);
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LegendStyled, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LegendStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
             children: "Legende"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
@@ -11390,7 +11528,7 @@ function AdmissionsPage() {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
             children: "3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_SemesterAnalysis__WEBPACK_IMPORTED_MODULE_2__.default, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_SemesterAnalysis__WEBPACK_IMPORTED_MODULE_3__.default, {
           billings: screenings.filter(function (screening) {
             return screening.billing;
           }).map(function (screening) {
@@ -11403,62 +11541,239 @@ function AdmissionsPage() {
     })]
   });
 }
-var NoScreeningsInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
+var NoScreeningsInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "AdmissionsPage__NoScreeningsInfoStyled",
   componentId: "d839r0-0"
 })(["margin-top:20px;color:var(--aka-red);"]);
-var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.ul.withConfig({
+var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
   displayName: "AdmissionsPage__ListStyled",
   componentId: "d839r0-1"
 })([""]);
-var ListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.li.withConfig({
-  displayName: "AdmissionsPage__ListItemStyled",
+var LegendStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.section.withConfig({
+  displayName: "AdmissionsPage__LegendStyled",
   componentId: "d839r0-2"
 })([""]);
-var AdmissionsStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
-  displayName: "AdmissionsPage__AdmissionsStyled",
-  componentId: "d839r0-3"
-})(["display:inline-block;width:30px;margin-right:5px;text-align:right;font-weight:bold;"]);
-var PassesStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
-  displayName: "AdmissionsPage__PassesStyled",
-  componentId: "d839r0-4"
-})(["display:inline-block;width:40px;margin-right:10px;text-align:right;"]);
-var ProfitStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
-  displayName: "AdmissionsPage__ProfitStyled",
-  componentId: "d839r0-5"
-})(["display:inline-block;width:80px;margin-right:10px;text-align:right;font-weight:bold;color:", ";"], function (props) {
-  return props.isNegative && 'var(--aka-red)';
-});
-var DiagramContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
-  displayName: "AdmissionsPage__DiagramContainerStyled",
-  componentId: "d839r0-6"
-})(["display:inline-block;width:150px;margin-right:10px;"]);
-var DiagramStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
-  displayName: "AdmissionsPage__DiagramStyled",
-  componentId: "d839r0-7"
-})(["width:", ";height:10px;background-color:var(--aka-gelb);"], function (props) {
-  return props.admissions / _constants__WEBPACK_IMPORTED_MODULE_5__.NUMBER_OF_SEEDS_IN_GHS_BIO * 100 + '%';
-});
-var DateStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
-  displayName: "AdmissionsPage__DateStyled",
-  componentId: "d839r0-8"
-})(["display:inline-block;margin-right:10px;"]);
-var TitleLinkStyled = (0,styled_components__WEBPACK_IMPORTED_MODULE_11__.default)(react_router_dom__WEBPACK_IMPORTED_MODULE_12__.Link).withConfig({
-  displayName: "AdmissionsPage__TitleLinkStyled",
-  componentId: "d839r0-9"
-})(["display:inline-block;max-width:300px;overflow-x:hidden;white-space:nowrap;text-overflow:ellipsis;vertical-align:bottom;"]);
-var LegendStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.section.withConfig({
-  displayName: "AdmissionsPage__LegendStyled",
-  componentId: "d839r0-10"
-})([""]);
-var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.h3.withConfig({
+var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h3.withConfig({
   displayName: "AdmissionsPage__SubHeadlineStyled",
-  componentId: "d839r0-11"
+  componentId: "d839r0-3"
 })(["margin:20px 0 10px 0;"]);
-var LegendEntryStyled = styled_components__WEBPACK_IMPORTED_MODULE_11__.default.div.withConfig({
+var LegendEntryStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
   displayName: "AdmissionsPage__LegendEntryStyled",
-  componentId: "d839r0-12"
+  componentId: "d839r0-4"
 })([""]);
+
+/***/ }),
+
+/***/ "./resources/js/react-app/pages/intern/BillingPage.js":
+/*!************************************************************!*\
+  !*** ./resources/js/react-app/pages/intern/BillingPage.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ BillingPage
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _common_accounting_StackListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/accounting/StackListItem */ "./resources/js/react-app/common/accounting/StackListItem.js");
+/* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
+/* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
+/* harmony import */ var _utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/moneyUtils */ "./resources/js/react-app/utils/moneyUtils.js");
+/* harmony import */ var _utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../utils/pathUtils */ "./resources/js/react-app/utils/pathUtils.js");
+/* harmony import */ var _utils_services_billingServices__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils/services/billingServices */ "./resources/js/react-app/utils/services/billingServices.js");
+/* harmony import */ var _LoadingPage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../LoadingPage */ "./resources/js/react-app/pages/LoadingPage.js");
+
+
+
+function _templateObject8() {
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n"]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    margin-right: 10px;\n    font-size: 1em;\n    font-weight: bold;\n"]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n    margin-top: 10px;\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n    margin: 0;\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n    margin-top: 10px;\n    font-size: 1em;\n    font-weight: bold;\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    width: 80px;\n    text-align: right;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    width: 150px;\n    font-size: 1em;\n    font-weight: bold;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral([""]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+function BillingPage() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
+      _useState2 = _slicedToArray(_useState, 2),
+      billing = _useState2[0],
+      setBilling = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState4 = _slicedToArray(_useState3, 2),
+      isLoading = _useState4[0],
+      setIsLoading = _useState4[1];
+
+  var _useContext = (0,react__WEBPACK_IMPORTED_MODULE_1__.useContext)(_Context__WEBPACK_IMPORTED_MODULE_4__.default),
+      pageTitle = _useContext.pageTitle,
+      setPageTitle = _useContext.setPageTitle;
+
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    if (billing.screening) {
+      document.title = 'Abrechnung: ' + billing.screening.title + ' | aka-Filmclub';
+      setPageTitle('Abrechnung: ' + billing.screening.title);
+    }
+  }, [billing]);
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    var uuid = (0,_utils_pathUtils__WEBPACK_IMPORTED_MODULE_6__.getLastParameterFromPath)();
+    (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_7__.getBillingByUuid)(uuid).then(function (res) {
+      setBilling(res.data);
+      setIsLoading(false);
+    });
+  }, []);
+  if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_8__.default, {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.PageHeadlineStyled, {
+      children: pageTitle
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Mindestgarantie"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.guarantee)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Prozentsatz"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: billing.percentage + ' %'
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Nebenkosten"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.incidentals)
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackKeyStyled, {
+      children: "Eintrittskarten"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StacksListStyled, {
+      children: billing.tickets.map(function (stack) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_StackListItem__WEBPACK_IMPORTED_MODULE_2__.default, {
+          stack: stack
+        }, stack.id);
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackKeyStyled, {
+      children: "Ausweise"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StacksListStyled, {
+      children: billing.passes.map(function (stack) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_StackListItem__WEBPACK_IMPORTED_MODULE_2__.default, {
+          stack: stack
+        }, stack.id);
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(EarningsContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(EarningsKeyStyled, {
+        children: "Errechnete Einnahmen aus Eintrittskarten und Ausweisen"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(EarningsValueStyled, {
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.earnings)
+      })]
+    })]
+  });
+}
+var KeyValueContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_templateObject());
+var KeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3(_templateObject2());
+var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_templateObject3());
+var StackKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3(_templateObject4());
+var StacksListStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.ul(_templateObject5());
+var EarningsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_templateObject6());
+var EarningsKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3(_templateObject7());
+var EarningsValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_templateObject8());
 
 /***/ }),
 
@@ -13054,6 +13369,26 @@ function formatToIcsString(date) {
 
 function addMinutes(date, minutes) {
   return new Date(date.getTime() + minutes * 60000);
+}
+
+/***/ }),
+
+/***/ "./resources/js/react-app/utils/moneyUtils.js":
+/*!****************************************************!*\
+  !*** ./resources/js/react-app/utils/moneyUtils.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "toEuro": () => /* binding */ toEuro
+/* harmony export */ });
+function toEuro(amountInCents) {
+  return (amountInCents / 100).toLocaleString('de-DE', {
+    style: 'currency',
+    currency: 'EUR'
+  });
 }
 
 /***/ }),
@@ -31784,6 +32119,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/aka_logo.png?3edbd179dc772c6863ebf08797cb1e34");
+
+/***/ }),
+
+/***/ "./resources/js/react-app/assets/billing_icon.png":
+/*!********************************************************!*\
+  !*** ./resources/js/react-app/assets/billing_icon.png ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => __WEBPACK_DEFAULT_EXPORT__
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/billing_icon.png?67e72f93ec080415baa1b9ba3dc9368f");
 
 /***/ }),
 
