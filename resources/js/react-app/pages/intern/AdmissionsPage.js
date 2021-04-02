@@ -8,10 +8,10 @@ import { NUMBER_OF_SEEDS_IN_GHS_BIO } from '../../constants';
 import Context from '../../Context';
 import { formatToDateTimeString } from '../../utils/dateFormatters';
 import { computeCurrentSemester } from '../../utils/semesterUtils';
-import { getBillingsBySemester } from '../../utils/services/billingServices';
+import { getScreeningsWithBillingsBySemester } from '../../utils/services/billingServices';
 
 export default function AdmissionsPage() {
-    const [billings, setBillings] = useState([]);
+    const [screenings, setScreenings] = useState([]);
     const [semester, setSemester] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
@@ -36,9 +36,9 @@ export default function AdmissionsPage() {
 
     useEffect(() => {
         if (semester.value) {
-            getBillingsBySemester(semester.value).then((res) => {
+            getScreeningsWithBillingsBySemester(semester.value).then((res) => {
                 history.push('/intern/admissions?semester=' + semester.value);
-                setBillings(res.data);
+                setScreenings(res.data);
                 setIsLoading(false);
             });
         }
@@ -52,27 +52,47 @@ export default function AdmissionsPage() {
                 <div>Loading...</div>
             ) : (
                 <>
-                    {billings.length === 0 ? (
+                    {screenings.length === 0 ? (
                         <NoScreeningsInfoStyled>In diesem Semester gab es keine Vorführungen.</NoScreeningsInfoStyled>
                     ) : (
                         <>
                             <ListStyled>
-                                {billings.map((billing) => (
-                                    <ListItemStyled key={billing.id}>
-                                        <AdmissionsStyled>{billing.soldTickets + billing.freeTickets}</AdmissionsStyled>
-                                        <PassesStyled>{'(' + billing.soldPasses + ')'}</PassesStyled>
-                                        <ProfitStyled isNegative={billing.profit < 0}>
-                                            {Number(billing.profit / 100).toLocaleString('de-DE', {
-                                                style: 'currency',
-                                                currency: 'EUR',
-                                            })}
-                                        </ProfitStyled>
-                                        <DiagramContainerStyled>
-                                            <DiagramStyled admissions={billing.soldTickets + billing.freeTickets} />
-                                        </DiagramContainerStyled>
-                                        <DateStyled>{formatToDateTimeString(billing.screeningDate)}</DateStyled>
-                                        <TitleLinkStyled to={'/screening/' + billing.screeningUuid}>
-                                            {billing.screeningTitle}
+                                {screenings.map((screening) => (
+                                    <ListItemStyled key={screening.id}>
+                                        {screening.billing ? (
+                                            <>
+                                                <AdmissionsStyled>
+                                                    {screening.billing.soldTickets + screening.billing.freeTickets}
+                                                </AdmissionsStyled>
+                                                <PassesStyled>{'(' + screening.billing.soldPasses + ')'}</PassesStyled>
+                                                <ProfitStyled isNegative={screening.billing.profit < 0}>
+                                                    {Number(screening.billing.profit / 100).toLocaleString('de-DE', {
+                                                        style: 'currency',
+                                                        currency: 'EUR',
+                                                    })}
+                                                </ProfitStyled>
+                                                <DiagramContainerStyled>
+                                                    <DiagramStyled
+                                                        admissions={
+                                                            screening.billing.soldTickets +
+                                                            screening.billing.freeTickets
+                                                        }
+                                                    />
+                                                </DiagramContainerStyled>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <AdmissionsStyled>?</AdmissionsStyled>
+                                                <PassesStyled>?</PassesStyled>
+                                                <ProfitStyled>?</ProfitStyled>
+                                                <DiagramContainerStyled>
+                                                    <DiagramStyled admissions={0} />
+                                                </DiagramContainerStyled>
+                                            </>
+                                        )}
+                                        <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
+                                        <TitleLinkStyled to={'/screening/' + screening.uuid}>
+                                            {screening.title}
                                         </TitleLinkStyled>
                                     </ListItemStyled>
                                 ))}
@@ -88,7 +108,13 @@ export default function AdmissionsPage() {
                                     3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten
                                 </LegendEntryStyled>
                             </LegendStyled>
-                            <SemesterAnalysis billings={billings} />
+                            <SemesterAnalysis
+                                billings={screenings
+                                    .filter((screening) => screening.billing)
+                                    .map((screening) => {
+                                        return { ...screening.billing, screeningDate: screening.date };
+                                    })}
+                            />
                         </>
                     )}
                 </>

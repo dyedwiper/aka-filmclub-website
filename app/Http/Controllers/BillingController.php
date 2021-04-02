@@ -9,32 +9,34 @@ use Illuminate\Support\Facades\Log;
 
 class BillingController extends Controller
 {
-    public function GetBillingsBySemester(string $semester)
+    public function GetScreeningsWithBillingsBySemester(string $semester)
     {
         $season = substr($semester, 0, 2);
         $year = intval(substr($semester, 2, 4));
 
         if ($season == 'WS') {
-            $screenings = Screening::whereYear('date', $year)
+            $screenings = Screening::select('id', 'uuid', 'title', 'date')
+                ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
                 ->whereMonth('date', '<', 4)
                 ->orderBy('date')
                 ->get();
-            $billings = $screenings->map([$this, 'convertToBilling']);
-            return $billings;
-        }
-
-        if ($season == 'SS') {
-            $screenings = Screening::whereYear('date', $year)
+            return $screenings->map([$this, 'addCalculatedFieldsToBilling']);
+        } elseif ($season == 'SS') {
+            $screenings = Screening::select('id', 'uuid', 'title', 'date')
+                ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)
                 ->orderBy('date')
-                ->with('billing')
                 ->get();
-            $billings = $screenings->map([$this, 'convertToBilling']);
-            return $billings;
+            return $screenings->map([$this, 'addCalculatedFieldsToBilling']);
         }
+    }
+
+    public function GetBillingByUuid(string $uuid)
+    {
+        return Billing::where('uuid', $uuid)->with('screening:id,uuid,title,date')->first();
     }
 
     public function UpdateUuids()
@@ -46,24 +48,27 @@ class BillingController extends Controller
         }
     }
 
+    //---------------------------------------------//
+    // Below are service methods
+
     // This method must be public. Otherwise the callback does not work.
-    public function convertToBilling($screening)
+    public function addCalculatedFieldsToBilling($screening)
     {
-        $billing = $screening->billing;
-        $billing->soldTickets = $this->calculateTicketSum($billing);
-        $billing->soldPasses = $this->calculatePassesSum($billing);
-        $billing->earnings = $this->calculateEarnings($billing);
-        $billing->rent = $this->calculateRent($billing);
-        $billing->profit = $this->calculateProfit($billing);
-        $billing->screeningTitle = $screening->title;
-        $billing->screeningDate = $screening->date;
-        $billing->screeningUuid = $screening->uuid;
-        // The tickets and passes fields are populated by the calculate methods. Thus they are removed here.
-        // In order to call the forget method, $billing must be first turned into a collection.
-        $billingCollection = collect($billing);
-        $billingCollection->forget('tickets');
-        $billingCollection->forget('passes');
-        return $billingCollection;
+        if ($screening->billing) {
+            $billing = $screening->billing;
+            $billing->soldTickets = $this->calculateTicketSum($billing);
+            $billing->soldPasses = $this->calculatePassesSum($billing);
+            $billing->earnings = $this->calculateEarnings($billing);
+            $billing->rent = $this->calculateRent($billing);
+            $billing->profit = $this->calculateProfit($billing);
+            // The tickets and passes fields are populated by the calculate methods. Thus they are removed here.
+            // In order to call the forget method, $billing must be first turned into a collection.
+            $billingCollection = collect($billing);
+            $billingCollection->forget('tickets');
+            $billingCollection->forget('passes');
+            $screening->billing = $billingCollection;
+        }
+        return $screening;
     }
 
     private function calculateTicketSum($billing)

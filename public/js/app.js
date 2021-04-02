@@ -11251,6 +11251,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11277,8 +11283,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function AdmissionsPage() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]),
       _useState2 = _slicedToArray(_useState, 2),
-      billings = _useState2[0],
-      setBillings = _useState2[1];
+      screenings = _useState2[0],
+      setScreenings = _useState2[1];
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)({}),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -11315,9 +11321,9 @@ function AdmissionsPage() {
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
     if (semester.value) {
-      (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_9__.getBillingsBySemester)(semester.value).then(function (res) {
+      (0,_utils_services_billingServices__WEBPACK_IMPORTED_MODULE_9__.getScreeningsWithBillingsBySemester)(semester.value).then(function (res) {
         history.push('/intern/admissions?semester=' + semester.value);
-        setBillings(res.data);
+        setScreenings(res.data);
         setIsLoading(false);
       });
     }
@@ -11332,33 +11338,47 @@ function AdmissionsPage() {
     }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
       children: "Loading..."
     }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-      children: billings.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NoScreeningsInfoStyled, {
+      children: screenings.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NoScreeningsInfoStyled, {
         children: "In diesem Semester gab es keine Vorf\xFChrungen."
       }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ListStyled, {
-          children: billings.map(function (billing) {
+          children: screenings.map(function (screening) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
-                children: billing.soldTickets + billing.freeTickets
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
-                children: '(' + billing.soldPasses + ')'
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
-                isNegative: billing.profit < 0,
-                children: Number(billing.profit / 100).toLocaleString('de-DE', {
-                  style: 'currency',
-                  currency: 'EUR'
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
-                  admissions: billing.soldTickets + billing.freeTickets
-                })
+              children: [screening.billing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
+                  children: screening.billing.soldTickets + screening.billing.freeTickets
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
+                  children: '(' + screening.billing.soldPasses + ')'
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
+                  isNegative: screening.billing.profit < 0,
+                  children: Number(screening.billing.profit / 100).toLocaleString('de-DE', {
+                    style: 'currency',
+                    currency: 'EUR'
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
+                    admissions: screening.billing.soldTickets + screening.billing.freeTickets
+                  })
+                })]
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
+                  children: "?"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
+                  children: "?"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
+                  children: "?"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
+                    admissions: 0
+                  })
+                })]
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DateStyled, {
-                children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_7__.formatToDateTimeString)(billing.screeningDate)
+                children: (0,_utils_dateFormatters__WEBPACK_IMPORTED_MODULE_7__.formatToDateTimeString)(screening.date)
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TitleLinkStyled, {
-                to: '/screening/' + billing.screeningUuid,
-                children: billing.screeningTitle
+                to: '/screening/' + screening.uuid,
+                children: screening.title
               })]
-            }, billing.id);
+            }, screening.id);
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LegendStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
@@ -11371,7 +11391,13 @@ function AdmissionsPage() {
             children: "3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_SemesterAnalysis__WEBPACK_IMPORTED_MODULE_2__.default, {
-          billings: billings
+          billings: screenings.filter(function (screening) {
+            return screening.billing;
+          }).map(function (screening) {
+            return _objectSpread(_objectSpread({}, screening.billing), {}, {
+              screeningDate: screening.date
+            });
+          })
         })]
       })
     })]
@@ -13174,12 +13200,16 @@ function makeApiCall(url) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "getBillingsBySemester": () => /* binding */ getBillingsBySemester
+/* harmony export */   "getScreeningsWithBillingsBySemester": () => /* binding */ getScreeningsWithBillingsBySemester,
+/* harmony export */   "getBillingByUuid": () => /* binding */ getBillingByUuid
 /* harmony export */ });
 /* harmony import */ var _baseService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./baseService */ "./resources/js/react-app/utils/services/baseService.js");
 
-function getBillingsBySemester(semester) {
+function getScreeningsWithBillingsBySemester(semester) {
   return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/billings/semester/' + semester);
+}
+function getBillingByUuid(uuid) {
+  return (0,_baseService__WEBPACK_IMPORTED_MODULE_0__.makeApiCall)('/api/billings/uuid/' + uuid);
 }
 
 /***/ }),

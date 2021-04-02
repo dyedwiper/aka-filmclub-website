@@ -289,7 +289,7 @@ Route::prefix('distributors')->group(function () {
 
 Route::prefix('billings')->group(function () {
     Route::get('/semester/{semester}', [
-        BillingController::class, 'GetBillingsBySemester'
+        BillingController::class, 'GetScreeningsWithBillingsBySemester'
     ]);
 
     Route::get('/uuid/{uuid}', [
