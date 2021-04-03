@@ -6726,7 +6726,10 @@ function SemesterAnalysis(_ref) {
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.VerticalLineStyled, {
             children: "|"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(AverageAdmissionsStyled, {
-            children: [(0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(weekday.averageAdmissions), " \xD8 Besuchis"]
+            children: [weekday.averageAdmissions.toLocaleString('de-DE', {
+              minimumFractionDigits: 1,
+              maximumFractionDigits: 1
+            }), ' ', "\xD8 Besuchis"]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.VerticalLineStyled, {
             children: "|"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberOfScreeningsStyled, {
@@ -6876,16 +6879,16 @@ var BalanceStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.w
 
 /***/ }),
 
-/***/ "./resources/js/react-app/common/accounting/StackListItem.js":
-/*!*******************************************************************!*\
-  !*** ./resources/js/react-app/common/accounting/StackListItem.js ***!
-  \*******************************************************************/
+/***/ "./resources/js/react-app/common/accounting/StacksList.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/react-app/common/accounting/StacksList.js ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => /* binding */ StackListItem
+/* harmony export */   "default": () => /* binding */ StacksList
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
@@ -6898,35 +6901,83 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function StackListItem(_ref) {
-  var stack = _ref.stack;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StackListItemStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackNumbersStyled, {
-      children: stack.firstNumber + ' - ' + stack.lastNumber
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.VerticalLineStyled, {
-      children: "|"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackInfoStyled, {
-      children: stack.lastNumber - stack.firstNumber + 1 + ' x ' + (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(stack.price) + ' = '
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackBalanceStyled, {
-      children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)((stack.lastNumber - stack.firstNumber + 1) * stack.price)
+function StacksList(_ref) {
+  var stacks = _ref.stacks;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StacksListStyled, {
+    children: [stacks.map(function (stack) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StackListItemStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackNumbersStyled, {
+          children: stack.firstNumber + ' - ' + stack.lastNumber
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.VerticalLineStyled, {
+          children: "|"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackInfoStyled, {
+          children: calculateStackAmount(stack) + ' x ' + (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(stack.price) + ' = '
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackBalanceStyled, {
+          children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(calculateStackAmount(stack) * stack.price)
+        })]
+      }, stack.id);
+    }), getValuesPerPrice(stacks).map(function (price) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StackListItemStyled, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackNumbersStyled, {
+          children: "Summe"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_styledElements__WEBPACK_IMPORTED_MODULE_3__.VerticalLineStyled, {
+          children: "|"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackInfoStyled, {
+          children: price.items + ' x ' + (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(price.price) + ' = '
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackBalanceStyled, {
+          children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(price.earnings)
+        })]
+      }, price);
     })]
   });
+
+  function getValuesPerPrice(stacks) {
+    var priceSet = new Set();
+    stacks.forEach(function (stack) {
+      priceSet.add(stack.price);
+    });
+    var valuesPerPrice = [];
+    priceSet.forEach(function (price) {
+      var itemsForPrice = 0;
+      var earningsForPrice = 0;
+      stacks.filter(function (stack) {
+        return stack.price === price;
+      }).forEach(function (stack) {
+        itemsForPrice += calculateStackAmount(stack);
+        earningsForPrice += calculateStackAmount(stack) * stack.price;
+      });
+      valuesPerPrice.push({
+        price: price,
+        items: itemsForPrice,
+        earnings: earningsForPrice
+      });
+    });
+    return valuesPerPrice;
+  }
+
+  function calculateStackAmount(stack) {
+    return stack.lastNumber - stack.firstNumber + 1;
+  }
 }
+var StacksListStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.ul.withConfig({
+  displayName: "StacksList__StacksListStyled",
+  componentId: "ef59wh-0"
+})(["margin:0;"]);
 var StackListItemStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
-  displayName: "StackListItem__StackListItemStyled",
-  componentId: "sc-13cdsto-0"
-})(["display:grid;grid-template-columns:110px 5px 110px 80px;"]);
+  displayName: "StacksList__StackListItemStyled",
+  componentId: "ef59wh-1"
+})(["display:grid;grid-template-columns:110px 10px 110px 80px;"]);
 var StackNumbersStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
-  displayName: "StackListItem__StackNumbersStyled",
-  componentId: "sc-13cdsto-1"
+  displayName: "StacksList__StackNumbersStyled",
+  componentId: "ef59wh-2"
 })([""]);
 var StackInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
-  displayName: "StackListItem__StackInfoStyled",
-  componentId: "sc-13cdsto-2"
+  displayName: "StacksList__StackInfoStyled",
+  componentId: "ef59wh-3"
 })(["justify-self:right;"]);
 var StackBalanceStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
-  displayName: "StackListItem__StackBalanceStyled",
-  componentId: "sc-13cdsto-3"
+  displayName: "StacksList__StackBalanceStyled",
+  componentId: "ef59wh-4"
 })(["justify-self:right;"]);
 
 /***/ }),
@@ -11578,7 +11629,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-/* harmony import */ var _common_accounting_StackListItem__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/accounting/StackListItem */ "./resources/js/react-app/common/accounting/StackListItem.js");
+/* harmony import */ var _common_accounting_StacksList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../common/accounting/StacksList */ "./resources/js/react-app/common/accounting/StacksList.js");
 /* harmony import */ var _common_styledElements__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../common/styledElements */ "./resources/js/react-app/common/styledElements.js");
 /* harmony import */ var _Context__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Context */ "./resources/js/react-app/Context.js");
 /* harmony import */ var _utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../utils/moneyUtils */ "./resources/js/react-app/utils/moneyUtils.js");
@@ -11588,67 +11639,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n    margin-top: 10px;\n"]);
-
-  _templateObject6 = function _templateObject6() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n    margin: 0;\n"]);
-
-  _templateObject5 = function _templateObject5() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n    margin-top: 10px;\n    font-size: 1em;\n    font-weight: bold;\n"]);
-
-  _templateObject4 = function _templateObject4() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    width: 80px;\n    text-align: right;\n"]);
-
-  _templateObject3 = function _templateObject3() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n    display: inline-block;\n    width: 180px;\n    font-size: 1em;\n    font-weight: bold;\n"]);
-
-  _templateObject2 = function _templateObject2() {
-    return data;
-  };
-
-  return data;
-}
-
-function _templateObject() {
-  var data = _taggedTemplateLiteral([""]);
-
-  _templateObject = function _templateObject() {
-    return data;
-  };
-
-  return data;
-}
-
-function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
@@ -11705,20 +11695,12 @@ function BillingPage() {
       children: pageTitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackKeyStyled, {
       children: "Eintrittskarten"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StacksListStyled, {
-      children: billing.tickets.map(function (stack) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_StackListItem__WEBPACK_IMPORTED_MODULE_2__.default, {
-          stack: stack
-        }, stack.id);
-      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_StacksList__WEBPACK_IMPORTED_MODULE_2__.default, {
+      stacks: billing.tickets
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackKeyStyled, {
       children: "Ausweise"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StacksListStyled, {
-      children: billing.passes.map(function (stack) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_StackListItem__WEBPACK_IMPORTED_MODULE_2__.default, {
-          stack: stack
-        }, stack.id);
-      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_StacksList__WEBPACK_IMPORTED_MODULE_2__.default, {
+      stacks: billing.passes
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(EarningsContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
         children: "Errechnete Einnahmen"
@@ -11756,6 +11738,12 @@ function BillingPage() {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.cashOut - billing.cashInlay - billing.earnings)
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DistributorKeyStyled, {
+        children: "Verleih"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DistributorValueStyled, {
+        children: billing.distributor && billing.distributor.name
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
         children: "Mindestgarantie"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
@@ -11775,7 +11763,7 @@ function BillingPage() {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
-        children: "Filmmiete"
+        children: "Filmmiete inkl. Nebenkosten"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.rent)
       })]
@@ -11786,8 +11774,8 @@ function BillingPage() {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.rent * billing.valueAddedTax / 100)
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyStyled, {
-        children: ["Filmmiete + MWSt (", billing.valueAddedTax, " %)"]
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        children: "Zu zahlen"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.rent * (billing.valueAddedTax + 100) / 100)
       })]
@@ -11797,15 +11785,51 @@ function BillingPage() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuro)(billing.ticketEarnings - billing.rent + billing.cashOut - billing.cashInlay - billing.earnings)
       })]
+    }), billing.comment && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CommentKeyStyled, {
+        children: "Kommentar"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CommentValueStyled, {
+        children: billing.comment
+      })]
     })]
   });
 }
-var KeyValueContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_templateObject());
-var KeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3(_templateObject2());
-var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_templateObject3());
-var StackKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3(_templateObject4());
-var StacksListStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.ul(_templateObject5());
-var EarningsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div(_templateObject6());
+var KeyValueContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
+  displayName: "BillingPage__KeyValueContainerStyled",
+  componentId: "sc-1nsjor-0"
+})([""]);
+var KeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3.withConfig({
+  displayName: "BillingPage__KeyStyled",
+  componentId: "sc-1nsjor-1"
+})(["display:inline-block;width:230px;font-size:1em;font-weight:bold;"]);
+var ValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
+  displayName: "BillingPage__ValueStyled",
+  componentId: "sc-1nsjor-2"
+})(["display:inline-block;width:80px;text-align:right;"]);
+var StackKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3.withConfig({
+  displayName: "BillingPage__StackKeyStyled",
+  componentId: "sc-1nsjor-3"
+})(["margin-top:10px;font-size:1em;font-weight:bold;"]);
+var EarningsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.div.withConfig({
+  displayName: "BillingPage__EarningsContainerStyled",
+  componentId: "sc-1nsjor-4"
+})(["margin-top:10px;"]);
+var DistributorKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3.withConfig({
+  displayName: "BillingPage__DistributorKeyStyled",
+  componentId: "sc-1nsjor-5"
+})(["display:inline-block;margin-right:5px;font-size:1em;font-weight:bold;"]);
+var DistributorValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.span.withConfig({
+  displayName: "BillingPage__DistributorValueStyled",
+  componentId: "sc-1nsjor-6"
+})([""]);
+var CommentKeyStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.h3.withConfig({
+  displayName: "BillingPage__CommentKeyStyled",
+  componentId: "sc-1nsjor-7"
+})(["font-size:1em;font-weight:bold;"]);
+var CommentValueStyled = styled_components__WEBPACK_IMPORTED_MODULE_9__.default.p.withConfig({
+  displayName: "BillingPage__CommentValueStyled",
+  componentId: "sc-1nsjor-8"
+})([""]);
 
 /***/ }),
 

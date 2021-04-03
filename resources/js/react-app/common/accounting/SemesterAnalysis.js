@@ -44,7 +44,11 @@ export default function SemesterAnalysis({ billings }) {
                             <NameOfDayStyled>{weekday.nameOfDay}</NameOfDayStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
                             <AverageAdmissionsStyled>
-                                {toEuro(weekday.averageAdmissions)} &Oslash; Besuchis
+                                {weekday.averageAdmissions.toLocaleString('de-DE', {
+                                    minimumFractionDigits: 1,
+                                    maximumFractionDigits: 1,
+                                })}{' '}
+                                &Oslash; Besuchis
                             </AverageAdmissionsStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
                             <NumberOfScreeningsStyled>

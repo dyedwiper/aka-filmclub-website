@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import StackListItem from '../../common/accounting/StackListItem';
+import StacksList from '../../common/accounting/StacksList';
 import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { toEuro } from '../../utils/moneyUtils';
@@ -35,17 +35,9 @@ export default function BillingPage() {
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <StackKeyStyled>Eintrittskarten</StackKeyStyled>
-            <StacksListStyled>
-                {billing.tickets.map((stack) => (
-                    <StackListItem key={stack.id} stack={stack} />
-                ))}
-            </StacksListStyled>
+            <StacksList stacks={billing.tickets} />
             <StackKeyStyled>Ausweise</StackKeyStyled>
-            <StacksListStyled>
-                {billing.passes.map((stack) => (
-                    <StackListItem key={stack.id} stack={stack} />
-                ))}
-            </StacksListStyled>
+            <StacksList stacks={billing.passes} />
             <EarningsContainerStyled>
                 <KeyStyled>Errechnete Einnahmen</KeyStyled>
                 <ValueStyled>{toEuro(billing.earnings)}</ValueStyled>
@@ -73,6 +65,10 @@ export default function BillingPage() {
             </KeyValueContainerStyled>
             <HorizontalRuleStyled />
             <KeyValueContainerStyled>
+                <DistributorKeyStyled>Verleih</DistributorKeyStyled>
+                <DistributorValueStyled>{billing.distributor && billing.distributor.name}</DistributorValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
                 <KeyStyled>Mindestgarantie</KeyStyled>
                 <ValueStyled>{toEuro(billing.guarantee)}</ValueStyled>
             </KeyValueContainerStyled>
@@ -85,7 +81,7 @@ export default function BillingPage() {
                 <ValueStyled>{toEuro(billing.incidentals)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
-                <KeyStyled>Filmmiete</KeyStyled>
+                <KeyStyled>Filmmiete inkl. Nebenkosten</KeyStyled>
                 <ValueStyled>{toEuro(billing.rent)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
@@ -93,7 +89,7 @@ export default function BillingPage() {
                 <ValueStyled>{toEuro((billing.rent * billing.valueAddedTax) / 100)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
-                <KeyStyled>Filmmiete + MWSt ({billing.valueAddedTax} %)</KeyStyled>
+                <KeyStyled>Zu zahlen</KeyStyled>
                 <ValueStyled>{toEuro((billing.rent * (billing.valueAddedTax + 100)) / 100)}</ValueStyled>
             </KeyValueContainerStyled>
             <HorizontalRuleStyled />
@@ -105,6 +101,13 @@ export default function BillingPage() {
                     )}
                 </ValueStyled>
             </KeyValueContainerStyled>
+            {billing.comment && (
+                <>
+                    <HorizontalRuleStyled />
+                    <CommentKeyStyled>Kommentar</CommentKeyStyled>
+                    <CommentValueStyled>{billing.comment}</CommentValueStyled>
+                </>
+            )}
         </PageStyled>
     );
 }
@@ -113,7 +116,7 @@ const KeyValueContainerStyled = styled.div``;
 
 const KeyStyled = styled.h3`
     display: inline-block;
-    width: 180px;
+    width: 230px;
     font-size: 1em;
     font-weight: bold;
 `;
@@ -130,10 +133,22 @@ const StackKeyStyled = styled.h3`
     font-weight: bold;
 `;
 
-const StacksListStyled = styled.ul`
-    margin: 0;
-`;
-
 const EarningsContainerStyled = styled.div`
     margin-top: 10px;
 `;
+
+const DistributorKeyStyled = styled.h3`
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 1em;
+    font-weight: bold;
+`;
+
+const DistributorValueStyled = styled.span``;
+
+const CommentKeyStyled = styled.h3`
+    font-size: 1em;
+    font-weight: bold;
+`;
+
+const CommentValueStyled = styled.p``;

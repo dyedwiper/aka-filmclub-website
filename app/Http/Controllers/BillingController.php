@@ -38,6 +38,7 @@ class BillingController extends Controller
     {
         $billing = Billing::where('uuid', $uuid)
             ->with('screening:id,uuid,title,date')
+            ->with('distributor:id,uuid,name')
             ->with('tickets', 'passes')
             ->first();
         $billing->earnings = $this->calculateEarnings($billing);
