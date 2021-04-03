@@ -37,7 +37,7 @@ export default function AdmissionListItem({ screening }) {
                     <IconStyled src={billingIcon} />
                 </BillingLinkStyled>
             ) : (
-                <BillingLinkStyled>
+                <BillingLinkStyled to={'/intern/addBilling/' + screening.uuid}>
                     <IconStyled src={billingIcon} />
                 </BillingLinkStyled>
             )}

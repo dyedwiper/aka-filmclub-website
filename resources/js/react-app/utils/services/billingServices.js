@@ -7,3 +7,7 @@ export function getScreeningsWithBillingsBySemester(semester) {
 export function getBillingByUuid(uuid) {
     return makeApiCall('/api/billings/uuid/' + uuid);
 }
+
+export function postBilling(data) {
+    return makeApiCall('/api/billings', 'POST', data);
+}

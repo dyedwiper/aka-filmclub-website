@@ -12,6 +12,7 @@ import ContactPage from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
+import AddBillingPage from './pages/intern/AddBillingPage';
 import AddDistributorPage from './pages/intern/AddDistributorPage';
 import AddFaqPage from './pages/intern/AddFaqPage';
 import AddImagePage from './pages/intern/AddImagePage';
@@ -186,6 +187,9 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path="/intern/billing">
                             <BillingPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/addBilling">
+                            <AddBillingPage />
                         </PrivateRoute>
                         <PrivateRoute exact path="/intern/distributors">
                             <DistributorsPage />
