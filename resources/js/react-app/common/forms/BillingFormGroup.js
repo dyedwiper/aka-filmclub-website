@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { toEuro } from '../../utils/moneyUtils';
 import DistributorSelect from './DistributorSelect';
-import PassStackInputsRow from './PassStackInputsRow';
-import TicketStackInputsRow from './TicketStackInputsRow';
+import StackInputsRow from './StackInputsRow';
 
 export default function BillingFormGroup({ billing }) {
     const [ticketStackNumbers, setTicketStackNumbers] = useState(
-        billing && billing.passes.length ? [...Array(billing.tickets.length).keys()] : [0]
+        billing && billing.ticket_stacks.length ? [...Array(billing.ticket_stacks.length).keys()] : [0]
     );
     const [passStackNumbers, setPassStackNumbers] = useState(
-        billing && billing.passes.length ? [...Array(billing.passes.length).keys()] : [0]
+        billing && billing.pass_stacks.length ? [...Array(billing.pass_stacks.length).keys()] : [0]
     );
 
     return (
@@ -28,7 +28,11 @@ export default function BillingFormGroup({ billing }) {
                 <LabelStyled>
                     Mindestgarantie
                     <NumberInputContainerStyled>
-                        <NumberInputStyled name="guarantee" defaultValue={billing && billing.guarantee} /> €
+                        <NumberInputStyled
+                            name="guarantee"
+                            defaultValue={billing && toEuro(billing.guarantee)}
+                        />{' '}
+                        €
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
@@ -40,7 +44,11 @@ export default function BillingFormGroup({ billing }) {
                 <LabelStyled>
                     Nebenkosten
                     <NumberInputContainerStyled>
-                        <NumberInputStyled name="incidentals" defaultValue={billing ? billing.incidentals : '0,00'} /> €
+                        <NumberInputStyled
+                            name="incidentals"
+                            defaultValue={billing ? toEuro(billing.incidentals) : '0,00'}
+                        />{' '}
+                        €
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
@@ -55,13 +63,21 @@ export default function BillingFormGroup({ billing }) {
                 <LabelStyled>
                     Kasseneinlage
                     <NumberInputContainerStyled>
-                        <NumberInputStyled name="cashInlay" defaultValue={billing && billing.cashInlay} /> €
+                        <NumberInputStyled
+                            name="cashInlay"
+                            defaultValue={billing && toEuro(billing.cashInlay)}
+                        />{' '}
+                        €
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
                     Kassenauslage
                     <NumberInputContainerStyled>
-                        <NumberInputStyled name="cashOut" defaultValue={billing && billing.cashOut} /> €
+                        <NumberInputStyled
+                            name="cashOut"
+                            defaultValue={billing && toEuro(billing.cashOut)}
+                        />{' '}
+                        €
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
@@ -69,7 +85,7 @@ export default function BillingFormGroup({ billing }) {
                     <NumberInputContainerStyled>
                         <NumberInputStyled
                             name="additionalEarnings"
-                            defaultValue={billing ? billing.additionalEarnings : '0,00'}
+                            defaultValue={billing ? toEuro(billing.additionalEarnings) : '0,00'}
                         />{' '}
                         €
                     </NumberInputContainerStyled>
@@ -88,7 +104,7 @@ export default function BillingFormGroup({ billing }) {
             <StackInputsContainerStyled>
                 <SubHeadlineStyled>Eintrittskarten</SubHeadlineStyled>
                 {ticketStackNumbers.map((stackNumber) => (
-                    <TicketStackInputsRow key={stackNumber} billing={billing} number={stackNumber} />
+                    <StackInputsRow key={stackNumber} billing={billing} type="ticket" number={stackNumber} />
                 ))}
                 <ButtonStyled type="button" onClick={addTicketStack}>
                     Kartenstapel hinzufügen
@@ -98,7 +114,7 @@ export default function BillingFormGroup({ billing }) {
             <StackInputsContainerStyled>
                 <SubHeadlineStyled>Ausweise</SubHeadlineStyled>
                 {passStackNumbers.map((stackNumber) => (
-                    <PassStackInputsRow key={stackNumber} billing={billing} number={stackNumber} />
+                    <StackInputsRow key={stackNumber} billing={billing} type="pass" number={stackNumber} />
                 ))}
                 <ButtonStyled type="button" onClick={addPassStack}>
                     Ausweisstapel hinzufügen

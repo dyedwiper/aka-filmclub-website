@@ -11,3 +11,7 @@ export function getBillingByUuid(uuid) {
 export function postBilling(data) {
     return makeApiCall('/api/billings', 'POST', data);
 }
+
+export function deleteBilling(uuid) {
+    return makeApiCall('/api/billings/uuid/' + uuid, 'DELETE');
+}

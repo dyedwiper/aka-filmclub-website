@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Billing;
 use App\Models\BillingTickets;
 use App\Models\Screening;
+use App\Models\TicketStack;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -65,11 +66,15 @@ class BillingController extends Controller
             'additionalEarnings' => $request->additionalEarnings,
             'comment' => $request->comment,
         ]);
+        $billing->save();
 
         for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
-            $ticketStack = new BillingTickets();
-
-            $request->input('firstTicket' . $i);
+            $ticketStack = new TicketStack([
+                'billing_id' => $billing->id,
+                'firstNumber' => $request->input('first' . $i),
+                'lastNumber' => $request->input('last' . $i),
+                'price' => $request->input('price' . $i),
+            ]);
         }
     }
 

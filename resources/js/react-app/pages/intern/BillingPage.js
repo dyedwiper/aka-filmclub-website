@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import StacksList from '../../common/accounting/StacksList';
 import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { toEuro } from '../../utils/moneyUtils';
+import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';
 import LoadingPage from '../LoadingPage';
@@ -40,28 +41,28 @@ export default function BillingPage() {
             <StacksList stacks={billing.pass_stacks} />
             <EarningsContainerStyled>
                 <KeyStyled>Errechnete Einnahmen</KeyStyled>
-                <ValueStyled>{toEuro(billing.earnings)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.earnings)}</ValueStyled>
             </EarningsContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Sonstige Einnahmen</KeyStyled>
-                <ValueStyled>{toEuro(billing.additionalEarnings)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.additionalEarnings)}</ValueStyled>
             </KeyValueContainerStyled>
             <HorizontalRuleStyled />
             <KeyValueContainerStyled>
                 <KeyStyled>Kasseneinlage</KeyStyled>
-                <ValueStyled>{toEuro(billing.cashInlay)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.cashInlay)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Kassenauslage</KeyStyled>
-                <ValueStyled>{toEuro(billing.cashOut)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.cashOut)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Tatsächliche Einnahmen</KeyStyled>
-                <ValueStyled>{toEuro(billing.cashOut - billing.cashInlay)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.cashOut - billing.cashInlay)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Kassendifferenz</KeyStyled>
-                <ValueStyled>{toEuro(billing.cashOut - billing.cashInlay - billing.earnings)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.cashOut - billing.cashInlay - billing.earnings)}</ValueStyled>
             </KeyValueContainerStyled>
             <HorizontalRuleStyled />
             <KeyValueContainerStyled>
@@ -70,7 +71,7 @@ export default function BillingPage() {
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Mindestgarantie</KeyStyled>
-                <ValueStyled>{toEuro(billing.guarantee)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.guarantee)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Prozentsatz</KeyStyled>
@@ -78,25 +79,25 @@ export default function BillingPage() {
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Nebenkosten</KeyStyled>
-                <ValueStyled>{toEuro(billing.incidentals)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.incidentals)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Filmmiete inkl. Nebenkosten</KeyStyled>
-                <ValueStyled>{toEuro(billing.rent)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.rent)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>MWSt ({billing.valueAddedTax} %)</KeyStyled>
-                <ValueStyled>{toEuro((billing.rent * billing.valueAddedTax) / 100)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol((billing.rent * billing.valueAddedTax) / 100)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Zu zahlen</KeyStyled>
-                <ValueStyled>{toEuro((billing.rent * (billing.valueAddedTax + 100)) / 100)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol((billing.rent * (billing.valueAddedTax + 100)) / 100)}</ValueStyled>
             </KeyValueContainerStyled>
             <HorizontalRuleStyled />
             <KeyValueContainerStyled>
                 <KeyStyled>Bilanz</KeyStyled>
                 <ValueStyled>
-                    {toEuro(
+                    {toEuroWithSymbol(
                         billing.ticketEarnings - billing.rent + billing.cashOut - billing.cashInlay - billing.earnings
                     )}
                 </ValueStyled>
@@ -108,6 +109,7 @@ export default function BillingPage() {
                     <CommentValueStyled>{billing.comment}</CommentValueStyled>
                 </>
             )}
+            <EditLinkStyled to={'/intern/editBilling/' + billing.uuid}>Abrechnung bearbeiten</EditLinkStyled>
         </PageStyled>
     );
 }
@@ -152,3 +154,8 @@ const CommentKeyStyled = styled.h3`
 `;
 
 const CommentValueStyled = styled.p``;
+
+const EditLinkStyled = styled(Link)`
+    display: block;
+    margin-top: 20px;
+`;

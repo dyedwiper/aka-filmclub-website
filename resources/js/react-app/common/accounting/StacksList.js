@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { toEuro } from '../../utils/moneyUtils';
+import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { VerticalLineStyled } from '../styledElements';
 
 export default function StacksList({ stacks }) {
@@ -11,17 +11,17 @@ export default function StacksList({ stacks }) {
                     <StackNumbersStyled>{stack.firstNumber + ' - ' + stack.lastNumber}</StackNumbersStyled>
                     <VerticalLineStyled>|</VerticalLineStyled>
                     <StackInfoStyled>
-                        {calculateStackAmount(stack) + ' x ' + toEuro(stack.price) + ' = '}
+                        {calculateStackAmount(stack) + ' x ' + toEuroWithSymbol(stack.price) + ' = '}
                     </StackInfoStyled>
-                    <StackBalanceStyled>{toEuro(calculateStackAmount(stack) * stack.price)}</StackBalanceStyled>
+                    <StackBalanceStyled>{toEuroWithSymbol(calculateStackAmount(stack) * stack.price)}</StackBalanceStyled>
                 </StackListItemStyled>
             ))}
             {getValuesPerPrice(stacks).map((price) => (
                 <StackListItemStyled key={price}>
                     <StackNumbersStyled>Summe</StackNumbersStyled>
                     <VerticalLineStyled>|</VerticalLineStyled>
-                    <StackInfoStyled>{price.items + ' x ' + toEuro(price.price) + ' = '}</StackInfoStyled>
-                    <StackBalanceStyled>{toEuro(price.earnings)}</StackBalanceStyled>
+                    <StackInfoStyled>{price.items + ' x ' + toEuroWithSymbol(price.price) + ' = '}</StackInfoStyled>
+                    <StackBalanceStyled>{toEuroWithSymbol(price.earnings)}</StackBalanceStyled>
                 </StackListItemStyled>
             ))}
         </StacksListStyled>

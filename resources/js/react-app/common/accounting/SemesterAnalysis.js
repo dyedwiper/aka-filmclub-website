@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { toEuro } from '../../utils/moneyUtils';
+import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { VerticalLineStyled } from '../styledElements';
 
 export default function SemesterAnalysis({ billings }) {
@@ -31,7 +31,7 @@ export default function SemesterAnalysis({ billings }) {
             <KeyValueContainerStyled>
                 <KeyStyled>Bilanz</KeyStyled>
                 <ValueStyled>
-                    {toEuro(calculateBalance(billings))}
+                    {toEuroWithSymbol(calculateBalance(billings))}
                     <ValueInfoStyled>(Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)</ValueInfoStyled>
                 </ValueStyled>
             </KeyValueContainerStyled>
@@ -55,7 +55,7 @@ export default function SemesterAnalysis({ billings }) {
                                 {weekday.numberOfScreenings + ' Vorführungen'}
                             </NumberOfScreeningsStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
-                            <BalanceStyled>{toEuro(weekday.balance) + ' Profite'}</BalanceStyled>
+                            <BalanceStyled>{toEuroWithSymbol(weekday.balance) + ' Profite'}</BalanceStyled>
                         </WeekdayListItemStyled>
                     ))}
             </WeekdayListStyled>

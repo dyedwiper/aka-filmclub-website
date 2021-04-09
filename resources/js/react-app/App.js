@@ -24,6 +24,7 @@ import AddVideoPage from './pages/intern/AddVideoPage';
 import AdmissionsPage from './pages/intern/AdmissionsPage';
 import BillingPage from './pages/intern/BillingPage';
 import DistributorsPage from './pages/intern/DistributorsPage';
+import EditBillingPage from './pages/intern/EditBillingPage';
 import EditDistributorPage from './pages/intern/EditDistributorPage';
 import EditFaqPage from './pages/intern/EditFaqPage';
 import EditImagePage from './pages/intern/EditImagePage';
@@ -190,6 +191,9 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path="/intern/addBilling">
                             <AddBillingPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editBilling">
+                            <EditBillingPage />
                         </PrivateRoute>
                         <PrivateRoute exact path="/intern/distributors">
                             <DistributorsPage />
