@@ -12532,9 +12532,11 @@ function EditBillingPage() {
     });
   }, []);
   (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-    document.title = 'Abrechnung bearbeiten | aka-Filmclub';
-    setPageTitle('Abrechnung bearbeiten');
-  }, []);
+    if (billing.screening) {
+      document.title = 'Abrechnung von ' + billing.screening.title + ' bearbeiten | aka-Filmclub';
+      setPageTitle('Abrechnung von ' + billing.screening.title + ' bearbeiten');
+    }
+  }, [billing]);
   if (isLoading) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_LoadingPage__WEBPACK_IMPORTED_MODULE_8__.default, {});
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_4__.PageHeadlineStyled, {

@@ -69,7 +69,51 @@ class BillingController extends Controller
         $billing->save();
 
         for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
-            if ($request->input('ticketLast' . $i) - $request->input('ticketFirst' . $i) > 0) {
+            $ticketStack = new TicketStack([
+                'billing_id' => $billing->id,
+                'firstNumber' => $request->input('ticketFirst' . $i),
+                'lastNumber' => $request->input('ticketLast' . $i),
+                'price' => str_replace(',', '.', $request->input('ticketPrice' . $i)) * 100,
+            ]);
+            $ticketStack->save();
+        }
+
+        for ($i = 0; $i < $request->numberOfPassStacks; $i++) {
+            $passStack = new PassStack([
+                'billing_id' => $billing->id,
+                'firstNumber' => $request->input('passFirst' . $i),
+                'lastNumber' => $request->input('passLast' . $i),
+                'price' => str_replace(',', '.', $request->input('passPrice' . $i)) * 100,
+            ]);
+            $passStack->save();
+        }
+
+        return $billing;
+    }
+
+    public function PatchBilling(BillingFormRequest $request)
+    {
+        $billing = Billing::where('uuid', $request->uuid)->with('ticketStacks', 'passStacks')->first();
+
+        $billing->distributor_id = $request->distributor_id;
+        $billing->confirmationNumber = $request->confirmationNumber;
+        $billing->freeTickets = $request->freeTickets;
+        $billing->guarantee = str_replace(',', '.', $request->guarantee) * 100;
+        $billing->percentage = str_replace(',', '.', $request->percentage);
+        $billing->incidentals = str_replace(',', '.', $request->incidentals) * 100;
+        $billing->valueAddedTax = $request->valueAddedTax;
+        $billing->cashInlay = str_replace(',', '.', $request->cashInlay) * 100;
+        $billing->cashOut = str_replace(',', '.', $request->cashOut) * 100;
+        $billing->additionalEarnings = str_replace(',', '.', $request->additionalEarnings) * 100;
+        $billing->comment = $request->comment;
+
+        for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
+            if (isset($billing->ticketStacks[$i])) {
+                $billing->ticketStacks[$i]->firstNumber = $request->input('ticketFirst' . $i);
+                $billing->ticketStacks[$i]->lastNumber = $request->input('ticketLast' . $i);
+                $billing->ticketStacks[$i]->price = str_replace(',', '.', $request->input('ticketPrice' . $i)) * 100;
+                $billing->ticketStacks[$i]->save();
+            } else {
                 $ticketStack = new TicketStack([
                     'billing_id' => $billing->id,
                     'firstNumber' => $request->input('ticketFirst' . $i),
@@ -80,18 +124,11 @@ class BillingController extends Controller
             }
         }
 
-        for ($i = 0; $i < $request->numberOfPassStacks; $i++) {
-            if ($request->input('passLast' . $i) - $request->input('passFirst' . $i) > 0) {
-                $ticketStack = new PassStack([
-                    'billing_id' => $billing->id,
-                    'firstNumber' => $request->input('passFirst' . $i),
-                    'lastNumber' => $request->input('passLast' . $i),
-                    'price' => str_replace(',', '.', $request->input('passPrice' . $i)) * 100,
-                ]);
-                $ticketStack->save();
-            }
+        for ($i = $request->numberOfTicketStacks; $i < count($billing->ticketStacks); $i++) {
+            $billing->ticketStacks[$i]->delete();
         }
 
+        $billing->save();
         return $billing;
     }
 

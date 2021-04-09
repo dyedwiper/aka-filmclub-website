@@ -41,13 +41,13 @@ class BillingFormRequest extends FormRequest
 
         for ($i = 0; $i < $this->numberOfTicketStacks; $i++) {
             $rules['ticketFirst' . $i] = 'required|integer';
-            $rules['ticketLast' . $i] = 'required|integer';
+            $rules['ticketLast' . $i] = 'required|integer|gte:ticketFirst' . $i;
             $rules['ticketPrice' . $i] = 'required|regex:/\d+(,\d{1,2})?/';
         }
 
         for ($i = 0; $i < $this->numberOfPassStacks; $i++) {
             $rules['passFirst' . $i] = 'required|integer';
-            $rules['passLast' . $i] = 'required|integer';
+            $rules['passLast' . $i] = 'required|integer|gte:passFirst' . $i;
             $rules['passPrice' . $i] = 'required|regex:/\d+(,\d{1,2})?/';
         }
 

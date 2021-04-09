@@ -22,9 +22,11 @@ export default function EditBillingPage() {
     }, []);
 
     useEffect(() => {
-        document.title = 'Abrechnung bearbeiten | aka-Filmclub';
-        setPageTitle('Abrechnung bearbeiten');
-    }, []);
+        if (billing.screening) {
+            document.title = 'Abrechnung von ' + billing.screening.title + ' bearbeiten | aka-Filmclub';
+            setPageTitle('Abrechnung von ' + billing.screening.title + ' bearbeiten');
+        }
+    }, [billing]);
 
     if (isLoading) return <LoadingPage />;
 
