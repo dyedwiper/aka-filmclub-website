@@ -7207,9 +7207,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _DistributorSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DistributorSelect */ "./resources/js/react-app/common/forms/DistributorSelect.js");
-/* harmony import */ var _TicketStackInputsRow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TicketStackInputsRow */ "./resources/js/react-app/common/forms/TicketStackInputsRow.js");
+/* harmony import */ var _PassStackInputsRow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PassStackInputsRow */ "./resources/js/react-app/common/forms/PassStackInputsRow.js");
+/* harmony import */ var _TicketStackInputsRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TicketStackInputsRow */ "./resources/js/react-app/common/forms/TicketStackInputsRow.js");
 
 
 
@@ -7237,13 +7238,19 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function BillingFormGroup(_ref) {
   var billing = _ref.billing;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(billing && billing.tickets.length ? new Array(billing.tickets.length) : [0]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(billing && billing.passes.length ? new Array(billing.passes.length) : [0]),
       _useState2 = _slicedToArray(_useState, 2),
       ticketStackNumbers = _useState2[0],
       setTicketStackNumbers = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(billing && billing.passes.length ? new Array(billing.passes.length) : [0]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      passStackNumbers = _useState4[0],
+      setPassStackNumbers = _useState4[1];
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FaqFormGroupStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DistributorRowStyled, {
@@ -7313,11 +7320,11 @@ function BillingFormGroup(_ref) {
         name: "comment",
         defaultValue: billing && billing.comment
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TicketInputsContainerStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StackInputsContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
         children: "Eintrittskarten"
       }), ticketStackNumbers.map(function (stackNumber) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_TicketStackInputsRow__WEBPACK_IMPORTED_MODULE_3__.default, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_TicketStackInputsRow__WEBPACK_IMPORTED_MODULE_4__.default, {
           billing: billing,
           number: stackNumber
         }, stackNumber);
@@ -7326,58 +7333,75 @@ function BillingFormGroup(_ref) {
         onClick: addTicketStack,
         children: "Kartenstapel hinzuf\xFCgen"
       })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StackInputsContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
+        children: "Ausweise"
+      }), passStackNumbers.map(function (stackNumber) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_PassStackInputsRow__WEBPACK_IMPORTED_MODULE_3__.default, {
+          billing: billing,
+          number: stackNumber
+        }, stackNumber);
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+        type: "button",
+        onClick: addPassStack,
+        children: "Ausweisstapel hinzuf\xFCgen"
+      })]
     })]
   });
 
   function addTicketStack() {
     setTicketStackNumbers([].concat(_toConsumableArray(ticketStackNumbers), [ticketStackNumbers.length]));
   }
+
+  function addPassStack() {
+    setPassStackNumbers([].concat(_toConsumableArray(passStackNumbers), [passStackNumbers.length]));
+  }
 }
-var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "BillingFormGroup__FaqFormGroupStyled",
   componentId: "sc-1kiblbh-0"
 })([""]);
-var DistributorRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var DistributorRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "BillingFormGroup__DistributorRowStyled",
   componentId: "sc-1kiblbh-1"
 })(["display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);grid-gap:40px;"]);
-var FormRowWithFourInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var FormRowWithFourInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "BillingFormGroup__FormRowWithFourInputsStyled",
   componentId: "sc-1kiblbh-2"
 })(["display:grid;grid-template-columns:repeat(4,minmax(0,1fr));"]);
-var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "BillingFormGroup__FormRowWithThreeInputsStyled",
   componentId: "sc-1kiblbh-3"
 })(["display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) minmax(0,2fr);"]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.label.withConfig({
   displayName: "BillingFormGroup__LabelStyled",
   componentId: "sc-1kiblbh-4"
 })(["display:block;margin:10px 0;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.input.withConfig({
   displayName: "BillingFormGroup__InputStyled",
   componentId: "sc-1kiblbh-5"
 })([""]);
-var NumberInputContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
+var NumberInputContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
   displayName: "BillingFormGroup__NumberInputContainerStyled",
   componentId: "sc-1kiblbh-6"
 })([""]);
-var NumberInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
+var NumberInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.input.withConfig({
   displayName: "BillingFormGroup__NumberInputStyled",
   componentId: "sc-1kiblbh-7"
 })(["width:120px;text-align:right;"]);
-var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.textarea.withConfig({
+var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.textarea.withConfig({
   displayName: "BillingFormGroup__TextareaStyled",
   componentId: "sc-1kiblbh-8"
 })(["height:80px;"]);
-var TicketInputsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.section.withConfig({
-  displayName: "BillingFormGroup__TicketInputsContainerStyled",
+var StackInputsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.section.withConfig({
+  displayName: "BillingFormGroup__StackInputsContainerStyled",
   componentId: "sc-1kiblbh-9"
 })(["margin:20px 0;"]);
-var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h3.withConfig({
+var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3.withConfig({
   displayName: "BillingFormGroup__SubHeadlineStyled",
   componentId: "sc-1kiblbh-10"
 })(["font-size:1em;"]);
-var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.button.withConfig({
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.button.withConfig({
   displayName: "BillingFormGroup__ButtonStyled",
   componentId: "sc-1kiblbh-11"
 })(["margin:10px 0;"]);
@@ -7840,6 +7864,73 @@ var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.w
   displayName: "NoticeFormGroup__InputStyled",
   componentId: "sc-1q7jcgx-2"
 })([""]);
+
+/***/ }),
+
+/***/ "./resources/js/react-app/common/forms/PassStackInputsRow.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/react-app/common/forms/PassStackInputsRow.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ PassStackInputsRow
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
+
+
+
+
+
+function PassStackInputsRow(_ref) {
+  var billing = _ref.billing,
+      number = _ref.number;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(PassStackInputsRowStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      htmlFor: 'firstPassInput' + number,
+      children: "von"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+      id: 'firstPassInput' + number,
+      type: "number",
+      min: "1",
+      name: 'firstPass + number',
+      defaultValue: billing && billing.passes[number] ? billing.passes[number].firstNumber : 1
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      htmlFor: 'lastPassInput' + number,
+      children: "bis"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+      id: 'lastPassInput' + number,
+      type: "number",
+      min: "1",
+      name: 'lastPass + number',
+      defaultValue: billing && billing.passes[number] && billing.passes[number].lastNumber
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      htmlFor: 'pricePassInput' + number,
+      children: "\xE0"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+      id: 'pricePassInput' + number,
+      name: 'price' + number,
+      defaultValue: billing && billing.passes[number] ? billing.passes[number].price : _constants__WEBPACK_IMPORTED_MODULE_2__.STANDARD_PASS_PRICE
+    }), ' ', "\u20AC"]
+  });
+}
+var PassStackInputsRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+  displayName: "PassStackInputsRow__PassStackInputsRowStyled",
+  componentId: "sc-31mz6h-0"
+})(["margin:10px 0;"]);
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
+  displayName: "PassStackInputsRow__LabelStyled",
+  componentId: "sc-31mz6h-1"
+})(["margin-right:10px;"]);
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
+  displayName: "PassStackInputsRow__InputStyled",
+  componentId: "sc-31mz6h-2"
+})(["width:80px;margin-right:20px;text-align:right;"]);
 
 /***/ }),
 
@@ -8379,7 +8470,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../constants */ "./resources/js/react-app/constants.js");
+
 
 
 
@@ -8412,19 +8505,19 @@ function TicketStackInputsRow(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
       id: 'priceTicketInput' + number,
       name: 'price' + number,
-      defaultValue: billing && billing.tickets[number] ? billing.tickets[number].price : '1,50'
+      defaultValue: billing && billing.tickets[number] ? billing.tickets[number].price : _constants__WEBPACK_IMPORTED_MODULE_2__.STANDARD_TICKET_PRICE
     }), ' ', "\u20AC"]
   });
 }
-var TicketStackInputsRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
+var TicketStackInputsRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
   displayName: "TicketStackInputsRow__TicketStackInputsRowStyled",
   componentId: "sc-1gg3hy9-0"
 })(["margin:10px 0;"]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
   displayName: "TicketStackInputsRow__LabelStyled",
   componentId: "sc-1gg3hy9-1"
 })(["margin-right:10px;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
   displayName: "TicketStackInputsRow__InputStyled",
   componentId: "sc-1gg3hy9-2"
 })(["width:80px;margin-right:20px;text-align:right;"]);
@@ -9104,7 +9197,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "USER_STATUS_ACTIVE": () => /* binding */ USER_STATUS_ACTIVE,
 /* harmony export */   "USER_STATUS_PAUSED": () => /* binding */ USER_STATUS_PAUSED,
 /* harmony export */   "USER_STATUS_ALUMNI": () => /* binding */ USER_STATUS_ALUMNI,
-/* harmony export */   "NUMBER_OF_SEEDS_IN_GHS_BIO": () => /* binding */ NUMBER_OF_SEEDS_IN_GHS_BIO
+/* harmony export */   "NUMBER_OF_SEEDS_IN_GHS_BIO": () => /* binding */ NUMBER_OF_SEEDS_IN_GHS_BIO,
+/* harmony export */   "STANDARD_TICKET_PRICE": () => /* binding */ STANDARD_TICKET_PRICE,
+/* harmony export */   "STANDARD_PASS_PRICE": () => /* binding */ STANDARD_PASS_PRICE
 /* harmony export */ });
 var IMAGE_FOLDER = '/images/';
 var ASSETS_FOLDER = '/assets/';
@@ -9119,6 +9214,8 @@ var USER_STATUS_ACTIVE = 0;
 var USER_STATUS_PAUSED = 1;
 var USER_STATUS_ALUMNI = 2;
 var NUMBER_OF_SEEDS_IN_GHS_BIO = 460;
+var STANDARD_TICKET_PRICE = '1,50';
+var STANDARD_PASS_PRICE = '3,00';
 
 /***/ }),
 

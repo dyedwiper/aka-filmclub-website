@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import DistributorSelect from './DistributorSelect';
+import PassStackInputsRow from './PassStackInputsRow';
 import TicketStackInputsRow from './TicketStackInputsRow';
 
 export default function BillingFormGroup({ billing }) {
     const [ticketStackNumbers, setTicketStackNumbers] = useState(
-        billing && billing.tickets.length ? new Array(billing.tickets.length) : [0]
+        billing && billing.passes.length ? new Array(billing.passes.length) : [0]
+    );
+    const [passStackNumbers, setPassStackNumbers] = useState(
+        billing && billing.passes.length ? new Array(billing.passes.length) : [0]
     );
 
     return (
@@ -75,7 +79,7 @@ export default function BillingFormGroup({ billing }) {
                 Kommentar
                 <TextareaStyled name="comment" defaultValue={billing && billing.comment} />
             </LabelStyled>
-            <TicketInputsContainerStyled>
+            <StackInputsContainerStyled>
                 <SubHeadlineStyled>Eintrittskarten</SubHeadlineStyled>
                 {ticketStackNumbers.map((stackNumber) => (
                     <TicketStackInputsRow key={stackNumber} billing={billing} number={stackNumber} />
@@ -83,12 +87,25 @@ export default function BillingFormGroup({ billing }) {
                 <ButtonStyled type="button" onClick={addTicketStack}>
                     Kartenstapel hinzufügen
                 </ButtonStyled>
-            </TicketInputsContainerStyled>
+            </StackInputsContainerStyled>
+            <StackInputsContainerStyled>
+                <SubHeadlineStyled>Ausweise</SubHeadlineStyled>
+                {passStackNumbers.map((stackNumber) => (
+                    <PassStackInputsRow key={stackNumber} billing={billing} number={stackNumber} />
+                ))}
+                <ButtonStyled type="button" onClick={addPassStack}>
+                    Ausweisstapel hinzufügen
+                </ButtonStyled>
+            </StackInputsContainerStyled>
         </FaqFormGroupStyled>
     );
 
     function addTicketStack() {
         setTicketStackNumbers([...ticketStackNumbers, ticketStackNumbers.length]);
+    }
+
+    function addPassStack() {
+        setPassStackNumbers([...passStackNumbers, passStackNumbers.length]);
     }
 }
 
@@ -128,7 +145,7 @@ const TextareaStyled = styled.textarea`
     height: 80px;
 `;
 
-const TicketInputsContainerStyled = styled.section`
+const StackInputsContainerStyled = styled.section`
     margin: 20px 0;
 `;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { STANDARD_TICKET_PRICE } from '../../constants';
 
 export default function TicketStackInputsRow({ billing, number }) {
     return (
@@ -24,7 +25,9 @@ export default function TicketStackInputsRow({ billing, number }) {
             <InputStyled
                 id={'priceTicketInput' + number}
                 name={'price' + number}
-                defaultValue={billing && billing.tickets[number] ? billing.tickets[number].price : '1,50'}
+                defaultValue={
+                    billing && billing.tickets[number] ? billing.tickets[number].price : STANDARD_TICKET_PRICE
+                }
             />{' '}
             €
         </TicketStackInputsRowStyled>
