@@ -12240,11 +12240,11 @@ function BillingPage() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackKeyStyled, {
       children: "Eintrittskarten"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_StacksList__WEBPACK_IMPORTED_MODULE_2__.default, {
-      stacks: billing.tickets
+      stacks: billing.ticket_stacks
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(StackKeyStyled, {
       children: "Ausweise"
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_StacksList__WEBPACK_IMPORTED_MODULE_2__.default, {
-      stacks: billing.passes
+      stacks: billing.pass_stacks
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(EarningsContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
         children: "Errechnete Einnahmen"

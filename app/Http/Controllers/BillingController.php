@@ -40,7 +40,7 @@ class BillingController extends Controller
         $billing = Billing::where('uuid', $uuid)
             ->with('screening:id,uuid,title,date')
             ->with('distributor:id,uuid,name')
-            ->with('tickets', 'passes')
+            ->with('ticketStacks', 'passStacks')
             ->first();
         $billing->earnings = $this->calculateEarnings($billing);
         $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
@@ -95,11 +95,11 @@ class BillingController extends Controller
             $billing->earnings = $this->calculateEarnings($billing);
             $billing->rent = $this->calculateRent($billing);
             $billing->profit = $this->calculateProfit($billing);
-            // The tickets and passes fields are populated by the calculate methods. Thus they are removed here.
+            // The ticketStacks and passStacks fields are populated by the calculate methods. Thus they are removed here.
             // In order to call the forget method, $billing must be first turned into a collection.
             $billingCollection = collect($billing);
-            $billingCollection->forget('tickets');
-            $billingCollection->forget('passes');
+            $billingCollection->forget('ticketStacks');
+            $billingCollection->forget('passStacks');
             $screening->billing = $billingCollection;
         }
         return $screening;
@@ -107,7 +107,7 @@ class BillingController extends Controller
 
     private function calculateTicketSum($billing)
     {
-        $ticketStacks = $billing->tickets;
+        $ticketStacks = $billing->ticketStacks;
         $sum = 0;
         foreach ($ticketStacks as $stack) {
             $sum += $stack->lastNumber - $stack->firstNumber + 1;
@@ -117,7 +117,7 @@ class BillingController extends Controller
 
     private function calculatePassesSum($billing)
     {
-        $passStacks = $billing->passes;
+        $passStacks = $billing->passStacks;
         $sum = 0;
         foreach ($passStacks as $stack) {
             $sum += $stack->lastNumber - $stack->firstNumber + 1;
@@ -127,7 +127,7 @@ class BillingController extends Controller
 
     private function calculateTicketEarnings($billing)
     {
-        $ticketStacks = $billing->tickets;
+        $ticketStacks = $billing->ticketStacks;
         $ticketEarnings = 0;
         foreach ($ticketStacks as $stack) {
             $ticketEarnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
@@ -138,7 +138,7 @@ class BillingController extends Controller
     private function calculateEarnings($billing)
     {
         $earnings = $this->calculateTicketEarnings($billing);
-        $passStacks = $billing->passes;
+        $passStacks = $billing->passStacks;
         foreach ($passStacks as $stack) {
             $earnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
         }

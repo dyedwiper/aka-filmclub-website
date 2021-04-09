@@ -35,9 +35,9 @@ export default function BillingPage() {
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <StackKeyStyled>Eintrittskarten</StackKeyStyled>
-            <StacksList stacks={billing.tickets} />
+            <StacksList stacks={billing.ticket_stacks} />
             <StackKeyStyled>Ausweise</StackKeyStyled>
-            <StacksList stacks={billing.passes} />
+            <StacksList stacks={billing.pass_stacks} />
             <EarningsContainerStyled>
                 <KeyStyled>Errechnete Einnahmen</KeyStyled>
                 <ValueStyled>{toEuro(billing.earnings)}</ValueStyled>

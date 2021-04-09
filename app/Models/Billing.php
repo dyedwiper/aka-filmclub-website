@@ -36,13 +36,13 @@ class Billing extends Model
         return $this->belongsTo(Distributor::class);
     }
 
-    public function tickets()
+    public function ticketStacks()
     {
-        return $this->hasMany(BillingTickets::class);
+        return $this->hasMany(TicketStack::class);
     }
 
-    public function passes()
+    public function passStacks()
     {
-        return $this->hasMany(BillingPasses::class);
+        return $this->hasMany(PassStack::class);
     }
 }

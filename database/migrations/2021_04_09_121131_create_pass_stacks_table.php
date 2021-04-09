@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBillingPassesTable extends Migration
+class CreatePassStacksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBillingPassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('billing_passes', function (Blueprint $table) {
+        Schema::create('pass_stacks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('billing_id');
@@ -31,6 +31,6 @@ class CreateBillingPassesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('billing_passes');
+        Schema::dropIfExists('pass_stacks');
     }
 }
