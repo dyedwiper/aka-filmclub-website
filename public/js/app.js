@@ -7207,8 +7207,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _DistributorSelect__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./DistributorSelect */ "./resources/js/react-app/common/forms/DistributorSelect.js");
+/* harmony import */ var _TicketStackInputsRow__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TicketStackInputsRow */ "./resources/js/react-app/common/forms/TicketStackInputsRow.js");
+
+
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
@@ -7216,6 +7239,12 @@ __webpack_require__.r(__webpack_exports__);
 
 function BillingFormGroup(_ref) {
   var billing = _ref.billing;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(billing && billing.tickets.length ? new Array(billing.tickets.length) : [0]),
+      _useState2 = _slicedToArray(_useState, 2),
+      ticketStackNumbers = _useState2[0],
+      setTicketStackNumbers = _useState2[1];
+
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FaqFormGroupStyled, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DistributorRowStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
@@ -7275,7 +7304,7 @@ function BillingFormGroup(_ref) {
         children: ["Sonstige Einnahmen/Ausgaben", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NumberInputContainerStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberInputStyled, {
             name: "additionalEarnings",
-            defaultValue: billing && billing.additionalEarnings
+            defaultValue: billing ? billing.additionalEarnings : '0,00'
           }), ' ', "\u20AC"]
         })]
       })]
@@ -7284,45 +7313,74 @@ function BillingFormGroup(_ref) {
         name: "comment",
         defaultValue: billing && billing.comment
       })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TicketInputsContainerStyled, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
+        children: "Eintrittskarten"
+      }), ticketStackNumbers.map(function (stackNumber) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_TicketStackInputsRow__WEBPACK_IMPORTED_MODULE_3__.default, {
+          billing: billing,
+          number: stackNumber
+        }, stackNumber);
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+        type: "button",
+        onClick: addTicketStack,
+        children: "Kartenstapel hinzuf\xFCgen"
+      })]
     })]
   });
+
+  function addTicketStack() {
+    setTicketStackNumbers([].concat(_toConsumableArray(ticketStackNumbers), [ticketStackNumbers.length]));
+  }
 }
-var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "BillingFormGroup__FaqFormGroupStyled",
   componentId: "sc-1kiblbh-0"
 })([""]);
-var DistributorRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var DistributorRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "BillingFormGroup__DistributorRowStyled",
   componentId: "sc-1kiblbh-1"
-})(["display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);grid-gap:20px;"]);
-var FormRowWithFourInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+})(["display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);grid-gap:40px;"]);
+var FormRowWithFourInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "BillingFormGroup__FormRowWithFourInputsStyled",
   componentId: "sc-1kiblbh-2"
 })(["display:grid;grid-template-columns:repeat(4,minmax(0,1fr));"]);
-var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "BillingFormGroup__FormRowWithThreeInputsStyled",
   componentId: "sc-1kiblbh-3"
 })(["display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) minmax(0,2fr);"]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.label.withConfig({
   displayName: "BillingFormGroup__LabelStyled",
   componentId: "sc-1kiblbh-4"
-})(["display:block;margin:20px 0;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
+})(["display:block;margin:10px 0;"]);
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
   displayName: "BillingFormGroup__InputStyled",
   componentId: "sc-1kiblbh-5"
 })([""]);
-var NumberInputContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.div.withConfig({
+var NumberInputContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.div.withConfig({
   displayName: "BillingFormGroup__NumberInputContainerStyled",
   componentId: "sc-1kiblbh-6"
 })([""]);
-var NumberInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.input.withConfig({
+var NumberInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.input.withConfig({
   displayName: "BillingFormGroup__NumberInputStyled",
   componentId: "sc-1kiblbh-7"
-})(["width:80%;text-align:right;"]);
-var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_3__.default.textarea.withConfig({
+})(["width:120px;text-align:right;"]);
+var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.textarea.withConfig({
   displayName: "BillingFormGroup__TextareaStyled",
   componentId: "sc-1kiblbh-8"
-})(["height:120px;"]);
+})(["height:80px;"]);
+var TicketInputsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.section.withConfig({
+  displayName: "BillingFormGroup__TicketInputsContainerStyled",
+  componentId: "sc-1kiblbh-9"
+})(["margin:20px 0;"]);
+var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.h3.withConfig({
+  displayName: "BillingFormGroup__SubHeadlineStyled",
+  componentId: "sc-1kiblbh-10"
+})(["font-size:1em;"]);
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_4__.default.button.withConfig({
+  displayName: "BillingFormGroup__ButtonStyled",
+  componentId: "sc-1kiblbh-11"
+})(["margin:10px 0;"]);
 
 /***/ }),
 
@@ -8305,6 +8363,71 @@ var LoadingNoteStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.d
   displayName: "SerialSelect__LoadingNoteStyled",
   componentId: "sc-1fyaya5-2"
 })(["display:grid;align-items:center;height:40px;"]);
+
+/***/ }),
+
+/***/ "./resources/js/react-app/common/forms/TicketStackInputsRow.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/react-app/common/forms/TicketStackInputsRow.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => /* binding */ TicketStackInputsRow
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+
+
+
+
+function TicketStackInputsRow(_ref) {
+  var billing = _ref.billing,
+      number = _ref.number;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(TicketStackInputsRowStyled, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      htmlFor: 'firstTicketInput' + number,
+      children: "von"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+      id: 'firstTicketInput' + number,
+      type: "number",
+      min: "1",
+      name: 'firstTicket + number',
+      defaultValue: billing && billing.tickets[number] ? billing.tickets[number].firstNumber : 1
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      htmlFor: 'lastTicketInput' + number,
+      children: "bis"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+      id: 'lastTicketInput' + number,
+      type: "number",
+      min: "1",
+      name: 'lastTicket + number',
+      defaultValue: billing && billing.tickets[number] && billing.tickets[number].lastNumber
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LabelStyled, {
+      htmlFor: 'priceTicketInput' + number,
+      children: "\xE0"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
+      id: 'priceTicketInput' + number,
+      name: 'price' + number,
+      defaultValue: billing && billing.tickets[number] ? billing.tickets[number].price : '1,50'
+    }), ' ', "\u20AC"]
+  });
+}
+var TicketStackInputsRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.div.withConfig({
+  displayName: "TicketStackInputsRow__TicketStackInputsRowStyled",
+  componentId: "sc-1gg3hy9-0"
+})(["margin:10px 0;"]);
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.label.withConfig({
+  displayName: "TicketStackInputsRow__LabelStyled",
+  componentId: "sc-1gg3hy9-1"
+})(["margin-right:10px;"]);
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_2__.default.input.withConfig({
+  displayName: "TicketStackInputsRow__InputStyled",
+  componentId: "sc-1gg3hy9-2"
+})(["width:80px;margin-right:20px;text-align:right;"]);
 
 /***/ }),
 

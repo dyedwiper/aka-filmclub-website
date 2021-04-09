@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import DistributorSelect from './DistributorSelect';
+import TicketStackInputsRow from './TicketStackInputsRow';
 
 export default function BillingFormGroup({ billing }) {
+    const [ticketStackNumbers, setTicketStackNumbers] = useState(
+        billing && billing.tickets.length ? new Array(billing.tickets.length) : [0]
+    );
+
     return (
         <FaqFormGroupStyled>
             <DistributorRowStyled>
@@ -60,7 +65,7 @@ export default function BillingFormGroup({ billing }) {
                     <NumberInputContainerStyled>
                         <NumberInputStyled
                             name="additionalEarnings"
-                            defaultValue={billing && billing.additionalEarnings}
+                            defaultValue={billing ? billing.additionalEarnings : '0,00'}
                         />{' '}
                         €
                     </NumberInputContainerStyled>
@@ -70,8 +75,21 @@ export default function BillingFormGroup({ billing }) {
                 Kommentar
                 <TextareaStyled name="comment" defaultValue={billing && billing.comment} />
             </LabelStyled>
+            <TicketInputsContainerStyled>
+                <SubHeadlineStyled>Eintrittskarten</SubHeadlineStyled>
+                {ticketStackNumbers.map((stackNumber) => (
+                    <TicketStackInputsRow key={stackNumber} billing={billing} number={stackNumber} />
+                ))}
+                <ButtonStyled type="button" onClick={addTicketStack}>
+                    Kartenstapel hinzufügen
+                </ButtonStyled>
+            </TicketInputsContainerStyled>
         </FaqFormGroupStyled>
     );
+
+    function addTicketStack() {
+        setTicketStackNumbers([...ticketStackNumbers, ticketStackNumbers.length]);
+    }
 }
 
 const FaqFormGroupStyled = styled.div``;
@@ -79,7 +97,7 @@ const FaqFormGroupStyled = styled.div``;
 const DistributorRowStyled = styled.div`
     display: grid;
     grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
-    grid-gap: 20px;
+    grid-gap: 40px;
 `;
 
 const FormRowWithFourInputsStyled = styled.div`
@@ -94,7 +112,7 @@ const FormRowWithThreeInputsStyled = styled.div`
 
 const LabelStyled = styled.label`
     display: block;
-    margin: 20px 0;
+    margin: 10px 0;
 `;
 
 const InputStyled = styled.input``;
@@ -102,10 +120,22 @@ const InputStyled = styled.input``;
 const NumberInputContainerStyled = styled.div``;
 
 const NumberInputStyled = styled.input`
-    width: 80%;
+    width: 120px;
     text-align: right;
 `;
 
 const TextareaStyled = styled.textarea`
-    height: 120px;
+    height: 80px;
+`;
+
+const TicketInputsContainerStyled = styled.section`
+    margin: 20px 0;
+`;
+
+const SubHeadlineStyled = styled.h3`
+    font-size: 1em;
+`;
+
+const ButtonStyled = styled.button`
+    margin: 10px 0;
 `;
