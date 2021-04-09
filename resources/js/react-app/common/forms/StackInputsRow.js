@@ -11,7 +11,7 @@ export default function StackInputsRow({ billing, type, number }) {
                 <InputStyled
                     type="number"
                     min="1"
-                    name={'first' + number}
+                    name={type + 'First' + number}
                     defaultValue={
                         billing && billing[type + '_stacks'][number] ? billing[type + '_stacks'][number].firstNumber : 1
                     }
@@ -22,7 +22,7 @@ export default function StackInputsRow({ billing, type, number }) {
                 <InputStyled
                     type="number"
                     min="1"
-                    name={'last' + number}
+                    name={type + 'Last' + number}
                     defaultValue={
                         billing && billing[type + '_stacks'][number] && billing[type + '_stacks'][number].lastNumber
                     }
@@ -31,7 +31,7 @@ export default function StackInputsRow({ billing, type, number }) {
             <LabelStyled>
                 à
                 <InputStyled
-                    name={'price' + number}
+                    name={type + 'Price' + number}
                     defaultValue={
                         billing && billing[type + '_stacks'][number]
                             ? toEuro(billing[type + '_stacks'][number].price)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Billing;
 use App\Models\BillingTickets;
+use App\Models\PassStack;
 use App\Models\Screening;
 use App\Models\TicketStack;
 use Illuminate\Http\Request;
@@ -57,25 +58,42 @@ class BillingController extends Controller
             'distributor_id' => $request->distributor_id,
             'confirmationNumber' => $request->confirmationNumber,
             'freeTickets' => $request->freeTickets,
-            'guarantee' => $request->guarantee,
-            'percentage' => $request->percentage,
-            'incidentals' => $request->incidentals,
+            'guarantee' => str_replace(',', '.', $request->guarantee) * 100,
+            'percentage' => str_replace(',', '.', $request->percentage),
+            'incidentals' => str_replace(',', '.', $request->incidentals) * 100,
             'valueAddedTax' => $request->valueAddedTax,
-            'cashInlay' => $request->cashInlay,
-            'cashOut' => $request->cashOut,
-            'additionalEarnings' => $request->additionalEarnings,
+            'cashInlay' => str_replace(',', '.', $request->cashInlay) * 100,
+            'cashOut' => str_replace(',', '.', $request->cashOut) * 100,
+            'additionalEarnings' => str_replace(',', '.', $request->additionalEarnings) * 100,
             'comment' => $request->comment,
         ]);
         $billing->save();
 
-        for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
-            $ticketStack = new TicketStack([
-                'billing_id' => $billing->id,
-                'firstNumber' => $request->input('first' . $i),
-                'lastNumber' => $request->input('last' . $i),
-                'price' => $request->input('price' . $i),
-            ]);
+        for ($i = 0; $i <= $request->numberOfTicketStacks; $i++) {
+            if ($request->input('ticketLast' . $i) - $request->input('ticketFirst' . $i) > 0) {
+                $ticketStack = new TicketStack([
+                    'billing_id' => $billing->id,
+                    'firstNumber' => $request->input('ticketFirst' . $i),
+                    'lastNumber' => $request->input('ticketLast' . $i),
+                    'price' => str_replace(',', '.', $request->input('ticketPrice' . $i)) * 100,
+                ]);
+                $ticketStack->save();
+            }
         }
+
+        for ($i = 0; $i <= $request->numberOfPassStacks; $i++) {
+            if ($request->input('passLast' . $i) - $request->input('passFirst' . $i) > 0) {
+                $ticketStack = new PassStack([
+                    'billing_id' => $billing->id,
+                    'firstNumber' => $request->input('passFirst' . $i),
+                    'lastNumber' => $request->input('passLast' . $i),
+                    'price' => str_replace(',', '.', $request->input('passPrice' . $i)) * 100,
+                ]);
+                $ticketStack->save();
+            }
+        }
+
+        return $billing;
     }
 
     public function UpdateUuids()

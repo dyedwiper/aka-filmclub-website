@@ -8443,19 +8443,19 @@ function StackInputsRow(_ref) {
       children: ["von", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
         type: "number",
         min: "1",
-        name: 'first' + number,
+        name: type + 'First' + number,
         defaultValue: billing && billing[type + '_stacks'][number] ? billing[type + '_stacks'][number].firstNumber : 1
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["bis", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
         type: "number",
         min: "1",
-        name: 'last' + number,
+        name: type + 'Last' + number,
         defaultValue: billing && billing[type + '_stacks'][number] && billing[type + '_stacks'][number].lastNumber
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["\xE0", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
-        name: 'price' + number,
+        name: type + 'Price' + number,
         defaultValue: billing && billing[type + '_stacks'][number] ? (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_3__.toEuro)(billing[type + '_stacks'][number].price) : _constants__WEBPACK_IMPORTED_MODULE_2__.STANDARD_TICKET_PRICE
       }), ' ', "\u20AC"]
     })]
@@ -9167,7 +9167,7 @@ var USER_STATUS_PAUSED = 1;
 var USER_STATUS_ALUMNI = 2;
 var NUMBER_OF_SEEDS_IN_GHS_BIO = 460;
 var STANDARD_TICKET_PRICE = '1,50';
-var STANDARD_PASS_PRICE = '3,00';
+var STANDARD_PASS_PRICE = '3,50';
 
 /***/ }),
 
