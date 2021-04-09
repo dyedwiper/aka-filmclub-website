@@ -23,7 +23,7 @@ export default function DistributorSelect({ defaultDistributor }) {
             options={distributorOptions}
             defaultValue={defaultDistributor && { label: defaultDistributor.name, value: defaultDistributor.id }}
             styles={distributorSelectStyles}
-            placeholder="Reihe wählen..."
+            placeholder="Verleih wählen..."
         />
     );
 
