@@ -7242,12 +7242,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function BillingFormGroup(_ref) {
   var billing = _ref.billing;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(billing && billing.passes.length ? new Array(billing.passes.length) : [0]),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(billing && billing.passes.length ? _toConsumableArray(Array(billing.tickets.length).keys()) : [0]),
       _useState2 = _slicedToArray(_useState, 2),
       ticketStackNumbers = _useState2[0],
       setTicketStackNumbers = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(billing && billing.passes.length ? new Array(billing.passes.length) : [0]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(billing && billing.passes.length ? _toConsumableArray(Array(billing.passes.length).keys()) : [0]),
       _useState4 = _slicedToArray(_useState3, 2),
       passStackNumbers = _useState4[0],
       setPassStackNumbers = _useState4[1];
@@ -7316,6 +7316,13 @@ function BillingFormGroup(_ref) {
         })]
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
+      children: ["Freikarten", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberInputContainerStyled, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberInputStyled, {
+          name: "freeTickets",
+          defaultValue: billing ? billing.freeTickets : '0'
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["Kommentar", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(TextareaStyled, {
         name: "comment",
         defaultValue: billing && billing.comment
@@ -7333,6 +7340,10 @@ function BillingFormGroup(_ref) {
         onClick: addTicketStack,
         children: "Kartenstapel hinzuf\xFCgen"
       })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+      type: "hidden",
+      name: "numberOfTicketStacks",
+      value: ticketStackNumbers.length
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(StackInputsContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
         children: "Ausweise"
@@ -7346,6 +7357,10 @@ function BillingFormGroup(_ref) {
         onClick: addPassStack,
         children: "Ausweisstapel hinzuf\xFCgen"
       })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+      type: "hidden",
+      name: "numberOfPassStacks",
+      value: passStackNumbers.length
     })]
   });
 

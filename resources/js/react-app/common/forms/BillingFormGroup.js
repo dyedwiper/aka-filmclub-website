@@ -6,10 +6,10 @@ import TicketStackInputsRow from './TicketStackInputsRow';
 
 export default function BillingFormGroup({ billing }) {
     const [ticketStackNumbers, setTicketStackNumbers] = useState(
-        billing && billing.passes.length ? new Array(billing.passes.length) : [0]
+        billing && billing.passes.length ? [...Array(billing.tickets.length).keys()] : [0]
     );
     const [passStackNumbers, setPassStackNumbers] = useState(
-        billing && billing.passes.length ? new Array(billing.passes.length) : [0]
+        billing && billing.passes.length ? [...Array(billing.passes.length).keys()] : [0]
     );
 
     return (
@@ -76,6 +76,12 @@ export default function BillingFormGroup({ billing }) {
                 </LabelStyled>
             </FormRowWithThreeInputsStyled>
             <LabelStyled>
+                Freikarten
+                <NumberInputContainerStyled>
+                    <NumberInputStyled name="freeTickets" defaultValue={billing ? billing.freeTickets : '0'} />
+                </NumberInputContainerStyled>
+            </LabelStyled>
+            <LabelStyled>
                 Kommentar
                 <TextareaStyled name="comment" defaultValue={billing && billing.comment} />
             </LabelStyled>
@@ -88,6 +94,7 @@ export default function BillingFormGroup({ billing }) {
                     Kartenstapel hinzufügen
                 </ButtonStyled>
             </StackInputsContainerStyled>
+            <input type="hidden" name="numberOfTicketStacks" value={ticketStackNumbers.length} />
             <StackInputsContainerStyled>
                 <SubHeadlineStyled>Ausweise</SubHeadlineStyled>
                 {passStackNumbers.map((stackNumber) => (
@@ -97,6 +104,7 @@ export default function BillingFormGroup({ billing }) {
                     Ausweisstapel hinzufügen
                 </ButtonStyled>
             </StackInputsContainerStyled>
+            <input type="hidden" name="numberOfPassStacks" value={passStackNumbers.length} />
         </FaqFormGroupStyled>
     );
 

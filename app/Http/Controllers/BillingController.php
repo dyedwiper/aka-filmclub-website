@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Billing;
+use App\Models\BillingTickets;
 use App\Models\Screening;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -45,6 +46,31 @@ class BillingController extends Controller
         $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);
         return $billing;
+    }
+
+    public function PostBilling(Request $request)
+    {
+        $billing = new Billing([
+            'uuid' => uniqid(),
+            'screening_id' => $request->screening_id,
+            'distributor_id' => $request->distributor_id,
+            'confirmationNumber' => $request->confirmationNumber,
+            'freeTickets' => $request->freeTickets,
+            'guarantee' => $request->guarantee,
+            'percentage' => $request->percentage,
+            'incidentals' => $request->incidentals,
+            'valueAddedTax' => $request->valueAddedTax,
+            'cashInlay' => $request->cashInlay,
+            'cashOut' => $request->cashOut,
+            'additionalEarnings' => $request->additionalEarnings,
+            'comment' => $request->comment,
+        ]);
+
+        for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
+            $ticketStack = new BillingTickets();
+
+            $request->input('firstTicket' . $i);
+        }
     }
 
     public function UpdateUuids()
