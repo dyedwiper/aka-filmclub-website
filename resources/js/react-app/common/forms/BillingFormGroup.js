@@ -4,7 +4,7 @@ import { toEuro } from '../../utils/moneyUtils';
 import DistributorSelect from './DistributorSelect';
 import StackInputsRow from './StackInputsRow';
 
-export default function BillingFormGroup({ billing }) {
+export default function BillingFormGroup({ screening, billing }) {
     const [ticketStackNumbers, setTicketStackNumbers] = useState(
         billing && billing.ticket_stacks.length ? [...Array(billing.ticket_stacks.length).keys()] : [0]
     );
@@ -14,6 +14,8 @@ export default function BillingFormGroup({ billing }) {
 
     return (
         <FaqFormGroupStyled>
+            {/* When adding a billing, the screening_id is submitted in this hidden input. */}
+            {screening && <input type="hidden" name="screening_id" value={screening.id} />}
             <DistributorRowStyled>
                 <LabelStyled>
                     Verleih
@@ -28,11 +30,7 @@ export default function BillingFormGroup({ billing }) {
                 <LabelStyled>
                     Mindestgarantie
                     <NumberInputContainerStyled>
-                        <NumberInputStyled
-                            name="guarantee"
-                            defaultValue={billing && toEuro(billing.guarantee)}
-                        />{' '}
-                        €
+                        <NumberInputStyled name="guarantee" defaultValue={billing && toEuro(billing.guarantee)} /> €
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
@@ -52,7 +50,7 @@ export default function BillingFormGroup({ billing }) {
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
-                    Mehrwertsteuer
+                    Mehrwertsteuersatz
                     <NumberInputContainerStyled>
                         <NumberInputStyled name="valueAddedTax" defaultValue={billing ? billing.valueAddedTax : '7'} />{' '}
                         %
@@ -63,21 +61,13 @@ export default function BillingFormGroup({ billing }) {
                 <LabelStyled>
                     Kasseneinlage
                     <NumberInputContainerStyled>
-                        <NumberInputStyled
-                            name="cashInlay"
-                            defaultValue={billing && toEuro(billing.cashInlay)}
-                        />{' '}
-                        €
+                        <NumberInputStyled name="cashInlay" defaultValue={billing && toEuro(billing.cashInlay)} /> €
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
                     Kassenauslage
                     <NumberInputContainerStyled>
-                        <NumberInputStyled
-                            name="cashOut"
-                            defaultValue={billing && toEuro(billing.cashOut)}
-                        />{' '}
-                        €
+                        <NumberInputStyled name="cashOut" defaultValue={billing && toEuro(billing.cashOut)} /> €
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
@@ -107,7 +97,10 @@ export default function BillingFormGroup({ billing }) {
                     <StackInputsRow key={stackNumber} billing={billing} type="ticket" number={stackNumber} />
                 ))}
                 <ButtonStyled type="button" onClick={addTicketStack}>
-                    Kartenstapel hinzufügen
+                    +
+                </ButtonStyled>
+                <ButtonStyled type="button" onClick={removeTicketStack}>
+                    -
                 </ButtonStyled>
             </StackInputsContainerStyled>
             <input type="hidden" name="numberOfTicketStacks" value={ticketStackNumbers.length} />
@@ -117,7 +110,10 @@ export default function BillingFormGroup({ billing }) {
                     <StackInputsRow key={stackNumber} billing={billing} type="pass" number={stackNumber} />
                 ))}
                 <ButtonStyled type="button" onClick={addPassStack}>
-                    Ausweisstapel hinzufügen
+                    +
+                </ButtonStyled>
+                <ButtonStyled type="button" onClick={removePassStack}>
+                    -
                 </ButtonStyled>
             </StackInputsContainerStyled>
             <input type="hidden" name="numberOfPassStacks" value={passStackNumbers.length} />
@@ -128,8 +124,16 @@ export default function BillingFormGroup({ billing }) {
         setTicketStackNumbers([...ticketStackNumbers, ticketStackNumbers.length]);
     }
 
+    function removeTicketStack() {
+        setTicketStackNumbers(ticketStackNumbers.slice(0, -1));
+    }
+
     function addPassStack() {
         setPassStackNumbers([...passStackNumbers, passStackNumbers.length]);
+    }
+
+    function removePassStack() {
+        setPassStackNumbers(passStackNumbers.slice(0, -1));
     }
 }
 
@@ -178,5 +182,6 @@ const SubHeadlineStyled = styled.h3`
 `;
 
 const ButtonStyled = styled.button`
-    margin: 10px 0;
+    width: 40px;
+    margin: 10px 20px 10px 0;
 `;

@@ -19,7 +19,7 @@ export default function DistributorSelect({ defaultDistributor }) {
 
     return (
         <ReactSelect
-            name="serialId"
+            name="distributor_id"
             options={distributorOptions}
             defaultValue={defaultDistributor && { label: defaultDistributor.name, value: defaultDistributor.id }}
             styles={distributorSelectStyles}

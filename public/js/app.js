@@ -5825,6 +5825,12 @@ function Header() {
                 return setIsNavOpen(false);
               },
               children: "Mitglieder"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
+              to: "/intern/admissions",
+              onClick: function onClick() {
+                return setIsNavOpen(false);
+              },
+              children: "Besuchizahlen"
             }), isEditor && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubNavLinkStyled, {
                 to: "/intern/addNotice",
@@ -7245,7 +7251,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 function BillingFormGroup(_ref) {
-  var billing = _ref.billing;
+  var screening = _ref.screening,
+      billing = _ref.billing;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(billing && billing.ticket_stacks.length ? _toConsumableArray(Array(billing.ticket_stacks.length).keys()) : [0]),
       _useState2 = _slicedToArray(_useState, 2),
@@ -7258,7 +7265,11 @@ function BillingFormGroup(_ref) {
       setPassStackNumbers = _useState4[1];
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(FaqFormGroupStyled, {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DistributorRowStyled, {
+    children: [screening && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
+      type: "hidden",
+      name: "screening_id",
+      value: screening.id
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DistributorRowStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Verleih", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_DistributorSelect__WEBPACK_IMPORTED_MODULE_3__.default, {})]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
@@ -7273,7 +7284,7 @@ function BillingFormGroup(_ref) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberInputStyled, {
             name: "guarantee",
             defaultValue: billing && (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(billing.guarantee)
-          }), ' ', "\u20AC"]
+          }), " \u20AC"]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Prozentsatz", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NumberInputContainerStyled, {
@@ -7290,7 +7301,7 @@ function BillingFormGroup(_ref) {
           }), ' ', "\u20AC"]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-        children: ["Mehrwertsteuer", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NumberInputContainerStyled, {
+        children: ["Mehrwertsteuersatz", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NumberInputContainerStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberInputStyled, {
             name: "valueAddedTax",
             defaultValue: billing ? billing.valueAddedTax : '7'
@@ -7303,14 +7314,14 @@ function BillingFormGroup(_ref) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberInputStyled, {
             name: "cashInlay",
             defaultValue: billing && (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(billing.cashInlay)
-          }), ' ', "\u20AC"]
+          }), " \u20AC"]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Kassenauslage", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NumberInputContainerStyled, {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(NumberInputStyled, {
             name: "cashOut",
             defaultValue: billing && (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__.toEuro)(billing.cashOut)
-          }), ' ', "\u20AC"]
+          }), " \u20AC"]
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Sonstige Einnahmen/Ausgaben", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(NumberInputContainerStyled, {
@@ -7344,7 +7355,11 @@ function BillingFormGroup(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
         type: "button",
         onClick: addTicketStack,
-        children: "Kartenstapel hinzuf\xFCgen"
+        children: "+"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+        type: "button",
+        onClick: removeTicketStack,
+        children: "-"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
       type: "hidden",
@@ -7362,7 +7377,11 @@ function BillingFormGroup(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
         type: "button",
         onClick: addPassStack,
-        children: "Ausweisstapel hinzuf\xFCgen"
+        children: "+"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ButtonStyled, {
+        type: "button",
+        onClick: removePassStack,
+        children: "-"
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", {
       type: "hidden",
@@ -7375,8 +7394,16 @@ function BillingFormGroup(_ref) {
     setTicketStackNumbers([].concat(_toConsumableArray(ticketStackNumbers), [ticketStackNumbers.length]));
   }
 
+  function removeTicketStack() {
+    setTicketStackNumbers(ticketStackNumbers.slice(0, -1));
+  }
+
   function addPassStack() {
     setPassStackNumbers([].concat(_toConsumableArray(passStackNumbers), [passStackNumbers.length]));
+  }
+
+  function removePassStack() {
+    setPassStackNumbers(passStackNumbers.slice(0, -1));
   }
 }
 var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
@@ -7426,7 +7453,7 @@ var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h
 var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.button.withConfig({
   displayName: "BillingFormGroup__ButtonStyled",
   componentId: "sc-1kiblbh-11"
-})(["margin:10px 0;"]);
+})(["width:40px;margin:10px 20px 10px 0;"]);
 
 /***/ }),
 
@@ -7637,7 +7664,7 @@ function DistributorSelect(_ref) {
     children: "Am Laden..."
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_select__WEBPACK_IMPORTED_MODULE_4__.default, {
-    name: "serialId",
+    name: "distributor_id",
     options: distributorOptions,
     defaultValue: defaultDistributor && {
       label: defaultDistributor.name,
@@ -8456,7 +8483,7 @@ function StackInputsRow(_ref) {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
       children: ["\xE0", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
         name: type + 'Price' + number,
-        defaultValue: billing && billing[type + '_stacks'][number] ? (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_3__.toEuro)(billing[type + '_stacks'][number].price) : _constants__WEBPACK_IMPORTED_MODULE_2__.STANDARD_TICKET_PRICE
+        defaultValue: billing && billing[type + '_stacks'][number] ? (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_3__.toEuro)(billing[type + '_stacks'][number].price) : type === 'ticket' ? _constants__WEBPACK_IMPORTED_MODULE_2__.STANDARD_TICKET_PRICE : _constants__WEBPACK_IMPORTED_MODULE_2__.STANDARD_PASS_PRICE
       }), ' ', "\u20AC"]
     })]
   });
@@ -11427,7 +11454,9 @@ function AddBillingPage() {
       children: pageTitle
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_BaseForm__WEBPACK_IMPORTED_MODULE_2__.default, {
       postFunction: _utils_services_billingServices__WEBPACK_IMPORTED_MODULE_7__.postBilling,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_BillingFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {})
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_forms_BillingFormGroup__WEBPACK_IMPORTED_MODULE_3__.default, {
+        screening: screening
+      })
     })]
   });
 }

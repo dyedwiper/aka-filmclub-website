@@ -30,7 +30,7 @@ class CreateBillingsTable extends Migration
             $table->integer('cashInlay');
             $table->integer('cashOut');
             $table->integer('additionalEarnings');
-            $table->string('comment')->nullable();
+            $table->text('comment')->nullable();
         });
     }
 

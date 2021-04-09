@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BillingFormRequest;
 use App\Models\Billing;
-use App\Models\BillingTickets;
 use App\Models\PassStack;
 use App\Models\Screening;
 use App\Models\TicketStack;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class BillingController extends Controller
 {
@@ -50,7 +49,7 @@ class BillingController extends Controller
         return $billing;
     }
 
-    public function PostBilling(Request $request)
+    public function PostBilling(BillingFormRequest $request)
     {
         $billing = new Billing([
             'uuid' => uniqid(),
@@ -69,7 +68,7 @@ class BillingController extends Controller
         ]);
         $billing->save();
 
-        for ($i = 0; $i <= $request->numberOfTicketStacks; $i++) {
+        for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
             if ($request->input('ticketLast' . $i) - $request->input('ticketFirst' . $i) > 0) {
                 $ticketStack = new TicketStack([
                     'billing_id' => $billing->id,
@@ -81,7 +80,7 @@ class BillingController extends Controller
             }
         }
 
-        for ($i = 0; $i <= $request->numberOfPassStacks; $i++) {
+        for ($i = 0; $i < $request->numberOfPassStacks; $i++) {
             if ($request->input('passLast' . $i) - $request->input('passFirst' . $i) > 0) {
                 $ticketStack = new PassStack([
                     'billing_id' => $billing->id,

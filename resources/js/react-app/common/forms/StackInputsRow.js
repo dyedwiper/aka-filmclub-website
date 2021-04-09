@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { STANDARD_TICKET_PRICE } from '../../constants';
+import { STANDARD_PASS_PRICE, STANDARD_TICKET_PRICE } from '../../constants';
 import { toEuro } from '../../utils/moneyUtils';
 
 export default function StackInputsRow({ billing, type, number }) {
@@ -35,7 +35,9 @@ export default function StackInputsRow({ billing, type, number }) {
                     defaultValue={
                         billing && billing[type + '_stacks'][number]
                             ? toEuro(billing[type + '_stacks'][number].price)
-                            : STANDARD_TICKET_PRICE
+                            : type === 'ticket'
+                            ? STANDARD_TICKET_PRICE
+                            : STANDARD_PASS_PRICE
                     }
                 />{' '}
                 €

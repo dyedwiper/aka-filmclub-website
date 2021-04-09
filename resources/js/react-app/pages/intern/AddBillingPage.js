@@ -32,7 +32,7 @@ export default function AddBillingPage() {
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <BaseForm postFunction={postBilling}>
-                <BillingFormGroup />
+                <BillingFormGroup screening={screening} />
             </BaseForm>
         </PageStyled>
     );
