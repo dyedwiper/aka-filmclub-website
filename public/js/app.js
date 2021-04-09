@@ -6581,10 +6581,13 @@ function AdmissionListItem(_ref) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(ListItemStyled, {
     children: [screening.billing ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(AdmissionsStyled, {
+        title: "Verkaufte Eintrittskarten plus Freikarten",
         children: screening.billing.soldTickets + screening.billing.freeTickets
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
+        title: "Verkaufte Ausweise",
         children: '(' + screening.billing.soldPasses + ')'
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(BalanceStyled, {
+        title: "Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)",
         isNegative: screening.billing.profit < 0,
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuroWithSymbol)(screening.billing.profit)
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
@@ -6597,7 +6600,7 @@ function AdmissionListItem(_ref) {
         children: "?"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(PassesStyled, {
         children: "?"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ProfitStyled, {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(BalanceStyled, {
         children: "?"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramContainerStyled, {
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(DiagramStyled, {
@@ -6634,8 +6637,8 @@ var PassesStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.wi
   displayName: "AdmissionListItem__PassesStyled",
   componentId: "sc-1n9rarm-2"
 })(["display:inline-block;width:40px;margin-right:10px;text-align:right;"]);
-var ProfitStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
-  displayName: "AdmissionListItem__ProfitStyled",
+var BalanceStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
+  displayName: "AdmissionListItem__BalanceStyled",
   componentId: "sc-1n9rarm-3"
 })(["display:inline-block;width:80px;margin-right:10px;text-align:right;font-weight:bold;color:", ";"], function (props) {
   return props.isNegative && 'var(--aka-red)';
@@ -12079,16 +12082,6 @@ function AdmissionsPage() {
               screening: screening
             }, screening.id);
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LegendStyled, {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(SubHeadlineStyled, {
-            children: "Legende"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
-            children: "1. Spalte: Verkaufte Eintrittskarten plus Freikarten"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
-            children: "2. Spalte: Verkaufte Ausweise"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(LegendEntryStyled, {
-            children: "3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten"
-          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_5__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_accounting_SemesterAnalysis__WEBPACK_IMPORTED_MODULE_3__.default, {
           billings: screenings.filter(function (screening) {
             return screening.billing;
@@ -12109,18 +12102,6 @@ var NoScreeningsInfoStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.def
 var ListStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.ul.withConfig({
   displayName: "AdmissionsPage__ListStyled",
   componentId: "d839r0-1"
-})([""]);
-var LegendStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.section.withConfig({
-  displayName: "AdmissionsPage__LegendStyled",
-  componentId: "d839r0-2"
-})([""]);
-var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.h3.withConfig({
-  displayName: "AdmissionsPage__SubHeadlineStyled",
-  componentId: "d839r0-3"
-})(["margin:20px 0 10px 0;"]);
-var LegendEntryStyled = styled_components__WEBPACK_IMPORTED_MODULE_10__.default.div.withConfig({
-  displayName: "AdmissionsPage__LegendEntryStyled",
-  componentId: "d839r0-4"
 })([""]);
 
 /***/ }),
@@ -12239,12 +12220,14 @@ function BillingPage() {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        title: "Kassenauslage minus Kasseneinlage",
         children: "Tats\xE4chliche Einnahmen"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuroWithSymbol)(billing.cashOut - billing.cashInlay)
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        title: "Tats\xE4chliche Einnahmen minus errechnete Einnahmen",
         children: "Kassendifferenz"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuroWithSymbol)(billing.cashOut - billing.cashInlay - billing.earnings)
@@ -12273,7 +12256,7 @@ function BillingPage() {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuroWithSymbol)(billing.incidentals)
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
         children: "Filmmiete inkl. Nebenkosten"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
@@ -12287,15 +12270,17 @@ function BillingPage() {
       })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        title: "Filmmiete plus Nebenkosten plus Mehrwertsteuer",
         children: "Zu zahlen"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
         children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuroWithSymbol)(billing.rent * (billing.valueAddedTax + 100) / 100)
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(KeyValueContainerStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(KeyStyled, {
+        title: "Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)",
         children: "Bilanz"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(ValueStyled, {
-        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuroWithSymbol)(billing.ticketEarnings - billing.rent + billing.cashOut - billing.cashInlay - billing.earnings)
+        children: (0,_utils_moneyUtils__WEBPACK_IMPORTED_MODULE_5__.toEuroWithSymbol)(billing.ticketEarnings - billing.rent)
       })]
     }), billing.comment && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_common_styledElements__WEBPACK_IMPORTED_MODULE_3__.HorizontalRuleStyled, {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(CommentKeyStyled, {

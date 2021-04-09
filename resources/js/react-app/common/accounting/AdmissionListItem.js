@@ -11,11 +11,16 @@ export default function AdmissionListItem({ screening }) {
         <ListItemStyled>
             {screening.billing ? (
                 <>
-                    <AdmissionsStyled>{screening.billing.soldTickets + screening.billing.freeTickets}</AdmissionsStyled>
-                    <PassesStyled>{'(' + screening.billing.soldPasses + ')'}</PassesStyled>
-                    <ProfitStyled isNegative={screening.billing.profit < 0}>
+                    <AdmissionsStyled title="Verkaufte Eintrittskarten plus Freikarten">
+                        {screening.billing.soldTickets + screening.billing.freeTickets}
+                    </AdmissionsStyled>
+                    <PassesStyled title="Verkaufte Ausweise">{'(' + screening.billing.soldPasses + ')'}</PassesStyled>
+                    <BalanceStyled
+                        title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)"
+                        isNegative={screening.billing.profit < 0}
+                    >
                         {toEuroWithSymbol(screening.billing.profit)}
-                    </ProfitStyled>
+                    </BalanceStyled>
                     <DiagramContainerStyled>
                         <DiagramStyled admissions={screening.billing.soldTickets + screening.billing.freeTickets} />
                     </DiagramContainerStyled>
@@ -24,7 +29,7 @@ export default function AdmissionListItem({ screening }) {
                 <>
                     <AdmissionsStyled>?</AdmissionsStyled>
                     <PassesStyled>?</PassesStyled>
-                    <ProfitStyled>?</ProfitStyled>
+                    <BalanceStyled>?</BalanceStyled>
                     <DiagramContainerStyled>
                         <DiagramStyled admissions={0} />
                     </DiagramContainerStyled>
@@ -62,7 +67,7 @@ const PassesStyled = styled.div`
     text-align: right;
 `;
 
-const ProfitStyled = styled.div`
+const BalanceStyled = styled.div`
     display: inline-block;
     width: 80px;
     margin-right: 10px;

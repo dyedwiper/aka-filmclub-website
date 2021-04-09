@@ -61,17 +61,6 @@ export default function AdmissionsPage() {
                                 ))}
                             </ListStyled>
                             <HorizontalRuleStyled />
-                            <LegendStyled>
-                                <SubHeadlineStyled>Legende</SubHeadlineStyled>
-                                <LegendEntryStyled>
-                                    1. Spalte: Verkaufte Eintrittskarten plus Freikarten
-                                </LegendEntryStyled>
-                                <LegendEntryStyled>2. Spalte: Verkaufte Ausweise</LegendEntryStyled>
-                                <LegendEntryStyled>
-                                    3. Spalte: Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten
-                                </LegendEntryStyled>
-                            </LegendStyled>
-                            <HorizontalRuleStyled />
                             <SemesterAnalysis
                                 billings={screenings
                                     .filter((screening) => screening.billing)
@@ -93,11 +82,3 @@ const NoScreeningsInfoStyled = styled.div`
 `;
 
 const ListStyled = styled.ul``;
-
-const LegendStyled = styled.section``;
-
-const SubHeadlineStyled = styled.h3`
-    margin: 20px 0 10px 0;
-`;
-
-const LegendEntryStyled = styled.div``;
