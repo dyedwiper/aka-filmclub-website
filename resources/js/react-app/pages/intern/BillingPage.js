@@ -8,6 +8,8 @@ import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';
 import LoadingPage from '../LoadingPage';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import BillingPdf from '../../common/accounting/BillingPdf';
 
 export default function BillingPage() {
     const [billing, setBilling] = useState({});
@@ -108,6 +110,9 @@ export default function BillingPage() {
                 </>
             )}
             <EditLinkStyled to={'/intern/editBilling/' + billing.uuid}>Abrechnung bearbeiten</EditLinkStyled>
+            <PDFDownloadLink document={<BillingPdf />} fileName={'Abrechnung'}>
+                PDF runterladen
+            </PDFDownloadLink>
         </PageStyled>
     );
 }

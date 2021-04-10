@@ -55,7 +55,7 @@ export default function SemesterAnalysis({ billings }) {
                                 {weekday.numberOfScreenings + ' Vorführungen'}
                             </NumberOfScreeningsStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
-                            <BalanceStyled>{toEuroWithSymbol(weekday.balance) + ' Profite'}</BalanceStyled>
+                            <BalanceStyled>{toEuroWithSymbol(weekday.balance) + ' Profit'}</BalanceStyled>
                         </WeekdayListItemStyled>
                     ))}
             </WeekdayListStyled>
