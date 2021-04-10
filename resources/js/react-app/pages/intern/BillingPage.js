@@ -110,9 +110,10 @@ export default function BillingPage() {
                 </>
             )}
             <EditLinkStyled to={'/intern/editBilling/' + billing.uuid}>Abrechnung bearbeiten</EditLinkStyled>
-            <PDFDownloadLink document={<BillingPdf />} fileName={'Abrechnung'}>
+            <PDFDownloadLink document={<BillingPdf billing={billing} />} fileName={'Abrechnung'}>
                 PDF runterladen
             </PDFDownloadLink>
+            <Link to={'/intern/tempPdf/' + billing.uuid}>temp pdf</Link>
         </PageStyled>
     );
 }

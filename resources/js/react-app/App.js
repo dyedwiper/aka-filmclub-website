@@ -35,6 +35,7 @@ import EditTextPage from './pages/intern/EditTextPage';
 import EditUserPage from './pages/intern/EditUserPage';
 import EditVideoPage from './pages/intern/EditVideoPage';
 import InternPage from './pages/intern/InternPage';
+import TempPdfPage from './pages/intern/TempPdfPage';
 import UsersPage from './pages/intern/UsersPage';
 import LinksPage from './pages/LinksPage';
 import LoadingPage from './pages/LoadingPage';
@@ -194,6 +195,9 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path="/intern/editBilling">
                             <EditBillingPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/tempPdf">
+                            <TempPdfPage />
                         </PrivateRoute>
                         <PrivateRoute exact path="/intern/distributors">
                             <DistributorsPage />
