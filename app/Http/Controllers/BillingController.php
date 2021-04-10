@@ -8,6 +8,8 @@ use App\Models\PassStack;
 use App\Models\Screening;
 use App\Models\TicketStack;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 
 class BillingController extends Controller
 {
@@ -130,6 +132,22 @@ class BillingController extends Controller
 
         $billing->save();
         return $billing;
+    }
+
+    public function DeleteBilling(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(401);
+        }
+
+        $billing = Billing::where('uuid', $uuid)->with('ticketStacks', 'passStacks')->first();
+        foreach ($billing->ticketStacks as $stack) {
+            $stack->delete();
+        }
+        foreach ($billing->passStacks as $stack) {
+            $stack->delete();
+        }
+        $billing->delete();
     }
 
     public function UpdateUuids()
