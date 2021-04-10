@@ -7221,7 +7221,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _utils_moneyUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../utils/moneyUtils */ "./resources/js/react-app/utils/moneyUtils.js");
 /* harmony import */ var _DistributorSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DistributorSelect */ "./resources/js/react-app/common/forms/DistributorSelect.js");
 /* harmony import */ var _StackInputsRow__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./StackInputsRow */ "./resources/js/react-app/common/forms/StackInputsRow.js");
@@ -7253,6 +7254,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function BillingFormGroup(_ref) {
   var screening = _ref.screening,
       billing = _ref.billing;
@@ -7274,7 +7276,12 @@ function BillingFormGroup(_ref) {
       value: screening.id
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(DistributorRowStyled, {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
-        children: ["Verleih", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_DistributorSelect__WEBPACK_IMPORTED_MODULE_3__.default, {})]
+        children: ["Verleih (", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+          to: "/intern/distributors",
+          children: "\xDCbersicht der Verleihe"
+        }), ")", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_DistributorSelect__WEBPACK_IMPORTED_MODULE_3__.default, {
+          defaultDistributor: billing && billing.distributor
+        })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(LabelStyled, {
         children: ["Terminbest\xE4tigungs-Nr.", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(InputStyled, {
           inputName: "confirmationNumber",
@@ -7409,51 +7416,51 @@ function BillingFormGroup(_ref) {
     setPassStackNumbers(passStackNumbers.slice(0, -1));
   }
 }
-var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+var FaqFormGroupStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "BillingFormGroup__FaqFormGroupStyled",
   componentId: "sc-1kiblbh-0"
 })([""]);
-var DistributorRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+var DistributorRowStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "BillingFormGroup__DistributorRowStyled",
   componentId: "sc-1kiblbh-1"
 })(["display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1fr);grid-gap:40px;"]);
-var FormRowWithFourInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+var FormRowWithFourInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "BillingFormGroup__FormRowWithFourInputsStyled",
   componentId: "sc-1kiblbh-2"
 })(["display:grid;grid-template-columns:repeat(4,minmax(0,1fr));"]);
-var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+var FormRowWithThreeInputsStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "BillingFormGroup__FormRowWithThreeInputsStyled",
   componentId: "sc-1kiblbh-3"
 })(["display:grid;grid-template-columns:repeat(2,minmax(0,1fr)) minmax(0,2fr);"]);
-var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.label.withConfig({
+var LabelStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.label.withConfig({
   displayName: "BillingFormGroup__LabelStyled",
   componentId: "sc-1kiblbh-4"
 })(["display:block;margin:10px 0;"]);
-var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.input.withConfig({
+var InputStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.input.withConfig({
   displayName: "BillingFormGroup__InputStyled",
   componentId: "sc-1kiblbh-5"
 })([""]);
-var NumberInputContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.div.withConfig({
+var NumberInputContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.div.withConfig({
   displayName: "BillingFormGroup__NumberInputContainerStyled",
   componentId: "sc-1kiblbh-6"
 })([""]);
-var NumberInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.input.withConfig({
+var NumberInputStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.input.withConfig({
   displayName: "BillingFormGroup__NumberInputStyled",
   componentId: "sc-1kiblbh-7"
 })(["width:120px;text-align:right;"]);
-var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.textarea.withConfig({
+var TextareaStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.textarea.withConfig({
   displayName: "BillingFormGroup__TextareaStyled",
   componentId: "sc-1kiblbh-8"
 })(["height:80px;"]);
-var StackInputsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.section.withConfig({
+var StackInputsContainerStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.section.withConfig({
   displayName: "BillingFormGroup__StackInputsContainerStyled",
   componentId: "sc-1kiblbh-9"
 })(["margin:20px 0;"]);
-var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.h3.withConfig({
+var SubHeadlineStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.h3.withConfig({
   displayName: "BillingFormGroup__SubHeadlineStyled",
   componentId: "sc-1kiblbh-10"
 })(["font-size:1em;"]);
-var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_5__.default.button.withConfig({
+var ButtonStyled = styled_components__WEBPACK_IMPORTED_MODULE_6__.default.button.withConfig({
   displayName: "BillingFormGroup__ButtonStyled",
   componentId: "sc-1kiblbh-11"
 })(["width:40px;margin:10px 20px 10px 0;"]);
@@ -7678,7 +7685,10 @@ function DistributorSelect(_ref) {
   });
 
   function computeDistributorOptions(distributors) {
-    var options = [];
+    var options = [{
+      label: '-- kein Verleih --',
+      value: ' '
+    }];
     distributors.forEach(function (distributor) {
       options.push({
         label: distributor.name,

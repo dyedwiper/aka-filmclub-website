@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { toEuro } from '../../utils/moneyUtils';
 import DistributorSelect from './DistributorSelect';
@@ -18,8 +19,8 @@ export default function BillingFormGroup({ screening, billing }) {
             {screening && <input type="hidden" name="screening_id" value={screening.id} />}
             <DistributorRowStyled>
                 <LabelStyled>
-                    Verleih
-                    <DistributorSelect />
+                    Verleih (<Link to="/intern/distributors">Übersicht der Verleihe</Link>)
+                    <DistributorSelect defaultDistributor={billing && billing.distributor} />
                 </LabelStyled>
                 <LabelStyled>
                     Terminbestätigungs-Nr.
