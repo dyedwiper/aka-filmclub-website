@@ -2,9 +2,9 @@ import React from 'react';
 import styled from '@react-pdf/styled-components';
 import { toEuroWithSymbol } from '../../../utils/moneyUtils';
 
-export default function TicketTable({ billing }) {
+export default function TicketsTable({ billing }) {
     return (
-        <TicketTableStyled>
+        <TicketsTableStyled>
             <HeaderRowStyled>
                 <FirstHeaderCellStyled>Ausgegebene Rollenkarten</FirstHeaderCellStyled>
                 <HeaderCellStyled>Stückzahl</HeaderCellStyled>
@@ -28,11 +28,11 @@ export default function TicketTable({ billing }) {
                 <CellStyled></CellStyled>
                 <CellStyled>{toEuroWithSymbol(billing.ticketEarnings)}</CellStyled>
             </FooterRowStyled>
-        </TicketTableStyled>
+        </TicketsTableStyled>
     );
 }
 
-const TicketTableStyled = styled.View`
+const TicketsTableStyled = styled.View`
     display: table;
     margin: 10pt 0;
     border: solid 1pt #616161;
