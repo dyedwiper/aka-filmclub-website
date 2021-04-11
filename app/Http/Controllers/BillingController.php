@@ -45,6 +45,7 @@ class BillingController extends Controller
             ->with('distributor')
             ->with('ticketStacks', 'passStacks')
             ->first();
+        $billing->soldTickets = $this->calculateTicketSum($billing);
         $billing->earnings = $this->calculateEarnings($billing);
         $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);

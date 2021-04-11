@@ -30,7 +30,6 @@ export default function TempPdfPage() {
 }
 
 const PDFViewerStyled = styled(PDFViewer)`
-    width: 400px;
-    height: 600px;
-    margin: 0 200px;
+    width: 1024px;
+    height: 1500px;
 `;

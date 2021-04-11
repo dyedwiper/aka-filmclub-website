@@ -3,6 +3,7 @@ import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/render
 import styled from '@react-pdf/styled-components';
 import akaLogo from '../../assets/aka_logo.png';
 import { formatToDateString } from '../../utils/dateFormatters';
+import TicketTable from './pdf/TicketTable';
 
 export default function BillingPdf({ billing }) {
     return (
@@ -37,6 +38,7 @@ export default function BillingPdf({ billing }) {
                         <CustomerIdStyled>Unsere Kundennr.: {billing.distributor.customerId}</CustomerIdStyled>
                         <PercentageStyled>Prozentsatz: {billing.percentage}</PercentageStyled>
                         <GuaranteeStyled>Mindestgarantie: {billing.guarantee}</GuaranteeStyled>
+                        <TicketTable billing={billing} />
                     </MainStyled>
                     <FooterStyled>
                         <AkaAdressStyled>aka-Filmclub e.V. - Rheinstr. 12 - 79104 Freiburg</AkaAdressStyled>
