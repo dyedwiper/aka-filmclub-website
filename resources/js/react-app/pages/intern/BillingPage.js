@@ -77,7 +77,7 @@ export default function BillingPage() {
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Prozentsatz</KeyStyled>
-                <ValueStyled>{billing.percentage + ' %'}</ValueStyled>
+                <ValueStyled>{billing.percentage.toLocaleString('de-DE') + ' %'}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Nebenkosten</KeyStyled>

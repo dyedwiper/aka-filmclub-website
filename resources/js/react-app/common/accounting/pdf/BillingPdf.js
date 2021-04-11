@@ -1,8 +1,9 @@
-import React from 'react';
-import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
+import { Document, Page } from '@react-pdf/renderer';
 import styled from '@react-pdf/styled-components';
+import React from 'react';
 import akaLogo from '../../../assets/aka_logo.png';
 import { formatToDateString } from '../../../utils/dateFormatters';
+import { toEuroWithSymbol } from '../../../utils/moneyUtils';
 import TicketTable from './TicketTable';
 
 export default function BillingPdf({ billing }) {
@@ -13,32 +14,37 @@ export default function BillingPdf({ billing }) {
                     <LogoStyled src={akaLogo} />
                     <HeaderStyled>
                         <AddressContainerStyled>
-                            <DistributorNameStyled>
-                                {billing.distributor && billing.distributor.name}
-                            </DistributorNameStyled>
-                            <DistributorAddressStyled>
+                            <AddressFieldStyled>{billing.distributor && billing.distributor.name}</AddressFieldStyled>
+                            <AddressFieldStyled>
                                 {billing.distributor && billing.distributor.address}
-                            </DistributorAddressStyled>
-                            <DistributorCityStyled>
+                            </AddressFieldStyled>
+                            <AddressFieldStyled>
                                 {billing.distributor && billing.distributor.zipcode + ' ' + billing.distributor.city}
-                            </DistributorCityStyled>
+                            </AddressFieldStyled>
                         </AddressContainerStyled>
-                        <DistributorEmailStyled>
-                            {billing.distributor && billing.distributor.email}
-                        </DistributorEmailStyled>
-                        <DistributorPhoneFaxStyled>
+                        <DistributorEmailPhoneFaxStyled>
                             {billing.distributor &&
-                                'Tel: ' + billing.distributor.phone + ' / Fax: ' + billing.distributor.fax}
-                        </DistributorPhoneFaxStyled>
+                                'E-Mail: ' +
+                                    billing.distributor.email +
+                                    ' / Tel: ' +
+                                    billing.distributor.phone +
+                                    ' / Fax: ' +
+                                    billing.distributor.fax}
+                        </DistributorEmailPhoneFaxStyled>
                     </HeaderStyled>
                     <MainStyled>
                         <HeadlineStyled>Abrechnung: {billing.screening.title}</HeadlineStyled>
-                        <ConfirmationNumberStyled>TB-Nr.: {billing.confirmationNumber}</ConfirmationNumberStyled>
                         <DateStyled>Spieltermin: {formatToDateString(billing.screening.date)}</DateStyled>
-                        <CustomerIdStyled>Unsere Kundennr.: {billing.distributor.customerId}</CustomerIdStyled>
-                        <PercentageStyled>Prozentsatz: {billing.percentage}</PercentageStyled>
-                        <GuaranteeStyled>Mindestgarantie: {billing.guarantee}</GuaranteeStyled>
+                        <BillingInfoStyled>
+                            <InfoFieldStyled>TB-Nr.: {billing.confirmationNumber}</InfoFieldStyled>
+                            <InfoFieldStyled>Unsere Kundennr.: {billing.distributor.customerId}</InfoFieldStyled>
+                            <InfoFieldStyled>
+                                Prozentsatz: {billing.percentage.toLocaleString('de-DE') + ' %'}
+                            </InfoFieldStyled>
+                            <InfoFieldStyled>Mindestgarantie: {toEuroWithSymbol(billing.guarantee)}</InfoFieldStyled>
+                        </BillingInfoStyled>
                         <TicketTable billing={billing} />
+                        <ResultRowStyled></ResultRowStyled>
                     </MainStyled>
                     <FooterStyled>
                         <AkaAdressStyled>aka-Filmclub e.V. - Rheinstr. 12 - 79104 Freiburg</AkaAdressStyled>
@@ -50,7 +56,8 @@ export default function BillingPdf({ billing }) {
 }
 
 const PageContainerStyled = styled.View`
-    padding: 40pt;
+    padding: 40pt 60pt;
+    font-size: 12pt;
 `;
 
 const LogoStyled = styled.Image`
@@ -70,29 +77,35 @@ const AddressContainerStyled = styled.View`
     margin-bottom: 10pt;
 `;
 
-const DistributorNameStyled = styled.Text``;
+const AddressFieldStyled = styled.Text``;
 
-const DistributorAddressStyled = styled.Text``;
+const DistributorEmailPhoneFaxStyled = styled.Text``;
 
-const DistributorCityStyled = styled.Text``;
+const MainStyled = styled.View`
+    margin: 40pt 0 0 0;
+`;
 
-const DistributorEmailStyled = styled.Text``;
+const HeadlineStyled = styled.Text`
+    margin-bottom: 10pt;
+    font-size: 24pt;
+`;
 
-const DistributorPhoneFaxStyled = styled.Text``;
+const DateStyled = styled.Text`
+    margin-bottom: 10pt;
+`;
 
-const MainStyled = styled.View``;
+const BillingInfoStyled = styled.View`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+`;
 
-const HeadlineStyled = styled.Text``;
+const InfoFieldStyled = styled.Text`
+    width: 50%;
+    margin-bottom: 10pt;
+`;
 
-const ConfirmationNumberStyled = styled.Text``;
-
-const DateStyled = styled.Text``;
-
-const CustomerIdStyled = styled.Text``;
-
-const PercentageStyled = styled.Text``;
-
-const GuaranteeStyled = styled.Text``;
+const ResultRowStyled = styled.View``;
 
 const FooterStyled = styled.View`
     position: fixed;
@@ -101,5 +114,4 @@ const FooterStyled = styled.View`
 
 const AkaAdressStyled = styled.Text`
     width: 300pt;
-    font-size: 12pt;
 `;

@@ -34,6 +34,7 @@ export default function TicketTable({ billing }) {
 
 const TicketTableStyled = styled.View`
     display: table;
+    margin: 10pt 0;
     border: solid 1pt #616161;
     border-right-width: 0;
     border-bottom-width: 0;

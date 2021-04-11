@@ -37,7 +37,11 @@ export default function BillingFormGroup({ screening, billing }) {
                 <LabelStyled>
                     Prozentsatz
                     <NumberInputContainerStyled>
-                        <NumberInputStyled name="percentage" defaultValue={billing && billing.percentage} /> %
+                        <NumberInputStyled
+                            name="percentage"
+                            defaultValue={billing && billing.percentage.toLocaleString('de-DE')}
+                        />{' '}
+                        %
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
