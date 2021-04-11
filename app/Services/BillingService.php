@@ -55,7 +55,7 @@ class BillingService
         $ticketStacks = $billing->ticketStacks;
         $ticketEarnings = 0;
         foreach ($ticketStacks as $stack) {
-            $ticketEarnings += $this->calculateTicketsCount($billing) * $stack->price;
+            $ticketEarnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
         }
         return $ticketEarnings;
     }
@@ -65,7 +65,7 @@ class BillingService
         $passStacks = $billing->passStacks;
         $passEarnings = 0;
         foreach ($passStacks as $stack) {
-            $passEarnings += $this->calculatePassesCount($billing) * $stack->price;
+            $passEarnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
         }
         return $passEarnings;
     }
