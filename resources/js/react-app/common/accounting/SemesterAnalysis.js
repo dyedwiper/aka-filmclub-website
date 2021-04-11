@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import { toEuroWithSymbol } from '../../utils/moneyFormatters';
 import { VerticalLineStyled } from '../styledElements';
 
-export default function SemesterAnalysis({ billings }) {
+export default function SemesterAnalysis({ screenings, billings }) {
     return (
         <SemesterAnalysisStyled>
-            <SubHeadlineStyled>Auswertung für das bisherige Semester</SubHeadlineStyled>
+            <SubHeadlineStyled>Auswertung für das Semester</SubHeadlineStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Anzahl Vorführungen</KeyStyled>
-                <ValueStyled>{billings.length}</ValueStyled>
+                <ValueStyled>
+                    {billings.length} (von {screenings.length})
+                </ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled title="Verkaufte Eintrittskarten plus Freikarten">
                 <KeyStyled>Mittlere Besuchszahl</KeyStyled>

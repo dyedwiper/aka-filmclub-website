@@ -62,6 +62,7 @@ export default function AdmissionsPage() {
                             </ListStyled>
                             <HorizontalRuleStyled />
                             <SemesterAnalysis
+                                screenings={screenings}
                                 billings={screenings
                                     .filter((screening) => screening.billing)
                                     .map((screening) => {
