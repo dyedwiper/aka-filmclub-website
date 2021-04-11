@@ -2,6 +2,18 @@ import { Document, Page } from '@react-pdf/renderer';
 import styled from '@react-pdf/styled-components';
 import React from 'react';
 import akaLogo from '../../../assets/aka_logo.png';
+import {
+    AKA_ADDRESS,
+    AKA_EMAIL,
+    AKA_PHONE,
+    AKA_FAX,
+    AKA_IBAN,
+    AKA_BIC,
+    AKA_BANK,
+    AKA_SHORTNAME,
+    AKA_ZIPCODE,
+    AKA_CITY,
+} from '../../../constants';
 import { formatToDateString } from '../../../utils/dateFormatters';
 import { toEuroWithSymbol } from '../../../utils/moneyUtils';
 import AggregationTable from './AggregationTable';
@@ -46,9 +58,21 @@ export default function BillingPdf({ billing }) {
                         </BillingInfoStyled>
                         <TicketsTable billing={billing} />
                         <AggregationTable billing={billing} />
+                        <TransferralContainerStyled>
+                            <TransferralInfoStyled>
+                                Den Betrag überweisen wir in den nächsten Tagen auf folgendes Konto:
+                            </TransferralInfoStyled>
+                            <AccountInfoStyled>
+                                IBAN {billing.distributor.iban}{' '}
+                                {billing.distributor.bic && ', BIC ' + billing.distributor.bic}
+                            </AccountInfoStyled>
+                        </TransferralContainerStyled>
                     </MainStyled>
                     <FooterStyled>
-                        <AkaAdressStyled>aka-Filmclub e.V. - Rheinstr. 12 - 79104 Freiburg</AkaAdressStyled>
+                        <AkaAdressStyled>
+                            {AKA_SHORTNAME}, {AKA_ADDRESS}, {AKA_ZIPCODE} {AKA_CITY} | E-Mail: {AKA_EMAIL} | Tel:{' '}
+                            {AKA_PHONE} | Fax: {AKA_FAX} | IBAN: {AKA_IBAN}, BIC: {AKA_BIC}, {AKA_BANK}
+                        </AkaAdressStyled>
                     </FooterStyled>
                 </PageContainerStyled>
             </Page>
@@ -57,6 +81,8 @@ export default function BillingPdf({ billing }) {
 }
 
 const PageContainerStyled = styled.View`
+    position: relative;
+    height: 100vh;
     padding: 40pt 60pt;
     font-size: 12pt;
 `;
@@ -106,11 +132,23 @@ const InfoFieldStyled = styled.Text`
     margin-bottom: 10pt;
 `;
 
+const TransferralContainerStyled = styled.View`
+    margin: 30pt 0;
+`;
+
+const TransferralInfoStyled = styled.Text``;
+
+const AccountInfoStyled = styled.Text``;
+
+TransferralInfoStyled;
+
 const FooterStyled = styled.View`
-    position: fixed;
-    top: 700pt;
+    position: absolute;
+    bottom: 0;
+    width: 100vw;
+    padding: 40pt 60pt;
 `;
 
 const AkaAdressStyled = styled.Text`
-    width: 300pt;
+    font-size: 9pt;
 `;
