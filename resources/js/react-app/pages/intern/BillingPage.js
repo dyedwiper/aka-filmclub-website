@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import StacksList from '../../common/accounting/StacksList';
-import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled, VerticalLineStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
@@ -115,10 +115,13 @@ export default function BillingPage() {
                 </>
             )}
             <EditLinkStyled to={'/intern/editBilling/' + billing.uuid}>Abrechnung bearbeiten</EditLinkStyled>
-            <PDFDownloadLink document={<BillingPdf billing={billing} />} fileName={'Abrechnung'}>
+            <VerticalLineStyled>|</VerticalLineStyled>
+            <PDFDownloadLink
+                document={<BillingPdf billing={billing} />}
+                fileName={'aka-Filmclub_Abrechnung_' + billing.screening.title + '_' + billing.screening.date}
+            >
                 PDF runterladen
             </PDFDownloadLink>
-            <Link to={'/intern/tempPdf/' + billing.uuid}>temp pdf</Link>
         </PageStyled>
     );
 }
@@ -165,6 +168,6 @@ const CommentKeyStyled = styled.h3`
 const CommentValueStyled = styled.p``;
 
 const EditLinkStyled = styled(Link)`
-    display: block;
+    display: inline-block;
     margin-top: 20px;
 `;
