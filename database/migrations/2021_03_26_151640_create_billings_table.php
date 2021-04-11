@@ -26,7 +26,7 @@ class CreateBillingsTable extends Migration
             $table->integer('guarantee');
             $table->float('percentage');
             $table->integer('incidentals');
-            $table->float('valueAddedTax');
+            $table->float('valueAddedTaxRate');
             $table->integer('cashInlay');
             $table->integer('cashOut');
             $table->integer('additionalEarnings');

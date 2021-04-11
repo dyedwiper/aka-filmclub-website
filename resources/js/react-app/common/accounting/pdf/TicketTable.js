@@ -24,7 +24,7 @@ export default function TicketTable({ billing }) {
             ))}
             <FooterRowStyled>
                 <FirstFooterCellStyled>Gesamt</FirstFooterCellStyled>
-                <CellStyled>{billing.soldTickets}</CellStyled>
+                <CellStyled>{billing.ticketsCount}</CellStyled>
                 <CellStyled></CellStyled>
                 <CellStyled>{toEuroWithSymbol(billing.ticketEarnings)}</CellStyled>
             </FooterRowStyled>

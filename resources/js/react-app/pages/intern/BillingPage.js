@@ -85,22 +85,27 @@ export default function BillingPage() {
             </KeyValueContainerStyled>
             <HorizontalRuleStyled />
             <KeyValueContainerStyled>
-                <KeyStyled>Filmmiete inkl. Nebenkosten</KeyStyled>
+                <KeyStyled>Filmmiete</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.rent)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
-                <KeyStyled>MWSt ({billing.valueAddedTax} %)</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol((billing.rent * billing.valueAddedTax) / 100)}</ValueStyled>
+                <KeyStyled>Filmmiete inkl. Nebenkosten</KeyStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.rent + billing.incidentals)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>MWSt ({billing.valueAddedTaxRate} %)</KeyStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.valueAddedTax)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled title="Filmmiete plus Nebenkosten plus Mehrwertsteuer">Zu zahlen</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol((billing.rent * (billing.valueAddedTax + 100)) / 100)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.debt)}</ValueStyled>
             </KeyValueContainerStyled>
+            <HorizontalRuleStyled />
             <KeyValueContainerStyled>
                 <KeyStyled title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)">
                     Bilanz
                 </KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(billing.ticketEarnings - billing.rent)}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.balance)}</ValueStyled>
             </KeyValueContainerStyled>
             {billing.comment && (
                 <>

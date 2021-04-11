@@ -57,7 +57,10 @@ export default function BillingFormGroup({ screening, billing }) {
                 <LabelStyled>
                     Mehrwertsteuersatz
                     <NumberInputContainerStyled>
-                        <NumberInputStyled name="valueAddedTax" defaultValue={billing ? billing.valueAddedTax : '7'} />{' '}
+                        <NumberInputStyled
+                            name="valueAddedTaxRate"
+                            defaultValue={billing ? billing.valueAddedTaxRate : '7'}
+                        />{' '}
                         %
                     </NumberInputContainerStyled>
                 </LabelStyled>

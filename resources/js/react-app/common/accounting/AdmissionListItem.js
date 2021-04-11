@@ -12,17 +12,17 @@ export default function AdmissionListItem({ screening }) {
             {screening.billing ? (
                 <>
                     <AdmissionsStyled title="Verkaufte Eintrittskarten plus Freikarten">
-                        {screening.billing.soldTickets + screening.billing.freeTickets}
+                        {screening.billing.ticketsCount + screening.billing.freeTickets}
                     </AdmissionsStyled>
-                    <PassesStyled title="Verkaufte Ausweise">{'(' + screening.billing.soldPasses + ')'}</PassesStyled>
+                    <PassesStyled title="Verkaufte Ausweise">{'(' + screening.billing.passesCount + ')'}</PassesStyled>
                     <BalanceStyled
                         title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)"
-                        isNegative={screening.billing.profit < 0}
+                        isNegative={screening.billing.balance < 0}
                     >
-                        {toEuroWithSymbol(screening.billing.profit)}
+                        {toEuroWithSymbol(screening.billing.balance)}
                     </BalanceStyled>
                     <DiagramContainerStyled>
-                        <DiagramStyled admissions={screening.billing.soldTickets + screening.billing.freeTickets} />
+                        <DiagramStyled admissions={screening.billing.ticketsCount + screening.billing.freeTickets} />
                     </DiagramContainerStyled>
                 </>
             ) : (

@@ -19,7 +19,7 @@ class Billing extends Model
         'guarantee',
         'percentage',
         'incidentals',
-        'valueAddedTax',
+        'valueAddedTaxRate',
         'cashInlay',
         'cashOut',
         'additionalEarnings',

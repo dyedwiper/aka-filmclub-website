@@ -14,4 +14,6 @@ return [
         'editor' => 1,
         'alumni' => 2,
     ],
+
+    'ticketTax' => 10,
 ];

@@ -7,7 +7,6 @@ use App\Models\Billing;
 use App\Models\PassStack;
 use App\Models\Screening;
 use App\Models\TicketStack;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
@@ -26,7 +25,7 @@ class BillingController extends Controller
                 ->whereMonth('date', '<', 4)
                 ->orderBy('date')
                 ->get();
-            return $screenings->map([$this, 'addCalculatedFieldsToBilling']);
+            return $screenings->map([$this, 'addBillingFieldsToScreening']);
         } elseif ($season == 'SS') {
             $screenings = Screening::select('id', 'uuid', 'title', 'date')
                 ->whereYear('date', $year)
@@ -34,7 +33,7 @@ class BillingController extends Controller
                 ->whereMonth('date', '<', 10)
                 ->orderBy('date')
                 ->get();
-            return $screenings->map([$this, 'addCalculatedFieldsToBilling']);
+            return $screenings->map([$this, 'addBillingFieldsToScreening']);
         }
     }
 
@@ -45,10 +44,14 @@ class BillingController extends Controller
             ->with('distributor')
             ->with('ticketStacks', 'passStacks')
             ->first();
-        $billing->soldTickets = $this->calculateTicketSum($billing);
+        $billing->ticketsCount = $this->calculateTicketsCount($billing);
         $billing->earnings = $this->calculateEarnings($billing);
         $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
+        $billing->netTicketEarnings = $this->calculateNetTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);
+        $billing->valueAddedTax = $this->calculateValueAddedTax($billing);
+        $billing->debt = $this->calcaluteDebt($billing);
+        $billing->balance = $this->calculateBalance($billing);
         return $billing;
     }
 
@@ -63,7 +66,7 @@ class BillingController extends Controller
             'guarantee' => str_replace(',', '.', $request->guarantee) * 100,
             'percentage' => str_replace(',', '.', $request->percentage),
             'incidentals' => str_replace(',', '.', $request->incidentals) * 100,
-            'valueAddedTax' => $request->valueAddedTax,
+            'valueAddedTaxRate' => $request->valueAddedTaxRate,
             'cashInlay' => str_replace(',', '.', $request->cashInlay) * 100,
             'cashOut' => str_replace(',', '.', $request->cashOut) * 100,
             'additionalEarnings' => str_replace(',', '.', $request->additionalEarnings) * 100,
@@ -104,7 +107,7 @@ class BillingController extends Controller
         $billing->guarantee = str_replace(',', '.', $request->guarantee) * 100;
         $billing->percentage = str_replace(',', '.', $request->percentage);
         $billing->incidentals = str_replace(',', '.', $request->incidentals) * 100;
-        $billing->valueAddedTax = $request->valueAddedTax;
+        $billing->valueAddedTaxRate = $request->valueAddedTaxRate;
         $billing->cashInlay = str_replace(',', '.', $request->cashInlay) * 100;
         $billing->cashOut = str_replace(',', '.', $request->cashOut) * 100;
         $billing->additionalEarnings = str_replace(',', '.', $request->additionalEarnings) * 100;
@@ -164,15 +167,15 @@ class BillingController extends Controller
     // Below are service methods which don't belong to a route.
 
     // This method must be public. Otherwise the callback does not work.
-    public function addCalculatedFieldsToBilling($screening)
+    public function addBillingFieldsToScreening($screening)
     {
         if ($screening->billing) {
             $billing = $screening->billing;
-            $billing->soldTickets = $this->calculateTicketSum($billing);
-            $billing->soldPasses = $this->calculatePassesSum($billing);
+            $billing->ticketsCount = $this->calculateTicketsCount($billing);
+            $billing->passesCount = $this->calculatePassesCount($billing);
             $billing->earnings = $this->calculateEarnings($billing);
             $billing->rent = $this->calculateRent($billing);
-            $billing->profit = $this->calculateProfit($billing);
+            $billing->balance = $this->calculateBalance($billing);
             // The ticketStacks and passStacks fields are populated by the calculate methods. Thus they are removed here.
             // In order to call the forget method, $billing must be first turned into a collection.
             $billingCollection = collect($billing);
@@ -183,7 +186,7 @@ class BillingController extends Controller
         return $screening;
     }
 
-    private function calculateTicketSum($billing)
+    private function calculateTicketsCount($billing)
     {
         $ticketStacks = $billing->ticketStacks;
         $sum = 0;
@@ -193,7 +196,7 @@ class BillingController extends Controller
         return $sum;
     }
 
-    private function calculatePassesSum($billing)
+    private function calculatePassesCount($billing)
     {
         $passStacks = $billing->passStacks;
         $sum = 0;
@@ -213,29 +216,52 @@ class BillingController extends Controller
         return $ticketEarnings;
     }
 
+    private function calculatePassEarnings($billing)
+    {
+        $passStacks = $billing->passStacks;
+        $passEarnings = 0;
+        foreach ($passStacks as $stack) {
+            $passEarnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
+        }
+        return $passEarnings;
+    }
+
     private function calculateEarnings($billing)
     {
-        $earnings = $this->calculateTicketEarnings($billing);
-        $passStacks = $billing->passStacks;
-        foreach ($passStacks as $stack) {
-            $earnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
-        }
-        return $earnings;
+        return $this->calculateTicketEarnings($billing) + $this->calculatePassEarnings($billing);
+    }
+
+    private function calculateNetTicketEarnings($billing)
+    {
+        return $this->calculateTicketEarnings($billing)
+            - $this->calculateTicketsCount($billing)
+            * Config::get('constants.ticketTax');
     }
 
     public function calculateRent($billing)
     {
-        $earnings = $this->calculateTicketEarnings($billing);
+        $earnings = $this->calculateNetTicketEarnings($billing);
         $rent = $billing->percentage / 100 * $earnings;
         if ($rent < $billing->guarantee) {
             $rent = $billing->guarantee;
         }
-        $rent += $billing->incidentals;
-        return round($rent);
+        return $rent;
     }
 
-    private function calculateProfit($billing)
+    private function calculateBalance($billing)
     {
-        return ($this->calculateTicketEarnings($billing) - $this->calculateRent($billing));
+        return $this->calculateTicketEarnings($billing)
+            - $this->calculateRent($billing)
+            - $billing->incidentals;
+    }
+
+    private function calculateValueAddedTax($billing)
+    {
+        return ($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRate / 100;
+    }
+
+    private function calcaluteDebt($billing)
+    {
+        return ($this->calculateRent($billing) + $billing->incidentals) * ($billing->valueAddedTaxRate + 100) / 100;
     }
 }

@@ -11,13 +11,13 @@ export default function SemesterAnalysis({ billings }) {
                 <KeyStyled>Anzahl Vorführungen</KeyStyled>
                 <ValueStyled>{billings.length}</ValueStyled>
             </KeyValueContainerStyled>
-            <KeyValueContainerStyled>
+            <KeyValueContainerStyled title="Verkaufte Eintrittskarten plus Freikarten">
                 <KeyStyled>Mittlere Besuchszahl</KeyStyled>
                 <ValueStyled>
                     {calculateAverageAdmissions(billings).toLocaleString('de-DE', {
                         minimumFractionDigits: 1,
                         maximumFractionDigits: 1,
-                    }) + ' (Verkaufte Eintrittskarten plus Freikarten)'}
+                    })}
                 </ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
@@ -28,12 +28,9 @@ export default function SemesterAnalysis({ billings }) {
                 <KeyStyled>Verkaufte Ausweise</KeyStyled>
                 <ValueStyled>{calculatePassesSum(billings)}</ValueStyled>
             </KeyValueContainerStyled>
-            <KeyValueContainerStyled>
+            <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten">
                 <KeyStyled>Bilanz</KeyStyled>
-                <ValueStyled>
-                    {toEuroWithSymbol(calculateBalance(billings))}
-                    <ValueInfoStyled>(Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten)</ValueInfoStyled>
-                </ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(calculateBalance(billings))}</ValueStyled>
             </KeyValueContainerStyled>
             <SubSubHeadlineStyled>Auswertung nach Wochentagen</SubSubHeadlineStyled>
             <WeekdayListStyled>
@@ -65,7 +62,7 @@ export default function SemesterAnalysis({ billings }) {
     function calculateTicketsSum(billings) {
         let sum = 0;
         billings.forEach((billing) => {
-            sum += billing.soldTickets;
+            sum += billing.ticketsCount;
         });
         return sum;
     }
@@ -73,7 +70,7 @@ export default function SemesterAnalysis({ billings }) {
     function calculatePassesSum(billings) {
         let sum = 0;
         billings.forEach((billing) => {
-            sum += billing.soldPasses;
+            sum += billing.passesCount;
         });
         return sum;
     }
@@ -81,7 +78,7 @@ export default function SemesterAnalysis({ billings }) {
     function calculateAverageAdmissions(billings) {
         let sum = 0;
         billings.forEach((billing) => {
-            sum += billing.soldTickets + billing.freeTickets;
+            sum += billing.ticketsCount + billing.freeTickets;
         });
         return sum / billings.length;
     }
@@ -89,7 +86,7 @@ export default function SemesterAnalysis({ billings }) {
     function calculateBalance(billings) {
         let sum = 0;
         billings.forEach((billing) => {
-            sum += Number(billing.profit);
+            sum += Number(billing.balance);
         });
         return sum;
     }
@@ -131,11 +128,6 @@ const KeyStyled = styled.div`
 
 const ValueStyled = styled.div`
     display: inline-block;
-`;
-
-const ValueInfoStyled = styled.span`
-    margin-left: 5px;
-    font-weight: normal;
 `;
 
 const SubSubHeadlineStyled = styled.h4``;
