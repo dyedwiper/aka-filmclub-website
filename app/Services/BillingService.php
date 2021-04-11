@@ -18,11 +18,13 @@ class BillingService
     public function addCalculatedFieldsToBilling($billing)
     {
         $billing->ticketsCount = $this->calculateTicketsCount($billing);
+        $billing->passesCount = $this->calculatePassesCount($billing);
         $billing->earnings = $this->calculateEarnings($billing);
         $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
         $billing->netTicketEarnings = $this->calculateNetTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);
         $billing->valueAddedTax = $this->calculateValueAddedTax($billing);
+        $billing->ticketTax = Config::get('constants.ticketTax');
         $billing->debt = $this->calcaluteDebt($billing);
         $billing->balance = $this->calculateBalance($billing);
     }

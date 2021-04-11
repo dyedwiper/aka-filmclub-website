@@ -4,6 +4,7 @@ import React from 'react';
 import akaLogo from '../../../assets/aka_logo.png';
 import { formatToDateString } from '../../../utils/dateFormatters';
 import { toEuroWithSymbol } from '../../../utils/moneyUtils';
+import AggregationTable from './AggregationTable';
 import TicketsTable from './TicketsTable';
 
 export default function BillingPdf({ billing }) {
@@ -44,9 +45,7 @@ export default function BillingPdf({ billing }) {
                             <InfoFieldStyled>Mindestgarantie: {toEuroWithSymbol(billing.guarantee)}</InfoFieldStyled>
                         </BillingInfoStyled>
                         <TicketsTable billing={billing} />
-                        <AggregationStyled>
-                            <AggregationRowStyled></AggregationRowStyled>
-                        </AggregationStyled>
+                        <AggregationTable billing={billing} />
                     </MainStyled>
                     <FooterStyled>
                         <AkaAdressStyled>aka-Filmclub e.V. - Rheinstr. 12 - 79104 Freiburg</AkaAdressStyled>
@@ -106,10 +105,6 @@ const InfoFieldStyled = styled.Text`
     width: 50%;
     margin-bottom: 10pt;
 `;
-
-const AggregationStyled = styled.View``;
-
-const AggregationRowStyled = styled.View``;
 
 const FooterStyled = styled.View`
     position: fixed;

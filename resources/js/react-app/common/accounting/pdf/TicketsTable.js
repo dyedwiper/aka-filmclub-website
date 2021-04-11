@@ -38,7 +38,6 @@ const TicketsTableStyled = styled.View`
     border: solid 1pt #616161;
     border-right-width: 0;
     border-bottom-width: 0;
-    font-size: 10pt;
 `;
 
 const HeaderRowStyled = styled.View`
