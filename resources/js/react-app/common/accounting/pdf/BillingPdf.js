@@ -15,7 +15,7 @@ import {
     AKA_CITY,
 } from '../../../constants';
 import { formatToDateString } from '../../../utils/dateFormatters';
-import { toEuroWithSymbol } from '../../../utils/moneyUtils';
+import { toEuroWithSymbol } from '../../../utils/moneyFormatters';
 import AggregationTable from './AggregationTable';
 import TicketsTable from './TicketsTable';
 
@@ -50,23 +50,27 @@ export default function BillingPdf({ billing }) {
                         <DateStyled>Spieltermin: {formatToDateString(billing.screening.date)}</DateStyled>
                         <BillingInfoStyled>
                             <InfoFieldStyled>TB-Nr.: {billing.confirmationNumber}</InfoFieldStyled>
-                            <InfoFieldStyled>Unsere Kundennr.: {billing.distributor.customerId}</InfoFieldStyled>
                             <InfoFieldStyled>
                                 Prozentsatz: {billing.percentage.toLocaleString('de-DE') + ' %'}
+                            </InfoFieldStyled>
+                            <InfoFieldStyled>
+                                Unsere Kundennr.: {billing.distributor && billing.distributor.customerId}
                             </InfoFieldStyled>
                             <InfoFieldStyled>Mindestgarantie: {toEuroWithSymbol(billing.guarantee)}</InfoFieldStyled>
                         </BillingInfoStyled>
                         <TicketsTable billing={billing} />
                         <AggregationTable billing={billing} />
-                        <TransferralContainerStyled>
-                            <TransferralInfoStyled>
-                                Den Betrag überweisen wir in den nächsten Tagen auf folgendes Konto:
-                            </TransferralInfoStyled>
-                            <AccountInfoStyled>
-                                IBAN {billing.distributor.iban}{' '}
-                                {billing.distributor.bic && ', BIC ' + billing.distributor.bic}
-                            </AccountInfoStyled>
-                        </TransferralContainerStyled>
+                        {billing.distributor && (
+                            <TransferralContainerStyled>
+                                <TransferralInfoStyled>
+                                    Den Betrag überweisen wir in den nächsten Tagen auf folgendes Konto:
+                                </TransferralInfoStyled>
+                                <AccountInfoStyled>
+                                    IBAN {billing.distributor.iban}{' '}
+                                    {billing.distributor.bic && ', BIC ' + billing.distributor.bic}
+                                </AccountInfoStyled>
+                            </TransferralContainerStyled>
+                        )}
                     </MainStyled>
                     <FooterStyled>
                         <AkaAdressStyled>

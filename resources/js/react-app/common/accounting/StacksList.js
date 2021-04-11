@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { toEuroWithSymbol } from '../../utils/moneyUtils';
+import { toEuroWithSymbol } from '../../utils/moneyFormatters';
 import { VerticalLineStyled } from '../styledElements';
 
 export default function StacksList({ stacks }) {
@@ -13,7 +13,9 @@ export default function StacksList({ stacks }) {
                     <StackInfoStyled>
                         {calculateStackAmount(stack) + ' x ' + toEuroWithSymbol(stack.price) + ' = '}
                     </StackInfoStyled>
-                    <StackBalanceStyled>{toEuroWithSymbol(calculateStackAmount(stack) * stack.price)}</StackBalanceStyled>
+                    <StackBalanceStyled>
+                        {toEuroWithSymbol(calculateStackAmount(stack) * stack.price)}
+                    </StackBalanceStyled>
                 </StackListItemStyled>
             ))}
             {getValuesPerPrice(stacks).map((price) => (

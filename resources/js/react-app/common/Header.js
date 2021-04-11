@@ -79,7 +79,7 @@ export default function Header() {
                                     Mitglieder
                                 </SubNavLinkStyled>
                                 <SubNavLinkStyled to="/intern/admissions" onClick={() => setIsNavOpen(false)}>
-                                    Besuchizahlen
+                                    Besuchszahlen
                                 </SubNavLinkStyled>
                                 {isEditor && (
                                     <>

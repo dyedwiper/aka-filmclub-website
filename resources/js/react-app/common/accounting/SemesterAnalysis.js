@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { toEuroWithSymbol } from '../../utils/moneyUtils';
+import { toEuroWithSymbol } from '../../utils/moneyFormatters';
 import { VerticalLineStyled } from '../styledElements';
 
 export default function SemesterAnalysis({ billings }) {
@@ -22,15 +22,15 @@ export default function SemesterAnalysis({ billings }) {
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Verkaufte Tickets</KeyStyled>
-                <ValueStyled>{calculateTicketsSum(billings)}</ValueStyled>
+                <ValueStyled>{calculateSemesterTicketsCount(billings)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Verkaufte Ausweise</KeyStyled>
-                <ValueStyled>{calculatePassesSum(billings)}</ValueStyled>
+                <ValueStyled>{calculateSemesterPassesCount(billings)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten">
                 <KeyStyled>Bilanz</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(calculateBalance(billings))}</ValueStyled>
+                <ValueStyled>{toEuroWithSymbol(calculateSemesterBalance(billings))}</ValueStyled>
             </KeyValueContainerStyled>
             <SubSubHeadlineStyled>Auswertung nach Wochentagen</SubSubHeadlineStyled>
             <WeekdayListStyled>
@@ -40,26 +40,24 @@ export default function SemesterAnalysis({ billings }) {
                         <WeekdayListItemStyled key={weekday.nameOfDay}>
                             <NameOfDayStyled>{weekday.nameOfDay}</NameOfDayStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
-                            <AverageAdmissionsStyled>
+                            <WeekdayValueStyled>
                                 {weekday.averageAdmissions.toLocaleString('de-DE', {
                                     minimumFractionDigits: 1,
                                     maximumFractionDigits: 1,
                                 })}{' '}
                                 &Oslash; Besuchis
-                            </AverageAdmissionsStyled>
+                            </WeekdayValueStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
-                            <NumberOfScreeningsStyled>
-                                {weekday.numberOfScreenings + ' Vorführungen'}
-                            </NumberOfScreeningsStyled>
+                            <WeekdayValueStyled>{weekday.numberOfScreenings + ' Vorführungen'}</WeekdayValueStyled>
                             <VerticalLineStyled>|</VerticalLineStyled>
-                            <BalanceStyled>{toEuroWithSymbol(weekday.balance) + ' Profit'}</BalanceStyled>
+                            <WeekdayValueStyled>{toEuroWithSymbol(weekday.balance) + ' Profit'}</WeekdayValueStyled>
                         </WeekdayListItemStyled>
                     ))}
             </WeekdayListStyled>
         </SemesterAnalysisStyled>
     );
 
-    function calculateTicketsSum(billings) {
+    function calculateSemesterTicketsCount(billings) {
         let sum = 0;
         billings.forEach((billing) => {
             sum += billing.ticketsCount;
@@ -67,23 +65,23 @@ export default function SemesterAnalysis({ billings }) {
         return sum;
     }
 
-    function calculatePassesSum(billings) {
-        let sum = 0;
+    function calculateSemesterPassesCount(billings) {
+        let count = 0;
         billings.forEach((billing) => {
-            sum += billing.passesCount;
+            count += billing.passesCount;
         });
-        return sum;
+        return count;
     }
 
     function calculateAverageAdmissions(billings) {
-        let sum = 0;
+        let count = 0;
         billings.forEach((billing) => {
-            sum += billing.ticketsCount + billing.freeTickets;
+            count += billing.ticketsCount + billing.freeTickets;
         });
-        return sum / billings.length;
+        return count / billings.length;
     }
 
-    function calculateBalance(billings) {
+    function calculateSemesterBalance(billings) {
         let sum = 0;
         billings.forEach((billing) => {
             sum += Number(billing.balance);
@@ -107,7 +105,7 @@ export default function SemesterAnalysis({ billings }) {
             );
             weekdayValue.numberOfScreenings = weekdayBillings.length;
             weekdayValue.averageAdmissions = calculateAverageAdmissions(weekdayBillings);
-            weekdayValue.balance = calculateBalance(weekdayBillings);
+            weekdayValue.balance = calculateSemesterBalance(weekdayBillings);
         });
         return weekdayValues;
     }
@@ -142,14 +140,6 @@ const WeekdayListItemStyled = styled.li`
 
 const NameOfDayStyled = styled.div``;
 
-const AverageAdmissionsStyled = styled.div`
-    text-align: right;
-`;
-
-const NumberOfScreeningsStyled = styled.div`
-    text-align: right;
-`;
-
-const BalanceStyled = styled.div`
+const WeekdayValueStyled = styled.div`
     text-align: right;
 `;

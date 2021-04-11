@@ -2,20 +2,21 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Log;
-
 class BillingService
 {
-    public function addBillingFieldsToScreening($screening)
+    // That's the tax (called "V-Steuer") which is subtracted from the price of every ticket,
+    // in order to calculate the net ticket price.
+    const ticketTax = 10;
+
+    public function addBillingToScreening($screening)
     {
         if ($screening->billing) {
-            $this->addCalculatedFieldsToBilling($screening->billing);
+            $this->addCalculatedValuesToBilling($screening->billing);
         }
         return $screening;
     }
 
-    public function addCalculatedFieldsToBilling($billing)
+    public function addCalculatedValuesToBilling($billing)
     {
         $billing->ticketsCount = $this->calculateTicketsCount($billing);
         $billing->passesCount = $this->calculatePassesCount($billing);
@@ -24,7 +25,7 @@ class BillingService
         $billing->netTicketEarnings = $this->calculateNetTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);
         $billing->valueAddedTax = $this->calculateValueAddedTax($billing);
-        $billing->ticketTax = Config::get('constants.ticketTax');
+        $billing->ticketTax = $this::ticketTax;
         $billing->debt = $this->calcaluteDebt($billing);
         $billing->balance = $this->calculateBalance($billing);
     }
@@ -54,7 +55,7 @@ class BillingService
         $ticketStacks = $billing->ticketStacks;
         $ticketEarnings = 0;
         foreach ($ticketStacks as $stack) {
-            $ticketEarnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
+            $ticketEarnings += $this->calculateTicketsCount($billing) * $stack->price;
         }
         return $ticketEarnings;
     }
@@ -64,7 +65,7 @@ class BillingService
         $passStacks = $billing->passStacks;
         $passEarnings = 0;
         foreach ($passStacks as $stack) {
-            $passEarnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
+            $passEarnings += $this->calculatePassesCount($billing) * $stack->price;
         }
         return $passEarnings;
     }
@@ -78,13 +79,12 @@ class BillingService
     {
         return $this->calculateTicketEarnings($billing)
             - $this->calculateTicketsCount($billing)
-            * Config::get('constants.ticketTax');
+            * $this::ticketTax;
     }
 
     public function calculateRent($billing)
     {
-        $earnings = $this->calculateNetTicketEarnings($billing);
-        $rent = $billing->percentage / 100 * $earnings;
+        $rent = $billing->percentage / 100 * $this->calculateNetTicketEarnings($billing);
         if ($rent < $billing->guarantee) {
             $rent = $billing->guarantee;
         }

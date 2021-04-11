@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { toEuro } from '../../utils/moneyUtils';
+import { toEuro } from '../../utils/moneyFormatters';
 import DistributorSelect from './DistributorSelect';
 import StackInputsRow from './StackInputsRow';
 

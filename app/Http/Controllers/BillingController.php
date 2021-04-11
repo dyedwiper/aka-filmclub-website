@@ -33,7 +33,7 @@ class BillingController extends Controller
                 ->whereMonth('date', '<', 4)
                 ->orderBy('date')
                 ->get();
-            return $screenings->map([$this->billingService, 'addBillingFieldsToScreening']);
+            return $screenings->map([$this->billingService, 'addBillingToScreening']);
         } elseif ($season == 'SS') {
             $screenings = Screening::select('id', 'uuid', 'title', 'date')
                 ->whereYear('date', $year)
@@ -41,7 +41,7 @@ class BillingController extends Controller
                 ->whereMonth('date', '<', 10)
                 ->orderBy('date')
                 ->get();
-            return $screenings->map([$this->billingService, 'addBillingFieldsToScreening']);
+            return $screenings->map([$this->billingService, 'addBillingToScreening']);
         }
     }
 
@@ -52,7 +52,7 @@ class BillingController extends Controller
             ->with('distributor')
             ->with('ticketStacks', 'passStacks')
             ->first();
-        $this->billingService->addCalculatedFieldsToBilling($billing);
+        $this->billingService->addCalculatedValuesToBilling($billing);
         return $billing;
     }
 

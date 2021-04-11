@@ -12,7 +12,6 @@ class Billing extends Model
     protected $fillable = [
         'uuid',
         'screening_id',
-        'screenings',
         'distributor_id',
         'confirmationNumber',
         'freeTickets',

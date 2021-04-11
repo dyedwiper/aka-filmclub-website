@@ -19,8 +19,8 @@ export default function AdmissionsPage() {
     let history = useHistory();
 
     useEffect(() => {
-        document.title = 'Besuchizahlen | aka-Filmclub';
-        setPageTitle('Besuchizahlen');
+        document.title = 'Besuchszahlen | aka-Filmclub';
+        setPageTitle('Besuchszahlen');
     }, []);
 
     useEffect(() => {

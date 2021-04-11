@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import StacksList from '../../common/accounting/StacksList';
 import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled, VerticalLineStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { toEuroWithSymbol } from '../../utils/moneyUtils';
+import { toEuroWithSymbol } from '../../utils/moneyFormatters';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';
 import LoadingPage from '../LoadingPage';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import BillingPdf from '../../common/accounting/pdf/BillingPdf';
+import { replaceUmlautsAndSpecialCharacters } from '../../utils/stringUtils';
 
 export default function BillingPage() {
     const [billing, setBilling] = useState({});
@@ -118,7 +119,12 @@ export default function BillingPage() {
             <VerticalLineStyled>|</VerticalLineStyled>
             <PDFDownloadLink
                 document={<BillingPdf billing={billing} />}
-                fileName={'aka-Filmclub_Abrechnung_' + billing.screening.title + '_' + billing.screening.date}
+                fileName={
+                    'aka-Filmclub_Abrechnung_' +
+                    replaceUmlautsAndSpecialCharacters(billing.screening.title) +
+                    '_' +
+                    billing.screening.date
+                }
             >
                 PDF runterladen
             </PDFDownloadLink>

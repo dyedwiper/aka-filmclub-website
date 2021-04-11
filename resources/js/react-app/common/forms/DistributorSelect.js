@@ -28,7 +28,7 @@ export default function DistributorSelect({ defaultDistributor }) {
     );
 
     function computeDistributorOptions(distributors) {
-        const options = [{ label: '-- kein Verleih --', value: ' ' }];
+        const options = [{ label: '-- kein Verleih --', value: '' }];
         distributors.forEach((distributor) => {
             options.push({
                 label: distributor.name,

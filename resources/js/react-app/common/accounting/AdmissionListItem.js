@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { NUMBER_OF_SEEDS_IN_GHS_BIO } from '../../constants';
 import { formatToDateTimeString } from '../../utils/dateFormatters';
 import billingIcon from '../../assets/billing_icon.png';
-import { toEuroWithSymbol } from '../../utils/moneyUtils';
+import { toEuroWithSymbol } from '../../utils/moneyFormatters';
 
 export default function AdmissionListItem({ screening }) {
     return (

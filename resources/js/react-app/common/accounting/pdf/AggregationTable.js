@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@react-pdf/styled-components';
-import { toEuroWithSymbol } from '../../../utils/moneyUtils';
+import { toEuroWithSymbol } from '../../../utils/moneyFormatters';
 
 export default function AggregationTable({ billing }) {
     return (
