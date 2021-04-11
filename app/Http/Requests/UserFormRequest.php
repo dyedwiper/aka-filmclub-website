@@ -34,7 +34,7 @@ class UserFormRequest extends FormRequest
             'email' => 'required|email|max:255',
             'phone' => 'max:255',
             'address' => 'max:255',
-            'zipcode' => 'nullable|integer',
+            'zipcode' => 'max:15',
             'city' => 'max:255',
             // The level may be null on a patch request, i.e. when the select in the user form is disabled.
             'level' => 'nullable|integer',

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BillingController;
+use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NoticeController;
@@ -8,11 +10,7 @@ use App\Http\Controllers\SerialController;
 use App\Http\Controllers\TextController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
-use App\Models\Notice;
 use App\Models\Screening;
-use App\Models\Serial;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,10 +36,6 @@ Route::prefix('screenings')->group(function () {
 
     Route::get('/single/{uuid}', [
         ScreeningController::class, 'GetScreeningByUuid'
-    ]);
-
-    Route::get('/serial/{serialFk}', [
-        ScreeningController::class, 'GetScreeningsBySerialId'
     ]);
 
     Route::get('/year/{year}', [
@@ -264,5 +258,57 @@ Route::prefix('texts')->group(function () {
 
     Route::middleware('auth:sanctum')->post('/{page}', [
         TextController::class, 'PostText'
+    ]);
+});
+
+Route::prefix('distributors')->group(function () {
+    Route::get('/', [
+        DistributorController::class, 'GetDistributors'
+    ]);
+
+    Route::get('/uuid/{uuid}', [
+        DistributorController::class, 'GetDistributorByUuid'
+    ]);
+
+    Route::post('/', [
+        DistributorController::class, 'PostDistributor'
+    ]);
+
+    Route::patch('/', [
+        DistributorController::class, 'PatchDistributor'
+    ]);
+
+    Route::delete('/uuid/{uuid}', [
+        DistributorController::class, 'DeleteDistributor'
+    ]);
+
+    Route::get('/updateUuids', [
+        DistributorController::class, 'UpdateUuids'
+    ]);
+});
+
+Route::prefix('billings')->group(function () {
+    Route::get('/semester/{semester}', [
+        BillingController::class, 'GetScreeningsWithBillingsBySemester'
+    ]);
+
+    Route::get('/uuid/{uuid}', [
+        BillingController::class, 'GetBillingByUuid'
+    ]);
+
+    Route::post('/', [
+        BillingController::class, 'PostBilling'
+    ]);
+
+    Route::patch('/', [
+        BillingController::class, 'PatchBilling'
+    ]);
+
+    Route::delete('/uuid/{uuid}', [
+        BillingController::class, 'DeleteBilling'
+    ]);
+
+    Route::get('/updateUuids', [
+        BillingController::class, 'UpdateUuids'
     ]);
 });

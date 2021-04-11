@@ -1,0 +1,1 @@
+DELETE FROM `aka_pgh_ausweise` WHERE id = 868 OR id = 869 OR id = 870

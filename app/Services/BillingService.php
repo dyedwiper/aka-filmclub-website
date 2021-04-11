@@ -1,0 +1,110 @@
+<?php
+
+namespace App\Services;
+
+class BillingService
+{
+    // That's the tax (called "V-Steuer") which is subtracted from the price of every ticket,
+    // in order to calculate the net ticket price.
+    const ticketTax = 10;
+
+    public function addBillingToScreening($screening)
+    {
+        if ($screening->billing) {
+            $this->addCalculatedValuesToBilling($screening->billing);
+        }
+        return $screening;
+    }
+
+    public function addCalculatedValuesToBilling($billing)
+    {
+        $billing->ticketsCount = $this->calculateTicketsCount($billing);
+        $billing->passesCount = $this->calculatePassesCount($billing);
+        $billing->earnings = $this->calculateEarnings($billing);
+        $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
+        $billing->netTicketEarnings = $this->calculateNetTicketEarnings($billing);
+        $billing->rent = $this->calculateRent($billing);
+        $billing->valueAddedTax = $this->calculateValueAddedTax($billing);
+        $billing->ticketTax = $this::ticketTax;
+        $billing->debt = $this->calcaluteDebt($billing);
+        $billing->balance = $this->calculateBalance($billing);
+    }
+
+    public function calculateTicketsCount($billing)
+    {
+        $ticketStacks = $billing->ticketStacks;
+        $sum = 0;
+        foreach ($ticketStacks as $stack) {
+            $sum += $stack->lastNumber - $stack->firstNumber + 1;
+        }
+        return $sum;
+    }
+
+    public function calculatePassesCount($billing)
+    {
+        $passStacks = $billing->passStacks;
+        $sum = 0;
+        foreach ($passStacks as $stack) {
+            $sum += $stack->lastNumber - $stack->firstNumber + 1;
+        }
+        return $sum;
+    }
+
+    public function calculateTicketEarnings($billing)
+    {
+        $ticketStacks = $billing->ticketStacks;
+        $ticketEarnings = 0;
+        foreach ($ticketStacks as $stack) {
+            $ticketEarnings += $this->calculateTicketsCount($billing) * $stack->price;
+        }
+        return $ticketEarnings;
+    }
+
+    public function calculatePassEarnings($billing)
+    {
+        $passStacks = $billing->passStacks;
+        $passEarnings = 0;
+        foreach ($passStacks as $stack) {
+            $passEarnings += $this->calculatePassesCount($billing) * $stack->price;
+        }
+        return $passEarnings;
+    }
+
+    public function calculateEarnings($billing)
+    {
+        return $this->calculateTicketEarnings($billing) + $this->calculatePassEarnings($billing);
+    }
+
+    public function calculateNetTicketEarnings($billing)
+    {
+        return $this->calculateTicketEarnings($billing)
+            - $this->calculateTicketsCount($billing)
+            * $this::ticketTax;
+    }
+
+    public function calculateRent($billing)
+    {
+        $rent = $billing->percentage / 100 * $this->calculateNetTicketEarnings($billing);
+        if ($rent < $billing->guarantee) {
+            $rent = $billing->guarantee;
+        }
+        return $rent;
+    }
+
+    public function calculateBalance($billing)
+    {
+        return $this->calculateTicketEarnings($billing)
+            - $this->calculateRent($billing)
+            - $billing->incidentals;
+    }
+
+    public function calculateValueAddedTax($billing)
+    {
+        return ($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRate / 100;
+    }
+
+    public function calcaluteDebt($billing)
+    {
+        return ($this->calculateRent($billing) + $billing->incidentals) * ($billing->valueAddedTaxRate + 100) / 100;
+    }
+}

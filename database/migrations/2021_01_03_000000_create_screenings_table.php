@@ -27,12 +27,12 @@ class CreateScreeningsTable extends Migration
             $table->string('shot_by')->nullable();
             $table->string('cast')->nullable();
             $table->string('country')->nullable();
-            $table->integer('year')->nullable();
+            $table->string('year')->nullable();
             $table->integer('length')->nullable();
             $table->string('medium')->nullable();
             $table->string('version')->nullable();
             $table->string('venue');
-            $table->text('special')->nullable();
+            $table->string('special')->nullable();
             $table->text('tercet')->nullable();
             $table->string('author')->nullable();
             $table->unsignedBigInteger('serial_id')->nullable();

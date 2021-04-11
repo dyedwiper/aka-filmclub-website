@@ -8,7 +8,7 @@ import { getLastParameterFromPath } from '../../utils/pathUtils';
 import LoadingPage from '../LoadingPage';
 
 export default function EditFaqPage() {
-    const [faq, setFaq] = useState([]);
+    const [faq, setFaq] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
     const { pageTitle, setPageTitle } = useContext(Context);
@@ -22,8 +22,8 @@ export default function EditFaqPage() {
     }, []);
 
     useEffect(() => {
-        document.title = 'FAQs | aka-Filmclub';
-        setPageTitle('FAQs');
+        document.title = 'FAQ bearbeiten | aka-Filmclub';
+        setPageTitle('FAQ bearbeiten');
     }, []);
 
     if (isLoading) return <LoadingPage />;

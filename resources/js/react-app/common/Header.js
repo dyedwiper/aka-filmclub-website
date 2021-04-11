@@ -78,6 +78,9 @@ export default function Header() {
                                 <SubNavLinkStyled to="/intern/users" onClick={() => setIsNavOpen(false)}>
                                     Mitglieder
                                 </SubNavLinkStyled>
+                                <SubNavLinkStyled to="/intern/admissions" onClick={() => setIsNavOpen(false)}>
+                                    Besuchszahlen
+                                </SubNavLinkStyled>
                                 {isEditor && (
                                     <>
                                         <SubNavLinkStyled to="/intern/addNotice" onClick={() => setIsNavOpen(false)}>

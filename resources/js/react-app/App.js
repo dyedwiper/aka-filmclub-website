@@ -12,6 +12,8 @@ import ContactPage from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
+import AddBillingPage from './pages/intern/AddBillingPage';
+import AddDistributorPage from './pages/intern/AddDistributorPage';
 import AddFaqPage from './pages/intern/AddFaqPage';
 import AddImagePage from './pages/intern/AddImagePage';
 import AddNoticePage from './pages/intern/AddNoticePage';
@@ -19,6 +21,11 @@ import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import AddUserPage from './pages/intern/AddUserPage';
 import AddVideoPage from './pages/intern/AddVideoPage';
+import AdmissionsPage from './pages/intern/AdmissionsPage';
+import BillingPage from './pages/intern/BillingPage';
+import DistributorsPage from './pages/intern/DistributorsPage';
+import EditBillingPage from './pages/intern/EditBillingPage';
+import EditDistributorPage from './pages/intern/EditDistributorPage';
 import EditFaqPage from './pages/intern/EditFaqPage';
 import EditImagePage from './pages/intern/EditImagePage';
 import EditNoticePage from './pages/intern/EditNoticePage';
@@ -28,6 +35,7 @@ import EditTextPage from './pages/intern/EditTextPage';
 import EditUserPage from './pages/intern/EditUserPage';
 import EditVideoPage from './pages/intern/EditVideoPage';
 import InternPage from './pages/intern/InternPage';
+import TempPdfPage from './pages/intern/TempPdfPage';
 import UsersPage from './pages/intern/UsersPage';
 import LinksPage from './pages/LinksPage';
 import LoadingPage from './pages/LoadingPage';
@@ -175,6 +183,33 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path="/intern/editText">
                             <EditTextPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/admissions">
+                            <AdmissionsPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/billing">
+                            <BillingPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/addBilling">
+                            <AddBillingPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editBilling">
+                            <EditBillingPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/tempPdf">
+                            <TempPdfPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/distributors">
+                            <DistributorsPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/distributors">
+                            <DistributorsPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path="/intern/addDistributor">
+                            <AddDistributorPage />
+                        </PrivateRoute>
+                        <PrivateRoute path="/intern/editDistributor">
+                            <EditDistributorPage />
                         </PrivateRoute>
                         <Route path="/error">
                             <ErrorPage />
