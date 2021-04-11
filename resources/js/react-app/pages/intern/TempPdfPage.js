@@ -1,7 +1,7 @@
 import { PDFViewer } from '@react-pdf/renderer';
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import BillingPdf from '../../common/accounting/BillingPdf';
+import BillingPdf from '../../common/accounting/pdf/BillingPdf';
 import { PageStyled } from '../../common/styledElements';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';

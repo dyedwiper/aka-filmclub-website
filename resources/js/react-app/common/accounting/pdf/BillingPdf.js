@@ -1,9 +1,9 @@
 import React from 'react';
 import { Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
 import styled from '@react-pdf/styled-components';
-import akaLogo from '../../assets/aka_logo.png';
-import { formatToDateString } from '../../utils/dateFormatters';
-import TicketTable from './pdf/TicketTable';
+import akaLogo from '../../../assets/aka_logo.png';
+import { formatToDateString } from '../../../utils/dateFormatters';
+import TicketTable from './TicketTable';
 
 export default function BillingPdf({ billing }) {
     return (

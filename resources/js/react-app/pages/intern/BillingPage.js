@@ -9,7 +9,7 @@ import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';
 import LoadingPage from '../LoadingPage';
 import { PDFDownloadLink } from '@react-pdf/renderer';
-import BillingPdf from '../../common/accounting/BillingPdf';
+import BillingPdf from '../../common/accounting/pdf/BillingPdf';
 
 export default function BillingPage() {
     const [billing, setBilling] = useState({});
