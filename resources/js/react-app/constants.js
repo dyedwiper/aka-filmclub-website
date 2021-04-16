@@ -32,7 +32,8 @@ export const AKA_BIC = 'FRSPDE66XXX';
 export const AKA_BANK = 'Sparkasse Freiburg';
 
 // Frontend routes
-// Some routes must have a trailing slash, others must not.
+// Routes with another parameter must have a trailing slash.
+// Those are basically all routes leading to a page with a single item, e.g. '/screening/6065f3df9ee79'.
 export const ROUTE_HOME = '/';
 export const ROUTE_NEWS = '/news';
 export const ROUTE_PROGRAM = '/program';
