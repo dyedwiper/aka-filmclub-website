@@ -2,7 +2,15 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
-import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
+import {
+    AUTH_LEVEL_EDITOR,
+    ROUTE_INTERN_ADD_IMAGE_SERIAL,
+    ROUTE_INTERN_EDIT_IMAGE,
+    ROUTE_INTERN_EDIT_SERIAL,
+    ROUTE_NOT_FOUND,
+    ROUTE_SCREENING,
+    STORAGE_FOLDER,
+} from '../constants';
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
@@ -35,7 +43,7 @@ export default function SerialPage() {
 
     if (isLoading) return <LoadingPage />;
 
-    if (noSerialFound) return <Redirect to="/404" />;
+    if (noSerialFound) return <Redirect to={ROUTE_NOT_FOUND} />;
 
     return (
         <PageStyled>
@@ -61,7 +69,7 @@ export default function SerialPage() {
                     {serial.screenings.map((screening) => (
                         <ScreeningListItemStyled key={screening.id}>
                             <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
-                            <ScreeningTitleLinkStyled to={'/screening/' + screening.uuid}>
+                            <ScreeningTitleLinkStyled to={ROUTE_SCREENING + screening.uuid}>
                                 {screening.title}
                             </ScreeningTitleLinkStyled>
                         </ScreeningListItemStyled>
@@ -70,12 +78,12 @@ export default function SerialPage() {
                 {isAuthorized && (
                     <>
                         <HorizontalRuleStyled />
-                        <LinkStyled to={'/intern/editSerial/' + serial.uuid}>Reihe bearbeiten</LinkStyled>
+                        <LinkStyled to={ROUTE_INTERN_EDIT_SERIAL + serial.uuid}>Reihe bearbeiten</LinkStyled>
                         <VertialLineStyled> | </VertialLineStyled>
                         {serial.image ? (
-                            <LinkStyled to={'/intern/editImage/' + serial.image.uuid}>Bild bearbeiten</LinkStyled>
+                            <LinkStyled to={ROUTE_INTERN_EDIT_IMAGE + serial.image.uuid}>Bild bearbeiten</LinkStyled>
                         ) : (
-                            <LinkStyled to={'/intern/addImage/serial/' + serial.uuid}>Bild hinzufügen</LinkStyled>
+                            <LinkStyled to={ROUTE_INTERN_ADD_IMAGE_SERIAL + serial.uuid}>Bild hinzufügen</LinkStyled>
                         )}
                     </>
                 )}

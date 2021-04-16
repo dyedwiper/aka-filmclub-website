@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { STORAGE_FOLDER } from '../../constants';
+import { ROUTE_SCREENING, STORAGE_FOLDER } from '../../constants';
 import { formatToDateTimeString } from '../../utils/dateFormatters';
 
 export default function ScreeningRow({ screening }) {
@@ -9,12 +9,12 @@ export default function ScreeningRow({ screening }) {
         <ScreeningRowStyled>
             <HorizontalRuleStyled />
             <ScreeningContainerStyled>
-                <LinkStyled to={'/screening/' + screening.uuid}>
+                <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
                     {screening.image && <ScreeningImageStyled src={STORAGE_FOLDER + screening.image.path} />}
                 </LinkStyled>
                 <InfoContainerStyled>
                     <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
-                    <LinkStyled to={'/screening/' + screening.uuid}>
+                    <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
                         <TitleStyled>{screening.title}</TitleStyled>
                     </LinkStyled>
                     <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />

@@ -3,7 +3,15 @@ import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import CalendarDownloadLink from '../common/CalendarDownloadLink';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
-import { AUTH_LEVEL_EDITOR, STORAGE_FOLDER } from '../constants';
+import {
+    AUTH_LEVEL_EDITOR,
+    ROUTE_INTERN_ADD_IMAGE_SCREENING,
+    ROUTE_INTERN_EDIT_IMAGE,
+    ROUTE_INTERN_EDIT_SCREENING,
+    ROUTE_NOT_FOUND,
+    ROUTE_SERIAL,
+    STORAGE_FOLDER,
+} from '../constants';
 import Context from '../Context';
 import { formatToDateTimeString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
@@ -36,7 +44,7 @@ export default function ScreeningPage() {
 
     if (isLoading) return <LoadingPage />;
 
-    if (noScreeningFound) return <Redirect to="/404" />;
+    if (noScreeningFound) return <Redirect to={ROUTE_NOT_FOUND} />;
 
     return (
         <PageStyled>
@@ -107,7 +115,7 @@ export default function ScreeningPage() {
                     <SerialContainerStyled>
                         <HorizontalRuleStyled />
                         Gezeigt im Rahmen der Filmreihe:{' '}
-                        <SerialLinkStyled to={'/serial/' + screening.serial.uuid}>
+                        <SerialLinkStyled to={ROUTE_SERIAL + screening.serial.uuid}>
                             {screening.serial.title}
                         </SerialLinkStyled>
                     </SerialContainerStyled>
@@ -115,16 +123,16 @@ export default function ScreeningPage() {
                 {isAuthorized && (
                     <>
                         <HorizontalRuleStyled />
-                        <EditLinkStyled to={'/intern/editScreening/' + screening.uuid}>
+                        <EditLinkStyled to={ROUTE_INTERN_EDIT_SCREENING + screening.uuid}>
                             Vorführung bearbeiten
                         </EditLinkStyled>
                         <VerticalLineStyled> | </VerticalLineStyled>
                         {screening.image ? (
-                            <EditLinkStyled to={'/intern/editImage/' + screening.image.uuid}>
+                            <EditLinkStyled to={ROUTE_INTERN_EDIT_IMAGE + screening.image.uuid}>
                                 Bild bearbeiten
                             </EditLinkStyled>
                         ) : (
-                            <EditLinkStyled to={'/intern/addImage/screening/' + screening.uuid}>
+                            <EditLinkStyled to={ROUTE_INTERN_ADD_IMAGE_SCREENING + screening.uuid}>
                                 Bild hinzufügen
                             </EditLinkStyled>
                         )}

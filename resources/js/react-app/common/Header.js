@@ -1,11 +1,31 @@
 import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { AUTH_LEVEL_EDITOR } from '../constants';
+import akaLogo from '../assets/aka_logo.png';
+import {
+    AUTH_LEVEL_EDITOR,
+    ROUTE_ABOUT,
+    ROUTE_ARCHIVE,
+    ROUTE_AWARDS,
+    ROUTE_FAQS,
+    ROUTE_HOME,
+    ROUTE_INTERN,
+    ROUTE_INTERN_ADD_NOTICE,
+    ROUTE_INTERN_ADD_SCREENING,
+    ROUTE_INTERN_ADD_SERIAL,
+    ROUTE_INTERN_ADMISSIONS,
+    ROUTE_INTERN_USERS,
+    ROUTE_LOGIN,
+    ROUTE_NEWS,
+    ROUTE_PRESS,
+    ROUTE_PROGRAM,
+    ROUTE_PROGRAM_OVERVIEW,
+    ROUTE_SELFMADE_FILMS,
+    ROUTE_SERIALS,
+} from '../constants';
 import Context from '../Context';
 import { getLogout } from '../utils/services/userServices';
 import HamburgerButton from './HamburgerButton';
-import akaLogo from '../assets/aka_logo.png';
 
 export default function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
@@ -23,85 +43,94 @@ export default function Header() {
     return (
         <HeaderStyled>
             <ContentContainerStyled headerHeight={headerHeight}>
-                <LinkStyled to="/">
+                <LinkStyled to={ROUTE_HOME}>
                     <LogoStyled src={akaLogo} headerHeight={headerHeight} />
                 </LinkStyled>
                 <PageTitleStyled>{pageTitle}</PageTitleStyled>
                 <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
                 <NavStyled isNavOpen={isNavOpen}>
                     <DropdownContainerStyled>
-                        <NavLinkStyled to="/news" onClick={() => setIsNavOpen(false)}>
+                        <NavLinkStyled to={ROUTE_NEWS} onClick={() => setIsNavOpen(false)}>
                             News
                         </NavLinkStyled>
                     </DropdownContainerStyled>
                     <DropdownContainerStyled>
-                        <NavLinkStyled to="/program" onClick={() => setIsNavOpen(false)}>
+                        <NavLinkStyled to={ROUTE_PROGRAM} onClick={() => setIsNavOpen(false)}>
                             Programm
                         </NavLinkStyled>
                         <SubNavStyled>
-                            <SubNavLinkStyled to="/program/overview" onClick={() => setIsNavOpen(false)}>
+                            <SubNavLinkStyled to={ROUTE_PROGRAM_OVERVIEW} onClick={() => setIsNavOpen(false)}>
                                 Übersicht
                             </SubNavLinkStyled>
-                            <SubNavLinkStyled to="/program/serials" onClick={() => setIsNavOpen(false)}>
+                            <SubNavLinkStyled to={ROUTE_SERIALS} onClick={() => setIsNavOpen(false)}>
                                 Filmreihen
                             </SubNavLinkStyled>
-                            <SubNavLinkStyled to="/program/archive" onClick={() => setIsNavOpen(false)}>
+                            <SubNavLinkStyled to={ROUTE_ARCHIVE} onClick={() => setIsNavOpen(false)}>
                                 Archiv
                             </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
                     <DropdownContainerStyled>
-                        <NavLinkStyled to="/about" onClick={() => setIsNavOpen(false)}>
+                        <NavLinkStyled to={ROUTE_ABOUT} onClick={() => setIsNavOpen(false)}>
                             Über uns
                         </NavLinkStyled>
                         <SubNavStyled>
-                            <SubNavLinkStyled to="/faqs" onClick={() => setIsNavOpen(false)}>
+                            <SubNavLinkStyled to={ROUTE_FAQS} onClick={() => setIsNavOpen(false)}>
                                 FAQs
                             </SubNavLinkStyled>
-                            <SubNavLinkStyled to="/press" onClick={() => setIsNavOpen(false)}>
+                            <SubNavLinkStyled to={ROUTE_PRESS} onClick={() => setIsNavOpen(false)}>
                                 Pressespiegel
                             </SubNavLinkStyled>
-                            <SubNavLinkStyled to="/awards" onClick={() => setIsNavOpen(false)}>
+                            <SubNavLinkStyled to={ROUTE_AWARDS} onClick={() => setIsNavOpen(false)}>
                                 Auszeichnungen
                             </SubNavLinkStyled>
-                            <SubNavLinkStyled to="/videos" onClick={() => setIsNavOpen(false)}>
+                            <SubNavLinkStyled to={ROUTE_SELFMADE_FILMS} onClick={() => setIsNavOpen(false)}>
                                 Eigenproduktionen
                             </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
                     {isLoggedIn ? (
                         <DropdownContainerStyled>
-                            <NavLinkStyled to="/intern" onClick={() => setIsNavOpen(false)}>
+                            <NavLinkStyled to={ROUTE_INTERN} onClick={() => setIsNavOpen(false)}>
                                 Intern
                             </NavLinkStyled>
                             <SubNavStyled>
-                                <SubNavLinkStyled to="/intern/users" onClick={() => setIsNavOpen(false)}>
+                                <SubNavLinkStyled to={ROUTE_INTERN_USERS} onClick={() => setIsNavOpen(false)}>
                                     Mitglieder
                                 </SubNavLinkStyled>
-                                <SubNavLinkStyled to="/intern/admissions" onClick={() => setIsNavOpen(false)}>
+                                <SubNavLinkStyled to={ROUTE_INTERN_ADMISSIONS} onClick={() => setIsNavOpen(false)}>
                                     Besuchszahlen
                                 </SubNavLinkStyled>
                                 {isEditor && (
                                     <>
-                                        <SubNavLinkStyled to="/intern/addNotice" onClick={() => setIsNavOpen(false)}>
+                                        <SubNavLinkStyled
+                                            to={ROUTE_INTERN_ADD_NOTICE}
+                                            onClick={() => setIsNavOpen(false)}
+                                        >
                                             News anlegen
                                         </SubNavLinkStyled>
-                                        <SubNavLinkStyled to="/intern/addSerial" onClick={() => setIsNavOpen(false)}>
+                                        <SubNavLinkStyled
+                                            to={ROUTE_INTERN_ADD_SERIAL}
+                                            onClick={() => setIsNavOpen(false)}
+                                        >
                                             Filmreihe anlegen
                                         </SubNavLinkStyled>
-                                        <SubNavLinkStyled to="/intern/addScreening" onClick={() => setIsNavOpen(false)}>
+                                        <SubNavLinkStyled
+                                            to={ROUTE_INTERN_ADD_SCREENING}
+                                            onClick={() => setIsNavOpen(false)}
+                                        >
                                             Vorführung anlegen
                                         </SubNavLinkStyled>
                                     </>
                                 )}
-                                <SubNavLinkStyled to="/" onClick={handleLogout}>
+                                <SubNavLinkStyled to={ROUTE_HOME} onClick={handleLogout}>
                                     Logout
                                 </SubNavLinkStyled>
                             </SubNavStyled>
                         </DropdownContainerStyled>
                     ) : (
                         <DropdownContainerStyled>
-                            <NavLinkStyled to="/login" onClick={() => setIsNavOpen(false)}>
+                            <NavLinkStyled to={ROUTE_LOGIN} onClick={() => setIsNavOpen(false)}>
                                 Login
                             </NavLinkStyled>
                         </DropdownContainerStyled>

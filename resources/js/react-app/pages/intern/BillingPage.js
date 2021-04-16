@@ -11,6 +11,7 @@ import LoadingPage from '../LoadingPage';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import BillingPdf from '../../common/accounting/pdf/BillingPdf';
 import { replaceUmlautsAndSpecialCharacters } from '../../utils/stringUtils';
+import { ROUTE_INTERN_EDIT_BILLING } from '../../constants';
 
 export default function BillingPage() {
     const [billing, setBilling] = useState({});
@@ -115,7 +116,7 @@ export default function BillingPage() {
                     <CommentValueStyled>{billing.comment}</CommentValueStyled>
                 </>
             )}
-            <EditLinkStyled to={'/intern/editBilling/' + billing.uuid}>Abrechnung bearbeiten</EditLinkStyled>
+            <EditLinkStyled to={ROUTE_INTERN_EDIT_BILLING + billing.uuid}>Abrechnung bearbeiten</EditLinkStyled>
             <VerticalLineStyled>|</VerticalLineStyled>
             <PDFDownloadLink
                 document={<BillingPdf billing={billing} />}

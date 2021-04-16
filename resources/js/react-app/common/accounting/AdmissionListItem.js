@@ -1,7 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { NUMBER_OF_SEEDS_IN_GHS_BIO } from '../../constants';
+import {
+    NUMBER_OF_SEEDS_IN_GHS_BIO,
+    ROUTE_INTERN_ADD_BILLING,
+    ROUTE_INTERN_BILLING,
+    ROUTE_SCREENING,
+} from '../../constants';
 import { formatToDateTimeString } from '../../utils/dateFormatters';
 import billingIcon from '../../assets/billing_icon.png';
 import { toEuroWithSymbol } from '../../utils/moneyFormatters';
@@ -36,13 +41,13 @@ export default function AdmissionListItem({ screening }) {
                 </>
             )}
             <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
-            <TitleLinkStyled to={'/screening/' + screening.uuid}>{screening.title}</TitleLinkStyled>
+            <TitleLinkStyled to={ROUTE_SCREENING + screening.uuid}>{screening.title}</TitleLinkStyled>
             {screening.billing ? (
-                <BillingLinkStyled to={'/intern/billing/' + screening.billing.uuid}>
+                <BillingLinkStyled to={ROUTE_INTERN_BILLING + screening.billing.uuid}>
                     <IconStyled src={billingIcon} />
                 </BillingLinkStyled>
             ) : (
-                <BillingLinkStyled to={'/intern/addBilling/' + screening.uuid}>
+                <BillingLinkStyled to={ROUTE_INTERN_ADD_BILLING + screening.uuid}>
                     <IconStyled src={billingIcon} />
                 </BillingLinkStyled>
             )}

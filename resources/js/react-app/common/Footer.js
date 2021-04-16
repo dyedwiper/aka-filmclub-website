@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import facebookIcon from '../assets/facebook_icon.png';
 import instagramIcon from '../assets/instagram_icon.png';
 import twitterIcon from '../assets/twitter_icon.png';
+import { ROUTE_CONTACT, ROUTE_LINKS } from '../constants';
 
 export default function Footer() {
     return (
@@ -11,9 +12,9 @@ export default function Footer() {
             <ContentContainerStyled>
                 <HeadlineStyled>Akademischer Filmclub an der Universität Freiburg e.V. (seit 1957)</HeadlineStyled>
                 <LinksContainerStyled>
-                    <LinkStyled to="/contact">Kontakt</LinkStyled>
+                    <LinkStyled to={ROUTE_CONTACT}>Kontakt</LinkStyled>
                     <VerticalLineStyled>|</VerticalLineStyled>
-                    <LinkStyled to="/links">Links</LinkStyled>
+                    <LinkStyled to={ROUTE_LINKS}>Links</LinkStyled>
                 </LinksContainerStyled>
                 <IconLinksContainerStyled>
                     <IconLinkStyled href="https://www.facebook.com/akaFilmclub/" target="_blank">
