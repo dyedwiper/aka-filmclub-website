@@ -2,7 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AddItemLinkStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import { AUTH_LEVEL_ADMIN, USER_STATUS_ACTIVE, USER_STATUS_ALUMNI, USER_STATUS_PAUSED } from '../../constants';
+import {
+    AUTH_LEVEL_ADMIN,
+    ROUTE_INTERN_ADD_USER,
+    ROUTE_INTERN_EDIT_USER,
+    USER_STATUS_ACTIVE,
+    USER_STATUS_ALUMNI,
+    USER_STATUS_PAUSED,
+} from '../../constants';
 import Context from '../../Context';
 import { getUsers } from '../../utils/services/userServices';
 
@@ -25,11 +32,11 @@ export default function UsersPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <EditOwnDataLinkStyled to={'/intern/editUser/' + loggedInUser.uuid}>
+            <EditOwnDataLinkStyled to={ROUTE_INTERN_EDIT_USER + loggedInUser.uuid}>
                 Eigene Daten bearbeiten
             </EditOwnDataLinkStyled>
             {loggedInUser.level === AUTH_LEVEL_ADMIN && (
-                <AddItemLinkStyled to="/intern/addUser">Mitglied hinzufügen</AddItemLinkStyled>
+                <AddItemLinkStyled to={ROUTE_INTERN_ADD_USER}>Mitglied hinzufügen</AddItemLinkStyled>
             )}
             <GridContainerStyled>
                 <ListContainerStyled>
@@ -40,7 +47,7 @@ export default function UsersPage() {
                             .sort((a, b) => a.realname.localeCompare(b.realname))
                             .map((user) => (
                                 <ListItemStyled key={user.id}>
-                                    <LinkStyled to={'/intern/editUser/' + user.uuid}>{user.realname}</LinkStyled>
+                                    <LinkStyled to={ROUTE_INTERN_EDIT_USER + user.uuid}>{user.realname}</LinkStyled>
                                 </ListItemStyled>
                             ))}
                     </ListStyled>
@@ -53,7 +60,7 @@ export default function UsersPage() {
                             .sort((a, b) => a.realname.localeCompare(b.realname))
                             .map((user) => (
                                 <ListItemStyled key={user.id}>
-                                    <LinkStyled to={'/intern/editUser/' + user.uuid}>{user.realname}</LinkStyled>
+                                    <LinkStyled to={ROUTE_INTERN_EDIT_USER + user.uuid}>{user.realname}</LinkStyled>
                                 </ListItemStyled>
                             ))}
                     </ListStyled>
@@ -66,7 +73,7 @@ export default function UsersPage() {
                             .sort((a, b) => a.realname.localeCompare(b.realname))
                             .map((user) => (
                                 <ListItemStyled key={user.id}>
-                                    <LinkStyled to={'/intern/editUser/' + user.uuid}>{user.realname}</LinkStyled>
+                                    <LinkStyled to={ROUTE_INTERN_EDIT_USER + user.uuid}>{user.realname}</LinkStyled>
                                 </ListItemStyled>
                             ))}
                     </ListStyled>

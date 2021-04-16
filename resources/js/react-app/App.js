@@ -4,6 +4,50 @@ import styled from 'styled-components';
 import Footer from './common/Footer';
 import Header from './common/Header';
 import PrivateRoute from './common/PrivateRoute';
+import {
+    ROUTE_HOME,
+    ROUTE_NEWS,
+    ROUTE_PROGRAM,
+    ROUTE_PROGRAM_OVERVIEW,
+    ROUTE_SERIALS,
+    ROUTE_ARCHIVE,
+    ROUTE_SCREENING,
+    ROUTE_SERIAL,
+    ROUTE_ABOUT,
+    ROUTE_FAQS,
+    ROUTE_PRESS,
+    ROUTE_AWARDS,
+    ROUTE_SELFMADE_FILMS,
+    ROUTE_CONTACT,
+    ROUTE_LINKS,
+    ROUTE_NOT_FOUND,
+    ROUTE_ERROR,
+    ROUTE_LOGIN,
+    ROUTE_INTERN,
+    ROUTE_INTERN_USERS,
+    ROUTE_INTERN_ADD_USER,
+    ROUTE_INTERN_EDIT_USER,
+    ROUTE_INTERN_BILLING,
+    ROUTE_INTERN_ADMISSIONS,
+    ROUTE_INTERN_DISTRIBUTORS,
+    ROUTE_INTERN_ADD_BILLING,
+    ROUTE_INTERN_EDIT_BILLING,
+    ROUTE_INTERN_ADD_NOTICE,
+    ROUTE_INTERN_EDIT_NOTICE,
+    ROUTE_INTERN_ADD_SCREENING,
+    ROUTE_INTERN_EDIT_SCREENING,
+    ROUTE_INTERN_ADD_SERIAL,
+    ROUTE_INTERN_EDIT_SERIAL,
+    ROUTE_INTERN_ADD_IMAGE,
+    ROUTE_INTERN_EDIT_IMAGE,
+    ROUTE_INTERN_ADD_DISTRIBUTOR,
+    ROUTE_INTERN_EDIT_DISTRIBUTOR,
+    ROUTE_INTERN_ADD_FAQ,
+    ROUTE_INTERN_EDIT_FAQ,
+    ROUTE_INTERN_ADD_SELFMADE_FILM,
+    ROUTE_INTERN_EDIT_SELFMADE_FILM,
+    ROUTE_INTERN_EDIT_TEXT,
+} from './constants';
 import Context from './Context';
 import AboutPage from './pages/AboutPage';
 import ArchivePage from './pages/ArchivePage';
@@ -82,142 +126,139 @@ export default function App() {
                 <Router>
                     <Header />
                     <Switch>
-                        <Route exact path="/">
+                        <Route exact path={ROUTE_HOME}>
                             <HomePage />
                         </Route>
-                        <Route exact path="/news">
+                        <Route exact path={ROUTE_NEWS}>
                             <NoticesPage />
                         </Route>
                         <Route path="/news/">
                             <NoticePage />
                         </Route>
-                        <Route exact path="/program">
+                        <Route exact path={ROUTE_PROGRAM}>
                             <ProgramPage />
                         </Route>
-                        <Route exact path="/program/overview">
+                        <Route exact path={ROUTE_PROGRAM_OVERVIEW}>
                             <ProgramOverviewPage />
                         </Route>
-                        <Route exact path="/program/archive">
+                        <Route exact path={ROUTE_ARCHIVE}>
                             <ArchivePage />
                         </Route>
-                        <Route path="/screening">
+                        <Route path={ROUTE_SCREENING}>
                             <ScreeningPage />
                         </Route>
-                        <Route exact path="/program/serials">
+                        <Route exact path={ROUTE_SERIALS}>
                             <SerialsPage />
                         </Route>
-                        <Route path="/serial">
+                        <Route path={ROUTE_SERIAL}>
                             <SerialPage />
                         </Route>
-                        <Route exact path="/about">
+                        <Route exact path={ROUTE_ABOUT}>
                             <AboutPage />
                         </Route>
-                        <Route exact path="/faqs">
+                        <Route exact path={ROUTE_FAQS}>
                             <FaqsPage />
                         </Route>
-                        <Route exact path="/press">
+                        <Route exact path={ROUTE_PRESS}>
                             <PressReviewPage />
                         </Route>
-                        <Route exact path="/awards">
+                        <Route exact path={ROUTE_AWARDS}>
                             <AwardsPage />
                         </Route>
-                        <Route exact path="/videos">
+                        <Route exact path={ROUTE_SELFMADE_FILMS}>
                             <VideosPage />
                         </Route>
-                        <Route exact path="/contact">
+                        <Route exact path={ROUTE_CONTACT}>
                             <ContactPage />
                         </Route>
-                        <Route exact path="/links">
+                        <Route exact path={ROUTE_LINKS}>
                             <LinksPage />
                         </Route>
-                        <Route exact path="/login">
+                        <Route exact path={ROUTE_LOGIN}>
                             <LoginPage />
                         </Route>
-                        <PrivateRoute exact path="/intern">
+                        <PrivateRoute exact path={ROUTE_INTERN}>
                             <InternPage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/users">
+                        <PrivateRoute exact path={ROUTE_INTERN_USERS}>
                             <UsersPage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/addUser">
+                        <PrivateRoute exact path={ROUTE_INTERN_ADD_USER}>
                             <AddUserPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editUser">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_USER}>
                             <EditUserPage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/addSerial">
+                        <PrivateRoute exact path={ROUTE_INTERN_ADD_SERIAL}>
                             <AddSerialPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editSerial">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_SERIAL}>
                             <EditSerialPage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/addScreening">
+                        <PrivateRoute exact path={ROUTE_INTERN_ADD_SCREENING}>
                             <AddScreeningPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editScreening">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_SCREENING}>
                             <EditScreeningPage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/addNotice">
+                        <PrivateRoute exact path={ROUTE_INTERN_ADD_NOTICE}>
                             <AddNoticePage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editNotice">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_NOTICE}>
                             <EditNoticePage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/addImage">
+                        <PrivateRoute path={ROUTE_INTERN_ADD_IMAGE}>
                             <AddImagePage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editImage">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_IMAGE}>
                             <EditImagePage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/addFaq">
+                        <PrivateRoute exact path={ROUTE_INTERN_ADD_FAQ}>
                             <AddFaqPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editFaq">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_FAQ}>
                             <EditFaqPage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/addVideo">
+                        <PrivateRoute exact path={ROUTE_INTERN_ADD_SELFMADE_FILM}>
                             <AddVideoPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editVideo">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_SELFMADE_FILM}>
                             <EditVideoPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editText">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_TEXT}>
                             <EditTextPage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/admissions">
+                        <PrivateRoute exact path={ROUTE_INTERN_ADMISSIONS}>
                             <AdmissionsPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/billing">
+                        <PrivateRoute path={ROUTE_INTERN_BILLING}>
                             <BillingPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/addBilling">
+                        <PrivateRoute path={ROUTE_INTERN_ADD_BILLING}>
                             <AddBillingPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editBilling">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_BILLING}>
                             <EditBillingPage />
                         </PrivateRoute>
                         <PrivateRoute path="/intern/tempPdf">
                             <TempPdfPage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/distributors">
+                        <PrivateRoute exact path={ROUTE_INTERN_DISTRIBUTORS}>
                             <DistributorsPage />
                         </PrivateRoute>
-                        <PrivateRoute exact path="/intern/distributors">
-                            <DistributorsPage />
-                        </PrivateRoute>
-                        <PrivateRoute exact path="/intern/addDistributor">
+                        <PrivateRoute exact path={ROUTE_INTERN_ADD_DISTRIBUTOR}>
                             <AddDistributorPage />
                         </PrivateRoute>
-                        <PrivateRoute path="/intern/editDistributor">
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_DISTRIBUTOR}>
                             <EditDistributorPage />
                         </PrivateRoute>
-                        <Route path="/error">
+                        <Route path={ROUTE_ERROR}>
                             <ErrorPage />
                         </Route>
-                        <Route path="/404">
+                        <Route path={ROUTE_NOT_FOUND}>
                             <NotFoundPage />
                         </Route>
-                        <Redirect to="/404" />
+                        <Redirect to={ROUTE_NOT_FOUND} />
                     </Switch>
                     <Footer />
                 </Router>

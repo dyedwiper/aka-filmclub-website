@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { AUTH_LEVEL_EDITOR } from '../constants';
+import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../constants';
 import Context from '../Context';
 import { HorizontalRuleStyled } from './styledElements';
 
@@ -17,7 +17,7 @@ export default function VideoContainer({ video }) {
             </IFrameContainerStyled>
             <TitleStyled>{video.title}</TitleStyled>
             {video.description && <DescriptionStyled>{video.description}</DescriptionStyled>}
-            {isAuthorized && <LinkStyled to={'/intern/editVideo/' + video.uuid}>Bearbeiten</LinkStyled>}
+            {isAuthorized && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + video.uuid}>Bearbeiten</LinkStyled>}
         </VideoContainerStyled>
     );
 }

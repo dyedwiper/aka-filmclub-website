@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { STORAGE_FOLDER } from '../../constants';
+import { ROUTE_SCREENING, STORAGE_FOLDER } from '../../constants';
 import { formatToDateString } from '../../utils/dateFormatters';
 
 export default function ScreeningCard({ screening }) {
     return (
         <ScreeningCardStyled>
-            <Link to={'/screening/' + screening.uuid}>
+            <Link to={ROUTE_SCREENING + screening.uuid}>
                 <ImageContainerStyled>
                     {screening.image && <ImageStyled src={STORAGE_FOLDER + screening.image.path} />}
                     <TitleStyled>{screening.title}</TitleStyled>

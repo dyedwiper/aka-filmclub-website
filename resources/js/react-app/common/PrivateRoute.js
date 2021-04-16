@@ -6,5 +6,5 @@ export default function PrivateRoute({ children }) {
     const { user } = useContext(Context);
     const loggedIn = Object.keys(user).length !== 0;
 
-    return <Route>{loggedIn ? children : <Redirect to="/login" />}</Route>;
+    return <Route>{loggedIn ? children : <Redirect to={ROUTE_LOGIN} />}</Route>;
 }

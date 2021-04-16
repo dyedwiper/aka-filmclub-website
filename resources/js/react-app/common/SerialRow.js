@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { STORAGE_FOLDER } from '../constants';
+import { ROUTE_SERIAL, STORAGE_FOLDER } from '../constants';
 import { HorizontalRuleStyled } from './styledElements';
 
 export default function SerialRow({ serial }) {
@@ -9,11 +9,11 @@ export default function SerialRow({ serial }) {
         <SerialRowStyled>
             <HorizontalRuleStyled />
             <SerialContainerStyled>
-                <LinkStyled to={'/serial/' + serial.uuid}>
+                <LinkStyled to={ROUTE_SERIAL + serial.uuid}>
                     {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
                 </LinkStyled>
                 <InfoContainerStyled>
-                    <LinkStyled to={'/serial/' + serial.uuid}>
+                    <LinkStyled to={ROUTE_SERIAL + serial.uuid}>
                         <TitleStyled>{serial.title}</TitleStyled>
                     </LinkStyled>
                     <SubTitleStyled>{serial.subtitle}</SubTitleStyled>

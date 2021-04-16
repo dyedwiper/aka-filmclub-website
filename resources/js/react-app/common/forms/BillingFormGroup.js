@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ROUTE_INTERN_DISTRIBUTORS } from '../../constants';
 import { toEuro } from '../../utils/moneyFormatters';
 import DistributorSelect from './DistributorSelect';
 import StackInputsRow from './StackInputsRow';
@@ -19,7 +20,7 @@ export default function BillingFormGroup({ screening, billing }) {
             {screening && <input type="hidden" name="screening_id" value={screening.id} />}
             <DistributorRowStyled>
                 <LabelStyled>
-                    Verleih (<Link to="/intern/distributors">Übersicht der Verleihe</Link>)
+                    Verleih (<Link to={ROUTE_INTERN_DISTRIBUTORS}>Übersicht der Verleihe</Link>)
                     <DistributorSelect defaultDistributor={billing && billing.distributor} />
                 </LabelStyled>
                 <LabelStyled>
