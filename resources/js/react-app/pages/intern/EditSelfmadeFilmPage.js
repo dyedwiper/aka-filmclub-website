@@ -1,29 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react';
 import BaseForm from '../../common/forms/BaseForm';
-import VideoFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
+import SelfmadeFilmFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { deleteVideo, getVideoByUuid, postVideo } from '../../utils/services/selfmadeFilmServices';
+import { deleteSelfmadeFilm, getSelfmadeFilmByUuid, postSelfmadeFilm } from '../../utils/services/selfmadeFilmServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import LoadingPage from '../LoadingPage';
 
-export default function EditVideoPage() {
-    const [video, setVideo] = useState([]);
+export default function EditSelfmadeFilmPage() {
+    const [film, setFilm] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const { pageTitle, setPageTitle } = useContext(Context);
 
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
-        getVideoByUuid(uuid).then((res) => {
-            setVideo(res.data);
-            setIsLoading(false);
-        });
+        document.title = 'Eigenproduktion bearbeiten | aka-Filmclub';
+        setPageTitle('Eigenproduktion bearbeiten');
     }, []);
 
     useEffect(() => {
-        document.title = 'Eigenproduktion bearbeiten | aka-Filmclub';
-        setPageTitle('Eigenproduktion bearbeiten');
+        const uuid = getLastParameterFromPath();
+        getSelfmadeFilmByUuid(uuid).then((res) => {
+            setFilm(res.data);
+            setIsLoading(false);
+        });
     }, []);
 
     if (isLoading) return <LoadingPage />;
@@ -31,12 +31,12 @@ export default function EditVideoPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <BaseForm postFunction={postVideo} deleteFunction={deleteVideo} isEditing={true}>
+            <BaseForm postFunction={postSelfmadeFilm} deleteFunction={deleteSelfmadeFilm} isEditing={true}>
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />
-                <input name="uuid" type="hidden" defaultValue={video.uuid} />
-                <VideoFormGroup video={video} />
+                <input name="uuid" type="hidden" defaultValue={film.uuid} />
+                <SelfmadeFilmFormGroup film={film} />
             </BaseForm>
         </PageStyled>
     );

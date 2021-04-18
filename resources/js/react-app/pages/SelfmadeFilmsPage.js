@@ -1,14 +1,14 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AddItemLinkStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import VideoContainer from '../common/SelfmadeFilmContainer';
+import SelfmadeFilmContainer from '../common/SelfmadeFilmContainer';
 import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_ADD_SELFMADE_FILM } from '../constants';
 import Context from '../Context';
-import { getVideos } from '../utils/services/selfmadeFilmServices';
+import { getSelfmadeFilms } from '../utils/services/selfmadeFilmServices';
 import LoadingPage from './LoadingPage';
 
-export default function VideosPage() {
-    const [videos, setVideos] = useState([]);
+export default function SelfmadeFilmsPage() {
+    const [films, setFilms] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     const { user, pageTitle, setPageTitle } = useContext(Context);
@@ -21,8 +21,8 @@ export default function VideosPage() {
     }, []);
 
     useEffect(() => {
-        getVideos().then((res) => {
-            setVideos(res.data);
+        getSelfmadeFilms().then((res) => {
+            setFilms(res.data);
             setIsLoading(false);
         });
     }, []);
@@ -33,15 +33,15 @@ export default function VideosPage() {
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             {isAuthorized && (
-                <AddItemLinkStyled to={ROUTE_INTERN_ADD_SELFMADE_FILM}>Video hinzufügen</AddItemLinkStyled>
+                <AddItemLinkStyled to={ROUTE_INTERN_ADD_SELFMADE_FILM}>Eigenproduktion hinzufügen</AddItemLinkStyled>
             )}
-            <VideosListStyled>
-                {videos.map((video) => (
-                    <VideoContainer key={video.id} video={video} />
+            <FilmsListStyled>
+                {films.map((film) => (
+                    <SelfmadeFilmContainer key={film.id} film={film} />
                 ))}
-            </VideosListStyled>
+            </FilmsListStyled>
         </PageStyled>
     );
 }
 
-const VideosListStyled = styled.ul``;
+const FilmsListStyled = styled.ul``;

@@ -1,11 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import BaseForm from '../../common/forms/BaseForm';
-import VideoFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
+import SelfmadeFilmFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { postVideo } from '../../utils/services/selfmadeFilmServices';
+import { postSelfmadeFilm } from '../../utils/services/selfmadeFilmServices';
 
-export default function AddVideoPage() {
+export default function AddSelfmadeFilmPage() {
     const { pageTitle, setPageTitle } = useContext(Context);
 
     useEffect(() => {
@@ -16,8 +16,8 @@ export default function AddVideoPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <BaseForm postFunction={postVideo}>
-                <VideoFormGroup />
+            <BaseForm postFunction={postSelfmadeFilm}>
+                <SelfmadeFilmFormGroup />
             </BaseForm>
         </PageStyled>
     );

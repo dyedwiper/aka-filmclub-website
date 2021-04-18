@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PositionSelect from './PositionSelect';
 
-export default function VideoFormGroup({ video }) {
+export default function SelfmadeFilmFormGroup({ film }) {
     return (
         <VideoFormGroupStyled>
             <LabelStyled>
@@ -10,20 +10,20 @@ export default function VideoFormGroup({ video }) {
                 <HintSyled>
                     Hinweis: Der Link muss die Form <em>https://player.vimeo.com/video/467070172</em> haben.
                 </HintSyled>
-                <InputStyled name="source" defaultValue={video && video.source} />
+                <InputStyled name="source" defaultValue={film && film.source} />
             </LabelStyled>
             <LabelStyled>
                 Titel
-                <InputStyled name="title" defaultValue={video && video.title} />
+                <InputStyled name="title" defaultValue={film && film.title} />
             </LabelStyled>
             <LabelStyled>
                 Beschreibung (optional)
-                <TextareaStyled name="description" defaultValue={video && video.description} />
+                <TextareaStyled name="synopsis" defaultValue={film && film.synopsis} />
             </LabelStyled>
-            {video && (
+            {film && (
                 <PositionLabelStyled>
                     Position
-                    <PositionSelect type="video" defaultPosition={video.position} />
+                    <PositionSelect type="selfmadeFilm" defaultPosition={film.position} />
                 </PositionLabelStyled>
             )}
         </VideoFormGroupStyled>

@@ -1,17 +1,17 @@
 import { makeApiCall } from './baseService';
 
-export function getVideos() {
-    return makeApiCall('/api/videos');
+export function getSelfmadeFilms() {
+    return makeApiCall('/api/selfmadeFilms');
 }
 
-export function getVideoByUuid(uuid) {
-    return makeApiCall('/api/videos/uuid/' + uuid);
+export function getSelfmadeFilmByUuid(uuid) {
+    return makeApiCall('/api/selfmadeFilms/uuid/' + uuid);
 }
 
-export function postVideo(data) {
-    return makeApiCall('/api/videos', 'POST', data);
+export function postSelfmadeFilm(data) {
+    return makeApiCall('/api/selfmadeFilms', 'POST', data);
 }
 
-export function deleteVideo(uuid) {
-    return makeApiCall('/api/videos/uuid/' + uuid, 'DELETE');
+export function deleteSelfmadeFilm(uuid) {
+    return makeApiCall('/api/selfmadeFilms/uuid/' + uuid, 'DELETE');
 }

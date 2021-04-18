@@ -5,24 +5,24 @@ import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../constants
 import Context from '../Context';
 import { HorizontalRuleStyled } from './styledElements';
 
-export default function VideoContainer({ video }) {
+export default function SelfmadeFilmContainer({ film }) {
     const { user } = useContext(Context);
     const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
 
     return (
-        <VideoContainerStyled>
+        <SelfmadeFilmContainerStyled>
             <HorizontalRuleStyled />
             <IFrameContainerStyled>
-                <IFrameStyled src={video.source} allow="fullscreen; picture-in-picture" />
+                <IFrameStyled src={film.source} allow="fullscreen; picture-in-picture" />
             </IFrameContainerStyled>
-            <TitleStyled>{video.title}</TitleStyled>
-            {video.description && <DescriptionStyled>{video.description}</DescriptionStyled>}
-            {isAuthorized && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + video.uuid}>Bearbeiten</LinkStyled>}
-        </VideoContainerStyled>
+            <TitleStyled>{film.title}</TitleStyled>
+            {film.synopsis && <DescriptionStyled>{film.synopsis}</DescriptionStyled>}
+            {isAuthorized && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + film.uuid}>Bearbeiten</LinkStyled>}
+        </SelfmadeFilmContainerStyled>
     );
 }
 
-const VideoContainerStyled = styled.li`
+const SelfmadeFilmContainerStyled = styled.li`
     margin: 20px 0 40px 0;
 `;
 
