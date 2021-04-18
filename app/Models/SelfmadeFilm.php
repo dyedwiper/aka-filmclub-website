@@ -5,14 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Video extends Model
+class SelfmadeFilm extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'uuid',
         'title',
-        'description',
+        'synopsis',
+        'directed_by',
+        'written_by',
+        'music_by',
+        'shot_by',
+        'edited_by',
+        'cast',
+        'country',
+        'year',
+        'length',
         'source',
         'position'
     ];
