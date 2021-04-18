@@ -6,10 +6,10 @@ use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ScreeningController;
+use App\Http\Controllers\SelfmadeFilmController;
 use App\Http\Controllers\SerialController;
 use App\Http\Controllers\TextController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\VideoController;
 use App\Models\Screening;
 use Illuminate\Support\Facades\Route;
 
@@ -229,25 +229,25 @@ Route::prefix('faqs')->group(function () {
     ]);
 });
 
-Route::prefix('videos')->group(function () {
+Route::prefix('selfmadeFilms')->group(function () {
     Route::get('/', [
-        VideoController::class, 'GetVideos'
+        SelfmadeFilmController::class, 'GetSelfmadeFilms'
     ]);
 
     Route::get('/uuid/{uuid}', [
-        VideoController::class, 'GetVideoByUuid'
+        SelfmadeFilmController::class, 'GetSelfmadeFilmByUuid'
     ]);
 
     Route::middleware('auth:sanctum')->post('/', [
-        VideoController::class, 'PostVideo'
+        SelfmadeFilmController::class, 'PostSelfmadeFilm'
     ]);
 
     Route::middleware('auth:sanctum')->patch('/', [
-        VideoController::class, 'PatchVideo'
+        SelfmadeFilmController::class, 'PatchSelfmadeFilm'
     ]);
 
     Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
-        VideoController::class, 'DeleteVideo'
+        SelfmadeFilmController::class, 'DeleteSelfmadeFilm'
     ]);
 });
 

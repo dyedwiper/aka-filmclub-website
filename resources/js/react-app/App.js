@@ -64,7 +64,7 @@ import AddNoticePage from './pages/intern/AddNoticePage';
 import AddScreeningPage from './pages/intern/AddScreeningPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import AddUserPage from './pages/intern/AddUserPage';
-import AddVideoPage from './pages/intern/AddVideoPage';
+import AddSelfmadeFilmPage from './pages/intern/AddSelfmadeFilmPage';
 import AdmissionsPage from './pages/intern/AdmissionsPage';
 import BillingPage from './pages/intern/BillingPage';
 import DistributorsPage from './pages/intern/DistributorsPage';
@@ -77,7 +77,7 @@ import EditScreeningPage from './pages/intern/EditScreeningPage';
 import EditSerialPage from './pages/intern/EditSerialPage';
 import EditTextPage from './pages/intern/EditTextPage';
 import EditUserPage from './pages/intern/EditUserPage';
-import EditVideoPage from './pages/intern/EditVideoPage';
+import EditSelfmadeFilmPage from './pages/intern/EditSelfmadeFilmPage';
 import InternPage from './pages/intern/InternPage';
 import TempPdfPage from './pages/intern/TempPdfPage';
 import UsersPage from './pages/intern/UsersPage';
@@ -93,7 +93,7 @@ import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
-import VideosPage from './pages/VideosPage';
+import SelfmadeFilmsPage from './pages/SelfmadeFilmsPage';
 import { getCurrentUser } from './utils/services/userServices';
 
 export default function App() {
@@ -166,7 +166,7 @@ export default function App() {
                             <AwardsPage />
                         </Route>
                         <Route exact path={ROUTE_SELFMADE_FILMS}>
-                            <VideosPage />
+                            <SelfmadeFilmsPage />
                         </Route>
                         <Route exact path={ROUTE_CONTACT}>
                             <ContactPage />
@@ -220,10 +220,10 @@ export default function App() {
                             <EditFaqPage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_SELFMADE_FILM}>
-                            <AddVideoPage />
+                            <AddSelfmadeFilmPage />
                         </PrivateRoute>
                         <PrivateRoute path={ROUTE_INTERN_EDIT_SELFMADE_FILM}>
-                            <EditVideoPage />
+                            <EditSelfmadeFilmPage />
                         </PrivateRoute>
                         <PrivateRoute path={ROUTE_INTERN_EDIT_TEXT}>
                             <EditTextPage />

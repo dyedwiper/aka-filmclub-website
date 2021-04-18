@@ -3,7 +3,7 @@ import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { positionSelectStyles } from '../../styles/customSelectStyles';
 import { getFaqs } from '../../utils/services/faqServices';
-import { getVideos } from '../../utils/services/videoServices';
+import { getSelfmadeFilms } from '../../utils/services/selfmadeFilmServices';
 
 export default function PositionSelect({ type, defaultPosition }) {
     const [positionOptions, setPositionOptions] = useState([]);
@@ -15,8 +15,8 @@ export default function PositionSelect({ type, defaultPosition }) {
             getFaqs().then((res) => {
                 setItems(res.data);
             });
-        } else if (type === 'video') {
-            getVideos().then((res) => {
+        } else if (type === 'selfmadeFilm') {
+            getSelfmadeFilms().then((res) => {
                 setItems(res.data);
             });
         }
