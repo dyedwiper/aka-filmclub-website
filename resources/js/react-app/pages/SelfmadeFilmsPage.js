@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AddItemLinkStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import VideoContainer from '../common/VideoContainer';
+import VideoContainer from '../common/SelfmadeFilmContainer';
 import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_ADD_SELFMADE_FILM } from '../constants';
 import Context from '../Context';
-import { getVideos } from '../utils/services/videoServices';
+import { getVideos } from '../utils/services/selfmadeFilmServices';
 import LoadingPage from './LoadingPage';
 
 export default function VideosPage() {

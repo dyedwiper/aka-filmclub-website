@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import BaseForm from '../../common/forms/BaseForm';
-import VideoFormGroup from '../../common/forms/VideoFormGroup';
+import VideoFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
-import { deleteVideo, getVideoByUuid, postVideo } from '../../utils/services/videoServices';
+import { deleteVideo, getVideoByUuid, postVideo } from '../../utils/services/selfmadeFilmServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import LoadingPage from '../LoadingPage';
 
@@ -22,8 +22,8 @@ export default function EditVideoPage() {
     }, []);
 
     useEffect(() => {
-        document.title = 'Video bearbeiten | aka-Filmclub';
-        setPageTitle('Video bearbeiten');
+        document.title = 'Eigenproduktion bearbeiten | aka-Filmclub';
+        setPageTitle('Eigenproduktion bearbeiten');
     }, []);
 
     if (isLoading) return <LoadingPage />;
