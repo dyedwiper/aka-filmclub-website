@@ -15,7 +15,7 @@ import {
     STORAGE_FOLDER,
 } from '../constants';
 import Context from '../Context';
-import { formatToDateTimeString } from '../utils/dateFormatters';
+import { formatToDateTimeStringWithWeekday } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getScreeningByUuid } from '../utils/services/screeningServices';
 import LoadingPage from './LoadingPage';
@@ -55,13 +55,13 @@ export default function ScreeningPage() {
                     <ImageStyled src={STORAGE_FOLDER + screening.image.path} />
                     <TitleContainerStyled>
                         <TitleStyled>{screening.title}</TitleStyled>
-                        <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
+                        <DateStyled>{formatToDateTimeStringWithWeekday(screening.date)}</DateStyled>
                     </TitleContainerStyled>
                 </ImageContainerStyled>
             ) : (
                 <>
                     <FallbackTitleStyled>{screening.title}</FallbackTitleStyled>
-                    <FallbackDateStyled>{formatToDateTimeString(screening.date)}</FallbackDateStyled>
+                    <FallbackDateStyled>{formatToDateTimeStringWithWeekday(screening.date)}</FallbackDateStyled>
                 </>
             )}
             <TextContainerStyled>

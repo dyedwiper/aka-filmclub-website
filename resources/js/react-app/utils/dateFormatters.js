@@ -8,6 +8,10 @@ export function formatToDateString(date) {
     });
 }
 
+export function formatToDateStringWithWeekday(date) {
+    return getWeekdayAbbreviation(date) + ' ' + formatToDateString(date);
+}
+
 export function formatToDateTimeString(date) {
     return new Date(date.replace(' ', 'T')).toLocaleDateString('de-DE', {
         day: '2-digit',
@@ -16,6 +20,10 @@ export function formatToDateTimeString(date) {
         hour: '2-digit',
         minute: '2-digit',
     });
+}
+
+export function formatToDateTimeStringWithWeekday(date) {
+    return getWeekdayAbbreviation(date) + ' ' + formatToDateTimeString(date);
 }
 
 export function formatToTimeString(date) {
@@ -41,4 +49,10 @@ export function formatToIcsString(date, surplusMinutes = 0) {
 
 function addMinutes(date, minutes) {
     return new Date(date.getTime() + minutes * 60000);
+}
+
+export function getWeekdayAbbreviation(date) {
+    const weekdays = ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'];
+    const weekdayNumber = new Date(date.replace(' ', 'T')).getDay();
+    return weekdays[weekdayNumber];
 }

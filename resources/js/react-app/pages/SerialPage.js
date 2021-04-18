@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,
@@ -8,11 +9,9 @@ import {
     ROUTE_INTERN_EDIT_IMAGE,
     ROUTE_INTERN_EDIT_SERIAL,
     ROUTE_NOT_FOUND,
-    ROUTE_SCREENING,
     STORAGE_FOLDER,
 } from '../constants';
 import Context from '../Context';
-import { formatToDateString } from '../utils/dateFormatters';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getSerialByUuid } from '../utils/services/serialServices';
 import LoadingPage from './LoadingPage';
@@ -67,12 +66,7 @@ export default function SerialPage() {
                 <HorizontalRuleStyled />
                 <ScreeningsListStyled>
                     {serial.screenings.map((screening) => (
-                        <ScreeningListItemStyled key={screening.id}>
-                            <ScreeningDateStyled>{formatToDateString(screening.date)}</ScreeningDateStyled>
-                            <ScreeningTitleLinkStyled to={ROUTE_SCREENING + screening.uuid}>
-                                {screening.title}
-                            </ScreeningTitleLinkStyled>
-                        </ScreeningListItemStyled>
+                        <ScreeningsListItem key={screening.id} screening={screening} />
                     ))}
                 </ScreeningsListStyled>
                 {isAuthorized && (
@@ -136,21 +130,6 @@ const TextContainerStyled = styled.div`
 `;
 
 const ScreeningsListStyled = styled.ul``;
-
-const ScreeningListItemStyled = styled.li`
-    display: grid;
-    grid-template-columns: 95px minmax(0, 1fr);
-    margin: 5px 0;
-`;
-
-const ScreeningDateStyled = styled.div``;
-
-const ScreeningTitleLinkStyled = styled(Link)`
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    font-weight: bold;
-`;
 
 const ArticleStyled = styled.div``;
 

@@ -43,7 +43,7 @@ class ScreeningController extends Controller
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
                 ->whereMonth('date', '<', 4)
-                ->orderByDesc('date')
+                ->orderBy('date')
                 ->get();
         }
 
@@ -51,7 +51,7 @@ class ScreeningController extends Controller
             return Screening::whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)
-                ->orderByDesc('date')
+                ->orderBy('date')
                 ->get();
         }
     }
