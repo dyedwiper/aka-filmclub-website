@@ -28,7 +28,15 @@ class SelfmadeFilmFormRequest extends FormRequest
     {
         return [
             'title' => 'required|max:255',
-            'description' => 'max:65535',
+            'synopsis' => 'max:65535',
+            'directedBy' => 'max:255',
+            'writtenBy' => 'max:255',
+            'musicBy' => 'max:255',
+            'shotBy' => 'max:255',
+            'cast' => 'max:255',
+            'country' => 'max:255',
+            'year' => 'max:255',
+            'length' => 'nullable|integer',
             'source' => 'required|max:255',
             'position' => 'nullable|integer',
         ];
@@ -38,7 +46,15 @@ class SelfmadeFilmFormRequest extends FormRequest
     {
         return [
             'title' => 'Titel',
-            'description' => 'Beschreibung',
+            'synopsis' => 'Beschreibung',
+            'directedBy' => 'Regie',
+            'writtenBy' => 'Drehbuch',
+            'musicBy' => 'Musik',
+            'shotBy' => 'Kamera',
+            'cast' => 'Besetzung',
+            'country' => 'Produktionsländer',
+            'year' => 'Erscheinungsjahr',
+            'length' => 'Länge',
             'source' => 'Link',
             'position' => 'Position',
         ];
