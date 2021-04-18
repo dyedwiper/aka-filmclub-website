@@ -29,6 +29,7 @@ class SelfmadeFilmController extends Controller
             'written_by' => $request->writtenBy,
             'music_by' => $request->musicBy,
             'shot_by' => $request->shotBy,
+            'edited_by' => $request->editedBy,
             'cast' => $request->cast,
             'country' => $request->country,
             'year' => $request->year,
@@ -49,6 +50,7 @@ class SelfmadeFilmController extends Controller
         $selfmadeFilm->written_by = $request->writtenBy;
         $selfmadeFilm->music_by = $request->musicBy;
         $selfmadeFilm->shot_by = $request->shotBy;
+        $selfmadeFilm->edited_by = $request->editedBy;
         $selfmadeFilm->cast = $request->cast;
         $selfmadeFilm->country = $request->country;
         $selfmadeFilm->year = $request->year;
