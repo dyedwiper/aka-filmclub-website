@@ -7,6 +7,7 @@ import { getNoticeByUuid } from '../../utils/services/noticeServices';
 import LoadingPage from '../LoadingPage';
 import NoticeFormGroup from '../../common/forms/NoticeFormGroup';
 import styled from 'styled-components';
+import { ROUTE_NEWS, ROUTE_NOTICE } from '../../constants';
 
 export default function EditNoticePage() {
     const [notice, setNotice] = useState({});
@@ -25,7 +26,13 @@ export default function EditNoticePage() {
     return (
         <PageStyled>
             <HeadlineStyled>News bearbeiten</HeadlineStyled>
-            <BaseForm postFunction={postNotice} deleteFunction={deleteNotice} isEditing={true}>
+            <BaseForm
+                postFunction={postNotice}
+                deleteFunction={deleteNotice}
+                isEditing={true}
+                postRedirectRoute={ROUTE_NOTICE + notice.uuid}
+                deleteRedirectRoute={ROUTE_NEWS}
+            >
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

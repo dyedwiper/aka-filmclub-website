@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import BaseForm from '../../common/forms/BaseForm';
 import BillingFormGroup from '../../common/forms/BillingFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import { ROUTE_INTERN_ADMISSIONS } from '../../constants';
 import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { postBilling } from '../../utils/services/billingServices';
@@ -31,7 +32,7 @@ export default function AddBillingPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <BaseForm postFunction={postBilling}>
+            <BaseForm postFunction={postBilling} postRedirectRoute={ROUTE_INTERN_ADMISSIONS}>
                 <BillingFormGroup screening={screening} />
             </BaseForm>
         </PageStyled>

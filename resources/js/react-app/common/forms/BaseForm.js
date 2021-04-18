@@ -6,13 +6,21 @@ import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { HorizontalRuleStyled } from '../styledElements';
 
-export default function BaseForm({ children, postFunction, deleteFunction, isEditing }) {
+export default function BaseForm({
+    children,
+    postFunction,
+    deleteFunction,
+    isEditing,
+    postRedirectRoute,
+    deleteRedirectRoute,
+}) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
     const [showDeletePrompt, setShowDeletePrompt] = useState(false);
 
     const { user: loggedInUser } = useContext(Context);
 
+    // Extra checks for user form.
     const userForm =
         children.length && children.find((child) => child.type.name && child.type.name === 'UserFormGroup');
     const isSelf = isEditing && userForm && userForm.props.user.id === loggedInUser.id;
@@ -83,10 +91,9 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
         const formElement = event.target.form;
         const formData = new FormData(formElement);
         postFunction(formData)
-            .then((res) => {
-                console.log(res.data);
+            .then(() => {
                 setIsSubmitting(false);
-                history.push('/intern');
+                history.push(postRedirectRoute);
             })
             .catch((err) => {
                 if (err.response.status === 422) {
@@ -100,9 +107,8 @@ export default function BaseForm({ children, postFunction, deleteFunction, isEdi
     function handleDelete() {
         const uuid = getLastParameterFromPath();
         deleteFunction(uuid)
-            .then((res) => {
-                console.log(res);
-                history.push('/intern');
+            .then(() => {
+                history.push(deleteRedirectRoute);
             })
             .catch((err) => {
                 console.log(err);

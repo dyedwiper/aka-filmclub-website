@@ -23,7 +23,7 @@ class ImageController extends Controller
 
     public function GetImageByUuid(string $uuid)
     {
-        return Image::where('uuid', $uuid)->first();
+        return Image::where('uuid', $uuid)->with('screening', 'serial', 'notice')->first();
     }
 
     public function PostImage(ImageFormRequest $request)

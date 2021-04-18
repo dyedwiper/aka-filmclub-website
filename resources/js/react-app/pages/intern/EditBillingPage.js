@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import BaseForm from '../../common/forms/BaseForm';
 import BillingFormGroup from '../../common/forms/BillingFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import { ROUTE_INTERN_ADMISSIONS, ROUTE_INTERN_BILLING } from '../../constants';
 import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getBillingByUuid, postBilling, deleteBilling } from '../../utils/services/billingServices';
@@ -33,7 +34,13 @@ export default function EditBillingPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <BaseForm postFunction={postBilling} deleteFunction={deleteBilling} isEditing={true}>
+            <BaseForm
+                postFunction={postBilling}
+                deleteFunction={deleteBilling}
+                isEditing={true}
+                postRedirectRoute={ROUTE_INTERN_BILLING + billing.uuid}
+                deleteRedirectRoute={ROUTE_INTERN_ADMISSIONS}
+            >
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />
