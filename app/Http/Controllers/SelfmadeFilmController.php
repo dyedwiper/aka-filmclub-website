@@ -2,45 +2,44 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\VideoFormRequest;
-use App\Models\Video;
-use Illuminate\Http\Request;
+use App\Http\Requests\SelfmadeFilmFormRequest;
+use App\Models\SelfmadeFilm;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
-class VideoController extends Controller
+class SelfmadeFilmController extends Controller
 {
     public function GetVideos()
     {
-        return Video::orderBy('position')->get();
+        return SelfmadeFilm::orderBy('position')->get();
     }
 
     public function GetVideoByUuid(string $uuid)
     {
-        return Video::firstWhere('uuid', $uuid);
+        return SelfmadeFilm::firstWhere('uuid', $uuid);
     }
 
-    public function PostVideo(VideoFormRequest $request)
+    public function PostVideo(SelfmadeFilmFormRequest $request)
     {
-        $video = new Video([
+        $video = new SelfmadeFilm([
             'uuid' => uniqid(),
             'title' => $request->title,
             'description' => $request->description,
             'source' => $request->source,
-            'position' => Video::all()->count(),
+            'position' => SelfmadeFilm::all()->count(),
         ]);
         $video->save();
         return $video;
     }
 
-    public function PatchVideo(VideoFormRequest $request)
+    public function PatchVideo(SelfmadeFilmFormRequest $request)
     {
-        $video = Video::firstWhere('uuid', $request->uuid);
+        $video = SelfmadeFilm::firstWhere('uuid', $request->uuid);
         $video->title = $request->title;
         $video->description = $request->description;
         $video->source = $request->source;
         if ($video->position > $request->position) {
-            $afterPositionedVideos = Video
+            $afterPositionedVideos = SelfmadeFilm
                 ::where('position', '>=', $request->position)
                 ->where('position', '<', $video->position)
                 ->get();
@@ -49,7 +48,7 @@ class VideoController extends Controller
                 $afterVideo->save();
             }
         } elseif ($video->position < $request->position) {
-            $beforePositionedVideos = Video
+            $beforePositionedVideos = SelfmadeFilm
                 ::where('position', '<=', $request->position)
                 ->where('position', '>', $video->position)
                 ->get();
@@ -67,8 +66,8 @@ class VideoController extends Controller
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
             abort(401);
         }
-        $video = Video::firstWhere('uuid', $uuid);
-        $afterPositionedVideos = Video::where('position', '>', $video->position)->get();
+        $video = SelfmadeFilm::firstWhere('uuid', $uuid);
+        $afterPositionedVideos = SelfmadeFilm::where('position', '>', $video->position)->get();
         foreach ($afterPositionedVideos as $afterVideo) {
             $afterVideo->position = $afterVideo->position - 1;
             $afterVideo->save();

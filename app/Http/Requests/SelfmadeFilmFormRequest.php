@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Config;
 
-class VideoFormRequest extends FormRequest
+class SelfmadeFilmFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
