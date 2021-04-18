@@ -8,89 +8,89 @@ export default function ScreeningFormGroup({ screening }) {
     return (
         <ScreeningFormGroupStyled>
             <FormRowWithTwoInputsStyled>
-                <LabelStyled>
+                <SmallInputLabelStyled>
                     Titel
                     <InputStyled name="title" defaultValue={screening && screening.title} />
-                </LabelStyled>
-                <LabelStyled>
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
                     Originaltitel
                     <InputStyled name="originalTitle" defaultValue={screening && screening.original_title} />
-                </LabelStyled>
+                </SmallInputLabelStyled>
             </FormRowWithTwoInputsStyled>
             <FormRowWithTwoInputsStyled>
-                <LabelStyled>
+                <SmallInputLabelStyled>
                     Datum
                     <InputStyled
                         name="day"
                         type="date"
                         defaultValue={screening && screening.date && formatToIsoDateString(screening.date)}
                     />
-                </LabelStyled>
-                <LabelStyled>
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
                     Uhrzeit
                     <InputStyled
                         name="time"
                         type="time"
                         defaultValue={screening && screening.date ? formatToTimeString(screening.date) : '20:00'}
                     />
-                </LabelStyled>
+                </SmallInputLabelStyled>
             </FormRowWithTwoInputsStyled>
             <LabelStyled>
                 Beschreibung
                 <WysiwygEditor inputName="synopsis" defaultValue={screening && screening.synopsis} />
             </LabelStyled>
             <FormRowWithTwoInputsStyled>
-                <LabelStyled>
+                <SmallInputLabelStyled>
                     Regie
                     <InputStyled name="directedBy" defaultValue={screening && screening.directed_by} />
-                </LabelStyled>
-                <LabelStyled>
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
                     Drehbuch
                     <InputStyled name="writtenBy" defaultValue={screening && screening.written_by} />
-                </LabelStyled>
+                </SmallInputLabelStyled>
             </FormRowWithTwoInputsStyled>
             <FormRowWithTwoInputsStyled>
-                <LabelStyled>
+                <SmallInputLabelStyled>
                     Musik
                     <InputStyled name="musicBy" defaultValue={screening && screening.music_by} />
-                </LabelStyled>
-                <LabelStyled>
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
                     Kamera
                     <InputStyled name="shotBy" defaultValue={screening && screening.shot_by} />
-                </LabelStyled>
+                </SmallInputLabelStyled>
             </FormRowWithTwoInputsStyled>
             <LabelStyled>
                 Besetzung
                 <InputStyled name="cast" defaultValue={screening && screening.cast} />
             </LabelStyled>
             <SmallInputsContainerStyled>
-                <LabelStyled>
+                <SmallInputLabelStyled>
                     Produktionsländer
                     <InputStyled name="country" defaultValue={screening && screening.country} />
-                </LabelStyled>
-                <LabelStyled>
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
                     Erscheinungsjahr
                     <InputStyled name="year" defaultValue={screening && screening.year} />
-                </LabelStyled>
-                <LabelStyled>
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
                     Länge in Minuten
                     <InputStyled name="length" defaultValue={screening && screening.length} />
-                </LabelStyled>
-                <LabelStyled>
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
                     Medium
                     <InputStyled name="medium" defaultValue={screening && screening.medium} />
-                </LabelStyled>
-                <LabelStyled>
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
                     Sprachfassung
                     <InputStyled name="version" defaultValue={screening && screening.version} />
-                </LabelStyled>
-                <LabelStyled>
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
                     Veranstaltungsort
                     <InputStyled
                         name="venue"
                         defaultValue={screening && screening.venue ? screening.venue : 'GHS Biologie'}
                     />
-                </LabelStyled>
+                </SmallInputLabelStyled>
             </SmallInputsContainerStyled>
             <LabelStyled>
                 Special
@@ -116,7 +116,11 @@ const ScreeningFormGroupStyled = styled.div``;
 
 const LabelStyled = styled.label`
     display: block;
-    margin: 10px 0;
+    margin: 20px 0;
+`;
+
+const SmallInputLabelStyled = styled.label`
+    display: block;
 `;
 
 const InputStyled = styled.input``;
@@ -129,13 +133,15 @@ const FormRowWithTwoInputsStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-gap: 20px;
+    margin: 20px 0;
 `;
 
 const SmallInputsContainerStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-rows: repeat(2, minmax(0, 1fr));
-    column-gap: 20px;
+    grid-gap: 20px;
+    margin: 20px 0;
 
     @media (max-width: 767px) {
         grid-template-columns: repeat(2, minmax(0, 1fr));
