@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import BaseForm from '../../common/forms/BaseForm';
 import FaqFormGroup from '../../common/forms/FaqFormGroup';
 import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import { ROUTE_FAQS } from '../../constants';
 import Context from '../../Context';
 import { postFaq } from '../../utils/services/faqServices';
 
@@ -16,7 +17,7 @@ export default function AddFaqPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <BaseForm postFunction={postFaq}>
+            <BaseForm postFunction={postFaq} postRedirectRoute={ROUTE_FAQS}>
                 <FaqFormGroup />
             </BaseForm>
         </PageStyled>

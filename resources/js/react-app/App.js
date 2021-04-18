@@ -47,6 +47,7 @@ import {
     ROUTE_INTERN_ADD_SELFMADE_FILM,
     ROUTE_INTERN_EDIT_SELFMADE_FILM,
     ROUTE_INTERN_EDIT_TEXT,
+    ROUTE_NOTICE,
 } from './constants';
 import Context from './Context';
 import AboutPage from './pages/AboutPage';
@@ -132,7 +133,7 @@ export default function App() {
                         <Route exact path={ROUTE_NEWS}>
                             <NoticesPage />
                         </Route>
-                        <Route path="/news/">
+                        <Route path={ROUTE_NOTICE}>
                             <NoticePage />
                         </Route>
                         <Route exact path={ROUTE_PROGRAM}>

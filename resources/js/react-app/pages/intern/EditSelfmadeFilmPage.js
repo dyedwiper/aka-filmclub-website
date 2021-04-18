@@ -6,6 +6,7 @@ import Context from '../../Context';
 import { deleteSelfmadeFilm, getSelfmadeFilmByUuid, postSelfmadeFilm } from '../../utils/services/selfmadeFilmServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import LoadingPage from '../LoadingPage';
+import { ROUTE_SELFMADE_FILMS } from '../../constants';
 
 export default function EditSelfmadeFilmPage() {
     const [film, setFilm] = useState([]);
@@ -31,7 +32,13 @@ export default function EditSelfmadeFilmPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <BaseForm postFunction={postSelfmadeFilm} deleteFunction={deleteSelfmadeFilm} isEditing={true}>
+            <BaseForm
+                postFunction={postSelfmadeFilm}
+                deleteFunction={deleteSelfmadeFilm}
+                isEditing={true}
+                postRedirectRoute={ROUTE_SELFMADE_FILMS}
+                deleteRedirectRoute={ROUTE_SELFMADE_FILMS}
+            >
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

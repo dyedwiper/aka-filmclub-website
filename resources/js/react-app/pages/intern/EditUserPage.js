@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BaseForm from '../../common/forms/BaseForm';
 import UserFormGroup from '../../common/forms/UserFormGroup';
 import { PageStyled } from '../../common/styledElements';
+import { ROUTE_INTERN_USERS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteUser, getUserByUuid, postUser } from '../../utils/services/userServices';
 import LoadingPage from '../LoadingPage';
@@ -24,7 +25,13 @@ export default function EditUserPage() {
     return (
         <PageStyled>
             <HeadlineStyled>Mitglied bearbeiten</HeadlineStyled>
-            <BaseForm postFunction={postUser} deleteFunction={deleteUser} isEditing={true}>
+            <BaseForm
+                postFunction={postUser}
+                deleteFunction={deleteUser}
+                isEditing={true}
+                postRedirectRoute={ROUTE_INTERN_USERS}
+                deleteRedirectRoute={ROUTE_INTERN_USERS}
+            >
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

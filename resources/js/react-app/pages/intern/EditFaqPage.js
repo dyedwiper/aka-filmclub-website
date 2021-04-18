@@ -6,6 +6,7 @@ import Context from '../../Context';
 import { deleteFaq, getFaqByUuid, postFaq } from '../../utils/services/faqServices';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import LoadingPage from '../LoadingPage';
+import { ROUTE_FAQS } from '../../constants';
 
 export default function EditFaqPage() {
     const [faq, setFaq] = useState({});
@@ -31,7 +32,13 @@ export default function EditFaqPage() {
     return (
         <PageStyled>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <BaseForm postFunction={postFaq} deleteFunction={deleteFaq} isEditing={true}>
+            <BaseForm
+                postFunction={postFaq}
+                deleteFunction={deleteFaq}
+                isEditing={true}
+                postRedirectRoute={ROUTE_FAQS}
+                deleteRedirectRoute={ROUTE_FAQS}
+            >
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />

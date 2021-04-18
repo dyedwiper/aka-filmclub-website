@@ -15,4 +15,19 @@ class Image extends Model
         'alt_text',
         'copyright'
     ];
+
+    public function screening()
+    {
+        return $this->hasOne(Screening::class);
+    }
+
+    public function serial()
+    {
+        return $this->hasOne(Serial::class);
+    }
+
+    public function notice()
+    {
+        return $this->hasOne(Notice::class);
+    }
 }
