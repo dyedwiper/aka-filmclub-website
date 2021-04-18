@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../constants';
 import Context from '../Context';
+import CreditsContainer from './CreditsContainer';
+import FilmInfoContainer from './FilmInfoContainer';
 import { HorizontalRuleStyled } from './styledElements';
 
 export default function SelfmadeFilmContainer({ film }) {
@@ -16,7 +18,9 @@ export default function SelfmadeFilmContainer({ film }) {
                 <IFrameStyled src={film.source} allow="fullscreen; picture-in-picture" />
             </IFrameContainerStyled>
             <TitleStyled>{film.title}</TitleStyled>
-            {film.synopsis && <DescriptionStyled>{film.synopsis}</DescriptionStyled>}
+            <FilmInfoContainer film={film} />
+            <CreditsContainer film={film} />
+            {film.synopsis && <SynopsisStyled>{film.synopsis}</SynopsisStyled>}
             {isAuthorized && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + film.uuid}>Bearbeiten</LinkStyled>}
         </SelfmadeFilmContainerStyled>
     );
@@ -40,9 +44,11 @@ const IFrameStyled = styled.iframe`
 `;
 
 const TitleStyled = styled.h3`
-    margin-top: 10px;
+    margin: 10px 0;
 `;
 
-const DescriptionStyled = styled.p``;
+const SynopsisStyled = styled.p`
+    margin: 10px 0;
+`;
 
 const LinkStyled = styled(Link)``;

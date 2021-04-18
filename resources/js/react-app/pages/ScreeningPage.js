@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import CalendarDownloadLink from '../common/CalendarDownloadLink';
+import CreditsContainer from '../common/CreditsContainer';
+import FilmInfoContainer from '../common/FilmInfoContainer';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,
@@ -64,51 +66,8 @@ export default function ScreeningPage() {
             )}
             <TextContainerStyled>
                 {new Date(screening.date) >= Date.now() && <CalendarDownloadLink screening={screening} />}
-                <InfoContainerStyled>
-                    <InfoValueStyled>{screening.country + ' ' + screening.year}</InfoValueStyled>
-                    <VerticalLineStyled> | </VerticalLineStyled>
-                    <InfoValueStyled>{screening.length} Min</InfoValueStyled>
-                    <VerticalLineStyled> | </VerticalLineStyled>
-                    <InfoValueStyled>{screening.medium}</InfoValueStyled>
-                    <VerticalLineStyled> | </VerticalLineStyled>
-                    <InfoValueStyled>{screening.version}</InfoValueStyled>
-                </InfoContainerStyled>
-                <CreditsContainerStyled>
-                    {screening.directed_by && (
-                        <>
-                            <CreditKeyStyled>Regie: </CreditKeyStyled>
-                            <CreditValueStyled>{screening.directed_by}</CreditValueStyled>
-                        </>
-                    )}
-                    {screening.written_by && (
-                        <>
-                            <VerticalLineStyled> | </VerticalLineStyled>
-                            <CreditKeyStyled>Drehbuch: </CreditKeyStyled>
-                            <CreditValueStyled>{screening.written_by}</CreditValueStyled>
-                        </>
-                    )}
-                    {screening.music_by && (
-                        <>
-                            <VerticalLineStyled> | </VerticalLineStyled>
-                            <CreditKeyStyled>Musik: </CreditKeyStyled>
-                            <CreditValueStyled>{screening.music_by}</CreditValueStyled>
-                        </>
-                    )}
-                    {screening.shot_by && (
-                        <>
-                            <VerticalLineStyled> | </VerticalLineStyled>
-                            <CreditKeyStyled>Kamera: </CreditKeyStyled>
-                            <CreditValueStyled>{screening.shot_by}</CreditValueStyled>
-                        </>
-                    )}
-                    {screening.cast && (
-                        <>
-                            <VerticalLineStyled> | </VerticalLineStyled>
-                            <CreditKeyStyled>Besetzung: </CreditKeyStyled>
-                            <CreditValueStyled>{screening.cast}</CreditValueStyled>
-                        </>
-                    )}
-                </CreditsContainerStyled>
+                <FilmInfoContainer film={screening} />
+                <CreditsContainer film={screening} />
                 <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
                 {screening.serial && (
@@ -187,25 +146,6 @@ const FallbackDateStyled = styled.div`
 
 const TextContainerStyled = styled.div`
     padding: 0 20px;
-`;
-
-const InfoContainerStyled = styled.div`
-    margin-bottom: 7px;
-    font-size: 0.7em;
-`;
-
-const InfoValueStyled = styled.span``;
-
-const CreditsContainerStyled = styled.div`
-    font-size: 0.7em;
-`;
-
-const CreditKeyStyled = styled.span`
-    font-weight: bold;
-`;
-
-const CreditValueStyled = styled.span`
-    display: inline-block;
 `;
 
 const SynopsisStyled = styled.div`
