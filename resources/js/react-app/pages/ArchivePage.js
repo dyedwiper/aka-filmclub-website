@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
+import BasePage from '../common/BasePage';
 import SearchBar from '../common/forms/SearchBar';
 import SemesterSelect from '../common/forms/SemesterSelect';
-import { ArchiveSearchContainerStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import Context from '../Context';
-import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/services/screeningServices';
+import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
+import { ArchiveSearchContainerStyled, PageHeadlineStyled } from '../common/styledElements';
+import { PAGE_TITLE_ARCHIVE } from '../constants';
 import { computeCurrentSemester } from '../utils/semesterUtils';
+import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/services/screeningServices';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
@@ -17,14 +18,7 @@ export default function ArchivePage() {
     const [search, setSearch] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { setPageTitle } = useContext(Context);
-
     let history = useHistory();
-
-    useEffect(() => {
-        document.title = 'Archiv | aka-Filmclub';
-        setPageTitle('Archiv');
-    }, []);
 
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
@@ -60,8 +54,8 @@ export default function ArchivePage() {
     }, [search]);
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>Programmarchiv</PageHeadlineStyled>
+        <BasePage title={PAGE_TITLE_ARCHIVE}>
+            <PageHeadlineStyled>{PAGE_TITLE_ARCHIVE}</PageHeadlineStyled>
             <ArchiveSearchContainerStyled>
                 <SemesterSelect semester={semester} setSemester={setSemester} setIsLoading={setIsLoading} />
                 <SearchBar search={search} setSearch={setSearch} setIsLoading={setIsLoading} />
@@ -77,7 +71,7 @@ export default function ArchivePage() {
                         ))}
                 </ListStyled>
             )}
-        </PageStyled>
+        </BasePage>
     );
 }
 
