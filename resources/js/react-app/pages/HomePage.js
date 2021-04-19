@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import NoticeCard from '../common/NoticeCard';
+import NoticeCard from '../common/notices/NoticeCard';
 import ScreeningCard from '../common/screenings/ScreeningCard';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';

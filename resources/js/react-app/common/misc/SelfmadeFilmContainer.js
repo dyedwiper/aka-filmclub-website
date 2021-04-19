@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../constants';
-import Context from '../Context';
-import CreditsContainer from './CreditsContainer';
-import FilmInfoContainer from './FilmInfoContainer';
-import { HorizontalRuleStyled } from './styledElements';
+import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
+import Context from '../../Context';
+import CreditsContainer from '../screenings/CreditsContainer';
+import FilmInfoContainer from '../screenings/FilmInfoContainer';
+import { HorizontalRuleStyled } from '../styledElements';
 
 export default function SelfmadeFilmContainer({ film }) {
     const { user } = useContext(Context);

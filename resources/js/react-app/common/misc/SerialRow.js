@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ROUTE_SERIAL, STORAGE_FOLDER } from '../constants';
-import { HorizontalRuleStyled } from './styledElements';
+import { ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
+import { HorizontalRuleStyled } from '../styledElements';
 
 export default function SerialRow({ serial }) {
     return (

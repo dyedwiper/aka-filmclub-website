@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import NoticeRow from '../common/NoticeRow';
-import Paginator from '../common/Paginator';
+import NoticeRow from '../common/notices/NoticeRow';
+import Paginator from '../common/misc/Paginator';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import { NOTICES_PER_PAGE } from '../constants';
 import Context from '../Context';

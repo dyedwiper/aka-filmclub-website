@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
-import CalendarDownloadLink from '../common/CalendarDownloadLink';
-import CreditsContainer from '../common/CreditsContainer';
-import FilmInfoContainer from '../common/FilmInfoContainer';
+import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
+import CreditsContainer from '../common/screenings/CreditsContainer';
+import FilmInfoContainer from '../common/screenings/FilmInfoContainer';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,

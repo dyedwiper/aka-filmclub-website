@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import CalendarSeriesDownloadLink from '../common/CalendarSeriesDownloadLink';
+import CalendarSeriesDownloadLink from '../common/calendar/CalendarSeriesDownloadLink';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';

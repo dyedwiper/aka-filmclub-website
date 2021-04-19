@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { STORAGE_FOLDER } from '../constants';
-import missingImage from '../assets/missing.jpg';
+import { STORAGE_FOLDER } from '../../constants';
+import missingImage from '../../assets/missing.jpg';
 
 export default function NoticeCard({ notice }) {
     return (

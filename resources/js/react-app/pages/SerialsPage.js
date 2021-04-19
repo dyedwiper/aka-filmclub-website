@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import SearchBar from '../common/SearchBar';
-import SemesterSelect from '../common/SemesterSelect';
-import SerialRow from '../common/SerialRow';
+import SearchBar from '../common/forms/SearchBar';
+import SemesterSelect from '../common/forms/SemesterSelect';
+import SerialRow from '../common/misc/SerialRow';
 import { ArchiveSearchContainerStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { computeCurrentSemester } from '../utils/semesterUtils';

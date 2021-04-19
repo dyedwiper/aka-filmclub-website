@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import AdmissionListItem from '../../common/accounting/AdmissionListItem';
 import SemesterAnalysis from '../../common/accounting/SemesterAnalysis';
-import SemesterSelect from '../../common/SemesterSelect';
+import SemesterSelect from '../../common/forms/SemesterSelect';
 import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { computeCurrentSemester } from '../../utils/semesterUtils';

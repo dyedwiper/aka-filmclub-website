@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import EditTextLink from '../common/EditTextLink';
+import EditTextLink from '../common/misc/EditTextLink';
 import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { getText } from '../utils/services/textServices';

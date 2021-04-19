@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { AddItemLinkStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import SelfmadeFilmContainer from '../common/SelfmadeFilmContainer';
+import SelfmadeFilmContainer from '../common/misc/SelfmadeFilmContainer';
 import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_ADD_SELFMADE_FILM } from '../constants';
 import Context from '../Context';
 import { getSelfmadeFilms } from '../utils/services/selfmadeFilmServices';

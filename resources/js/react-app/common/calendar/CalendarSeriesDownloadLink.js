@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { formatToIcsString } from '../utils/dateFormatters';
-import calendarIcon from '../assets/calendar_icon.png';
+import { formatToIcsString } from '../../utils/dateFormatters';
+import { computeCurrentSemester } from '../../utils/semesterUtils';
+import calendarIcon from '../../assets/calendar_icon.png';
 
-export default function CalendarDownloadLink({ screening }) {
+export default function CalendarSeriesDownloadLink({ screenings }) {
     // The template string must be unindented like this.
     const icsString = `BEGIN:VCALENDAR
 VERSION:2.0
@@ -12,27 +13,31 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:aka-Filmclub
 X-WR-TIMEZONE:Europe/Berlin
-BEGIN:VEVENT
+${screenings
+    .map(
+        (screening) => `BEGIN:VEVENT
 SUMMARY:aka-Filmclub: ${screening.title}
 LOCATION:${screening.venue}
 DESCRIPTION:https://aka-filmclub.de/screenings/${screening.uuid}
 DTSTART:${formatToIcsString(screening.date)}
 DTEND:${formatToIcsString(screening.date, screening.length)}
-END:VEVENT
+END:VEVENT`
+    )
+    .join('\n')}
 END:VCALENDAR`;
 
     return (
-        <CalendarDownloadLinkStyled
+        <CalendarSeriesDownloadLinkStyled
             href={'data:text/calendar,' + icsString}
-            download={'aka-Filmclub_' + screening.title}
+            download={'aka-Filmclub_' + computeCurrentSemester()}
         >
             <IconStyled src={calendarIcon} />
-            aKalender-Eintrag runterladen
-        </CalendarDownloadLinkStyled>
+            aKalender-Serie runterladen
+        </CalendarSeriesDownloadLinkStyled>
     );
 }
 
-const CalendarDownloadLinkStyled = styled.a`
+const CalendarSeriesDownloadLinkStyled = styled.a`
     display: block;
     margin-bottom: 10px;
 `;

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
-import FaqRow from '../common/FaqRow';
+import FaqRow from '../common/misc/FaqRow';
 import { AddItemLinkStyled, HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
 import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_ADD_FAQ } from '../constants';
 import Context from '../Context';

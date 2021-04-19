@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { VerticalLineStyled } from './styledElements';
+import { VerticalLineStyled } from '../styledElements';
 
 export default function FilmInfoContainer({ film }) {
     return (
