@@ -54,7 +54,7 @@ export default function ArchivePage() {
     }, [search]);
 
     return (
-        <BasePage title={PAGE_TITLE_ARCHIVE}>
+        <BasePage pageTitle={PAGE_TITLE_ARCHIVE}>
             <PageHeadlineStyled>{PAGE_TITLE_ARCHIVE}</PageHeadlineStyled>
             <ArchiveSearchContainerStyled>
                 <SemesterSelect semester={semester} setSemester={setSemester} setIsLoading={setIsLoading} />

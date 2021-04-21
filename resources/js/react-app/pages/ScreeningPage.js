@@ -7,6 +7,7 @@ import FilmInfoContainer from '../common/screenings/FilmInfoContainer';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,
+    PAGE_TITLE_PROGRAM,
     ROUTE_INTERN_ADD_IMAGE_SCREENING,
     ROUTE_INTERN_EDIT_IMAGE,
     ROUTE_INTERN_EDIT_SCREENING,
@@ -30,7 +31,7 @@ export default function ScreeningPage() {
 
     useEffect(() => {
         document.title = screening.title + ' | aka-Filmclub';
-        setPageTitle('Vorführung');
+        setPageTitle(PAGE_TITLE_PROGRAM);
     }, [isLoading]);
 
     useEffect(() => {

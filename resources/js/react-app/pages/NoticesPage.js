@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import NoticeRow from '../common/notices/NoticeRow';
+import BasePage from '../common/BasePage';
 import Paginator from '../common/misc/Paginator';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import { NOTICES_PER_PAGE } from '../constants';
-import Context from '../Context';
+import NoticeRow from '../common/notices/NoticeRow';
+import { PageHeadlineStyled } from '../common/styledElements';
+import { NOTICES_PER_PAGE, PAGE_TITLE_NEWS } from '../constants';
 import { getNoticesByPage, getNoticesCount } from '../utils/services/noticeServices';
 import LoadingPage from './LoadingPage';
 
@@ -14,13 +14,6 @@ export default function NoticesPage() {
     const [noticesCount, setNoticesCount] = useState(0);
     const [isLoadingNotices, setIsLoadingNotices] = useState(true);
     const [isLoadingCount, setIsLoadingCount] = useState(true);
-
-    const { setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = 'News | aka-Filmclub';
-        setPageTitle('News');
-    }, []);
 
     useEffect(() => {
         getNoticesCount().then((res) => {
@@ -46,8 +39,8 @@ export default function NoticesPage() {
     if (isLoadingNotices || isLoadingCount) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>News</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_NEWS}>
+            <PageHeadlineStyled>{PAGE_TITLE_NEWS}</PageHeadlineStyled>
             <ListStyled>
                 {notices.map((notice) => (
                     <NoticeRow key={notice.id} notice={notice} />
@@ -61,7 +54,7 @@ export default function NoticesPage() {
                 limit={noticesCount}
                 itemsPerPage={NOTICES_PER_PAGE}
             />
-        </PageStyled>
+        </BasePage>
     );
 }
 

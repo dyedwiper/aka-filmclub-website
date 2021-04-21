@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../common/BasePage';
 import EditTextLink from '../common/misc/EditTextLink';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import Context from '../Context';
+import { PageHeadlineStyled } from '../common/styledElements';
+import { PAGE_TITLE_AWARDS } from '../constants';
 import { getText } from '../utils/services/textServices';
 
 export default function ContactPage() {
     const [text, setText] = useState('');
-
-    const { setPageTitle } = useContext(Context);
 
     useEffect(() => {
         getText('awards').then((res) => {
@@ -16,17 +15,12 @@ export default function ContactPage() {
         });
     }, []);
 
-    useEffect(() => {
-        document.title = 'Auszeichnungen | aka-Filmclub';
-        setPageTitle('Auszeichnungen');
-    }, []);
-
     return (
-        <PageStyled>
-            <PageHeadlineStyled>Auszeichnungen</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_AWARDS}>
+            <PageHeadlineStyled>{PAGE_TITLE_AWARDS}</PageHeadlineStyled>
             <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
             <EditTextLink page="awards" />
-        </PageStyled>
+        </BasePage>
     );
 }
 

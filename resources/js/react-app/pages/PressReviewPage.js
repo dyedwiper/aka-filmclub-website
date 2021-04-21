@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../common/BasePage';
 import EditTextLink from '../common/misc/EditTextLink';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import Context from '../Context';
+import { PageHeadlineStyled } from '../common/styledElements';
+import { PAGE_TITLE_PRESS } from '../constants';
 import { getText } from '../utils/services/textServices';
 
 export default function PressReviewPage() {
     const [text, setText] = useState('');
-
-    const { setPageTitle } = useContext(Context);
 
     useEffect(() => {
         getText('press').then((res) => {
@@ -16,17 +15,12 @@ export default function PressReviewPage() {
         });
     }, []);
 
-    useEffect(() => {
-        document.title = 'Pressespiegel | aka-Filmclub';
-        setPageTitle('Pressespiegel');
-    }, []);
-
     return (
-        <PageStyled>
-            <PageHeadlineStyled>Pressespiegel</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_PRESS}>
+            <PageHeadlineStyled>{PAGE_TITLE_PRESS}</PageHeadlineStyled>
             <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
             <EditTextLink page="press" />
-        </PageStyled>
+        </BasePage>
     );
 }
 

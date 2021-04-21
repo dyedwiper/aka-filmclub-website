@@ -2,28 +2,24 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import magicGif from '../assets/ahahah.gif';
-import { PageStyled } from '../common/styledElements';
+import BasePage from '../common/BasePage';
+import { PAGE_TITLE_LOGIN } from '../constants';
 import Context from '../Context';
 import { getCsrfCookie, postLogin } from '../utils/services/userServices';
 
 export default function LoginPage() {
     const [didLoginFail, setDidLoginFail] = useState(false);
 
-    const { setUser, setPageTitle } = useContext(Context);
+    const { setUser } = useContext(Context);
 
     let history = useHistory();
-
-    useEffect(() => {
-        document.title = 'Login | aka-Filmclub';
-        setPageTitle('Login');
-    }, []);
 
     useEffect(() => {
         document.querySelector('input').focus();
     }, []);
 
     return (
-        <PageStyled>
+        <BasePage pageTitle={PAGE_TITLE_LOGIN}>
             <FormStyled onSubmit={handleSubmit}>
                 <LabelStyled>
                     Name
@@ -36,7 +32,7 @@ export default function LoginPage() {
                 <ButtonStyled>Login</ButtonStyled>
             </FormStyled>
             {didLoginFail && <ImageStyled src={magicGif} alt="ah ah ah you didn't say the magic word"></ImageStyled>}
-        </PageStyled>
+        </BasePage>
     );
 
     function handleSubmit(event) {

@@ -1,22 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import waitsIrons from '../assets/waits_irons.jpg';
-import { PageStyled } from '../common/styledElements';
-import Context from '../Context';
+import BasePage from '../common/BasePage';
+import { PAGE_TITLE_NOT_FOUND } from '../constants';
 
 export default function NotFoundPage() {
-    const { setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = '404 | aka-Filmclub';
-        setPageTitle('404');
-    }, []);
-
     return (
-        <PageStyled>
+        <BasePage pageTitle={PAGE_TITLE_NOT_FOUND}>
             <IronsImageStyled src={waitsIrons} alt="Tom Waits while Jeremy Irons" />
             <NotFoundTextStyled>But you're gonna wait forever. There's nothing here.</NotFoundTextStyled>
-        </PageStyled>
+        </BasePage>
     );
 }
 

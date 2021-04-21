@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
+import BasePage from '../common/BasePage';
 import FaqRow from '../common/misc/FaqRow';
-import { AddItemLinkStyled, HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_ADD_FAQ } from '../constants';
+import { AddItemLinkStyled, HorizontalRuleStyled, PageHeadlineStyled } from '../common/styledElements';
+import { AUTH_LEVEL_EDITOR, PAGE_TITLE_FAQS, ROUTE_INTERN_ADD_FAQ } from '../constants';
 import Context from '../Context';
 import { getFaqs } from '../utils/services/faqServices';
 import LoadingPage from './LoadingPage';
@@ -12,7 +13,7 @@ export default function FaqsPage() {
     const [faqs, setFaqs] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { user, pageTitle, setPageTitle } = useContext(Context);
+    const { user } = useContext(Context);
 
     const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
 
@@ -23,16 +24,11 @@ export default function FaqsPage() {
         });
     }, []);
 
-    useEffect(() => {
-        document.title = 'FAQs | aka-Filmclub';
-        setPageTitle('FAQs');
-    }, []);
-
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_FAQS}>
+            <PageHeadlineStyled>{PAGE_TITLE_FAQS}</PageHeadlineStyled>
             {isAuthorized && <AddItemLinkStyled to={ROUTE_INTERN_ADD_FAQ}>FAQ hinzufügen</AddItemLinkStyled>}
             <QuestionsListStyled>
                 {faqs.map((faq) => (
@@ -49,7 +45,7 @@ export default function FaqsPage() {
                     <FaqRow key={faq.id} faq={faq} />
                 ))}
             </AnswersListStyled>
-        </PageStyled>
+        </BasePage>
     );
 }
 

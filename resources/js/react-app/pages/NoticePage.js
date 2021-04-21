@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,
+    PAGE_TITLE_NEWS,
     ROUTE_INTERN_ADD_IMAGE_NOTICE,
     ROUTE_INTERN_EDIT_IMAGE,
     ROUTE_INTERN_EDIT_NOTICE,
@@ -19,8 +20,13 @@ export default function NoticePage() {
     const [notice, setNotice] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { user } = useContext(Context);
+    const { user, setPageTitle } = useContext(Context);
     const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+
+    useEffect(() => {
+        document.title = notice.title + ' | aka-Filmclub';
+        setPageTitle(PAGE_TITLE_NEWS);
+    }, [isLoading]);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
