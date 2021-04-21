@@ -1,25 +1,18 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import FaqFormGroup from '../../common/forms/FaqFormGroup';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import { ROUTE_FAQS } from '../../constants';
-import Context from '../../Context';
+import { PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_ADD_FAQ, ROUTE_FAQS } from '../../constants';
 import { postFaq } from '../../utils/services/faqServices';
 
 export default function AddFaqPage() {
-    const { pageTitle, setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = 'FAQ hinzufügen | aka-Filmclub';
-        setPageTitle('FAQ hinzufügen');
-    }, []);
-
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_ADD_FAQ}>
+            <PageHeadlineStyled>{PAGE_TITLE_ADD_FAQ}</PageHeadlineStyled>
             <BaseForm postFunction={postFaq} postRedirectRoute={ROUTE_FAQS}>
                 <FaqFormGroup />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }

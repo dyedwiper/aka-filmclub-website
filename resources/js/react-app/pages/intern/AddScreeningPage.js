@@ -1,27 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
-import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import { ROUTE_PROGRAM_OVERVIEW } from '../../constants';
-import Context from '../../Context';
+import { HorizontalRuleStyled, PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_ADD_SCREENING, ROUTE_PROGRAM_OVERVIEW } from '../../constants';
 import { postScreening } from '../../utils/services/screeningServices';
 
 export default function AddScreeningPage() {
     const [omdbData, setOmdbData] = useState({});
     const [omdbError, setOmdbError] = useState(false);
 
-    const { pageTitle, setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = 'Vorstellung hinzufügen | aka-Filmclub';
-        setPageTitle('Vorstellung hinzufügen');
-    }, []);
-
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_ADD_SCREENING}>
+            <PageHeadlineStyled>{PAGE_TITLE_ADD_SCREENING}</PageHeadlineStyled>
             <FormStyled>
                 <LabelStyled htmlFor="imdbIdInput">OMDb mit IMDb-ID abfragen</LabelStyled>
                 <InputStyled id="imdbIdInput" name="imdbId" placeholder="tt0091299" />
@@ -36,7 +29,7 @@ export default function AddScreeningPage() {
                 <HorizontalRuleStyled />
                 <ImageFormGroup />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 
     function handleOmdbCall(event) {
