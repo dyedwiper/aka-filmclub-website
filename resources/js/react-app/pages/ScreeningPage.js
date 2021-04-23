@@ -66,6 +66,7 @@ export default function ScreeningPage() {
                 </>
             )}
             <TextContainerStyled>
+                <VenueStyled>Ort: {screening.venue}</VenueStyled>
                 {new Date(screening.date) >= Date.now() && <CalendarDownloadLink screening={screening} />}
                 <FilmInfoContainer film={screening} />
                 <CreditsContainer film={screening} />
@@ -147,6 +148,10 @@ const FallbackDateStyled = styled.div`
 
 const TextContainerStyled = styled.div`
     padding: 0 20px;
+`;
+
+const VenueStyled = styled.div`
+    margin: 10px 0;
 `;
 
 const SynopsisStyled = styled.div`
