@@ -1,20 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { AddItemLinkStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import { ROUTE_INTERN_ADD_DISTRIBUTOR, ROUTE_INTERN_EDIT_DISTRIBUTOR } from '../../constants';
-import Context from '../../Context';
+import BasePage from '../../common/BasePage';
+import { AddItemLinkStyled, PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_DISTRIBUTORS, ROUTE_INTERN_ADD_DISTRIBUTOR, ROUTE_INTERN_EDIT_DISTRIBUTOR } from '../../constants';
 import { getDistributors } from '../../utils/services/distributorServices';
 
 export default function DistributorsPage() {
     const [distributors, setDistributors] = useState([]);
-
-    const { pageTitle, setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = 'Filmverleihe | aka-Filmclub';
-        setPageTitle('Filmverleihe');
-    }, []);
 
     useEffect(() => {
         getDistributors().then((res) => {
@@ -23,8 +16,8 @@ export default function DistributorsPage() {
     }, []);
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_DISTRIBUTORS}>
+            <PageHeadlineStyled>{PAGE_TITLE_DISTRIBUTORS}</PageHeadlineStyled>
             <AddItemLinkStyled to={ROUTE_INTERN_ADD_DISTRIBUTOR}>Filmverleih hinzufügen</AddItemLinkStyled>
             <ListStyled>
                 {distributors.map((distributor) => (
@@ -35,7 +28,7 @@ export default function DistributorsPage() {
                     </ListItemStyled>
                 ))}
             </ListStyled>
-        </PageStyled>
+        </BasePage>
     );
 }
 

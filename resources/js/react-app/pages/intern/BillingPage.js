@@ -1,30 +1,24 @@
+import { PDFDownloadLink } from '@react-pdf/renderer';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import BillingPdf from '../../common/accounting/pdf/BillingPdf';
 import StacksList from '../../common/accounting/StacksList';
-import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled, VerticalLineStyled } from '../../common/styledElements';
+import BasePage from '../../common/BasePage';
+import { HorizontalRuleStyled, PageHeadlineStyled, VerticalLineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_BILLING, ROUTE_INTERN_EDIT_BILLING } from '../../constants';
 import Context from '../../Context';
 import { toEuroWithSymbol } from '../../utils/moneyFormatters';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';
-import LoadingPage from '../LoadingPage';
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import BillingPdf from '../../common/accounting/pdf/BillingPdf';
 import { replaceUmlautsAndSpecialCharacters } from '../../utils/stringUtils';
-import { ROUTE_INTERN_EDIT_BILLING } from '../../constants';
+import LoadingPage from '../LoadingPage';
 
 export default function BillingPage() {
     const [billing, setBilling] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { pageTitle, setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        if (billing.screening) {
-            document.title = 'Abrechnung: ' + billing.screening.title + ' | aka-Filmclub';
-            setPageTitle('Abrechnung: ' + billing.screening.title);
-        }
-    }, [billing]);
+    const { pageTitle } = useContext(Context);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
@@ -37,7 +31,7 @@ export default function BillingPage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
+        <BasePage pageTitle={PAGE_TITLE_BILLING + ': ' + billing.screening.title}>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <StackKeyStyled>Eintrittskarten</StackKeyStyled>
             <StacksList stacks={billing.ticket_stacks} />
@@ -129,7 +123,7 @@ export default function BillingPage() {
             >
                 PDF runterladen
             </PDFDownloadLink>
-        </PageStyled>
+        </BasePage>
     );
 }
 

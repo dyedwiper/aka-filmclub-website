@@ -1,23 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import SelfmadeFilmFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import Context from '../../Context';
-import { deleteSelfmadeFilm, getSelfmadeFilmByUuid, postSelfmadeFilm } from '../../utils/services/selfmadeFilmServices';
+import { PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_EDIT_SELFMADE_FILM, ROUTE_SELFMADE_FILMS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
+import { deleteSelfmadeFilm, getSelfmadeFilmByUuid, postSelfmadeFilm } from '../../utils/services/selfmadeFilmServices';
 import LoadingPage from '../LoadingPage';
-import { ROUTE_SELFMADE_FILMS } from '../../constants';
 
 export default function EditSelfmadeFilmPage() {
     const [film, setFilm] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
-    const { pageTitle, setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = 'Eigenproduktion bearbeiten | aka-Filmclub';
-        setPageTitle('Eigenproduktion bearbeiten');
-    }, []);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
@@ -30,8 +23,8 @@ export default function EditSelfmadeFilmPage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_EDIT_SELFMADE_FILM}>
+            <PageHeadlineStyled>{PAGE_TITLE_EDIT_SELFMADE_FILM}</PageHeadlineStyled>
             <BaseForm
                 postFunction={postSelfmadeFilm}
                 deleteFunction={deleteSelfmadeFilm}
@@ -45,6 +38,6 @@ export default function EditSelfmadeFilmPage() {
                 <input name="uuid" type="hidden" defaultValue={film.uuid} />
                 <SelfmadeFilmFormGroup film={film} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }

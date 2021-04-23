@@ -1,9 +1,11 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import BasePage from '../../common/BasePage';
+import { PageHeadlineStyled } from '../../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,
+    PAGE_TITLE_INTERN,
     ROUTE_INTERN_ADD_NOTICE,
     ROUTE_INTERN_ADD_SCREENING,
     ROUTE_INTERN_ADD_SERIAL,
@@ -14,17 +16,12 @@ import {
 import Context from '../../Context';
 
 export default function InternPage() {
-    const { user, setPageTitle } = useContext(Context);
+    const { user } = useContext(Context);
     const isEditor = user.level >= AUTH_LEVEL_EDITOR;
 
-    useEffect(() => {
-        document.title = 'Intern | aka-Filmclub';
-        setPageTitle('Intern');
-    }, []);
-
     return (
-        <PageStyled>
-            <PageHeadlineStyled>Interner Bereich</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_INTERN}>
+            <PageHeadlineStyled>{PAGE_TITLE_INTERN}</PageHeadlineStyled>
             <SubheadlineStyled>Mitglieder</SubheadlineStyled>
             <LinkStyled to={ROUTE_INTERN_USERS}>Mitglieder verwalten</LinkStyled>
             {isEditor && (
@@ -38,7 +35,7 @@ export default function InternPage() {
                     <LinkStyled to={ROUTE_INTERN_DISTRIBUTORS}>Filmverleihe</LinkStyled>
                 </>
             )}
-        </PageStyled>
+        </BasePage>
     );
 }
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
-import { PageStyled } from '../../common/styledElements';
-import { ROUTE_PROGRAM_OVERVIEW, ROUTE_SCREENING } from '../../constants';
+import { PAGE_TITLE_EDIT_SCREENING, ROUTE_PROGRAM_OVERVIEW, ROUTE_SCREENING } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteScreening, getScreeningByUuid, postScreening } from '../../utils/services/screeningServices';
 import LoadingPage from '../LoadingPage';
@@ -23,8 +23,8 @@ export default function EditScreeningPage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <HeadlineStyled>Vorführung bearbeiten</HeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_EDIT_SCREENING}>
+            <HeadlineStyled>{PAGE_TITLE_EDIT_SCREENING}</HeadlineStyled>
             <BaseForm
                 postFunction={postScreening}
                 deleteFunction={deleteScreening}
@@ -38,7 +38,7 @@ export default function EditScreeningPage() {
                 <input name="uuid" type="hidden" defaultValue={screening.uuid} />
                 <ScreeningFormGroup screening={screening} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }
 

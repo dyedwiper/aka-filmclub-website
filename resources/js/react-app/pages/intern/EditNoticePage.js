@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import BaseForm from '../../common/forms/BaseForm';
-import { PageStyled } from '../../common/styledElements';
-import { deleteNotice, postNotice } from '../../utils/services/noticeServices';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { getNoticeByUuid } from '../../utils/services/noticeServices';
-import LoadingPage from '../LoadingPage';
-import NoticeFormGroup from '../../common/forms/NoticeFormGroup';
 import styled from 'styled-components';
-import { ROUTE_NEWS, ROUTE_NOTICE } from '../../constants';
+import BasePage from '../../common/BasePage';
+import BaseForm from '../../common/forms/BaseForm';
+import NoticeFormGroup from '../../common/forms/NoticeFormGroup';
+import { PAGE_TITLE_EDIT_NOTICE, ROUTE_NEWS, ROUTE_NOTICE } from '../../constants';
+import { getLastParameterFromPath } from '../../utils/pathUtils';
+import { deleteNotice, getNoticeByUuid, postNotice } from '../../utils/services/noticeServices';
+import LoadingPage from '../LoadingPage';
 
 export default function EditNoticePage() {
     const [notice, setNotice] = useState({});
@@ -24,8 +23,8 @@ export default function EditNoticePage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <HeadlineStyled>News bearbeiten</HeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_EDIT_NOTICE}>
+            <HeadlineStyled>{PAGE_TITLE_EDIT_NOTICE}</HeadlineStyled>
             <BaseForm
                 postFunction={postNotice}
                 deleteFunction={deleteNotice}
@@ -39,7 +38,7 @@ export default function EditNoticePage() {
                 <input name="uuid" type="hidden" defaultValue={notice.uuid} />
                 <NoticeFormGroup notice={notice} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }
 

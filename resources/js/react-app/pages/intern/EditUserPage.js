@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import UserFormGroup from '../../common/forms/UserFormGroup';
-import { PageStyled } from '../../common/styledElements';
-import { ROUTE_INTERN_USERS } from '../../constants';
+import { PAGE_TITLE_EDIT_USER, ROUTE_INTERN_USERS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteUser, getUserByUuid, postUser } from '../../utils/services/userServices';
 import LoadingPage from '../LoadingPage';
@@ -23,8 +23,8 @@ export default function EditUserPage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <HeadlineStyled>Mitglied bearbeiten</HeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_EDIT_USER}>
+            <HeadlineStyled>{PAGE_TITLE_EDIT_USER}</HeadlineStyled>
             <BaseForm
                 postFunction={postUser}
                 deleteFunction={deleteUser}
@@ -38,7 +38,7 @@ export default function EditUserPage() {
                 <input name="uuid" type="hidden" defaultValue={user.uuid} />
                 <UserFormGroup user={user} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }
 

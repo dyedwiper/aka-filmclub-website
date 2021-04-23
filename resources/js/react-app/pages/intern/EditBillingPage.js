@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import BillingFormGroup from '../../common/forms/BillingFormGroup';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import { ROUTE_INTERN_ADMISSIONS, ROUTE_INTERN_BILLING } from '../../constants';
+import { PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_BILLING, ROUTE_INTERN_ADMISSIONS, ROUTE_INTERN_BILLING } from '../../constants';
 import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { getBillingByUuid, postBilling, deleteBilling } from '../../utils/services/billingServices';
+import { deleteBilling, getBillingByUuid, postBilling } from '../../utils/services/billingServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditBillingPage() {
     const [billing, setBilling] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { pageTitle, setPageTitle } = useContext(Context);
+    const { pageTitle } = useContext(Context);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
@@ -22,17 +23,10 @@ export default function EditBillingPage() {
         });
     }, []);
 
-    useEffect(() => {
-        if (billing.screening) {
-            document.title = 'Abrechnung von ' + billing.screening.title + ' bearbeiten | aka-Filmclub';
-            setPageTitle('Abrechnung von ' + billing.screening.title + ' bearbeiten');
-        }
-    }, [billing]);
-
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
+        <BasePage pageTitle={PAGE_TITLE_BILLING + ': ' + billing.screening.title}>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <BaseForm
                 postFunction={postBilling}
@@ -47,6 +41,6 @@ export default function EditBillingPage() {
                 <input name="uuid" type="hidden" defaultValue={billing.uuid} />
                 <BillingFormGroup billing={billing} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }

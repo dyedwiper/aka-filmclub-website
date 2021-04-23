@@ -5,8 +5,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import BasePage from '../../common/BasePage';
 import HorizontalLineToolbarButton from '../../common/forms/HorizontalLineToolbarButton';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import { PageHeadlineStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
@@ -20,7 +21,7 @@ export default function EditTextPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [validationErrors, setValidationErrors] = useState([]);
 
-    const { pageTitle, setPageTitle } = useContext(Context);
+    const { pageTitle } = useContext(Context);
 
     let history = useHistory();
 
@@ -31,11 +32,6 @@ export default function EditTextPage() {
         press: 'Pressespiegel',
         awards: 'Auszeichnungen',
     };
-
-    useEffect(() => {
-        document.title = pageTitleMap[assocPage] + ' bearbeiten | aka-Filmclub';
-        setPageTitle(pageTitleMap[assocPage] + ' bearbeiten');
-    }, [assocPage]);
 
     useEffect(() => {
         const page = getLastParameterFromPath();
@@ -62,7 +58,7 @@ export default function EditTextPage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
+        <BasePage pageTitle={pageTitleMap[assocPage] + ' bearbeiten'}>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <HintStyled>
                 Hinweis: Das Einfügen und Entfernen der gelben Linie kann etwas hakelig sein. Beim Entfernen ist die
@@ -101,7 +97,7 @@ export default function EditTextPage() {
                 <SaveButtonStyled onClick={saveText}>Speichern</SaveButtonStyled>
                 <BackButtonStyled onClick={() => history.goBack()}>Zurück</BackButtonStyled>
             </ButtonContainerStyled>
-        </PageStyled>
+        </BasePage>
     );
 
     function saveText() {

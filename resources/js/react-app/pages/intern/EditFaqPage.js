@@ -1,18 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import FaqFormGroup from '../../common/forms/FaqFormGroup';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import Context from '../../Context';
-import { deleteFaq, getFaqByUuid, postFaq } from '../../utils/services/faqServices';
+import { PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_EDIT_FAQ, ROUTE_FAQS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
+import { deleteFaq, getFaqByUuid, postFaq } from '../../utils/services/faqServices';
 import LoadingPage from '../LoadingPage';
-import { ROUTE_FAQS } from '../../constants';
 
 export default function EditFaqPage() {
     const [faq, setFaq] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-
-    const { pageTitle, setPageTitle } = useContext(Context);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
@@ -22,16 +20,11 @@ export default function EditFaqPage() {
         });
     }, []);
 
-    useEffect(() => {
-        document.title = 'FAQ bearbeiten | aka-Filmclub';
-        setPageTitle('FAQ bearbeiten');
-    }, []);
-
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_EDIT_FAQ}>
+            <PageHeadlineStyled>{PAGE_TITLE_EDIT_FAQ}</PageHeadlineStyled>
             <BaseForm
                 postFunction={postFaq}
                 deleteFunction={deleteFaq}
@@ -45,6 +38,6 @@ export default function EditFaqPage() {
                 <input name="uuid" type="hidden" defaultValue={faq.uuid} />
                 <FaqFormGroup faq={faq} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }
