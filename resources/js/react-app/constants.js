@@ -7,14 +7,6 @@ export const NOTICES_PER_PAGE = 5;
 export const SUMMER_SEASON_IDENTIFIER = 'SS';
 export const WINTER_SEASON_IDENTIFIER = 'WS';
 
-export const AUTH_LEVEL_NORMAL = 0;
-export const AUTH_LEVEL_EDITOR = 1;
-export const AUTH_LEVEL_ADMIN = 2;
-
-export const USER_STATUS_ACTIVE = 0;
-export const USER_STATUS_PAUSED = 1;
-export const USER_STATUS_ALUMNI = 2;
-
 export const NUMBER_OF_SEEDS_IN_GHS_BIO = 460;
 
 export const STANDARD_TICKET_PRICE = '1,50';
@@ -30,6 +22,14 @@ export const AKA_FAX = '0761/76628767';
 export const AKA_IBAN = 'DE10 6805 0101 0002 0635 40';
 export const AKA_BIC = 'FRSPDE66XXX';
 export const AKA_BANK = 'Sparkasse Freiburg';
+
+// User enums
+export const AUTH_LEVEL_NORMAL = 0;
+export const AUTH_LEVEL_EDITOR = 1;
+export const AUTH_LEVEL_ADMIN = 2;
+export const USER_STATUS_ACTIVE = 0;
+export const USER_STATUS_PAUSED = 1;
+export const USER_STATUS_ALUMNI = 2;
 
 // Frontend routes
 // Routes with another parameter must have a trailing slash.
@@ -80,3 +80,44 @@ export const ROUTE_INTERN_EDIT_FAQ = '/intern/editFaq/';
 export const ROUTE_INTERN_ADD_SELFMADE_FILM = '/intern/addSelfmadeFilm';
 export const ROUTE_INTERN_EDIT_SELFMADE_FILM = '/intern/editSelfmadeFilm/';
 export const ROUTE_INTERN_EDIT_TEXT = '/intern/editText/';
+
+// Page titles
+export const PAGE_TITLE_HOME = '';
+export const PAGE_TITLE_NEWS = 'News';
+export const PAGE_TITLE_PROGRAM = 'Programm';
+export const PAGE_TITLE_PROGRAM_OVERVIEW = 'Programmübersicht';
+export const PAGE_TITLE_SERIALS = 'Filmreihen';
+export const PAGE_TITLE_ARCHIVE = 'Archive';
+export const PAGE_TITLE_SERIAL = 'Filmreihe';
+export const PAGE_TITLE_ABOUT = 'Über uns';
+export const PAGE_TITLE_FAQS = 'FAQs';
+export const PAGE_TITLE_PRESS = 'Pressespiegel';
+export const PAGE_TITLE_AWARDS = 'Auszeichnungen';
+export const PAGE_TITLE_SELFMADE_FILMS = 'Eigenproduktionen';
+export const PAGE_TITLE_CONTACT = 'Kontakt';
+export const PAGE_TITLE_LINKS = 'Links';
+export const PAGE_TITLE_NOT_FOUND = '404';
+export const PAGE_TITLE_ERROR = 'Oooops';
+export const PAGE_TITLE_LOGIN = 'Login';
+export const PAGE_TITLE_INTERN = 'Intern';
+export const PAGE_TITLE_USERS = 'Mitglieder';
+export const PAGE_TITLE_ADD_USER = 'Mitglied hinzufügen';
+export const PAGE_TITLE_EDIT_USER = 'Mitglied bearbeiten';
+export const PAGE_TITLE_BILLING = 'Abrechnung';
+export const PAGE_TITLE_ADMISSIONS = 'Besuchszahlen';
+export const PAGE_TITLE_DISTRIBUTORS = 'Filmverleihe';
+export const PAGE_TITLE_ADD_NOTICE = 'News hinzufügen';
+export const PAGE_TITLE_EDIT_NOTICE = 'News bearbeiten';
+export const PAGE_TITLE_ADD_SCREENING = 'Vorführung hinzufügen';
+export const PAGE_TITLE_EDIT_SCREENING = 'Vorführung bearbeiten';
+export const PAGE_TITLE_ADD_SERIAL = 'Filmreihe hinzufügen';
+export const PAGE_TITLE_EDIT_SERIAL = 'Filmreihe bearbeiten';
+export const PAGE_TITLE_ADD_IMAGE = 'Bild hinzufügen';
+export const PAGE_TITLE_EDIT_IMAGE = 'Bild bearbeiten';
+export const PAGE_TITLE_ADD_DISTRIBUTOR = 'Filmverleih hinzufügen';
+export const PAGE_TITLE_EDIT_DISTRIBUTOR = 'Filmverleih bearbeiten';
+export const PAGE_TITLE_ADD_FAQ = 'FAQ hinzufügen';
+export const PAGE_TITLE_EDIT_FAQ = 'FAQ bearbeiten';
+export const PAGE_TITLE_ADD_SELFMADE_FILM = 'Eigenproduktion hinzufügen';
+export const PAGE_TITLE_EDIT_SELFMADE_FILM = 'Eigenproduktion bearbeiten';
+export const PAGE_TITLE_EDIT_TEXT = 'Text bearbeiten';

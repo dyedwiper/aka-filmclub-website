@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
-import { PageStyled } from '../../common/styledElements';
-import { ROUTE_NOTICE, ROUTE_SCREENING, ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
+import { PAGE_TITLE_EDIT_IMAGE, ROUTE_NOTICE, ROUTE_SCREENING, ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteImage, getImageByUuid, postImage } from '../../utils/services/imageServices';
 import LoadingPage from '../LoadingPage';
@@ -34,8 +34,8 @@ export default function EditImagePage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <HeadlineStyled>Bild ändern</HeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_EDIT_IMAGE}>
+            <HeadlineStyled>{PAGE_TITLE_EDIT_IMAGE}</HeadlineStyled>
             <ImageStyled src={STORAGE_FOLDER + image.path} />
             <HintStyled>(Das ist das momentan gespeicherte Bild und keine Vorschau des hochgeladenen.)</HintStyled>
             <BaseForm
@@ -51,7 +51,7 @@ export default function EditImagePage() {
                 <input name="uuid" type="hidden" defaultValue={image.uuid} />
                 <ImageFormGroup image={image} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }
 

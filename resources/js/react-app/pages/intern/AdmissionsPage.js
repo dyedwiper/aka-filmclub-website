@@ -1,11 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import AdmissionListItem from '../../common/accounting/AdmissionListItem';
 import SemesterAnalysis from '../../common/accounting/SemesterAnalysis';
+import BasePage from '../../common/BasePage';
 import SemesterSelect from '../../common/forms/SemesterSelect';
-import { HorizontalRuleStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import Context from '../../Context';
+import { HorizontalRuleStyled, PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_ADMISSIONS } from '../../constants';
 import { computeCurrentSemester } from '../../utils/semesterUtils';
 import { getScreeningsWithBillingsBySemester } from '../../utils/services/billingServices';
 
@@ -14,14 +15,7 @@ export default function AdmissionsPage() {
     const [semester, setSemester] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { pageTitle, setPageTitle } = useContext(Context);
-
     let history = useHistory();
-
-    useEffect(() => {
-        document.title = 'Besuchszahlen | aka-Filmclub';
-        setPageTitle('Besuchszahlen');
-    }, []);
 
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
@@ -44,8 +38,8 @@ export default function AdmissionsPage() {
     }, [semester]);
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_ADMISSIONS}>
+            <PageHeadlineStyled>{PAGE_TITLE_ADMISSIONS}</PageHeadlineStyled>
             <SemesterSelect semester={semester} setSemester={setSemester} setIsLoading={setIsLoading} />
             {isLoading ? (
                 <div>Loading...</div>
@@ -73,7 +67,7 @@ export default function AdmissionsPage() {
                     )}
                 </>
             )}
-        </PageStyled>
+        </BasePage>
     );
 }
 

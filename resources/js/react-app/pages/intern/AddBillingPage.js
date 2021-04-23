@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import BillingFormGroup from '../../common/forms/BillingFormGroup';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import { ROUTE_INTERN_ADMISSIONS } from '../../constants';
+import { PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_BILLING, ROUTE_INTERN_ADMISSIONS } from '../../constants';
 import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { postBilling } from '../../utils/services/billingServices';
@@ -12,12 +13,8 @@ import LoadingPage from '../LoadingPage';
 export default function AddBillingPage() {
     const [screening, setScreening] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-    const { pageTitle, setPageTitle } = useContext(Context);
 
-    useEffect(() => {
-        document.title = screening.title + ' abrechnen | aka-Filmclub';
-        setPageTitle(screening.title + ' abrechnen');
-    }, [screening]);
+    const { pageTitle } = useContext(Context);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
@@ -30,11 +27,11 @@ export default function AddBillingPage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
+        <BasePage pageTitle={PAGE_TITLE_BILLING + ': ' + screening.title}>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <BaseForm postFunction={postBilling} postRedirectRoute={ROUTE_INTERN_ADMISSIONS}>
                 <BillingFormGroup screening={screening} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }

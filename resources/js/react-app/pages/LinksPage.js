@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../common/BasePage';
 import EditTextLink from '../common/misc/EditTextLink';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import Context from '../Context';
+import { PageHeadlineStyled } from '../common/styledElements';
+import { PAGE_TITLE_LINKS } from '../constants';
 import { getText } from '../utils/services/textServices';
 
 export default function LinksPage() {
     const [text, setText] = useState('');
-
-    const { setPageTitle } = useContext(Context);
 
     useEffect(() => {
         getText('links').then((res) => {
@@ -16,17 +15,12 @@ export default function LinksPage() {
         });
     }, []);
 
-    useEffect(() => {
-        document.title = 'Links | aka-Filmclub';
-        setPageTitle('Links');
-    }, []);
-
     return (
-        <PageStyled>
-            <PageHeadlineStyled>Links</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_LINKS}>
+            <PageHeadlineStyled>{PAGE_TITLE_LINKS}</PageHeadlineStyled>
             <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
             <EditTextLink page="links" />
-        </PageStyled>
+        </BasePage>
     );
 }
 

@@ -1,21 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../common/BasePage';
 import CalendarSeriesDownloadLink from '../common/calendar/CalendarSeriesDownloadLink';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import Context from '../Context';
+import { PageHeadlineStyled } from '../common/styledElements';
+import { PAGE_TITLE_PROGRAM_OVERVIEW } from '../constants';
 import { getFutureScreenings } from '../utils/services/screeningServices';
 
 export default function ProgramOverviewPage() {
     const [screenings, setScreenings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
-    const { setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = 'Programm | aka-Filmclub';
-        setPageTitle('Programm');
-    }, []);
 
     useEffect(() => {
         getFutureScreenings().then((res) => {
@@ -25,8 +19,8 @@ export default function ProgramOverviewPage() {
     }, []);
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>Programmübersicht</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_PROGRAM_OVERVIEW}>
+            <PageHeadlineStyled>{PAGE_TITLE_PROGRAM_OVERVIEW}</PageHeadlineStyled>
             {isLoading ? (
                 <div>Loading</div>
             ) : (
@@ -39,7 +33,7 @@ export default function ProgramOverviewPage() {
                     </ScreeningsListStyled>
                 </>
             )}
-        </PageStyled>
+        </BasePage>
     );
 }
 

@@ -1,13 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import BasePage from '../common/BasePage';
 import SearchBar from '../common/forms/SearchBar';
 import SemesterSelect from '../common/forms/SemesterSelect';
 import SerialRow from '../common/misc/SerialRow';
-import { ArchiveSearchContainerStyled, PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import Context from '../Context';
+import { ArchiveSearchContainerStyled, PageHeadlineStyled } from '../common/styledElements';
+import { PAGE_TITLE_SERIALS } from '../constants';
 import { computeCurrentSemester } from '../utils/semesterUtils';
-import { getSerialsBySemester, getSerialsBySearchString } from '../utils/services/serialServices';
+import { getSerialsBySearchString, getSerialsBySemester } from '../utils/services/serialServices';
 
 export default function SerialsPage() {
     const [serials, setSerials] = useState([]);
@@ -17,14 +18,7 @@ export default function SerialsPage() {
     const [search, setSearch] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { setPageTitle } = useContext(Context);
-
     let history = useHistory();
-
-    useEffect(() => {
-        document.title = 'Filmreihen | aka-Filmclub';
-        setPageTitle('Filmreihen');
-    }, []);
 
     useEffect(() => {
         const queryParams = new URLSearchParams(window.location.search);
@@ -60,8 +54,8 @@ export default function SerialsPage() {
     }, [search]);
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>Filmreihen</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_SERIALS}>
+            <PageHeadlineStyled>{PAGE_TITLE_SERIALS}</PageHeadlineStyled>
             <ArchiveSearchContainerStyled>
                 <SemesterSelect semester={semester} setSemester={setSemester} setIsLoading={setIsLoading} />
                 <SearchBar search={search} setSearch={setSearch} setIsLoading={setIsLoading} />
@@ -75,7 +69,7 @@ export default function SerialsPage() {
                     ))}
                 </ListStyled>
             )}
-        </PageStyled>
+        </BasePage>
     );
 }
 

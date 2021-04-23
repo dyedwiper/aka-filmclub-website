@@ -1,21 +1,14 @@
-import React, { useContext, useEffect } from 'react';
-import { PageStyled } from '../common/styledElements';
-import Context from '../Context';
-import ooopsImage from '../assets/ooops.jpg';
+import React from 'react';
 import styled from 'styled-components';
+import ooopsImage from '../assets/ooops.jpg';
+import BasePage from '../common/BasePage';
+import { PAGE_TITLE_ERROR } from '../constants';
 
 export default function ErrorPage() {
-    const { setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = 'Oooops | aka-Filmclub';
-        setPageTitle('Oooops');
-    }, []);
-
     return (
-        <PageStyled>
+        <BasePage pageTitle={PAGE_TITLE_ERROR}>
             <ImageStyled src={ooopsImage} />
-        </PageStyled>
+        </BasePage>
     );
 }
 

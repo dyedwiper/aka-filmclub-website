@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import DistributorFormGroup from '../../common/forms/DistributorFormGroup';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import { ROUTE_INTERN_DISTRIBUTORS } from '../../constants';
-import Context from '../../Context';
+import { PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_EDIT_DISTRIBUTOR, ROUTE_INTERN_DISTRIBUTORS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteDistributor, getDistributorByUuid, postDistributor } from '../../utils/services/distributorServices';
 import LoadingPage from '../LoadingPage';
@@ -11,8 +11,6 @@ import LoadingPage from '../LoadingPage';
 export default function EditDistributorPage() {
     const [distributor, setDistributor] = useState({});
     const [isLoading, setIsLoading] = useState(true);
-
-    const { pageTitle, setPageTitle } = useContext(Context);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
@@ -22,16 +20,11 @@ export default function EditDistributorPage() {
         });
     }, []);
 
-    useEffect(() => {
-        document.title = 'Filmverleih bearbeiten | aka-Filmclub';
-        setPageTitle('Filmverleih bearbeiten');
-    }, []);
-
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_EDIT_DISTRIBUTOR}>
+            <PageHeadlineStyled>{PAGE_TITLE_EDIT_DISTRIBUTOR}</PageHeadlineStyled>
             <BaseForm
                 postFunction={postDistributor}
                 deleteFunction={deleteDistributor}
@@ -45,6 +38,6 @@ export default function EditDistributorPage() {
                 <input name="uuid" type="hidden" defaultValue={distributor.uuid} />
                 <DistributorFormGroup distributor={distributor} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }

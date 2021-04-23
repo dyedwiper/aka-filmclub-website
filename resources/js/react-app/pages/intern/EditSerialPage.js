@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import SerialFormGroup from '../../common/forms/SerialFormGroup';
-import { PageStyled } from '../../common/styledElements';
-import { ROUTE_SERIAL, ROUTE_SERIALS } from '../../constants';
+import { PAGE_TITLE_EDIT_SERIAL, ROUTE_SERIAL, ROUTE_SERIALS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { getSerialByUuid, postSerial, deleteSerial } from '../../utils/services/serialServices';
+import { deleteSerial, getSerialByUuid, postSerial } from '../../utils/services/serialServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditSerialPage() {
@@ -23,8 +23,8 @@ export default function EditSerialPage() {
     if (isLoading) return <LoadingPage />;
 
     return (
-        <PageStyled>
-            <HeadlineStyled>Filmreihe bearbeiten</HeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_EDIT_SERIAL}>
+            <HeadlineStyled>{PAGE_TITLE_EDIT_SERIAL}</HeadlineStyled>
             <BaseForm
                 postFunction={postSerial}
                 deleteFunction={deleteSerial}
@@ -38,7 +38,7 @@ export default function EditSerialPage() {
                 <input name="uuid" type="hidden" defaultValue={serial.uuid} />
                 <SerialFormGroup serial={serial} />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }
 

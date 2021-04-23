@@ -5,6 +5,7 @@ import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,
+    PAGE_TITLE_SERIAL,
     ROUTE_INTERN_ADD_IMAGE_SERIAL,
     ROUTE_INTERN_EDIT_IMAGE,
     ROUTE_INTERN_EDIT_SERIAL,
@@ -26,7 +27,7 @@ export default function SerialPage() {
 
     useEffect(() => {
         document.title = serial.title + ' | aka-Filmclub';
-        setPageTitle('Filmreihe');
+        setPageTitle(PAGE_TITLE_SERIAL);
     }, [isLoading]);
 
     useEffect(() => {

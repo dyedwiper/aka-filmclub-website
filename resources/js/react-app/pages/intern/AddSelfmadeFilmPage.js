@@ -1,25 +1,18 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
+import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import SelfmadeFilmFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
-import { PageHeadlineStyled, PageStyled } from '../../common/styledElements';
-import { ROUTE_SELFMADE_FILMS } from '../../constants';
-import Context from '../../Context';
+import { PageHeadlineStyled } from '../../common/styledElements';
+import { PAGE_TITLE_ADD_SELFMADE_FILM, ROUTE_SELFMADE_FILMS } from '../../constants';
 import { postSelfmadeFilm } from '../../utils/services/selfmadeFilmServices';
 
 export default function AddSelfmadeFilmPage() {
-    const { pageTitle, setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = 'Eigenproduktion hinzufügen | aka-Filmclub';
-        setPageTitle('Eigenproduktion hinzufügen');
-    }, []);
-
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_ADD_SELFMADE_FILM}>
+            <PageHeadlineStyled>{PAGE_TITLE_ADD_SELFMADE_FILM}</PageHeadlineStyled>
             <BaseForm postFunction={postSelfmadeFilm} postRedirectRoute={ROUTE_SELFMADE_FILMS}>
                 <SelfmadeFilmFormGroup />
             </BaseForm>
-        </PageStyled>
+        </BasePage>
     );
 }

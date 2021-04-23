@@ -1,14 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import BasePage from '../common/BasePage';
 import EditTextLink from '../common/misc/EditTextLink';
-import { PageHeadlineStyled, PageStyled } from '../common/styledElements';
-import Context from '../Context';
+import { PageHeadlineStyled } from '../common/styledElements';
+import { PAGE_TITLE_ABOUT } from '../constants';
 import { getText } from '../utils/services/textServices';
 
 export default function AboutPage() {
     const [text, setText] = useState('');
-
-    const { setPageTitle } = useContext(Context);
 
     useEffect(() => {
         getText('about').then((res) => {
@@ -16,17 +15,12 @@ export default function AboutPage() {
         });
     }, []);
 
-    useEffect(() => {
-        document.title = 'Über uns | aka-Filmclub';
-        setPageTitle('Über uns');
-    }, []);
-
     return (
-        <PageStyled>
-            <PageHeadlineStyled>Wir über uns</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_ABOUT}>
+            <PageHeadlineStyled>{PAGE_TITLE_ABOUT}</PageHeadlineStyled>
             <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
             <EditTextLink page="about" />
-        </PageStyled>
+        </BasePage>
     );
 }
 

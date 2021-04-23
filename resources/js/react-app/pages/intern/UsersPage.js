@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { AddItemLinkStyled, PageHeadlineStyled, PageStyled } from '../../common/styledElements';
+import BasePage from '../../common/BasePage';
+import { AddItemLinkStyled, PageHeadlineStyled } from '../../common/styledElements';
 import {
     AUTH_LEVEL_ADMIN,
+    PAGE_TITLE_USERS,
     ROUTE_INTERN_ADD_USER,
     ROUTE_INTERN_EDIT_USER,
     USER_STATUS_ACTIVE,
@@ -16,12 +18,7 @@ import { getUsers } from '../../utils/services/userServices';
 export default function UsersPage() {
     const [users, setUsers] = useState([]);
 
-    const { user: loggedInUser, pageTitle, setPageTitle } = useContext(Context);
-
-    useEffect(() => {
-        document.title = 'Mitglieder | aka-Filmclub';
-        setPageTitle('Mitglieder');
-    }, []);
+    const { user: loggedInUser } = useContext(Context);
 
     useEffect(() => {
         getUsers().then((res) => {
@@ -30,8 +27,8 @@ export default function UsersPage() {
     }, []);
 
     return (
-        <PageStyled>
-            <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
+        <BasePage pageTitle={PAGE_TITLE_USERS}>
+            <PageHeadlineStyled>{PAGE_TITLE_USERS}</PageHeadlineStyled>
             <EditOwnDataLinkStyled to={ROUTE_INTERN_EDIT_USER + loggedInUser.uuid}>
                 Eigene Daten bearbeiten
             </EditOwnDataLinkStyled>
@@ -79,7 +76,7 @@ export default function UsersPage() {
                     </ListStyled>
                 </ListContainerStyled>
             </GridContainerStyled>
-        </PageStyled>
+        </BasePage>
     );
 }
 
