@@ -4,6 +4,23 @@ import styled from 'styled-components';
 import akaLogo from '../assets/aka_logo.png';
 import {
     AUTH_LEVEL_EDITOR,
+    PAGE_TITLE_ABOUT,
+    PAGE_TITLE_ADD_NOTICE,
+    PAGE_TITLE_ADD_SCREENING,
+    PAGE_TITLE_ADD_SERIAL,
+    PAGE_TITLE_ADMISSIONS,
+    PAGE_TITLE_ARCHIVE,
+    PAGE_TITLE_AWARDS,
+    PAGE_TITLE_FAQS,
+    PAGE_TITLE_INTERN,
+    PAGE_TITLE_LOGIN,
+    PAGE_TITLE_NEWS,
+    PAGE_TITLE_PRESS,
+    PAGE_TITLE_PROGRAM,
+    PAGE_TITLE_PROGRAM_OVERVIEW,
+    PAGE_TITLE_SELFMADE_FILMS,
+    PAGE_TITLE_SERIALS,
+    PAGE_TITLE_USERS,
     ROUTE_ABOUT,
     ROUTE_ARCHIVE,
     ROUTE_AWARDS,
@@ -51,55 +68,55 @@ export default function Header() {
                 <NavStyled isNavOpen={isNavOpen}>
                     <DropdownContainerStyled>
                         <NavLinkStyled to={ROUTE_NEWS} onClick={() => setIsNavOpen(false)}>
-                            News
+                            {PAGE_TITLE_NEWS}
                         </NavLinkStyled>
                     </DropdownContainerStyled>
                     <DropdownContainerStyled>
                         <NavLinkStyled to={ROUTE_PROGRAM} onClick={() => setIsNavOpen(false)}>
-                            Programm
+                            {PAGE_TITLE_PROGRAM}
                         </NavLinkStyled>
                         <SubNavStyled>
                             <SubNavLinkStyled to={ROUTE_PROGRAM_OVERVIEW} onClick={() => setIsNavOpen(false)}>
-                                Übersicht
+                                {PAGE_TITLE_PROGRAM_OVERVIEW}
                             </SubNavLinkStyled>
                             <SubNavLinkStyled to={ROUTE_SERIALS} onClick={() => setIsNavOpen(false)}>
-                                Filmreihen
+                                {PAGE_TITLE_SERIALS}
                             </SubNavLinkStyled>
                             <SubNavLinkStyled to={ROUTE_ARCHIVE} onClick={() => setIsNavOpen(false)}>
-                                Archiv
+                                {PAGE_TITLE_ARCHIVE}
                             </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
                     <DropdownContainerStyled>
                         <NavLinkStyled to={ROUTE_ABOUT} onClick={() => setIsNavOpen(false)}>
-                            Über uns
+                            {PAGE_TITLE_ABOUT}
                         </NavLinkStyled>
                         <SubNavStyled>
                             <SubNavLinkStyled to={ROUTE_FAQS} onClick={() => setIsNavOpen(false)}>
-                                FAQs
+                                {PAGE_TITLE_FAQS}
                             </SubNavLinkStyled>
                             <SubNavLinkStyled to={ROUTE_PRESS} onClick={() => setIsNavOpen(false)}>
-                                Pressespiegel
+                                {PAGE_TITLE_PRESS}
                             </SubNavLinkStyled>
                             <SubNavLinkStyled to={ROUTE_AWARDS} onClick={() => setIsNavOpen(false)}>
-                                Auszeichnungen
+                                {PAGE_TITLE_AWARDS}
                             </SubNavLinkStyled>
                             <SubNavLinkStyled to={ROUTE_SELFMADE_FILMS} onClick={() => setIsNavOpen(false)}>
-                                Eigenproduktionen
+                                {PAGE_TITLE_SELFMADE_FILMS}
                             </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
                     {isLoggedIn ? (
                         <DropdownContainerStyled>
                             <NavLinkStyled to={ROUTE_INTERN} onClick={() => setIsNavOpen(false)}>
-                                Intern
+                                {PAGE_TITLE_INTERN}
                             </NavLinkStyled>
                             <SubNavStyled>
                                 <SubNavLinkStyled to={ROUTE_INTERN_USERS} onClick={() => setIsNavOpen(false)}>
-                                    Mitglieder
+                                    {PAGE_TITLE_USERS}
                                 </SubNavLinkStyled>
                                 <SubNavLinkStyled to={ROUTE_INTERN_ADMISSIONS} onClick={() => setIsNavOpen(false)}>
-                                    Besuchszahlen
+                                    {PAGE_TITLE_ADMISSIONS}
                                 </SubNavLinkStyled>
                                 {isEditor && (
                                     <>
@@ -107,19 +124,19 @@ export default function Header() {
                                             to={ROUTE_INTERN_ADD_NOTICE}
                                             onClick={() => setIsNavOpen(false)}
                                         >
-                                            News anlegen
+                                            {PAGE_TITLE_ADD_NOTICE}
                                         </SubNavLinkStyled>
                                         <SubNavLinkStyled
                                             to={ROUTE_INTERN_ADD_SERIAL}
                                             onClick={() => setIsNavOpen(false)}
                                         >
-                                            Filmreihe anlegen
+                                            {PAGE_TITLE_ADD_SERIAL}
                                         </SubNavLinkStyled>
                                         <SubNavLinkStyled
                                             to={ROUTE_INTERN_ADD_SCREENING}
                                             onClick={() => setIsNavOpen(false)}
                                         >
-                                            Vorführung anlegen
+                                            {PAGE_TITLE_ADD_SCREENING}
                                         </SubNavLinkStyled>
                                     </>
                                 )}
@@ -131,7 +148,7 @@ export default function Header() {
                     ) : (
                         <DropdownContainerStyled>
                             <NavLinkStyled to={ROUTE_LOGIN} onClick={() => setIsNavOpen(false)}>
-                                Login
+                                {PAGE_TITLE_LOGIN}
                             </NavLinkStyled>
                         </DropdownContainerStyled>
                     )}
