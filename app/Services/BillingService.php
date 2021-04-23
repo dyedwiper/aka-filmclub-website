@@ -25,7 +25,7 @@ class BillingService
         $billing->netTicketEarnings = $this->calculateNetTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);
         $billing->valueAddedTax = $this->calculateValueAddedTax($billing);
-        $billing->ticketTax = $this::TICKET_TAX;
+        $billing->ticketTax = self::TICKET_TAX;
         $billing->debt = $this->calcaluteDebt($billing);
         $billing->balance = $this->calculateBalance($billing);
     }
@@ -79,7 +79,7 @@ class BillingService
     {
         return $this->calculateTicketEarnings($billing)
             - $this->calculateTicketsCount($billing)
-            * $this::TICKET_TAX;
+            * self::TICKET_TAX;
     }
 
     public function calculateRent($billing)
