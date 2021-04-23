@@ -34,7 +34,7 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'GetFutureScreenings'
     ]);
 
-    Route::get('/single/{uuid}', [
+    Route::get('/uuid/{uuid}', [
         ScreeningController::class, 'GetScreeningByUuid'
     ]);
 
