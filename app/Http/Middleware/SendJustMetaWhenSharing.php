@@ -60,7 +60,7 @@ class SendJustMetaWhenSharing
 
     const STORAGE_PATH = '/storage/';
 
-    const AKA_LOGO_PATH = '/images/aka_logo_yellow_big.png';
+    const AKA_LOGO_PATH = '/images/aka_logo_yellow_1200x627.png';
 
     const AKA_NAME = 'aka-Filmclub';
 
