@@ -2,8 +2,6 @@
 
 namespace App\Utils;
 
-use Illuminate\Support\Facades\Log;
-
 class PathUtils
 {
     public static function getLastSegment($path)

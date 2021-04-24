@@ -9,7 +9,6 @@ use App\Utils\PathUtils;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Log;
 
 class SendJustMetaWhenSharing
 {
@@ -76,8 +75,6 @@ class SendJustMetaWhenSharing
         $userAgent = $request->header('user-agent');
         $path = $request->path;
         $standardImageUrl = Config::get('app.url') . self::AKA_LOGO_PATH;
-        // Log::channel('personal')->debug($userAgent);
-        // Log::channel('personal')->debug(PathUtils::getLastSegment($path));
 
         if (str_contains($userAgent, 'facebookexternalhit') || str_contains($userAgent, 'TelegramBot')) {
             if ($path == self::ROUTE_HOME) {
@@ -178,11 +175,11 @@ class SendJustMetaWhenSharing
                 return response($twitterMeta);
             } elseif (str_starts_with($path, self::ROUTE_SERIAL)) {
                 $serialData = $this->getSerialData($path);
-                $twitterMeta = $this->createTwitterMeta($serialData['title'], $serialData['imageUrl'], $serialData['description'], $path);
+                $twitterMeta = $this->createTwitterMeta($serialData['title'], $serialData['imageUrl'], $serialData['description']);
                 return response($twitterMeta);
             } elseif (str_starts_with($path, self::ROUTE_NOTICE)) {
                 $noticeData = $this->getNoticeData($path);
-                $twitterMeta = $this->createTwitterMeta($noticeData['title'], $noticeData['imageUrl'], $noticeData['description'], $path);
+                $twitterMeta = $this->createTwitterMeta($noticeData['title'], $noticeData['imageUrl'], $noticeData['description']);
                 return response($twitterMeta);
             }
         }
