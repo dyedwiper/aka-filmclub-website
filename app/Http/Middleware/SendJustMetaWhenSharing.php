@@ -38,17 +38,28 @@ class SendJustMetaWhenSharing
                 $screeningData = $this->getScreeningData($path);
                 $ogMeta = $this->createOgMeta($screeningData['title'], $screeningData['imageUrl'], $screeningData['description'], $path);
                 return response($ogMeta);
-            } else if (str_starts_with($path, self::ROUTE_SERIAL)) {
+            } elseif (str_starts_with($path, self::ROUTE_SERIAL)) {
                 $serialData = $this->getSerialData($path);
                 $ogMeta = $this->createOgMeta($serialData['title'], $serialData['imageUrl'], $serialData['description'], $path);
                 return response($ogMeta);
-            } else if (str_starts_with($path, self::ROUTE_NOTICE)) {
+            } elseif (str_starts_with($path, self::ROUTE_NOTICE)) {
                 $noticeData = $this->getNoticeData($path);
                 $ogMeta = $this->createOgMeta($noticeData['title'], $noticeData['imageUrl'], $noticeData['description'], $path);
                 return response($ogMeta);
             }
         } else if (str_contains($userAgent, 'Twitterbot')) {
             if (str_starts_with($path, self::ROUTE_SCREENING)) {
+                $screeningData = $this->getScreeningData($path);
+                $twitterMeta = $this->createTwitterMeta($screeningData['title'], $screeningData['imageUrl'], $screeningData['description']);
+                return response($twitterMeta);
+            } elseif (str_starts_with($path, self::ROUTE_SERIAL)) {
+                $serialData = $this->getSerialData($path);
+                $twitterMeta = $this->createTwitterMeta($serialData['title'], $serialData['imageUrl'], $serialData['description'], $path);
+                return response($twitterMeta);
+            } elseif (str_starts_with($path, self::ROUTE_NOTICE)) {
+                $noticeData = $this->getNoticeData($path);
+                $twitterMeta = $this->createTwitterMeta($noticeData['title'], $noticeData['imageUrl'], $noticeData['description'], $path);
+                return response($twitterMeta);
             }
         }
 
@@ -57,8 +68,6 @@ class SendJustMetaWhenSharing
 
     private function getScreeningData($path)
     {
-        $screeningData = [];
-        $baseUrl = Config::get('app.url');
         $uuid = PathUtils::getLastSegment($path);
         $screening = Screening::where('uuid', $uuid)->with('image')->first();
         if (!$screening) {
@@ -67,7 +76,7 @@ class SendJustMetaWhenSharing
         $screeningData['title'] = $screening->title;
         $screeningData['imageUrl'] = "";
         if ($screening->image) {
-            $screeningData['imageUrl'] = $baseUrl . self::STORAGE_PATH . $screening->image->path;
+            $screeningData['imageUrl'] = Config::get('app.url') . self::STORAGE_PATH . $screening->image->path;
         }
         $screeningData['description'] = strip_tags($screening->synopsis);
         return $screeningData;
@@ -75,8 +84,6 @@ class SendJustMetaWhenSharing
 
     private function getSerialData($path)
     {
-        $serialData = [];
-        $baseUrl = Config::get('app.url');
         $uuid = PathUtils::getLastSegment($path);
         $serial = Serial::where('uuid', $uuid)->with('image')->first();
         if (!$serial) {
@@ -85,7 +92,7 @@ class SendJustMetaWhenSharing
         $serialData['title'] = $serial->title;
         $serialData['imageUrl'] = "";
         if ($serial->image) {
-            $serialData['imageUrl'] = $baseUrl . self::STORAGE_PATH . $serial->image->path;
+            $serialData['imageUrl'] = Config::get('app.url') . self::STORAGE_PATH . $serial->image->path;
         }
         $serialData['description'] = strip_tags($serial->article);
         return $serialData;
@@ -93,8 +100,6 @@ class SendJustMetaWhenSharing
 
     private function getNoticeData($path)
     {
-        $noticeData = [];
-        $baseUrl = Config::get('app.url');
         $uuid = PathUtils::getLastSegment($path);
         $notice = Notice::where('uuid', $uuid)->with('image')->first();
         if (!$notice) {
@@ -103,7 +108,7 @@ class SendJustMetaWhenSharing
         $noticeData['title'] = $notice->title;
         $noticeData['imageUrl'] = "";
         if ($notice->image) {
-            $noticeData['imageUrl'] = $baseUrl . self::STORAGE_PATH . $notice->image->path;
+            $noticeData['imageUrl'] = Config::get('app.url') . self::STORAGE_PATH . $notice->image->path;
         }
         $noticeData['description'] = strip_tags($notice->content);
         return $noticeData;
