@@ -60,7 +60,7 @@ class SendJustMetaWhenSharing
 
     const STORAGE_PATH = '/storage/';
 
-    const AKA_LOGO_PATH = 'images/aka_logo.png';
+    const AKA_LOGO_PATH = 'images/aka_logo_yellow_big.png';
 
     const AKA_NAME = 'aka-Filmclub';
 
@@ -244,7 +244,7 @@ class SendJustMetaWhenSharing
         $akaName = self::AKA_NAME;
         $locale = 'de_DE';
 
-        $ogTitle = $title ? $title . '|' . $akaName : $akaName;
+        $ogTitle = $title ? $title . ' | ' . $akaName : $akaName;
 
         return "
             <meta property=\"og:title\" content=\"$ogTitle\">
@@ -259,7 +259,7 @@ class SendJustMetaWhenSharing
 
     private function createTwitterMeta($title, $imageUrl, $description)
     {
-        $twitterTitle = $title ? $title . '|' . self::AKA_NAME : self::AKA_NAME;
+        $twitterTitle = $title ? $title . ' | ' . self::AKA_NAME : self::AKA_NAME;
 
         return "
             <meta name=\"twitter:card\" content=\"summary_large_image\" />
