@@ -60,7 +60,7 @@ class SendJustMetaWhenSharing
 
     const STORAGE_PATH = '/storage/';
 
-    const AKA_LOGO_PATH = 'images/aka_logo_yellow_big.png';
+    const AKA_LOGO_PATH = '/images/aka_logo_yellow_big.png';
 
     const AKA_NAME = 'aka-Filmclub';
 
@@ -75,7 +75,7 @@ class SendJustMetaWhenSharing
     {
         $userAgent = $request->header('user-agent');
         $path = $request->path;
-        $standardImageUrl = Config::get('app.url') . self::STORAGE_PATH . self::AKA_LOGO_PATH;
+        $standardImageUrl = Config::get('app.url') . self::AKA_LOGO_PATH;
         // Log::channel('personal')->debug($userAgent);
         // Log::channel('personal')->debug(PathUtils::getLastSegment($path));
 
