@@ -6,7 +6,7 @@ class BillingService
 {
     // That's the tax (called "V-Steuer") which is subtracted from the price of every ticket,
     // in order to calculate the net ticket price.
-    const ticketTax = 10;
+    const TICKET_TAX = 10;
 
     public function addBillingToScreening($screening)
     {
@@ -25,7 +25,7 @@ class BillingService
         $billing->netTicketEarnings = $this->calculateNetTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);
         $billing->valueAddedTax = $this->calculateValueAddedTax($billing);
-        $billing->ticketTax = $this::ticketTax;
+        $billing->ticketTax = self::TICKET_TAX;
         $billing->debt = $this->calcaluteDebt($billing);
         $billing->balance = $this->calculateBalance($billing);
     }
@@ -79,7 +79,7 @@ class BillingService
     {
         return $this->calculateTicketEarnings($billing)
             - $this->calculateTicketsCount($billing)
-            * $this::ticketTax;
+            * self::TICKET_TAX;
     }
 
     public function calculateRent($billing)

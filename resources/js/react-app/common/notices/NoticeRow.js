@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { STORAGE_FOLDER } from '../../constants';
+import { ROUTE_NOTICE, STORAGE_FOLDER } from '../../constants';
 import { formatToDateString } from '../../utils/dateFormatters';
 import { HorizontalRuleStyled } from '../styledElements';
 import missingImage from '../../assets/missing.jpg';
@@ -11,12 +11,12 @@ export default function NoticeRow({ notice }) {
         <NoticeRowStyled>
             <HorizontalRuleStyled />
             <NoticeContainerStyled>
-                <LinkStyled to={'/news/' + notice.uuid}>
+                <LinkStyled to={ROUTE_NOTICE + notice.uuid}>
                     <ImageStyled src={notice.image ? STORAGE_FOLDER + notice.image.path : missingImage} />
                 </LinkStyled>
                 <InfoContainerStyled>
                     <DateStyled>{formatToDateString(notice.date)}</DateStyled>
-                    <LinkStyled to={'/news/' + notice.uuid}>
+                    <LinkStyled to={ROUTE_NOTICE + notice.uuid}>
                         <TitleStyled>{notice.title}</TitleStyled>
                     </LinkStyled>
                     <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />

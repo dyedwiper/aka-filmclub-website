@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { STORAGE_FOLDER } from '../../constants';
+import { ROUTE_NOTICE, STORAGE_FOLDER } from '../../constants';
 import missingImage from '../../assets/missing.jpg';
 
 export default function NoticeCard({ notice }) {
     return (
         <NoticeCardStyled>
-            <Link to={'/news/' + notice.uuid}>
+            <Link to={ROUTE_NOTICE + notice.uuid}>
                 <ImageStyled src={notice.image ? STORAGE_FOLDER + notice.image.path : missingImage} />
                 <TitleStyled>{notice.title}</TitleStyled>
             </Link>
