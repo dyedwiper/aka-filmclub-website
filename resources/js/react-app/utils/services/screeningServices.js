@@ -9,7 +9,7 @@ export function getScreeningsBySemester(semester) {
 }
 
 export function getScreeningByUuid(uuid) {
-    return makeApiCall('/api/screenings/single/' + uuid);
+    return makeApiCall('/api/screenings/uuid/' + uuid);
 }
 
 export function getScreeningsBySearchString(search) {
