@@ -70,6 +70,11 @@ export default createGlobalStyle`
 
   img {
     filter: grayscale();
+    transition: filter 2.3s;
+
+    &:hover{
+        filter: none;
+    }
   }
 
   a {
