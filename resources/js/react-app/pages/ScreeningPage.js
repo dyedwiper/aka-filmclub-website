@@ -106,7 +106,7 @@ export default function ScreeningPage() {
 
 const ImageContainerStyled = styled.div`
     position: relative;
-    margin-bottom: 20px;
+    margin: 20px 0;
 `;
 
 const ImageStyled = styled.img`

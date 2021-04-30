@@ -62,6 +62,7 @@ export default function NoticePage() {
 
 const ImageStyled = styled.img`
     max-width: 100%;
+    margin-top: 20px;
 `;
 
 const DateStyled = styled.div``;

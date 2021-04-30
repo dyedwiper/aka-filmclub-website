@@ -89,7 +89,7 @@ export default function SerialPage() {
 
 const ImageContainerStyled = styled.div`
     position: relative;
-    margin-bottom: 20px;
+    margin: 20px 0;
 `;
 
 const ImageStyled = styled.img`
@@ -109,6 +109,7 @@ const TitleContainerStyled = styled.div`
 const TitleStyled = styled.h2`
     display: inline-block;
     margin: 0 20px 0 0;
+    color: var(--aka-gelb);
     font-size: 3em;
 `;
 
