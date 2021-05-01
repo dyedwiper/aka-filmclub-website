@@ -297,6 +297,6 @@ const SubNavLinkStyled = styled(Link)`
     white-space: nowrap;
 
     &:hover {
-        text-decoration: underline white;
+        text-decoration-color: white;
     }
 `;
