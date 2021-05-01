@@ -312,3 +312,25 @@ Route::prefix('billings')->group(function () {
         BillingController::class, 'UpdateUuids'
     ]);
 });
+
+Route::prefix('licenses')->group(function () {
+    Route::get('/', [
+        LicenseController::class, 'GetLicenses'
+    ]);
+
+    Route::get('/uuid/{uuid}', [
+        LicenseController::class, 'GetLicenseByUuid'
+    ]);
+
+    Route::middleware('auth:sanctum')->post('/', [
+        LicenseController::class, 'PostLicense'
+    ]);
+
+    Route::middleware('auth:sanctum')->patch('/', [
+        LicenseController::class, 'PatchLicense'
+    ]);
+
+    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
+        LicenseController::class, 'DeleteLicense'
+    ]);
+});
