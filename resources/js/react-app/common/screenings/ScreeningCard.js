@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import akaLogoGrau from '../../assets/aka_logo_grau.png';
 import { ROUTE_SCREENING, STORAGE_FOLDER } from '../../constants';
 import { formatToDateTimeStringWithWeekday } from '../../utils/dateFormatters';
 import { stripHtml } from '../../utils/stringUtils';
@@ -10,7 +11,7 @@ export default function ScreeningCard({ screening }) {
         <ScreeningCardStyled>
             <Link to={ROUTE_SCREENING + screening.uuid}>
                 <ImageContainerStyled>
-                    {screening.image && <ImageStyled src={STORAGE_FOLDER + screening.image.path} />}
+                    <ImageStyled src={screening.image ? STORAGE_FOLDER + screening.image.path : akaLogoGrau} />
                     <TitleStyled>{screening.title}</TitleStyled>
                 </ImageContainerStyled>
             </Link>

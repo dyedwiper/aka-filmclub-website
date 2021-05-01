@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
 import { HorizontalRuleStyled } from '../styledElements';
+import akaLogoGrau from '../../assets/aka_logo_grau.png';
 
 export default function SerialRow({ serial }) {
     return (
@@ -10,7 +11,7 @@ export default function SerialRow({ serial }) {
             <HorizontalRuleStyled />
             <SerialContainerStyled>
                 <LinkStyled to={ROUTE_SERIAL + serial.uuid}>
-                    {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
+                    <ImageStyled src={serial.image ? STORAGE_FOLDER + serial.image.path : akaLogoGrau} />
                 </LinkStyled>
                 <InfoContainerStyled>
                     <LinkStyled to={ROUTE_SERIAL + serial.uuid}>

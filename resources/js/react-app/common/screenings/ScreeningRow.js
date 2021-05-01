@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import akaLogoGrau from '../../assets/aka_logo_grau.png';
 import { ROUTE_SCREENING, STORAGE_FOLDER } from '../../constants';
 import { formatToDateTimeString } from '../../utils/dateFormatters';
 
@@ -10,7 +11,7 @@ export default function ScreeningRow({ screening }) {
             <HorizontalRuleStyled />
             <ScreeningContainerStyled>
                 <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
-                    {screening.image && <ScreeningImageStyled src={STORAGE_FOLDER + screening.image.path} />}
+                    <ImageStyled src={screening.image ? STORAGE_FOLDER + screening.image.path : akaLogoGrau} />
                 </LinkStyled>
                 <InfoContainerStyled>
                     <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
@@ -46,7 +47,7 @@ const ScreeningContainerStyled = styled.div`
 
 const LinkStyled = styled(Link)``;
 
-const ScreeningImageStyled = styled.img`
+const ImageStyled = styled.img`
     width: 100%;
     object-fit: cover;
 `;
