@@ -121,6 +121,10 @@ const TitleContainerStyled = styled.div`
     width: 100%;
     padding: 60px 20px 10px 20px;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+
+    @media (max-width: 767px) {
+        padding: 60px 10px 10px 10px;
+    }
 `;
 
 const TitleStyled = styled.h2`
@@ -128,6 +132,10 @@ const TitleStyled = styled.h2`
     margin: 0 20px 0 0;
     color: var(--aka-gelb);
     font-size: 3em;
+
+    @media (max-width: 767px) {
+        font-size: 1.5em;
+    }
 `;
 
 const FallbackTitleStyled = styled.h2`
@@ -138,6 +146,10 @@ const FallbackTitleStyled = styled.h2`
 
 const TextContainerStyled = styled.div`
     padding: 0 20px;
+
+    @media (max-width: 767px) {
+        padding: 0;
+    }
 `;
 
 const DateAndVenueStyled = styled.div`

@@ -43,7 +43,7 @@ const TitleStyled = styled.h3`
     bottom: 0;
     width: 100%;
     margin: 0;
-    padding: 20px 10px 5px 10px;
+    padding: 20px 10px 10px 10px;
     color: var(--aka-gelb);
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 `;
