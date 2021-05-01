@@ -94,7 +94,7 @@ export default createGlobalStyle`
   }
 
   p {
-      margin: 0;
+      margin: 10px 0;
       color: black;
   } 
 
