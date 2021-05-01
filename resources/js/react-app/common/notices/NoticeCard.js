@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_NOTICE, STORAGE_FOLDER } from '../../constants';
 import missingImage from '../../assets/missing.jpg';
+import { stripHtml } from '../../utils/stringUtils';
 
 export default function NoticeCard({ notice }) {
     return (
@@ -11,7 +12,8 @@ export default function NoticeCard({ notice }) {
                 <ImageStyled src={notice.image ? STORAGE_FOLDER + notice.image.path : missingImage} />
                 <TitleStyled>{notice.title}</TitleStyled>
             </Link>
-            <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
+            <ContentStyled>{stripHtml(notice.content)}</ContentStyled>
+            <Link to={ROUTE_NOTICE + notice.uuid}>[mehr]</Link>
         </NoticeCardStyled>
     );
 }

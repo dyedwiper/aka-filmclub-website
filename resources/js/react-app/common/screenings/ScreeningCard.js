@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_SCREENING, STORAGE_FOLDER } from '../../constants';
-import { formatToDateString } from '../../utils/dateFormatters';
+import { formatToDateTimeStringWithWeekday } from '../../utils/dateFormatters';
+import { stripHtml } from '../../utils/stringUtils';
 
 export default function ScreeningCard({ screening }) {
     return (
@@ -12,9 +13,10 @@ export default function ScreeningCard({ screening }) {
                     {screening.image && <ImageStyled src={STORAGE_FOLDER + screening.image.path} />}
                     <TitleStyled>{screening.title}</TitleStyled>
                 </ImageContainerStyled>
-                <DateStyled>{formatToDateString(screening.date)}</DateStyled>
-                <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
             </Link>
+            <DateStyled>{formatToDateTimeStringWithWeekday(screening.date)}</DateStyled>
+            <SynopsisStyled>{stripHtml(screening.synopsis)}</SynopsisStyled>
+            <Link to={ROUTE_SCREENING + screening.uuid}>[mehr]</Link>
         </ScreeningCardStyled>
     );
 }
@@ -24,6 +26,10 @@ const ScreeningCardStyled = styled.li``;
 const ImageContainerStyled = styled.div`
     position: relative;
     margin-bottom: 10px;
+
+    &:hover img {
+        filter: none;
+    }
 `;
 
 const ImageStyled = styled.img`
@@ -54,7 +60,7 @@ const DateStyled = styled.div`
 `;
 
 const SynopsisStyled = styled.div`
-    margin: 10px 0;
+    margin: 10px 0 0 0;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
