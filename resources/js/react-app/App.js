@@ -48,6 +48,9 @@ import {
     ROUTE_INTERN_EDIT_SELFMADE_FILM,
     ROUTE_INTERN_EDIT_TEXT,
     ROUTE_NOTICE,
+    ROUTE_INTERN_LICENSES,
+    ROUTE_INTERN_ADD_LICENSE,
+    ROUTE_INTERN_EDIT_LICENSE,
 } from './constants';
 import Context from './Context';
 import AboutPage from './pages/AboutPage';
@@ -96,6 +99,9 @@ import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
 import SelfmadeFilmsPage from './pages/SelfmadeFilmsPage';
 import { getCurrentUser } from './utils/services/userServices';
+import LicensesPage from './pages/intern/LicensesPage';
+import AddLicensePage from './pages/intern/AddLicensePage';
+import EditLicensePage from './pages/intern/EditLicensePage';
 
 export default function App() {
     const [user, setUser] = useState({});
@@ -252,6 +258,15 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path={ROUTE_INTERN_EDIT_DISTRIBUTOR}>
                             <EditDistributorPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path={ROUTE_INTERN_LICENSES}>
+                            <LicensesPage />
+                        </PrivateRoute>
+                        <PrivateRoute exact path={ROUTE_INTERN_ADD_LICENSE}>
+                            <AddLicensePage />
+                        </PrivateRoute>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_LICENSE}>
+                            <EditLicensePage />
                         </PrivateRoute>
                         <Route path={ROUTE_ERROR}>
                             <ErrorPage />

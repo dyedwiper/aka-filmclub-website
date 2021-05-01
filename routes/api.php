@@ -4,6 +4,7 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SelfmadeFilmController;

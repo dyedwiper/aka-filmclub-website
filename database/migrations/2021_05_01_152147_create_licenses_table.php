@@ -18,7 +18,7 @@ class CreateLicensesTable extends Migration
             $table->uuid('uuid');
             $table->timestamps();
             $table->string('name');
-            $table->string('link');
+            $table->string('link')->nullable();
         });
     }
 
