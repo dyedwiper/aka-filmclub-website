@@ -19,7 +19,7 @@ const HamburgerButtonStyled = styled.button`
     @media (max-width: 767px) {
         justify-self: right;
         display: block;
-        width: 60px;
+        width: 55px;
         height: 60px;
         margin-right: 10px;
         padding: 10px;
@@ -38,7 +38,7 @@ const LineStyled = styled.div`
     position: absolute;
     left: 0;
     height: 5px;
-    width: 40px;
+    width: 35px;
     background-color: black;
     transition: 1s;
 
