@@ -96,6 +96,7 @@ export default createGlobalStyle`
   p {
       margin: 10px 0;
       color: black;
+      hyphens: auto;
   } 
 
   h2{
