@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import akaLogoGrau from '../../assets/aka_logo_grau.png';
 import { ROUTE_SCREENING, STORAGE_FOLDER } from '../../constants';
-import { formatToDateTimeString } from '../../utils/dateFormatters';
+import { formatToDateTimeStringWithWeekday } from '../../utils/dateFormatters';
+import { stripHtml } from '../../utils/stringUtils';
 
 export default function ScreeningRow({ screening }) {
     return (
@@ -14,11 +15,12 @@ export default function ScreeningRow({ screening }) {
                     <ImageStyled src={screening.image ? STORAGE_FOLDER + screening.image.path : akaLogoGrau} />
                 </LinkStyled>
                 <InfoContainerStyled>
-                    <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
+                    <DateStyled>{formatToDateTimeStringWithWeekday(screening.date)}</DateStyled>
                     <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
                         <TitleStyled>{screening.title}</TitleStyled>
                     </LinkStyled>
-                    <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
+                    <SynopsisStyled>{stripHtml(screening.synopsis)}</SynopsisStyled>
+                    <Link to={ROUTE_SCREENING + screening.uuid}>[mehr]</Link>
                 </InfoContainerStyled>
             </ScreeningContainerStyled>
         </ScreeningRowStyled>
@@ -61,7 +63,7 @@ const TitleStyled = styled.h3``;
 const SynopsisStyled = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
     overflow: hidden;
     margin-top: 10px;
 `;
