@@ -104,6 +104,10 @@ const TitleContainerStyled = styled.div`
     padding: 60px 20px 10px 20px;
     color: var(--aka-gelb);
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+
+    @media (max-width: 767px) {
+        padding: 60px 10px 10px 10px;
+    }
 `;
 
 const TitleStyled = styled.h2`
@@ -111,6 +115,10 @@ const TitleStyled = styled.h2`
     margin: 0 20px 0 0;
     color: var(--aka-gelb);
     font-size: 3em;
+
+    @media (max-width: 767px) {
+        font-size: 1.5em;
+    }
 `;
 
 const SubtitleStyled = styled.span``;
@@ -119,16 +127,28 @@ const FallbackTitleStyled = styled.h2`
     margin: 10px 0;
     padding: 0 20px;
     font-size: 2.1em;
+
+    @media (max-width: 767px) {
+        padding: 0;
+    }
 `;
 
 const FallbackSubtitleStyled = styled.div`
     margin-bottom: 10px;
     padding: 0 20px;
     font-weight: bold;
+
+    @media (max-width: 767px) {
+        padding: 0;
+    }
 `;
 
 const TextContainerStyled = styled.div`
     padding: 0 20px;
+
+    @media (max-width: 767px) {
+        padding: 0;
+    }
 `;
 
 const ScreeningsListStyled = styled.ul``;

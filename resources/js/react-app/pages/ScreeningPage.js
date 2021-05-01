@@ -142,6 +142,10 @@ const FallbackTitleStyled = styled.h2`
     margin: 10px 0;
     padding: 0 20px;
     font-size: 2.1em;
+
+    @media (max-width: 767px) {
+        padding: 0;
+    }
 `;
 
 const TextContainerStyled = styled.div`
