@@ -51,7 +51,12 @@ const LinkStyled = styled(Link)``;
 
 const ImageStyled = styled.img`
     width: 100%;
+    max-height: 190px;
     object-fit: cover;
+
+    @media (max-width: 767px) {
+        max-height: initial;
+    }
 `;
 
 const InfoContainerStyled = styled.div``;
@@ -63,7 +68,7 @@ const TitleStyled = styled.h3``;
 const SynopsisStyled = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
     overflow: hidden;
     margin-top: 10px;
 `;
