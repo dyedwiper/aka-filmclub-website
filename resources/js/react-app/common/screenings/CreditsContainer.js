@@ -65,6 +65,4 @@ const KeyStyled = styled.span`
     font-weight: bold;
 `;
 
-const ValueStyled = styled.span`
-    display: inline-block;
-`;
+const ValueStyled = styled.span``;

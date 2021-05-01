@@ -56,17 +56,18 @@ export default function ScreeningPage() {
                     <ImageStyled src={STORAGE_FOLDER + screening.image.path} />
                     <TitleContainerStyled>
                         <TitleStyled>{screening.title}</TitleStyled>
-                        <DateStyled>{formatToDateTimeStringWithWeekday(screening.date)}</DateStyled>
                     </TitleContainerStyled>
                 </ImageContainerStyled>
             ) : (
                 <>
                     <FallbackTitleStyled>{screening.title}</FallbackTitleStyled>
-                    <FallbackDateStyled>{formatToDateTimeStringWithWeekday(screening.date)}</FallbackDateStyled>
                 </>
             )}
             <TextContainerStyled>
-                <VenueStyled>Ort: {screening.venue}</VenueStyled>
+                <DateAndVenueStyled>
+                    {formatToDateTimeStringWithWeekday(screening.date)} <VerticalLineStyled>|</VerticalLineStyled>{' '}
+                    {screening.venue}
+                </DateAndVenueStyled>
                 {new Date(screening.date) >= Date.now() && <CalendarDownloadLink screening={screening} />}
                 <FilmInfoContainer film={screening} />
                 <CreditsContainer film={screening} />
@@ -106,7 +107,7 @@ export default function ScreeningPage() {
 
 const ImageContainerStyled = styled.div`
     position: relative;
-    margin-bottom: 20px;
+    margin: 20px 0;
 `;
 
 const ImageStyled = styled.img`
@@ -120,6 +121,10 @@ const TitleContainerStyled = styled.div`
     width: 100%;
     padding: 60px 20px 10px 20px;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+
+    @media (max-width: 767px) {
+        padding: 60px 10px 10px 10px;
+    }
 `;
 
 const TitleStyled = styled.h2`
@@ -127,30 +132,31 @@ const TitleStyled = styled.h2`
     margin: 0 20px 0 0;
     color: var(--aka-gelb);
     font-size: 3em;
-`;
 
-const DateStyled = styled.span`
-    white-space: nowrap;
-    color: var(--aka-gelb);
+    @media (max-width: 767px) {
+        font-size: 1.5em;
+    }
 `;
 
 const FallbackTitleStyled = styled.h2`
     margin: 10px 0;
     padding: 0 20px;
     font-size: 2.1em;
-`;
 
-const FallbackDateStyled = styled.div`
-    margin-bottom: 10px;
-    padding: 0 20px;
-    font-weight: bold;
+    @media (max-width: 767px) {
+        padding: 0;
+    }
 `;
 
 const TextContainerStyled = styled.div`
     padding: 0 20px;
+
+    @media (max-width: 767px) {
+        padding: 0;
+    }
 `;
 
-const VenueStyled = styled.div`
+const DateAndVenueStyled = styled.div`
     margin: 10px 0;
 `;
 

@@ -89,6 +89,10 @@ const PageLinkStyled = styled(Link)`
     writing-mode: vertical-rl;
     background-color: ${(props) => props.$isCurrentPage && 'var(--aka-gelb)'};
 
+    &:hover {
+        text-decoration: none;
+    }
+
     &.disabled {
         color: grey;
         pointer-events: none;

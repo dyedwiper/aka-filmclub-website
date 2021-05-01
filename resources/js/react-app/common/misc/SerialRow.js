@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
 import { HorizontalRuleStyled } from '../styledElements';
+import akaLogoGrau from '../../assets/aka_logo_grau.png';
+import { stripHtml } from '../../utils/stringUtils';
 
 export default function SerialRow({ serial }) {
     return (
@@ -10,14 +12,15 @@ export default function SerialRow({ serial }) {
             <HorizontalRuleStyled />
             <SerialContainerStyled>
                 <LinkStyled to={ROUTE_SERIAL + serial.uuid}>
-                    {serial.image && <ImageStyled src={STORAGE_FOLDER + serial.image.path} />}
+                    <ImageStyled src={serial.image ? STORAGE_FOLDER + serial.image.path : akaLogoGrau} />
                 </LinkStyled>
                 <InfoContainerStyled>
                     <LinkStyled to={ROUTE_SERIAL + serial.uuid}>
                         <TitleStyled>{serial.title}</TitleStyled>
                     </LinkStyled>
                     <SubTitleStyled>{serial.subtitle}</SubTitleStyled>
-                    <ArticleStyled dangerouslySetInnerHTML={{ __html: serial.article }} />
+                    <ArticleStyled>{stripHtml(serial.article)}</ArticleStyled>
+                    <Link to={ROUTE_SERIAL + serial.uuid}>[mehr]</Link>
                 </InfoContainerStyled>
             </SerialContainerStyled>
         </SerialRowStyled>
@@ -39,7 +42,12 @@ const SerialContainerStyled = styled.div`
 
 const ImageStyled = styled.img`
     width: 100%;
+    max-height: 190px;
     object-fit: cover;
+
+    @media (max-width: 767px) {
+        max-height: initial;
+    }
 `;
 
 const InfoContainerStyled = styled.div``;
@@ -48,13 +56,12 @@ const LinkStyled = styled(Link)``;
 
 const TitleStyled = styled.h3``;
 
-const SubTitleStyled = styled.div`
-    width: 100%;
-`;
+const SubTitleStyled = styled.div``;
 
 const ArticleStyled = styled.div`
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 5;
     overflow: hidden;
+    margin-top: 10px;
 `;

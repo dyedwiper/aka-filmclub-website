@@ -6,7 +6,7 @@ export default createGlobalStyle`
   }
  
   :root{
-      --aka-gelb: #ffea0d;
+      --aka-gelb: #ffee00;
       --aka-grau: #616161;
       --aka-hellgrau: lightgrey;
       --aka-red: darkred;
@@ -70,6 +70,11 @@ export default createGlobalStyle`
 
   img {
     filter: grayscale();
+    transition: filter 2.3s;
+
+    &:hover{
+        filter: none;
+    }
   }
 
   a {
@@ -79,6 +84,7 @@ export default createGlobalStyle`
     &.active,
     &:hover {
         text-decoration: underline var(--aka-gelb);
+        text-decoration-thickness: 3px;
     }
   }
 
@@ -88,8 +94,9 @@ export default createGlobalStyle`
   }
 
   p {
-      margin: 0;
+      margin: 10px 0;
       color: black;
+      hyphens: auto;
   } 
 
   h2{

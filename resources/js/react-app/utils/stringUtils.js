@@ -6,3 +6,8 @@ export function replaceUmlautsAndSpecialCharacters(someString) {
         .replace(/\u00df/g, 'ss')
         .replace(/[^a-z^A-Z^0-9]+/g, '_');
 }
+
+export function stripHtml(html) {
+    let doc = new DOMParser().parseFromString(html, 'text/html');
+    return doc.body.textContent || '';
+}

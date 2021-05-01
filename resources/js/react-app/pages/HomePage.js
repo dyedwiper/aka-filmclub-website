@@ -68,17 +68,22 @@ const WelcomeMessageStyled = styled.p``;
 
 const HeadlineStyled = styled.h2`
     font-size: 1.5em;
+
+    @media (max-width: 767px) {
+        margin-top: 30px;
+    }
 `;
 
 const CardsListStyled = styled.ul`
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-gap: 20px;
-    margin-top: 20px;
+    margin: 20px 0;
 
     @media (max-width: 767px) {
         grid-template-columns: minmax(0, 1fr);
-        grid-template-rows: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(3, min-content);
+        grid-gap: 30px;
     }
 `;
 
