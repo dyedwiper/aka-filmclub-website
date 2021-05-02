@@ -47,6 +47,10 @@ export default function UserFormGroup({ user }) {
                 <InputStyled disabled defaultValue={user && formatToDateTimeString(user.created_at)} />
             </LabelStyled>
             <LabelStyled>
+                <LabelTextStyled>Aktualisiert</LabelTextStyled>
+                <InputStyled disabled defaultValue={user && formatToDateTimeString(user.updated_at)} />
+            </LabelStyled>
+            <LabelStyled>
                 <LabelTextStyled>Berechtigungslevel</LabelTextStyled>
                 <UserLevelSelect disabled={!isAdmin} defaultLevel={user ? user.level : AUTH_LEVEL_NORMAL} />
             </LabelStyled>
