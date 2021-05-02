@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
+import CopyrightContainer from '../common/misc/CopyrightContainer';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
 import {
@@ -48,13 +49,16 @@ export default function SerialPage() {
     return (
         <PageStyled>
             {serial.image ? (
-                <ImageContainerStyled>
-                    <ImageStyled src={STORAGE_FOLDER + serial.image.path} />
-                    <TitleContainerStyled>
-                        <TitleStyled>{serial.title}</TitleStyled>
-                        <SubtitleStyled>{serial.subtitle}</SubtitleStyled>
-                    </TitleContainerStyled>
-                </ImageContainerStyled>
+                <ImageAndCopyrightContainerStyled>
+                    <ImageContainerStyled>
+                        <ImageStyled src={STORAGE_FOLDER + serial.image.path} />
+                        <TitleContainerStyled>
+                            <TitleStyled>{serial.title}</TitleStyled>
+                            <SubtitleStyled>{serial.subtitle}</SubtitleStyled>
+                        </TitleContainerStyled>
+                    </ImageContainerStyled>
+                    <CopyrightContainer image={serial.image} />
+                </ImageAndCopyrightContainerStyled>
             ) : (
                 <>
                     <FallbackTitleStyled>{serial.title}</FallbackTitleStyled>
@@ -87,9 +91,12 @@ export default function SerialPage() {
     );
 }
 
+const ImageAndCopyrightContainerStyled = styled.div`
+    margin: 20px 0;
+`;
+
 const ImageContainerStyled = styled.div`
     position: relative;
-    margin: 20px 0;
 `;
 
 const ImageStyled = styled.img`

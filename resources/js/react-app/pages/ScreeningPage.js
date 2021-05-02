@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
+import CopyrightContainer from '../common/misc/CopyrightContainer';
 import CreditsContainer from '../common/screenings/CreditsContainer';
 import FilmInfoContainer from '../common/screenings/FilmInfoContainer';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
@@ -52,12 +53,15 @@ export default function ScreeningPage() {
     return (
         <PageStyled>
             {screening.image ? (
-                <ImageContainerStyled>
-                    <ImageStyled src={STORAGE_FOLDER + screening.image.path} />
-                    <TitleContainerStyled>
-                        <TitleStyled>{screening.title}</TitleStyled>
-                    </TitleContainerStyled>
-                </ImageContainerStyled>
+                <ImageAndCopyrightContainerStyled>
+                    <ImageContainerStyled>
+                        <ImageStyled src={STORAGE_FOLDER + screening.image.path} />
+                        <TitleContainerStyled>
+                            <TitleStyled>{screening.title}</TitleStyled>
+                        </TitleContainerStyled>
+                    </ImageContainerStyled>
+                    <CopyrightContainer image={screening.image} />
+                </ImageAndCopyrightContainerStyled>
             ) : (
                 <>
                     <FallbackTitleStyled>{screening.title}</FallbackTitleStyled>
@@ -105,9 +109,12 @@ export default function ScreeningPage() {
     );
 }
 
+const ImageAndCopyrightContainerStyled = styled.div`
+    margin: 20px 0;
+`;
+
 const ImageContainerStyled = styled.div`
     position: relative;
-    margin: 20px 0;
 `;
 
 const ImageStyled = styled.img`

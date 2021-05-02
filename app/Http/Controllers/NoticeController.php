@@ -36,7 +36,7 @@ class NoticeController extends Controller
 
     public function GetNoticeByUuid(string $uuid)
     {
-        return Notice::where('uuid', $uuid)->with('image')->first();
+        return Notice::where('uuid', $uuid)->with('image.license')->first();
     }
 
     public function PostNotice(NoticeFormRequest $request)
