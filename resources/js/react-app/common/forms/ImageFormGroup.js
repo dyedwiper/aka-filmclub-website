@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import LicenseSelect from './LicenseSelect';
 
 export default function ImageFormGroup({ image }) {
     return (
@@ -15,6 +16,10 @@ export default function ImageFormGroup({ image }) {
             <LabelStyled>
                 Copyright
                 <InputStyled name="copyright" defaultValue={image && image.copyright} />
+            </LabelStyled>
+            <LabelStyled>
+                Lizenz
+                <LicenseSelect defaultLicense={image.license} />
             </LabelStyled>
         </ImageFormGroupStyled>
     );
