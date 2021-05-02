@@ -202,6 +202,7 @@ const LinkStyled = styled(Link)`
 
 const LogoStyled = styled.img`
     height: ${(props) => props.headerHeight - 20 + 'px'};
+    filter: none;
 
     @media (max-width: 767px) {
         height: 40px;
