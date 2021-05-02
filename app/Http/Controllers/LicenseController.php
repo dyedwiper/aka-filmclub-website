@@ -11,7 +11,7 @@ class LicenseController extends Controller
 {
     public function GetLicenses()
     {
-        return License::all();
+        return License::orderBy('name')->get();
     }
 
     public function GetLicenseByUuid(string $uuid)

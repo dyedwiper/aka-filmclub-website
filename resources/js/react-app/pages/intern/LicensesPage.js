@@ -18,6 +18,9 @@ export default function LicensesPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_LICENSES}>
             <PageHeadlineStyled>{PAGE_TITLE_LICENSES}</PageHeadlineStyled>
+            <HintStyled>
+                Hier können die Lizenzen bearbeitet werden, die für Bilder auf der Website ausgewählt werden können.
+            </HintStyled>
             <AddItemLinkStyled to={ROUTE_INTERN_ADD_LICENSE}>Lizenz hinzufügen</AddItemLinkStyled>
             <ListStyled>
                 {licenses.map((license) => (
@@ -29,6 +32,10 @@ export default function LicensesPage() {
         </BasePage>
     );
 }
+
+const HintStyled = styled.p`
+    margin-bottom: 20px;
+`;
 
 const ListStyled = styled.ul`
     margin-top: 20px;

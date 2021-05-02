@@ -5,7 +5,7 @@ export default function LicenseFormGroup({ license }) {
     return (
         <LicenseFormGroupStyled>
             <LabelStyled>
-                Name
+                Name (ohne &copy; eintragen)
                 <InputStyled name="name" defaultValue={license && license.name} />
             </LabelStyled>
             <LabelStyled>

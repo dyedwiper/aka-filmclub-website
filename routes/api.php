@@ -258,7 +258,7 @@ Route::prefix('texts')->group(function () {
     ]);
 });
 
-Route::prefix('distributors')->group(function () {
+Route::middleware('auth:sanctum')->prefix('distributors')->group(function () {
     Route::get('/', [
         DistributorController::class, 'GetDistributors'
     ]);
@@ -284,7 +284,7 @@ Route::prefix('distributors')->group(function () {
     ]);
 });
 
-Route::prefix('billings')->group(function () {
+Route::middleware('auth:sanctum')->prefix('billings')->group(function () {
     Route::get('/semester/{semester}', [
         BillingController::class, 'GetScreeningsWithBillingsBySemester'
     ]);
@@ -310,7 +310,7 @@ Route::prefix('billings')->group(function () {
     ]);
 });
 
-Route::prefix('licenses')->group(function () {
+Route::middleware('auth:sanctum')->prefix('licenses')->group(function () {
     Route::get('/', [
         LicenseController::class, 'GetLicenses'
     ]);
@@ -319,15 +319,15 @@ Route::prefix('licenses')->group(function () {
         LicenseController::class, 'GetLicenseByUuid'
     ]);
 
-    Route::middleware('auth:sanctum')->post('/', [
+    Route::post('/', [
         LicenseController::class, 'PostLicense'
     ]);
 
-    Route::middleware('auth:sanctum')->patch('/', [
+    Route::patch('/', [
         LicenseController::class, 'PatchLicense'
     ]);
 
-    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
+    Route::delete('/uuid/{uuid}', [
         LicenseController::class, 'DeleteLicense'
     ]);
 });
