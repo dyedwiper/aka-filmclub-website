@@ -21,7 +21,7 @@ export default function ImageFormGroup({ image }) {
             </LabelStyled>
             <SelectLabelStyled>
                 Lizenz
-                <LicenseSelect defaultLicense={image.license} />
+                <LicenseSelect defaultLicense={image && image.license} />
             </SelectLabelStyled>
             <Link to={ROUTE_INTERN_LICENSES}>Lizenzen bearbeiten</Link>
         </ImageFormGroupStyled>
