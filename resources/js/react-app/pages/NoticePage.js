@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import CopyrightContainer from '../common/misc/CopyrightContainer';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,
@@ -12,8 +13,8 @@ import {
 } from '../constants';
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
-import { getNoticeByUuid } from '../utils/services/noticeServices';
 import { getLastParameterFromPath } from '../utils/pathUtils';
+import { getNoticeByUuid } from '../utils/services/noticeServices';
 import LoadingPage from './LoadingPage';
 
 export default function NoticePage() {
@@ -40,7 +41,12 @@ export default function NoticePage() {
 
     return (
         <PageStyled>
-            {notice.image && <ImageStyled src={STORAGE_FOLDER + notice.image.path} />}
+            {notice.image && (
+                <ImageAndCopyrightContainerStyled>
+                    <ImageStyled src={STORAGE_FOLDER + notice.image.path} />
+                    <CopyrightContainer image={notice.image} />
+                </ImageAndCopyrightContainerStyled>
+            )}
             <DateStyled>{formatToDateString(notice.date)}</DateStyled>
             <TitleStyled>{notice.title}</TitleStyled>
             <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
@@ -60,9 +66,12 @@ export default function NoticePage() {
     );
 }
 
+const ImageAndCopyrightContainerStyled = styled.div`
+    margin: 20px 0;
+`;
+
 const ImageStyled = styled.img`
     max-width: 100%;
-    margin: 20px 0;
 `;
 
 const DateStyled = styled.div``;

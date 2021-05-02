@@ -88,6 +88,20 @@ export const distributorSelectStyles = {
     option: customOptionStyles,
 };
 
+export const licenseSelectStyles = {
+    container: (provided) => ({
+        ...provided,
+        display: 'block',
+        width: '100%',
+    }),
+    control: customControlStyles,
+    dropdownIndicator: customDropdownIndicatorStyles,
+    indicatorSeparator: customIndicatorSeparatorStyles,
+    singleValue: customSingleValueStyles,
+    menu: customMenuStyles,
+    option: customOptionStyles,
+};
+
 function customControlStyles(provided, state) {
     return {
         ...provided,

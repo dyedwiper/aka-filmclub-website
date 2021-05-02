@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ROUTE_INTERN_LICENSES } from '../../constants';
+import LicenseSelect from './LicenseSelect';
 
 export default function ImageFormGroup({ image }) {
     return (
@@ -16,6 +19,11 @@ export default function ImageFormGroup({ image }) {
                 Copyright
                 <InputStyled name="copyright" defaultValue={image && image.copyright} />
             </LabelStyled>
+            <SelectLabelStyled>
+                Lizenz
+                <LicenseSelect defaultLicense={image.license} />
+            </SelectLabelStyled>
+            <Link to={ROUTE_INTERN_LICENSES}>Lizenzen bearbeiten</Link>
         </ImageFormGroupStyled>
     );
 }
@@ -28,3 +36,14 @@ const LabelStyled = styled.label`
 `;
 
 const InputStyled = styled.input``;
+
+const SelectLabelStyled = styled.label`
+    display: inline-block;
+    width: 75%;
+    margin-right: 30px;
+
+    @media (max-width: 767px) {
+        width: 100%;
+        display: block;
+    }
+`;

@@ -4,6 +4,7 @@ use App\Http\Controllers\BillingController;
 use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\ScreeningController;
 use App\Http\Controllers\SelfmadeFilmController;
@@ -136,10 +137,6 @@ Route::prefix('serials')->group(function () {
 });
 
 Route::prefix('images')->group(function () {
-    Route::get('/id/{id}', [
-        ImageController::class, 'GetImageById'
-    ]);
-
     Route::get('/uuid/{uuid}', [
         ImageController::class, 'GetImageByUuid'
     ]);
@@ -261,7 +258,7 @@ Route::prefix('texts')->group(function () {
     ]);
 });
 
-Route::prefix('distributors')->group(function () {
+Route::middleware('auth:sanctum')->prefix('distributors')->group(function () {
     Route::get('/', [
         DistributorController::class, 'GetDistributors'
     ]);
@@ -287,7 +284,7 @@ Route::prefix('distributors')->group(function () {
     ]);
 });
 
-Route::prefix('billings')->group(function () {
+Route::middleware('auth:sanctum')->prefix('billings')->group(function () {
     Route::get('/semester/{semester}', [
         BillingController::class, 'GetScreeningsWithBillingsBySemester'
     ]);
@@ -310,5 +307,27 @@ Route::prefix('billings')->group(function () {
 
     Route::get('/updateUuids', [
         BillingController::class, 'UpdateUuids'
+    ]);
+});
+
+Route::middleware('auth:sanctum')->prefix('licenses')->group(function () {
+    Route::get('/', [
+        LicenseController::class, 'GetLicenses'
+    ]);
+
+    Route::get('/uuid/{uuid}', [
+        LicenseController::class, 'GetLicenseByUuid'
+    ]);
+
+    Route::post('/', [
+        LicenseController::class, 'PostLicense'
+    ]);
+
+    Route::patch('/', [
+        LicenseController::class, 'PatchLicense'
+    ]);
+
+    Route::delete('/uuid/{uuid}', [
+        LicenseController::class, 'DeleteLicense'
     ]);
 });

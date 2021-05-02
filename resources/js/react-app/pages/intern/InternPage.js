@@ -11,6 +11,7 @@ import {
     ROUTE_INTERN_ADD_SERIAL,
     ROUTE_INTERN_ADMISSIONS,
     ROUTE_INTERN_DISTRIBUTORS,
+    ROUTE_INTERN_LICENSES,
     ROUTE_INTERN_USERS,
 } from '../../constants';
 import Context from '../../Context';
@@ -33,6 +34,8 @@ export default function InternPage() {
                     <SubheadlineStyled>Abrechnung</SubheadlineStyled>
                     <LinkStyled to={ROUTE_INTERN_ADMISSIONS}>Besuchszahlen</LinkStyled>
                     <LinkStyled to={ROUTE_INTERN_DISTRIBUTORS}>Filmverleihe</LinkStyled>
+                    <SubheadlineStyled>Sonstiges</SubheadlineStyled>
+                    <LinkStyled to={ROUTE_INTERN_LICENSES}>Lizenzen</LinkStyled>
                 </>
             )}
         </BasePage>

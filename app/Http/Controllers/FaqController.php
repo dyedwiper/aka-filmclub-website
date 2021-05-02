@@ -57,6 +57,7 @@ class FaqController extends Controller
         }
         $faq->position = $request->position;
         $faq->save();
+        return $faq;
     }
 
     public function DeleteFaq(string $uuid)
