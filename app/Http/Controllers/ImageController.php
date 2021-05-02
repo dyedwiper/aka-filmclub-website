@@ -16,14 +16,9 @@ use Illuminate\Support\Facades\Validator;
 
 class ImageController extends Controller
 {
-    public function GetImageById(int $id)
-    {
-        return Image::where('id', $id)->first();
-    }
-
     public function GetImageByUuid(string $uuid)
     {
-        return Image::where('uuid', $uuid)->with('screening', 'serial', 'notice')->first();
+        return Image::where('uuid', $uuid)->with('screening', 'serial', 'notice', 'license')->first();
     }
 
     public function PostImage(ImageFormRequest $request)
@@ -63,6 +58,7 @@ class ImageController extends Controller
             'path' => $imagePath,
             'alt_text' => $request->altText,
             'copyright' => $request->copyright,
+            'license_id' => $request->license_id,
         ]);
         $image->save();
         $assocEntity->image_id = $image->id;
@@ -93,6 +89,7 @@ class ImageController extends Controller
 
         $image->alt_text = $request->altText;
         $image->copyright = $request->copyright;
+        $image->license_id = $request->license_id;
 
         $image->save();
         return $image;

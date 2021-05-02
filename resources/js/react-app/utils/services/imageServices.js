@@ -1,9 +1,5 @@
 import { makeApiCall } from './baseService';
 
-export function getImageById(id) {
-    return makeApiCall('/api/images/id/' + id);
-}
-
 export function getImageByUuid(uuid) {
     return makeApiCall('/api/images/uuid/' + uuid);
 }

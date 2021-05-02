@@ -13,7 +13,8 @@ class Image extends Model
         'uuid',
         'path',
         'alt_text',
-        'copyright'
+        'copyright',
+        'license',
     ];
 
     public function screening()
@@ -29,5 +30,10 @@ class Image extends Model
     public function notice()
     {
         return $this->hasOne(Notice::class);
+    }
+
+    public function license()
+    {
+        return $this->belongsTo(License::class);
     }
 }
