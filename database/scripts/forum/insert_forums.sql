@@ -1,0 +1,1 @@
+INSERT INTO `phpbb_forums`(`forum_id`, `forum_name`, `forum_desc`, `forum_type`, `forum_last_post_id`, `forum_posts_approved`, `forum_topics_approved`) SELECT forum_id, forum_name, forum_desc, 1, forum_last_post_id, forum_posts, forum_topics FROM phpbb_aka.phpbb_forums
