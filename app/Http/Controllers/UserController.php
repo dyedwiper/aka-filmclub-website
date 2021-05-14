@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserFormRequest;
 use App\Models\PhpbbUser;
 use App\Models\User;
+use App\Services\ForumUserService;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,14 +16,16 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    private $forumUserService;
+
+    public function __construct(ForumUserService $forumUserService)
+    {
+        $this->forumUserService = $forumUserService;
+    }
+
     public function GetUsers()
     {
         return User::select('id', 'uuid', 'username', 'realname', 'status')->get();
-    }
-
-    public function getPhpbbUsers()
-    {
-        return PhpbbUser::all();
     }
 
     public function GetCurrentUser(Request $request)
@@ -77,6 +80,8 @@ class UserController extends Controller
             'level' => $request->level,
             'status' => $request->status,
         ]);
+
+        $this->forumUserService->PostUser($request);
 
         $user->save();
         return $user;
