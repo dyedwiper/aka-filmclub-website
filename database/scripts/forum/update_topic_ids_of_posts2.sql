@@ -1,1 +1,0 @@
-UPDATE phpbb_posts A, phpbb_topics B SET A.topic_id=B.topic_id WHERE A.old_topic_id = B._old_topic_id AND A.old_topic_id IS NOT NULL
