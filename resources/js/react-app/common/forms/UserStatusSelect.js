@@ -7,7 +7,7 @@ export default function UserStatusSelect({ disabled, defaultStatus }) {
     const statusOptions = [
         { label: 'aktiv', value: USER_STATUS_ACTIVE },
         { label: 'pausiert/unklar', value: USER_STATUS_PAUSED },
-        { label: 'Alumni', value: USER_STATUS_ALUMNI },
+        { label: 'Akalumni', value: USER_STATUS_ALUMNI },
     ];
 
     return (

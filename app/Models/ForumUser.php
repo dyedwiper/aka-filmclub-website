@@ -13,6 +13,8 @@ class ForumUser extends Model
 
     protected $table = 'phpbb_users';
 
+    protected $primaryKey = 'user_id';
+
     public $timestamps = false;
 
     protected $fillable = [
@@ -24,6 +26,7 @@ class ForumUser extends Model
         'user_password',
         'user_passchg',
         'user_email',
+        'user_rank',
         'user_sig',
     ];
 }
