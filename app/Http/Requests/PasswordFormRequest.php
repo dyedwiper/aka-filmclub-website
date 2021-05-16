@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Utils\ValidationUtils;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PasswordFormRequest extends FormRequest
 {
@@ -15,7 +16,7 @@ class PasswordFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->uuid == $this->user()->uuid;
     }
 
     /**
