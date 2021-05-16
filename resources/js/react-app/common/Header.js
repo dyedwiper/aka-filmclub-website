@@ -154,6 +154,7 @@ export default function Header() {
                     )}
                 </NavStyled>
             </ContentContainerStyled>
+            {isLoggedIn && <LoggedInUserStyled>{user.username}</LoggedInUserStyled>}
         </HeaderStyled>
     );
 
@@ -300,5 +301,17 @@ const SubNavLinkStyled = styled(Link)`
 
     &:hover {
         text-decoration-color: white;
+    }
+`;
+
+const LoggedInUserStyled = styled.div`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 20px;
+    background-color: var(--aka-gelb);
+
+    @media (max-width: 767px) {
+        display: none;
     }
 `;
