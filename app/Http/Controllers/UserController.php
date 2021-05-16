@@ -124,6 +124,7 @@ class UserController extends Controller
     public function PatchPassword(PasswordFormRequest $request)
     {
         $user = User::firstWhere('uuid', $request->uuid);
+        $this->forumUserService->PatchPassword($request, $user);
         $user->password = Hash::make($request->new_password);
         $user->save();
     }

@@ -51,6 +51,13 @@ class ForumUserService
         $forumUser->save();
     }
 
+    public function PatchPassword(Request $request, User $user)
+    {
+        $forumUser = ForumUser::firstWhere('username_clean', strtolower($user->username));
+        $forumUser->user_password = Hash::make($request->new_password);
+        $forumUser->save();
+    }
+
     public function DeleteUser(string $username)
     {
         $forumUser = ForumUser::firstWhere('username_clean', strtolower($username));
