@@ -5,52 +5,53 @@ import Footer from './common/Footer';
 import Header from './common/Header';
 import PrivateRoute from './common/PrivateRoute';
 import {
+    ROUTE_ABOUT,
+    ROUTE_ARCHIVE,
+    ROUTE_AWARDS,
+    ROUTE_CONTACT,
+    ROUTE_ERROR,
+    ROUTE_FAQS,
     ROUTE_HOME,
+    ROUTE_INTERN,
+    ROUTE_INTERN_ADD_BILLING,
+    ROUTE_INTERN_ADD_DISTRIBUTOR,
+    ROUTE_INTERN_ADD_FAQ,
+    ROUTE_INTERN_ADD_IMAGE,
+    ROUTE_INTERN_ADD_LICENSE,
+    ROUTE_INTERN_ADD_NOTICE,
+    ROUTE_INTERN_ADD_SCREENING,
+    ROUTE_INTERN_ADD_SELFMADE_FILM,
+    ROUTE_INTERN_ADD_SERIAL,
+    ROUTE_INTERN_ADD_USER,
+    ROUTE_INTERN_ADMISSIONS,
+    ROUTE_INTERN_BILLING,
+    ROUTE_INTERN_DISTRIBUTORS,
+    ROUTE_INTERN_EDIT_BILLING,
+    ROUTE_INTERN_EDIT_DISTRIBUTOR,
+    ROUTE_INTERN_EDIT_FAQ,
+    ROUTE_INTERN_EDIT_IMAGE,
+    ROUTE_INTERN_EDIT_LICENSE,
+    ROUTE_INTERN_EDIT_NOTICE,
+    ROUTE_INTERN_EDIT_PASSWORD,
+    ROUTE_INTERN_EDIT_SCREENING,
+    ROUTE_INTERN_EDIT_SELFMADE_FILM,
+    ROUTE_INTERN_EDIT_SERIAL,
+    ROUTE_INTERN_EDIT_TEXT,
+    ROUTE_INTERN_EDIT_USER,
+    ROUTE_INTERN_LICENSES,
+    ROUTE_INTERN_USERS,
+    ROUTE_LINKS,
+    ROUTE_LOGIN,
     ROUTE_NEWS,
+    ROUTE_NOTICE,
+    ROUTE_NOT_FOUND,
+    ROUTE_PRESS,
     ROUTE_PROGRAM,
     ROUTE_PROGRAM_OVERVIEW,
-    ROUTE_SERIALS,
-    ROUTE_ARCHIVE,
     ROUTE_SCREENING,
-    ROUTE_SERIAL,
-    ROUTE_ABOUT,
-    ROUTE_FAQS,
-    ROUTE_PRESS,
-    ROUTE_AWARDS,
     ROUTE_SELFMADE_FILMS,
-    ROUTE_CONTACT,
-    ROUTE_LINKS,
-    ROUTE_NOT_FOUND,
-    ROUTE_ERROR,
-    ROUTE_LOGIN,
-    ROUTE_INTERN,
-    ROUTE_INTERN_USERS,
-    ROUTE_INTERN_ADD_USER,
-    ROUTE_INTERN_EDIT_USER,
-    ROUTE_INTERN_BILLING,
-    ROUTE_INTERN_ADMISSIONS,
-    ROUTE_INTERN_DISTRIBUTORS,
-    ROUTE_INTERN_ADD_BILLING,
-    ROUTE_INTERN_EDIT_BILLING,
-    ROUTE_INTERN_ADD_NOTICE,
-    ROUTE_INTERN_EDIT_NOTICE,
-    ROUTE_INTERN_ADD_SCREENING,
-    ROUTE_INTERN_EDIT_SCREENING,
-    ROUTE_INTERN_ADD_SERIAL,
-    ROUTE_INTERN_EDIT_SERIAL,
-    ROUTE_INTERN_ADD_IMAGE,
-    ROUTE_INTERN_EDIT_IMAGE,
-    ROUTE_INTERN_ADD_DISTRIBUTOR,
-    ROUTE_INTERN_EDIT_DISTRIBUTOR,
-    ROUTE_INTERN_ADD_FAQ,
-    ROUTE_INTERN_EDIT_FAQ,
-    ROUTE_INTERN_ADD_SELFMADE_FILM,
-    ROUTE_INTERN_EDIT_SELFMADE_FILM,
-    ROUTE_INTERN_EDIT_TEXT,
-    ROUTE_NOTICE,
-    ROUTE_INTERN_LICENSES,
-    ROUTE_INTERN_ADD_LICENSE,
-    ROUTE_INTERN_EDIT_LICENSE,
+    ROUTE_SERIAL,
+    ROUTE_SERIALS,
 } from './constants';
 import Context from './Context';
 import AboutPage from './pages/AboutPage';
@@ -64,11 +65,12 @@ import AddBillingPage from './pages/intern/AddBillingPage';
 import AddDistributorPage from './pages/intern/AddDistributorPage';
 import AddFaqPage from './pages/intern/AddFaqPage';
 import AddImagePage from './pages/intern/AddImagePage';
+import AddLicensePage from './pages/intern/AddLicensePage';
 import AddNoticePage from './pages/intern/AddNoticePage';
 import AddScreeningPage from './pages/intern/AddScreeningPage';
+import AddSelfmadeFilmPage from './pages/intern/AddSelfmadeFilmPage';
 import AddSerialPage from './pages/intern/AddSerialPage';
 import AddUserPage from './pages/intern/AddUserPage';
-import AddSelfmadeFilmPage from './pages/intern/AddSelfmadeFilmPage';
 import AdmissionsPage from './pages/intern/AdmissionsPage';
 import BillingPage from './pages/intern/BillingPage';
 import DistributorsPage from './pages/intern/DistributorsPage';
@@ -76,13 +78,16 @@ import EditBillingPage from './pages/intern/EditBillingPage';
 import EditDistributorPage from './pages/intern/EditDistributorPage';
 import EditFaqPage from './pages/intern/EditFaqPage';
 import EditImagePage from './pages/intern/EditImagePage';
+import EditLicensePage from './pages/intern/EditLicensePage';
 import EditNoticePage from './pages/intern/EditNoticePage';
+import EditPasswordPage from './pages/intern/EditPasswordPage';
 import EditScreeningPage from './pages/intern/EditScreeningPage';
+import EditSelfmadeFilmPage from './pages/intern/EditSelfmadeFilmPage';
 import EditSerialPage from './pages/intern/EditSerialPage';
 import EditTextPage from './pages/intern/EditTextPage';
 import EditUserPage from './pages/intern/EditUserPage';
-import EditSelfmadeFilmPage from './pages/intern/EditSelfmadeFilmPage';
 import InternPage from './pages/intern/InternPage';
+import LicensesPage from './pages/intern/LicensesPage';
 import TempPdfPage from './pages/intern/TempPdfPage';
 import UsersPage from './pages/intern/UsersPage';
 import LinksPage from './pages/LinksPage';
@@ -95,13 +100,10 @@ import PressReviewPage from './pages/PressReviewPage';
 import ProgramOverviewPage from './pages/ProgramOverviewPage';
 import ProgramPage from './pages/ProgramPage';
 import ScreeningPage from './pages/ScreeningPage';
+import SelfmadeFilmsPage from './pages/SelfmadeFilmsPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
-import SelfmadeFilmsPage from './pages/SelfmadeFilmsPage';
 import { getCurrentUser } from './utils/services/userServices';
-import LicensesPage from './pages/intern/LicensesPage';
-import AddLicensePage from './pages/intern/AddLicensePage';
-import EditLicensePage from './pages/intern/EditLicensePage';
 
 export default function App() {
     const [user, setUser] = useState({});
@@ -195,6 +197,9 @@ export default function App() {
                         </PrivateRoute>
                         <PrivateRoute path={ROUTE_INTERN_EDIT_USER}>
                             <EditUserPage />
+                        </PrivateRoute>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_PASSWORD}>
+                            <EditPasswordPage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_SERIAL}>
                             <AddSerialPage />

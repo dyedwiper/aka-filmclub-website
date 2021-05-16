@@ -28,6 +28,10 @@ export function postUser(data) {
     return makeApiCall('/api/users', 'POST', data);
 }
 
+export function postPassword(data) {
+    return makeApiCall('/api/users/password', 'POST', data);
+}
+
 export function deleteUser(uuid) {
     return makeApiCall('/api/users/uuid/' + uuid, 'DELETE');
 }
