@@ -14,4 +14,10 @@ return [
         'editor' => 1,
         'alumni' => 2,
     ],
+
+    'forum_auth_level' => [
+        'registered' => 2,
+        'moderator' => 4,
+        'admin' => 5,
+    ]
 ];

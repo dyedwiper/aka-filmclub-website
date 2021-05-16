@@ -1,0 +1,1 @@
+UPDATE phpbb_topics A, phpbb_users B SET A.topic_first_poster_name=B.username WHERE A.topic_poster=B.user_id

@@ -9,8 +9,11 @@ import {
     ROUTE_INTERN_ADD_USER,
     ROUTE_INTERN_EDIT_USER,
     USER_STATUS_ACTIVE,
+    USER_STATUS_ACTIVE_NAME,
     USER_STATUS_ALUMNI,
+    USER_STATUS_ALUMNI_NAME,
     USER_STATUS_PAUSED,
+    USER_STATUS_PAUSED_NAME,
 } from '../../constants';
 import Context from '../../Context';
 import { getUsers } from '../../utils/services/userServices';
@@ -37,7 +40,7 @@ export default function UsersPage() {
             )}
             <GridContainerStyled>
                 <ListContainerStyled>
-                    <SubheadlineStyled>Aktiv</SubheadlineStyled>
+                    <SubheadlineStyled>{USER_STATUS_ACTIVE_NAME}</SubheadlineStyled>
                     <ListStyled>
                         {users
                             .filter((user) => user.status == USER_STATUS_ACTIVE)
@@ -50,7 +53,7 @@ export default function UsersPage() {
                     </ListStyled>
                 </ListContainerStyled>
                 <ListContainerStyled>
-                    <SubheadlineStyled>Pausierend/Unklar</SubheadlineStyled>
+                    <SubheadlineStyled>{USER_STATUS_PAUSED_NAME}</SubheadlineStyled>
                     <ListStyled>
                         {users
                             .filter((user) => user.status == USER_STATUS_PAUSED)
@@ -63,7 +66,7 @@ export default function UsersPage() {
                     </ListStyled>
                 </ListContainerStyled>
                 <ListContainerStyled>
-                    <SubheadlineStyled>Alumni</SubheadlineStyled>
+                    <SubheadlineStyled>{USER_STATUS_ALUMNI_NAME}</SubheadlineStyled>
                     <ListStyled>
                         {users
                             .filter((user) => user.status == USER_STATUS_ALUMNI)

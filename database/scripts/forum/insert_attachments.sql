@@ -1,0 +1,1 @@
+INSERT INTO `phpbb_attachments`(`attach_id`, `post_msg_id`, `poster_id`, `is_orphan`) SELECT attach_id, post_id, user_id_1, 0 FROM phpbb_aka.phpbb_attachments

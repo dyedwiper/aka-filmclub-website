@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserFormRequest;
 use App\Models\PhpbbUser;
 use App\Models\User;
+use App\Services\ForumUserService;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,17 +13,20 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    private $forumUserService;
+
+    public function __construct(ForumUserService $forumUserService)
+    {
+        $this->forumUserService = $forumUserService;
+    }
+
     public function GetUsers()
     {
         return User::select('id', 'uuid', 'username', 'realname', 'status')->get();
-    }
-
-    public function getPhpbbUsers()
-    {
-        return PhpbbUser::all();
     }
 
     public function GetCurrentUser(Request $request)
@@ -56,13 +60,15 @@ class UserController extends Controller
 
     public function PostUser(UserFormRequest $request)
     {
-        // The uniqueness is checked here separately because it must not be checked on a patch request.
+        // The uniqueness is checked here separately because it is checked differently on a patch request.
         $validator = Validator::make($request->all(), [
             'username' => 'unique:users',
         ]);
         if ($validator->fails()) {
             throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()->all()], 422));
         }
+
+        $this->forumUserService->PostUser($request);
 
         $user = new User([
             'uuid' => uniqid(),
@@ -85,6 +91,16 @@ class UserController extends Controller
     public function PatchUser(UserFormRequest $request)
     {
         $user = User::where('uuid', $request->uuid)->first();
+
+        // The uniqueness is checked here separately because it must ignore the changed user on a patch request.
+        $validator = Validator::make($request->all(), [
+            'username' => Rule::unique('users')->ignore($user->id),
+        ]);
+        if ($validator->fails()) {
+            throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()->all()], 422));
+        }
+
+        $this->forumUserService->PatchUser($request, $user);
 
         $user->username = $request->username;
         $user->realname = $request->realname;
@@ -110,6 +126,7 @@ class UserController extends Controller
             abort(401);
         }
         $user = User::firstWhere('uuid', $request->uuid);
+        $this->forumUserService->DeleteUser($user->username);
         $user->delete();
     }
 
@@ -121,42 +138,6 @@ class UserController extends Controller
                 $user->uuid = uniqid();
                 $user->save();
             }
-        }
-    }
-
-    public function UpdateLevels()
-    {
-        $phpbbUsers = PhpbbUser::all();
-        $users = User::all();
-
-        foreach ($users as $user) {
-            $phpbbUser = $phpbbUsers->firstWhere('user_id', $user->id);
-
-            if ($phpbbUser->user_level == 1 || $phpbbUser->user_level == 2) {
-                $user->level = Config::get('constants.auth_level.editor');
-            } elseif ($phpbbUser->user_level == 3) {
-                $user->level = Config::get('constants.auth_level.admin');
-            }
-
-            $user->save();
-        }
-    }
-
-    public function UpdateStati()
-    {
-        $phpbbUsers = PhpbbUser::all();
-        $users = User::all();
-
-        foreach ($users as $user) {
-            $phpbbUser = $phpbbUsers->firstWhere('user_id', $user->id);
-
-            if ($phpbbUser->user_rank == 199 || $phpbbUser->user_rank == 200) {
-                $user->status = Config::get('constants.user_status.paused');
-            } elseif ($phpbbUser->user_rank > 200) {
-                $user->status = Config::get('constants.user_status.alumni');
-            }
-
-            $user->save();
         }
     }
 }

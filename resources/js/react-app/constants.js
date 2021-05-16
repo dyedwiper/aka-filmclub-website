@@ -31,6 +31,14 @@ export const USER_STATUS_ACTIVE = 0;
 export const USER_STATUS_PAUSED = 1;
 export const USER_STATUS_ALUMNI = 2;
 
+// User categories
+export const AUTH_LEVEL_NORMAL_NAME = 'Normales Mitglied';
+export const AUTH_LEVEL_EDITOR_NAME = 'Editor*in';
+export const AUTH_LEVEL_ADMIN_NAME = 'Administrator*in';
+export const USER_STATUS_ACTIVE_NAME = 'Aktiv';
+export const USER_STATUS_PAUSED_NAME = 'Pausierend/Unklar';
+export const USER_STATUS_ALUMNI_NAME = 'Akalumni';
+
 // Frontend routes
 // Routes with another parameter must have a trailing slash.
 // Those are basically all routes leading to a page with a single item, e.g. '/screening/6065f3df9ee79'.
