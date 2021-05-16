@@ -178,19 +178,6 @@ Route::prefix('users')->group(function () {
     Route::get('/logout', [
         UserController::class, 'GetLogout'
     ]);
-
-    Route::middleware('auth:sanctum')->get('/update_uuids', [
-        UserController::class, 'UpdateUuids'
-    ]);
-
-    Route::middleware('auth:sanctum')->get('/updateLevels', [
-        UserController::class, 'UpdateLevels'
-    ]);
-
-    Route::middleware('auth:sanctum')->get('/updateStati', [
-        UserController::class, 'UpdateStati'
-    ]);
-
     Route::middleware('auth:sanctum')->post('/', [
         UserController::class, 'PostUser'
     ]);
@@ -199,8 +186,16 @@ Route::prefix('users')->group(function () {
         UserController::class, 'PatchUser'
     ]);
 
+    Route::middleware('auth:sanctum')->patch('/password', [
+        UserController::class, 'PatchPassword'
+    ]);
+
     Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
         UserController::class, 'DeleteUser'
+    ]);
+
+    Route::middleware('auth:sanctum')->get('/update_uuids', [
+        UserController::class, 'UpdateUuids'
     ]);
 });
 

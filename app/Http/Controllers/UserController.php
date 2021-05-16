@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PasswordFormRequest;
 use App\Http\Requests\UserFormRequest;
 use App\Models\PhpbbUser;
 use App\Models\User;
@@ -39,7 +40,7 @@ class UserController extends Controller
         return User::where('uuid', $request->uuid)->first();
     }
 
-    public function postLogin(Request $request)
+    public function PostLogin(Request $request)
     {
         $credentials = $request->only('username', 'password');
 
@@ -50,7 +51,7 @@ class UserController extends Controller
         return response('false creds', 401);
     }
 
-    public function getLogout(Request $request)
+    public function GetLogout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
@@ -120,12 +121,20 @@ class UserController extends Controller
         return $user;
     }
 
-    public function DeleteUser(Request $request)
+    public function PatchPassword(PasswordFormRequest $request)
+    {
+        $user = User::firstWhere('uuid', $request->uuid);
+        $this->forumUserService->PatchPassword($request, $user);
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+    }
+
+    public function DeleteUser(string $uuid)
     {
         if (Auth::user()->level != Config::get('constants.auth_level.admin')) {
             abort(401);
         }
-        $user = User::firstWhere('uuid', $request->uuid);
+        $user = User::firstWhere('uuid', $uuid);
         $this->forumUserService->DeleteUser($user->username);
         $user->delete();
     }

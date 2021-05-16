@@ -7,6 +7,7 @@ import {
     AUTH_LEVEL_ADMIN,
     PAGE_TITLE_USERS,
     ROUTE_INTERN_ADD_USER,
+    ROUTE_INTERN_EDIT_PASSWORD,
     ROUTE_INTERN_EDIT_USER,
     USER_STATUS_ACTIVE,
     USER_STATUS_ACTIVE_NAME,
@@ -34,6 +35,9 @@ export default function UsersPage() {
             <PageHeadlineStyled>{PAGE_TITLE_USERS}</PageHeadlineStyled>
             <EditOwnDataLinkStyled to={ROUTE_INTERN_EDIT_USER + loggedInUser.uuid}>
                 Eigene Daten bearbeiten
+            </EditOwnDataLinkStyled>
+            <EditOwnDataLinkStyled to={ROUTE_INTERN_EDIT_PASSWORD + loggedInUser.uuid}>
+                Eigenes Passwort ändern
             </EditOwnDataLinkStyled>
             {loggedInUser.level === AUTH_LEVEL_ADMIN && (
                 <AddItemLinkStyled to={ROUTE_INTERN_ADD_USER}>Mitglied hinzufügen</AddItemLinkStyled>
