@@ -37,7 +37,7 @@ export default function UsersPage() {
                 Eigene Daten bearbeiten
             </EditOwnDataLinkStyled>
             <EditOwnDataLinkStyled to={ROUTE_INTERN_EDIT_PASSWORD + loggedInUser.uuid}>
-                Passwort ändern
+                Eigenes Passwort ändern
             </EditOwnDataLinkStyled>
             {loggedInUser.level === AUTH_LEVEL_ADMIN && (
                 <AddItemLinkStyled to={ROUTE_INTERN_ADD_USER}>Mitglied hinzufügen</AddItemLinkStyled>
