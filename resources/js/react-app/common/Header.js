@@ -219,6 +219,7 @@ const PageTitleStyled = styled.h2`
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        font-size: 1em;
     }
 `;
 
