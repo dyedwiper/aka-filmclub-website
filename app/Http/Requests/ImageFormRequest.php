@@ -29,7 +29,7 @@ class ImageFormRequest extends FormRequest
         return [
             'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
             'altText' => 'max:255',
-            'copyright' => 'max:255',
+            'originator' => 'max:255',
         ];
     }
 
@@ -38,7 +38,7 @@ class ImageFormRequest extends FormRequest
         return [
             'image' => 'Bild',
             'altText' => 'Alternativtext',
-            'copyright' => 'Copyright',
+            'originator' => 'Urheber*in',
         ];
     }
 

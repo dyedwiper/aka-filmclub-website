@@ -13,7 +13,7 @@ class Image extends Model
         'uuid',
         'path',
         'alt_text',
-        'copyright',
+        'originator',
         'license',
     ];
 

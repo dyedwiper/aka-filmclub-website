@@ -5,8 +5,8 @@ import { VerticalLineStyled } from '../styledElements';
 export default function CopyrightContainer({ image }) {
     return (
         <CopyrightContainerStyled>
-            {image.copyright && <CopyrightStyled>&copy; {image.copyright}</CopyrightStyled>}
-            {image.copyright && image.license && <VerticalLineStyled>|</VerticalLineStyled>}
+            {image.originator && <CopyrightStyled>&copy; {image.originator}</CopyrightStyled>}
+            {image.originator && image.license && <VerticalLineStyled>|</VerticalLineStyled>}
             {image.license && (
                 <LicenseLinkStyled href={image.license.link} target="_blank">
                     {image.license.name}

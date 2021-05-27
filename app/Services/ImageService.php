@@ -47,13 +47,13 @@ class ImageService
             [
                 'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
                 'altText' => 'max:255',
-                'copyright' => 'max:255',
+                'originator' => 'max:255',
             ],
             [],
             [
                 'image' => 'Bild',
                 'altText' => 'Alternativtext',
-                'copyright' => 'Copyright',
+                'originator' => 'Urheber*in',
             ]
         );
 
@@ -68,7 +68,7 @@ class ImageService
             'uuid' => uniqid(),
             'path' => $imagePath,
             'alt_text' => $request->altText,
-            'copyright' => $request->copyright,
+            'originator' => $request->originator,
         ]);
         $image->save();
         return $image->id;

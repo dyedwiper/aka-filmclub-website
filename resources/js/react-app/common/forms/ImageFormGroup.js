@@ -16,8 +16,8 @@ export default function ImageFormGroup({ image }) {
                 <InputStyled name="altText" defaultValue={image && image.alt_text} />
             </LabelStyled>
             <LabelStyled>
-                Copyright
-                <InputStyled name="copyright" defaultValue={image && image.copyright} />
+                Urheber*in
+                <InputStyled name="originator" defaultValue={image && image.originator} />
             </LabelStyled>
             <SelectLabelStyled>
                 Lizenz

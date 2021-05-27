@@ -19,7 +19,7 @@ class CreateImagesTable extends Migration
             $table->timestamps();
             $table->string('path');
             $table->string('alt_text')->nullable();
-            $table->string('copyright')->nullable();
+            $table->string('originator')->nullable();
             $table->unsignedBigInteger('license_id')->unique();
             $table->foreign('license_id')->references('id')->on('licenses');
         });

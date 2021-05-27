@@ -57,7 +57,7 @@ class ImageController extends Controller
             'uuid' => uniqid(),
             'path' => $imagePath,
             'alt_text' => $request->altText,
-            'copyright' => $request->copyright,
+            'originator' => $request->originator,
             'license_id' => $request->license_id,
         ]);
         $image->save();
@@ -88,7 +88,7 @@ class ImageController extends Controller
         }
 
         $image->alt_text = $request->altText;
-        $image->copyright = $request->copyright;
+        $image->originator = $request->originator;
         $image->license_id = $request->license_id;
 
         $image->save();
