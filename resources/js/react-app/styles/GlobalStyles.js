@@ -20,7 +20,7 @@ export default createGlobalStyle`
     overflow-wrap: break-word;
   }
 
-  input, button, textarea {
+  input:not([type="checkbox"]), button, textarea {
     font-family: inherit;
     font-size: 1em;
     -webkit-appearance: none;
@@ -29,7 +29,7 @@ export default createGlobalStyle`
     padding: 5px;
   }
 
-  input {
+  input:not([type="checkbox"]) {
     /* Fix for iPhone because inputs are somehow too wide elsewise. */
     width: 100%;
 
