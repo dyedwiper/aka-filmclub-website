@@ -63,10 +63,12 @@ class ImageService
             'alt_text' => $request->altText,
             'originator' => $request->originator,
             'link' => $request->link,
-            'keepShowingAfterSemester' => $request->keepShowingAfterSemester,
+            // Default must be set here, because an unchecked checkbox sends NULL
+            // and it is not possible to actively insert NULL into NOT NULLABLE column.
+            'keepShowingAfterSemester' => $request->keepShowingAfterSemester ?? 0,
             'license_id' => $request->license_id,
         ]);
         $image->save();
-        return $image->id;
+        return $image;
     }
 }

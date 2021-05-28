@@ -17,6 +17,13 @@ use Illuminate\Support\Facades\Validator;
 
 class ImageController extends Controller
 {
+    private $imageService;
+
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
     public function GetImageByUuid(string $uuid)
     {
         return Image::where('uuid', $uuid)->with('screening', 'serial', 'notice', 'license')->first();
@@ -54,16 +61,7 @@ class ImageController extends Controller
             Helper::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs($imageFolder, $imageName);
 
-        $image = new Image([
-            'uuid' => uniqid(),
-            'path' => $imagePath,
-            'alt_text' => $request->altText,
-            'originator' => $request->originator,
-            'link' => $request->link,
-            'keepShowingAfterSemester' => $request->keepShowingAfterSemester,
-            'license_id' => $request->license_id,
-        ]);
-        $image->save();
+        $image = $this->imageService->storeImage($request, $imagePath);
         $assocEntity->image_id = $image->id;
         $assocEntity->save();
         return $image;
@@ -93,7 +91,9 @@ class ImageController extends Controller
         $image->alt_text = $request->altText;
         $image->originator = $request->originator;
         $image->link = $request->link;
-        $image->keepShowingAfterSemester = $request->keepShowingAfterSemester;
+        // Default must be set here, because an unchecked checkbox sends NULL
+        // and it is not possible to actively insert NULL into NOT NULLABLE column.
+        $image->keepShowingAfterSemester = $request->keepShowingAfterSemester ?? 0;
         $image->license_id = $request->license_id;
 
         $image->save();

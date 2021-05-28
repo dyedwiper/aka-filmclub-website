@@ -45,7 +45,7 @@ class ImageFormRequest extends FormRequest
         'altText' => 'max:255',
         'originator' => 'max:255',
         'link' => 'max:255',
-        'keepShowingAfterSemester' => 'required|boolean',
+        'keepShowingAfterSemester' => 'boolean',
     ];
 
     public static $ValidationAttributes = [
