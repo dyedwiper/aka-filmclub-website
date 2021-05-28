@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Helpers\Helper;
+use App\Http\Requests\ImageFormRequest;
 use App\Models\Image;
 use App\Models\Notice;
 use App\Models\Screening;
@@ -44,17 +45,9 @@ class ImageService
     {
         $validator = Validator::make(
             $request->all(),
-            [
-                'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
-                'altText' => 'max:255',
-                'originator' => 'max:255',
-            ],
+            ImageFormRequest::$ValidationRules,
             [],
-            [
-                'image' => 'Bild',
-                'altText' => 'Alternativtext',
-                'originator' => 'Urheber*in',
-            ]
+            ImageFormRequest::$ValidationAttributes,
         );
 
         if ($validator->fails()) {

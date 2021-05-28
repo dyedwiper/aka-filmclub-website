@@ -26,24 +26,29 @@ class ImageFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
-            'altText' => 'max:255',
-            'originator' => 'max:255',
-        ];
+        return self::$ValidationRules;
     }
 
     public function attributes()
     {
-        return [
-            'image' => 'Bild',
-            'altText' => 'Alternativtext',
-            'originator' => 'Urheber*in',
-        ];
+        return self::$ValidationAttributes;
     }
 
     protected function failedValidation(Validator $validator)
     {
         ValidationUtils::handleValidationError($validator);
     }
+
+    // Rules and attributes are placed in static 
+    public static $ValidationRules = [
+        'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
+        'altText' => 'max:255',
+        'originator' => 'max:255',
+    ];
+
+    public static $ValidationAttributes = [
+        'image' => 'Bild',
+        'altText' => 'Alternativtext',
+        'originator' => 'Urheber*in',
+    ];
 }
