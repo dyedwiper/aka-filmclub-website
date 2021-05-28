@@ -44,11 +44,15 @@ class ImageFormRequest extends FormRequest
         'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
         'altText' => 'max:255',
         'originator' => 'max:255',
+        'link' => 'max:255',
+        'keepShowingAfterSemester' => 'required|boolean',
     ];
 
     public static $ValidationAttributes = [
         'image' => 'Bild',
         'altText' => 'Alternativtext',
         'originator' => 'Urheber*in',
+        'link' => 'Link zum Bild',
+        'keepShowingAfterSemester' => 'Bild nach Ablauf Semesters weiterhin anzeigen',
     ];
 }

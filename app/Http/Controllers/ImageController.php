@@ -8,6 +8,7 @@ use App\Models\Image;
 use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
+use App\Services\ImageService;
 use App\Utils\ValidationUtils;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -58,6 +59,8 @@ class ImageController extends Controller
             'path' => $imagePath,
             'alt_text' => $request->altText,
             'originator' => $request->originator,
+            'link' => $request->link,
+            'keepShowingAfterSemester' => $request->keepShowingAfterSemester,
             'license_id' => $request->license_id,
         ]);
         $image->save();
@@ -89,6 +92,8 @@ class ImageController extends Controller
 
         $image->alt_text = $request->altText;
         $image->originator = $request->originator;
+        $image->link = $request->link;
+        $image->keepShowingAfterSemester = $request->keepShowingAfterSemester;
         $image->license_id = $request->license_id;
 
         $image->save();

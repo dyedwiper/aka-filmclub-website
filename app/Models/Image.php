@@ -14,6 +14,8 @@ class Image extends Model
         'path',
         'alt_text',
         'originator',
+        'link',
+        'keepShowingAfterSemester',
         'license',
     ];
 

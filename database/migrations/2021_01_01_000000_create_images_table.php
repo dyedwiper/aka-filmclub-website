@@ -20,7 +20,9 @@ class CreateImagesTable extends Migration
             $table->string('path');
             $table->string('alt_text')->nullable();
             $table->string('originator')->nullable();
-            $table->unsignedBigInteger('license_id')->unique();
+            $table->string('link')->nullable();
+            $table->boolean('keepShowingAfterSemester')->default(0);
+            $table->unsignedBigInteger('license_id')->nullable();
             $table->foreign('license_id')->references('id')->on('licenses');
         });
     }

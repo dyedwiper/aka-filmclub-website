@@ -55,13 +55,16 @@ class ImageService
         }
     }
 
-    private function storeImage(Request $request, string $imagePath)
+    public function storeImage(Request $request, string $imagePath)
     {
         $image = new Image([
             'uuid' => uniqid(),
             'path' => $imagePath,
             'alt_text' => $request->altText,
             'originator' => $request->originator,
+            'link' => $request->link,
+            'keepShowingAfterSemester' => $request->keepShowingAfterSemester,
+            'license_id' => $request->license_id,
         ]);
         $image->save();
         return $image->id;
