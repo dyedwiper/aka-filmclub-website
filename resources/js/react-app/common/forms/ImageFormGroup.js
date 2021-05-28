@@ -19,15 +19,17 @@ export default function ImageFormGroup({ image }) {
                 Urheber*in
                 <InputStyled name="originator" defaultValue={image && image.originator} />
             </LabelStyled>
+            <LicenseContainerSytled>
+                <SelectLabelStyled>
+                    Lizenz
+                    <LicenseSelect defaultLicense={image && image.license} />
+                </SelectLabelStyled>
+                <Link to={ROUTE_INTERN_LICENSES}>Lizenzen bearbeiten</Link>
+            </LicenseContainerSytled>
             <LabelStyled>
                 Link zum Bild (bei CC-lizensierten Bildern notwendig)
                 <InputStyled name="link" defaultValue={image && image.link} />
             </LabelStyled>
-            <SelectLabelStyled>
-                Lizenz
-                <LicenseSelect defaultLicense={image && image.license} />
-            </SelectLabelStyled>
-            <Link to={ROUTE_INTERN_LICENSES}>Lizenzen bearbeiten</Link>
             <LabelStyled>
                 <CheckboxStyled
                     name="keepShowingAfterSemester"
@@ -53,6 +55,8 @@ const InputStyled = styled.input``;
 const CheckboxStyled = styled.input`
     margin: 0 10px;
 `;
+
+const LicenseContainerSytled = styled.div``;
 
 const SelectLabelStyled = styled.label`
     display: inline-block;
