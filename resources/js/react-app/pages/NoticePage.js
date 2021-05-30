@@ -72,7 +72,7 @@ const ImageAndCopyrightContainerStyled = styled.div`
 `;
 
 const ImageStyled = styled.img`
-    max-width: 100%;
+    width: 100%;
 `;
 
 const DateStyled = styled.div``;
