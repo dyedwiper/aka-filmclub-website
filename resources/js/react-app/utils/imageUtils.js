@@ -11,7 +11,6 @@ export function showSerialImage(serial) {
     if (!serial.image) return false;
     if (serial.image.keepShowingAfterSemester) return true;
     const endDateOfSemester = computeEndDateOfSemester(serial.semester);
-    console.log(endDateOfSemester);
     if (endDateOfSemester > new Date()) return true;
     return false;
 }

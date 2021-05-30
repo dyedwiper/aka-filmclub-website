@@ -18,6 +18,7 @@ import {
 } from '../constants';
 import Context from '../Context';
 import { formatToDateTimeStringWithWeekday } from '../utils/dateFormatters';
+import { showScreeningImage } from '../utils/imageUtils';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getScreeningByUuid } from '../utils/services/screeningServices';
 import LoadingPage from './LoadingPage';
@@ -52,7 +53,7 @@ export default function ScreeningPage() {
 
     return (
         <PageStyled>
-            {screening.image ? (
+            {showScreeningImage(screening) ? (
                 <ImageAndCopyrightContainerStyled>
                     <ImageContainerStyled>
                         <ImageStyled src={STORAGE_FOLDER + screening.image.path} />
