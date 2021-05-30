@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import AdmissionListItem from '../../common/accounting/AdmissionListItem';
@@ -7,13 +7,15 @@ import BasePage from '../../common/BasePage';
 import SemesterSelect from '../../common/forms/SemesterSelect';
 import { HorizontalRuleStyled, PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_ADMISSIONS } from '../../constants';
-import { computeCurrentSemester } from '../../utils/semesterUtils';
+import Context from '../../Context';
 import { getScreeningsWithBillingsBySemester } from '../../utils/services/billingServices';
 
 export default function AdmissionsPage() {
     const [screenings, setScreenings] = useState([]);
     const [semester, setSemester] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+
+    const { currentSemester } = useContext(Context);
 
     let history = useHistory();
 
@@ -23,7 +25,7 @@ export default function AdmissionsPage() {
         if (semesterFromQuery) {
             setSemester({ value: semesterFromQuery });
         } else {
-            setSemester({ value: computeCurrentSemester() });
+            setSemester({ value: currentSemester.name });
         }
     }, []);
 

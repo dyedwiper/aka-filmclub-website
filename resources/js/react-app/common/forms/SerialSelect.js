@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
-import { getSerials, getSerialsBySemester } from '../../utils/services/serialServices';
-import { serialSelectStyles } from '../../styles/customSelectStyles';
-import { computeCurrentSemester } from '../../utils/semesterUtils';
 import styled from 'styled-components';
+import Context from '../../Context';
+import { serialSelectStyles } from '../../styles/customSelectStyles';
+import { getSerials, getSerialsBySemester } from '../../utils/services/serialServices';
 
 export default function SerialSelect({ defaultSerial }) {
     const [serialOptions, setSerialOptions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const { currentSemester } = useContext(Context);
+
     useEffect(() => {
-        const currentSemester = computeCurrentSemester();
-        getSerialsBySemester(currentSemester).then((res) => {
+        getSerialsBySemester(currentSemester.name).then((res) => {
             setSerialOptions(computeSerialOptions(res.data));
             setIsLoading(false);
         });

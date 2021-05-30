@@ -4,15 +4,22 @@ export function computeCurrentSemester() {
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
-    let currentSemester;
+    const currentSemester = {};
 
-    //month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this
+    // month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
     if (currentMonth >= 3 && currentMonth < 9) {
-        currentSemester = SUMMER_SEASON_IDENTIFIER + currentYear;
+        currentSemester.name = SUMMER_SEASON_IDENTIFIER + currentYear;
+        // The year 2000 in the Date constructor is a completely random initial value. It is overwritten anyway.
+        currentSemester.endDate = new Date('2000-10-01');
+        currentSemester.endDate.setFullYear(currentYear);
     } else if (currentMonth >= 9) {
-        currentSemester = WINTER_SEASON_IDENTIFIER + currentYear;
+        currentSemester.name = WINTER_SEASON_IDENTIFIER + currentYear;
+        currentSemester.endDate = new Date('2000-04-01');
+        currentSemester.endDate.setFullYear(currentYear + 1);
     } else {
-        currentSemester = WINTER_SEASON_IDENTIFIER + (currentYear - 1);
+        currentSemester.name = WINTER_SEASON_IDENTIFIER + (currentYear - 1);
+        currentSemester.endDate = new Date('2000-04-01');
+        currentSemester.endDate.setFullYear(currentYear);
     }
 
     return currentSemester;
