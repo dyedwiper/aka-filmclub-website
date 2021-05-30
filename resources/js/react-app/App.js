@@ -103,7 +103,7 @@ import ScreeningPage from './pages/ScreeningPage';
 import SelfmadeFilmsPage from './pages/SelfmadeFilmsPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
-import { computeCurrentSemester } from './utils/semesterUtils';
+import { computeSemester } from './utils/semesterUtils';
 import { getCurrentUser } from './utils/services/userServices';
 
 export default function App() {
@@ -125,7 +125,7 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-        setCurrentSemester(computeCurrentSemester());
+        setCurrentSemester(computeSemester(new Date()));
     }, []);
 
     if (isLoading)

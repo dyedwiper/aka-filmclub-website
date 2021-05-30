@@ -1,28 +1,27 @@
 import { SUMMER_SEASON_IDENTIFIER, WINTER_SEASON_IDENTIFIER } from '../constants';
 
-export function computeCurrentSemester() {
-    const currentDate = new Date();
-    const currentMonth = currentDate.getMonth();
-    const currentYear = currentDate.getFullYear();
-    const currentSemester = {};
+export function computeSemester(date) {
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    const semester = {};
 
     // month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
     // The year 2000 in the Date constructor is a random initial value. It is overwritten anyway.
-    if (currentMonth >= 3 && currentMonth < 9) {
-        currentSemester.name = SUMMER_SEASON_IDENTIFIER + currentYear;
-        currentSemester.endDate = new Date('2000-10-01');
-        currentSemester.endDate.setFullYear(currentYear);
-    } else if (currentMonth >= 9) {
-        currentSemester.name = WINTER_SEASON_IDENTIFIER + currentYear;
-        currentSemester.endDate = new Date('2000-04-01');
-        currentSemester.endDate.setFullYear(currentYear + 1);
+    if (month >= 3 && month < 9) {
+        semester.name = SUMMER_SEASON_IDENTIFIER + year;
+        semester.endDate = new Date('2000-10-01');
+        semester.endDate.setFullYear(year);
+    } else if (month >= 9) {
+        semester.name = WINTER_SEASON_IDENTIFIER + year;
+        semester.endDate = new Date('2000-04-01');
+        semester.endDate.setFullYear(year + 1);
     } else {
-        currentSemester.name = WINTER_SEASON_IDENTIFIER + (currentYear - 1);
-        currentSemester.endDate = new Date('2000-04-01');
-        currentSemester.endDate.setFullYear(currentYear);
+        semester.name = WINTER_SEASON_IDENTIFIER + (year - 1);
+        semester.endDate = new Date('2000-04-01');
+        semester.endDate.setFullYear(year);
     }
 
-    return currentSemester;
+    return semester;
 }
 
 export function computeSemesterOptions() {

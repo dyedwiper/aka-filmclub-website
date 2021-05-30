@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import akaLogoGrau from '../../assets/aka_logo_grau.png';
 import { ROUTE_NOTICE, STORAGE_FOLDER } from '../../constants';
 import { formatToDateString } from '../../utils/dateFormatters';
+import { showNoticeImage } from '../../utils/imageUtils';
 import { stripHtml } from '../../utils/stringUtils';
 import { HorizontalRuleStyled } from '../styledElements';
 
@@ -21,7 +22,7 @@ export default function NoticeRow({ notice }) {
                     <Link to={ROUTE_NOTICE + notice.uuid}>[mehr]</Link>
                 </InfoContainerStyled>
                 <LinkStyled to={ROUTE_NOTICE + notice.uuid}>
-                    <ImageStyled src={notice.image ? STORAGE_FOLDER + notice.image.path : akaLogoGrau} />
+                    <ImageStyled src={showNoticeImage(notice) ? STORAGE_FOLDER + notice.image.path : akaLogoGrau} />
                 </LinkStyled>
             </NoticeContainerStyled>
         </NoticeRowStyled>
