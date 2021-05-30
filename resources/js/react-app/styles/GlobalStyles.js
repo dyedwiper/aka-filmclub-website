@@ -29,7 +29,7 @@ export default createGlobalStyle`
     padding: 5px;
   }
 
-  input:not([type="checkbox"]) {
+  input {
     /* Fix for iPhone because inputs are somehow too wide elsewise. */
     width: 100%;
 
@@ -38,7 +38,11 @@ export default createGlobalStyle`
     }
   }
 
-  input[type="file"]{
+  input[type="checkbox"] {
+      width: initial;
+  }
+
+  input[type="file"] {
       border: none;
   }
 
