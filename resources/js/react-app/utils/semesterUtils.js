@@ -7,9 +7,9 @@ export function computeCurrentSemester() {
     const currentSemester = {};
 
     // month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
+    // The year 2000 in the Date constructor is a random initial value. It is overwritten anyway.
     if (currentMonth >= 3 && currentMonth < 9) {
         currentSemester.name = SUMMER_SEASON_IDENTIFIER + currentYear;
-        // The year 2000 in the Date constructor is a completely random initial value. It is overwritten anyway.
         currentSemester.endDate = new Date('2000-10-01');
         currentSemester.endDate.setFullYear(currentYear);
     } else if (currentMonth >= 9) {
@@ -49,4 +49,22 @@ export function computeSemesterOptions() {
         });
     });
     return semesterOptions;
+}
+
+export function computeEndDateOfSemester(semester) {
+    // The year 2000 in the Date constructor is a random initial value. It is overwritten anyway.
+    const endDate = new Date('2000-10-01');
+    const currentMonth = new Date().getMonth();
+    const seasonIdentifier = semester.slice(0, 2);
+    const year = Number(semester.slice(2));
+    // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
+    if (seasonIdentifier === 'SS') {
+        endDate.setFullYear(year);
+    } else if (seasonIdentifier === 'WS' && currentMonth >= 9) {
+        endDate.setMonth(3);
+    } else {
+        endDate.setFullYear(year + 1);
+        endDate.setMonth(3);
+    }
+    return endDate;
 }

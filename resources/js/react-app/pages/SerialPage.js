@@ -14,6 +14,7 @@ import {
     STORAGE_FOLDER,
 } from '../constants';
 import Context from '../Context';
+import { showSerialImage } from '../utils/imageUtils';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getSerialByUuid } from '../utils/services/serialServices';
 import LoadingPage from './LoadingPage';
@@ -48,7 +49,7 @@ export default function SerialPage() {
 
     return (
         <PageStyled>
-            {serial.image ? (
+            {showSerialImage(serial) ? (
                 <ImageAndCopyrightContainerStyled>
                     <ImageContainerStyled>
                         <ImageStyled src={STORAGE_FOLDER + serial.image.path} />
