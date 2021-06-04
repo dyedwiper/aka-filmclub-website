@@ -3,7 +3,8 @@ import { computeEndDateOfSemester, computeSemester } from './semesterUtils';
 export function showScreeningImage(screening) {
     if (!screening.image) return false;
     if (screening.image.keepShowingAfterSemester) return true;
-    if (new Date(screening.date.replace(' ', 'T')) > new Date()) return true;
+    const semester = computeSemester(new Date(screening.date.replace(' ', 'T')));
+    if (semester.endDate > new Date()) return true;
     return false;
 }
 
