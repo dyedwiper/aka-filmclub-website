@@ -13,6 +13,7 @@ import {
 } from '../constants';
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
+import { showNoticeImage } from '../utils/imageUtils';
 import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getNoticeByUuid } from '../utils/services/noticeServices';
 import LoadingPage from './LoadingPage';
@@ -41,7 +42,7 @@ export default function NoticePage() {
 
     return (
         <PageStyled>
-            {notice.image && (
+            {showNoticeImage(notice) && (
                 <ImageAndCopyrightContainerStyled>
                     <ImageStyled src={STORAGE_FOLDER + notice.image.path} />
                     <CopyrightContainer image={notice.image} />
@@ -71,7 +72,7 @@ const ImageAndCopyrightContainerStyled = styled.div`
 `;
 
 const ImageStyled = styled.img`
-    max-width: 100%;
+    width: 100%;
 `;
 
 const DateStyled = styled.div``;

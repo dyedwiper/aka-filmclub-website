@@ -103,11 +103,13 @@ import ScreeningPage from './pages/ScreeningPage';
 import SelfmadeFilmsPage from './pages/SelfmadeFilmsPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
+import { computeSemester } from './utils/semesterUtils';
 import { getCurrentUser } from './utils/services/userServices';
 
 export default function App() {
     const [user, setUser] = useState({});
     const [pageTitle, setPageTitle] = useState('aka-Filmclub');
+    const [currentSemester, setCurrentSemester] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -122,6 +124,10 @@ export default function App() {
             });
     }, []);
 
+    useEffect(() => {
+        setCurrentSemester(computeSemester(new Date()));
+    }, []);
+
     if (isLoading)
         return (
             <AppStyled>
@@ -131,7 +137,7 @@ export default function App() {
 
     return (
         <AppStyled>
-            <Context.Provider value={{ user, setUser, pageTitle, setPageTitle }}>
+            <Context.Provider value={{ user, setUser, pageTitle, setPageTitle, currentSemester }}>
                 <Router>
                     <Header />
                     <Switch>

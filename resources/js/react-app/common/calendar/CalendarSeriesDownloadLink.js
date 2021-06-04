@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { formatToIcsString } from '../../utils/dateFormatters';
-import { computeCurrentSemester } from '../../utils/semesterUtils';
 import calendarIcon from '../../assets/calendar_icon.png';
+import Context from '../../Context';
+import { formatToIcsString } from '../../utils/dateFormatters';
 
 export default function CalendarSeriesDownloadLink({ screenings }) {
+    const { currentSemester } = useContext(Context);
+
     // The template string must be unindented like this.
     const icsString = `BEGIN:VCALENDAR
 VERSION:2.0
@@ -29,7 +31,7 @@ END:VCALENDAR`;
     return (
         <CalendarSeriesDownloadLinkStyled
             href={'data:text/calendar,' + icsString}
-            download={'aka-Filmclub_' + computeCurrentSemester()}
+            download={'aka-Filmclub_' + currentSemester.name}
         >
             <IconStyled src={calendarIcon} />
             aKalender-Serie runterladen

@@ -50,7 +50,7 @@ class NoticeController extends Controller
         ]);
 
         if ($request->image) {
-            $notice->image_id = $this->imageService->storeNoticeImage($request, $notice);
+            $notice->image_id = $this->imageService->storeNoticeImage($request, $notice)->id;
         }
 
         $notice->save();

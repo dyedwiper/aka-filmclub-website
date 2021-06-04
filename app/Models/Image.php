@@ -13,7 +13,9 @@ class Image extends Model
         'uuid',
         'path',
         'alt_text',
-        'copyright',
+        'originator',
+        'link',
+        'keepShowingAfterSemester',
         'license',
     ];
 

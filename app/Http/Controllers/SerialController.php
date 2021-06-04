@@ -66,7 +66,7 @@ class SerialController extends Controller
         ]);
 
         if ($request->image) {
-            $serial->image_id = $this->imageService->storeSerialImage($request, $serial);
+            $serial->image_id = $this->imageService->storeSerialImage($request, $serial)->id;
         }
 
         $serial->save();

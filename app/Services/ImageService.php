@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Helpers\Helper;
+use App\Http\Requests\ImageFormRequest;
 use App\Models\Image;
 use App\Models\Notice;
 use App\Models\Screening;
@@ -44,17 +45,9 @@ class ImageService
     {
         $validator = Validator::make(
             $request->all(),
-            [
-                'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
-                'altText' => 'max:255',
-                'copyright' => 'max:255',
-            ],
+            ImageFormRequest::$ValidationRules,
             [],
-            [
-                'image' => 'Bild',
-                'altText' => 'Alternativtext',
-                'copyright' => 'Copyright',
-            ]
+            ImageFormRequest::$ValidationAttributes,
         );
 
         if ($validator->fails()) {
@@ -62,15 +55,20 @@ class ImageService
         }
     }
 
-    private function storeImage(Request $request, string $imagePath)
+    public function storeImage(Request $request, string $imagePath)
     {
         $image = new Image([
             'uuid' => uniqid(),
             'path' => $imagePath,
             'alt_text' => $request->altText,
-            'copyright' => $request->copyright,
+            'originator' => $request->originator,
+            'link' => $request->link,
+            // Default must be set here, because an unchecked checkbox sends NULL
+            // and it is not possible to actively insert NULL into NOT NULLABLE column.
+            'keepShowingAfterSemester' => $request->keepShowingAfterSemester ?? 0,
+            'license_id' => $request->license_id,
         ]);
         $image->save();
-        return $image->id;
+        return $image;
     }
 }

@@ -58,7 +58,7 @@ export default function EditImagePage() {
 const HeadlineStyled = styled.h2``;
 
 const ImageStyled = styled.img`
-    max-width: 320px;
+    max-width: 280px;
 `;
 
 const HintStyled = styled.div`

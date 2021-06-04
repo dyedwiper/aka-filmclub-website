@@ -1,16 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 import { VerticalLineStyled } from '../styledElements';
+import linkIcon from '../../assets/link_icon.png';
 
 export default function CopyrightContainer({ image }) {
     return (
         <CopyrightContainerStyled>
-            {image.copyright && <CopyrightStyled>&copy; {image.copyright}</CopyrightStyled>}
-            {image.copyright && image.license && <VerticalLineStyled>|</VerticalLineStyled>}
             {image.license && (
-                <LicenseLinkStyled href={image.license.link} target="_blank">
+                <LinkStyled href={image.license.link} target="_blank">
                     {image.license.name}
-                </LicenseLinkStyled>
+                </LinkStyled>
+            )}
+            {image.originator && image.license && <VerticalLineStyled>|</VerticalLineStyled>}
+            {image.originator && <OriginatorStyled>{image.originator}</OriginatorStyled>}
+            {image.link && (
+                <LinkStyled href={image.link} target="_blank">
+                    <IconStyled src={linkIcon} />
+                </LinkStyled>
             )}
         </CopyrightContainerStyled>
     );
@@ -21,6 +27,11 @@ const CopyrightContainerStyled = styled.div`
     font-size: 0.7em;
 `;
 
-const CopyrightStyled = styled.span``;
+const OriginatorStyled = styled.span``;
 
-const LicenseLinkStyled = styled.a``;
+const LinkStyled = styled.a``;
+
+const IconStyled = styled.img`
+    height: 10px;
+    margin-left: 5px;
+`;

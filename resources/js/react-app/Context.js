@@ -5,6 +5,7 @@ const Context = createContext({
     setUser: () => {},
     pageTitle: '',
     setPageTitle: () => {},
+    currentSemester: {},
 });
 
 export default Context;

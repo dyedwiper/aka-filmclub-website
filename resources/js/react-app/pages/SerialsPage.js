@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../common/BasePage';
@@ -7,7 +7,7 @@ import SemesterSelect from '../common/forms/SemesterSelect';
 import SerialRow from '../common/misc/SerialRow';
 import { ArchiveSearchContainerStyled, PageHeadlineStyled } from '../common/styledElements';
 import { PAGE_TITLE_SERIALS } from '../constants';
-import { computeCurrentSemester } from '../utils/semesterUtils';
+import Context from '../Context';
 import { getSerialsBySearchString, getSerialsBySemester } from '../utils/services/serialServices';
 
 export default function SerialsPage() {
@@ -17,6 +17,8 @@ export default function SerialsPage() {
     const [semester, setSemester] = useState({});
     const [search, setSearch] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+
+    const { currentSemester } = useContext(Context);
 
     let history = useHistory();
 
@@ -29,7 +31,7 @@ export default function SerialsPage() {
         } else if (semesterFromQuery) {
             setSemester({ value: semesterFromQuery });
         } else {
-            setSemester({ value: computeCurrentSemester() });
+            setSemester({ value: currentSemester.name });
         }
     }, []);
 

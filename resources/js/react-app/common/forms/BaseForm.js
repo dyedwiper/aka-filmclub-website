@@ -131,6 +131,11 @@ const ButtonContainerStyled = styled.div`
         grid-template-columns: 100px 100px 100px;
         grid-template-rows: 1fr 1fr;
     }
+
+    @media (max-width: 360px) {
+        grid-template-columns: 100px 100px;
+        grid-template-rows: 1fr 1fr;
+    }
 `;
 
 const SubmitButtonStyled = styled.button``;

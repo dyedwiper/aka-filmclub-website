@@ -19,19 +19,19 @@ class ImageSeeder extends Seeder
             'source' => 'johnny.jpg',
             'title' => null,
             'alt_text' => null,
-            'copyright' => null,
+            'originator' => null,
         ], [
             'uuid' => uniqid(),
             'source' => 'fish_tank.jpg',
             'title' => null,
             'alt_text' => null,
-            'copyright' => null,
+            'originator' => null,
         ], [
             'uuid' => uniqid(),
             'source' => 'der_riss.jpg',
             'title' => null,
             'alt_text' => null,
-            'copyright' => null,
+            'originator' => null,
         ]]);
     }
 }

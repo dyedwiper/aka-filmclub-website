@@ -21,12 +21,11 @@ export default createGlobalStyle`
   }
 
   input, button, textarea {
+    padding: 5px;
+    border: solid 1px black;
     font-family: inherit;
     font-size: 1em;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: solid 1px black;
-    padding: 5px;
+    appearance: none;
   }
 
   input {
@@ -38,7 +37,12 @@ export default createGlobalStyle`
     }
   }
 
-  input[type="file"]{
+  input[type="checkbox"] {
+    width: initial;
+    appearance: auto;
+  }
+
+  input[type="file"] {
       border: none;
   }
 

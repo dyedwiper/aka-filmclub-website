@@ -98,7 +98,7 @@ class ScreeningController extends Controller
         ]);
 
         if ($request->image) {
-            $screening->image_id = $this->imageService->storeScreeningImage($request, $screening);
+            $screening->image_id = $this->imageService->storeScreeningImage($request, $screening)->id;
         }
 
         $screening->save();
