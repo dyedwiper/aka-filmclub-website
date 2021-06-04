@@ -20,13 +20,12 @@ export default createGlobalStyle`
     overflow-wrap: break-word;
   }
 
-  input:not([type="checkbox"]), button, textarea {
+  input, button, textarea {
+    padding: 5px;
+    border: solid 1px black;
     font-family: inherit;
     font-size: 1em;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: solid 1px black;
-    padding: 5px;
+    appearance: none;
   }
 
   input {
@@ -39,7 +38,8 @@ export default createGlobalStyle`
   }
 
   input[type="checkbox"] {
-      width: initial;
+    width: initial;
+    appearance: auto;
   }
 
   input[type="file"] {

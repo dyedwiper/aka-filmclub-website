@@ -37,7 +37,7 @@ export default function ImageFormGroup({ image }) {
                     value="1"
                     defaultChecked={image && image.keepShowingAfterSemester}
                 />
-                Bild nach Ablauf Semesters weiterhin anzeigen
+                Bild nach Ablauf des Semesters weiterhin anzeigen
             </LabelStyled>
         </ImageFormGroupStyled>
     );

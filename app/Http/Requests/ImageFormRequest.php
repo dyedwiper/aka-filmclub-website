@@ -39,13 +39,14 @@ class ImageFormRequest extends FormRequest
         ValidationUtils::handleValidationError($validator);
     }
 
-    // Rules and attributes are placed in static 
+    // Rules and attributes are stored in props here, because they are also used in ImageService
     public static $ValidationRules = [
         'image' => 'file|mimetypes:image/png,image/jpeg|max:1000',
         'altText' => 'max:255',
         'originator' => 'max:255',
         'link' => 'max:255',
         'keepShowingAfterSemester' => 'boolean',
+        'license_id' => 'int|nullable',
     ];
 
     public static $ValidationAttributes = [
@@ -53,6 +54,7 @@ class ImageFormRequest extends FormRequest
         'altText' => 'Alternativtext',
         'originator' => 'Urheber*in',
         'link' => 'Link zum Bild',
-        'keepShowingAfterSemester' => 'Bild nach Ablauf Semesters weiterhin anzeigen',
+        'keepShowingAfterSemester' => 'Bild nach Ablauf des Semesters weiterhin anzeigen',
+        'license_id' => 'Lizenz',
     ];
 }
