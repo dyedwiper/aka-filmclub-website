@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_SCREENING, ROUTE_PROGRAM_OVERVIEW, ROUTE_SCREENING } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteScreening, getScreeningByUuid, postScreening } from '../../utils/services/screeningServices';
@@ -38,6 +39,7 @@ export default function EditScreeningPage() {
                 <input name="uuid" type="hidden" defaultValue={screening.uuid} />
                 <ScreeningFormGroup screening={screening} />
             </BaseForm>
+            <UpdateInfo entity={screening} />
         </BasePage>
     );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import DistributorFormGroup from '../../common/forms/DistributorFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_DISTRIBUTOR, ROUTE_INTERN_DISTRIBUTORS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
@@ -38,6 +39,7 @@ export default function EditDistributorPage() {
                 <input name="uuid" type="hidden" defaultValue={distributor.uuid} />
                 <DistributorFormGroup distributor={distributor} />
             </BaseForm>
+            <UpdateInfo entity={distributor} />
         </BasePage>
     );
 }

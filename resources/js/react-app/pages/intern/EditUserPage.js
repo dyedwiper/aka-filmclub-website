@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import UserFormGroup from '../../common/forms/UserFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_USER, ROUTE_INTERN_USERS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteUser, getUserByUuid, postUser } from '../../utils/services/userServices';
@@ -38,6 +39,7 @@ export default function EditUserPage() {
                 <input name="uuid" type="hidden" defaultValue={user.uuid} />
                 <UserFormGroup user={user} />
             </BaseForm>
+            <UpdateInfo entity={user} />
         </BasePage>
     );
 }

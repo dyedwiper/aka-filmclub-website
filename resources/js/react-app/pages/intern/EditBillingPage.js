@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import BillingFormGroup from '../../common/forms/BillingFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_BILLING, ROUTE_INTERN_ADMISSIONS, ROUTE_INTERN_BILLING } from '../../constants';
 import Context from '../../Context';
@@ -41,6 +42,7 @@ export default function EditBillingPage() {
                 <input name="uuid" type="hidden" defaultValue={billing.uuid} />
                 <BillingFormGroup billing={billing} />
             </BaseForm>
+            <UpdateInfo entity={billing} />
         </BasePage>
     );
 }

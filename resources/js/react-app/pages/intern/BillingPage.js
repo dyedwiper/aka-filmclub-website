@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import BillingPdf from '../../common/accounting/pdf/BillingPdf';
 import StacksList from '../../common/accounting/StacksList';
 import BasePage from '../../common/BasePage';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { HorizontalRuleStyled, PageHeadlineStyled, VerticalLineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_BILLING, ROUTE_INTERN_EDIT_BILLING } from '../../constants';
 import Context from '../../Context';
@@ -123,6 +124,7 @@ export default function BillingPage() {
             >
                 PDF runterladen
             </PDFDownloadLink>
+            <UpdateInfo entity={billing} />
         </BasePage>
     );
 }

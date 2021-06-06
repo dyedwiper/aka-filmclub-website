@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import SelfmadeFilmFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_SELFMADE_FILM, ROUTE_SELFMADE_FILMS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
@@ -38,6 +39,7 @@ export default function EditSelfmadeFilmPage() {
                 <input name="uuid" type="hidden" defaultValue={film.uuid} />
                 <SelfmadeFilmFormGroup film={film} />
             </BaseForm>
+            <UpdateInfo entity={film} />
         </BasePage>
     );
 }

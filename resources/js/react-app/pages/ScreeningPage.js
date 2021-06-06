@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
+import UpdateInfo from '../common/misc/UpdateInfo';
 import CreditsContainer from '../common/screenings/CreditsContainer';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
@@ -101,6 +102,7 @@ export default function ScreeningPage() {
                                 Bild hinzufügen
                             </EditLinkStyled>
                         )}
+                        <UpdateInfo entity={screening} />
                     </>
                 )}
             </TextContainerStyled>
