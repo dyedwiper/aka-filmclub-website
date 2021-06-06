@@ -102,7 +102,7 @@ export default function ScreeningFormGroup({ screening }) {
             </LabelStyled>
             <LabelStyled>
                 Filmreihe
-                <SerialSelect defaultSerial={screening && screening.serial} />
+                <SerialSelect defaultSerial={screening && screening.serial} isEditing={Object.keys(screening).length} />
             </LabelStyled>
             <LabelStyled>
                 Autor*in

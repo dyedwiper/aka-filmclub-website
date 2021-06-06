@@ -5,7 +5,9 @@ import Context from '../../Context';
 import { serialSelectStyles } from '../../styles/customSelectStyles';
 import { getSerials, getSerialsBySemester } from '../../utils/services/serialServices';
 
-export default function SerialSelect({ defaultSerial }) {
+export default function SerialSelect({ defaultSerial, isEditing }) {
+    const noSerialOption = { label: '-- keine Reihe --', value: '' };
+
     const [serialOptions, setSerialOptions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -25,7 +27,11 @@ export default function SerialSelect({ defaultSerial }) {
             <ReactSelect
                 name="serialId"
                 options={serialOptions}
-                defaultValue={defaultSerial && { label: defaultSerial.title, value: defaultSerial.id }}
+                defaultValue={
+                    defaultSerial
+                        ? { label: defaultSerial.title, value: defaultSerial.id }
+                        : isEditing && noSerialOption
+                }
                 styles={serialSelectStyles}
                 placeholder="Reihe wählen..."
             />
@@ -44,7 +50,7 @@ export default function SerialSelect({ defaultSerial }) {
     }
 
     function computeSerialOptions(serials) {
-        const options = [];
+        const options = [noSerialOption];
         serials.forEach((serial) => {
             options.push({
                 label: serial.title,
