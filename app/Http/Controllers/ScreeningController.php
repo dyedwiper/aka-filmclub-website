@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ScreeningFormRequest;
 use App\Models\Screening;
 use App\Services\ImageService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
@@ -74,28 +75,8 @@ class ScreeningController extends Controller
 
     public function PostScreening(ScreeningFormRequest $request)
     {
-        $screening = new Screening([
-            'uuid' => uniqid(),
-            'title' => $request->title,
-            'original_title' => $request->originalTitle,
-            'date' => $request->day . ' ' . $request->time,
-            'synopsis' => $request->synopsis,
-            'directed_by' => $request->directedBy,
-            'written_by' => $request->writtenBy,
-            'music_by' => $request->musicBy,
-            'shot_by' => $request->shotBy,
-            'cast' => $request->cast,
-            'country' => $request->country,
-            'year' => $request->year,
-            'length' => $request->length,
-            'medium' => $request->medium,
-            'version' => $request->version,
-            'venue' => $request->venue,
-            'special' => $request->special,
-            'tercet' => $request->tercet,
-            'serial_id' => $request->serialId,
-            'author' => $request->author,
-        ]);
+        $screening = new Screening(['uuid' => uniqid(),]);
+        $screening = $this->mapRequestToScreening($request, $screening);
 
         if ($request->image) {
             $screening->image_id = $this->imageService->storeScreeningImage($request, $screening)->id;
@@ -108,7 +89,38 @@ class ScreeningController extends Controller
     public function PatchScreening(ScreeningFormRequest $request)
     {
         $screening = Screening::where('uuid', $request->uuid)->first();
+        $screening = $this->mapRequestToScreening($request, $screening);
+        $screening->save();
+        return $screening;
+    }
 
+    public function DeleteScreening(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(401);
+        }
+
+        $screening = Screening::firstWhere('uuid', $uuid);
+        $image = $screening->image;
+        $screening->delete();
+        if ($image) {
+            Storage::delete($image->path);
+            $image->delete();
+        }
+    }
+
+    // This function is only used during migration from the old website. It can be deleted afterwards.
+    public function UpdateUuids()
+    {
+        $screenings = Screening::all();
+        foreach ($screenings as $screening) {
+            $screening->uuid = uniqid();
+            $screening->save();
+        }
+    }
+
+    private function mapRequestToScreening(Request $request, Screening $screening)
+    {
         $screening->title = $request->title;
         $screening->original_title = $request->originalTitle;
         $screening->date = $request->day . ' ' . $request->time;
@@ -129,31 +141,6 @@ class ScreeningController extends Controller
         $screening->serial_id = $request->serialId;
         $screening->author = $request->author;
 
-        $screening->save();
         return $screening;
-    }
-
-    public function DeleteScreening(string $uuid)
-    {
-        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
-        }
-        $screening = Screening::firstWhere('uuid', $uuid);
-        $image = $screening->image;
-
-        $screening->delete();
-        if ($image) {
-            Storage::delete($image->path);
-            $image->delete();
-        }
-    }
-
-    public function UpdateUuids()
-    {
-        $screenings = Screening::all();
-        foreach ($screenings as $screening) {
-            $screening->uuid = uniqid();
-            $screening->save();
-        }
     }
 }

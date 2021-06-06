@@ -73,18 +73,10 @@ class UserController extends Controller
 
         $user = new User([
             'uuid' => uniqid(),
-            'username' => $request->username,
             'password' => Hash::make(env('STANDARD_PASSWORD')),
-            'realname' => $request->realname,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'zipcode' => $request->zipcode,
-            'city' => $request->city,
             'level' => $request->level,
-            'status' => $request->status,
         ]);
-
+        $user = $this->mapRequestToUser($request, $user);
         $user->save();
         return $user;
     }
@@ -102,20 +94,13 @@ class UserController extends Controller
         }
 
         $this->forumUserService->PatchUser($request, $user);
+        $user = $this->mapRequestToUser($request, $user);
 
-        $user->username = $request->username;
-        $user->realname = $request->realname;
-        $user->email = $request->email;
-        $user->phone = $request->phone;
-        $user->address = $request->address;
-        $user->zipcode = $request->zipcode;
-        $user->city = $request->city;
         // Check for null, because the level is send as null, when the select in the user form is disabled.
         // Also check if the authenticated user is admin, in order to prevent users from changing their own level.
         if ($request->level != null && Auth::user()->level == Config::get('constants.auth_level.admin')) {
             $user->level = $request->level;
         }
-        $user->status = $request->status;
 
         $user->save();
         return $user;
@@ -139,6 +124,7 @@ class UserController extends Controller
         $user->delete();
     }
 
+    // This function is only used during migration from the old website. It can be deleted afterwards.
     public function UpdateUuids()
     {
         $users = User::all();
@@ -148,5 +134,19 @@ class UserController extends Controller
                 $user->save();
             }
         }
+    }
+
+    private function mapRequestToUser(Request $request, User $user)
+    {
+        $user->username = $request->username;
+        $user->realname = $request->realname;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->zipcode = $request->zipcode;
+        $user->city = $request->city;
+        $user->status = $request->status;
+
+        return $user;
     }
 }

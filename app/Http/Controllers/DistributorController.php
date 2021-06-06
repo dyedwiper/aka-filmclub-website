@@ -22,24 +22,8 @@ class DistributorController extends Controller
 
     public function PostDistributor(DistributorFormRequest $request)
     {
-        $distributor = new Distributor([
-            'uuid' => uniqid(),
-            'name' => $request->name,
-            'address' => $request->address,
-            'zipcode' => $request->zipcode,
-            'city' => $request->city,
-            'phone' => $request->phone,
-            'fax' => $request->fax,
-            'email' => $request->email,
-            'taxId' => $request->taxId,
-            'customerId' => $request->customerId,
-            'accountOwner' => $request->accountOwner,
-            'iban' => $request->iban,
-            'bic' => $request->bic,
-            'bank' => $request->bank,
-            'accountNumberOldFormat' => $request->accountNumberOldFormat,
-            'bankIdOldFormat' => $request->bankIdOldFormat,
-        ]);
+        $distributor = new Distributor(['uuid' => uniqid(),]);
+        $distributor = $this->mapRequestToDistributor($request, $distributor);
         $distributor->save();
         return $distributor;
     }
@@ -47,7 +31,32 @@ class DistributorController extends Controller
     public function PatchDistributor(DistributorFormRequest $request)
     {
         $distributor = Distributor::firstWhere('uuid', $request->uuid);
+        $distributor = $this->mapRequestToDistributor($request, $distributor);
+        $distributor->save();
+        return $distributor;
+    }
 
+    public function DeleteDistributor(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(401);
+        }
+        $distributor = Distributor::firstWhere('uuid', $uuid);
+        $distributor->delete();
+    }
+
+    // This function is only used during migration from the old website. It can be deleted afterwards.
+    public function UpdateUuids()
+    {
+        $distributors = Distributor::all();
+        foreach ($distributors as $distributor) {
+            $distributor->uuid = uniqid();
+            $distributor->save();
+        }
+    }
+
+    private function mapRequestToDistributor(Request $request, Distributor $distributor)
+    {
         $distributor->name = $request->name;
         $distributor->address = $request->address;
         $distributor->zipcode = $request->zipcode;
@@ -64,25 +73,6 @@ class DistributorController extends Controller
         $distributor->accountNumberOldFormat = $request->accountNumberOldFormat;
         $distributor->bankIdOldFormat = $request->bankIdOldFormat;
 
-        $distributor->save();
         return $distributor;
-    }
-
-    public function DeleteDistributor(string $uuid)
-    {
-        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
-        }
-        $distributor = Distributor::firstWhere('uuid', $uuid);
-        $distributor->delete();
-    }
-
-    public function UpdateUuids()
-    {
-        $distributors = Distributor::all();
-        foreach ($distributors as $distributor) {
-            $distributor->uuid = uniqid();
-            $distributor->save();
-        }
     }
 }

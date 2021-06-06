@@ -64,9 +64,7 @@ class BillingController extends Controller
             'uuid' => uniqid(),
             'screening_id' => $request->screening_id,
         ]);
-
         $billing = $this->mapRequestToBilling($request, $billing);
-
         $billing->save();
 
         for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
@@ -87,11 +85,9 @@ class BillingController extends Controller
     public function PatchBilling(BillingFormRequest $request)
     {
         $billing = Billing::where('uuid', $request->uuid)->with('ticketStacks', 'passStacks')->first();
-
         $billing = $this->mapRequestToBilling($request, $billing);
 
         $this->updateTicketStacks($request, $billing);
-
         $this->updatePassStacks($request, $billing);
 
         $billing->save();
