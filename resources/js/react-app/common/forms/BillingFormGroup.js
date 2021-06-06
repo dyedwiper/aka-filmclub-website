@@ -21,7 +21,8 @@ export default function BillingFormGroup({ screening, billing }) {
             <DistributorRowStyled>
                 <LabelStyled>
                     Verleih (<Link to={ROUTE_INTERN_DISTRIBUTORS}>Übersicht der Verleihe</Link>)
-                    <DistributorSelect defaultDistributor={billing && billing.distributor} />
+                    {/* When billing is not null or undefined, it means a billing is edited. This information is needed for the default. */}
+                    <DistributorSelect defaultDistributor={billing && billing.distributor} isEditing={billing} />
                 </LabelStyled>
                 <LabelStyled>
                     Terminbestätigungs-Nr.

@@ -4,7 +4,9 @@ import { default as ReactSelect } from 'react-select';
 import { distributorSelectStyles } from '../../styles/customSelectStyles';
 import styled from 'styled-components';
 
-export default function DistributorSelect({ defaultDistributor }) {
+export default function DistributorSelect({ defaultDistributor, isEditing }) {
+    const noDistributorOption = { label: '-- kein Verleih --', value: '' };
+
     const [distributorOptions, setDistributorOptions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -21,14 +23,18 @@ export default function DistributorSelect({ defaultDistributor }) {
         <ReactSelect
             name="distributor_id"
             options={distributorOptions}
-            defaultValue={defaultDistributor && { label: defaultDistributor.name, value: defaultDistributor.id }}
+            defaultValue={
+                defaultDistributor
+                    ? { label: defaultDistributor.name, value: defaultDistributor.id }
+                    : isEditing && noDistributorOption
+            }
             styles={distributorSelectStyles}
             placeholder="Verleih wählen..."
         />
     );
 
     function computeDistributorOptions(distributors) {
-        const options = [{ label: '-- kein Verleih --', value: '' }];
+        const options = [noDistributorOption];
         distributors.forEach((distributor) => {
             options.push({
                 label: distributor.name,
