@@ -58,6 +58,7 @@ class SerialController extends Controller
     {
         $serial = new Serial([
             'uuid' => uniqid(),
+            'updated_by' => $request->updated_by,
             'title' => $request->title,
             'subtitle' => $request->subtitle,
             'article' => $request->article,
@@ -77,11 +78,12 @@ class SerialController extends Controller
     {
         $serial = Serial::where('uuid', $request->uuid)->first();
 
+        $serial->updated_by = $request->updated_by;
         $serial->title = $request->title;
         $serial->subtitle = $request->subtitle;
         $serial->article = $request->article;
-        $serial->semester = $request->semester;
         $serial->author = $request->author;
+        $serial->semester = $request->semester;
 
         $serial->save();
         return $serial;
