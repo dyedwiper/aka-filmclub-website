@@ -8,6 +8,7 @@ use App\Models\PassStack;
 use App\Models\Screening;
 use App\Models\TicketStack;
 use App\Services\BillingService;
+use App\Utils\NumberUtils;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
@@ -64,13 +65,13 @@ class BillingController extends Controller
             'distributor_id' => $request->distributor_id,
             'confirmationNumber' => $request->confirmationNumber,
             'freeTickets' => $request->freeTickets,
-            'guarantee' => str_replace(',', '.', $request->guarantee) * 100,
-            'percentage' => str_replace(',', '.', $request->percentage),
-            'incidentals' => str_replace(',', '.', $request->incidentals) * 100,
+            'guarantee' => NumberUtils::toFloat($request->guarantee) * 100,
+            'percentage' => NumberUtils::toFloat($request->percentage),
+            'incidentals' => NumberUtils::toFloat($request->incidentals) * 100,
             'valueAddedTaxRate' => $request->valueAddedTaxRate,
-            'cashInlay' => str_replace(',', '.', $request->cashInlay) * 100,
-            'cashOut' => str_replace(',', '.', $request->cashOut) * 100,
-            'additionalEarnings' => str_replace(',', '.', $request->additionalEarnings) * 100,
+            'cashInlay' => NumberUtils::toFloat($request->cashInlay) * 100,
+            'cashOut' => NumberUtils::toFloat($request->cashOut) * 100,
+            'additionalEarnings' => NumberUtils::toFloat($request->additionalEarnings) * 100,
             'comment' => $request->comment,
         ]);
         $billing->save();
@@ -80,7 +81,7 @@ class BillingController extends Controller
                 'billing_id' => $billing->id,
                 'firstNumber' => $request->input('ticketFirst' . $i),
                 'lastNumber' => $request->input('ticketLast' . $i),
-                'price' => str_replace(',', '.', $request->input('ticketPrice' . $i)) * 100,
+                'price' => NumberUtils::toFloat($request->input('ticketPrice' . $i)) * 100,
             ]);
             $ticketStack->save();
         }
@@ -90,7 +91,7 @@ class BillingController extends Controller
                 'billing_id' => $billing->id,
                 'firstNumber' => $request->input('passFirst' . $i),
                 'lastNumber' => $request->input('passLast' . $i),
-                'price' => str_replace(',', '.', $request->input('passPrice' . $i)) * 100,
+                'price' => NumberUtils::toFloat($request->input('passPrice' . $i)) * 100,
             ]);
             $passStack->save();
         }
@@ -105,27 +106,27 @@ class BillingController extends Controller
         $billing->distributor_id = $request->distributor_id;
         $billing->confirmationNumber = $request->confirmationNumber;
         $billing->freeTickets = $request->freeTickets;
-        $billing->guarantee = str_replace(',', '.', $request->guarantee) * 100;
-        $billing->percentage = str_replace(',', '.', $request->percentage);
-        $billing->incidentals = str_replace(',', '.', $request->incidentals) * 100;
+        $billing->guarantee = NumberUtils::toFloat($request->guarantee) * 100;
+        $billing->percentage = NumberUtils::toFloat($request->percentage);
+        $billing->incidentals = NumberUtils::toFloat($request->incidentals) * 100;
         $billing->valueAddedTaxRate = $request->valueAddedTaxRate;
-        $billing->cashInlay = str_replace(',', '.', $request->cashInlay) * 100;
-        $billing->cashOut = str_replace(',', '.', $request->cashOut) * 100;
-        $billing->additionalEarnings = str_replace(',', '.', $request->additionalEarnings) * 100;
+        $billing->cashInlay = NumberUtils::toFloat($request->cashInlay) * 100;
+        $billing->cashOut = NumberUtils::toFloat($request->cashOut) * 100;
+        $billing->additionalEarnings = NumberUtils::toFloat($request->additionalEarnings) * 100;
         $billing->comment = $request->comment;
 
         for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
             if (isset($billing->ticketStacks[$i])) {
                 $billing->ticketStacks[$i]->firstNumber = $request->input('ticketFirst' . $i);
                 $billing->ticketStacks[$i]->lastNumber = $request->input('ticketLast' . $i);
-                $billing->ticketStacks[$i]->price = str_replace(',', '.', $request->input('ticketPrice' . $i)) * 100;
+                $billing->ticketStacks[$i]->price = NumberUtils::toFloat($request->input('ticketPrice' . $i)) * 100;
                 $billing->ticketStacks[$i]->save();
             } else {
                 $ticketStack = new TicketStack([
                     'billing_id' => $billing->id,
                     'firstNumber' => $request->input('ticketFirst' . $i),
                     'lastNumber' => $request->input('ticketLast' . $i),
-                    'price' => str_replace(',', '.', $request->input('ticketPrice' . $i)) * 100,
+                    'price' => NumberUtils::toFloat($request->input('ticketPrice' . $i)) * 100,
                 ]);
                 $ticketStack->save();
             }

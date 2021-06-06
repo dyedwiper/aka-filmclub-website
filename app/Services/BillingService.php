@@ -4,7 +4,7 @@ namespace App\Services;
 
 class BillingService
 {
-    // That's the tax (called "V-Steuer") which is subtracted from the price of every ticket,
+    // That's the tax (called "V-Steuer") in cents which is subtracted from the price of every ticket,
     // in order to calculate the net ticket price.
     const TICKET_TAX = 10;
 
