@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { AUTH_LEVEL_EDITOR, ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
 import Context from '../../Context';
 import CreditsContainer from '../screenings/CreditsContainer';
-import FilmInfoContainer from '../screenings/FilmInfoContainer';
 import { HorizontalRuleStyled } from '../styledElements';
 
 export default function SelfmadeFilmContainer({ film }) {
@@ -18,7 +17,6 @@ export default function SelfmadeFilmContainer({ film }) {
                 <IFrameStyled src={film.source} allow="fullscreen; picture-in-picture" />
             </IFrameContainerStyled>
             <TitleStyled>{film.title}</TitleStyled>
-            <FilmInfoContainer film={film} />
             <CreditsContainer film={film} />
             {film.synopsis && <SynopsisStyled>{film.synopsis}</SynopsisStyled>}
             {isAuthorized && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + film.uuid}>Bearbeiten</LinkStyled>}

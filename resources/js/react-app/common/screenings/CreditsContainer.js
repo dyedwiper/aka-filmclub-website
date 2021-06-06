@@ -47,6 +47,42 @@ export default function CreditsContainer({ film }) {
                     <VerticalLineStyled> | </VerticalLineStyled>
                 </CreditStyled>
             )}
+            {(film.country || film.year) && (
+                <CreditStyled>
+                    <KeyStyled>Raumzeit: </KeyStyled>
+                    {film.country && <ValueStyled>{film.country} </ValueStyled>}
+                    {film.year && <ValueStyled>{film.year}</ValueStyled>}
+                    <VerticalLineStyled> | </VerticalLineStyled>
+                </CreditStyled>
+            )}
+            {film.length && (
+                <CreditStyled>
+                    <KeyStyled>Länge: </KeyStyled>
+                    <ValueStyled>{film.length} Min</ValueStyled>
+                    <VerticalLineStyled> | </VerticalLineStyled>
+                </CreditStyled>
+            )}
+            {film.medium && (
+                <CreditStyled>
+                    <KeyStyled>Medium: </KeyStyled>
+                    <ValueStyled>{film.medium}</ValueStyled>
+                    <VerticalLineStyled> | </VerticalLineStyled>
+                </CreditStyled>
+            )}
+            {film.version && (
+                <CreditStyled>
+                    <KeyStyled>Sprachfassung: </KeyStyled>
+                    <ValueStyled>{film.version}</ValueStyled>
+                    <VerticalLineStyled> | </VerticalLineStyled>
+                </CreditStyled>
+            )}
+            {film.original_title && (
+                <CreditStyled>
+                    <KeyStyled>Originaltitel: </KeyStyled>
+                    <ValueStyled>{film.original_title}</ValueStyled>
+                    <VerticalLineStyled> | </VerticalLineStyled>
+                </CreditStyled>
+            )}
         </CreditsContainerStyled>
     );
 }

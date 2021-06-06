@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
 import CreditsContainer from '../common/screenings/CreditsContainer';
-import FilmInfoContainer from '../common/screenings/FilmInfoContainer';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,
@@ -74,7 +73,6 @@ export default function ScreeningPage() {
                     {screening.venue}
                 </DateAndVenueStyled>
                 {new Date(screening.date) >= Date.now() && <CalendarDownloadLink screening={screening} />}
-                <FilmInfoContainer film={screening} />
                 <CreditsContainer film={screening} />
                 <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
