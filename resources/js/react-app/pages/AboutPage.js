@@ -11,6 +11,7 @@ export default function AboutPage() {
 
     useEffect(() => {
         getText('about').then((res) => {
+            console.log(res.data);
             setText(res.data);
         });
     }, []);
@@ -18,8 +19,8 @@ export default function AboutPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_ABOUT}>
             <PageHeadlineStyled>{PAGE_TITLE_ABOUT}</PageHeadlineStyled>
-            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
-            <EditTextLink page="about" />
+            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.text }} />
+            <EditTextLink text={text} />
         </BasePage>
     );
 }

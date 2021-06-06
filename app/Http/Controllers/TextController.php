@@ -9,7 +9,7 @@ class TextController extends Controller
 {
     public function GetText(string $page)
     {
-        return Text::firstWhere('page', $page)->text;
+        return Text::firstWhere('page', $page);
     }
 
     public function PostText(TextFormRequest $request, string $page)

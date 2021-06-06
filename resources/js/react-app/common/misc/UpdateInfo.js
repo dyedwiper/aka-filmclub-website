@@ -8,7 +8,10 @@ export default function UpdateInfo({ entity }) {
             Zuletzt bearbeitet von
             <UpdatedByStyled> {entity.updated_by ?? 'unbekannt'} </UpdatedByStyled>
             am
-            <UpdatedAtStyled> {formatToDateTimeString(entity.updated_at)}</UpdatedAtStyled>
+            <UpdatedAtStyled>
+                {' '}
+                {entity.updated_at ? formatToDateTimeString(entity.updated_at) : 'einem unbekannten Tage'}
+            </UpdatedAtStyled>
         </UpdateInfoStyled>
     );
 }

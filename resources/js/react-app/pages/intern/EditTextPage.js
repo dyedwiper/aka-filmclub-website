@@ -21,7 +21,7 @@ export default function EditTextPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [validationErrors, setValidationErrors] = useState([]);
 
-    const { pageTitle } = useContext(Context);
+    const { pageTitle, user } = useContext(Context);
 
     let history = useHistory();
 
@@ -36,7 +36,7 @@ export default function EditTextPage() {
     useEffect(() => {
         const page = getLastParameterFromPath();
         getText(page).then((res) => {
-            setDefaultText(res.data);
+            setDefaultText(res.data.text);
             setAssocPage(page);
             setIsLoading(false);
         });
@@ -107,7 +107,7 @@ export default function EditTextPage() {
             null,
             customEntityTransform
         );
-        const textObject = { text: htmlFromDraft };
+        const textObject = { text: htmlFromDraft, updated_by: user.username };
         postText(assocPage, textObject)
             .then(() => {
                 history.push('/' + assocPage);
