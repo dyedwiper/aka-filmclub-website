@@ -9,6 +9,7 @@ use App\Models\Screening;
 use App\Models\TicketStack;
 use App\Services\BillingService;
 use App\Utils\NumberUtils;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
@@ -62,37 +63,21 @@ class BillingController extends Controller
         $billing = new Billing([
             'uuid' => uniqid(),
             'screening_id' => $request->screening_id,
-            'distributor_id' => $request->distributor_id,
-            'confirmationNumber' => $request->confirmationNumber,
-            'freeTickets' => $request->freeTickets,
-            'guarantee' => NumberUtils::toFloat($request->guarantee) * 100,
-            'percentage' => NumberUtils::toFloat($request->percentage),
-            'incidentals' => NumberUtils::toFloat($request->incidentals) * 100,
-            'valueAddedTaxRate' => $request->valueAddedTaxRate,
-            'cashInlay' => NumberUtils::toFloat($request->cashInlay) * 100,
-            'cashOut' => NumberUtils::toFloat($request->cashOut) * 100,
-            'additionalEarnings' => NumberUtils::toFloat($request->additionalEarnings) * 100,
-            'comment' => $request->comment,
         ]);
+
+        $billing = $this->mapRequestToBilling($request, $billing);
+
         $billing->save();
 
         for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
-            $ticketStack = new TicketStack([
-                'billing_id' => $billing->id,
-                'firstNumber' => $request->input('ticketFirst' . $i),
-                'lastNumber' => $request->input('ticketLast' . $i),
-                'price' => NumberUtils::toFloat($request->input('ticketPrice' . $i)) * 100,
-            ]);
+            $ticketStack = new TicketStack(['billing_id' => $billing->id,]);
+            $ticketStack = $this->mapRequestToTicketStack($request, $ticketStack, $i);
             $ticketStack->save();
         }
 
         for ($i = 0; $i < $request->numberOfPassStacks; $i++) {
-            $passStack = new PassStack([
-                'billing_id' => $billing->id,
-                'firstNumber' => $request->input('passFirst' . $i),
-                'lastNumber' => $request->input('passLast' . $i),
-                'price' => NumberUtils::toFloat($request->input('passPrice' . $i)) * 100,
-            ]);
+            $passStack = new PassStack(['billing_id' => $billing->id,]);
+            $passStack = $this->mapRequestToPassStack($request, $passStack, $i);
             $passStack->save();
         }
 
@@ -103,38 +88,11 @@ class BillingController extends Controller
     {
         $billing = Billing::where('uuid', $request->uuid)->with('ticketStacks', 'passStacks')->first();
 
-        $billing->distributor_id = $request->distributor_id;
-        $billing->confirmationNumber = $request->confirmationNumber;
-        $billing->freeTickets = $request->freeTickets;
-        $billing->guarantee = NumberUtils::toFloat($request->guarantee) * 100;
-        $billing->percentage = NumberUtils::toFloat($request->percentage);
-        $billing->incidentals = NumberUtils::toFloat($request->incidentals) * 100;
-        $billing->valueAddedTaxRate = $request->valueAddedTaxRate;
-        $billing->cashInlay = NumberUtils::toFloat($request->cashInlay) * 100;
-        $billing->cashOut = NumberUtils::toFloat($request->cashOut) * 100;
-        $billing->additionalEarnings = NumberUtils::toFloat($request->additionalEarnings) * 100;
-        $billing->comment = $request->comment;
+        $billing = $this->mapRequestToBilling($request, $billing);
 
-        for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
-            if (isset($billing->ticketStacks[$i])) {
-                $billing->ticketStacks[$i]->firstNumber = $request->input('ticketFirst' . $i);
-                $billing->ticketStacks[$i]->lastNumber = $request->input('ticketLast' . $i);
-                $billing->ticketStacks[$i]->price = NumberUtils::toFloat($request->input('ticketPrice' . $i)) * 100;
-                $billing->ticketStacks[$i]->save();
-            } else {
-                $ticketStack = new TicketStack([
-                    'billing_id' => $billing->id,
-                    'firstNumber' => $request->input('ticketFirst' . $i),
-                    'lastNumber' => $request->input('ticketLast' . $i),
-                    'price' => NumberUtils::toFloat($request->input('ticketPrice' . $i)) * 100,
-                ]);
-                $ticketStack->save();
-            }
-        }
+        $this->updateTicketStacks($request, $billing);
 
-        for ($i = $request->numberOfTicketStacks; $i < count($billing->ticketStacks); $i++) {
-            $billing->ticketStacks[$i]->delete();
-        }
+        $this->updatePassStacks($request, $billing);
 
         $billing->save();
         return $billing;
@@ -156,12 +114,86 @@ class BillingController extends Controller
         $billing->delete();
     }
 
+    // This function is only used during migration from the old website. It can be deleted afterwards.
     public function UpdateUuids()
     {
         $billings = Billing::all();
         foreach ($billings as $billing) {
             $billing->uuid = uniqid();
             $billing->save();
+        }
+    }
+
+    private function mapRequestToBilling(Request $request, Billing $billing)
+    {
+        $billing->distributor_id = $request->distributor_id;
+        $billing->confirmationNumber = $request->confirmationNumber;
+        $billing->freeTickets = $request->freeTickets;
+        $billing->guarantee = NumberUtils::toFloat($request->guarantee) * 100;
+        $billing->percentage = NumberUtils::toFloat($request->percentage);
+        $billing->incidentals = NumberUtils::toFloat($request->incidentals) * 100;
+        $billing->valueAddedTaxRate = $request->valueAddedTaxRate;
+        $billing->cashInlay = NumberUtils::toFloat($request->cashInlay) * 100;
+        $billing->cashOut = NumberUtils::toFloat($request->cashOut) * 100;
+        $billing->additionalEarnings = NumberUtils::toFloat($request->additionalEarnings) * 100;
+        $billing->comment = $request->comment;
+
+        return $billing;
+    }
+
+    private function mapRequestToTicketStack(Request $request, TicketStack $ticketStack, int $stackNumber)
+    {
+        $ticketStack->firstNumber = $request->input('ticketFirst' . $stackNumber);
+        $ticketStack->lastNumber = $request->input('ticketLast' . $stackNumber);
+        $ticketStack->price = NumberUtils::toFloat($request->input('ticketPrice' . $stackNumber)) * 100;
+
+        return $ticketStack;
+    }
+
+    private function mapRequestToPassStack(Request $request, PassStack $passStack, int $stackNumber)
+    {
+        $passStack->firstNumber = $request->input('passFirst' . $stackNumber);
+        $passStack->lastNumber = $request->input('passLast' . $stackNumber);
+        $passStack->price = NumberUtils::toFloat($request->input('passPrice' . $stackNumber)) * 100;
+
+        return $passStack;
+    }
+
+    private function updateTicketStacks(Request $request, Billing $billing)
+    {
+        for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
+            if (isset($billing->ticketStacks[$i])) {
+                $ticketStack = $billing->ticketStacks[$i];
+                $ticketStack = $this->mapRequestToTicketStack($request, $ticketStack, $i);
+                $ticketStack->save();
+            } else {
+                $ticketStack = new TicketStack(['billing_id' => $billing->id,]);
+                $ticketStack = $this->mapRequestToTicketStack($request, $ticketStack, $i);
+                $ticketStack->save();
+            }
+        }
+
+        for ($i = $request->numberOfTicketStacks; $i < count($billing->ticketStacks); $i++) {
+            $billing->ticketStacks[$i]->delete();
+        }
+    }
+
+    private function updatePassStacks(Request $request, Billing $billing)
+    {
+        for ($i = 0; $i < $request->numberOfPassStacks; $i++) {
+            if (isset($billing->passStacks[$i])) {
+                $passStack = $billing->passStacks[$i];
+                $passStack = $this->mapRequestToPassStack($request, $passStack, $i);
+                $passStack->save();
+            } else {
+                $passStack = new PassStack(['billing_id' => $billing->id,]);
+                $passStack = $this->mapRequestToPassStack($request, $passStack, $i);
+                $passStack->save();
+            }
+        }
+
+        for ($i = $request->numberOfPassStacks; $i < count($billing->passStacks); $i++) {
+            $billing->passStacks[$i]->delete();
         }
     }
 }
