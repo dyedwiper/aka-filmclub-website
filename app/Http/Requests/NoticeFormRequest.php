@@ -29,7 +29,7 @@ class NoticeFormRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'date' => 'required|date',
-            'content' => 'required',
+            'content' => 'required|max:65535',
             'author' => 'required|max:255',
         ];
     }

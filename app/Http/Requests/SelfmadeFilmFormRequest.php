@@ -37,7 +37,7 @@ class SelfmadeFilmFormRequest extends FormRequest
             'cast' => 'max:255',
             'country' => 'max:255',
             'year' => 'max:255',
-            'length' => 'nullable|integer',
+            'length' => 'nullable|integer|digits_between:0,4',
             'source' => 'required|max:255',
             'position' => 'nullable|integer',
         ];

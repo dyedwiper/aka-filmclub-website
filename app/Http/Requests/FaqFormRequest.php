@@ -28,7 +28,7 @@ class FaqFormRequest extends FormRequest
     {
         return [
             'question' => 'required|max:255',
-            'answer' => 'required|max:65,535',
+            'answer' => 'required|max:65535',
             'position' => 'nullable|integer',
         ];
     }

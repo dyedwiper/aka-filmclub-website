@@ -39,7 +39,7 @@ class ScreeningFormRequest extends FormRequest
             'cast' => 'max:255',
             'country' => 'max:255',
             'year' => 'max:255',
-            'length' => 'nullable|integer',
+            'length' => 'nullable|integer|digits_between:0,4',
             'medium' => 'max:255',
             'version' => 'max:255',
             'venue' => 'required|max:255',

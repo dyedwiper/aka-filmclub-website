@@ -28,7 +28,7 @@ class PasswordFormRequest extends FormRequest
     {
         return [
             'old_password' => 'password',
-            'new_password' => 'confirmed|min:5',
+            'new_password' => 'confirmed|min:5|max:255',
         ];
     }
 

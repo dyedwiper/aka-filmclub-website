@@ -29,27 +29,29 @@ class BillingFormRequest extends FormRequest
         $rules = [
             'distributor_id' => 'nullable|integer',
             'confirmationNumber' => 'nullable|max:255',
-            'freeTickets' => 'required|integer',
-            'guarantee' => 'required|regex:/\d+(,\d{1,2})?/',
-            'percentage' => 'required|regex:/\d+(,\d*)?/',
-            'incidentals' => 'required|regex:/\d+(,\d{1,2})?/',
-            'valueAddedTaxRate' => 'required|regex:/\d+(,\d*)?/',
-            'cashInlay' => 'required|regex:/\d+(,\d{1,2})?/',
-            'cashOut' => 'required|regex:/\d+(,\d{1,2})?/',
-            'additionalEarnings' => 'required|regex:/\d+(,\d{1,2})?/',
+            'freeTickets' => 'required|integer|digits_between:0,4',
+            // The max value of 11 here and below refers to the number of characters, because the fields are evaluated as strings.
+            // They can't easily be evaluated as numbers because of '.' as thousands separator and ',' as decimal separator.
+            'guarantee' => 'required|regex:/\d+(,\d{1,2})?/|max:11',
+            'percentage' => 'required|regex:/\d+(,\d*)?/|max:11',
+            'incidentals' => 'required|regex:/\d+(,\d{1,2})?/|max:11',
+            'valueAddedTaxRate' => 'required|regex:/\d+(,\d*)?/|max:11',
+            'cashInlay' => 'required|regex:/\d+(,\d{1,2})?/|max:11',
+            'cashOut' => 'required|regex:/\d+(,\d{1,2})?/|max:11',
+            'additionalEarnings' => 'required|regex:/\d+(,\d{1,2})?/|max:11',
             'comment' => 'nullable|max:65535',
         ];
 
         for ($i = 0; $i < $this->numberOfTicketStacks; $i++) {
-            $rules['ticketFirst' . $i] = 'required|integer';
-            $rules['ticketLast' . $i] = 'required|integer|gte:ticketFirst' . $i;
-            $rules['ticketPrice' . $i] = 'required|regex:/\d+(,\d{1,2})?/';
+            $rules['ticketFirst' . $i] = 'required|integer|digits_between:0,11';
+            $rules['ticketLast' . $i] = 'required|integer|digits_between:0,11|gte:ticketFirst' . $i;
+            $rules['ticketPrice' . $i] = 'required|regex:/\d+(,\d{1,2})?/|max:11';
         }
 
         for ($i = 0; $i < $this->numberOfPassStacks; $i++) {
-            $rules['passFirst' . $i] = 'required|integer';
-            $rules['passLast' . $i] = 'required|integer|gte:passFirst' . $i;
-            $rules['passPrice' . $i] = 'required|regex:/\d+(,\d{1,2})?/';
+            $rules['passFirst' . $i] = 'required|integer|digits_between:0,11';
+            $rules['passLast' . $i] = 'required|integer|digits_between:0,11|gte:passFirst' . $i;
+            $rules['passPrice' . $i] = 'required|regex:/\d+(,\d{1,2})?/|max:11';
         }
 
         return $rules;

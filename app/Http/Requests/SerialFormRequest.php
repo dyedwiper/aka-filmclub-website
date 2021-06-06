@@ -29,7 +29,7 @@ class SerialFormRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'subtitle' => 'max:255',
-            'article' => 'required',
+            'article' => 'required|max:65535',
             'author' => 'required|max:255',
             'semester' => 'required|regex:/^[WS]S\d{4}$/',
         ];
