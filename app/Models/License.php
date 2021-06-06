@@ -9,5 +9,5 @@ class License extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['uuid', 'name', 'link'];
+    protected $fillable = ['uuid', 'updated_by', 'name', 'link'];
 }

@@ -11,6 +11,7 @@ class Billing extends Model
 
     protected $fillable = [
         'uuid',
+        'updated_by',
         'screening_id',
         'distributor_id',
         'confirmationNumber',

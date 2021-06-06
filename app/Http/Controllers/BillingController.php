@@ -122,6 +122,7 @@ class BillingController extends Controller
 
     private function mapRequestToBilling(Request $request, Billing $billing)
     {
+        $billing->updated_by = $request->updated_by;
         $billing->distributor_id = $request->distributor_id;
         $billing->confirmationNumber = $request->confirmationNumber;
         $billing->freeTickets = $request->freeTickets;

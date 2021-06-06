@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\LicenseFormRequest;
 use App\Models\License;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
@@ -21,11 +22,8 @@ class LicenseController extends Controller
 
     public function PostLicense(LicenseFormRequest $request)
     {
-        $license = new License([
-            'uuid' => uniqid(),
-            'name' => $request->name,
-            'link' => $request->link,
-        ]);
+        $license = new License(['uuid' => uniqid(),]);
+        $license = $this->mapRequestToLicense($request, $license);
         $license->save();
         return $license;
     }
@@ -33,10 +31,7 @@ class LicenseController extends Controller
     public function PatchLicense(LicenseFormRequest $request)
     {
         $license = License::firstWhere('uuid', $request->uuid);
-
-        $license->name = $request->name;
-        $license->link = $request->link;
-
+        $license = $this->mapRequestToLicense($request, $license);
         $license->save();
         return $license;
     }
@@ -48,5 +43,14 @@ class LicenseController extends Controller
         }
         $license = License::firstWhere('uuid', $uuid);
         $license->delete();
+    }
+
+    private function mapRequestToLicense(Request $request, License $license)
+    {
+        $license->updated_by = $request->updated_by;
+        $license->name = $request->name;
+        $license->link = $request->link;
+
+        return $license;
     }
 }

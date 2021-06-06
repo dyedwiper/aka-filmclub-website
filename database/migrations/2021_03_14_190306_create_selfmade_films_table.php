@@ -17,6 +17,7 @@ class CreateSelfmadeFilmsTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->timestamps();
+            $table->string('updated_by', 32)->nullable();
             $table->string('title');
             $table->text('synopsis')->nullable();
             $table->string('directed_by')->nullable();

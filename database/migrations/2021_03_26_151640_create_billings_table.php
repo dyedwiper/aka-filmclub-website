@@ -17,6 +17,7 @@ class CreateBillingsTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->timestamps();
+            $table->string('updated_by', 32)->nullable();
             $table->unsignedBigInteger('screening_id')->unique();
             $table->foreign('screening_id')->references('id')->on('screenings');
             $table->unsignedBigInteger('distributor_id')->nullable();

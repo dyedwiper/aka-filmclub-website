@@ -17,6 +17,7 @@ class CreateFaqsTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->timestamps();
+            $table->string('updated_by', 32)->nullable();
             $table->string('question');
             $table->text('answer');
             $table->integer('position');

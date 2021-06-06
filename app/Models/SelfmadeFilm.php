@@ -11,6 +11,7 @@ class SelfmadeFilm extends Model
 
     protected $fillable = [
         'uuid',
+        'updated_by',
         'title',
         'synopsis',
         'directed_by',

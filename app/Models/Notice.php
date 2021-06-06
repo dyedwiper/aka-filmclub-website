@@ -11,6 +11,7 @@ class Notice extends Model
 
     protected $fillable = [
         'uuid',
+        'updated_by',
         'title',
         'date',
         'content',

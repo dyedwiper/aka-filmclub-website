@@ -138,6 +138,7 @@ class UserController extends Controller
 
     private function mapRequestToUser(Request $request, User $user)
     {
+        $user->updated_by = $request->updated_by;
         $user->username = $request->username;
         $user->realname = $request->realname;
         $user->email = $request->email;

@@ -88,6 +88,7 @@ class NoticeController extends Controller
 
     private function mapRequestToNotice(Request $request, Notice $notice)
     {
+        $notice->updated_by = $request->updated_by;
         $notice->title = $request->title;
         $notice->date = $request->date;
         $notice->content = $request->content;

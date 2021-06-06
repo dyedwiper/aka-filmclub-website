@@ -57,6 +57,7 @@ class DistributorController extends Controller
 
     private function mapRequestToDistributor(Request $request, Distributor $distributor)
     {
+        $distributor->updated_by = $request->updated_by;
         $distributor->name = $request->name;
         $distributor->address = $request->address;
         $distributor->zipcode = $request->zipcode;

@@ -16,6 +16,7 @@ class CreateTextsTable extends Migration
         Schema::create('texts', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('updated_by', 32)->nullable();
             $table->string('page');
             $table->mediumText('text');
         });

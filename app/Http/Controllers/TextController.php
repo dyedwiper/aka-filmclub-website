@@ -15,6 +15,7 @@ class TextController extends Controller
     public function PostText(TextFormRequest $request, string $page)
     {
         $text = Text::firstWhere('page', $page);
+        $text->updated_by = $request->updated_by;
         $text->text = $request->text;
         $text->save();
     }

@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->uuid('uuid')->nullable();
             $table->timestamps();
+            $table->string('updated_by', 32)->nullable();
             // Der username darf höchstens 191 Zeichen lang sein, sonst gibt es einen SQL-Fehler wegen des unique Index.
             // Aber 32 Zeichen sind auch genug.
             $table->string('username', 32)->unique();

@@ -121,6 +121,7 @@ class ScreeningController extends Controller
 
     private function mapRequestToScreening(Request $request, Screening $screening)
     {
+        $screening->updated_by = $request->updated_by;
         $screening->title = $request->title;
         $screening->original_title = $request->originalTitle;
         $screening->date = $request->day . ' ' . $request->time;

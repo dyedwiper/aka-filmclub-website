@@ -76,6 +76,7 @@ class SelfmadeFilmController extends Controller
 
     private function mapRequestToSelfmadeFilm(Request $request, SelfmadeFilm $selfmadeFilm)
     {
+        $selfmadeFilm->updated_by = $request->updated_by;
         $selfmadeFilm->title = $request->title;
         $selfmadeFilm->synopsis = $request->synopsis;
         $selfmadeFilm->directed_by = $request->directedBy;

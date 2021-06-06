@@ -11,6 +11,7 @@ class Faq extends Model
 
     protected $fillable = [
         'uuid',
+        'updated_by',
         'question',
         'answer',
         'position',

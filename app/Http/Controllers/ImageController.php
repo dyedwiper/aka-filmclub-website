@@ -88,6 +88,7 @@ class ImageController extends Controller
             $image->path = $imagePath;
         }
 
+        $image->updated_by = $request->updated_by;
         $image->alt_text = $request->altText;
         $image->originator = $request->originator;
         $image->link = $request->link;
