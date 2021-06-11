@@ -18,8 +18,8 @@ export default function ContactPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_AWARDS}>
             <PageHeadlineStyled>{PAGE_TITLE_AWARDS}</PageHeadlineStyled>
-            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text }} />
-            <EditTextLink page="awards" />
+            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.text }} />
+            <EditTextLink text={text} />
         </BasePage>
     );
 }

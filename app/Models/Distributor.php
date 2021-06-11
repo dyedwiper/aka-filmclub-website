@@ -11,6 +11,7 @@ class Distributor extends Model
 
     protected $fillable = [
         'uuid',
+        'updated_by',
         'name',
         'address',
         'zipcode',

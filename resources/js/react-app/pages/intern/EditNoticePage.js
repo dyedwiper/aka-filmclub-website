@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import NoticeFormGroup from '../../common/forms/NoticeFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_NOTICE, ROUTE_NEWS, ROUTE_NOTICE } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteNotice, getNoticeByUuid, postNotice } from '../../utils/services/noticeServices';
@@ -38,6 +39,7 @@ export default function EditNoticePage() {
                 <input name="uuid" type="hidden" defaultValue={notice.uuid} />
                 <NoticeFormGroup notice={notice} />
             </BaseForm>
+            <UpdateInfo entity={notice} />
         </BasePage>
     );
 }

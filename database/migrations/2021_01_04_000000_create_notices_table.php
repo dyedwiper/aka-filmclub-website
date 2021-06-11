@@ -17,10 +17,10 @@ class CreateNoticesTable extends Migration
             $table->id();
             $table->uuid('uuid')->nullable();
             $table->timestamps();
+            $table->string('updated_by', 32)->nullable();
             $table->date('date')->nullable();
             $table->string('title');
             $table->text('content');
-            $table->string('author');
             $table->unsignedBigInteger('image_id')->nullable();
             $table->foreign('image_id')->references('id')->on('images');
         });

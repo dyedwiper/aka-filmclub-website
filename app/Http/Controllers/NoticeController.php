@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\NoticeFormRequest;
 use App\Models\Notice;
 use App\Services\ImageService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
@@ -41,13 +42,8 @@ class NoticeController extends Controller
 
     public function PostNotice(NoticeFormRequest $request)
     {
-        $notice = new Notice([
-            'uuid' => uniqid(),
-            'title' => $request->title,
-            'date' => $request->date,
-            'content' => $request->content,
-            'author' => $request->author,
-        ]);
+        $notice = new Notice(['uuid' => uniqid(),]);
+        $notice = $this->mapRequestToNotice($request, $notice);
 
         if ($request->image) {
             $notice->image_id = $this->imageService->storeNoticeImage($request, $notice)->id;
@@ -60,12 +56,7 @@ class NoticeController extends Controller
     public function PatchNotice(NoticeFormRequest $request)
     {
         $notice = Notice::where('uuid', $request->uuid)->first();
-
-        $notice->title = $request->title;
-        $notice->date = $request->date;
-        $notice->content = $request->content;
-        $notice->author = $request->author;
-
+        $notice = $this->mapRequestToNotice($request, $notice);
         $notice->save();
         return $notice;
     }
@@ -85,6 +76,7 @@ class NoticeController extends Controller
         }
     }
 
+    // This function is only used during migration from the old website. It can be deleted afterwards.
     public function UpdateUuids()
     {
         $notices = Notice::all();
@@ -92,5 +84,15 @@ class NoticeController extends Controller
             $notice->uuid = uniqid();
             $notice->save();
         }
+    }
+
+    private function mapRequestToNotice(Request $request, Notice $notice)
+    {
+        $notice->updated_by = $request->updated_by;
+        $notice->title = $request->title;
+        $notice->date = $request->date;
+        $notice->content = $request->content;
+
+        return $notice;
     }
 }

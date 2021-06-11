@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import LicenseFormGroup from '../../common/forms/LicenseFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_LICENSE, ROUTE_INTERN_LICENSES } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
@@ -38,6 +39,7 @@ export default function EditLicensePage() {
                 <input name="uuid" type="hidden" defaultValue={license.uuid} />
                 <LicenseFormGroup license={license} />
             </BaseForm>
+            <UpdateInfo entity={license} />
         </BasePage>
     );
 }

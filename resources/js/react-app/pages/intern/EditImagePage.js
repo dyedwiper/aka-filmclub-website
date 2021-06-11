@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_IMAGE, ROUTE_NOTICE, ROUTE_SCREENING, ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteImage, getImageByUuid, postImage } from '../../utils/services/imageServices';
@@ -51,6 +52,7 @@ export default function EditImagePage() {
                 <input name="uuid" type="hidden" defaultValue={image.uuid} />
                 <ImageFormGroup image={image} />
             </BaseForm>
+            <UpdateInfo entity={image} />
         </BasePage>
     );
 }

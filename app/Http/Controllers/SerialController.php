@@ -10,8 +10,6 @@ use App\Services\ImageService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
 
 class SerialController extends Controller
 {
@@ -56,14 +54,9 @@ class SerialController extends Controller
 
     public function PostSerial(SerialFormRequest $request)
     {
-        $serial = new Serial([
-            'uuid' => uniqid(),
-            'title' => $request->title,
-            'subtitle' => $request->subtitle,
-            'article' => $request->article,
-            'author' => $request->author,
-            'semester' => $request->semester,
-        ]);
+        $serial = new Serial(['uuid' => uniqid()]);
+
+        $serial = $this->mapRequestToSerial($request, $serial);
 
         if ($request->image) {
             $serial->image_id = $this->imageService->storeSerialImage($request, $serial)->id;
@@ -77,11 +70,7 @@ class SerialController extends Controller
     {
         $serial = Serial::where('uuid', $request->uuid)->first();
 
-        $serial->title = $request->title;
-        $serial->subtitle = $request->subtitle;
-        $serial->article = $request->article;
-        $serial->semester = $request->semester;
-        $serial->author = $request->author;
+        $serial = $this->mapRequestToSerial($request, $serial);
 
         $serial->save();
         return $serial;
@@ -102,6 +91,7 @@ class SerialController extends Controller
         }
     }
 
+    // This function is only used during migration from the old website. It can be deleted afterwards.
     public function UpdateUuids()
     {
         $serials = Serial::all();
@@ -113,6 +103,7 @@ class SerialController extends Controller
         }
     }
 
+    // This function is only used during migration from the old website. It can be deleted afterwards.
     public function UpdateSemesters()
     {
         $serials = Serial::all();
@@ -135,5 +126,17 @@ class SerialController extends Controller
             $serial->semester = $season . $year;
             $serial->save();
         }
+    }
+
+    private function mapRequestToSerial(Request $request, Serial $serial)
+    {
+        $serial->updated_by = $request->updated_by;
+        $serial->title = $request->title;
+        $serial->subtitle = $request->subtitle;
+        $serial->article = $request->article;
+        $serial->author = $request->author;
+        $serial->semester = $request->semester;
+
+        return $serial;
     }
 }

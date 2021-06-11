@@ -17,6 +17,7 @@ class CreateSerialsTable extends Migration
             $table->id();
             $table->uuid('uuid')->nullable();
             $table->timestamps();
+            $table->string('updated_by', 32)->nullable();
             $table->string('title');
             $table->string('subtitle')->nullable();
             $table->text('article');

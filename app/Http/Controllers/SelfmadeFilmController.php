@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\SelfmadeFilmFormRequest;
 use App\Models\SelfmadeFilm;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
@@ -23,20 +24,9 @@ class SelfmadeFilmController extends Controller
     {
         $selfmadeFilm = new SelfmadeFilm([
             'uuid' => uniqid(),
-            'title' => $request->title,
-            'synopsis' => $request->synopsis,
-            'directed_by' => $request->directedBy,
-            'written_by' => $request->writtenBy,
-            'music_by' => $request->musicBy,
-            'shot_by' => $request->shotBy,
-            'edited_by' => $request->editedBy,
-            'cast' => $request->cast,
-            'country' => $request->country,
-            'year' => $request->year,
-            'length' => $request->length,
-            'source' => $request->source,
             'position' => SelfmadeFilm::all()->count(),
         ]);
+        $selfmadeFilm = $this->mapRequestToSelfmadeFilm($request, $selfmadeFilm);
         $selfmadeFilm->save();
         return $selfmadeFilm;
     }
@@ -44,18 +34,8 @@ class SelfmadeFilmController extends Controller
     public function PatchSelfmadeFilm(SelfmadeFilmFormRequest $request)
     {
         $selfmadeFilm = SelfmadeFilm::firstWhere('uuid', $request->uuid);
-        $selfmadeFilm->title = $request->title;
-        $selfmadeFilm->synopsis = $request->synopsis;
-        $selfmadeFilm->directed_by = $request->directedBy;
-        $selfmadeFilm->written_by = $request->writtenBy;
-        $selfmadeFilm->music_by = $request->musicBy;
-        $selfmadeFilm->shot_by = $request->shotBy;
-        $selfmadeFilm->edited_by = $request->editedBy;
-        $selfmadeFilm->cast = $request->cast;
-        $selfmadeFilm->country = $request->country;
-        $selfmadeFilm->year = $request->year;
-        $selfmadeFilm->length = $request->length;
-        $selfmadeFilm->source = $request->source;
+        $selfmadeFilm = $this->mapRequestToSelfmadeFilm($request, $selfmadeFilm);
+
         if ($selfmadeFilm->position > $request->position) {
             $afterPositionedFilms = SelfmadeFilm
                 ::where('position', '>=', $request->position)
@@ -76,6 +56,7 @@ class SelfmadeFilmController extends Controller
             }
         }
         $selfmadeFilm->position = $request->position;
+
         $selfmadeFilm->save();
     }
 
@@ -91,5 +72,24 @@ class SelfmadeFilmController extends Controller
             $afterFilm->save();
         }
         $selfmadeFilm->delete();
+    }
+
+    private function mapRequestToSelfmadeFilm(Request $request, SelfmadeFilm $selfmadeFilm)
+    {
+        $selfmadeFilm->updated_by = $request->updated_by;
+        $selfmadeFilm->title = $request->title;
+        $selfmadeFilm->synopsis = $request->synopsis;
+        $selfmadeFilm->directed_by = $request->directedBy;
+        $selfmadeFilm->written_by = $request->writtenBy;
+        $selfmadeFilm->music_by = $request->musicBy;
+        $selfmadeFilm->shot_by = $request->shotBy;
+        $selfmadeFilm->edited_by = $request->editedBy;
+        $selfmadeFilm->cast = $request->cast;
+        $selfmadeFilm->country = $request->country;
+        $selfmadeFilm->year = $request->year;
+        $selfmadeFilm->length = $request->length;
+        $selfmadeFilm->source = $request->source;
+
+        return $selfmadeFilm;
     }
 }

@@ -17,6 +17,7 @@ class CreateDistributorsTable extends Migration
             $table->id();
             $table->uuid('uuid');
             $table->timestamps();
+            $table->string('updated_by', 32)->nullable();
             $table->string('name');
             $table->string('address')->nullable();
             $table->string('zipcode', 15)->nullable();

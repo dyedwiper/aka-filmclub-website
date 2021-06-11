@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import SerialFormGroup from '../../common/forms/SerialFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_SERIAL, ROUTE_SERIAL, ROUTE_SERIALS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteSerial, getSerialByUuid, postSerial } from '../../utils/services/serialServices';
@@ -38,6 +39,7 @@ export default function EditSerialPage() {
                 <input name="uuid" type="hidden" defaultValue={serial.uuid} />
                 <SerialFormGroup serial={serial} />
             </BaseForm>
+            <UpdateInfo entity={serial} />
         </BasePage>
     );
 }

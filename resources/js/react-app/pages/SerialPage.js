@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
+import UpdateInfo from '../common/misc/UpdateInfo';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
 import {
@@ -85,6 +86,7 @@ export default function SerialPage() {
                         ) : (
                             <LinkStyled to={ROUTE_INTERN_ADD_IMAGE_SERIAL + serial.uuid}>Bild hinzufügen</LinkStyled>
                         )}
+                        <UpdateInfo entity={serial} />
                     </>
                 )}
             </TextContainerStyled>

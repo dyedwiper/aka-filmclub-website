@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import FaqFormGroup from '../../common/forms/FaqFormGroup';
+import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_FAQ, ROUTE_FAQS } from '../../constants';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
@@ -38,6 +39,7 @@ export default function EditFaqPage() {
                 <input name="uuid" type="hidden" defaultValue={faq.uuid} />
                 <FaqFormGroup faq={faq} />
             </BaseForm>
+            <UpdateInfo entity={faq} />
         </BasePage>
     );
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FaqFormRequest;
 use App\Models\Faq;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
@@ -23,10 +24,9 @@ class FaqController extends Controller
     {
         $faq = new Faq([
             'uuid' => uniqid(),
-            'question' => $request->question,
-            'answer' => $request->answer,
             'position' => Faq::all()->count(),
         ]);
+        $faq = $this->mapRequestToFaq($request, $faq);
         $faq->save();
         return $faq;
     }
@@ -34,8 +34,8 @@ class FaqController extends Controller
     public function PatchFaq(FaqFormRequest $request)
     {
         $faq = Faq::firstWhere('uuid', $request->uuid);
-        $faq->question = $request->question;
-        $faq->answer = $request->answer;
+        $faq = $this->mapRequestToFaq($request, $faq);
+
         if ($faq->position > $request->position) {
             $afterPositionedFaqs = Faq
                 ::where('position', '>=', $request->position)
@@ -56,6 +56,7 @@ class FaqController extends Controller
             }
         }
         $faq->position = $request->position;
+
         $faq->save();
         return $faq;
     }
@@ -72,5 +73,14 @@ class FaqController extends Controller
             $afterFaq->save();
         }
         $faq->delete();
+    }
+
+    private function mapRequestToFaq(Request $request, Faq $faq)
+    {
+        $faq->updated_by = $request->updated_by;
+        $faq->question = $request->question;
+        $faq->answer = $request->answer;
+
+        return $faq;
     }
 }

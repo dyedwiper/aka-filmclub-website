@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
+import UpdateInfo from '../common/misc/UpdateInfo';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     AUTH_LEVEL_EDITOR,
@@ -61,6 +62,7 @@ export default function NoticePage() {
                     ) : (
                         <LinkStyled to={ROUTE_INTERN_ADD_IMAGE_NOTICE + notice.uuid}>Bild hinzufügen</LinkStyled>
                     )}
+                    <UpdateInfo entity={notice} />
                 </>
             )}
         </PageStyled>

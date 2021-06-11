@@ -36,6 +36,7 @@ export default function BaseForm({
     return (
         <BaseFormStyled onKeyPress={preventSubmitOnEnter}>
             {children}
+            <input name="updated_by" type="hidden" defaultValue={loggedInUser.username} />
             <HorizontalRuleStyled />
             <ValidationErrorContainerStyled>
                 {validationErrors.map((error, index) => (

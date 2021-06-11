@@ -9,7 +9,7 @@ class Serial extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['uuid', 'title', 'subtitle', 'article', 'author', 'semester'];
+    protected $fillable = ['uuid', 'updated_by', 'title', 'subtitle', 'article', 'author', 'semester'];
 
     public function image()
     {

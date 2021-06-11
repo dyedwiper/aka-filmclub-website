@@ -11,6 +11,7 @@ class Image extends Model
 
     protected $fillable = [
         'uuid',
+        'updated_by',
         'path',
         'alt_text',
         'originator',

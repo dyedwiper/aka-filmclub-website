@@ -17,10 +17,6 @@ export default function NoticeFormGroup({ notice }) {
                 Text
                 <WysiwygEditor inputName="content" defaultValue={notice && notice.content} />
             </LabelStyled>
-            <LabelStyled>
-                Autor*in
-                <InputStyled name="author" defaultValue={notice && notice.author} />
-            </LabelStyled>
         </NoticeFormGroupStyled>
     );
 }
