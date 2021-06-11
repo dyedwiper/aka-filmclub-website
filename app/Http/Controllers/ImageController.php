@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\Helper;
 use App\Http\Requests\ImageFormRequest;
 use App\Models\Image;
 use App\Models\Notice;
 use App\Models\Screening;
 use App\Models\Serial;
 use App\Services\ImageService;
+use App\Utils\MimeTypeUtils;
 use App\Utils\ValidationUtils;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -58,7 +58,7 @@ class ImageController extends Controller
                 break;
         }
         $imageName = $request->assocUuid . '.' .
-            Helper::convertMime2Ext($request->image->getMimeType());
+            MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs($imageFolder, $imageName);
 
         $image = $this->imageService->storeImage($request, $imagePath);
@@ -83,7 +83,7 @@ class ImageController extends Controller
                 $imageFolder = '/images/notices';
             }
             $imageName = $assocEntity->uuid . '.' .
-                Helper::convertMime2Ext($request->image->getMimeType());
+                MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
             $imagePath = $request->image->storeAs($imageFolder, $imageName);
             $image->path = $imagePath;
         }
