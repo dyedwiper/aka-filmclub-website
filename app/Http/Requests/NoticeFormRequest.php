@@ -30,7 +30,6 @@ class NoticeFormRequest extends FormRequest
             'title' => 'required|max:255',
             'date' => 'required|date',
             'content' => 'required|max:65535',
-            'author' => 'required|max:255',
         ];
     }
 
@@ -40,7 +39,6 @@ class NoticeFormRequest extends FormRequest
             'title' => 'Titel',
             'date' => 'Datum',
             'content' => 'Text',
-            'author' => 'Autor*in',
         ];
     }
 

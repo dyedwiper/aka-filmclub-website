@@ -15,7 +15,6 @@ class Notice extends Model
         'title',
         'date',
         'content',
-        'author',
     ];
 
     public function image()

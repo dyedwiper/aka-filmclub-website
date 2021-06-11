@@ -92,7 +92,6 @@ class NoticeController extends Controller
         $notice->title = $request->title;
         $notice->date = $request->date;
         $notice->content = $request->content;
-        $notice->author = $request->author;
 
         return $notice;
     }

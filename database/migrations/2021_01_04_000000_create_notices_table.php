@@ -21,7 +21,6 @@ class CreateNoticesTable extends Migration
             $table->date('date')->nullable();
             $table->string('title');
             $table->text('content');
-            $table->string('author');
             $table->unsignedBigInteger('image_id')->nullable();
             $table->foreign('image_id')->references('id')->on('images');
         });
