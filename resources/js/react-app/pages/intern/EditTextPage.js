@@ -107,8 +107,8 @@ export default function EditTextPage() {
             null,
             customEntityTransform
         );
-        const textObject = { text: htmlFromDraft, updated_by: user.username };
-        postText(assocPage, textObject)
+        const data = { text: htmlFromDraft, updated_by: user.username };
+        postText(assocPage, data)
             .then(() => {
                 history.push('/' + assocPage);
             })
