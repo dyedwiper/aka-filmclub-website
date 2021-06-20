@@ -39,7 +39,7 @@ class LicenseController extends Controller
     public function DeleteLicense(string $uuid)
     {
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
+            abort(403);
         }
         $license = License::firstWhere('uuid', $uuid);
         $license->delete();

@@ -104,7 +104,7 @@ class ImageController extends Controller
     public function DeleteImage(string $uuid)
     {
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
+            abort(403);
         }
 
         $image = Image::firstWhere('uuid', $uuid);

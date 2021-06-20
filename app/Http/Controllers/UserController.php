@@ -143,7 +143,7 @@ class UserController extends Controller
     public function DeleteUser(string $uuid)
     {
         if (Auth::user()->level != Config::get('constants.auth_level.admin')) {
-            abort(401);
+            abort(403);
         }
         $user = User::firstWhere('uuid', $uuid);
         $this->forumUserService->DeleteUser($user->username);

@@ -97,7 +97,7 @@ class ScreeningController extends Controller
     public function DeleteScreening(string $uuid)
     {
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
+            abort(403);
         }
 
         $screening = Screening::firstWhere('uuid', $uuid);

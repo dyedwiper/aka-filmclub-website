@@ -64,7 +64,7 @@ class FaqController extends Controller
     public function DeleteFaq(string $uuid)
     {
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
+            abort(403);
         }
         $faq = Faq::firstWhere('uuid', $uuid);
         $afterPositionedFaqs = Faq::where('position', '>', $faq->position)->get();

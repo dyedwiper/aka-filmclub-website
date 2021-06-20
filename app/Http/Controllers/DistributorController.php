@@ -39,7 +39,7 @@ class DistributorController extends Controller
     public function DeleteDistributor(string $uuid)
     {
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
+            abort(403);
         }
         $distributor = Distributor::firstWhere('uuid', $uuid);
         $distributor->delete();

@@ -63,7 +63,7 @@ class SelfmadeFilmController extends Controller
     public function DeleteSelfmadeFilm(string $uuid)
     {
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
+            abort(403);
         }
         $selfmadeFilm = SelfmadeFilm::firstWhere('uuid', $uuid);
         $afterPositionedFilms = SelfmadeFilm::where('position', '>', $selfmadeFilm->position)->get();

@@ -64,7 +64,7 @@ class NoticeController extends Controller
     public function DeleteNotice(string $uuid)
     {
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
+            abort(403);
         }
         $notice = Notice::firstWhere('uuid', $uuid);
         $image = $notice->image;

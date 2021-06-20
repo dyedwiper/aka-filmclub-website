@@ -97,7 +97,7 @@ class BillingController extends Controller
     public function DeleteBilling(string $uuid)
     {
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
+            abort(403);
         }
 
         $billing = Billing::where('uuid', $uuid)->with('ticketStacks', 'passStacks')->first();

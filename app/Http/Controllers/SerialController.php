@@ -79,7 +79,7 @@ class SerialController extends Controller
     public function DeleteSerial(Request $request)
     {
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(401);
+            abort(403);
         }
         $serial = Serial::firstWhere('uuid', $request->uuid);
         $image = $serial->image;
