@@ -16,6 +16,7 @@ export default function BaseForm({
 }) {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
+    const [errorMessage, setErrorMessage] = useState('');
     const [showDeletePrompt, setShowDeletePrompt] = useState(false);
 
     const { user: loggedInUser } = useContext(Context);
@@ -43,6 +44,7 @@ export default function BaseForm({
                     <ValidationErrorStyled key={index}>{error}</ValidationErrorStyled>
                 ))}
             </ValidationErrorContainerStyled>
+            <ErrorMessageStyled>{errorMessage}</ErrorMessageStyled>
             {isSubmitting ? (
                 <WaitNoteStyled>Am Senden...</WaitNoteStyled>
             ) : (
@@ -101,7 +103,6 @@ export default function BaseForm({
                     setValidationErrors(err.response.data.validationErrors);
                 }
                 setIsSubmitting(false);
-                console.log(err.response.data);
             });
     }
 
@@ -112,7 +113,9 @@ export default function BaseForm({
                 history.push(deleteRedirectRoute);
             })
             .catch((err) => {
-                console.log(err);
+                if (err.response.status === 409) {
+                    setErrorMessage(err.response.data.message);
+                }
             });
     }
 
@@ -172,4 +175,9 @@ const ValidationErrorContainerStyled = styled.div`
 
 const ValidationErrorStyled = styled.div`
     margin-bottom: 10px;
+`;
+
+const ErrorMessageStyled = styled.div`
+    margin-bottom: 10px;
+    color: var(--aka-red);
 `;

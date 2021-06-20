@@ -32,7 +32,7 @@ export default function LoginPage() {
                 </LabelStyled>
                 <ButtonStyled>Login</ButtonStyled>
             </FormStyled>
-            {errorMessage && <ErrorMessageStyled>{errorMessage}</ErrorMessageStyled>}
+            <ErrorMessageStyled>{errorMessage}</ErrorMessageStyled>
             {didLoginFail && <ImageStyled src={magicGif} alt="ah ah ah you didn't say the magic word"></ImageStyled>}
         </BasePage>
     );
