@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             // Aber 32 Zeichen sind auch genug.
             $table->string('username', 32)->unique();
             $table->string('password');
+            $table->unsignedTinyInteger('failed_login_attempts')->default(0);
+            $table->timestamp('login_forbidden_until')->nullable();
             $table->integer('level')->default(0);
             $table->integer('status')->default(0);
             $table->string('email');
