@@ -4,20 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PasswordFormRequest;
 use App\Http\Requests\UserFormRequest;
-use App\Models\PhpbbUser;
 use App\Models\User;
 use App\Services\ForumUserService;
+use DateTime;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
+    const MAX_FAILED_LOGIN_ATTEMPTS = 5;
+    const LOCKOUT_TIME_IN_MINUTES = 10;
+
     private $forumUserService;
 
     public function __construct(ForumUserService $forumUserService)
@@ -42,13 +44,37 @@ class UserController extends Controller
 
     public function PostLogin(Request $request)
     {
-        $credentials = $request->only('username', 'password');
+        $user = User::firstWhere('username', $request->username);
+        if (!$user) abort(401);
+        if (
+            $user->failed_login_attempts > self::MAX_FAILED_LOGIN_ATTEMPTS
+            && strtotime($user->login_forbidden_until) > strtotime('now')
+        ) {
+            abort(
+                401,
+                'Wegen zu vieler fehlgeschlagener Login-Versuche, ist dein Login für '
+                    . self::LOCKOUT_IN_MINUTES .
+                    ' Minuten gesperrt.'
+            );
+        }
 
+        $credentials = $request->only('username', 'password');
         if (Auth::attempt($credentials)) {
+            $user->failed_login_attempts = 0;
+            $user->login_forbidden_until = null;
+            $user->save();
             $request->session()->regenerate();
             return Auth::user();
         }
-        return response('false creds', 401);
+
+        if (strtotime($user->login_forbidden_until) < strtotime('now')) {
+            $user->failed_login_attempts = 0;
+        }
+        $user->failed_login_attempts++;
+        // The time is always set here, but does not take effect until the max number of attempts is reached.
+        $user->login_forbidden_until = new DateTime('+' . self::LOCKOUT_IN_MINUTES . 'minutes');
+        $user->save();
+        abort(401);
     }
 
     public function GetLogout(Request $request)
