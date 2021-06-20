@@ -20,7 +20,9 @@ export default function UserFormGroup({ user }) {
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Login</LabelTextStyled>
-                <InputStyled name="username" disabled={!isAuthorized} defaultValue={user && user.username} />
+                <InputStyled name="username" disabled={!isAdmin} defaultValue={user && user.username} />
+                {/* Since a disabled input's value is not submitted, this hidden input is added, so that validation still works as intended. */}
+                {!isAdmin && <input name="username" type="hidden" defaultValue={user && user.username} />}
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>E-Mail-Adresse</LabelTextStyled>
