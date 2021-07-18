@@ -153,7 +153,7 @@ Route::prefix('images')->group(function () {
         ImageController::class, 'DeleteImage'
     ]);
 
-    Route::post('/wysiwyg', [
+    Route::middleware('auth:sanctum')->post('/wysiwyg', [
         ImageController::class, 'PostImageFromWysiwygEditor'
     ]);
 });

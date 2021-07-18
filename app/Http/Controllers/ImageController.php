@@ -127,6 +127,15 @@ class ImageController extends Controller
 
     public function PostImageFromWysiwygEditor(Request $request)
     {
+        $validator = Validator::make(
+            $request->all(),
+            ['image' => 'required|file|mimetypes:image/png,image/jpeg,image/gif|max:1000'],
+            [],
+            ['image' => 'Bild']
+        );
+        if ($validator->fails()) {
+            ValidationUtils::handleValidationError($validator);
+        }
         $path = $request->image->store('/images/misc');
         return url('/storage/' . $path);
     }
