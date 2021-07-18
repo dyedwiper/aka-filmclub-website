@@ -19,6 +19,7 @@ export default function ScreeningRow({ screening }) {
                     <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
                         <TitleStyled>{screening.title}</TitleStyled>
                     </LinkStyled>
+                    {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
                     <SynopsisStyled>{stripHtml(screening.synopsis)}</SynopsisStyled>
                     <Link to={ROUTE_SCREENING + screening.uuid}>[mehr]</Link>
                 </InfoContainerStyled>
@@ -64,6 +65,14 @@ const InfoContainerStyled = styled.div``;
 const DateStyled = styled.div``;
 
 const TitleStyled = styled.h3``;
+
+const SpecialStyled = styled.span`
+    display: inline-block;
+    max-width: 100%;
+    margin: 5px 0 0 -10px;
+    padding: 0 10px;
+    background-color: var(--aka-gelb);
+`;
 
 const SynopsisStyled = styled.div`
     display: -webkit-box;
