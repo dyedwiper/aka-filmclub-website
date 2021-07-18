@@ -64,11 +64,10 @@ export default function ScreeningPage() {
                     <CopyrightContainer image={screening.image} />
                 </ImageAndCopyrightContainerStyled>
             ) : (
-                <>
-                    <FallbackTitleStyled>{screening.title}</FallbackTitleStyled>
-                </>
+                <FallbackTitleStyled>{screening.title}</FallbackTitleStyled>
             )}
             <TextContainerStyled>
+                {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
                 <DateAndVenueStyled>
                     {formatToDateTimeStringWithWeekday(screening.date)} <VerticalLineStyled>|</VerticalLineStyled>{' '}
                     {screening.venue}
@@ -111,6 +110,7 @@ export default function ScreeningPage() {
 }
 
 const ImageAndCopyrightContainerStyled = styled.div`
+    position: relative;
     margin: 20px 0;
 `;
 
@@ -162,6 +162,13 @@ const TextContainerStyled = styled.div`
     @media (max-width: 767px) {
         padding: 0;
     }
+`;
+
+const SpecialStyled = styled.div`
+    margin: 10px -20px;
+    padding: 5px 20px;
+    background-color: var(--aka-gelb);
+    font-weight: bold;
 `;
 
 const DateAndVenueStyled = styled.div`
