@@ -9,7 +9,10 @@ export default function ScreeningsListItem({ screening }) {
         <ScreeningsListItemStyled>
             <WeekdayStyled>{getWeekdayAbbreviation(screening.date)}</WeekdayStyled>
             <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
-            <LinkStyled to={ROUTE_SCREENING + screening.uuid}>{screening.title}</LinkStyled>
+            <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
+                {screening.title}
+                {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
+            </LinkStyled>
         </ScreeningsListItemStyled>
     );
 }
@@ -37,4 +40,10 @@ const LinkStyled = styled(Link)`
     @media (max-width: 767px) {
         display: block;
     }
+`;
+
+const SpecialStyled = styled.span`
+    margin-left: 5px;
+    padding: 0 5px;
+    background-color: var(--aka-gelb);
 `;
