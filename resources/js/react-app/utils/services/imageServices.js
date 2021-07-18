@@ -11,3 +11,7 @@ export function postImage(data) {
 export function deleteImage(uuid) {
     return makeApiCall('/api/images/uuid/' + uuid, 'DELETE');
 }
+
+export function postImageFromWysiwygEditor(data) {
+    return makeApiCall('/api/images/wysiwyg', 'POST', data);
+}

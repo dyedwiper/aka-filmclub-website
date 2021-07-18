@@ -11,6 +11,7 @@ import { PageHeadlineStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
+import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
 import { getText, postText } from '../../utils/services/textServices';
 import LoadingPage from '../LoadingPage';
 
@@ -74,7 +75,7 @@ export default function EditTextPage() {
                 toolbarStyle={toolbarStyleObject}
                 editorStyle={editorStyleObject}
                 toolbar={{
-                    options: ['inline', 'blockType', 'link'],
+                    options: ['inline', 'blockType', 'link', 'image'],
                     inline: {
                         options: ['bold', 'italic', 'underline', 'strikethrough'],
                     },
@@ -84,6 +85,11 @@ export default function EditTextPage() {
                     link: {
                         showOpenOptionOnHover: false,
                         defaultTargetOption: '_blank',
+                    },
+                    image: {
+                        uploadCallback: uploadImage,
+                        previewImage: true,
+                        alt: { present: true, mandatory: false },
                     },
                 }}
                 toolbarCustomButtons={[<HorizontalLineToolbarButton key="1" />]}
@@ -116,7 +122,6 @@ export default function EditTextPage() {
                 if (err.response.status === 422) {
                     setValidationErrors(err.response.data.validationErrors);
                 }
-                console.log(err.response.data);
             });
     }
 
@@ -143,6 +148,14 @@ export default function EditTextPage() {
 
     function HorizontalRule() {
         return <hr />;
+    }
+
+    function uploadImage(image) {
+        const formData = new FormData();
+        formData.append('image', image);
+        return postImageFromWysiwygEditor(formData).then((res) => {
+            return { data: { link: res.data } };
+        });
     }
 }
 

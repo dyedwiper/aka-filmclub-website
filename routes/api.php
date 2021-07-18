@@ -152,6 +152,10 @@ Route::prefix('images')->group(function () {
     Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
         ImageController::class, 'DeleteImage'
     ]);
+
+    Route::post('/wysiwyg', [
+        ImageController::class, 'PostImageFromWysiwygEditor'
+    ]);
 });
 
 Route::prefix('users')->group(function () {

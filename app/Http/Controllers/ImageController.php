@@ -10,8 +10,10 @@ use App\Models\Serial;
 use App\Services\ImageService;
 use App\Utils\MimeTypeUtils;
 use App\Utils\ValidationUtils;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -121,5 +123,11 @@ class ImageController extends Controller
 
         Storage::delete($image->path);
         $image->delete();
+    }
+
+    public function PostImageFromWysiwygEditor(Request $request)
+    {
+        $path = $request->image->store('/images/misc');
+        return url('/storage/' . $path);
     }
 }
