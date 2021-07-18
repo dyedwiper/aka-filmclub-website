@@ -23,6 +23,9 @@ export default function CopyrightContainer({ image }) {
 }
 
 const CopyrightContainerStyled = styled.div`
+    position: absolute;
+    bottom: -15px;
+    width: 100%;
     text-align: right;
     font-size: 0.7em;
 `;

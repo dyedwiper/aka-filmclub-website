@@ -51,7 +51,7 @@ export default function HomePage() {
                     ))}
                 </CardsListStyled>
             ) : (
-                <InfoStyled>Mehr im nächsten Semester</InfoStyled>
+                <InfoStyled>gibt's im nächsten Semester.</InfoStyled>
             )}
             <HorizontalRuleStyled />
             <HeadlineStyled>Die neuesten News</HeadlineStyled>
