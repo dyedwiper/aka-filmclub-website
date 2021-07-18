@@ -159,13 +159,9 @@ export default function Header() {
     );
 
     function handleLogout() {
-        getLogout()
-            .then(() => {
-                setUser({});
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        getLogout().then(() => {
+            setUser({});
+        });
     }
 }
 
