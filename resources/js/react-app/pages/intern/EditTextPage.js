@@ -1,7 +1,7 @@
 import { ContentState, convertToRaw, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
@@ -21,8 +21,11 @@ export default function EditTextPage() {
     const [defaultText, setDefaultText] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [validationErrors, setValidationErrors] = useState([]);
+    const [showHtml, setShowHtml] = useState(false);
 
     const { pageTitle, user } = useContext(Context);
+
+    const textareaElement = useRef(null);
 
     let history = useHistory();
 
@@ -62,42 +65,55 @@ export default function EditTextPage() {
         <BasePage pageTitle={pageTitleMap[assocPage] + ' bearbeiten'}>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
             <HintStyled>
-                Hinweis: Das Einfügen und Entfernen von Bildern und der gelben Linie kann etwas hakelig sein. Beim
+                Hinweise: Das Einfügen und Entfernen von Bildern und der gelben Linie kann etwas hakelig sein. Beim
                 Entfernen sind sie manchmal im Editor schon verschwunden, aber tauchen nach dem Speichern wieder auf.
                 Dann muss die Rücktaste beim Entfernen wahrscheinlich noch einmal mehr gedrückt werden. Beim Einfügen
                 der Linie empfiehlt es sich, direkt in den bestehenden Absatz einzufügen und keinen neuen Absatz für die
                 Linie zu machen. Die Größe der Bilder kann nicht nachträglich geändert werden - dazu muss das Bild neu
-                eingefügt werden. Wenn der Mauszeiger über dem Bild ist, erscheint unter dem Bild eine Option, um das
-                Bild zu positionieren.
+                eingefügt werden.Wenn der Mauszeiger über dem Bild ist, erscheint unter dem Bild eine Option, um das
+                Bild zu positionieren. Wenn ein Bild eingefügt ist, muss vor dem Speichern erst einmal außerhalb des
+                Editor geklickt werden, bevor der Speichern-Button funktioniert.
             </HintStyled>
-            <Editor
-                editorState={editorState}
-                onEditorStateChange={setEditorState}
-                customBlockRenderFunc={customBlockRenderer}
-                wrapperStyle={wrapperStyleObject}
-                toolbarStyle={toolbarStyleObject}
-                editorStyle={editorStyleObject}
-                toolbar={{
-                    options: ['inline', 'blockType', 'link', 'image'],
-                    inline: {
-                        options: ['bold', 'italic', 'underline', 'strikethrough'],
-                    },
-                    blockType: {
-                        options: ['Normal', 'H3', 'H4', 'H5', 'H6'],
-                    },
-                    link: {
-                        showOpenOptionOnHover: false,
-                        defaultTargetOption: '_blank',
-                    },
-                    image: {
-                        uploadCallback: uploadImage,
-                        previewImage: true,
-                        inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
-                        alt: { present: true, mandatory: false },
-                    },
-                }}
-                toolbarCustomButtons={[<HorizontalLineToolbarButton key="1" />]}
-            />
+            <ViewButtonGroupStyled>
+                <ViewButtonStyled className={!showHtml && 'active'} onClick={() => setShowHtml(false)}>
+                    WYSIWYG
+                </ViewButtonStyled>
+                <ViewButtonStyled className={showHtml && 'active'} onClick={() => setShowHtml(true)}>
+                    HTML
+                </ViewButtonStyled>
+            </ViewButtonGroupStyled>
+            {showHtml ? (
+                <TextareaStyled ref={textareaElement} defaultValue={defaultText} />
+            ) : (
+                <Editor
+                    editorState={editorState}
+                    onEditorStateChange={setEditorState}
+                    customBlockRenderFunc={customBlockRenderer}
+                    wrapperStyle={wrapperStyleObject}
+                    toolbarStyle={toolbarStyleObject}
+                    editorStyle={editorStyleObject}
+                    toolbar={{
+                        options: ['inline', 'blockType', 'link', 'image'],
+                        inline: {
+                            options: ['bold', 'italic', 'underline', 'strikethrough'],
+                        },
+                        blockType: {
+                            options: ['Normal', 'H3', 'H4', 'H5', 'H6'],
+                        },
+                        link: {
+                            showOpenOptionOnHover: false,
+                            defaultTargetOption: '_blank',
+                        },
+                        image: {
+                            uploadCallback: uploadImage,
+                            previewImage: true,
+                            inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
+                            alt: { present: true, mandatory: false },
+                        },
+                    }}
+                    toolbarCustomButtons={[<HorizontalLineToolbarButton key="1" />]}
+                />
+            )}
             <ValidationErrorContainerStyled>
                 {validationErrors.map((error, index) => (
                     <ValidationErrorStyled key={index}>{error}</ValidationErrorStyled>
@@ -111,13 +127,18 @@ export default function EditTextPage() {
     );
 
     function saveText() {
-        const htmlFromDraft = draftToHtml(
-            convertToRaw(editorState.getCurrentContent()),
-            null,
-            null,
-            customEntityTransform
-        );
-        const data = { text: htmlFromDraft, updated_by: user.username };
+        let data;
+        if (showHtml) {
+            data = { text: textareaElement.current.value, updated_by: user.username };
+        } else {
+            const htmlFromDraft = draftToHtml(
+                convertToRaw(editorState.getCurrentContent()),
+                null,
+                null,
+                customEntityTransform
+            );
+            data = { text: htmlFromDraft, updated_by: user.username };
+        }
         postText(assocPage, data)
             .then(() => {
                 history.push('/' + assocPage);
@@ -173,6 +194,20 @@ const HintStyled = styled.div`
     margin-bottom: 20px;
     font-size: 0.7em;
     font-style: italic;
+`;
+
+const ViewButtonGroupStyled = styled.div`
+    margin-bottom: 10px;
+`;
+
+const ViewButtonStyled = styled.button`
+    &.active {
+        background-color: var(--aka-gelb);
+    }
+`;
+
+const TextareaStyled = styled.textarea`
+    height: 400px;
 `;
 
 const ValidationErrorContainerStyled = styled.div`
