@@ -66,8 +66,9 @@ export default function EditTextPage() {
                 Entfernen sind sie manchmal im Editor schon verschwunden, aber tauchen nach dem Speichern wieder auf.
                 Dann muss die Rücktaste beim Entfernen wahrscheinlich noch einmal mehr gedrückt werden. Beim Einfügen
                 der Linie empfiehlt es sich, direkt in den bestehenden Absatz einzufügen und keinen neuen Absatz für die
-                Linie zu machen. Die Größe der Bilder kann nicht nachträglich geändert werden. Wenn der Mauszeiger über
-                dem Bild ist, erscheint unter dem Bild eine Option das Bild zu positionieren.
+                Linie zu machen. Die Größe der Bilder kann nicht nachträglich geändert werden - dazu muss das Bild neu
+                eingefügt werden. Wenn der Mauszeiger über dem Bild ist, erscheint unter dem Bild eine Option, um das
+                Bild zu positionieren.
             </HintStyled>
             <Editor
                 editorState={editorState}
