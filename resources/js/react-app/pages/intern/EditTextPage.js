@@ -14,6 +14,7 @@ import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
 import { getText, postText } from '../../utils/services/textServices';
 import LoadingPage from '../LoadingPage';
+import hintIcon from '../../assets/hint_icon.png';
 
 export default function EditTextPage() {
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
@@ -21,6 +22,7 @@ export default function EditTextPage() {
     const [defaultText, setDefaultText] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [validationErrors, setValidationErrors] = useState([]);
+    const [showHints, setShowHints] = useState(false);
 
     const { pageTitle, user } = useContext(Context);
 
@@ -61,15 +63,20 @@ export default function EditTextPage() {
     return (
         <BasePage pageTitle={pageTitleMap[assocPage] + ' bearbeiten'}>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <HintStyled>
-                Hinweis: Das Einfügen und Entfernen von Bildern und der gelben Linie kann etwas hakelig sein. Beim
-                Entfernen sind sie manchmal im Editor schon verschwunden, aber tauchen nach dem Speichern wieder auf.
-                Dann muss die Rücktaste beim Entfernen wahrscheinlich noch einmal mehr gedrückt werden. Beim Einfügen
-                der Linie empfiehlt es sich, direkt in den bestehenden Absatz einzufügen und keinen neuen Absatz für die
-                Linie zu machen. Die Größe der Bilder kann nicht nachträglich geändert werden - dazu muss das Bild neu
-                eingefügt werden. Wenn der Mauszeiger über dem Bild ist, erscheint unter dem Bild eine Option, um das
-                Bild zu positionieren.
-            </HintStyled>
+            <HintButtonStyled className={showHints && 'active'} onClick={() => setShowHints(!showHints)}>
+                <HintIconStyled src={hintIcon} />
+            </HintButtonStyled>
+            {showHints && (
+                <HintsStyled>
+                    Das Einfügen und Entfernen von Bildern und der gelben Linie kann etwas hakelig sein. Beim Entfernen
+                    sind sie manchmal im Editor schon verschwunden, aber tauchen nach dem Speichern wieder auf. Dann
+                    muss die Rücktaste beim Entfernen wahrscheinlich noch einmal mehr gedrückt werden. Beim Einfügen der
+                    Linie empfiehlt es sich, direkt in den bestehenden Absatz einzufügen und keinen neuen Absatz für die
+                    Linie zu machen. Die Größe der Bilder kann nicht nachträglich geändert werden - dazu muss das Bild
+                    neu eingefügt werden. Wenn der Mauszeiger über dem Bild ist, erscheint unter dem Bild eine Option,
+                    um das Bild zu positionieren.
+                </HintsStyled>
+            )}
             <Editor
                 editorState={editorState}
                 onEditorStateChange={setEditorState}
@@ -169,7 +176,26 @@ export default function EditTextPage() {
     }
 }
 
-const HintStyled = styled.div`
+const HintButtonStyled = styled.button`
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    transition: 1s;
+
+    &.active {
+        transform: rotate(180deg);
+    }
+`;
+
+const HintIconStyled = styled.img`
+    width: 48px;
+    height: 48px;
+`;
+
+const HintsStyled = styled.div`
     margin-bottom: 20px;
     font-size: 0.7em;
     font-style: italic;
