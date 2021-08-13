@@ -18,10 +18,10 @@ import LoadingPage from '../LoadingPage';
 export default function EditTextPage() {
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
     const [assocPage, setAssocPage] = useState('');
-    const [defaultText, setDefaultText] = useState('');
+    const [text, setText] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [validationErrors, setValidationErrors] = useState([]);
-    const [showHtml, setShowHtml] = useState(false);
+    const [showHtmlView, setShowHtmlView] = useState(false);
 
     const { pageTitle, user } = useContext(Context);
 
@@ -40,24 +40,34 @@ export default function EditTextPage() {
     useEffect(() => {
         const page = getLastParameterFromPath();
         getText(page).then((res) => {
-            setDefaultText(res.data.text);
+            setText(res.data.text);
             setAssocPage(page);
             setIsLoading(false);
         });
     }, []);
 
     useEffect(() => {
-        const draftFromHtml = htmlToDraft(defaultText, (nodeName) => {
-            if (nodeName === 'hr') {
-                return {
-                    type: 'HORIZONTAL_RULE',
-                    mutability: 'IMMUTABLE',
-                    data: {},
-                };
-            }
-        });
-        setEditorState(EditorState.createWithContent(ContentState.createFromBlockArray(draftFromHtml)));
-    }, [defaultText]);
+        if (showHtmlView) {
+            const htmlFromDraft = draftToHtml(
+                convertToRaw(editorState.getCurrentContent()),
+                null,
+                null,
+                customEntityTransform
+            );
+            setText(htmlFromDraft);
+        } else {
+            const draftFromHtml = htmlToDraft(text, (nodeName) => {
+                if (nodeName === 'hr') {
+                    return {
+                        type: 'HORIZONTAL_RULE',
+                        mutability: 'IMMUTABLE',
+                        data: {},
+                    };
+                }
+            });
+            setEditorState(EditorState.createWithContent(ContentState.createFromBlockArray(draftFromHtml)));
+        }
+    }, [isLoading, showHtmlView]);
 
     if (isLoading) return <LoadingPage />;
 
@@ -75,15 +85,15 @@ export default function EditTextPage() {
                 Editor geklickt werden, bevor der Speichern-Button funktioniert.
             </HintStyled>
             <ViewButtonGroupStyled>
-                <ViewButtonStyled className={!showHtml && 'active'} onClick={() => setShowHtml(false)}>
+                <ViewButtonStyled className={!showHtmlView && 'active'} onClick={() => setShowHtmlView(false)}>
                     WYSIWYG
                 </ViewButtonStyled>
-                <ViewButtonStyled className={showHtml && 'active'} onClick={() => setShowHtml(true)}>
+                <ViewButtonStyled className={showHtmlView && 'active'} onClick={() => setShowHtmlView(true)}>
                     HTML
                 </ViewButtonStyled>
             </ViewButtonGroupStyled>
-            {showHtml ? (
-                <TextareaStyled ref={textareaElement} defaultValue={defaultText} />
+            {showHtmlView ? (
+                <TextareaStyled ref={textareaElement} value={text} onChange={(event) => setText(event.target.value)} />
             ) : (
                 <Editor
                     editorState={editorState}
@@ -128,7 +138,7 @@ export default function EditTextPage() {
 
     function saveText() {
         let data;
-        if (showHtml) {
+        if (showHtmlView) {
             data = { text: textareaElement.current.value, updated_by: user.username };
         } else {
             const htmlFromDraft = draftToHtml(
