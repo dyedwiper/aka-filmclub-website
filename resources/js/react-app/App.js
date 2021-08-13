@@ -113,15 +113,10 @@ export default function App() {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getCurrentUser()
-            .then((res) => {
-                setUser(res.data);
-                setIsLoading(false);
-            })
-            .catch((err) => {
-                console.log(err);
-                setIsLoading(false);
-            });
+        getCurrentUser().then((res) => {
+            setUser(res.data);
+            setIsLoading(false);
+        });
     }, []);
 
     useEffect(() => {

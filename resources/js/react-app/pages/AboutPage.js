@@ -11,7 +11,6 @@ export default function AboutPage() {
 
     useEffect(() => {
         getText('about').then((res) => {
-            console.log(res.data);
             setText(res.data);
         });
     }, []);

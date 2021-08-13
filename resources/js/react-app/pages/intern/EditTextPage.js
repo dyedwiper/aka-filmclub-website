@@ -11,8 +11,10 @@ import { PageHeadlineStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
+import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
 import { getText, postText } from '../../utils/services/textServices';
 import LoadingPage from '../LoadingPage';
+import hintIcon from '../../assets/hint_icon.png';
 
 export default function EditTextPage() {
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
@@ -20,6 +22,7 @@ export default function EditTextPage() {
     const [defaultText, setDefaultText] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [validationErrors, setValidationErrors] = useState([]);
+    const [showHints, setShowHints] = useState(false);
 
     const { pageTitle, user } = useContext(Context);
 
@@ -60,12 +63,35 @@ export default function EditTextPage() {
     return (
         <BasePage pageTitle={pageTitleMap[assocPage] + ' bearbeiten'}>
             <PageHeadlineStyled>{pageTitle}</PageHeadlineStyled>
-            <HintStyled>
-                Hinweis: Das Einfügen und Entfernen der gelben Linie kann etwas hakelig sein. Beim Entfernen ist die
-                Linie manchmal im Editor schon verschwunden, aber taucht nach dem Speichern wieder auf. Dann muss die
-                Rücktaste beim Entfernen wahrscheinlich noch einmal mehr gedrückt werden. Beim Einfügen empfiehlt es
-                sich, direkt in den bestehenden Absatz einzufügen und keinen neuen Absatz für die Linie zu machen.
-            </HintStyled>
+            <HintButtonStyled className={showHints && 'active'} onClick={() => setShowHints(!showHints)}>
+                <HintIconStyled src={hintIcon} />
+            </HintButtonStyled>
+            {showHints && (
+                <HintsStyled>
+                    <HintStyled>
+                        Für große <strong>Absätze</strong> <em>Enter</em> drücken, für kleine Absätze{' '}
+                        <em>Shift+Enter</em>.
+                    </HintStyled>
+                    <HintStyled>
+                        Beim <strong>Entfernen von Linien und Bildern </strong>
+                        sind sie manchmal im Editor schon verschwunden, aber tauchen nach dem Speichern wieder auf. Dann
+                        muss die Rück- bzw. Entfernen-Taste im Editor einmal mehr gedrückt werden, damit das Objekt
+                        korrekt entfernt wird.
+                    </HintStyled>
+                    <HintStyled>
+                        Die <strong>Größe der Bilder </strong>kann nicht nachträglich geändert werden. Dazu muss das
+                        Bild neu eingefügt werden.
+                    </HintStyled>
+                    <HintStyled>
+                        Wenn der Mauszeiger über einem eingefügten Bild ist, erscheint unter dem Bild eine{' '}
+                        <strong>Option, um das Bild zu positionieren</strong>.
+                    </HintStyled>
+                    <HintStyled>
+                        Wenn Bilder eingefügt sind, kann es nötig sein, einmal außerhalb des Editors zu klicken, bevor
+                        der Speichern-Button funktioniert.
+                    </HintStyled>
+                </HintsStyled>
+            )}
             <Editor
                 editorState={editorState}
                 onEditorStateChange={setEditorState}
@@ -74,7 +100,7 @@ export default function EditTextPage() {
                 toolbarStyle={toolbarStyleObject}
                 editorStyle={editorStyleObject}
                 toolbar={{
-                    options: ['inline', 'blockType', 'link'],
+                    options: ['inline', 'blockType', 'fontSize', 'link', 'image'],
                     inline: {
                         options: ['bold', 'italic', 'underline', 'strikethrough'],
                     },
@@ -84,6 +110,12 @@ export default function EditTextPage() {
                     link: {
                         showOpenOptionOnHover: false,
                         defaultTargetOption: '_blank',
+                    },
+                    image: {
+                        uploadCallback: uploadImage,
+                        previewImage: true,
+                        inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
+                        alt: { present: true, mandatory: false },
                     },
                 }}
                 toolbarCustomButtons={[<HorizontalLineToolbarButton key="1" />]}
@@ -116,7 +148,6 @@ export default function EditTextPage() {
                 if (err.response.status === 422) {
                     setValidationErrors(err.response.data.validationErrors);
                 }
-                console.log(err.response.data);
             });
     }
 
@@ -144,12 +175,47 @@ export default function EditTextPage() {
     function HorizontalRule() {
         return <hr />;
     }
+
+    function uploadImage(image) {
+        const formData = new FormData();
+        formData.append('image', image);
+        return postImageFromWysiwygEditor(formData)
+            .then((res) => {
+                return { data: { link: res.data } };
+            })
+            .catch((err) => {
+                if (err.response.status === 422) {
+                    setValidationErrors(err.response.data.validationErrors);
+                }
+            });
+    }
 }
 
-const HintStyled = styled.div`
+const HintButtonStyled = styled.button`
+    width: 48px;
+    height: 48px;
     margin-bottom: 20px;
-    font-size: 0.7em;
-    font-style: italic;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    transition: 1s;
+
+    &.active {
+        transform: rotate(180deg);
+    }
+`;
+
+const HintIconStyled = styled.img`
+    width: 48px;
+    height: 48px;
+`;
+
+const HintsStyled = styled.div`
+    margin-bottom: 20px;
+`;
+
+const HintStyled = styled.li`
+    margin-bottom: 5px;
 `;
 
 const ValidationErrorContainerStyled = styled.div`
