@@ -79,8 +79,10 @@ export default function EditTextPage() {
                         korrekt entfernt wird.
                     </HintStyled>
                     <HintStyled>
-                        Die <strong>Größe der Bilder </strong>kann nicht nachträglich geändert werden. Dazu muss das
-                        Bild neu eingefügt werden.
+                        Bei der <strong>Größe der Bilder </strong>bitte nur die Breite setzen und die Höhe auf{' '}
+                        <em>auto </em>
+                        lassen, weil es sonst zu Verzerrungen kommen kann. Die Größe kann nicht nachträglich geändert
+                        werden. Dazu muss das Bild neu eingefügt werden.
                     </HintStyled>
                     <HintStyled>
                         Wenn der Mauszeiger über einem eingefügten Bild ist, erscheint unter dem Bild eine{' '}

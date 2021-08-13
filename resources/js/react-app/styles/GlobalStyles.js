@@ -73,6 +73,8 @@ export default createGlobalStyle`
   }
 
   img {
+    // max-width muss für Bilder gesetzt werden, die mit dem WYSIWYG-Editor eingefügt werden.
+    max-width: 100%;
     filter: grayscale();
     transition: filter 2.3s;
 
