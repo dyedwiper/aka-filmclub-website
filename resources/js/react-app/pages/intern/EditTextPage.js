@@ -68,13 +68,28 @@ export default function EditTextPage() {
             </HintButtonStyled>
             {showHints && (
                 <HintsStyled>
-                    Das Einfügen und Entfernen von Bildern und der gelben Linie kann etwas hakelig sein. Beim Entfernen
-                    sind sie manchmal im Editor schon verschwunden, aber tauchen nach dem Speichern wieder auf. Dann
-                    muss die Rücktaste beim Entfernen wahrscheinlich noch einmal mehr gedrückt werden. Beim Einfügen der
-                    Linie empfiehlt es sich, direkt in den bestehenden Absatz einzufügen und keinen neuen Absatz für die
-                    Linie zu machen. Die Größe der Bilder kann nicht nachträglich geändert werden - dazu muss das Bild
-                    neu eingefügt werden. Wenn der Mauszeiger über dem Bild ist, erscheint unter dem Bild eine Option,
-                    um das Bild zu positionieren.
+                    <HintStyled>
+                        Für große <strong>Absätze</strong> <em>Enter</em> drücken, für kleine Absätze{' '}
+                        <em>Shift+Enter</em>.
+                    </HintStyled>
+                    <HintStyled>
+                        Beim <strong>Entfernen von Linien und Bildern </strong>
+                        sind sie manchmal im Editor schon verschwunden, aber tauchen nach dem Speichern wieder auf. Dann
+                        muss die Rück- bzw. Entfernen-Taste im Editor einmal mehr gedrückt werden, damit das Objekt
+                        korrekt entfernt wird.
+                    </HintStyled>
+                    <HintStyled>
+                        Die <strong>Größe der Bilder </strong>kann nicht nachträglich geändert werden. Dazu muss das
+                        Bild neu eingefügt werden.
+                    </HintStyled>
+                    <HintStyled>
+                        Wenn der Mauszeiger über einem eingefügten Bild ist, erscheint unter dem Bild eine{' '}
+                        <strong>Option, um das Bild zu positionieren</strong>.
+                    </HintStyled>
+                    <HintStyled>
+                        Wenn Bilder eingefügt sind, kann es nötig sein, einmal außerhalb des Editors zu klicken, bevor
+                        der Speichern-Button funktioniert.
+                    </HintStyled>
                 </HintsStyled>
             )}
             <Editor
@@ -197,8 +212,10 @@ const HintIconStyled = styled.img`
 
 const HintsStyled = styled.div`
     margin-bottom: 20px;
-    font-size: 0.7em;
-    font-style: italic;
+`;
+
+const HintStyled = styled.li`
+    margin-bottom: 5px;
 `;
 
 const ValidationErrorContainerStyled = styled.div`
