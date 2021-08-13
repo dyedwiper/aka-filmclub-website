@@ -78,7 +78,7 @@ export default function EditTextPage() {
                 toolbarStyle={toolbarStyleObject}
                 editorStyle={editorStyleObject}
                 toolbar={{
-                    options: ['inline', 'blockType', 'link', 'image'],
+                    options: ['inline', 'blockType', 'fontSize', 'link', 'image'],
                     inline: {
                         options: ['bold', 'italic', 'underline', 'strikethrough'],
                     },
