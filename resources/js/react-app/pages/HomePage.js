@@ -1,24 +1,38 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import UpdateInfo from '../common/misc/UpdateInfo';
 import NoticeCard from '../common/notices/NoticeCard';
 import ScreeningCard from '../common/screenings/ScreeningCard';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
+import { AUTH_LEVEL_EDITOR } from '../constants';
 import Context from '../Context';
 import { getNotices } from '../utils/services/noticeServices';
 import { getFutureScreenings } from '../utils/services/screeningServices';
+import { getText } from '../utils/services/textServices';
 import LoadingPage from './LoadingPage';
 
 export default function HomePage() {
+    const [welcomeText, setWelcomeText] = useState({});
     const [screenings, setScreenings] = useState([]);
     const [notices, setNotices] = useState([]);
+    const [isLoadingWelcomeText, setIsLoadingWelcomeText] = useState(true);
     const [isLoadingScreenings, setIsLoadingScreenings] = useState(true);
     const [isLoadingNotices, setIsLoadingNotices] = useState(true);
 
-    const { setPageTitle } = useContext(Context);
+    const { user, setPageTitle } = useContext(Context);
+    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
 
     useEffect(() => {
         document.title = 'aka-Filmclub';
         setPageTitle('');
+    }, []);
+
+    useEffect(() => {
+        getText('home').then((res) => {
+            setWelcomeText(res.data);
+            setIsLoadingWelcomeText(false);
+        });
     }, []);
 
     useEffect(() => {
@@ -35,36 +49,50 @@ export default function HomePage() {
         });
     }, []);
 
-    if (isLoadingScreenings || isLoadingNotices) return <LoadingPage />;
+    if (isLoadingScreenings || isLoadingNotices || isLoadingWelcomeText) return <LoadingPage />;
 
     return (
         <PageStyled>
-            <WelcomeMessageStyled>
-                Willkommen auf der Webseite des aka-Filmclub. Hier könnte noch was Nettes stehen.
-            </WelcomeMessageStyled>
+            <SectionStyled>
+                <WelcomeTextStyled dangerouslySetInnerHTML={{ __html: welcomeText.text }} />
+                {isAuthorized && (
+                    <>
+                        <Link to={'/intern/editText/' + welcomeText.page}>Willkommensbereich bearbeiten</Link>
+                        <UpdateInfo entity={welcomeText} />
+                    </>
+                )}
+            </SectionStyled>
             <HorizontalRuleStyled />
-            <HeadlineStyled>Die nächsten Vorführungen</HeadlineStyled>
-            {screenings.length ? (
+            <SectionStyled>
+                <HeadlineStyled>Die nächsten Vorführungen</HeadlineStyled>
+                {screenings.length ? (
+                    <CardsListStyled>
+                        {screenings.slice(0, 3).map((screening) => (
+                            <ScreeningCard key={screening.id} screening={screening} />
+                        ))}
+                    </CardsListStyled>
+                ) : (
+                    <InfoStyled>gibt's im nächsten Semester.</InfoStyled>
+                )}
+            </SectionStyled>
+            <HorizontalRuleStyled />
+            <SectionStyled>
+                <HeadlineStyled>Die neuesten News</HeadlineStyled>
                 <CardsListStyled>
-                    {screenings.slice(0, 3).map((screening) => (
-                        <ScreeningCard key={screening.id} screening={screening} />
+                    {notices.slice(0, 3).map((notice) => (
+                        <NoticeCard key={notice.id} notice={notice} />
                     ))}
                 </CardsListStyled>
-            ) : (
-                <InfoStyled>gibt's im nächsten Semester.</InfoStyled>
-            )}
-            <HorizontalRuleStyled />
-            <HeadlineStyled>Die neuesten News</HeadlineStyled>
-            <CardsListStyled>
-                {notices.slice(0, 3).map((notice) => (
-                    <NoticeCard key={notice.id} notice={notice} />
-                ))}
-            </CardsListStyled>
+            </SectionStyled>
         </PageStyled>
     );
 }
 
-const WelcomeMessageStyled = styled.p``;
+const SectionStyled = styled.section``;
+
+const WelcomeTextStyled = styled.div`
+    margin-top: 40px;
+`;
 
 const HeadlineStyled = styled.h2`
     font-size: 1.5em;

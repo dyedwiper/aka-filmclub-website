@@ -34,6 +34,7 @@ export default function EditTextPage() {
         links: 'Links',
         press: 'Pressespiegel',
         awards: 'Auszeichnungen',
+        home: 'Willkommensbereich',
     };
 
     useEffect(() => {
@@ -85,12 +86,17 @@ export default function EditTextPage() {
                         werden. Dazu muss das Bild neu eingefügt werden.
                     </HintStyled>
                     <HintStyled>
+                        Damit ein <strong>Bild in voller Breite</strong> angezeigt wird, die Breite beim Hochladen
+                        einfach auf <em>auto</em> lassen. Dafür sollte das hochgeladenene Bild mindestens 824px breit
+                        sein.
+                    </HintStyled>
+                    <HintStyled>
                         Wenn der Mauszeiger über einem eingefügten Bild ist, erscheint unter dem Bild eine{' '}
                         <strong>Option, um das Bild zu positionieren</strong>.
                     </HintStyled>
                     <HintStyled>
-                        Wenn Bilder eingefügt sind, kann es nötig sein, einmal außerhalb des Editors zu klicken, bevor
-                        der Speichern-Button funktioniert.
+                        Wenn <strong>Bilder eingefügt</strong> sind, kann es nötig sein, einmal außerhalb des Editors zu
+                        klicken, bevor der <strong>Speichern-Button</strong> funktioniert.
                     </HintStyled>
                 </HintsStyled>
             )}
@@ -144,7 +150,11 @@ export default function EditTextPage() {
         const data = { text: htmlFromDraft, updated_by: user.username };
         postText(assocPage, data)
             .then(() => {
-                history.push('/' + assocPage);
+                if (assocPage === 'home') {
+                    history.push('/');
+                } else {
+                    history.push('/' + assocPage);
+                }
             })
             .catch((err) => {
                 if (err.response.status === 422) {
