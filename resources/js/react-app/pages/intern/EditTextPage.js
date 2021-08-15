@@ -34,6 +34,7 @@ export default function EditTextPage() {
         links: 'Links',
         press: 'Pressespiegel',
         awards: 'Auszeichnungen',
+        home: 'Willkommensbereich',
     };
 
     useEffect(() => {
@@ -92,6 +93,11 @@ export default function EditTextPage() {
                         Wenn Bilder eingefügt sind, kann es nötig sein, einmal außerhalb des Editors zu klicken, bevor
                         der Speichern-Button funktioniert.
                     </HintStyled>
+                    <HintStyled>
+                        Damit ein Bild im <strong>Willkommensbereich</strong> in voller Breite angezeigt wird, die
+                        Breite beim Hochladen einfach auf <em>auto</em> lassen. Dafür sollte das hochgeladenene Bild
+                        mindestens 824px breit sein.{' '}
+                    </HintStyled>
                 </HintsStyled>
             )}
             <Editor
@@ -144,7 +150,11 @@ export default function EditTextPage() {
         const data = { text: htmlFromDraft, updated_by: user.username };
         postText(assocPage, data)
             .then(() => {
-                history.push('/' + assocPage);
+                if (assocPage === 'home') {
+                    history.push('/');
+                } else {
+                    history.push('/' + assocPage);
+                }
             })
             .catch((err) => {
                 if (err.response.status === 422) {
