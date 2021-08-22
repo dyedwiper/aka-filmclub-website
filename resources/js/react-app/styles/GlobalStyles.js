@@ -6,11 +6,10 @@ export default createGlobalStyle`
   }
  
   :root{
-      --aka-gelb: #ffee00;
+      --aka-gelb: #ffef14;
       --aka-grau: #616161;
       --aka-hellgrau: lightgrey;
       --aka-red: darkred;
-      --aka-secondary-color: white;
   }
 
   body {
