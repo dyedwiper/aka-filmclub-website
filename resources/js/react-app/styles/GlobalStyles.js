@@ -4,7 +4,7 @@ export default createGlobalStyle`
   * {
     box-sizing: border-box;
   }
- 
+
   :root{
       --aka-gelb: #ffef14;
       --aka-grau: #616161;
@@ -12,9 +12,17 @@ export default createGlobalStyle`
       --aka-red: darkred;
   }
 
+  @font-face {
+    font-family: 'open_sansregular';
+    src: url('/fonts/opensans-regular-webfont.woff2') format('woff2'),
+         url('/fonts/opensans-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   body {
     margin: 0;
-    font-family: 'Open Sans', 'Segoe UI', sans-serif;
+    font-family: 'open_sansregular', 'Segoe UI', sans-serif;
     font-size: 16px;
     overflow-wrap: break-word;
   }
