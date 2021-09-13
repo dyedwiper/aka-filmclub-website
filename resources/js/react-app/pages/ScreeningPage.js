@@ -72,7 +72,9 @@ export default function ScreeningPage() {
                     {formatToDateTimeStringWithWeekday(screening.date)} <VerticalLineStyled>|</VerticalLineStyled>{' '}
                     {screening.venue}
                 </DateAndVenueStyled>
-                {new Date(screening.date) >= Date.now() && <CalendarDownloadLink screening={screening} />}
+                {new Date(screening.date.replace(' ', 'T')) >= Date.now() && (
+                    <CalendarDownloadLink screening={screening} />
+                )}
                 <CreditsContainer film={screening} />
                 <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>

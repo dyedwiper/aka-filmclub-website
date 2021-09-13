@@ -67,7 +67,7 @@ export default function ArchivePage() {
             ) : (
                 <ListStyled>
                     {screenings
-                        .filter((screening) => new Date(screening.date) < Date.now())
+                        .filter((screening) => new Date(screening.date.replace(' ', 'T')) < Date.now())
                         .map((screening) => (
                             <ScreeningsListItem key={screening.id} screening={screening} />
                         ))}
