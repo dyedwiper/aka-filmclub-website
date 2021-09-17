@@ -13,6 +13,7 @@ export const STANDARD_TICKET_PRICE = '1,50';
 export const STANDARD_PASS_PRICE = '3,50';
 
 export const AKA_SHORTNAME = 'aka-Filmclub e.V.';
+export const AKA_LONGNAME = 'Akademischer Filmclub an der Universität Freiburg e.V. (seit 1957)';
 export const AKA_ADDRESS = 'Belfortstr. 37';
 export const AKA_ZIPCODE = '79098';
 export const AKA_CITY = 'Freiburg';
@@ -22,6 +23,11 @@ export const AKA_FAX = '0761/76628767';
 export const AKA_IBAN = 'DE10 6805 0101 0002 0635 40';
 export const AKA_BIC = 'FRSPDE66XXX';
 export const AKA_BANK = 'Sparkasse Freiburg';
+
+export const AKA_FORUM_URL = 'http://forum.aka-filmclub.de/';
+export const AKA_FACEBOOK_URL = 'https://www.facebook.com/akaFilmclub/';
+export const AKA_INSTAGRAM_URL = 'https://www.instagram.com/akafilmclub/';
+export const AKA_TWITTER_URL = 'https://twitter.com/akafilmclub';
 
 // User enums
 export const AUTH_LEVEL_NORMAL = 0;

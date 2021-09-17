@@ -4,26 +4,35 @@ import styled from 'styled-components';
 import facebookIcon from '../assets/facebook_icon.png';
 import instagramIcon from '../assets/instagram_icon.png';
 import twitterIcon from '../assets/twitter_icon.png';
-import { ROUTE_CONTACT, ROUTE_IMPRINT } from '../constants';
+import {
+    AKA_FACEBOOK_URL,
+    AKA_INSTAGRAM_URL,
+    AKA_LONGNAME,
+    AKA_TWITTER_URL,
+    PAGE_TITLE_CONTACT,
+    PAGE_TITLE_IMPRINT,
+    ROUTE_CONTACT,
+    ROUTE_IMPRINT,
+} from '../constants';
 
 export default function Footer() {
     return (
         <FooterStyled>
             <ContentContainerStyled>
-                <HeadlineStyled>Akademischer Filmclub an der Universität Freiburg e.V. (seit 1957)</HeadlineStyled>
+                <HeadlineStyled>{AKA_LONGNAME}</HeadlineStyled>
                 <LinksContainerStyled>
-                    <LinkStyled to={ROUTE_CONTACT}>Kontakt</LinkStyled>
+                    <LinkStyled to={ROUTE_CONTACT}>{PAGE_TITLE_CONTACT}</LinkStyled>
                     <VerticalLineStyled>|</VerticalLineStyled>
-                    <LinkStyled to={ROUTE_IMPRINT}>Impressum</LinkStyled>
+                    <LinkStyled to={ROUTE_IMPRINT}>{PAGE_TITLE_IMPRINT}</LinkStyled>
                 </LinksContainerStyled>
                 <IconLinksContainerStyled>
-                    <IconLinkStyled href="https://www.facebook.com/akaFilmclub/" target="_blank">
+                    <IconLinkStyled href={AKA_FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
                         <ImageStyled src={facebookIcon} />
                     </IconLinkStyled>
-                    <IconLinkStyled href="https://www.instagram.com/akafilmclub/" target="_blank">
+                    <IconLinkStyled href={AKA_INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
                         <ImageStyled src={instagramIcon} />
                     </IconLinkStyled>
-                    <IconLinkStyled href="https://twitter.com/akafilmclub" target="_blank">
+                    <IconLinkStyled href={AKA_TWITTER_URL} target="_blank" rel="noopener noreferrer">
                         <ImageStyled src={twitterIcon} />
                     </IconLinkStyled>
                 </IconLinksContainerStyled>

@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import akaLogo from '../assets/aka_logo.png';
 import {
+    AKA_FORUM_URL,
     AUTH_LEVEL_EDITOR,
     PAGE_TITLE_ABOUT,
     PAGE_TITLE_ADD_NOTICE,
@@ -11,7 +12,9 @@ import {
     PAGE_TITLE_ADMISSIONS,
     PAGE_TITLE_ARCHIVE,
     PAGE_TITLE_AWARDS,
+    PAGE_TITLE_CONTACT,
     PAGE_TITLE_FAQS,
+    PAGE_TITLE_IMPRINT,
     PAGE_TITLE_INTERN,
     PAGE_TITLE_LINKS,
     PAGE_TITLE_LOGIN,
@@ -25,8 +28,10 @@ import {
     ROUTE_ABOUT,
     ROUTE_ARCHIVE,
     ROUTE_AWARDS,
+    ROUTE_CONTACT,
     ROUTE_FAQS,
     ROUTE_HOME,
+    ROUTE_IMPRINT,
     ROUTE_INTERN,
     ROUTE_INTERN_ADD_NOTICE,
     ROUTE_INTERN_ADD_SCREENING,
@@ -110,6 +115,12 @@ export default function Header() {
                             <SubNavLinkStyled to={ROUTE_LINKS} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_LINKS}
                             </SubNavLinkStyled>
+                            <SubNavLinkStyled to={ROUTE_CONTACT} onClick={() => setIsNavOpen(false)}>
+                                {PAGE_TITLE_CONTACT}
+                            </SubNavLinkStyled>
+                            <SubNavLinkStyled to={ROUTE_IMPRINT} onClick={() => setIsNavOpen(false)}>
+                                {PAGE_TITLE_IMPRINT}
+                            </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
                     {isLoggedIn ? (
@@ -118,6 +129,13 @@ export default function Header() {
                                 {PAGE_TITLE_INTERN}
                             </NavLinkStyled>
                             <SubNavStyled>
+                                <SubNavExternalLinkStyled
+                                    href={AKA_FORUM_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    Forum
+                                </SubNavExternalLinkStyled>
                                 <SubNavLinkStyled to={ROUTE_INTERN_USERS} onClick={() => setIsNavOpen(false)}>
                                     {PAGE_TITLE_USERS}
                                 </SubNavLinkStyled>
@@ -296,6 +314,19 @@ const SubNavStyled = styled.div`
 `;
 
 const SubNavLinkStyled = styled(Link)`
+    display: block;
+    margin: 5px 0;
+    color: black;
+    font-size: 1.3em;
+    font-weight: bold;
+    white-space: nowrap;
+
+    &:hover {
+        text-decoration-color: white;
+    }
+`;
+
+const SubNavExternalLinkStyled = styled.a`
     display: block;
     margin: 5px 0;
     color: black;
