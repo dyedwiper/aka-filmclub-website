@@ -12,6 +12,7 @@ import {
     ROUTE_ERROR,
     ROUTE_FAQS,
     ROUTE_HOME,
+    ROUTE_IMPRINT,
     ROUTE_INTERN,
     ROUTE_INTERN_ADD_BILLING,
     ROUTE_INTERN_ADD_DISTRIBUTOR,
@@ -61,6 +62,7 @@ import ContactPage from './pages/ContactPage';
 import ErrorPage from './pages/ErrorPage';
 import FaqsPage from './pages/FaqsPage';
 import HomePage from './pages/HomePage';
+import ImprintPage from './pages/ImprintPage';
 import AddBillingPage from './pages/intern/AddBillingPage';
 import AddDistributorPage from './pages/intern/AddDistributorPage';
 import AddFaqPage from './pages/intern/AddFaqPage';
@@ -180,6 +182,9 @@ export default function App() {
                         </Route>
                         <Route exact path={ROUTE_CONTACT}>
                             <ContactPage />
+                        </Route>
+                        <Route exact path={ROUTE_IMPRINT}>
+                            <ImprintPage />
                         </Route>
                         <Route exact path={ROUTE_LINKS}>
                             <LinksPage />

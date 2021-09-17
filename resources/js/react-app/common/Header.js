@@ -13,6 +13,7 @@ import {
     PAGE_TITLE_AWARDS,
     PAGE_TITLE_FAQS,
     PAGE_TITLE_INTERN,
+    PAGE_TITLE_LINKS,
     PAGE_TITLE_LOGIN,
     PAGE_TITLE_NEWS,
     PAGE_TITLE_PRESS,
@@ -32,6 +33,7 @@ import {
     ROUTE_INTERN_ADD_SERIAL,
     ROUTE_INTERN_ADMISSIONS,
     ROUTE_INTERN_USERS,
+    ROUTE_LINKS,
     ROUTE_LOGIN,
     ROUTE_NEWS,
     ROUTE_PRESS,
@@ -103,6 +105,9 @@ export default function Header() {
                             </SubNavLinkStyled>
                             <SubNavLinkStyled to={ROUTE_SELFMADE_FILMS} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_SELFMADE_FILMS}
+                            </SubNavLinkStyled>
+                            <SubNavLinkStyled to={ROUTE_LINKS} onClick={() => setIsNavOpen(false)}>
+                                {PAGE_TITLE_LINKS}
                             </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>

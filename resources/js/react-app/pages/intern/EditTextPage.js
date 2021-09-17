@@ -31,6 +31,7 @@ export default function EditTextPage() {
     const pageTitleMap = {
         about: 'Über uns',
         contact: 'Kontakt',
+        imprint: 'Impressum',
         links: 'Links',
         press: 'Pressespiegel',
         awards: 'Auszeichnungen',

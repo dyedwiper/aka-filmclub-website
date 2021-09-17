@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import facebookIcon from '../assets/facebook_icon.png';
 import instagramIcon from '../assets/instagram_icon.png';
 import twitterIcon from '../assets/twitter_icon.png';
-import { ROUTE_CONTACT, ROUTE_LINKS } from '../constants';
+import { ROUTE_CONTACT, ROUTE_IMPRINT } from '../constants';
 
 export default function Footer() {
     return (
@@ -14,7 +14,7 @@ export default function Footer() {
                 <LinksContainerStyled>
                     <LinkStyled to={ROUTE_CONTACT}>Kontakt</LinkStyled>
                     <VerticalLineStyled>|</VerticalLineStyled>
-                    <LinkStyled to={ROUTE_LINKS}>Links</LinkStyled>
+                    <LinkStyled to={ROUTE_IMPRINT}>Impressum</LinkStyled>
                 </LinksContainerStyled>
                 <IconLinksContainerStyled>
                     <IconLinkStyled href="https://www.facebook.com/akaFilmclub/" target="_blank">
