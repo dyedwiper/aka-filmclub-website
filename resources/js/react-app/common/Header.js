@@ -32,6 +32,7 @@ import {
     ROUTE_INTERN_ADD_SCREENING,
     ROUTE_INTERN_ADD_SERIAL,
     ROUTE_INTERN_ADMISSIONS,
+    ROUTE_INTERN_EDIT_USER,
     ROUTE_INTERN_USERS,
     ROUTE_LINKS,
     ROUTE_LOGIN,
@@ -159,7 +160,9 @@ export default function Header() {
                     )}
                 </NavStyled>
             </ContentContainerStyled>
-            {isLoggedIn && <LoggedInUserStyled>{user.username}</LoggedInUserStyled>}
+            {isLoggedIn && (
+                <LoggedInUserLinkStyled to={ROUTE_INTERN_EDIT_USER + user.uuid}>{user.username}</LoggedInUserLinkStyled>
+            )}
         </HeaderStyled>
     );
 
@@ -305,7 +308,7 @@ const SubNavLinkStyled = styled(Link)`
     }
 `;
 
-const LoggedInUserStyled = styled.div`
+const LoggedInUserLinkStyled = styled(Link)`
     position: absolute;
     top: 20px;
     right: 20px;
