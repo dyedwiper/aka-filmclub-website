@@ -1,17 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { AUTH_LEVEL_ADMIN, AUTH_LEVEL_NORMAL, USER_STATUS_ACTIVE } from '../../constants';
-import Context from '../../Context';
+import { AUTH_LEVEL_NORMAL, USER_STATUS_ACTIVE } from '../../constants';
 import { formatToDateTimeString } from '../../utils/dateFormatters';
 import UserLevelSelect from './UserLevelSelect';
 import UserStatusSelect from './UserStatusSelect';
 
-export default function UserFormGroup({ user }) {
-    const { user: loggedInUser } = useContext(Context);
-    const isAdmin = loggedInUser.level === AUTH_LEVEL_ADMIN;
-    const isSelf = user && user.id === loggedInUser.id;
-    const isAuthorized = isAdmin || isSelf;
-
+export default function UserFormGroup({ user, isAdmin, isAuthorized }) {
     return (
         <UserFormGroupStyled>
             <LabelStyled>
