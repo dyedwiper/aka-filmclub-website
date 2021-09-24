@@ -48,7 +48,7 @@ export default function AdmissionListItem({ screening }) {
                 </BillingLinkStyled>
             ) : (
                 <BillingLinkStyled to={ROUTE_INTERN_ADD_BILLING + screening.uuid}>
-                    <IconStyled src={billingIcon} />
+                    <IconStyled src={billingIcon} />+
                 </BillingLinkStyled>
             )}
         </ListItemStyled>
@@ -109,7 +109,12 @@ const TitleLinkStyled = styled(Link)`
 `;
 
 const BillingLinkStyled = styled(Link)`
-    margin-left: 5px;
+    margin-left: 10px;
+
+    &.active,
+    &:hover {
+        text-decoration: none;
+    }
 `;
 
 const IconStyled = styled.img`
