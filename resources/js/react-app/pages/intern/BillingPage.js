@@ -19,7 +19,7 @@ export default function BillingPage() {
     const [billing, setBilling] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { pageTitle } = useContext(Context);
+    const { isUserEditor, pageTitle } = useContext(Context);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
@@ -111,8 +111,12 @@ export default function BillingPage() {
                     <CommentValueStyled>{billing.comment}</CommentValueStyled>
                 </>
             )}
-            <EditLinkStyled to={ROUTE_INTERN_EDIT_BILLING + billing.uuid}>Abrechnung bearbeiten</EditLinkStyled>
-            <VerticalLineStyled>|</VerticalLineStyled>
+            {isUserEditor && (
+                <>
+                    <EditLinkStyled to={ROUTE_INTERN_EDIT_BILLING + billing.uuid}>Abrechnung bearbeiten</EditLinkStyled>
+                    <VerticalLineStyled>|</VerticalLineStyled>
+                </>
+            )}
             <PDFDownloadLink
                 document={<BillingPdf billing={billing} />}
                 fileName={
