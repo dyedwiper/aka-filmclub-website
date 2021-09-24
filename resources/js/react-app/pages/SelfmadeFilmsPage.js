@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BasePage from '../common/BasePage';
 import SelfmadeFilmContainer from '../common/misc/SelfmadeFilmContainer';
 import { AddItemLinkStyled, PageHeadlineStyled } from '../common/styledElements';
-import { AUTH_LEVEL_EDITOR, PAGE_TITLE_SELFMADE_FILMS, ROUTE_INTERN_ADD_SELFMADE_FILM } from '../constants';
+import { PAGE_TITLE_SELFMADE_FILMS, ROUTE_INTERN_ADD_SELFMADE_FILM } from '../constants';
 import Context from '../Context';
 import { getSelfmadeFilms } from '../utils/services/selfmadeFilmServices';
 import LoadingPage from './LoadingPage';
@@ -12,9 +12,7 @@ export default function SelfmadeFilmsPage() {
     const [films, setFilms] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { user } = useContext(Context);
-
-    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor } = useContext(Context);
 
     useEffect(() => {
         getSelfmadeFilms().then((res) => {
@@ -28,7 +26,7 @@ export default function SelfmadeFilmsPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_SELFMADE_FILMS}>
             <PageHeadlineStyled>{PAGE_TITLE_SELFMADE_FILMS}</PageHeadlineStyled>
-            {isAuthorized && (
+            {isUserEditor && (
                 <AddItemLinkStyled to={ROUTE_INTERN_ADD_SELFMADE_FILM}>Eigenproduktion hinzufügen</AddItemLinkStyled>
             )}
             <FilmsListStyled>

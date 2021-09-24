@@ -5,7 +5,7 @@ import { formatToDateTimeString } from '../../utils/dateFormatters';
 import UserLevelSelect from './UserLevelSelect';
 import UserStatusSelect from './UserStatusSelect';
 
-export default function UserFormGroup({ user, isAdmin, isAuthorized }) {
+export default function UserFormGroup({ user, isUserAdmin, isAuthorized }) {
     return (
         <UserFormGroupStyled>
             <LabelStyled>
@@ -14,9 +14,9 @@ export default function UserFormGroup({ user, isAdmin, isAuthorized }) {
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Login</LabelTextStyled>
-                <InputStyled name="username" disabled={!isAdmin} defaultValue={user && user.username} />
+                <InputStyled name="username" disabled={!isUserAdmin} defaultValue={user && user.username} />
                 {/* Since a disabled input's value is not submitted, this hidden input is added, so that validation still works as intended. */}
-                {!isAdmin && <input name="username" type="hidden" defaultValue={user && user.username} />}
+                {!isUserAdmin && <input name="username" type="hidden" defaultValue={user && user.username} />}
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>E-Mail-Adresse</LabelTextStyled>
@@ -48,7 +48,7 @@ export default function UserFormGroup({ user, isAdmin, isAuthorized }) {
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Berechtigungslevel</LabelTextStyled>
-                <UserLevelSelect disabled={!isAdmin} defaultLevel={user ? user.level : AUTH_LEVEL_NORMAL} />
+                <UserLevelSelect disabled={!isUserAdmin} defaultLevel={user ? user.level : AUTH_LEVEL_NORMAL} />
             </LabelStyled>
             <LabelStyled>
                 <LabelTextStyled>Status</LabelTextStyled>

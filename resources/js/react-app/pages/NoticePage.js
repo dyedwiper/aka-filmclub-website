@@ -5,7 +5,6 @@ import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
-    AUTH_LEVEL_EDITOR,
     PAGE_TITLE_NEWS,
     ROUTE_INTERN_ADD_IMAGE_NOTICE,
     ROUTE_INTERN_EDIT_IMAGE,
@@ -23,8 +22,7 @@ export default function NoticePage() {
     const [notice, setNotice] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { user, setPageTitle } = useContext(Context);
-    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor, setPageTitle } = useContext(Context);
 
     useEffect(() => {
         document.title = notice.title + ' | aka-Filmclub';
@@ -52,7 +50,7 @@ export default function NoticePage() {
             <DateStyled>{formatToDateString(notice.date)}</DateStyled>
             <TitleStyled>{notice.title}</TitleStyled>
             <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
-            {isAuthorized && (
+            {isUserEditor && (
                 <>
                     <HorizontalRuleStyled />
                     <LinkStyled to={ROUTE_INTERN_EDIT_NOTICE + notice.uuid}>News bearbeiten</LinkStyled>

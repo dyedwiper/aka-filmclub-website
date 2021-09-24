@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { AUTH_LEVEL_ADMIN } from '../../constants';
 import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { HorizontalRuleStyled } from '../styledElements';
@@ -14,20 +13,24 @@ export default function BaseForm({
     postRedirectRoute,
     deleteRedirectRoute,
 }) {
+    const [isUserForm, setIsUserForm] = useState(false);
+    const [isUserSelf, setIsUserSelf] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
     const [errorMessage, setErrorMessage] = useState('');
     const [showDeletePrompt, setShowDeletePrompt] = useState(false);
 
-    const { user: loggedInUser } = useContext(Context);
-
-    // Extra checks for user form.
-    const userForm =
-        children.length && children.find((child) => child.type.name && child.type.name === 'UserFormGroup');
-    const isSelf = isEditing && userForm && userForm.props.user.id === loggedInUser.id;
-    const isAdmin = loggedInUser.level === AUTH_LEVEL_ADMIN;
+    const { user: loggedInUser, isUserAdmin } = useContext(Context);
 
     let history = useHistory();
+
+    useEffect(() => {
+        // Extra checks for user form.
+        const userForm =
+            children.length && children.find((child) => child.type.name && child.type.name === 'UserFormGroup');
+        setIsUserForm(userForm);
+        setIsUserSelf(isEditing && userForm && userForm.props.user.id === loggedInUser.id);
+    }, []);
 
     useEffect(() => {
         // This does not work for editing because of loading delay, but that's okay I'd say.
@@ -49,7 +52,11 @@ export default function BaseForm({
                 <WaitNoteStyled>Am Senden...</WaitNoteStyled>
             ) : (
                 <ButtonContainerStyled>
-                    <SubmitButtonStyled type="submit" disabled={userForm && !isSelf && !isAdmin} onClick={handleSubmit}>
+                    <SubmitButtonStyled
+                        type="submit"
+                        disabled={isUserForm && !isUserSelf && !isUserAdmin}
+                        onClick={handleSubmit}
+                    >
                         Speichern
                     </SubmitButtonStyled>
                     <BackButtonStyled type="button" onClick={handleAbort}>
@@ -59,7 +66,7 @@ export default function BaseForm({
                         <>
                             <DeleteButtonStyled
                                 type="button"
-                                disabled={userForm && !isAdmin}
+                                disabled={isUserForm && !isUserAdmin}
                                 onClick={() => setShowDeletePrompt(true)}
                             >
                                 Löschen

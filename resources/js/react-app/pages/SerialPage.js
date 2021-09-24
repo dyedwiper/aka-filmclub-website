@@ -6,7 +6,6 @@ import UpdateInfo from '../common/misc/UpdateInfo';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
 import {
-    AUTH_LEVEL_EDITOR,
     PAGE_TITLE_SERIAL,
     ROUTE_INTERN_ADD_IMAGE_SERIAL,
     ROUTE_INTERN_EDIT_IMAGE,
@@ -25,8 +24,7 @@ export default function SerialPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [noSerialFound, SetNoSerialFound] = useState(false);
 
-    const { user, setPageTitle } = useContext(Context);
-    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor, setPageTitle } = useContext(Context);
 
     useEffect(() => {
         document.title = serial.title + ' | aka-Filmclub';
@@ -76,7 +74,7 @@ export default function SerialPage() {
                         <ScreeningsListItem key={screening.id} screening={screening} />
                     ))}
                 </ScreeningsListStyled>
-                {isAuthorized && (
+                {isUserEditor && (
                     <>
                         <HorizontalRuleStyled />
                         <LinkStyled to={ROUTE_INTERN_EDIT_SERIAL + serial.uuid}>Reihe bearbeiten</LinkStyled>

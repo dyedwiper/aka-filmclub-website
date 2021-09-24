@@ -4,7 +4,7 @@ import BasePage from '../common/BasePage';
 import CalendarSeriesDownloadLink from '../common/calendar/CalendarSeriesDownloadLink';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { AddItemLinkStyled, PageHeadlineStyled } from '../common/styledElements';
-import { AUTH_LEVEL_EDITOR, PAGE_TITLE_PROGRAM_OVERVIEW, ROUTE_INTERN_ADD_SCREENING } from '../constants';
+import { PAGE_TITLE_PROGRAM_OVERVIEW, ROUTE_INTERN_ADD_SCREENING } from '../constants';
 import Context from '../Context';
 import { getFutureScreenings } from '../utils/services/screeningServices';
 
@@ -12,8 +12,7 @@ export default function ProgramOverviewPage() {
     const [screenings, setScreenings] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { user } = useContext(Context);
-    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor } = useContext(Context);
 
     useEffect(() => {
         getFutureScreenings().then((res) => {
@@ -25,7 +24,7 @@ export default function ProgramOverviewPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_PROGRAM_OVERVIEW}>
             <PageHeadlineStyled>{PAGE_TITLE_PROGRAM_OVERVIEW}</PageHeadlineStyled>
-            {isAuthorized && (
+            {isUserEditor && (
                 <AddItemLinkStyled to={ROUTE_INTERN_ADD_SCREENING}>Vorführung hinzufügen</AddItemLinkStyled>
             )}
             {isLoading ? (

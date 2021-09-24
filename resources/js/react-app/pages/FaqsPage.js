@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import BasePage from '../common/BasePage';
 import FaqRow from '../common/misc/FaqRow';
 import { AddItemLinkStyled, HorizontalRuleStyled, PageHeadlineStyled } from '../common/styledElements';
-import { AUTH_LEVEL_EDITOR, PAGE_TITLE_FAQS, ROUTE_INTERN_ADD_FAQ } from '../constants';
+import { PAGE_TITLE_FAQS, ROUTE_INTERN_ADD_FAQ } from '../constants';
 import Context from '../Context';
 import { getFaqs } from '../utils/services/faqServices';
 import LoadingPage from './LoadingPage';
@@ -13,9 +13,7 @@ export default function FaqsPage() {
     const [faqs, setFaqs] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { user } = useContext(Context);
-
-    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor } = useContext(Context);
 
     useEffect(() => {
         getFaqs().then((res) => {
@@ -29,7 +27,7 @@ export default function FaqsPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_FAQS}>
             <PageHeadlineStyled>{PAGE_TITLE_FAQS}</PageHeadlineStyled>
-            {isAuthorized && <AddItemLinkStyled to={ROUTE_INTERN_ADD_FAQ}>FAQ hinzufügen</AddItemLinkStyled>}
+            {isUserEditor && <AddItemLinkStyled to={ROUTE_INTERN_ADD_FAQ}>FAQ hinzufügen</AddItemLinkStyled>}
             <QuestionsListStyled>
                 {faqs.map((faq) => (
                     <QuestionLinkItemStyled key={faq.id}>

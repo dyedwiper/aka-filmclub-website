@@ -1,19 +1,16 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { AUTH_LEVEL_EDITOR } from '../../constants';
 import Context from '../../Context';
 
 export default function FaqRow({ faq }) {
-    const { user } = useContext(Context);
-
-    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor } = useContext(Context);
 
     return (
         <FaqRowStyled>
             <QuestionStyled id={faq.uuid}>{faq.question}</QuestionStyled>
             <AnswerStyled dangerouslySetInnerHTML={{ __html: faq.answer }} />
-            {isAuthorized && <LinkStyled to={'/intern/editFaq/' + faq.uuid}>Bearbeiten</LinkStyled>}
+            {isUserEditor && <LinkStyled to={'/intern/editFaq/' + faq.uuid}>Bearbeiten</LinkStyled>}
         </FaqRowStyled>
     );
 }

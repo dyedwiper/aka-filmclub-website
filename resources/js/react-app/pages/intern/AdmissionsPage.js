@@ -6,7 +6,7 @@ import SemesterAnalysis from '../../common/accounting/SemesterAnalysis';
 import BasePage from '../../common/BasePage';
 import SemesterSelect from '../../common/forms/SemesterSelect';
 import { HorizontalRuleStyled, PageHeadlineStyled } from '../../common/styledElements';
-import { AUTH_LEVEL_EDITOR, PAGE_TITLE_ADMISSIONS } from '../../constants';
+import { PAGE_TITLE_ADMISSIONS } from '../../constants';
 import Context from '../../Context';
 import { getScreeningsWithBillingsBySemester } from '../../utils/services/billingServices';
 
@@ -15,8 +15,7 @@ export default function AdmissionsPage() {
     const [semester, setSemester] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { user, currentSemester } = useContext(Context);
-    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor, currentSemester } = useContext(Context);
 
     let history = useHistory();
 
@@ -57,7 +56,7 @@ export default function AdmissionsPage() {
                                     <AdmissionListItem
                                         key={screening.id}
                                         screening={screening}
-                                        isAuthorized={isAuthorized}
+                                        isUserEditor={isUserEditor}
                                     />
                                 ))}
                             </ListStyled>

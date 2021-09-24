@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import akaLogo from '../assets/aka_logo.png';
 import {
     AKA_FORUM_URL,
-    AUTH_LEVEL_EDITOR,
     PAGE_TITLE_ABOUT,
     PAGE_TITLE_ADD_NOTICE,
     PAGE_TITLE_ADD_SCREENING,
@@ -56,9 +55,7 @@ export default function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [headerHeight, setHeaderHeight] = useState(120);
 
-    const { user, setUser, pageTitle } = useContext(Context);
-    const isLoggedIn = Object.keys(user).length !== 0;
-    const isEditor = user.level >= AUTH_LEVEL_EDITOR;
+    const { user, setUser, isUserLoggedIn, isUserEditor, pageTitle } = useContext(Context);
 
     window.addEventListener('scroll', () => {
         const height = window.scrollY < 160 ? 120 - window.scrollY / 4 : 80;
@@ -123,7 +120,7 @@ export default function Header() {
                             </SubNavLinkStyled>
                         </SubNavStyled>
                     </DropdownContainerStyled>
-                    {isLoggedIn ? (
+                    {isUserLoggedIn ? (
                         <DropdownContainerStyled>
                             <NavLinkStyled to={ROUTE_INTERN} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_INTERN}
@@ -142,7 +139,7 @@ export default function Header() {
                                 <SubNavLinkStyled to={ROUTE_INTERN_ADMISSIONS} onClick={() => setIsNavOpen(false)}>
                                     {PAGE_TITLE_ADMISSIONS}
                                 </SubNavLinkStyled>
-                                {isEditor && (
+                                {isUserEditor && (
                                     <>
                                         <SubNavLinkStyled
                                             to={ROUTE_INTERN_ADD_NOTICE}
@@ -178,7 +175,7 @@ export default function Header() {
                     )}
                 </NavStyled>
             </ContentContainerStyled>
-            {isLoggedIn && (
+            {isUserLoggedIn && (
                 <LoggedInUserLinkStyled to={ROUTE_INTERN_EDIT_USER + user.uuid}>{user.username}</LoggedInUserLinkStyled>
             )}
         </HeaderStyled>

@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import { AddItemLinkStyled, PageHeadlineStyled } from '../../common/styledElements';
 import {
-    AUTH_LEVEL_ADMIN,
     PAGE_TITLE_USERS,
     ROUTE_INTERN_ADD_USER,
     ROUTE_INTERN_EDIT_PASSWORD,
@@ -22,7 +21,7 @@ import { getUsers } from '../../utils/services/userServices';
 export default function UsersPage() {
     const [users, setUsers] = useState([]);
 
-    const { user: loggedInUser } = useContext(Context);
+    const { user: loggedInUser, isUserAdmin } = useContext(Context);
 
     useEffect(() => {
         getUsers().then((res) => {
@@ -39,9 +38,7 @@ export default function UsersPage() {
             <EditOwnDataLinkStyled to={ROUTE_INTERN_EDIT_PASSWORD + loggedInUser.uuid}>
                 Eigenes Passwort ändern
             </EditOwnDataLinkStyled>
-            {loggedInUser.level === AUTH_LEVEL_ADMIN && (
-                <AddItemLinkStyled to={ROUTE_INTERN_ADD_USER}>Mitglied hinzufügen</AddItemLinkStyled>
-            )}
+            {isUserAdmin && <AddItemLinkStyled to={ROUTE_INTERN_ADD_USER}>Mitglied hinzufügen</AddItemLinkStyled>}
             <GridContainerStyled>
                 <ListContainerStyled>
                     <SubheadlineStyled>{USER_STATUS_ACTIVE_NAME}</SubheadlineStyled>
