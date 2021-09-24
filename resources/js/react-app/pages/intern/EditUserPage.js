@@ -1,12 +1,11 @@
-import { Link } from 'react-router-dom';
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import UserFormGroup from '../../common/forms/UserFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import {
-    AUTH_LEVEL_ADMIN,
     PAGE_TITLE_EDIT_PASSWORD,
     PAGE_TITLE_EDIT_USER,
     ROUTE_INTERN_EDIT_PASSWORD,
@@ -19,12 +18,10 @@ import LoadingPage from '../LoadingPage';
 
 export default function EditUserPage() {
     const [user, setUser] = useState({});
+    const [isAuthorized, setIsAuthorized] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
-    const { user: loggedInUser } = useContext(Context);
-    const isAdmin = loggedInUser.level === AUTH_LEVEL_ADMIN;
-    const isSelf = user && user.id === loggedInUser.id;
-    const isAuthorized = isAdmin || isSelf;
+    const { user: loggedInUser, isUserAdmin } = useContext(Context);
 
     useEffect(() => {
         const uuid = getLastParameterFromPath();
@@ -33,6 +30,11 @@ export default function EditUserPage() {
             setIsLoading(false);
         });
     }, []);
+
+    useEffect(() => {
+        const isSelf = user && user.id === loggedInUser.id;
+        setIsAuthorized(isUserAdmin || isSelf);
+    }, [user, loggedInUser]);
 
     if (isLoading) return <LoadingPage />;
 
@@ -51,7 +53,7 @@ export default function EditUserPage() {
                 See https://laravel.com/docs/8.x/blade#method-field */}
                 <input name="_method" type="hidden" value="PATCH" />
                 <input name="uuid" type="hidden" defaultValue={user.uuid} />
-                <UserFormGroup user={user} isAdmin={isAdmin} isAuthorized={isAuthorized} />
+                <UserFormGroup user={user} isUserAdmin={isUserAdmin} isAuthorized={isAuthorized} />
             </BaseForm>
             <UpdateInfo entity={user} />
         </BasePage>

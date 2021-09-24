@@ -5,7 +5,6 @@ import BasePage from '../../common/BasePage';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import {
     AKA_FORUM_URL,
-    AUTH_LEVEL_EDITOR,
     PAGE_TITLE_ADD_NOTICE,
     PAGE_TITLE_ADD_SCREENING,
     PAGE_TITLE_ADD_SERIAL,
@@ -25,8 +24,7 @@ import {
 import Context from '../../Context';
 
 export default function InternPage() {
-    const { user } = useContext(Context);
-    const isEditor = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor } = useContext(Context);
 
     return (
         <BasePage pageTitle={PAGE_TITLE_INTERN}>
@@ -35,7 +33,7 @@ export default function InternPage() {
                 Forum
             </ExternalLinkStyled>
             <LinkStyled to={ROUTE_INTERN_USERS}>{PAGE_TITLE_USERS}</LinkStyled>
-            {isEditor ? (
+            {isUserEditor ? (
                 <>
                     <SubheadlineStyled>Sachen hinzufügen</SubheadlineStyled>
                     <LinkStyled to={ROUTE_INTERN_ADD_NOTICE}>{PAGE_TITLE_ADD_NOTICE}</LinkStyled>

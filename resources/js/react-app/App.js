@@ -5,6 +5,8 @@ import Footer from './common/Footer';
 import Header from './common/Header';
 import PrivateRoute from './common/PrivateRoute';
 import {
+    AUTH_LEVEL_ADMIN,
+    AUTH_LEVEL_EDITOR,
     ROUTE_ABOUT,
     ROUTE_ARCHIVE,
     ROUTE_AWARDS,
@@ -110,6 +112,9 @@ import { getCurrentUser } from './utils/services/userServices';
 
 export default function App() {
     const [user, setUser] = useState({});
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+    const [isUserEditor, setIsUserEditor] = useState(false);
+    const [isUserAdmin, setIsUserAdmin] = useState(false);
     const [pageTitle, setPageTitle] = useState('aka-Filmclub');
     const [currentSemester, setCurrentSemester] = useState({});
     const [isLoading, setIsLoading] = useState(true);
@@ -120,6 +125,12 @@ export default function App() {
             setIsLoading(false);
         });
     }, []);
+
+    useEffect(() => {
+        setIsUserLoggedIn(Object.keys(user).length !== 0);
+        setIsUserEditor(user.level >= AUTH_LEVEL_EDITOR);
+        setIsUserAdmin(user.level >= AUTH_LEVEL_ADMIN);
+    }, [user]);
 
     useEffect(() => {
         setCurrentSemester(computeSemester(new Date()));
@@ -134,7 +145,18 @@ export default function App() {
 
     return (
         <AppStyled>
-            <Context.Provider value={{ user, setUser, pageTitle, setPageTitle, currentSemester }}>
+            <Context.Provider
+                value={{
+                    user,
+                    setUser,
+                    isUserLoggedIn,
+                    isUserEditor,
+                    isUserAdmin,
+                    pageTitle,
+                    setPageTitle,
+                    currentSemester,
+                }}
+            >
                 <Router>
                     <Header />
                     <Switch>

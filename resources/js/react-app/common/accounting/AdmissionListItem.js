@@ -11,7 +11,7 @@ import { formatToDateTimeString } from '../../utils/dateFormatters';
 import billingIcon from '../../assets/billing_icon.png';
 import { toEuroWithSymbol } from '../../utils/moneyFormatters';
 
-export default function AdmissionListItem({ screening }) {
+export default function AdmissionListItem({ screening, isUserEditor }) {
     return (
         <ListItemStyled>
             {screening.billing ? (
@@ -47,9 +47,11 @@ export default function AdmissionListItem({ screening }) {
                     <IconStyled src={billingIcon} />
                 </BillingLinkStyled>
             ) : (
-                <BillingLinkStyled to={ROUTE_INTERN_ADD_BILLING + screening.uuid}>
-                    <IconStyled src={billingIcon} />
-                </BillingLinkStyled>
+                isUserEditor && (
+                    <BillingLinkStyled to={ROUTE_INTERN_ADD_BILLING + screening.uuid}>
+                        <IconStyled src={billingIcon} />+
+                    </BillingLinkStyled>
+                )
             )}
         </ListItemStyled>
     );
@@ -109,7 +111,12 @@ const TitleLinkStyled = styled(Link)`
 `;
 
 const BillingLinkStyled = styled(Link)`
-    margin-left: 5px;
+    margin-left: 10px;
+
+    &.active,
+    &:hover {
+        text-decoration: none;
+    }
 `;
 
 const IconStyled = styled.img`

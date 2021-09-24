@@ -7,7 +7,6 @@ import UpdateInfo from '../common/misc/UpdateInfo';
 import CreditsContainer from '../common/screenings/CreditsContainer';
 import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
-    AUTH_LEVEL_EDITOR,
     PAGE_TITLE_PROGRAM,
     ROUTE_INTERN_ADD_IMAGE_SCREENING,
     ROUTE_INTERN_EDIT_IMAGE,
@@ -28,8 +27,7 @@ export default function ScreeningPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [noScreeningFound, setNoScreeningFound] = useState(false);
 
-    const { user, setPageTitle } = useContext(Context);
-    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor, setPageTitle } = useContext(Context);
 
     useEffect(() => {
         document.title = screening.title + ' | aka-Filmclub';
@@ -87,7 +85,7 @@ export default function ScreeningPage() {
                         </SerialLinkStyled>
                     </SerialContainerStyled>
                 )}
-                {isAuthorized && (
+                {isUserEditor && (
                     <>
                         <HorizontalRuleStyled />
                         <EditLinkStyled to={ROUTE_INTERN_EDIT_SCREENING + screening.uuid}>

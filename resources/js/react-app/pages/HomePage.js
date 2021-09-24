@@ -5,7 +5,6 @@ import UpdateInfo from '../common/misc/UpdateInfo';
 import NoticeCard from '../common/notices/NoticeCard';
 import ScreeningCard from '../common/screenings/ScreeningCard';
 import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
-import { AUTH_LEVEL_EDITOR } from '../constants';
 import Context from '../Context';
 import { getNotices } from '../utils/services/noticeServices';
 import { getFutureScreenings } from '../utils/services/screeningServices';
@@ -20,8 +19,7 @@ export default function HomePage() {
     const [isLoadingScreenings, setIsLoadingScreenings] = useState(true);
     const [isLoadingNotices, setIsLoadingNotices] = useState(true);
 
-    const { user, setPageTitle } = useContext(Context);
-    const isAuthorized = user.level >= AUTH_LEVEL_EDITOR;
+    const { isUserEditor, setPageTitle } = useContext(Context);
 
     useEffect(() => {
         document.title = 'aka-Filmclub';
@@ -55,7 +53,7 @@ export default function HomePage() {
         <PageStyled>
             <SectionStyled>
                 <WelcomeTextStyled dangerouslySetInnerHTML={{ __html: welcomeText.text }} />
-                {isAuthorized && (
+                {isUserEditor && (
                     <>
                         <Link to={'/intern/editText/' + welcomeText.page}>Willkommensbereich bearbeiten</Link>
                         <UpdateInfo entity={welcomeText} />
