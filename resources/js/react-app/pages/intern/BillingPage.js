@@ -111,23 +111,27 @@ export default function BillingPage() {
                     <CommentValueStyled>{billing.comment}</CommentValueStyled>
                 </>
             )}
-            {isUserEditor && (
-                <>
-                    <EditLinkStyled to={ROUTE_INTERN_EDIT_BILLING + billing.uuid}>Abrechnung bearbeiten</EditLinkStyled>
-                    <VerticalLineStyled>|</VerticalLineStyled>
-                </>
-            )}
-            <PDFDownloadLink
-                document={<BillingPdf billing={billing} />}
-                fileName={
-                    'aka-Filmclub_Abrechnung_' +
-                    replaceUmlautsAndSpecialCharacters(billing.screening.title) +
-                    '_' +
-                    billing.screening.date
-                }
-            >
-                PDF runterladen
-            </PDFDownloadLink>
+            <LinksContainerStyled>
+                {isUserEditor && (
+                    <>
+                        <EditLinkStyled to={ROUTE_INTERN_EDIT_BILLING + billing.uuid}>
+                            Abrechnung bearbeiten
+                        </EditLinkStyled>
+                        <VerticalLineStyled>|</VerticalLineStyled>
+                    </>
+                )}
+                <PDFDownloadLink
+                    document={<BillingPdf billing={billing} />}
+                    fileName={
+                        'aka-Filmclub_Abrechnung_' +
+                        replaceUmlautsAndSpecialCharacters(billing.screening.title) +
+                        '_' +
+                        billing.screening.date
+                    }
+                >
+                    PDF runterladen
+                </PDFDownloadLink>
+            </LinksContainerStyled>
             <UpdateInfo entity={billing} />
         </BasePage>
     );
@@ -174,7 +178,10 @@ const CommentKeyStyled = styled.h3`
 
 const CommentValueStyled = styled.p``;
 
+const LinksContainerStyled = styled.div`
+    margin-top: 20px;
+`;
+
 const EditLinkStyled = styled(Link)`
     display: inline-block;
-    margin-top: 20px;
 `;
