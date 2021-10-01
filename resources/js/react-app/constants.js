@@ -25,6 +25,7 @@ export const AKA_BIC = 'FRSPDE66XXX';
 export const AKA_BANK = 'Sparkasse Freiburg';
 
 export const AKA_FORUM_URL = 'http://forum.aka-filmclub.de/';
+export const AKA_HIGHNOON_URL = 'http://highnoon.aka-filmclub.de';
 export const AKA_FACEBOOK_URL = 'https://www.facebook.com/akaFilmclub/';
 export const AKA_INSTAGRAM_URL = 'https://www.instagram.com/akafilmclub/';
 export const AKA_TWITTER_URL = 'https://twitter.com/akafilmclub';

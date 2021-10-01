@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import akaLogo from '../assets/aka_logo.png';
 import {
     AKA_FORUM_URL,
+    AKA_HIGHNOON_URL,
     PAGE_TITLE_ABOUT,
     PAGE_TITLE_ADD_NOTICE,
     PAGE_TITLE_ADD_SCREENING,
@@ -100,14 +101,22 @@ export default function Header() {
                             <SubNavLinkStyled to={ROUTE_FAQS} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_FAQS}
                             </SubNavLinkStyled>
+                            <SubNavExternalLinkStyled
+                                href={AKA_HIGHNOON_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setIsNavOpen(false)}
+                            >
+                                Highnoon Film-E-Zine
+                            </SubNavExternalLinkStyled>
+                            <SubNavLinkStyled to={ROUTE_SELFMADE_FILMS} onClick={() => setIsNavOpen(false)}>
+                                {PAGE_TITLE_SELFMADE_FILMS}
+                            </SubNavLinkStyled>
                             <SubNavLinkStyled to={ROUTE_PRESS} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_PRESS}
                             </SubNavLinkStyled>
                             <SubNavLinkStyled to={ROUTE_AWARDS} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_AWARDS}
-                            </SubNavLinkStyled>
-                            <SubNavLinkStyled to={ROUTE_SELFMADE_FILMS} onClick={() => setIsNavOpen(false)}>
-                                {PAGE_TITLE_SELFMADE_FILMS}
                             </SubNavLinkStyled>
                             <SubNavLinkStyled to={ROUTE_LINKS} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_LINKS}
@@ -130,6 +139,7 @@ export default function Header() {
                                     href={AKA_FORUM_URL}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    onClick={() => setIsNavOpen(false)}
                                 >
                                     Forum
                                 </SubNavExternalLinkStyled>
