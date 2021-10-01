@@ -41,11 +41,13 @@ export default function NoticePage() {
 
     return (
         <PageStyled>
-            {showNoticeImage(notice) && (
+            {showNoticeImage(notice) ? (
                 <ImageAndCopyrightContainerStyled>
                     <ImageStyled src={STORAGE_FOLDER + notice.image.path} />
                     <CopyrightContainer image={notice.image} />
                 </ImageAndCopyrightContainerStyled>
+            ) : (
+                <CushionStyled />
             )}
             <DateStyled>{formatToDateString(notice.date)}</DateStyled>
             <TitleStyled>{notice.title}</TitleStyled>
@@ -73,6 +75,10 @@ const ImageAndCopyrightContainerStyled = styled.div`
 
 const ImageStyled = styled.img`
     width: 100%;
+`;
+
+const CushionStyled = styled.div`
+    height: 30px;
 `;
 
 const DateStyled = styled.div``;
