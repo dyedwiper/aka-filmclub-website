@@ -15,7 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->nullable();
+            $table->uuid('uuid');
             $table->timestamps();
             $table->string('updated_by', 32)->nullable();
             // Der username darf höchstens 191 Zeichen lang sein, sonst gibt es einen SQL-Fehler wegen des unique Index.

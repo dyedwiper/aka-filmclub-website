@@ -15,7 +15,7 @@ class CreateSerialsTable extends Migration
     {
         Schema::create('serials', function (Blueprint $table) {
             $table->id();
-            $table->uuid('uuid')->nullable();
+            $table->uuid('uuid');
             $table->timestamps();
             $table->string('updated_by', 32)->nullable();
             $table->string('title');
