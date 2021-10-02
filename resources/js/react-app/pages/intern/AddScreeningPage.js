@@ -54,8 +54,7 @@ export default function AddScreeningPage() {
                 setOmdbData(dataMap);
                 setOmdbError(false);
             })
-            .catch((err) => {
-                console.log(err);
+            .catch(() => {
                 setOmdbError(true);
             });
     }
