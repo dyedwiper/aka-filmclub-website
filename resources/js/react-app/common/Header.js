@@ -101,14 +101,6 @@ export default function Header() {
                             <SubNavLinkStyled to={ROUTE_FAQS} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_FAQS}
                             </SubNavLinkStyled>
-                            <SubNavExternalLinkStyled
-                                href={AKA_HIGHNOON_URL}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                onClick={() => setIsNavOpen(false)}
-                            >
-                                Highnoon Film-E-Zine
-                            </SubNavExternalLinkStyled>
                             <SubNavLinkStyled to={ROUTE_SELFMADE_FILMS} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_SELFMADE_FILMS}
                             </SubNavLinkStyled>
@@ -128,6 +120,16 @@ export default function Header() {
                                 {PAGE_TITLE_IMPRINT}
                             </SubNavLinkStyled>
                         </SubNavStyled>
+                    </DropdownContainerStyled>
+                    <DropdownContainerStyled>
+                        <NavExternalLinkStyled
+                            href={AKA_HIGHNOON_URL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => setIsNavOpen(false)}
+                        >
+                            Highnoon
+                        </NavExternalLinkStyled>
                     </DropdownContainerStyled>
                     {isUserLoggedIn ? (
                         <DropdownContainerStyled>
@@ -343,6 +345,17 @@ const SubNavExternalLinkStyled = styled.a`
 
     &:hover {
         text-decoration-color: white;
+    }
+`;
+
+const NavExternalLinkStyled = styled.a`
+    color: black;
+    font-size: 1.7em;
+    font-weight: bold;
+
+    @media (max-width: 767px) {
+        display: block;
+        margin: 10px 0 0 0;
     }
 `;
 
