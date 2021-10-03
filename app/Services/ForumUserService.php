@@ -31,8 +31,6 @@ class ForumUserService
         ]);
         $forumUser->save();
 
-        // Get the saved user for setting the user groups.
-        $forumUser = ForumUser::firstWhere('username_clean', strtolower($request->username));
         $this->CreateUserGroup(Config::get('constants.forum_auth_level.registered'), $forumUser->user_id);
         if ($request->level == Config::get('constants.auth_level.admin')) {
             $this->CreateUserGroup(Config::get('constants.forum_auth_level.admin'), $forumUser->user_id);
@@ -45,7 +43,7 @@ class ForumUserService
         if (!$forumUser) return;
 
         // Check for null, because the level is send as null, when the select in the user form is disabled.
-        // Also check if the authenticated user is admin, in order to prevent users from changing their own group_id.
+        // Also check if the authenticated user is admin, in order to prevent users from changing their own group.
         if ($request->level != null && Auth::user()->level == Config::get('constants.auth_level.admin')) {
             $forumUser->group_id = $this->ComputeDefaultGroupId($request->level);
             if ($request->level == Config::get('constants.auth_level.admin')) {
