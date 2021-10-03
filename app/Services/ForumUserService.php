@@ -68,9 +68,7 @@ class ForumUserService
     private function ComputeGroupId(int $level)
     {
         $group_id = Config::get('constants.forum_auth_level.registered');
-        if ($level == Config::get('constants.auth_level.editor')) {
-            $group_id = Config::get('constants.forum_auth_level.moderator');
-        } elseif ($level == Config::get('constants.auth_level.admin')) {
+        if ($level == Config::get('constants.auth_level.admin')) {
             $group_id = Config::get('constants.forum_auth_level.admin');
         }
         return $group_id;
