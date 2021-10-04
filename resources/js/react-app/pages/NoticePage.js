@@ -70,6 +70,7 @@ export default function NoticePage() {
 }
 
 const ImageAndCopyrightContainerStyled = styled.div`
+    position: relative;
     margin: 20px 0;
 `;
 

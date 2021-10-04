@@ -93,6 +93,7 @@ export default function SerialPage() {
 }
 
 const ImageAndCopyrightContainerStyled = styled.div`
+    position: relative;
     margin: 20px 0;
 `;
 
