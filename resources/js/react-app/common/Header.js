@@ -188,7 +188,15 @@ export default function Header() {
                 </NavStyled>
             </ContentContainerStyled>
             {isUserLoggedIn && (
-                <LoggedInUserLinkStyled to={ROUTE_INTERN_EDIT_USER + user.uuid}>{user.username}</LoggedInUserLinkStyled>
+                <LoggedInUserContainerStyled>
+                    <LoggedInUserLinkStyled to={ROUTE_INTERN_EDIT_USER + user.uuid}>
+                        {user.username}
+                    </LoggedInUserLinkStyled>
+                    <BlackBarStyled />
+                    <LogoutLinkStyled to={ROUTE_HOME} onClick={handleLogout}>
+                        Logout
+                    </LogoutLinkStyled>
+                </LoggedInUserContainerStyled>
             )}
         </HeaderStyled>
     );
@@ -359,7 +367,7 @@ const NavExternalLinkStyled = styled.a`
     }
 `;
 
-const LoggedInUserLinkStyled = styled(Link)`
+const LoggedInUserContainerStyled = styled.div`
     position: absolute;
     top: 20px;
     right: 20px;
@@ -369,4 +377,20 @@ const LoggedInUserLinkStyled = styled(Link)`
     @media (max-width: 767px) {
         display: none;
     }
+`;
+
+const LoggedInUserLinkStyled = styled(Link)`
+    display: block;
+    text-align: center;
+`;
+
+const BlackBarStyled = styled.div`
+    height: 2px;
+    margin: 10px 0;
+    background-color: black;
+`;
+
+const LogoutLinkStyled = styled(Link)`
+    display: block;
+    text-align: center;
 `;
