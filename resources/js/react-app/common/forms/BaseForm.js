@@ -66,7 +66,7 @@ export default function BaseForm({
                         <>
                             <DeleteButtonStyled
                                 type="button"
-                                disabled={isUserForm && !isUserAdmin}
+                                disabled={isUserForm && (!isUserAdmin || isUserSelf)}
                                 onClick={() => setShowDeletePrompt(true)}
                             >
                                 Löschen
