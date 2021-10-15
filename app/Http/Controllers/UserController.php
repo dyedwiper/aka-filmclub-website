@@ -150,18 +150,6 @@ class UserController extends Controller
         $user->delete();
     }
 
-    // This function is only used during migration from the old website. It can be deleted afterwards.
-    public function UpdateUuids()
-    {
-        $users = User::all();
-        foreach ($users as $user) {
-            if (!$user->uuid) {
-                $user->uuid = uniqid();
-                $user->save();
-            }
-        }
-    }
-
     private function mapRequestToUser(Request $request, User $user)
     {
         $user->updated_by = $request->updated_by;

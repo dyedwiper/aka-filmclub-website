@@ -45,16 +45,6 @@ class DistributorController extends Controller
         $distributor->delete();
     }
 
-    // This function is only used during migration from the old website. It can be deleted afterwards.
-    public function UpdateUuids()
-    {
-        $distributors = Distributor::all();
-        foreach ($distributors as $distributor) {
-            $distributor->uuid = uniqid();
-            $distributor->save();
-        }
-    }
-
     private function mapRequestToDistributor(Request $request, Distributor $distributor)
     {
         $distributor->updated_by = $request->updated_by;

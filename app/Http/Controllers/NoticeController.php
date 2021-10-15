@@ -76,16 +76,6 @@ class NoticeController extends Controller
         }
     }
 
-    // This function is only used during migration from the old website. It can be deleted afterwards.
-    public function UpdateUuids()
-    {
-        $notices = Notice::all();
-        foreach ($notices as $notice) {
-            $notice->uuid = uniqid();
-            $notice->save();
-        }
-    }
-
     private function mapRequestToNotice(Request $request, Notice $notice)
     {
         $notice->updated_by = $request->updated_by;

@@ -109,16 +109,6 @@ class ScreeningController extends Controller
         }
     }
 
-    // This function is only used during migration from the old website. It can be deleted afterwards.
-    public function UpdateUuids()
-    {
-        $screenings = Screening::all();
-        foreach ($screenings as $screening) {
-            $screening->uuid = uniqid();
-            $screening->save();
-        }
-    }
-
     private function mapRequestToScreening(Request $request, Screening $screening)
     {
         $screening->updated_by = $request->updated_by;

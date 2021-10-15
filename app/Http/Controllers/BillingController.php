@@ -110,16 +110,6 @@ class BillingController extends Controller
         $billing->delete();
     }
 
-    // This function is only used during migration from the old website. It can be deleted afterwards.
-    public function UpdateUuids()
-    {
-        $billings = Billing::all();
-        foreach ($billings as $billing) {
-            $billing->uuid = uniqid();
-            $billing->save();
-        }
-    }
-
     private function mapRequestToBilling(Request $request, Billing $billing)
     {
         $billing->updated_by = $request->updated_by;

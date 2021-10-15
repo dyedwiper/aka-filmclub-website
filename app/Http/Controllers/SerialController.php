@@ -94,43 +94,6 @@ class SerialController extends Controller
         }
     }
 
-    // This function is only used during migration from the old website. It can be deleted afterwards.
-    public function UpdateUuids()
-    {
-        $serials = Serial::all();
-        foreach ($serials as $serial) {
-            if (!$serial->uuid) {
-                $serial->uuid = uniqid();
-                $serial->save();
-            }
-        }
-    }
-
-    // This function is only used during migration from the old website. It can be deleted afterwards.
-    public function UpdateSemesters()
-    {
-        $serials = Serial::all();
-        foreach ($serials as $serial) {
-            $firstScreening = Screening::where('serial_id', $serial->id)->first();
-            if ($firstScreening == null) continue;
-            $firstDate = strtotime($firstScreening->date);
-            $season = '';
-            $year = 0;
-            if (date('m', $firstDate) >= 4 && date('m', $firstDate) < 10) {
-                $season = 'SS';
-            } else {
-                $season = 'WS';
-            }
-            if (date('m', $firstDate) >= 4) {
-                $year = date('Y', $firstDate);
-            } else {
-                $year = date('Y', $firstDate) - 1;
-            }
-            $serial->semester = $season . $year;
-            $serial->save();
-        }
-    }
-
     private function mapRequestToSerial(Request $request, Serial $serial)
     {
         $serial->updated_by = $request->updated_by;
