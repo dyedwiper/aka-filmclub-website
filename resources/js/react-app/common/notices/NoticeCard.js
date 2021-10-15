@@ -10,7 +10,10 @@ export default function NoticeCard({ notice }) {
     return (
         <NoticeCardStyled>
             <Link to={ROUTE_NOTICE + notice.uuid}>
-                <ImageStyled src={showNoticeImage(notice) ? STORAGE_FOLDER + notice.image.path : akaLogoGrau} />
+                <ImageStyled
+                    src={showNoticeImage(notice) ? STORAGE_FOLDER + notice.image.path : akaLogoGrau}
+                    alt={notice.image && notice.image.alt_text}
+                />
                 <TitleStyled>{notice.title}</TitleStyled>
             </Link>
             <ContentStyled>{stripHtml(notice.content)}</ContentStyled>

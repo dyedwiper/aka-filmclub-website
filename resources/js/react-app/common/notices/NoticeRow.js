@@ -22,7 +22,10 @@ export default function NoticeRow({ notice }) {
                     <Link to={ROUTE_NOTICE + notice.uuid}>[mehr]</Link>
                 </InfoContainerStyled>
                 <LinkStyled to={ROUTE_NOTICE + notice.uuid}>
-                    <ImageStyled src={showNoticeImage(notice) ? STORAGE_FOLDER + notice.image.path : akaLogoGrau} />
+                    <ImageStyled
+                        src={showNoticeImage(notice) ? STORAGE_FOLDER + notice.image.path : akaLogoGrau}
+                        alt={notice.image && notice.image.alt_text}
+                    />
                 </LinkStyled>
             </NoticeContainerStyled>
         </NoticeRowStyled>

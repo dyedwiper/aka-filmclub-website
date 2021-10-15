@@ -11,7 +11,10 @@ export default function ScreeningCard({ screening }) {
         <ScreeningCardStyled>
             <Link to={ROUTE_SCREENING + screening.uuid}>
                 <ImageContainerStyled>
-                    <ImageStyled src={screening.image ? STORAGE_FOLDER + screening.image.path : akaLogoGrau} />
+                    <ImageStyled
+                        src={screening.image ? STORAGE_FOLDER + screening.image.path : akaLogoGrau}
+                        alt={screening.image && screening.image.alt_text}
+                    />
                     <TitleStyled>{screening.title}</TitleStyled>
                 </ImageContainerStyled>
             </Link>

@@ -43,7 +43,7 @@ export default function NoticePage() {
         <PageStyled>
             {showNoticeImage(notice) ? (
                 <ImageAndCopyrightContainerStyled>
-                    <ImageStyled src={STORAGE_FOLDER + notice.image.path} />
+                    <ImageStyled src={STORAGE_FOLDER + notice.image.path} alt={notice.image.alt_text} />
                     <CopyrightContainer image={notice.image} />
                 </ImageAndCopyrightContainerStyled>
             ) : (

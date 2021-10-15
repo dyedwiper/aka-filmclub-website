@@ -51,7 +51,7 @@ export default function SerialPage() {
             {showSerialImage(serial) ? (
                 <ImageAndCopyrightContainerStyled>
                     <ImageContainerStyled>
-                        <ImageStyled src={STORAGE_FOLDER + serial.image.path} />
+                        <ImageStyled src={STORAGE_FOLDER + serial.image.path} alt={serial.image.alt_text} />
                         <TitleContainerStyled>
                             <TitleStyled>{serial.title}</TitleStyled>
                             <SubtitleStyled>{serial.subtitle}</SubtitleStyled>

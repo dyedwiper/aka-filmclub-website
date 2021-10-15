@@ -37,7 +37,7 @@ export default function EditImagePage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_EDIT_IMAGE}>
             <HeadlineStyled>{PAGE_TITLE_EDIT_IMAGE}</HeadlineStyled>
-            <ImageStyled src={STORAGE_FOLDER + image.path} />
+            <ImageStyled src={STORAGE_FOLDER + image.path} alt={image.alt_text} />
             <HintStyled>(Das ist das momentan gespeicherte Bild und keine Vorschau des hochgeladenen.)</HintStyled>
             <BaseForm
                 postFunction={postImage}

@@ -13,7 +13,10 @@ export default function SerialRow({ serial }) {
             <HorizontalRuleStyled />
             <SerialContainerStyled>
                 <LinkStyled to={ROUTE_SERIAL + serial.uuid}>
-                    <ImageStyled src={showSerialImage(serial) ? STORAGE_FOLDER + serial.image.path : akaLogoGrau} />
+                    <ImageStyled
+                        src={showSerialImage(serial) ? STORAGE_FOLDER + serial.image.path : akaLogoGrau}
+                        alt={serial.image && serial.image.alt_text}
+                    />
                 </LinkStyled>
                 <InfoContainerStyled>
                     <LinkStyled to={ROUTE_SERIAL + serial.uuid}>

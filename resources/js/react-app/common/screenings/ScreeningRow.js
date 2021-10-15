@@ -12,7 +12,10 @@ export default function ScreeningRow({ screening }) {
             <HorizontalRuleStyled />
             <ScreeningContainerStyled>
                 <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
-                    <ImageStyled src={screening.image ? STORAGE_FOLDER + screening.image.path : akaLogoGrau} />
+                    <ImageStyled
+                        src={screening.image ? STORAGE_FOLDER + screening.image.path : akaLogoGrau}
+                        alt={screening.image && screening.image.alt_text}
+                    />
                 </LinkStyled>
                 <InfoContainerStyled>
                     <DateStyled>{formatToDateTimeStringWithWeekday(screening.date)}</DateStyled>

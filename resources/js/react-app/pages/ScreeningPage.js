@@ -54,7 +54,7 @@ export default function ScreeningPage() {
             {showScreeningImage(screening) ? (
                 <ImageAndCopyrightContainerStyled>
                     <ImageContainerStyled>
-                        <ImageStyled src={STORAGE_FOLDER + screening.image.path} />
+                        <ImageStyled src={STORAGE_FOLDER + screening.image.path} alt={screening.image.alt_text} />
                         <TitleContainerStyled>
                             <TitleStyled>{screening.title}</TitleStyled>
                         </TitleContainerStyled>
