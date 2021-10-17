@@ -69,7 +69,7 @@ export default function Header() {
                 <LinkStyled to={ROUTE_HOME}>
                     <LogoStyled src={akaLogo} headerHeight={headerHeight} />
                 </LinkStyled>
-                <PageTitleStyled>{pageTitle}</PageTitleStyled>
+                <PageTitleStyled onClick={() => window.scroll(0, 0)}>{pageTitle}</PageTitleStyled>
                 <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
                 <NavStyled isNavOpen={isNavOpen}>
                     <DropdownContainerStyled>
