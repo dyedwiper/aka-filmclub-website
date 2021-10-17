@@ -12,8 +12,8 @@ export default function BaseForm({
     isEditing,
     postRedirectRoute,
     deleteRedirectRoute,
+    isEditingUser = false,
 }) {
-    const [isUserForm, setIsUserForm] = useState(false);
     const [isUserSelf, setIsUserSelf] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [validationErrors, setValidationErrors] = useState([]);
@@ -25,11 +25,10 @@ export default function BaseForm({
     let history = useHistory();
 
     useEffect(() => {
-        // Extra checks for user form.
-        const userForm =
-            children.length && children.find((child) => child.type.name && child.type.name === 'UserFormGroup');
-        setIsUserForm(userForm);
-        setIsUserSelf(isEditing && userForm && userForm.props.user.id === loggedInUser.id);
+        if (isEditingUser) {
+            const editedUserUuid = getLastParameterFromPath();
+            setIsUserSelf(editedUserUuid === loggedInUser.uuid);
+        }
     }, []);
 
     useEffect(() => {
@@ -54,7 +53,7 @@ export default function BaseForm({
                 <ButtonContainerStyled>
                     <SubmitButtonStyled
                         type="submit"
-                        disabled={isUserForm && !isUserSelf && !isUserAdmin}
+                        disabled={isEditingUser && !isUserSelf && !isUserAdmin}
                         onClick={handleSubmit}
                     >
                         Speichern
@@ -66,7 +65,7 @@ export default function BaseForm({
                         <>
                             <DeleteButtonStyled
                                 type="button"
-                                disabled={isUserForm && (!isUserAdmin || isUserSelf)}
+                                disabled={isEditingUser && (!isUserAdmin || isUserSelf)}
                                 onClick={() => setShowDeletePrompt(true)}
                             >
                                 Löschen

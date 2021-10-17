@@ -48,6 +48,7 @@ export default function EditUserPage() {
                 isEditing={true}
                 postRedirectRoute={ROUTE_INTERN_USERS}
                 deleteRedirectRoute={ROUTE_INTERN_USERS}
+                isEditingUser={true}
             >
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
                 See https://laravel.com/docs/8.x/blade#method-field */}
