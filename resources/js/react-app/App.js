@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Footer from './common/Footer';
 import Header from './common/Header';
 import PrivateRoute from './common/PrivateRoute';
+import ScrollToTop from './common/ScrollToTop';
 import {
     AUTH_LEVEL_ADMIN,
     AUTH_LEVEL_EDITOR,
@@ -158,6 +159,7 @@ export default function App() {
                 }}
             >
                 <Router>
+                    <ScrollToTop />
                     <Header />
                     <Switch>
                         <Route exact path={ROUTE_HOME}>
