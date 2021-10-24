@@ -31,7 +31,7 @@ export default function FaqsPage() {
             <QuestionsListStyled>
                 {faqs.map((faq) => (
                     <QuestionLinkItemStyled key={faq.id}>
-                        <HashLink smooth to={'#' + faq.uuid}>
+                        <HashLink to={'#' + faq.uuid} scroll={scrollWithOffset}>
                             {faq.question}
                         </HashLink>
                     </QuestionLinkItemStyled>
@@ -45,6 +45,13 @@ export default function FaqsPage() {
             </AnswersListStyled>
         </BasePage>
     );
+
+    function scrollWithOffset(element) {
+        // As proposed here: https://github.com/rafgraph/react-router-hash-link/issues/25
+        const yCoordinate = element.getBoundingClientRect().top + window.pageYOffset;
+        const yOffset = -80;
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+    }
 }
 
 const QuestionsListStyled = styled.ul`
