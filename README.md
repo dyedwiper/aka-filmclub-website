@@ -1,62 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Einleitung
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Dies ist der Code für die Website vom aka-Filmclub Freiburg e.V., erreichbar unter https://www.aka-filmclub.de/.
 
-## About Laravel
+Diese Readme enthält Erklärungen zum Technologie-Stack und zur Progammierung. Dabei wird besonders auf die Dinge eingegangen, die vom Standard abweichen. Wie die zugrundeliegenden Frameworks funktionieren, ist deren jeweiliger Dokumentation zu entnehmen.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Außerdem wird erklärt, was nötig ist, um die App lokal zu installieren.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# Grundlegendes Setup
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Das Backend der Website ist mit [Laravel](https://laravel.com/) gebaut, das Frontend mit [React](https://reactjs.org/).
 
-## Learning Laravel
+Es handelt sich um eine [Single-Page-Applicaton](https://de.wikipedia.org/wiki/Single-Page-Webanwendung), d.h. beim Aufruf der Website wird das gesamte Frontend als JavaScript-Anwendung an den Browser geschickt. Beim Navigieren oder anderen Interaktionen fragt das Frontend nur noch Daten vom Backend ab bzw. schickt Daten ans Backend.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Installation und Entwicklung
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Voraussetzungen
 
-## Laravel Sponsors
+Damit die App lokal läuft, muss folgendes installiert sein:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+-   [PHP](https://www.php.net/) (7.4, 8)
+-   eine MySQL-Datenbank z.B. [MariaDB](https://mariadb.org/) (10.1)
+-   ein Webserver, z.B. [Apache](https://httpd.apache.org/) (2.4)
 
-### Premium Partners
+Zur Entwicklung ist außerdem notwendig:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+-   [Node.js](https://nodejs.org/en/) (14.5)
 
-## Contributing
+In Klammern stehen die Versionen, mit denen die App getestet wurde. Es kann sein, dass sie auch mit älteren oder neueren Versionen läuft.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Installation
 
-## Code of Conduct
+Da die Vendor-Biblitheken mit im Repository liegen (Erklärung dazu hier), muss Laravel nicht extra installiert werden. Die App ist praktisch sofort lauffähig. Es muss nur ein env-File hinterlegt, die Datenbank eingerichtet und der Webserver konfiguriert werden.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### env
 
-## Security Vulnerabilities
+Ein Beispiel-env-File liegt als _env.example_ im Repository. Die Werte in diesem File müssen angepasst werden. Siehe dazu: https://laravel.com/docs/8.x/configuration
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Datenbank
 
-## License
+Mit dem Befehl `php artisan migrate` werden die nötigen Tabellen für die Website erstellt. Die Forum-Datenbank ist nur für die User-Administration nötig (siehe dazu...); alles andere läuft auch ohne sie. Die Tabellen für die Forum-Datenbank sind [hier](https://wiki.phpbb.com/Tables) gelistet.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Entwicklung
+
+### npm-Skripte
+
+### Warum der vendor-Ordner eingecheckt ist
+
+# Backend
+
+## Routes
+
+# Frontend
+
+Der gesamt Quellcode fürs Frontend findet sich in _/resources/js_.
+
+Im Folgenden wird die Einbindung
+
+##
