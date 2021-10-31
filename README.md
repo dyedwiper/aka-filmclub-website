@@ -4,13 +4,13 @@ Dies ist der Code für die Website vom aka-Filmclub Freiburg e.V., erreichbar un
 
 Diese Readme enthält Erklärungen zum Technologie-Stack und zur Progammierung. Dabei wird besonders auf die Dinge eingegangen, die vom Standard abweichen. Wie die zugrundeliegenden Frameworks funktionieren, ist deren jeweiliger Dokumentation zu entnehmen.
 
-Außerdem wird erklärt, was nötig ist, um die App lokal zu installieren.
+Außerdem wird erklärt, was nötig ist, um die App lokal installieren.
 
-# Grundlegendes Setup
+## Grundlegendes Setup
 
 Das Backend der Website ist mit [Laravel](https://laravel.com/) gebaut, das Frontend mit [React](https://reactjs.org/).
 
-Es handelt sich um eine [Single-Page-Applicaton](https://de.wikipedia.org/wiki/Single-Page-Webanwendung), d.h. beim Aufruf der Website wird das gesamte Frontend als JavaScript-Anwendung an den Browser geschickt. Beim Navigieren oder anderen Interaktionen fragt das Frontend nur noch Daten vom Backend ab bzw. schickt Daten ans Backend.
+Es handelt sich um eine [Single-Page-Applicaton (SPA)](https://de.wikipedia.org/wiki/Single-Page-Webanwendung), d.h. beim Aufruf der Website wird das gesamte Frontend als JavaScript-Anwendung an den Browser geschickt. Beim Navigieren oder anderen Interaktionen fragt das Frontend nur noch Daten vom Backend ab bzw. schickt Daten ans Backend.
 
 # Installation und Entwicklung
 
@@ -19,7 +19,7 @@ Es handelt sich um eine [Single-Page-Applicaton](https://de.wikipedia.org/wiki/S
 Damit die App lokal läuft, muss folgendes installiert sein:
 
 -   [PHP](https://www.php.net/) (7.4, 8)
--   eine MySQL-Datenbank z.B. [MariaDB](https://mariadb.org/) (10.1)
+-   eine SQL-Datenbank z.B. [MariaDB](https://mariadb.org/) (10.1)
 -   ein Webserver, z.B. [Apache](https://httpd.apache.org/) (2.4)
 
 Zur Entwicklung ist außerdem notwendig:
@@ -30,27 +30,80 @@ In Klammern stehen die Versionen, mit denen die App getestet wurde. Es kann sein
 
 ## Installation
 
-Da die Vendor-Biblitheken mit im Repository liegen (Erklärung dazu hier), muss Laravel nicht extra installiert werden. Die App ist praktisch sofort lauffähig. Es muss nur ein env-File hinterlegt, die Datenbank eingerichtet und der Webserver konfiguriert werden.
+Da die Vendor-Biblitheken mit im Repository liegen (Erklärung dazu [hier](#vendor-ordner)), muss Laravel nicht extra installiert werden. Die App ist praktisch sofort lauffähig. Es muss nur ein env-File hinterlegt, die Datenbank eingerichtet und der Webserver konfiguriert werden.
 
 ### env
 
-Ein Beispiel-env-File liegt als _env.example_ im Repository. Die Werte in diesem File müssen angepasst werden. Siehe dazu: https://laravel.com/docs/8.x/configuration
+Ein Beispiel-env-File liegt als _env.example_ im Repository. Die Werte in diesem File müssen angepasst werden. Siehe dazu [hier](https://laravel.com/docs/8.x#environment-based-configuration) und [hier](https://laravel.com/docs/8.x/configuration).
 
 ### Datenbank
 
-Mit dem Befehl `php artisan migrate` werden die nötigen Tabellen für die Website erstellt. Die Forum-Datenbank ist nur für die User-Administration nötig (siehe dazu...); alles andere läuft auch ohne sie. Die Tabellen für die Forum-Datenbank sind [hier](https://wiki.phpbb.com/Tables) gelistet.
+Mit dem Befehl `php artisan migrate` werden die Tabellen für die Website erstellt.
+
+Für die User-Administration wird darüberhinaus die Forums-Datenbank benötigt (siehe dazu...). Die Tabellen für die Forums-Datenbank sind [hier](https://wiki.phpbb.com/Tables) gelistet. Die einfachste Möglichkeit, die Datenbank einzurichten, ist es wohl, sich ein phpBB-Forum lokal zu installieren.
+
+### Webserver
+
+Der Webserver muss auf den _/public_-Ordner zeigen.
 
 ## Entwicklung
 
-### npm-Skripte
+### Versionsverwaltung mit Git
 
-### Warum der vendor-Ordner eingecheckt ist
+Zur Versionsverwaltung wird [Git](https://git-scm.com/) verwendet. Im Folgenden sind ein paar Besonderheiten beschrieben.
 
-# Backend
+#### _vendor_-Ordner
+
+Normalerweise würde man einen Ordner mit Fremd-Bibliotheken wie den _vendor_-Ordner nicht in die Versionsverwaltung einchecken. Das ist hier aber nötig, weil die App direkt über Git auf den Webserver des Website-Hosts geladen wird und es dort keine Möglichkeit gibt, die Bibliotheken wiederherzustellen (weil z.B. Composer nicht auf dem Webserver installiert ist).
+
+#### _app.js_-Datei
+
+Die Datei _app.js_, die das kompilierte Frontend enthält, würde man eigentlich auch nicht mit einchecken. Dass es dennoch so ist, hat einen ähnlichen Grund wie beim _vendor_-Ordner: Es gibt keine Möglichkeit die Datei auf dem Webserver zu kompilieren.
+
+#### Branches
+
+Es gibt die zwei Branches _main_ und _prod_. Sie unterscheiden sich nur dadurch, wie die _app.js_-Datei kompiliert wurde, ob im _dev_- oder im _prod_-Modus (siehe dazu [hier](#laravel-mix-und-npm)). Für die Entwicklung ist der _main_-Branch gedacht.
+
+### Laravel Mix und NPM
+
+Das Frontend wird mithilfe von [Laravel Mix](https://laravel.com/docs/8.x/mix) kompiliert. Die Konfiguration von Mix liegt in der Datei _webpack.mix.js_.
+
+Vor dem erstmaligen Verwenden der App muss einmal der Befehl `npm install` ausgeführt werden.
+
+Die anderen für diese App relevanten NPM-Befehle (die sich auch in der _package.json_ finden) sind:
+
+-   `npm run dev`: Kompiliert das Frontend.
+-   `npm run watch`: Überwacht Änderungen im Code und kompiliert das Frontend automatisch bei jeder Änderung.
+-   `npm run prod`: Kompiliert das Frontend und minifiziert das Output-File.
+
+# Laravel-Backend
 
 ## Routes
 
-# Frontend
+Die Web-Routes sind in der Datei _routes/web.php_ definiert. Es gibt nur zwei:
+
+-   Die obere ist ein Spezialfall: Unter _/files_ lassen sich Dateien zum Download hinterlegen, siehe dazu [hier](https://laravel.com/docs/8.x/responses#file-responses).
+-   Auf allen anderen Routes, die nicht mit _api_ beginnen, wird der _index_-View zurückgegeben, über den dann die React-App geladen wird.
+
+Die Api-Routes sind in der Datei _routes/api.php_ definiert und nach Ressourcen gruppiert.
+
+Zum Routing siehe: https://laravel.com/docs/8.x/routing.
+
+## Authentifizierung
+
+Zur Authentifizierung wird [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum#introduction) verwendet. Siehe insbesondere den Abschnitt zu [SPA Authentication](https://laravel.com/docs/8.x/sanctum#spa-authentication) in der Doku.
+
+Die Authentifizierung ist manuell implementiert, ausgehend von [dieser Beschreibung](https://laravel.com/docs/8.x/authentication#authenticating-users). Sie findet sich in _app/Http/Controllers/UserController.php_. Sie ist so eingerichtet, dass ein User nach 5 fehlgeschlagenen Login-Versuchen für 10 Minuten gesperrt wird.
+
+Für die Speicherung der Session wurde die Datenbank gewählt, siehe dazu: https://laravel.com/docs/8.x/session#introduction
+
+## Authorisierung und Validierung
+
+Authorisierung und Validierung sind mit [Form Requests](https://laravel.com/docs/8.x/validation#form-request-validation) implementiert.
+
+
+
+# React-Frontend
 
 Der gesamt Quellcode fürs Frontend findet sich in _/resources/js_.
 
