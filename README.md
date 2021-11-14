@@ -30,21 +30,27 @@ In Klammern stehen die Versionen, mit denen die App getestet wurde. Es kann sein
 
 ## Installation
 
-Da die Vendor-Biblitheken mit im Repository liegen (Erklärung dazu [hier](#vendor-ordner)), muss Laravel nicht extra installiert werden. Die App ist praktisch sofort lauffähig. Es muss nur ein env-File hinterlegt, die Datenbank eingerichtet und der Webserver konfiguriert werden.
+Da die Vendor-Biblitheken mit im Repository liegen (Erklärung dazu [hier](#vendor-ordner)), muss Laravel nicht extra installiert werden. Die App ist praktisch sofort lauffähig. Es müssen nur die folgenden Dinge erledigt werden:
 
 ### env
 
-Ein Beispiel-env-File liegt als _env.example_ im Repository. Die Werte in diesem File müssen angepasst werden. Siehe dazu [hier](https://laravel.com/docs/8.x#environment-based-configuration) und [hier](https://laravel.com/docs/8.x/configuration).
+Die Werte im env-File müssen angepasst werden. Ein Beispiel-env-File liegt als _env.example_ im Repository. Siehe dazu [hier](https://laravel.com/docs/8.x#environment-based-configuration) und [hier](https://laravel.com/docs/8.x/configuration).
 
 ### Datenbank
 
-Mit dem Befehl `php artisan migrate` werden die Tabellen für die Website erstellt.
+Die Datenbank-Tabellen für die Website müssen erzeugt werden. Das geht mit dem Befehl `php artisan migrate`.
+
+TODO: Reihenfolge der Migrations überprüfen und Seeder für texts schreiben.
 
 Für die User-Administration wird darüberhinaus die Forums-Datenbank benötigt (siehe dazu...). Die Tabellen für die Forums-Datenbank sind [hier](https://wiki.phpbb.com/Tables) gelistet. Die einfachste Möglichkeit, die Datenbank einzurichten, ist es wohl, sich ein phpBB-Forum lokal zu installieren.
 
 ### Webserver
 
 Der Webserver muss auf den _/public_-Ordner zeigen.
+
+### Verlinkung Storage-Ordner
+
+...
 
 ## Entwicklung
 
@@ -101,12 +107,26 @@ Für die Speicherung der Session wurde die Datenbank gewählt, siehe dazu: https
 
 Authorisierung und Validierung sind mit [Form Requests](https://laravel.com/docs/8.x/validation#form-request-validation) implementiert.
 
+## Middleware für Sharing
 
+TODO: Sharen auf WhatsApp
+
+Fürs Sharen auf Facebook, Telegram und Twitter gibt es eine eigene [Middleware](https://laravel.com/docs/8.x/middleware), die unter _app/Http/Middleware/SendJustMetaWhenSharing.php_ zu finden ist.
+
+Die Middleware checkt den User-Agent des Requests. Wenn dieser zu einer der genannten Websites/Apps gehört, werden nur passende Meta-Daten zurückgegeben. Ansonsten nimmt der Request seinen normalen Lauf.
+
+Zur Erklärung: Normalerweise würde man die Meta-Daten in den Head der jeweiligen HTML-Seite schreiben, wie hier in der Doku des [Open Graph Protokolls](https://ogp.me/#metadata) beschrieben. Das ist bei einer SPA jedoch nicht ohne Weiteres möglich, da die HTML-Seiten dynamisch erzeugt werden. Daher werden die Requests wie beschrieben abgefangen.
 
 # React-Frontend
 
-Der gesamt Quellcode fürs Frontend findet sich in _/resources/js_.
+Der gesamte Quellcode fürs Frontend findet sich in _/resources/js_.
 
 Im Folgenden wird die Einbindung
 
 ##
+
+# Sonstiges
+
+## Favicons
+
+Die Favicons (einschließlich diverser Icons für spezielle Betriebssysteme und Geräte) wurden mit [RealFaviconGenerator](https://realfavicongenerator.net/) erstellt und liegen im public-Ordner. Dort liegt auch eine (vom RealFaviconsGenerator erstellte) _README_favicons.md_.
