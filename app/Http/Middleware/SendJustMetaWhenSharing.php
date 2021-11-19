@@ -193,7 +193,7 @@ class SendJustMetaWhenSharing
         $akaName = self::AKA_NAME;
         $locale = 'de_DE';
 
-        $ogTitle = $title ? $title . ' | ' . $akaName : $akaName;
+        $ogTitle = $title ?? $akaName;
 
         return "
             <meta property=\"og:title\" content=\"$ogTitle\">
