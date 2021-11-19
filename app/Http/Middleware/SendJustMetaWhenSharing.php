@@ -63,6 +63,11 @@ class SendJustMetaWhenSharing
 
     const AKA_NAME = 'aka-Filmclub';
 
+    const USER_AGENT_FACEBOOK = 'facebookexternalhit';
+    const USER_AGENT_TELEGRAM = 'TelegramBot';
+    const USER_AGENT_WHATSAPP = 'WhatsApp';
+    const USER_AGENT_TWITTER = 'Twitterbot';
+
     /**
      * Handle an incoming request.
      *
@@ -76,7 +81,7 @@ class SendJustMetaWhenSharing
         $path = $request->path;
         $standardImageUrl = Config::get('app.url') . self::AKA_LOGO_PATH;
 
-        if (str_contains($userAgent, 'facebookexternalhit') || str_contains($userAgent, 'TelegramBot')) {
+        if (str_contains($userAgent, self::USER_AGENT_FACEBOOK) || str_contains($userAgent, self::USER_AGENT_TELEGRAM || str_contains($userAgent, self::USER_AGENT_WHATSAPP) || str_contains($userAgent, self::USER_AGENT_TWITTER))) {
             if ($path == self::ROUTE_HOME) {
                 $ogMeta = $this->createOgMeta(self::PAGE_TITLE_HOME, $standardImageUrl, self::DESCRIPTION_HOME, $path);
                 return response($ogMeta);
@@ -129,7 +134,7 @@ class SendJustMetaWhenSharing
                 $ogMeta = $this->createOgMeta($noticeData['title'], $noticeData['imageUrl'], $noticeData['description'], $path);
                 return response($ogMeta);
             }
-        } else if (str_contains($userAgent, 'Twitterbot')) {
+        } else if (false) {
             if ($path == self::ROUTE_HOME) {
                 $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_HOME, $standardImageUrl, self::DESCRIPTION_HOME);
                 return response($twitterMeta);
