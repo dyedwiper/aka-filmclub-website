@@ -134,9 +134,9 @@ class SendJustMetaWhenSharing
                 $ogMeta = $this->createOgMeta($noticeData['title'], $noticeData['imageUrl'], $noticeData['description'], $path);
                 return response($ogMeta);
             }
-        } else {
-            return $next($request);
         }
+
+        return $next($request);
     }
 
     private function getScreeningData($path)
