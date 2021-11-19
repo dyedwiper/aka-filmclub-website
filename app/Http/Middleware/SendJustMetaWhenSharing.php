@@ -81,7 +81,7 @@ class SendJustMetaWhenSharing
         $path = $request->path;
         $standardImageUrl = Config::get('app.url') . self::AKA_LOGO_PATH;
 
-        if (str_contains($userAgent, self::USER_AGENT_FACEBOOK) || str_contains($userAgent, self::USER_AGENT_TELEGRAM || str_contains($userAgent, self::USER_AGENT_WHATSAPP) || str_contains($userAgent, self::USER_AGENT_TWITTER))) {
+        if (str_contains($userAgent, self::USER_AGENT_FACEBOOK) || str_contains($userAgent, self::USER_AGENT_TELEGRAM) || str_contains($userAgent, self::USER_AGENT_WHATSAPP) || str_contains($userAgent, self::USER_AGENT_TWITTER)) {
             if ($path == self::ROUTE_HOME) {
                 $ogMeta = $this->createOgMeta(self::PAGE_TITLE_HOME, $standardImageUrl, self::DESCRIPTION_HOME, $path);
                 return response($ogMeta);
