@@ -134,62 +134,9 @@ class SendJustMetaWhenSharing
                 $ogMeta = $this->createOgMeta($noticeData['title'], $noticeData['imageUrl'], $noticeData['description'], $path);
                 return response($ogMeta);
             }
-        } else if (false) {
-            if ($path == self::ROUTE_HOME) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_HOME, $standardImageUrl, self::DESCRIPTION_HOME);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_NEWS) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_NEWS, $standardImageUrl, self::DESCRIPTION_NEWS);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_PROGRAM) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_PROGRAM, $standardImageUrl, self::DESCRIPTION_PROGRAM);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_PROGRAM_OVERVIEW) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_PROGRAM_OVERVIEW, $standardImageUrl, self::DESCRIPTION_PROGRAM_OVERVIEW);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_SERIALS) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_SERIALS, $standardImageUrl, self::DESCRIPTION_SERIALS);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_ARCHIVE) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_ARCHIVE, $standardImageUrl, self::DESCRIPTION_ARCHIVE);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_ABOUT) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_ABOUT, $standardImageUrl, self::DESCRIPTION_ABOUT);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_FAQS) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_FAQS, $standardImageUrl, self::DESCRIPTION_FAQS);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_PRESS) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_PRESS, $standardImageUrl, self::DESCRIPTION_PRESS);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_AWARDS) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_AWARDS, $standardImageUrl, self::DESCRIPTION_AWARDS);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_SELFMADE_FILMS) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_SELFMADE_FILMS, $standardImageUrl, self::DESCRIPTION_SELFMADE_FILMS);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_CONTACT) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_CONTACT, $standardImageUrl, self::DESCRIPTION_CONTACT);
-                return response($twitterMeta);
-            } elseif ($path == self::ROUTE_LINKS) {
-                $twitterMeta = $this->createTwitterMeta(self::PAGE_TITLE_LINKS, $standardImageUrl, self::DESCRIPTION_LINKS);
-                return response($twitterMeta);
-            } elseif (str_starts_with($path, self::ROUTE_SCREENING)) {
-                $screeningData = $this->getScreeningData($path);
-                $twitterMeta = $this->createTwitterMeta($screeningData['title'], $screeningData['imageUrl'], $screeningData['description']);
-                return response($twitterMeta);
-            } elseif (str_starts_with($path, self::ROUTE_SERIAL)) {
-                $serialData = $this->getSerialData($path);
-                $twitterMeta = $this->createTwitterMeta($serialData['title'], $serialData['imageUrl'], $serialData['description']);
-                return response($twitterMeta);
-            } elseif (str_starts_with($path, self::ROUTE_NOTICE)) {
-                $noticeData = $this->getNoticeData($path);
-                $twitterMeta = $this->createTwitterMeta($noticeData['title'], $noticeData['imageUrl'], $noticeData['description']);
-                return response($twitterMeta);
-            }
+        } else {
+            return $next($request);
         }
-
-        return $next($request);
     }
 
     private function getScreeningData($path)
@@ -256,18 +203,6 @@ class SendJustMetaWhenSharing
             <meta property=\"og:site_name\" content=\"$akaName\" />
             <meta property=\"og:description\" content=\"$description\" />
             <meta property=\"og:locale\" content=\"$locale\" />
-        ";
-    }
-
-    private function createTwitterMeta($title, $imageUrl, $description)
-    {
-        $twitterTitle = $title ? $title . ' | ' . self::AKA_NAME : self::AKA_NAME;
-
-        return "
-            <meta name=\"twitter:card\" content=\"summary_large_image\" />
-            <meta name=\"twitter:title\" content=\"$twitterTitle\">
-            <meta name=\"twitter:image\" content=\"$imageUrl\">
-            <meta name=\"twitter:description\" content=\"$description\" />
         ";
     }
 }
