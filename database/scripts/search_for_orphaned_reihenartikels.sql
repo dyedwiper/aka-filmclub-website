@@ -1,1 +1,0 @@
-SELECT * FROM aka_pgh_reihenartikel_filme WHERE NOT EXISTS(SELECT id FROM serials WHERE id = reihenartikel_id)
