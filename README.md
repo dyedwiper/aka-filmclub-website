@@ -50,7 +50,7 @@ Der Webserver muss auf den _/public_-Ordner zeigen.
 
 ### Verlinkung Storage-Ordner
 
-...
+Für die Interaktion mit dem Dateisystem muss ein Link erstellt werden, siehe dazu [hier](https://laravel.com/docs/8.x/filesystem#the-public-disk).
 
 ## Entwicklung
 
