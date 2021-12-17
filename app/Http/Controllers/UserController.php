@@ -32,7 +32,7 @@ class UserController extends Controller
         return User::select('id', 'uuid', 'username', 'realname', 'status')->get();
     }
 
-    public function GetCurrentUser(Request $request)
+    public function GetCurrentUser()
     {
         return Auth::user();
     }
