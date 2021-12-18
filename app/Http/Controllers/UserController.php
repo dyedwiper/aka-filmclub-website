@@ -95,7 +95,9 @@ class UserController extends Controller
             throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()->all()], 422));
         }
 
-        $this->forumUserService->PostUser($request);
+        if (env('IS_FORUM_CONNECTED')) {
+            $this->forumUserService->PostUser($request);
+        }
 
         $user = new User([
             'uuid' => uniqid(),
@@ -119,7 +121,10 @@ class UserController extends Controller
             throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()->all()], 422));
         }
 
-        $this->forumUserService->PatchUser($request, $user);
+        if (env('IS_FORUM_CONNECTED')) {
+            $this->forumUserService->PatchUser($request, $user);
+        }
+
         $user = $this->mapRequestToUser($request, $user);
 
         // Check for null, because the level is send as null, when the select in the user form is disabled.
@@ -135,7 +140,9 @@ class UserController extends Controller
     public function PatchPassword(PasswordFormRequest $request)
     {
         $user = User::firstWhere('uuid', $request->uuid);
-        $this->forumUserService->PatchPassword($request, $user);
+        if (env('IS_FORUM_CONNECTED')) {
+            $this->forumUserService->PatchPassword($request, $user);
+        }
         $user->password = Hash::make($request->new_password);
         $user->save();
     }
@@ -146,7 +153,9 @@ class UserController extends Controller
             abort(403);
         }
         $user = User::firstWhere('uuid', $uuid);
-        $this->forumUserService->DeleteUser($user->username);
+        if (env('IS_FORUM_CONNECTED')) {
+            $this->forumUserService->DeleteUser($user->username);
+        }
         $user->delete();
     }
 

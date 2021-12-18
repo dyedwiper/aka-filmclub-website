@@ -42,7 +42,7 @@ Die Datenbank-Tabellen für die Website müssen erzeugt werden. Das geht mit dem
 
 Danach müssen einige Datensätze geseedet werden mit dem Befehl `php artisan db:seed`. Dadurch wird auch ein User mit Admin-Rechten erzeugt; Name und Passwort lauten "armin".
 
-Für die User-Administration wird darüberhinaus die Forums-Datenbank benötigt (siehe dazu...). Die Tabellen für die Forums-Datenbank sind [hier](https://wiki.phpbb.com/Tables) gelistet. Die einfachste Möglichkeit, die Datenbank einzurichten, ist es wohl, sich ein phpBB-Forum lokal zu installieren.
+Falls auch die [Verbindung zum Forum](#verbindung-zum-forum) bestehen soll, muss dafür eine zusätzliche Datenbank eingerichtet werden. Die Tabellen für die Forums-Datenbank sind [hier](https://wiki.phpbb.com/Tables) gelistet. Die einfachste Möglichkeit, die Datenbank einzurichten, ist wohl, ein phpBB-Forum lokal zu installieren.
 
 ### Webserver
 
@@ -114,6 +114,18 @@ Fürs Sharen auf Facebook, Telegram, WhatsApp und Twitter gibt es eine eigene [M
 Die Middleware checkt den User-Agent des Requests. Wenn dieser zu einer der genannten Websites/Apps gehört, werden nur passende Meta-Daten zurückgegeben. Ansonsten nimmt der Request seinen normalen Lauf.
 
 Zur Erklärung: Normalerweise würde man die Meta-Daten in den Head der jeweiligen HTML-Seite schreiben, wie hier in der Doku des [Open Graph Protokolls](https://ogp.me/#metadata) beschrieben. Das ist bei einer SPA jedoch nicht ohne Weiteres möglich, da die HTML-Seiten dynamisch erzeugt werden. Daher werden die Requests wie beschrieben abgefangen.
+
+## Verbindung zum Forum
+
+Über die User-Administration auf der Website können auch die User eines angeschlossenen [phpBB-Forums](https://www.phpbb.de/) administriert werden.
+
+Im env-File gibt es den Config-Schalter _IS_FORUM_CONNECTED_. Dieser steuert, ob vom UserController der ForumUserService aufgerufen wird.
+
+Außerdem ist im env-File die Datenbank-Verbindung zum Forum hinterlegt.
+
+## Konstanten
+
+Konstanten, die in der ganzen App zur Verfügung stehen sollen, sind in _config/constants.php_ hinterlegt.
 
 # Frontend
 
@@ -198,8 +210,6 @@ In der Datei _constants.js_ werden alle Konstanten gesammelt, die in der ganzen 
 ## Scrolling
 
 Das Scrolling ist momentan so implementiert, dass bei jedem Seitenwechsel ganz nach oben gescrollt wird, siehe _common/ScrollToTop.js_. Falls es einen eleganten Weg gibt, den Scroll bei jedem Seitenwechsel wiederherzustellen, könnte das Scrolling dementsprechend verbessert werden.
-
-# Verbindung zum Forum
 
 # Sonstiges
 
