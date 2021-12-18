@@ -99,7 +99,7 @@ Zum Routing siehe: https://laravel.com/docs/8.x/routing.
 
 Zur Authentifizierung wird [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum#introduction) verwendet. Siehe insbesondere den Abschnitt zu [SPA Authentication](https://laravel.com/docs/8.x/sanctum#spa-authentication) in der Doku.
 
-Die Authentifizierung ist manuell implementiert, ausgehend von [dieser Beschreibung](https://laravel.com/docs/8.x/authentication#authenticating-users). Sie findet sich in _app/Http/Controllers/UserController.php_. Sie ist so eingerichtet, dass ein User nach 5 fehlgeschlagenen Login-Versuchen für 10 Minuten gesperrt wird.
+Die Authentifizierung ist manuell implementiert, ausgehend von [dieser Beschreibung](https://laravel.com/docs/8.x/authentication#authenticating-users). Sie findet sich in _app/Http/Controllers/UserController.php_. Sie ist so eingerichtet, dass der Login nach x fehlgeschlagenen Anmeldeversuchen für y Minuten für den jeweiligen User blockiert wird. x und y können im env-File eingestellt werden.
 
 Für die Speicherung der Session wurde die Datenbank gewählt, siehe dazu: https://laravel.com/docs/8.x/session#introduction
 

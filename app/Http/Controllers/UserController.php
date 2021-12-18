@@ -17,9 +17,6 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    const MAX_FAILED_LOGIN_ATTEMPTS = 5;
-    const LOCKOUT_TIME_IN_MINUTES = 10;
-
     private $forumUserService;
 
     public function __construct(ForumUserService $forumUserService)
@@ -47,13 +44,13 @@ class UserController extends Controller
         $user = User::firstWhere('username', $request->username);
         if (!$user) abort(401);
         if (
-            $user->failed_login_attempts >= self::MAX_FAILED_LOGIN_ATTEMPTS
+            $user->failed_login_attempts >= env('MAX_FAILED_LOGIN_ATTEMPTS')
             && strtotime($user->login_forbidden_until) > strtotime('now')
         ) {
             abort(
                 401,
                 'Wegen zu vieler fehlgeschlagener Login-Versuche, ist dein Login für '
-                    . self::LOCKOUT_TIME_IN_MINUTES .
+                    . env('LOCKOUT_TIME_IN_MINUTES') .
                     ' Minuten gesperrt.'
             );
         }
@@ -72,7 +69,7 @@ class UserController extends Controller
         }
         $user->failed_login_attempts++;
         // The time is always set here, but does not take effect until the max number of attempts is reached.
-        $user->login_forbidden_until = new DateTime('+' . self::LOCKOUT_TIME_IN_MINUTES . 'minutes');
+        $user->login_forbidden_until = new DateTime('+' . env('LOCKOUT_TIME_IN_MINUTES') . 'minutes');
         $user->save();
         abort(401);
     }
