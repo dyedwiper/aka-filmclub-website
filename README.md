@@ -40,7 +40,7 @@ Die Werte im env-File müssen angepasst werden. Ein Beispiel-env-File liegt als 
 
 Die Datenbank-Tabellen für die Website müssen erzeugt werden. Das geht mit dem Befehl `php artisan migrate`.
 
-Danach müssen einige Datensätze geseedet werden mit dem Befehl `php artisan db:seed`. Dadurch wird auch ein User mit Admin-Rechten erzeugt; Name und Passwort lauten "armin".
+Danach müssen einige Datensätze geseedet werden mit dem Befehl `php artisan db:seed`. Dadurch werden auch die User "armin", "edith", und "otto" erzeugt - jeweils mit gleichlautendem Passwort.
 
 Falls auch die [Verbindung zum Forum](#verbindung-zum-forum) bestehen soll, muss dafür eine zusätzliche Datenbank eingerichtet werden. Die Tabellen für die Forums-Datenbank sind [hier](https://wiki.phpbb.com/Tables) gelistet. Die einfachste Möglichkeit, die Datenbank einzurichten, ist wohl, ein phpBB-Forum lokal zu installieren.
 
