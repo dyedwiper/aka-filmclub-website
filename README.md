@@ -1,3 +1,31 @@
+# Inhaltsverzeichnis
+
+-   [Einleitung](#einleitung)
+    -   [Grundlegendes Setup](#grundlegendes-setup)
+-   [Installation und Entwicklung](#installation-und-entwicklung)
+    -   [Voraussetzungen](#voraussetzungen)
+    -   [Installation](#installation)
+    -   [Entwicklung](#entwicklung)
+-   [Backend](#backend)
+    -   [Routes](#routes)
+    -   [Authentifizierung](#authentifizierung)
+    -   [Authorisierung und Validierung](#authorisierung-und-validierung)
+    -   [Middleware für Sharing](#middleware-für-sharing)
+    -   [Verbindung zum Forum](#verbindung-zum-forum)
+    -   [Konstanten im Backend](#konstanten-im-backend)
+-   [Frontend](#frontend)
+    -   [app.js und bootstrap.js](#app.js-und-bootstrap.js)
+    -   [Gerüst der React-App](#gerüst-der-react-app)
+    -   [Ordner-Struktur](#ordner-struktur)
+    -   [Verwendete React-Funktionalitäten und -Erweiterungen](#verwendete-react-funktionalitäten-und--erweiterungen)
+    -   [API-Calls](#api-calls)
+    -   [Scrolling](#scrolling)
+    -   [Konstanten im Frontend](#konstanten-im-frontend)
+-   [Sonstiges](#sonstiges)
+    -   [Favicons](#favicons)
+    -   [Kommentare](#kommentare)
+    -   [Uneinheitlicher Case](#uneinheitlicher-case)
+
 # Einleitung
 
 Dies ist der Code für die Website vom aka-Filmclub Freiburg e.V., erreichbar unter https://www.aka-filmclub.de/.
@@ -34,7 +62,7 @@ Da die Vendor-Biblitheken mit im Repository liegen (Erklärung dazu [hier](#vend
 
 ### env
 
-Die Werte im env-File müssen angepasst werden. Ein Beispiel-env-File liegt als _env.example_ im Repository. Siehe dazu [hier](https://laravel.com/docs/8.x#environment-based-configuration) und [hier](https://laravel.com/docs/8.x/configuration).
+Die Werte im env-File müssen angepasst werden. Ein Beispiel-env-File liegt als _env.example_ im Repository. Erklärungen finden sich [hier](https://laravel.com/docs/8.x#environment-based-configuration) und [hier](https://laravel.com/docs/8.x/configuration) in der Laravel-Doku.
 
 ### Datenbank
 
@@ -123,7 +151,7 @@ Im env-File gibt es den Config-Schalter _IS_FORUM_CONNECTED_. Dieser steuert, ob
 
 Außerdem ist im env-File die Datenbank-Verbindung zum Forum hinterlegt.
 
-## Konstanten
+## Konstanten im Backend
 
 Konstanten, die in der ganzen App zur Verfügung stehen sollen, sind in _config/constants.php_ hinterlegt.
 
@@ -163,11 +191,11 @@ Im Ordner _styles_ sind Dateien gesammelt, die CSS-Styles betreffen.
 
 Der Ordner _assets_ enthält statische Dateien, die in der App verwendet werden.
 
-## Verwendete React-Technologie
+## Verwendete React-Funktionalitäten und -Erweiterungen
 
 ### React Function Components und Hooks
 
-Die React-App ist mit [React Function Components](https://www.robinwieruch.de/react-function-component/) und [Hooks](https://reactjs.org/docs/hooks-intro.html) geschrieben. Achtung vor Verwirrung: Viele Beispiele in der React-Dokumentation beziehen sich noch auf React Class Components.
+Die React-App ist mit [React Function Components](https://www.robinwieruch.de/react-function-component/) und [Hooks](https://reactjs.org/docs/hooks-intro.html) geschrieben. (Achtung vor Verwirrung: Viele Beispiele in der React-Dokumentation beziehen sich noch auf React Class Components.)
 
 ### React Context
 
@@ -183,7 +211,7 @@ Fürs CSS-Styling verwendet die App [Styled Components](https://styled-component
 
 ### React PDF
 
-Zur Erzeugung von PDFs verwendet die App [React PDF](https://react-pdf.org/). Dabei wird zum Styling die [Styled-Components-Erweiterung](https://www.npmjs.com/package/@react-pdf/styled-components) verwendet, die eigentlich veraltet ist und bei Gelegenheit ausgebaut werden sollte.
+Zur Erzeugung von PDFs verwendet die App [React PDF](https://react-pdf.org/). Dabei wird zum Styling die [Styled-Components-Erweiterung für React PDF](https://www.npmjs.com/package/@react-pdf/styled-components) verwendet, die eigentlich veraltet ist und bei Gelegenheit ausgebaut werden sollte.
 
 ### React Draft Wysiwyg
 
@@ -203,13 +231,13 @@ In _baseService.js_ ist ein globales Error-Handling implementiert, das bei Serve
 
 Beim Eintragen von neuen Filmen kann man Informationen von der [OMDB-API](http://www.omdbapi.com/) abrufen. Dieser Call ist mit [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) implementiert, weil die Konfiguration von Axios hier Probleme bereiten würde. Siehe _pages/intern/AddScreeningPage.js_.
 
-## Konstanten
-
-In der Datei _constants.js_ werden alle Konstanten gesammelt, die in der ganzen App gebraucht werden.
-
 ## Scrolling
 
 Das Scrolling ist momentan so implementiert, dass bei jedem Seitenwechsel ganz nach oben gescrollt wird, siehe _common/ScrollToTop.js_. Falls es einen eleganten Weg gibt, den Scroll bei jedem Seitenwechsel wiederherzustellen, könnte das Scrolling dementsprechend verbessert werden.
+
+## Konstanten im Frontend
+
+In der Datei _constants.js_ werden alle Konstanten gesammelt, die in der ganzen App gebraucht werden.
 
 # Sonstiges
 
@@ -217,10 +245,10 @@ Das Scrolling ist momentan so implementiert, dass bei jedem Seitenwechsel ganz n
 
 Die Favicons (einschließlich diverser Icons für spezielle Betriebssysteme und Geräte) wurden mit [RealFaviconGenerator](https://realfavicongenerator.net/) erstellt und liegen im public-Ordner. Dort liegt auch eine (vom RealFaviconsGenerator erstellte) _README_favicons.md_.
 
-## Kommentare im Code
+## Kommentare
 
 Manche Kommentare im Code sind auf deutsch, manche auf englisch. Das ist aus Unachtsamkeit entstanden und hat keine Bedeutung, wäre aber zu viel Aufwand zu vereinheitlichen.
 
 ## Uneinheitlicher Case
 
-Eigentlich wird in der App überall _camelCase_ oder _PascalCase_ verwendet, aber an einigen Stellen taucht auch _snake_case_ auf. Das liegt daran, dass die Benamung von einigen Datenbank-Spalten durcheinander gegangen ist. Der unterschiedliche Case hat keine Bedeutung; es wäre aber zu viel Aufwand ihn zu vereinheitlichen.
+Eigentlich wird in der App überall camelCase oder PascalCase verwendet, aber an einigen Stellen taucht auch snake_case auf. Das liegt daran, dass die Benamung von einigen Datenbank-Spalten durcheinander gegangen ist. Der unterschiedliche Case hat keine Bedeutung; es wäre aber zu viel Aufwand ihn zu vereinheitlichen.
