@@ -145,27 +145,17 @@ Das Gerüst der React-App lehnt sich an das Gerüst an, das standardmäßig von 
 
 ### Ordner-Struktur
 
-#### pages
+-   _pages_ enthält die React-Komponenten, die Seiten entsprechen.
 
-Der Ordner _pages_ enthält die React-Komponenten, die Seiten entsprechen.
+-   _common_ enthält alle React-Komponenten, die nicht Seiten entsprechen.
 
-#### common
+-   _utils_ enthält zusätzliche JavaScript-Funktionalität.
 
-Der Ordner _common_ enthält alle React-Komponenten, die nicht Seiten entsprechen.
+-   _styles_ enthält Dateien, die CSS-Styles betreffen.
 
-#### utils
+-   _assets_ enthält statische Dateien, die in der App verwendet werden.
 
-Der Ordner _utils_ enthält zusätzliche JavaScript-Funktionalität.
-
-#### styles
-
-Im Ordner _styles_ sind Dateien gesammelt, die CSS-Styles betreffen.
-
-#### assets
-
-Der Ordner _assets_ enthält statische Dateien, die in der App verwendet werden.
-
-### Verwendete React-Funktionalitäten und -Erweiterungen
+### Verwendete React-Funktionalität
 
 #### React Function Components und Hooks
 
@@ -174,6 +164,8 @@ Die React-App ist mit [React Function Components](https://www.robinwieruch.de/re
 #### React Context
 
 Um einige Werte in der ganzen App verfügbar zu machen, wird [Context](https://reactjs.org/docs/hooks-intro.html) und der [useContext-Hook](https://reactjs.org/docs/hooks-reference.html#usecontext) verwendet.
+
+### Verwendete React-Erweiterungen
 
 #### React Router
 
