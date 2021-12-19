@@ -109,6 +109,10 @@ Für die Speicherung der Session wurde die Datenbank gewählt, siehe dazu: https
 
 Authorisierung und Validierung sind mit [Form Requests](https://laravel.com/docs/8.x/validation#form-request-validation) implementiert.
 
+### Upload von Bildern
+
+Auf der Website können Bilder hochgeladen werden, die wie [hier](https://laravel.com/docs/8.x/filesystem#file-uploads) beschrieben gespeichert werden.
+
 ### Middleware für Sharing
 
 Fürs Sharen auf Facebook, Telegram, WhatsApp und Twitter gibt es eine eigene [Middleware](https://laravel.com/docs/8.x/middleware), die unter _app/Http/Middleware/SendJustMetaWhenSharing.php_ zu finden ist.
