@@ -4,7 +4,7 @@
 
 Dies ist der Code für die Website vom aka-Filmclub Freiburg e.V., erreichbar unter https://www.aka-filmclub.de/.
 
-Diese Readme enthält Erklärungen zum Technologie-Stack und zur Progammierung. Dabei wird besonders auf die Dinge eingegangen, die vom Standard abweichen. Wie die zugrundeliegenden Frameworks funktionieren, ist deren jeweiliger Dokumentation zu entnehmen.
+Diese Readme enthält Erklärungen zum Technologie-Stack und zur Progammierung. Dabei wird besonders auf die Dinge eingegangen, die vom Standard abweichen.
 
 Außerdem wird erklärt, was nötig ist, um die App lokal installieren.
 
@@ -64,7 +64,7 @@ Zur Versionsverwaltung wird [Git](https://git-scm.com/) verwendet. Im Folgenden 
 
 Normalerweise würde man einen Ordner mit Fremd-Bibliotheken wie den _vendor_-Ordner nicht in die Versionsverwaltung einchecken. Das ist hier aber nötig, weil die App direkt über Git auf den Webserver des Website-Hosts geladen wird und es dort keine Möglichkeit gibt, die Bibliotheken wiederherzustellen (weil z.B. Composer nicht auf dem Webserver installiert ist).
 
-##### _app.js_-Datei
+##### Kompiliertes Frontend
 
 Die Datei _public/js/app.js_, die das kompilierte Frontend enthält, würde man eigentlich auch nicht mit einchecken. Dass es dennoch so ist, hat einen ähnlichen Grund wie beim _vendor_-Ordner: Es gibt keine Möglichkeit die Datei auf dem Webserver zu kompilieren.
 
@@ -123,7 +123,7 @@ Zur Erklärung: Normalerweise würde man die Meta-Daten in den Head der jeweilig
 
 Im env-File gibt es den Config-Schalter _IS_FORUM_CONNECTED_. Dieser steuert, ob vom UserController der ForumUserService aufgerufen wird.
 
-Außerdem ist im env-File die Datenbank-Verbindung zum Forum hinterlegt.
+Falls diese Funktionalität genutzt werden soll, muss im env-File die Datenbankverbindung zum Forum hinterlegt werden.
 
 ### Konstanten
 
@@ -131,13 +131,13 @@ Konstanten, die in der ganzen App zur Verfügung stehen sollen, sind in _config/
 
 ## Frontend
 
-Der gesamte Quellcode fürs Frontend findet sich in _/resources/js_. Der Code der React-App liegt im Ordner _react-app_.
+Der gesamte Quellcode fürs Frontend findet sich in _/resources/js_. Der Code der React-App liegt dort im Ordner _react-app_.
 
-Das Frontend ist wie oben beschrieben eine mit [React](https://reactjs.org/) gebaute [SPA](#grundlegendes-setup).
+Das Frontend ist wie [oben beschrieben](#grundlegendes-setup) eine mit React gebaute SPA.
 
 ### _app.js_ und _bootstrap.js_
 
-Die Dateien _app.js_ und _bootstrap.js_ im Ordner _resources/js_ sind Dateien aus dem Standard-Setup von Laravel. In _app.js_ wird der JavaScript-Code gesammelt, der von [Laravel Mix](https://laravel.com/docs/8.x/mix) kompiliert wird. In _bootstrap.js_ wird [Axios](https://axios-http.com/docs/intro) konfiguriert.
+Die Dateien _app.js_ und _bootstrap.js_ im Ordner _resources/js_ sind Dateien aus dem Standard-Setup von Laravel. In _app.js_ wird der JavaScript-Code gesammelt, der von [Laravel Mix](https://laravel.com/docs/8.x/mix) kompiliert wird. In _bootstrap.js_ steht globale Konfiguration - momentan nur für [Axios](https://axios-http.com/docs/intro).
 
 ### Gerüst der React-App
 
@@ -157,31 +157,19 @@ Das Gerüst der React-App lehnt sich an das Gerüst an, das standardmäßig von 
 
 ### Verwendete React-Funktionalität
 
-#### React Function Components und Hooks
-
 Die React-App ist mit [React Function Components](https://www.robinwieruch.de/react-function-component/) und [Hooks](https://reactjs.org/docs/hooks-intro.html) geschrieben. (Achtung vor Verwirrung: Viele Beispiele in der React-Dokumentation beziehen sich noch auf React Class Components.)
 
-#### React Context
-
-Um einige Werte in der ganzen App verfügbar zu machen, wird [Context](https://reactjs.org/docs/hooks-intro.html) und der [useContext-Hook](https://reactjs.org/docs/hooks-reference.html#usecontext) verwendet.
+Um Werte in der ganzen App verfügbar zu machen, werden [Context](https://reactjs.org/docs/hooks-intro.html) und der [useContext-Hook](https://reactjs.org/docs/hooks-reference.html#usecontext) verwendet.
 
 ### Verwendete React-Erweiterungen
 
-#### React Router
+-   Zum Frontend-Routing verwendet die App [React Router](https://v5.reactrouter.com/web/guides/quick-start). Das Routing findet in der App-Komponente statt.
 
-Zum Frontend-Routing verwendet die App [React Router](https://v5.reactrouter.com/web/guides/quick-start). Das Routing findet in der App-Komponente (siehe Datei _App.js_) statt.
+-   Fürs CSS-Styling verwendet die App [Styled Components](https://styled-components.com/) und hier insbesondere auch [GlobalStyles](https://scalablecss.com/styled-components-global-styles/).
 
-#### Styled Components
+-   Zur Erzeugung von PDFs verwendet die App [React PDF](https://react-pdf.org/). Dabei wird zum Styling die [Styled-Components-Erweiterung für React PDF](https://www.npmjs.com/package/@react-pdf/styled-components) verwendet, die eigentlich veraltet ist und bei Gelegenheit ausgebaut werden sollte.
 
-Fürs CSS-Styling verwendet die App [Styled Components](https://styled-components.com/) und hier insbesondere auch [GlobalStyles](https://scalablecss.com/styled-components-global-styles/).
-
-#### React PDF
-
-Zur Erzeugung von PDFs verwendet die App [React PDF](https://react-pdf.org/). Dabei wird zum Styling die [Styled-Components-Erweiterung für React PDF](https://www.npmjs.com/package/@react-pdf/styled-components) verwendet, die eigentlich veraltet ist und bei Gelegenheit ausgebaut werden sollte.
-
-#### React Draft Wysiwyg
-
-Für die WYSIWYG-Editoren wird [React Draft Wysiwyg](https://github.com/jpuri/react-draft-wysiwyg) verwendet.
+-   Für die WYSIWYG-Editoren wird [React Draft Wysiwyg](https://github.com/jpuri/react-draft-wysiwyg) verwendet.
 
 ### API-Calls
 
