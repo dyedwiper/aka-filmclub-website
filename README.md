@@ -125,7 +125,7 @@ Im env-File gibt es den Config-Schalter _IS_FORUM_CONNECTED_. Dieser steuert, ob
 
 Außerdem ist im env-File die Datenbank-Verbindung zum Forum hinterlegt.
 
-### Konstanten im Backend
+### Konstanten
 
 Konstanten, die in der ganzen App zur Verfügung stehen sollen, sind in _config/constants.php_ hinterlegt.
 
@@ -201,7 +201,7 @@ Beim Eintragen von neuen Filmen kann man Informationen von der [OMDB-API](http:/
 
 Das Scrolling ist momentan so implementiert, dass bei jedem Seitenwechsel ganz nach oben gescrollt wird, siehe _common/ScrollToTop.js_. Falls es einen eleganten Weg gibt, den Scroll bei jedem Seitenwechsel wiederherzustellen, könnte das Scrolling dementsprechend verbessert werden.
 
-### Konstanten im Frontend
+### Konstanten
 
 In der Datei _constants.js_ werden alle Konstanten gesammelt, die in der ganzen App gebraucht werden.
 
