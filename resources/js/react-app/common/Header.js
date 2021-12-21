@@ -17,7 +17,6 @@ import {
     PAGE_TITLE_IMPRINT,
     PAGE_TITLE_INTERN,
     PAGE_TITLE_LINKS,
-    PAGE_TITLE_LOGIN,
     PAGE_TITLE_NEWS,
     PAGE_TITLE_PRESS,
     PAGE_TITLE_PROGRAM,
@@ -40,7 +39,6 @@ import {
     ROUTE_INTERN_EDIT_USER,
     ROUTE_INTERN_USERS,
     ROUTE_LINKS,
-    ROUTE_LOGIN,
     ROUTE_NEWS,
     ROUTE_PRESS,
     ROUTE_PROGRAM,
@@ -131,7 +129,7 @@ export default function Header() {
                             Highnoon
                         </NavExternalLinkStyled>
                     </DropdownContainerStyled>
-                    {isUserLoggedIn ? (
+                    {isUserLoggedIn && (
                         <DropdownContainerStyled>
                             <NavLinkStyled to={ROUTE_INTERN} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_INTERN}
@@ -177,12 +175,6 @@ export default function Header() {
                                     Logout
                                 </SubNavLinkStyled>
                             </SubNavStyled>
-                        </DropdownContainerStyled>
-                    ) : (
-                        <DropdownContainerStyled>
-                            <NavLinkStyled to={ROUTE_LOGIN} onClick={() => setIsNavOpen(false)}>
-                                {PAGE_TITLE_LOGIN}
-                            </NavLinkStyled>
                         </DropdownContainerStyled>
                     )}
                 </NavStyled>
