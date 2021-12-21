@@ -6,8 +6,8 @@ use App\Http\Requests\PasswordFormRequest;
 use App\Http\Requests\UserFormRequest;
 use App\Models\User;
 use App\Services\ForumUserService;
+use App\Utils\ValidationUtils;
 use DateTime;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -89,7 +89,7 @@ class UserController extends Controller
             'username' => 'unique:users',
         ]);
         if ($validator->fails()) {
-            throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()->all()], 422));
+            ValidationUtils::handleValidationError($validator);
         }
 
         if (env('IS_FORUM_CONNECTED')) {
@@ -115,7 +115,7 @@ class UserController extends Controller
             'username' => Rule::unique('users')->ignore($user->id),
         ]);
         if ($validator->fails()) {
-            throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()->all()], 422));
+            ValidationUtils::handleValidationError($validator);
         }
 
         if (env('IS_FORUM_CONNECTED')) {

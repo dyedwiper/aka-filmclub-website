@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -19,27 +21,30 @@ class DatabaseSeeder extends Seeder
             [
                 'uuid' => uniqid(),
                 'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
                 'username' => 'armin',
-                'password' => '$argon2id$v=19$m=1024,t=4,p=2$aEtzYWc3cTBFS2RGSmVWVQ$G5LW5WJLL4x9UMsA3rmOJg',
-                'level' => 2,
+                'password' => Hash::make('armin'),
+                'level' => Config::get('constants.auth_level.admin'),
                 'email' => 'armin@existiert.net',
                 'realname' => 'Armin Admin',
             ],
             [
                 'uuid' => uniqid(),
                 'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
                 'username' => 'edith',
-                'password' => '$argon2id$v=19$m=1024,t=4,p=2$M3d3RDMxV2VRdm5NTmpvQg$ujdHBmkAIPabMQFhserTAA',
-                'level' => 1,
+                'password' => Hash::make('edith'),
+                'level' => Config::get('constants.auth_level.editor'),
                 'email' => 'edith@existiert.net',
                 'realname' => 'Edith Editorin',
             ],
             [
                 'uuid' => uniqid(),
                 'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
                 'username' => 'otto',
-                'password' => '$argon2id$v=19$m=1024,t=4,p=2$M3d3RDMxV2VRdm5NTmpvQg$vzftP2TksPP6UPTZ3Cg3fg',
-                'level' => 0,
+                'password' => Hash::make('otto'),
+                'level' => Config::get('constants.auth_level.normal'),
                 'email' => 'otto@existiert.net',
                 'realname' => 'Otto Normalmitglied',
             ]
