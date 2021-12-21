@@ -5,7 +5,7 @@ export function computeSemester(date) {
     const year = date.getFullYear();
     const semester = {};
 
-    // month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
+    // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
     // The year 2000 in the Date constructor is a random initial value. It is overwritten anyway.
     if (month >= 3 && month < 9) {
         semester.name = SUMMER_SEASON_IDENTIFIER + year;

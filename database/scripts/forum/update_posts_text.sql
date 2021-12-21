@@ -1,1 +1,0 @@
-UPDATE phpbb_posts A, phpbb_aka.phpbb_posts_text B SET A.bbcode_uid=B.bbcode_uid, A.post_subject=B.post_subject, A.post_text=B.post_text WHERE A.post_id=B.post_id

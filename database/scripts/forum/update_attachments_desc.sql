@@ -1,1 +1,0 @@
-UPDATE phpbb_attachments A, phpbb_aka.phpbb_attachments_desc B SET A.physical_filename=B.physical_filename, A.real_filename=B.real_filename, A.download_count=B.download_count, A.attach_comment=B.comment, A.extension=B.extension, A.mimetype=B.mimetype, A.filesize=B.filesize, A.filetime=B.filetime, A.thumbnail=B.thumbnail WHERE A.attach_id=B.attach_id

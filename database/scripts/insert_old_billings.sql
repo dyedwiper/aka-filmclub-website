@@ -1,3 +1,0 @@
-INSERT INTO `billings`(`screening_id`, `distributor_id`, `confirmationNumber`, `freeTickets`, `guarantee`, `percentage`, `incidentals`, `valueAddedTaxRate`, `cashInlay`, `cashOut`, `additionalEarnings`, `comment`) 
-SELECT id, verleiherId, tbnr, freikarten, mindestgarantie * 100, prozentsatz, nebenkosten * 100, abrechnungmwst, kasseneinlage * 100, kassenauslage * 100, andereEinnahmen * 100, abrechnungKommentar 
-FROM aka_pgh_filme

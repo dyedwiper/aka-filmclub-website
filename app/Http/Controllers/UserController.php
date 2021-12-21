@@ -6,8 +6,8 @@ use App\Http\Requests\PasswordFormRequest;
 use App\Http\Requests\UserFormRequest;
 use App\Models\User;
 use App\Services\ForumUserService;
+use App\Utils\ValidationUtils;
 use DateTime;
-use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -17,9 +17,6 @@ use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
-    const MAX_FAILED_LOGIN_ATTEMPTS = 5;
-    const LOCKOUT_TIME_IN_MINUTES = 10;
-
     private $forumUserService;
 
     public function __construct(ForumUserService $forumUserService)
@@ -32,7 +29,7 @@ class UserController extends Controller
         return User::select('id', 'uuid', 'username', 'realname', 'status')->get();
     }
 
-    public function GetCurrentUser(Request $request)
+    public function GetCurrentUser()
     {
         return Auth::user();
     }
@@ -47,13 +44,13 @@ class UserController extends Controller
         $user = User::firstWhere('username', $request->username);
         if (!$user) abort(401);
         if (
-            $user->failed_login_attempts >= self::MAX_FAILED_LOGIN_ATTEMPTS
+            $user->failed_login_attempts >= env('MAX_FAILED_LOGIN_ATTEMPTS')
             && strtotime($user->login_forbidden_until) > strtotime('now')
         ) {
             abort(
                 401,
                 'Wegen zu vieler fehlgeschlagener Login-Versuche, ist dein Login für '
-                    . self::LOCKOUT_TIME_IN_MINUTES .
+                    . env('LOCKOUT_TIME_IN_MINUTES') .
                     ' Minuten gesperrt.'
             );
         }
@@ -72,7 +69,7 @@ class UserController extends Controller
         }
         $user->failed_login_attempts++;
         // The time is always set here, but does not take effect until the max number of attempts is reached.
-        $user->login_forbidden_until = new DateTime('+' . self::LOCKOUT_TIME_IN_MINUTES . 'minutes');
+        $user->login_forbidden_until = new DateTime('+' . env('LOCKOUT_TIME_IN_MINUTES') . 'minutes');
         $user->save();
         abort(401);
     }
@@ -92,10 +89,12 @@ class UserController extends Controller
             'username' => 'unique:users',
         ]);
         if ($validator->fails()) {
-            throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()->all()], 422));
+            ValidationUtils::handleValidationError($validator);
         }
 
-        $this->forumUserService->PostUser($request);
+        if (env('IS_FORUM_CONNECTED')) {
+            $this->forumUserService->PostUser($request);
+        }
 
         $user = new User([
             'uuid' => uniqid(),
@@ -116,10 +115,13 @@ class UserController extends Controller
             'username' => Rule::unique('users')->ignore($user->id),
         ]);
         if ($validator->fails()) {
-            throw new HttpResponseException(response()->json(['validationErrors' => $validator->errors()->all()], 422));
+            ValidationUtils::handleValidationError($validator);
         }
 
-        $this->forumUserService->PatchUser($request, $user);
+        if (env('IS_FORUM_CONNECTED')) {
+            $this->forumUserService->PatchUser($request, $user);
+        }
+
         $user = $this->mapRequestToUser($request, $user);
 
         // Check for null, because the level is send as null, when the select in the user form is disabled.
@@ -135,7 +137,9 @@ class UserController extends Controller
     public function PatchPassword(PasswordFormRequest $request)
     {
         $user = User::firstWhere('uuid', $request->uuid);
-        $this->forumUserService->PatchPassword($request, $user);
+        if (env('IS_FORUM_CONNECTED')) {
+            $this->forumUserService->PatchPassword($request, $user);
+        }
         $user->password = Hash::make($request->new_password);
         $user->save();
     }
@@ -146,7 +150,9 @@ class UserController extends Controller
             abort(403);
         }
         $user = User::firstWhere('uuid', $uuid);
-        $this->forumUserService->DeleteUser($user->username);
+        if (env('IS_FORUM_CONNECTED')) {
+            $this->forumUserService->DeleteUser($user->username);
+        }
         $user->delete();
     }
 

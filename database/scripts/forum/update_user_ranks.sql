@@ -1,1 +1,0 @@
-UPDATE phpbb_users A, aka_general.users B SET A.user_rank=B.status WHERE A.username_clean=LOWER(B.username)
