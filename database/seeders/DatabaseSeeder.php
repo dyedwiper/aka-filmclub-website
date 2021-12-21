@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'username' => 'edith',
                 'password' => '$argon2id$v=19$m=1024,t=4,p=2$M3d3RDMxV2VRdm5NTmpvQg$ujdHBmkAIPabMQFhserTAA',
-                'level' => 2,
+                'level' => 1,
                 'email' => 'edith@existiert.net',
                 'realname' => 'Edith Editorin',
             ],
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'username' => 'otto',
                 'password' => '$argon2id$v=19$m=1024,t=4,p=2$M3d3RDMxV2VRdm5NTmpvQg$vzftP2TksPP6UPTZ3Cg3fg',
-                'level' => 2,
+                'level' => 0,
                 'email' => 'otto@existiert.net',
                 'realname' => 'Otto Normalmitglied',
             ]
