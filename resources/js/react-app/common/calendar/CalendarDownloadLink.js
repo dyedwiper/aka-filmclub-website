@@ -23,7 +23,7 @@ END:VCALENDAR`;
 
     return (
         <CalendarDownloadLinkStyled
-            href={'data:text/calendar,' + icsString}
+            href={'data:text/calendar,' + encodeURIComponent(icsString)}
             download={'aka-Filmclub_' + screening.title}
         >
             <IconStyled src={calendarIcon} />

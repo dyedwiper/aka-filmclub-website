@@ -30,7 +30,7 @@ END:VCALENDAR`;
 
     return (
         <CalendarSeriesDownloadLinkStyled
-            href={'data:text/calendar,' + icsString}
+            href={'data:text/calendar,' + encodeURIComponent(icsString)}
             download={'aka-Filmclub_' + currentSemester.name}
         >
             <IconStyled src={calendarIcon} />
