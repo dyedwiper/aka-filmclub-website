@@ -79,11 +79,11 @@ export default function Header() {
                         <NavLinkStyled
                             to={ROUTE_PROGRAM}
                             onClick={() => setIsNavOpen(false)}
-                            onKeyPress={toggleDropdown}
+                            onKeyDown={toggleDropdown}
                         >
                             {PAGE_TITLE_PROGRAM}
                         </NavLinkStyled>
-                        <SubNavStyled>
+                        <SubNavStyled onKeyDown={closeDropdown}>
                             <SubNavLinkStyled to={ROUTE_PROGRAM_OVERVIEW} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_PROGRAM_OVERVIEW}
                             </SubNavLinkStyled>
@@ -96,10 +96,10 @@ export default function Header() {
                         </SubNavStyled>
                     </DropdownContainerStyled>
                     <DropdownContainerStyled>
-                        <NavLinkStyled to={ROUTE_ABOUT} onClick={() => setIsNavOpen(false)} onKeyPress={toggleDropdown}>
+                        <NavLinkStyled to={ROUTE_ABOUT} onClick={() => setIsNavOpen(false)} onKeyDown={toggleDropdown}>
                             {PAGE_TITLE_ABOUT}
                         </NavLinkStyled>
-                        <SubNavStyled>
+                        <SubNavStyled onKeyDown={closeDropdown}>
                             <SubNavLinkStyled to={ROUTE_FAQS} onClick={() => setIsNavOpen(false)}>
                                 {PAGE_TITLE_FAQS}
                             </SubNavLinkStyled>
@@ -138,11 +138,11 @@ export default function Header() {
                             <NavLinkStyled
                                 to={ROUTE_INTERN}
                                 onClick={() => setIsNavOpen(false)}
-                                onKeyPress={toggleDropdown}
+                                onKeyDown={toggleDropdown}
                             >
                                 {PAGE_TITLE_INTERN}
                             </NavLinkStyled>
-                            <SubNavStyled>
+                            <SubNavStyled onKeyDown={closeDropdown}>
                                 <SubNavExternalLinkStyled
                                     href={AKA_FORUM_URL}
                                     target="_blank"
@@ -206,7 +206,7 @@ export default function Header() {
         // Das ist wichtig für die Barrierefreiheit.
         if (event.key === ' ') {
             event.preventDefault();
-            const subNav = event.target.parentElement.lastChild;
+            const subNav = event.target.nextSibling;
             if (!subNav.style.display) {
                 subNav.style.display = 'block';
             } else {
@@ -214,6 +214,13 @@ export default function Header() {
                 // Sonst funktioniert der Hover-Effekt nicht mehr, nachdem das Dropdown mit der Tastatur geöffnet wurde.
                 subNav.style.display = null;
             }
+        }
+    }
+
+    function closeDropdown(event) {
+        // Diese Funktion ist auch für die Tastatursteuerung der Dropdowns.
+        if (event.key === 'Escape' || event.key === 'Enter' || (event.key === 'Tab' && !event.target.nextSibling)) {
+            event.target.parentElement.style.display = null;
         }
     }
 
