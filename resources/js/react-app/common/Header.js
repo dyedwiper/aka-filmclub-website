@@ -64,7 +64,7 @@ export default function Header() {
     return (
         <HeaderStyled>
             <ContentContainerStyled headerHeight={headerHeight}>
-                <LinkStyled to={ROUTE_HOME}>
+                <LinkStyled to={ROUTE_HOME} aria-label="Home">
                     <LogoStyled src={akaLogo} alt="Logo des aka-Filmclub" headerHeight={headerHeight} />
                 </LinkStyled>
                 <PageTitleStyled onClick={() => window.scroll(0, 0)}>{pageTitle}</PageTitleStyled>
