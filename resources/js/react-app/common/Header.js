@@ -65,7 +65,7 @@ export default function Header() {
         <HeaderStyled>
             <ContentContainerStyled headerHeight={headerHeight}>
                 <LinkStyled to={ROUTE_HOME}>
-                    <LogoStyled src={akaLogo} headerHeight={headerHeight} />
+                    <LogoStyled src={akaLogo} alt="Logo des aka-Filmclub" headerHeight={headerHeight} />
                 </LinkStyled>
                 <PageTitleStyled onClick={() => window.scroll(0, 0)}>{pageTitle}</PageTitleStyled>
                 <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />

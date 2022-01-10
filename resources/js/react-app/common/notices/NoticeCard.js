@@ -34,8 +34,9 @@ const ImageStyled = styled.img`
     }
 `;
 
-const TitleStyled = styled.h4`
+const TitleStyled = styled.h3`
     margin: 10px 0;
+    font-size: 1rem;
 `;
 
 const ContentStyled = styled.div`

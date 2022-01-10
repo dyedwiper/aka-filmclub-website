@@ -27,13 +27,13 @@ export default function Footer() {
                 </LinksContainerStyled>
                 <IconLinksContainerStyled>
                     <IconLinkStyled href={AKA_FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
-                        <ImageStyled src={facebookIcon} />
+                        <ImageStyled src={facebookIcon} alt="Logo von Facebook" />
                     </IconLinkStyled>
                     <IconLinkStyled href={AKA_INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
-                        <ImageStyled src={instagramIcon} />
+                        <ImageStyled src={instagramIcon} alt="Logo von Instagram" />
                     </IconLinkStyled>
                     <IconLinkStyled href={AKA_TWITTER_URL} target="_blank" rel="noopener noreferrer">
-                        <ImageStyled src={twitterIcon} />
+                        <ImageStyled src={twitterIcon} alt="Logo von Twitter" />
                     </IconLinkStyled>
                 </IconLinksContainerStyled>
             </ContentContainerStyled>
