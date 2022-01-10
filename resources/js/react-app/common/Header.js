@@ -207,10 +207,10 @@ export default function Header() {
         if (event.key === ' ') {
             event.preventDefault();
             const subNav = event.target.parentElement.lastChild;
-            if (subNav.style.display === 'block') {
-                subNav.style.display = 'none';
-            } else {
+            if (!subNav.style.display) {
                 subNav.style.display = 'block';
+            } else {
+                subNav.style.display = null;
             }
         }
     }
