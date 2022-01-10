@@ -202,7 +202,7 @@ export default function Header() {
     );
 
     function toggleDropdown(event) {
-        // Diese Funktion sorgt dafür, dass das Dropdown auch bei Tastatursteuerung anzeigbar ist.
+        // Diese Funktion sorgt dafür, dass sich das Dropdown auch mit der Tastatur anzeigen lässt.
         // Das ist wichtig für die Barrierefreiheit.
         if (event.key === ' ') {
             event.preventDefault();
@@ -210,6 +210,8 @@ export default function Header() {
             if (!subNav.style.display) {
                 subNav.style.display = 'block';
             } else {
+                // Display wird hier auf null gesetzt und nicht auf 'none'.
+                // Sonst funktioniert der Hover-Effekt nicht mehr, nachdem das Dropdown mit der Tastatur geöffnet wurde.
                 subNav.style.display = null;
             }
         }
