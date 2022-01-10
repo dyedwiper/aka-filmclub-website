@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/js/app.js" defer></script>
     <title>aka-Filmclub</title>
+    <meta name="description" content="Der aka-Filmclub ist ein studentischer Filmclub an der Universität Freiburg, der ein Hörsaalkino mit buntem Programm betreibt.">
 
     <!-- Below some links for favicons. See README_favicons.md in public folder for more information. -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
