@@ -64,7 +64,7 @@ export default function Header() {
     return (
         <HeaderStyled>
             <ContentContainerStyled headerHeight={headerHeight}>
-                <LinkStyled to={ROUTE_HOME}>
+                <LinkStyled to={ROUTE_HOME} aria-label="Home">
                     <LogoStyled src={akaLogo} alt="Logo des aka-Filmclub" headerHeight={headerHeight} />
                 </LinkStyled>
                 <PageTitleStyled onClick={() => window.scroll(0, 0)}>{pageTitle}</PageTitleStyled>
@@ -76,7 +76,11 @@ export default function Header() {
                         </NavLinkStyled>
                     </DropdownContainerStyled>
                     <DropdownContainerStyled>
-                        <NavLinkStyled to={ROUTE_PROGRAM} onClick={() => setIsNavOpen(false)}>
+                        <NavLinkStyled
+                            to={ROUTE_PROGRAM}
+                            onClick={() => setIsNavOpen(false)}
+                            onKeyPress={toggleDropdown}
+                        >
                             {PAGE_TITLE_PROGRAM}
                         </NavLinkStyled>
                         <SubNavStyled>
@@ -92,7 +96,7 @@ export default function Header() {
                         </SubNavStyled>
                     </DropdownContainerStyled>
                     <DropdownContainerStyled>
-                        <NavLinkStyled to={ROUTE_ABOUT} onClick={() => setIsNavOpen(false)}>
+                        <NavLinkStyled to={ROUTE_ABOUT} onClick={() => setIsNavOpen(false)} onKeyPress={toggleDropdown}>
                             {PAGE_TITLE_ABOUT}
                         </NavLinkStyled>
                         <SubNavStyled>
@@ -131,7 +135,11 @@ export default function Header() {
                     </DropdownContainerStyled>
                     {isUserLoggedIn && (
                         <DropdownContainerStyled>
-                            <NavLinkStyled to={ROUTE_INTERN} onClick={() => setIsNavOpen(false)}>
+                            <NavLinkStyled
+                                to={ROUTE_INTERN}
+                                onClick={() => setIsNavOpen(false)}
+                                onKeyPress={toggleDropdown}
+                            >
                                 {PAGE_TITLE_INTERN}
                             </NavLinkStyled>
                             <SubNavStyled>
@@ -192,6 +200,22 @@ export default function Header() {
             )}
         </HeaderStyled>
     );
+
+    function toggleDropdown(event) {
+        // Diese Funktion sorgt dafür, dass sich das Dropdown auch mit der Tastatur anzeigen lässt.
+        // Das ist wichtig für die Barrierefreiheit.
+        if (event.key === ' ') {
+            event.preventDefault();
+            const subNav = event.target.parentElement.lastChild;
+            if (!subNav.style.display) {
+                subNav.style.display = 'block';
+            } else {
+                // Display wird hier auf null gesetzt und nicht auf 'none'.
+                // Sonst funktioniert der Hover-Effekt nicht mehr, nachdem das Dropdown mit der Tastatur geöffnet wurde.
+                subNav.style.display = null;
+            }
+        }
+    }
 
     function handleLogout() {
         getLogout().then(() => {

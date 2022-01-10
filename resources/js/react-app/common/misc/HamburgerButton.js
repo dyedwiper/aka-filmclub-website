@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export default function HamburgerButton({ isNavOpen, setIsNavOpen }) {
     return (
-        <HamburgerButtonStyled onClick={() => setIsNavOpen(!isNavOpen)}>
+        <HamburgerButtonStyled onClick={() => setIsNavOpen(!isNavOpen)} aria-label="Navigation">
             <HamburgerStyled isNavOpen={isNavOpen}>
                 <LineStyled isNavOpen={isNavOpen} />
                 <LineStyled isNavOpen={isNavOpen} />
