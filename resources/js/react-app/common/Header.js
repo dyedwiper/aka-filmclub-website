@@ -218,8 +218,13 @@ export default function Header() {
     }
 
     function closeDropdown(event) {
-        // Diese Funktion ist auch für die Tastatursteuerung der Dropdowns.
-        if (event.key === 'Escape' || event.key === 'Enter' || (event.key === 'Tab' && !event.target.nextSibling)) {
+        // Diese Funktion ist ebenfalls für die Tastatursteuerung der Dropdowns.
+        if (
+            event.key === 'Escape' ||
+            event.key === 'Enter' ||
+            (!event.shiftKey && event.key === 'Tab' && !event.target.nextSibling) ||
+            (event.shiftKey && event.key === 'Tab' && !event.target.previousSibling)
+        ) {
             event.target.parentElement.style.display = null;
         }
     }
