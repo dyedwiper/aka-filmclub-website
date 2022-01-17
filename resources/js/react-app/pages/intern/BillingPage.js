@@ -65,8 +65,12 @@ export default function BillingPage() {
             </KeyValueContainerStyled>
             <HorizontalRuleStyled />
             <KeyValueContainerStyled>
-                <DistributorKeyStyled>Verleih</DistributorKeyStyled>
-                <DistributorValueStyled>{billing.distributor && billing.distributor.name}</DistributorValueStyled>
+                <TextKeyStyled>Verleih</TextKeyStyled>
+                <TextValueStyled>{billing.distributor && billing.distributor.name}</TextValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <TextKeyStyled>Terminbestätigungs-Nr.</TextKeyStyled>
+                <TextValueStyled>{billing.confirmationNumber}</TextValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Mindestgarantie</KeyStyled>
@@ -162,14 +166,14 @@ const EarningsContainerStyled = styled.div`
     margin-top: 10px;
 `;
 
-const DistributorKeyStyled = styled.h3`
+const TextKeyStyled = styled.h3`
     display: inline-block;
-    margin-right: 5px;
+    width: 310px;
     font-size: 1em;
     font-weight: bold;
 `;
 
-const DistributorValueStyled = styled.span``;
+const TextValueStyled = styled.span``;
 
 const CommentKeyStyled = styled.h3`
     font-size: 1em;

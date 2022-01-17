@@ -26,7 +26,7 @@ export default function BillingFormGroup({ screening, billing }) {
                 </LabelStyled>
                 <LabelStyled>
                     Terminbestätigungs-Nr.
-                    <InputStyled inputName="confirmationNumber" defaultValue={billing && billing.confirmationNumber} />
+                    <InputStyled name="confirmationNumber" defaultValue={billing && billing.confirmationNumber} />
                 </LabelStyled>
             </DistributorRowStyled>
             <FormRowWithFourInputsStyled>
