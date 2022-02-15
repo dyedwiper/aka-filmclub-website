@@ -6,7 +6,7 @@ Dies ist der Code für die Website vom aka-Filmclub Freiburg e.V., erreichbar un
 
 Diese Readme enthält Erklärungen zum Technologie-Stack und zur Progammierung. Dabei wird besonders auf die Dinge eingegangen, die vom Standard abweichen.
 
-Außerdem wird erklärt, was nötig ist, um die App lokal installieren.
+Außerdem wird erklärt, was nötig ist, um die App lokal zu installieren.
 
 ### Grundlegendes Setup
 
