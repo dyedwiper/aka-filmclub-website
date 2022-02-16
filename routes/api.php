@@ -51,10 +51,6 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'GetScreeningsBySearchString'
     ]);
 
-    Route::get('/update_uuids', [
-        ScreeningController::class, 'UpdateUuids'
-    ]);
-
     Route::middleware('auth:sanctum')->post('/', [
         ScreeningController::class, 'PostScreening'
     ]);
@@ -63,7 +59,7 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'PatchScreening'
     ]);
 
-    Route::delete('/uuid/{uuid}', [
+    Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [
         ScreeningController::class, 'DeleteScreening'
     ]);
 });
@@ -79,10 +75,6 @@ Route::prefix('notices')->group(function () {
 
     Route::get('/uuid/{uuid}', [
         NoticeController::class, 'GetNoticeByUuid'
-    ]);
-
-    Route::get('/update_uuids', [
-        NoticeController::class, 'UpdateUuids'
     ]);
 
     Route::middleware('auth:sanctum')->post('/', [
@@ -113,14 +105,6 @@ Route::prefix('serials')->group(function () {
 
     Route::get('search/{search}', [
         SerialController::class, 'GetSerialsBySearchString'
-    ]);
-
-    Route::get('/update_uuids', [
-        SerialController::class, 'UpdateUuids'
-    ]);
-
-    Route::get('/update_semesters', [
-        SerialController::class, 'UpdateSemesters'
     ]);
 
     Route::middleware('auth:sanctum')->post('/', [
@@ -277,10 +261,6 @@ Route::middleware('auth:sanctum')->prefix('distributors')->group(function () {
     Route::delete('/uuid/{uuid}', [
         DistributorController::class, 'DeleteDistributor'
     ]);
-
-    Route::get('/updateUuids', [
-        DistributorController::class, 'UpdateUuids'
-    ]);
 });
 
 Route::middleware('auth:sanctum')->prefix('billings')->group(function () {
@@ -302,10 +282,6 @@ Route::middleware('auth:sanctum')->prefix('billings')->group(function () {
 
     Route::delete('/uuid/{uuid}', [
         BillingController::class, 'DeleteBilling'
-    ]);
-
-    Route::get('/updateUuids', [
-        BillingController::class, 'UpdateUuids'
     ]);
 });
 
