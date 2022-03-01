@@ -8,7 +8,6 @@ use Illuminate\Database\ConnectionInterface;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\InteractsWithTime;
 use SessionHandlerInterface;
 
@@ -70,7 +69,10 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function open($savePath, $sessionName)
     {
         return true;
@@ -78,7 +80,10 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function close()
     {
         return true;
@@ -86,7 +91,10 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
 
     /**
      * {@inheritdoc}
+     *
+     * @return string|false
      */
+    #[\ReturnTypeWillChange]
     public function read($sessionId)
     {
         $session = (object) $this->getQuery()->find($sessionId);
@@ -120,12 +128,15 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function write($sessionId, $data)
     {
         $payload = $this->getDefaultPayload($data);
 
-        if (!$this->exists) {
+        if (! $this->exists) {
             $this->read($sessionId);
         }
 
@@ -142,7 +153,7 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
      * Perform an insert operation on the session ID.
      *
      * @param  string  $sessionId
-     * @param  string  $payload
+     * @param  array<string, mixed>  $payload
      * @return bool|null
      */
     protected function performInsert($sessionId, $payload)
@@ -158,7 +169,7 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
      * Perform an update operation on the session ID.
      *
      * @param  string  $sessionId
-     * @param  string  $payload
+     * @param  array<string, mixed>  $payload
      * @return int
      */
     protected function performUpdate($sessionId, $payload)
@@ -179,13 +190,13 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
             'last_activity' => $this->currentTime(),
         ];
 
-        if (!$this->container) {
+        if (! $this->container) {
             return $payload;
         }
 
         return tap($payload, function (&$payload) {
             $this->addUserInformation($payload)
-                ->addRequestInformation($payload);
+                 ->addRequestInformation($payload);
         });
     }
 
@@ -211,7 +222,6 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
      */
     protected function userId()
     {
-        // Log::channel('personal')->debug('userid');
         return $this->container->make(Guard::class)->id();
     }
 
@@ -255,7 +265,10 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
+    #[\ReturnTypeWillChange]
     public function destroy($sessionId)
     {
         $this->getQuery()->where('id', $sessionId)->delete();
@@ -265,7 +278,10 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
 
     /**
      * {@inheritdoc}
+     *
+     * @return int|false
      */
+    #[\ReturnTypeWillChange]
     public function gc($lifetime)
     {
         $this->getQuery()->where('last_activity', '<=', $this->currentTime() - $lifetime)->delete();
@@ -279,6 +295,19 @@ class DatabaseSessionHandler implements ExistenceAwareInterface, SessionHandlerI
     protected function getQuery()
     {
         return $this->connection->table($this->table);
+    }
+
+    /**
+     * Set the application instance used by the handler.
+     *
+     * @param  \Illuminate\Contracts\Foundation\Application  $container
+     * @return $this
+     */
+    public function setContainer($container)
+    {
+        $this->container = $container;
+
+        return $this;
     }
 
     /**

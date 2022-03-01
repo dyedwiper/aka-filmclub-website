@@ -4,7 +4,6 @@ namespace Laravel\Sanctum\Http\Middleware;
 
 use Illuminate\Routing\Pipeline;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class EnsureFrontendRequestsAreStateful
@@ -58,19 +57,18 @@ class EnsureFrontendRequestsAreStateful
     {
         $domain = $request->headers->get('referer') ?: $request->headers->get('origin');
 
+        if (is_null($domain)) {
+            return false;
+        }
+
         $domain = Str::replaceFirst('https://', '', $domain);
         $domain = Str::replaceFirst('http://', '', $domain);
         $domain = Str::endsWith($domain, '/') ? $domain : "{$domain}/";
 
-        // Log::channel('personal')->debug('domain: ' . $domain);
-
         $stateful = array_filter(config('sanctum.stateful', []));
 
-        // Log::channel('personal')->debug($stateful);
-
         return Str::is(Collection::make($stateful)->map(function ($uri) {
-            // Log::channel('personal')->debug('uri: ' . $uri);
-            return trim($uri) . '/*';
+            return trim($uri).'/*';
         })->all(), $domain);
     }
 }
