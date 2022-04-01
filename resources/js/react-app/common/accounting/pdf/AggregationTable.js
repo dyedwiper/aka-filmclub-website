@@ -1,94 +1,68 @@
+import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import React from 'react';
-import styled from '@react-pdf/styled-components';
 import { toEuroWithSymbol } from '../../../utils/moneyFormatters';
 
 export default function AggregationTable({ billing }) {
     return (
-        <AggregationTableStyled>
-            <RowWithBorderStyled>
-                <SignStyled>-</SignStyled>
-                <KeyStyled>V-Steuer ({toEuroWithSymbol(billing.ticketTax)} pro Karte)</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(billing.ticketTax * billing.ticketsCount)}</ValueStyled>
-            </RowWithBorderStyled>
-            <RowStyled>
-                <SignStyled></SignStyled>
-                <KeyStyled>Nettoerlös</KeyStyled>
-                <ValueWithBorderStyled>
+        <View style={styles.aggregationTable}>
+            <View style={styles.rowWithBorder}>
+                <Text style={styles.sign}>-</Text>
+                <Text style={styles.key}>V-Steuer ({toEuroWithSymbol(billing.ticketTax)} pro Karte)</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.ticketTax * billing.ticketsCount)}</Text>
+            </View>
+            <View style={styles.row}>
+                <Text style={styles.sign}></Text>
+                <Text style={styles.key}>Nettoerlös</Text>
+                <Text style={styles.valueWithBorder}>
                     {toEuroWithSymbol(billing.ticketEarnings - billing.ticketTax * billing.ticketsCount)}
-                </ValueWithBorderStyled>
-            </RowStyled>
-            <CushionStyled />
-            <RowStyled>
-                <SignStyled></SignStyled>
-                <KeyStyled>Filmmiete</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(billing.rent)}</ValueStyled>
-            </RowStyled>
-            <RowWithBorderStyled>
-                <SignStyled>+</SignStyled>
-                <KeyStyled>Nebenkosten</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(billing.incidentals)}</ValueStyled>
-            </RowWithBorderStyled>
-            <RowStyled>
-                <SignStyled></SignStyled>
-                <KeyStyled>Zwischensumme</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(billing.rent + billing.incidentals)}</ValueStyled>
-            </RowStyled>
-            <RowWithBorderStyled>
-                <SignStyled>+</SignStyled>
-                <KeyStyled>MWSt ({billing.valueAddedTaxRate.toLocaleString('de-DE')} %)</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(billing.valueAddedTax)}</ValueStyled>
-            </RowWithBorderStyled>
-            <RowStyled>
-                <SignStyled></SignStyled>
-                <KeyStyled>Zu zahlen</KeyStyled>
-                <ValueWithBorderStyled>{toEuroWithSymbol(billing.debt)}</ValueWithBorderStyled>
-            </RowStyled>
-        </AggregationTableStyled>
+                </Text>
+            </View>
+            <View style={styles.cushion} />
+            <View style={styles.row}>
+                <Text style={styles.sign}></Text>
+                <Text style={styles.key}>Filmmiete</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.rent)}</Text>
+            </View>
+            <View style={styles.rowWithBorder}>
+                <Text style={styles.sign}>+</Text>
+                <Text style={styles.key}>Nebenkosten</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.incidentals)}</Text>
+            </View>
+            <View style={styles.row}>
+                <Text style={styles.sign}></Text>
+                <Text style={styles.key}>Zwischensumme</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.rent + billing.incidentals)}</Text>
+            </View>
+            <View style={styles.rowWithBorder}>
+                <Text style={styles.sign}>+</Text>
+                <Text style={styles.key}>MWSt ({billing.valueAddedTaxRate.toLocaleString('de-DE')} %)</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.valueAddedTax)}</Text>
+            </View>
+            <View style={styles.row}>
+                <Text style={styles.sign}></Text>
+                <Text style={styles.key}>Zu zahlen</Text>
+                <Text style={styles.valueWithBorder}>{toEuroWithSymbol(billing.debt)}</Text>
+            </View>
+        </View>
     );
 }
 
-const AggregationTableStyled = styled.View`
-    margin: 0 0 0 auto;
-`;
-
-const RowStyled = styled.View`
-    display: flex;
-    flex-direction: row;
-`;
-
-const RowWithBorderStyled = styled.View`
-    display: flex;
-    flex-direction: row;
-    border-bottom-style: solid;
-    border-bottom-width: 1pt;
-    border-bottom-color: #616161;
-`;
-
-const SignStyled = styled.Text`
-    width: 12pt;
-    padding: 1pt 3pt;
-`;
-
-const KeyStyled = styled.Text`
-    width: 150pt;
-    padding: 1pt 3pt;
-`;
-
-const ValueStyled = styled.Text`
-    width: 70pt;
-    padding: 1pt 3pt;
-    text-align: right;
-`;
-
-const ValueWithBorderStyled = styled.Text`
-    width: 70pt;
-    padding: 1pt 3pt;
-    text-align: right;
-    border-bottom-style: solid;
-    border-bottom-width: 2pt;
-    border-bottom-color: black;
-`;
-
-const CushionStyled = styled.View`
-    height: 20pt;
-`;
+const styles = StyleSheet.create({
+    aggregationTable: { margin: '0 0 0 auto' },
+    rowWithBorder: {
+        display: 'flex',
+        flexDirection: 'row',
+        borderBottom: '1pt solid #616161',
+    },
+    row: { display: 'flex', flexDirection: 'row' },
+    sign: { width: '12pt', padding: '1pt 3pt' },
+    key: { width: '150pt', padding: '1pt 3pt' },
+    value: { width: '70pt', padding: '1pt 3 pt', textAlign: 'right' },
+    valueWithBorder: {
+        width: '70pt',
+        padding: '1pt 3pt',
+        textAlign: 'right',
+        borderBottom: '2pt solid black',
+    },
+    cushion: { height: '20pt' },
+});
