@@ -52,9 +52,7 @@ const styles = StyleSheet.create({
     rowWithBorder: {
         display: 'flex',
         flexDirection: 'row',
-        borderBottomStyle: 'solid',
-        borderBottomWidth: '1pt',
-        borderBottomColor: '#616161',
+        borderBottom: '1pt solid #616161',
     },
     row: { display: 'flex', flexDirection: 'row' },
     sign: { width: '12pt', padding: '1pt 3pt' },
@@ -64,9 +62,7 @@ const styles = StyleSheet.create({
         width: '70pt',
         padding: '1pt 3pt',
         textAlign: 'right',
-        borderBottomStyle: 'solid',
-        borderBottomWidth: '2pt',
-        borderBottomColor: 'black',
+        borderBottom: '2pt solid black',
     },
     cushion: { height: '20pt' },
 });
