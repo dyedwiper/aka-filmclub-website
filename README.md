@@ -26,7 +26,7 @@ Damit die App lokal läuft, muss folgendes installiert sein:
 
 Zur Entwicklung ist außerdem notwendig:
 
--   [Node.js](https://nodejs.org/en/) (14.5)
+-   [Node.js](https://nodejs.org/en/) (14.5, 16.4)
 
 In Klammern stehen die Versionen, mit denen die App getestet wurde. Es kann sein, dass sie auch mit älteren oder neueren Versionen läuft.
 

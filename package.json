@@ -1,5 +1,10 @@
 {
+    "name": "aka-filmclub-website-frontend",
     "private": true,
+    "engines": {
+        "node": "16.x",
+        "npm": "8.x"
+    },
     "scripts": {
         "dev": "npm run development",
         "development": "mix",
