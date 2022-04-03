@@ -66,6 +66,7 @@ export default createGlobalStyle`
 
   button {
     background-color: white;
+    color: black;
     cursor: pointer;
     box-shadow: 1px 1px 1px black;
 
