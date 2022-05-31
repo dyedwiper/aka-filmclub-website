@@ -70,7 +70,9 @@ Die Datei _public/js/app.js_, die das kompilierte Frontend enthält, würde man 
 
 ##### Branches
 
-Es gibt die zwei Branches _main_ und _prod_. Sie unterscheiden sich nur dadurch, wie die _app.js_-Datei kompiliert wurde, ob im _dev_- oder im _prod_-Modus (siehe dazu [hier](#laravel-mix-und-npm)). Für die Entwicklung ist der _main_-Branch gedacht.
+Die Hauptbranch heißt _main_. In diesem liegt der produktive Code, d.h. es dürfen keine Zwischenstände auf _main_ commited werden. Außerdem muss in _main_ immer das mit `npm run prod` gebaute Frontend liegen.
+
+Für größere Entwicklungen sollte ein feature-Branch abgezweigt und über einen Pull Request bei GitHub gemerget werden.
 
 #### Laravel Mix und NPM
 
@@ -83,6 +85,8 @@ Die anderen für diese App relevanten NPM-Befehle (die sich auch in der _package
 -   `npm run dev`: Kompiliert das Frontend.
 -   `npm run watch`: Überwacht Änderungen im Code und kompiliert das Frontend automatisch bei jeder Änderung.
 -   `npm run prod`: Kompiliert das Frontend und minifiziert das Output-File.
+
+**Wichtig:** Vor einem Commit in den _main_-Branch muss immer `npm run prod` ausgeführt werden.
 
 ## Backend
 
