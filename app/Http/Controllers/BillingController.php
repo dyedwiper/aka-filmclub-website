@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BillingFormRequest;
 use App\Models\Billing;
 use App\Models\PassStack;
-use App\Models\Screening;
 use App\Models\TicketStack;
 use App\Services\BillingService;
+use App\Services\ScreeningService;
 use App\Utils\NumberUtils;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,35 +16,18 @@ use Illuminate\Support\Facades\Config;
 class BillingController extends Controller
 {
     private $billingService;
+    private $screeningService;
 
-    public function __construct(BillingService $billingService)
+    public function __construct(BillingService $billingService, ScreeningService $screeningService)
     {
         $this->billingService = $billingService;
+        $this->screeningService = $screeningService;
     }
 
     public function GetScreeningsWithBillingsBySemester(string $semester)
     {
-        $season = substr($semester, 0, 2);
-        $year = intval(substr($semester, 2, 4));
-
-        if ($season == 'WS') {
-            $screenings = Screening::select('id', 'uuid', 'title', 'date')
-                ->whereYear('date', $year)
-                ->whereMonth('date', '>=', 10)
-                ->orWhereYear('date', $year + 1)
-                ->whereMonth('date', '<', 4)
-                ->orderBy('date')
-                ->get();
-            return $screenings->map([$this->billingService, 'addBillingToScreening']);
-        } elseif ($season == 'SS') {
-            $screenings = Screening::select('id', 'uuid', 'title', 'date')
-                ->whereYear('date', $year)
-                ->whereMonth('date', '>=', 4)
-                ->whereMonth('date', '<', 10)
-                ->orderBy('date')
-                ->get();
-            return $screenings->map([$this->billingService, 'addBillingToScreening']);
-        }
+        $screenings = $this->screeningService->getScreeningsForSemester($semester);
+        return $screenings->map([$this->billingService, 'addBillingToScreening']);
     }
 
     public function GetBillingByUuid(string $uuid)
