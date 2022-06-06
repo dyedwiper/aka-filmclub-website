@@ -23,11 +23,14 @@ export default function ProgramPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_PROGRAM}>
             <PageHeadlineStyled>{PAGE_TITLE_PROGRAM}</PageHeadlineStyled>
-            <ScreeningsListStyled>
-                {screenings.map((screening) => (
-                    <ScreeningRow key={screening.id} screening={screening} />
-                ))}
-            </ScreeningsListStyled>
+            <>
+                {!screenings.length && <NoItemsHint>In diesem Semester gibt es keine Vorführungen mehr.</NoItemsHint>}
+                <ScreeningsListStyled>
+                    {screenings.map((screening) => (
+                        <ScreeningRow key={screening.id} screening={screening} />
+                    ))}
+                </ScreeningsListStyled>
+            </>
         </BasePage>
     );
 }
@@ -35,4 +38,8 @@ export default function ProgramPage() {
 const ScreeningsListStyled = styled.ul`
     padding: 0;
     list-style: none;
+`;
+
+const NoItemsHint = styled.p`
+    margin-top: 20px;
 `;

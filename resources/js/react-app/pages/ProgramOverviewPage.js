@@ -31,6 +31,9 @@ export default function ProgramOverviewPage() {
                 <div>Loading</div>
             ) : (
                 <ContainerStyled>
+                    {!screenings.length && (
+                        <NoItemsHint>In diesem Semester gibt es keine Vorführungen mehr.</NoItemsHint>
+                    )}
                     {screenings.length > 0 && <CalendarSeriesDownloadLink screenings={screenings} />}
                     <ScreeningsListStyled>
                         {screenings.map((screening) => (
@@ -48,3 +51,7 @@ const ContainerStyled = styled.div`
 `;
 
 const ScreeningsListStyled = styled.ul``;
+
+const NoItemsHint = styled.p`
+    margin-top: 20px;
+`;

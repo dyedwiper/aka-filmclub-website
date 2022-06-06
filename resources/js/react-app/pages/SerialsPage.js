@@ -65,14 +65,24 @@ export default function SerialsPage() {
             {isLoading ? (
                 <div>Loading</div>
             ) : (
-                <ListStyled>
-                    {serials.map((serial) => (
-                        <SerialRow key={serial.id} serial={serial} />
-                    ))}
-                </ListStyled>
+                <>
+                    {!serials.length && (
+                        <NoItemsHint>In diesem Semester gibt oder gab es keine Filmreihen.</NoItemsHint>
+                    )}
+
+                    <ListStyled>
+                        {serials.map((serial) => (
+                            <SerialRow key={serial.id} serial={serial} />
+                        ))}
+                    </ListStyled>
+                </>
             )}
         </BasePage>
     );
 }
 
 const ListStyled = styled.ul``;
+
+const NoItemsHint = styled.p`
+    margin-top: 20px;
+`;

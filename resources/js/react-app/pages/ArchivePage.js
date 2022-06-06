@@ -39,7 +39,10 @@ export default function ArchivePage() {
         if (semester.value) {
             getScreeningsBySemester(semester.value).then((res) => {
                 history.push('/program/archive?semester=' + semester.value);
-                setScreenings(res.data);
+                const screenings = res.data.filter(
+                    (screening) => new Date(screening.date.replace(' ', 'T')) < Date.now()
+                );
+                setScreenings(screenings);
                 setIsLoading(false);
             });
         }
@@ -65,16 +68,21 @@ export default function ArchivePage() {
             {isLoading ? (
                 <div>Loading</div>
             ) : (
-                <ListStyled>
-                    {screenings
-                        .filter((screening) => new Date(screening.date.replace(' ', 'T')) < Date.now())
-                        .map((screening) => (
+                <>
+                    {!screenings.length && <NoItemsHint>In jenem Semester gab es keine Vorführungen.</NoItemsHint>}
+                    <ListStyled>
+                        {screenings.map((screening) => (
                             <ScreeningsListItem key={screening.id} screening={screening} />
                         ))}
-                </ListStyled>
+                    </ListStyled>
+                </>
             )}
         </BasePage>
     );
 }
 
 const ListStyled = styled.ul``;
+
+const NoItemsHint = styled.p`
+    margin-top: 20px;
+`;
