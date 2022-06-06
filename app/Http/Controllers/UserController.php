@@ -59,6 +59,8 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             $user->failed_login_attempts = 0;
             $user->login_forbidden_until = null;
+            // Disable timestamps because this should not appear as an update of user.
+            $user->timestamps = false;
             $user->save();
             $request->session()->regenerate();
             return Auth::user();
@@ -70,6 +72,8 @@ class UserController extends Controller
         $user->failed_login_attempts++;
         // The time is always set here, but does not take effect until the max number of attempts is reached.
         $user->login_forbidden_until = new DateTime('+' . env('LOCKOUT_TIME_IN_MINUTES') . 'minutes');
+        // Disable timestamps because this should not appear as an update of user.
+        $user->timestamps = false;
         $user->save();
         abort(401);
     }
