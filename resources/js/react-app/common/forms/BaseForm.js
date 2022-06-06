@@ -119,7 +119,7 @@ export default function BaseForm({
                 history.push(deleteRedirectRoute);
             })
             .catch((err) => {
-                if (err.response.status === 409) {
+                if (err.response.status === 422) {
                     setErrorMessage(err.response.data.message);
                 }
             });

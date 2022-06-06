@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ScreeningFormRequest;
 use App\Models\Screening;
 use App\Services\ImageService;
+use App\Services\ScreeningService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
@@ -12,10 +13,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ScreeningController extends Controller
 {
+    private $screeningService;
     private $imageService;
 
-    public function __construct(ImageService $imageService)
+    public function __construct(ScreeningService $screeningService, ImageService $imageService)
     {
+        $this->screeningService = $screeningService;
         $this->imageService = $imageService;
     }
 
@@ -36,25 +39,7 @@ class ScreeningController extends Controller
 
     public function GetScreeningsBySemester(string $semester)
     {
-        $season = substr($semester, 0, 2);
-        $year = intval(substr($semester, 2, 4));
-
-        if ($season == 'WS') {
-            return Screening::whereYear('date', $year)
-                ->whereMonth('date', '>=', 10)
-                ->orWhereYear('date', $year + 1)
-                ->whereMonth('date', '<', 4)
-                ->orderBy('date')
-                ->get();
-        }
-
-        if ($season == 'SS') {
-            return Screening::whereYear('date', $year)
-                ->whereMonth('date', '>=', 4)
-                ->whereMonth('date', '<', 10)
-                ->orderBy('date')
-                ->get();
-        }
+        return $this->screeningService->getScreeningsForSemester($semester);
     }
 
     public function GetScreeningsBySearchString(string $search)
@@ -101,6 +86,9 @@ class ScreeningController extends Controller
         }
 
         $screening = Screening::firstWhere('uuid', $uuid);
+        if ($screening->billing) {
+            abort(422, 'Zu dieser Vorführung existiert noch eine Abrechnung, die vorher gelöscht werden muss.');
+        }
         $image = $screening->image;
         $screening->delete();
         if ($image) {

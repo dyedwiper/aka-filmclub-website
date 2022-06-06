@@ -83,7 +83,7 @@ class SerialController extends Controller
         }
         $serial = Serial::where('uuid', $request->uuid)->with('screenings')->first();
         if (count($serial->screenings) > 0) {
-            abort(409, 'Die Reihe kann nicht gelöscht werden, solange ihr noch Vorführungen zugeordnet sind.');
+            abort(422, 'Die Reihe kann nicht gelöscht werden, solange ihr noch Vorführungen zugeordnet sind.');
         }
         $image = $serial->image;
 
