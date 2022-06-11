@@ -65,6 +65,7 @@ return array(
     'App\\Services\\BillingService' => $baseDir . '/app/Services/BillingService.php',
     'App\\Services\\ForumUserService' => $baseDir . '/app/Services/ForumUserService.php',
     'App\\Services\\ImageService' => $baseDir . '/app/Services/ImageService.php',
+    'App\\Services\\ScreeningService' => $baseDir . '/app/Services/ScreeningService.php',
     'App\\Utils\\MimeTypeUtils' => $baseDir . '/app/Utils/MimeTypeUtils.php',
     'App\\Utils\\NumberUtils' => $baseDir . '/app/Utils/NumberUtils.php',
     'App\\Utils\\PathUtils' => $baseDir . '/app/Utils/PathUtils.php',
