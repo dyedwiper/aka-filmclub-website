@@ -12,7 +12,8 @@ class ScreeningService
         $year = intval(substr($semester, 2, 4));
 
         if ($season == 'WS') {
-            return Screening::whereYear('date', $year)
+            return Screening::select('id', 'uuid', 'title', 'date', 'special')
+                ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
                 ->whereMonth('date', '<', 4)
@@ -21,7 +22,8 @@ class ScreeningService
         }
 
         if ($season == 'SS') {
-            return Screening::whereYear('date', $year)
+            return Screening::select('id', 'uuid', 'title', 'date', 'special')
+                ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)
                 ->orderBy('date')
