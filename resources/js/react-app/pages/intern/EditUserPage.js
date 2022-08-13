@@ -18,6 +18,7 @@ import LoadingPage from '../LoadingPage';
 
 export default function EditUserPage() {
     const [user, setUser] = useState({});
+    const [isUserSelf, setIsUserSelf] = useState(false);
     const [isAuthorized, setIsAuthorized] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -33,6 +34,7 @@ export default function EditUserPage() {
 
     useEffect(() => {
         const isSelf = user && user.id === loggedInUser.id;
+        setIsUserSelf(isSelf);
         setIsAuthorized(isUserAdmin || isSelf);
     }, [user, loggedInUser]);
 
@@ -41,7 +43,9 @@ export default function EditUserPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_EDIT_USER}>
             <HeadlineStyled>{PAGE_TITLE_EDIT_USER}</HeadlineStyled>
-            <LinkStyled to={ROUTE_INTERN_EDIT_PASSWORD + loggedInUser.uuid}>{PAGE_TITLE_EDIT_PASSWORD}</LinkStyled>
+            {isUserSelf && (
+                <LinkStyled to={ROUTE_INTERN_EDIT_PASSWORD + loggedInUser.uuid}>{PAGE_TITLE_EDIT_PASSWORD}</LinkStyled>
+            )}
             <BaseForm
                 postFunction={postUser}
                 deleteFunction={deleteUser}
