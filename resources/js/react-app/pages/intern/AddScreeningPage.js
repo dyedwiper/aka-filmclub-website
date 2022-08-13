@@ -4,7 +4,7 @@ import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
-import { HorizontalRuleStyled, PageHeadlineStyled } from '../../common/styledElements';
+import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_ADD_SCREENING, ROUTE_PROGRAM_OVERVIEW } from '../../constants';
 import { postScreening } from '../../utils/services/screeningServices';
 
@@ -23,10 +23,10 @@ export default function AddScreeningPage() {
                 </ButtonStyled>
                 {omdbError && <OmdbErrorStyled>Fehler bei der Abfrage</OmdbErrorStyled>}
             </FormStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <BaseForm postFunction={postScreening} postRedirectRoute={ROUTE_PROGRAM_OVERVIEW}>
                 <ScreeningFormGroup screening={omdbData} />
-                <HorizontalRuleStyled />
+                <hr />
                 <ImageFormGroup />
             </BaseForm>
         </BasePage>

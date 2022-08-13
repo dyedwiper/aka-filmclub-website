@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import NoticeCard from '../common/notices/NoticeCard';
 import ScreeningCard from '../common/screenings/ScreeningCard';
-import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
+import { PageStyled } from '../common/styledElements';
 import Context from '../Context';
 import { getNotices } from '../utils/services/noticeServices';
 import { getFutureScreenings } from '../utils/services/screeningServices';
@@ -60,7 +60,7 @@ export default function HomePage() {
                     </>
                 )}
             </SectionStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <SectionStyled>
                 <HeadlineStyled>Die nächsten Vorführungen</HeadlineStyled>
                 {screenings.length ? (
@@ -73,7 +73,7 @@ export default function HomePage() {
                     <InfoStyled>gibt's im nächsten Semester.</InfoStyled>
                 )}
             </SectionStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <SectionStyled>
                 <HeadlineStyled>Die neuesten News</HeadlineStyled>
                 <CardsListStyled>

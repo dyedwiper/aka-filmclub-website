@@ -3,7 +3,7 @@ import { HashLink } from 'react-router-hash-link';
 import styled from 'styled-components';
 import BasePage from '../common/BasePage';
 import FaqRow from '../common/misc/FaqRow';
-import { AddItemLinkStyled, HorizontalRuleStyled, PageHeadlineStyled } from '../common/styledElements';
+import { AddItemLinkStyled, PageHeadlineStyled } from '../common/styledElements';
 import { PAGE_TITLE_FAQS, ROUTE_INTERN_ADD_FAQ } from '../constants';
 import Context from '../Context';
 import { getFaqs } from '../utils/services/faqServices';
@@ -37,7 +37,7 @@ export default function FaqsPage() {
                     </QuestionLinkItemStyled>
                 ))}
             </QuestionsListStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <AnswersListStyled>
                 {faqs.map((faq) => (
                     <FaqRow key={faq.id} faq={faq} />

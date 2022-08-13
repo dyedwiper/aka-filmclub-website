@@ -6,12 +6,10 @@ import { ROUTE_NOTICE, STORAGE_FOLDER } from '../../constants';
 import { formatToDateString } from '../../utils/dateFormatters';
 import { showNoticeImage } from '../../utils/imageUtils';
 import { stripHtml } from '../../utils/stringUtils';
-import { HorizontalRuleStyled } from '../styledElements';
 
 export default function NoticeRow({ notice }) {
     return (
         <NoticeRowStyled>
-            <HorizontalRuleStyled />
             <NoticeContainerStyled>
                 <InfoContainerStyled>
                     <DateStyled>{formatToDateString(notice.date)}</DateStyled>
@@ -28,11 +26,16 @@ export default function NoticeRow({ notice }) {
                     />
                 </LinkStyled>
             </NoticeContainerStyled>
+            <hr />
         </NoticeRowStyled>
     );
 }
 
-const NoticeRowStyled = styled.li``;
+const NoticeRowStyled = styled.li`
+    :last-child hr {
+        display: none;
+    }
+`;
 
 const NoticeContainerStyled = styled.div`
     display: grid;

@@ -4,14 +4,12 @@ import styled from 'styled-components';
 import { ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
 import Context from '../../Context';
 import CreditsContainer from '../screenings/CreditsContainer';
-import { HorizontalRuleStyled } from '../styledElements';
 
 export default function SelfmadeFilmContainer({ film }) {
     const { isUserEditor } = useContext(Context);
 
     return (
         <SelfmadeFilmContainerStyled>
-            <HorizontalRuleStyled />
             <IFrameContainerStyled>
                 <IFrameStyled src={film.source} allow="fullscreen; picture-in-picture" />
             </IFrameContainerStyled>
@@ -19,12 +17,17 @@ export default function SelfmadeFilmContainer({ film }) {
             <CreditsContainer film={film} />
             {film.synopsis && <SynopsisStyled>{film.synopsis}</SynopsisStyled>}
             {isUserEditor && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + film.uuid}>Bearbeiten</LinkStyled>}
+            <hr />
         </SelfmadeFilmContainerStyled>
     );
 }
 
 const SelfmadeFilmContainerStyled = styled.li`
     margin: 20px 0 40px 0;
+
+    :last-child hr {
+        display: none;
+    }
 `;
 
 const IFrameContainerStyled = styled.div`

@@ -6,7 +6,7 @@ import BillingPdf from '../../common/accounting/pdf/BillingPdf';
 import StacksList from '../../common/accounting/StacksList';
 import BasePage from '../../common/BasePage';
 import UpdateInfo from '../../common/misc/UpdateInfo';
-import { HorizontalRuleStyled, PageHeadlineStyled, VerticalLineStyled } from '../../common/styledElements';
+import { PageHeadlineStyled, VerticalLineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_BILLING, ROUTE_INTERN_EDIT_BILLING } from '../../constants';
 import Context from '../../Context';
 import { toEuroWithSymbol } from '../../utils/moneyFormatters';
@@ -46,7 +46,7 @@ export default function BillingPage() {
                 <KeyStyled>Sonstige Einnahmen</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.additionalEarnings)}</ValueStyled>
             </KeyValueContainerStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <KeyValueContainerStyled>
                 <KeyStyled>Kasseneinlage</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.cashInlay)}</ValueStyled>
@@ -63,7 +63,7 @@ export default function BillingPage() {
                 <KeyStyled title="Tatsächliche Einnahmen minus errechnete Einnahmen">Kassendifferenz</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.cashOut - billing.cashInlay - billing.earnings)}</ValueStyled>
             </KeyValueContainerStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <KeyValueContainerStyled>
                 <TextKeyStyled>Verleih</TextKeyStyled>
                 <TextValueStyled>{billing.distributor && billing.distributor.name}</TextValueStyled>
@@ -84,7 +84,7 @@ export default function BillingPage() {
                 <KeyStyled>Nebenkosten</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.incidentals)}</ValueStyled>
             </KeyValueContainerStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <KeyValueContainerStyled>
                 <KeyStyled>Filmmiete</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.rent)}</ValueStyled>
@@ -101,7 +101,7 @@ export default function BillingPage() {
                 <KeyStyled title="Filmmiete plus Nebenkosten plus Mehrwertsteuer">Zu zahlen</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.debt)}</ValueStyled>
             </KeyValueContainerStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <KeyValueContainerStyled>
                 <KeyStyled title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)">
                     Bilanz
@@ -110,7 +110,7 @@ export default function BillingPage() {
             </KeyValueContainerStyled>
             {billing.comment && (
                 <>
-                    <HorizontalRuleStyled />
+                    <hr />
                     <CommentKeyStyled>Kommentar</CommentKeyStyled>
                     <CommentValueStyled>{billing.comment}</CommentValueStyled>
                 </>
