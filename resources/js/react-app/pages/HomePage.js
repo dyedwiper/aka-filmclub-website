@@ -70,7 +70,7 @@ export default function HomePage() {
                         ))}
                     </CardsListStyled>
                 ) : (
-                    <InfoStyled>gibt's im nächsten Semester.</InfoStyled>
+                    <InfoStyled>gibt&apos;s im nächsten Semester.</InfoStyled>
                 )}
             </SectionStyled>
             <hr />
