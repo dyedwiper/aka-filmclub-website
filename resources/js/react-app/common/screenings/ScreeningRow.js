@@ -9,7 +9,6 @@ import { stripHtml } from '../../utils/stringUtils';
 export default function ScreeningRow({ screening }) {
     return (
         <ScreeningRowStyled>
-            <hr />
             <ScreeningContainerStyled>
                 <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
                     <ImageStyled
@@ -27,11 +26,16 @@ export default function ScreeningRow({ screening }) {
                     <Link to={ROUTE_SCREENING + screening.uuid}>[mehr]</Link>
                 </InfoContainerStyled>
             </ScreeningContainerStyled>
+            <hr />
         </ScreeningRowStyled>
     );
 }
 
-const ScreeningRowStyled = styled.li``;
+const ScreeningRowStyled = styled.li`
+    :last-child hr {
+        display: none;
+    }
+`;
 
 const ScreeningContainerStyled = styled.div`
     display: grid;

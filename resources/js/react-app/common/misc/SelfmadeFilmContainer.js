@@ -10,7 +10,6 @@ export default function SelfmadeFilmContainer({ film }) {
 
     return (
         <SelfmadeFilmContainerStyled>
-            <hr />
             <IFrameContainerStyled>
                 <IFrameStyled src={film.source} allow="fullscreen; picture-in-picture" />
             </IFrameContainerStyled>
@@ -18,12 +17,17 @@ export default function SelfmadeFilmContainer({ film }) {
             <CreditsContainer film={film} />
             {film.synopsis && <SynopsisStyled>{film.synopsis}</SynopsisStyled>}
             {isUserEditor && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + film.uuid}>Bearbeiten</LinkStyled>}
+            <hr />
         </SelfmadeFilmContainerStyled>
     );
 }
 
 const SelfmadeFilmContainerStyled = styled.li`
     margin: 20px 0 40px 0;
+
+    :last-child hr {
+        display: none;
+    }
 `;
 
 const IFrameContainerStyled = styled.div`

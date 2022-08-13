@@ -10,7 +10,6 @@ import { stripHtml } from '../../utils/stringUtils';
 export default function NoticeRow({ notice }) {
     return (
         <NoticeRowStyled>
-            <hr />
             <NoticeContainerStyled>
                 <InfoContainerStyled>
                     <DateStyled>{formatToDateString(notice.date)}</DateStyled>
@@ -27,11 +26,16 @@ export default function NoticeRow({ notice }) {
                     />
                 </LinkStyled>
             </NoticeContainerStyled>
+            <hr />
         </NoticeRowStyled>
     );
 }
 
-const NoticeRowStyled = styled.li``;
+const NoticeRowStyled = styled.li`
+    :last-child hr {
+        display: none;
+    }
+`;
 
 const NoticeContainerStyled = styled.div`
     display: grid;
