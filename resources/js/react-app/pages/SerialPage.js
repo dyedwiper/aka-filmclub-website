@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
-import { HorizontalRuleStyled, PageStyled } from '../common/styledElements';
+import { PageStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_SERIAL,
     ROUTE_INTERN_ADD_IMAGE_SERIAL,
@@ -68,7 +68,7 @@ export default function SerialPage() {
             <TextContainerStyled>
                 <ArticleStyled dangerouslySetInnerHTML={{ __html: serial.article }} />
                 <AuthorStyled>{serial.author}</AuthorStyled>
-                <HorizontalRuleStyled />
+                <hr />
                 <ScreeningsListStyled>
                     {serial.screenings.map((screening) => (
                         <ScreeningsListItem key={screening.id} screening={screening} />
@@ -76,7 +76,7 @@ export default function SerialPage() {
                 </ScreeningsListStyled>
                 {isUserEditor && (
                     <>
-                        <HorizontalRuleStyled />
+                        <hr />
                         <LinkStyled to={ROUTE_INTERN_EDIT_SERIAL + serial.uuid}>Reihe bearbeiten</LinkStyled>
                         <VertialLineStyled> | </VertialLineStyled>
                         {serial.image ? (

@@ -22,8 +22,6 @@ export const PageHeadlineStyled = styled.h2`
     }
 `;
 
-export const HorizontalRuleStyled = styled.hr``;
-
 export const VerticalLineStyled = styled.span`
     color: var(--aka-gelb);
     font-weight: bold;

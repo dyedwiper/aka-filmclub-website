@@ -5,7 +5,7 @@ import AdmissionListItem from '../../common/accounting/AdmissionListItem';
 import SemesterAnalysis from '../../common/accounting/SemesterAnalysis';
 import BasePage from '../../common/BasePage';
 import SemesterSelect from '../../common/forms/SemesterSelect';
-import { HorizontalRuleStyled, PageHeadlineStyled } from '../../common/styledElements';
+import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_ADMISSIONS } from '../../constants';
 import Context from '../../Context';
 import { getScreeningsWithBillingsBySemester } from '../../utils/services/billingServices';
@@ -60,7 +60,7 @@ export default function AdmissionsPage() {
                                     />
                                 ))}
                             </ListStyled>
-                            <HorizontalRuleStyled />
+                            <hr />
                             <SemesterAnalysis
                                 screenings={screenings}
                                 billings={screenings

@@ -6,12 +6,11 @@ import { ROUTE_NOTICE, STORAGE_FOLDER } from '../../constants';
 import { formatToDateString } from '../../utils/dateFormatters';
 import { showNoticeImage } from '../../utils/imageUtils';
 import { stripHtml } from '../../utils/stringUtils';
-import { HorizontalRuleStyled } from '../styledElements';
 
 export default function NoticeRow({ notice }) {
     return (
         <NoticeRowStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <NoticeContainerStyled>
                 <InfoContainerStyled>
                     <DateStyled>{formatToDateString(notice.date)}</DateStyled>

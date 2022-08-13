@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import Context from '../../Context';
 import { getLastParameterFromPath } from '../../utils/pathUtils';
-import { HorizontalRuleStyled } from '../styledElements';
 
 export default function BaseForm({
     children,
@@ -40,7 +39,7 @@ export default function BaseForm({
         <BaseFormStyled onKeyPress={preventSubmitOnEnter}>
             {children}
             <input name="updated_by" type="hidden" defaultValue={loggedInUser.username} />
-            <HorizontalRuleStyled />
+            <hr />
             <ValidationErrorContainerStyled>
                 {validationErrors.map((error, index) => (
                     <ValidationErrorStyled key={index}>{error}</ValidationErrorStyled>

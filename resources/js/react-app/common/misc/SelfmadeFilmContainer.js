@@ -4,14 +4,13 @@ import styled from 'styled-components';
 import { ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
 import Context from '../../Context';
 import CreditsContainer from '../screenings/CreditsContainer';
-import { HorizontalRuleStyled } from '../styledElements';
 
 export default function SelfmadeFilmContainer({ film }) {
     const { isUserEditor } = useContext(Context);
 
     return (
         <SelfmadeFilmContainerStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <IFrameContainerStyled>
                 <IFrameStyled src={film.source} allow="fullscreen; picture-in-picture" />
             </IFrameContainerStyled>

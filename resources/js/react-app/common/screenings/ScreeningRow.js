@@ -9,7 +9,7 @@ import { stripHtml } from '../../utils/stringUtils';
 export default function ScreeningRow({ screening }) {
     return (
         <ScreeningRowStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <ScreeningContainerStyled>
                 <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
                     <ImageStyled
@@ -32,13 +32,6 @@ export default function ScreeningRow({ screening }) {
 }
 
 const ScreeningRowStyled = styled.li``;
-
-const HorizontalRuleStyled = styled.div`
-    height: 10px;
-    width: 80%;
-    margin: 20px 0;
-    background-color: var(--aka-gelb);
-`;
 
 const ScreeningContainerStyled = styled.div`
     display: grid;

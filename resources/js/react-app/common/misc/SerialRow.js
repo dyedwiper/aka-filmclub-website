@@ -5,12 +5,11 @@ import akaLogoGrau from '../../assets/aka_logo_grau.png';
 import { ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
 import { showSerialImage } from '../../utils/imageUtils';
 import { stripHtml } from '../../utils/stringUtils';
-import { HorizontalRuleStyled } from '../styledElements';
 
 export default function SerialRow({ serial }) {
     return (
         <SerialRowStyled>
-            <HorizontalRuleStyled />
+            <hr />
             <SerialContainerStyled>
                 <LinkStyled to={ROUTE_SERIAL + serial.uuid}>
                     <ImageStyled

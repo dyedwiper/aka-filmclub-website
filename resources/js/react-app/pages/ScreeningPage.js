@@ -5,7 +5,7 @@ import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import CreditsContainer from '../common/screenings/CreditsContainer';
-import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
+import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_PROGRAM,
     ROUTE_INTERN_ADD_IMAGE_SCREENING,
@@ -78,7 +78,7 @@ export default function ScreeningPage() {
                 <AuthorStyled>{screening.author}</AuthorStyled>
                 {screening.serial && (
                     <SerialContainerStyled>
-                        <HorizontalRuleStyled />
+                        <hr />
                         Gezeigt im Rahmen der Filmreihe:{' '}
                         <SerialLinkStyled to={ROUTE_SERIAL + screening.serial.uuid}>
                             {screening.serial.title}
@@ -87,7 +87,7 @@ export default function ScreeningPage() {
                 )}
                 {isUserEditor && (
                     <>
-                        <HorizontalRuleStyled />
+                        <hr />
                         <EditLinkStyled to={ROUTE_INTERN_EDIT_SCREENING + screening.uuid}>
                             Vorführung bearbeiten
                         </EditLinkStyled>

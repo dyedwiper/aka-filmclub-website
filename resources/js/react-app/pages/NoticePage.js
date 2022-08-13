@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
-import { HorizontalRuleStyled, PageStyled, VerticalLineStyled } from '../common/styledElements';
+import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_NEWS,
     ROUTE_INTERN_ADD_IMAGE_NOTICE,
@@ -54,7 +54,7 @@ export default function NoticePage() {
             <ContentStyled dangerouslySetInnerHTML={{ __html: notice.content }} />
             {isUserEditor && (
                 <>
-                    <HorizontalRuleStyled />
+                    <hr />
                     <LinkStyled to={ROUTE_INTERN_EDIT_NOTICE + notice.uuid}>News bearbeiten</LinkStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>
                     {notice.image ? (
