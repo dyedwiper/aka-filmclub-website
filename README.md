@@ -214,3 +214,7 @@ Manche Kommentare im Code sind auf deutsch, manche auf englisch. Das ist aus Una
 ### Uneinheitlicher Case
 
 Eigentlich wird in der App überall camelCase oder PascalCase verwendet, aber an einigen Stellen taucht auch snake_case auf. Das liegt daran, dass die Benamung von einigen Datenbank-Spalten durcheinander gegangen ist. Der unterschiedliche Case hat keine Bedeutung; es wäre aber zu viel Aufwand ihn zu vereinheitlichen.
+
+### Testen der API mit Postman
+
+Beim Testen der API-Routes mit [Postman](https://www.postman.com/) gibt es einige Besonderheiten zu beachten - genauer gesagt bei den Routes, die mit Laravel Sanctum geschützt sind. Ein Tutorial zur entsprechenden Einrichtung von Postman findet sich [hier](https://blog.codecourse.com/laravel-sanctum-airlock-with-postman/). Zusätzlicher Hinweis: Das dort beschriebene Pre-request Script muss vor allen POST Requests ausgeführt werden (GET Requests gehen auch ohne).
