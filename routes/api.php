@@ -27,9 +27,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('screenings')->group(function () {
 
-    Route::get('/', function () {
-        return Screening::all();
-    });
+    Route::get('/', [
+        ScreeningController::class, 'GetScreenings'
+    ]);
 
     Route::get('/future', [
         ScreeningController::class, 'GetFutureScreenings'

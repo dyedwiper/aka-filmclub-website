@@ -22,6 +22,11 @@ class ScreeningController extends Controller
         $this->imageService = $imageService;
     }
 
+    public function GetScreenings()
+    {
+        return Screening::all();
+    }
+
     public function GetFutureScreenings()
     {
         return Screening::where('date', '>', date("Y-m-d H:i:s"))->orderBy('date')->with('image')->get();
@@ -29,7 +34,7 @@ class ScreeningController extends Controller
 
     public function GetScreeningByUuid(string $uuid)
     {
-        return Screening::where('uuid', $uuid)->with('image.license')->with('serial')->first();
+        return Screening::where('uuid', $uuid)->with('image.license')->with('serial')->with('mainFilm')->first();
     }
 
     public function GetScreeningsByYear(int $year)
@@ -118,6 +123,7 @@ class ScreeningController extends Controller
         $screening->special = $request->special;
         $screening->tercet = $request->tercet;
         $screening->serial_id = $request->serialId;
+        $screening->supportingFilmOf = $request->supportingFilmOf;
         $screening->author = $request->author;
 
         return $screening;

@@ -1,5 +1,9 @@
 import { makeApiCall } from './baseService';
 
+export function getScreenings() {
+    return makeApiCall('/api/screenings');
+}
+
 export function getFutureScreenings() {
     return makeApiCall('/api/screenings/future');
 }
