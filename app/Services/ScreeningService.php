@@ -13,6 +13,7 @@ class ScreeningService
 
         if ($season == 'WS') {
             return Screening::select('id', 'uuid', 'title', 'date', 'special')
+                ->whereNull('supportingFilmOf')
                 ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
@@ -23,6 +24,7 @@ class ScreeningService
 
         if ($season == 'SS') {
             return Screening::select('id', 'uuid', 'title', 'date', 'special')
+                ->whereNull('supportingFilmOf')
                 ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)

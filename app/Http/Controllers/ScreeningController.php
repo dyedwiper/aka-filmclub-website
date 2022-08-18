@@ -29,12 +29,14 @@ class ScreeningController extends Controller
 
     public function GetFutureScreenings()
     {
-        return Screening::where('date', '>', date("Y-m-d H:i:s"))->orderBy('date')->with('image')->get();
+        return Screening::where('date', '>', date("Y-m-d H:i:s"))
+            ->whereNull('supportingFilmOf')->orderBy('date')->with('image')->get();
     }
 
     public function GetScreeningByUuid(string $uuid)
     {
-        return Screening::where('uuid', $uuid)->with('image.license')->with('serial')->with('mainFilm')->first();
+        return Screening::where('uuid', $uuid)
+            ->with('image.license')->with('serial')->with('mainFilm')->with('supportingFilms')->first();
     }
 
     public function GetScreeningsByYear(int $year)
