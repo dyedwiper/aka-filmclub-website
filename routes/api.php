@@ -39,10 +39,6 @@ Route::prefix('screenings')->group(function () {
         ScreeningController::class, 'GetScreeningByUuid'
     ]);
 
-    Route::get('/year/{year}', [
-        ScreeningController::class, 'GetScreeningsByYear'
-    ]);
-
     Route::get('semester/{semester}', [
         ScreeningController::class, 'GetScreeningsBySemester'
     ]);

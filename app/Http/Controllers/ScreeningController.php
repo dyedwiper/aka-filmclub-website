@@ -39,11 +39,6 @@ class ScreeningController extends Controller
             ->with('image.license')->with('serial')->with('mainFilm')->with('supportingFilms')->first();
     }
 
-    public function GetScreeningsByYear(int $year)
-    {
-        return Screening::whereYear('date', $year)->get();
-    }
-
     public function GetScreeningsBySemester(string $semester)
     {
         return $this->screeningService->getScreeningsForSemester($semester);
