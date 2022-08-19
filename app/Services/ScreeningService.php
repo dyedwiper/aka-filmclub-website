@@ -19,6 +19,7 @@ class ScreeningService
                 ->orWhereYear('date', $year + 1)
                 ->whereMonth('date', '<', 4)
                 ->orderBy('date')
+                ->with('supportingFilms:supportingFilmOf')
                 ->get();
         }
 
@@ -29,6 +30,7 @@ class ScreeningService
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)
                 ->orderBy('date')
+                ->with('supportingFilms:supportingFilmOf')
                 ->get();
         }
     }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_SCREENING } from '../../constants';
 import { formatToDateTimeString, getWeekdayAbbreviation } from '../../utils/dateFormatters';
+import SupportingFilmNote from './SupportingFilmNote';
 
 export default function ScreeningsListItem({ screening }) {
     return (
@@ -12,6 +13,7 @@ export default function ScreeningsListItem({ screening }) {
             <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
                 {screening.title}
                 {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
+                <SupportingFilmNote screening={screening} />
             </LinkStyled>
         </ScreeningsListItemStyled>
     );

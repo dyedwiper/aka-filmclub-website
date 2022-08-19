@@ -30,7 +30,11 @@ class ScreeningController extends Controller
     public function GetFutureScreenings()
     {
         return Screening::where('date', '>', date("Y-m-d H:i:s"))
-            ->whereNull('supportingFilmOf')->orderBy('date')->with('image')->get();
+            ->whereNull('supportingFilmOf')
+            ->orderBy('date')
+            ->with('image')
+            ->with('supportingFilms:supportingFilmOf')
+            ->get();
     }
 
     public function GetScreeningByUuid(string $uuid)
