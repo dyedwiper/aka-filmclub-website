@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_SCREENING, ROUTE_PROGRAM_OVERVIEW, ROUTE_SCREENING } from '../../constants';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteScreening, getScreeningByUuid, postScreening } from '../../utils/services/screeningServices';
 import LoadingPage from '../LoadingPage';
 
@@ -13,13 +13,14 @@ export default function EditScreeningPage() {
     const [screening, setScreening] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getScreeningByUuid(uuid).then((res) => {
             setScreening(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 

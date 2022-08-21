@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import { PAGE_TITLE_ADD_IMAGE, ROUTE_NOTICE, ROUTE_SCREENING, ROUTE_SERIAL } from '../../constants';
-import { getLastParameterFromPath, getSecondToLastParameterFromPath } from '../../utils/pathUtils';
 import { postImage } from '../../utils/services/imageServices';
 
 export default function AddImagePage() {
@@ -12,9 +12,9 @@ export default function AddImagePage() {
     const [assocUuid, setAssocUuid] = useState({});
     const [postRedirectRoute, setPostRedirectRoute] = useState('');
 
+    const { type, uuid } = useParams();
+
     useEffect(() => {
-        const type = getSecondToLastParameterFromPath();
-        const uuid = getLastParameterFromPath();
         setAssocType(type);
         setAssocUuid(uuid);
         switch (type) {
@@ -30,7 +30,7 @@ export default function AddImagePage() {
             default:
                 break;
         }
-    }, []);
+    }, [uuid]);
 
     return (
         <BasePage pageTitle={PAGE_TITLE_ADD_IMAGE}>

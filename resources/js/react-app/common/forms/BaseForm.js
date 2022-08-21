@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Context from '../../Context';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 
 export default function BaseForm({
     children,
@@ -21,14 +20,15 @@ export default function BaseForm({
 
     const { user: loggedInUser, isUserAdmin } = useContext(Context);
 
+    const { uuid } = useParams();
+
     let history = useHistory();
 
     useEffect(() => {
         if (isEditingUser) {
-            const editedUserUuid = getLastParameterFromPath();
-            setIsUserSelf(editedUserUuid === loggedInUser.uuid);
+            setIsUserSelf(uuid === loggedInUser.uuid);
         }
-    }, []);
+    }, [uuid]);
 
     useEffect(() => {
         // This does not work for editing because of loading delay, but that's okay I'd say.
@@ -112,7 +112,6 @@ export default function BaseForm({
     }
 
     function handleDelete() {
-        const uuid = getLastParameterFromPath();
         deleteFunction(uuid)
             .then(() => {
                 history.push(deleteRedirectRoute);

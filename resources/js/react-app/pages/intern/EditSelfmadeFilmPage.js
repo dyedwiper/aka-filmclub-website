@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import SelfmadeFilmFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_SELFMADE_FILM, ROUTE_SELFMADE_FILMS } from '../../constants';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteSelfmadeFilm, getSelfmadeFilmByUuid, postSelfmadeFilm } from '../../utils/services/selfmadeFilmServices';
 import LoadingPage from '../LoadingPage';
 
@@ -13,13 +13,14 @@ export default function EditSelfmadeFilmPage() {
     const [film, setFilm] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getSelfmadeFilmByUuid(uuid).then((res) => {
             setFilm(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 

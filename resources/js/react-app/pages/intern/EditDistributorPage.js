@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import DistributorFormGroup from '../../common/forms/DistributorFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_DISTRIBUTOR, ROUTE_INTERN_DISTRIBUTORS } from '../../constants';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteDistributor, getDistributorByUuid, postDistributor } from '../../utils/services/distributorServices';
 import LoadingPage from '../LoadingPage';
 
@@ -13,13 +13,14 @@ export default function EditDistributorPage() {
     const [distributor, setDistributor] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getDistributorByUuid(uuid).then((res) => {
             setDistributor(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
@@ -12,7 +12,6 @@ import {
     ROUTE_INTERN_USERS,
 } from '../../constants';
 import Context from '../../Context';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteUser, getUserByUuid, postUser } from '../../utils/services/userServices';
 import LoadingPage from '../LoadingPage';
 
@@ -24,13 +23,14 @@ export default function EditUserPage() {
 
     const { user: loggedInUser, isUserAdmin } = useContext(Context);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getUserByUuid(uuid).then((res) => {
             setUser(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     useEffect(() => {
         const isSelf = user && user.id === loggedInUser.id;

@@ -3,9 +3,8 @@ import { Route, Redirect } from 'react-router-dom';
 import { ROUTE_LOGIN } from '../constants';
 import Context from '../Context';
 
-export default function PrivateRoute({ children }) {
-    const { user } = useContext(Context);
-    const loggedIn = Object.keys(user).length !== 0;
+export default function PrivateRoute({ path, children }) {
+    const { isUserLoggedIn } = useContext(Context);
 
-    return <Route>{loggedIn ? children : <Redirect to={ROUTE_LOGIN} />}</Route>;
+    return <Route path={path}>{isUserLoggedIn ? children : <Redirect to={ROUTE_LOGIN} />}</Route>;
 }
