@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
@@ -9,20 +9,23 @@ import {
     ROUTE_INTERN_ADD_IMAGE_NOTICE,
     ROUTE_INTERN_EDIT_IMAGE,
     ROUTE_INTERN_EDIT_NOTICE,
+    ROUTE_NOT_FOUND,
     STORAGE_FOLDER,
 } from '../constants';
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
 import { showNoticeImage } from '../utils/imageUtils';
-import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getNoticeByUuid } from '../utils/services/noticeServices';
 import LoadingPage from './LoadingPage';
 
 export default function NoticePage() {
     const [notice, setNotice] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+    const [noNoticeFound, setNoNoticeFound] = useState(false);
 
     const { isUserEditor, setPageTitle } = useContext(Context);
+
+    const { uuid } = useParams();
 
     useEffect(() => {
         document.title = notice.title + ' | aka-Filmclub';
@@ -30,14 +33,18 @@ export default function NoticePage() {
     }, [isLoading]);
 
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getNoticeByUuid(uuid).then((res) => {
+            if (!res.data.uuid) {
+                setNoNoticeFound(true);
+            }
             setNotice(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
+
+    if (noNoticeFound) return <Redirect to={ROUTE_NOT_FOUND} />;
 
     return (
         <PageStyled>

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
@@ -15,7 +15,6 @@ import {
 } from '../constants';
 import Context from '../Context';
 import { showSerialImage } from '../utils/imageUtils';
-import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getSerialByUuid } from '../utils/services/serialServices';
 import LoadingPage from './LoadingPage';
 
@@ -26,21 +25,22 @@ export default function SerialPage() {
 
     const { isUserEditor, setPageTitle } = useContext(Context);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
         document.title = serial.title + ' | aka-Filmclub';
         setPageTitle(PAGE_TITLE_SERIAL);
     }, [isLoading]);
 
     useEffect(() => {
-        const serialUuid = getLastParameterFromPath();
-        getSerialByUuid(serialUuid).then((res) => {
+        getSerialByUuid(uuid).then((res) => {
             if (!res.data.uuid) {
                 SetNoSerialFound(true);
             }
             setSerial(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 

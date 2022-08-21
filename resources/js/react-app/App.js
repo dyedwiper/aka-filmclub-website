@@ -168,7 +168,7 @@ export default function App() {
                         <Route exact path={ROUTE_NEWS}>
                             <NoticesPage />
                         </Route>
-                        <Route path={ROUTE_NOTICE}>
+                        <Route path={ROUTE_NOTICE + ':uuid'}>
                             <NoticePage />
                         </Route>
                         <Route exact path={ROUTE_PROGRAM}>
@@ -180,13 +180,13 @@ export default function App() {
                         <Route exact path={ROUTE_ARCHIVE}>
                             <ArchivePage />
                         </Route>
-                        <Route path={ROUTE_SCREENING}>
+                        <Route path={ROUTE_SCREENING + ':uuid'}>
                             <ScreeningPage />
                         </Route>
                         <Route exact path={ROUTE_SERIALS}>
                             <SerialsPage />
                         </Route>
-                        <Route path={ROUTE_SERIAL}>
+                        <Route path={ROUTE_SERIAL + ':uuid'}>
                             <SerialPage />
                         </Route>
                         <Route exact path={ROUTE_ABOUT}>

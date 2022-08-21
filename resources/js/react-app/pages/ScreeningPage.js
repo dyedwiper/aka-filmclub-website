@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
@@ -18,7 +18,6 @@ import {
 import Context from '../Context';
 import { formatToDateTimeStringWithWeekday } from '../utils/dateFormatters';
 import { showScreeningImage } from '../utils/imageUtils';
-import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getScreeningByUuid } from '../utils/services/screeningServices';
 import LoadingPage from './LoadingPage';
 
@@ -29,13 +28,14 @@ export default function ScreeningPage() {
 
     const { isUserEditor, setPageTitle } = useContext(Context);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
         document.title = screening.title + ' | aka-Filmclub';
         setPageTitle(PAGE_TITLE_PROGRAM);
     }, [isLoading]);
 
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getScreeningByUuid(uuid).then((res) => {
             if (!res.data.uuid) {
                 setNoScreeningFound(true);
@@ -43,7 +43,7 @@ export default function ScreeningPage() {
             setScreening(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 
