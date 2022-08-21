@@ -5,6 +5,7 @@ import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import CreditsContainer from '../common/screenings/CreditsContainer';
+import SupportingFilmsInfo from '../common/screenings/SupportingFilmsInfo';
 import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_PROGRAM,
@@ -76,6 +77,7 @@ export default function ScreeningPage() {
                 <CreditsContainer film={screening} />
                 <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
+                <SupportingFilmsInfo screening={screening} />
                 {screening.serial && (
                     <SerialContainerStyled>
                         <hr />
