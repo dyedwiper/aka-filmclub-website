@@ -5,6 +5,7 @@ import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import CreditsContainer from '../common/screenings/CreditsContainer';
+import MainFilmInfo from '../common/screenings/MainFilmInfo';
 import SupportingFilmsInfo from '../common/screenings/SupportingFilmsInfo';
 import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
@@ -66,6 +67,7 @@ export default function ScreeningPage() {
                 <FallbackTitleStyled>{screening.title}</FallbackTitleStyled>
             )}
             <TextContainerStyled>
+                <MainFilmInfo screening={screening} />
                 {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
                 <DateAndVenueStyled>
                     {formatToDateTimeStringWithWeekday(screening.date)} <VerticalLineStyled>|</VerticalLineStyled>{' '}
