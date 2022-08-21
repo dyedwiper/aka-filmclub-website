@@ -5,7 +5,7 @@ import akaLogoGrau from '../../assets/aka_logo_grau.png';
 import { ROUTE_SCREENING, STORAGE_FOLDER } from '../../constants';
 import { formatToDateTimeStringWithWeekday } from '../../utils/dateFormatters';
 import { stripHtml } from '../../utils/stringUtils';
-import SupportingFilmNote from './SupportingFilmNote';
+import SupportingFilmsNote from './SupportingFilmsNote';
 
 export default function ScreeningRow({ screening }) {
     return (
@@ -23,7 +23,7 @@ export default function ScreeningRow({ screening }) {
                         <TitleStyled>{screening.title}</TitleStyled>
                     </LinkStyled>
                     {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
-                    <SupportingFilmNote screening={screening} />
+                    <SupportingFilmsNote screening={screening} />
                     <SynopsisStyled>{stripHtml(screening.synopsis)}</SynopsisStyled>
                     <Link to={ROUTE_SCREENING + screening.uuid}>[mehr]</Link>
                 </InfoContainerStyled>
