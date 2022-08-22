@@ -92,9 +92,14 @@ class ScreeningController extends Controller
         }
 
         $screening = Screening::firstWhere('uuid', $uuid);
+
         if ($screening->billing) {
             abort(422, 'Zu dieser Vorführung existiert noch eine Abrechnung, die vorher gelöscht werden muss.');
         }
+        if (count($screening->supportingFilms) > 0) {
+            abort(422, 'Diese Vorführung kann nicht gelöscht werden, weil ihr noch Vorfilme zugeordnet sind.');
+        }
+
         $image = $screening->image;
         $screening->delete();
         if ($image) {
