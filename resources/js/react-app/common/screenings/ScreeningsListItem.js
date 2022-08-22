@@ -12,7 +12,7 @@ export default function ScreeningsListItem({ screening }) {
             <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
                 {screening.title}
                 {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
-                {!!screening.supporting_films && (
+                {!!screening.supporting_films.length && (
                     <SpecialStyled>
                         {screening.supporting_films.length === 1 ? 'mit Vorfilm' : 'mit Vorfilmen'}
                     </SpecialStyled>
