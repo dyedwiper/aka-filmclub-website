@@ -35,7 +35,7 @@ export default function ScreeningPage() {
     useEffect(() => {
         document.title = screening.title + ' | aka-Filmclub';
         setPageTitle(PAGE_TITLE_PROGRAM);
-    }, [isLoading]);
+    }, [screening]);
 
     useEffect(() => {
         getScreeningByUuid(uuid).then((res) => {

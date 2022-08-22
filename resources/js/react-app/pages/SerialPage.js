@@ -30,7 +30,7 @@ export default function SerialPage() {
     useEffect(() => {
         document.title = serial.title + ' | aka-Filmclub';
         setPageTitle(PAGE_TITLE_SERIAL);
-    }, [isLoading]);
+    }, [serial]);
 
     useEffect(() => {
         getSerialByUuid(uuid).then((res) => {

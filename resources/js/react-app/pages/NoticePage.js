@@ -30,7 +30,7 @@ export default function NoticePage() {
     useEffect(() => {
         document.title = notice.title + ' | aka-Filmclub';
         setPageTitle(PAGE_TITLE_NEWS);
-    }, [isLoading]);
+    }, [notice]);
 
     useEffect(() => {
         getNoticeByUuid(uuid).then((res) => {
