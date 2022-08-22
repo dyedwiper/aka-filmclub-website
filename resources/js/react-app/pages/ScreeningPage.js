@@ -67,8 +67,9 @@ export default function ScreeningPage() {
                 <FallbackTitleStyled>{screening.title}</FallbackTitleStyled>
             )}
             <TextContainerStyled>
-                <MainFilmInfo screening={screening} />
                 {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
+                <MainFilmInfo screening={screening} />
+                <SupportingFilmsInfo screening={screening} />
                 <DateAndVenueStyled>
                     {formatToDateTimeStringWithWeekday(screening.date)} <VerticalLineStyled>|</VerticalLineStyled>{' '}
                     {screening.venue}
@@ -79,7 +80,6 @@ export default function ScreeningPage() {
                 <CreditsContainer film={screening} />
                 <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
-                <SupportingFilmsInfo screening={screening} />
                 {screening.serial && (
                     <SerialContainerStyled>
                         <hr />

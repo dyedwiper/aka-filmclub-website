@@ -8,16 +8,12 @@ export default function SupportingFilmsInfo({ screening }) {
 
     return (
         <SupportingFilmsInfoStyled>
-            <hr />
-            <HintStyled>
-                {screening.supporting_films.length === 1
-                    ? 'Vor dem Hauptfilm läuft folgender Vorfilm: '
-                    : 'Vor dem Hauptfilm laufen folgende Vorfilme: '}
-            </HintStyled>
+            {screening.supporting_films.length === 1 ? 'Vorfilm: ' : 'Vorfilme: '}
             <ListStyled>
                 {screening.supporting_films.map((film) => (
                     <ListItemStyled key={film.id}>
                         <Link to={ROUTE_SCREENING + film.uuid}>{film.title}</Link>
+                        <span>, </span>
                     </ListItemStyled>
                 ))}
             </ListStyled>
@@ -25,12 +21,21 @@ export default function SupportingFilmsInfo({ screening }) {
     );
 }
 
-const SupportingFilmsInfoStyled = styled.div``;
-
-const HintStyled = styled.div``;
-
-const ListStyled = styled.ul`
-    margin: 0;
+const SupportingFilmsInfoStyled = styled.div`
+    margin: 10px -20px;
+    padding: 5px 20px;
+    background-color: var(--aka-gelb);
+    font-weight: bold;
 `;
 
-const ListItemStyled = styled.li``;
+const ListStyled = styled.ul`
+    display: inline;
+`;
+
+const ListItemStyled = styled.li`
+    display: inline;
+
+    :last-child span {
+        display: none;
+    }
+`;
