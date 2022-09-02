@@ -25,6 +25,18 @@ class SerialController extends Controller
         return Serial::orderByDesc('id')->get();
     }
 
+    public function GetFutureSerials()
+    {
+        $currentYear = date('Y');
+        $currentMonth = date('m');
+        if ($currentMonth < 10) {
+            return Serial::where('semester', 'like', '%' . $currentYear)->get();
+        } else {
+            return Serial::where('semester', 'like', 'WS' . $currentYear)
+                ->orWhere('semester', 'like', '%' . ($currentYear + 1))->get();
+        }
+    }
+
     public function GetSerialsBySemester(string $semester)
     {
         $serials = Serial::where('semester', $semester)->with('image')->get();

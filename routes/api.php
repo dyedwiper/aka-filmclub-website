@@ -95,6 +95,10 @@ Route::prefix('serials')->group(function () {
         SerialController::class, 'GetSerials'
     ]);
 
+    Route::get('/future', [
+        SerialController::class, 'GetFutureSerials'
+    ]);
+
     Route::get('/semester/{semester}', [
         SerialController::class, 'GetSerialsBySemester'
     ]);
