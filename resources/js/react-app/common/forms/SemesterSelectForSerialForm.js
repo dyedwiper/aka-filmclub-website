@@ -8,7 +8,7 @@ export default function SemesterSelectForSerialForm({ defaultSemester }) {
     const [defaultValue, setDefaultValue] = useState({});
 
     useEffect(() => {
-        setSemesterOptions(computeSemesterOptions(true));
+        setSemesterOptions(computeSemesterOptions({ isIncludingNextSemester: true }));
     }, []);
 
     useEffect(() => {

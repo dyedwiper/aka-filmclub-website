@@ -24,7 +24,7 @@ export function computeSemester(date) {
     return semester;
 }
 
-export function computeSemesterOptions(isIncludingNextSemester = false) {
+export function computeSemesterOptions({ isIncludingNextSemester = false }) {
     const currentDate = new Date();
     const semesters = computePastSemesters(currentDate);
     semesters.push(computeCurrentSemester(currentDate));

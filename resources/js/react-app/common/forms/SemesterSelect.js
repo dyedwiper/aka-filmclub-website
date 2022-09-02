@@ -8,7 +8,7 @@ export default function SemesterSelect({ semester, setSemester, setIsLoading, is
     const [semesterOptions, setSemesterOptions] = useState([]);
 
     useEffect(() => {
-        setSemesterOptions(computeSemesterOptions(isIncludingNextSemester));
+        setSemesterOptions(computeSemesterOptions({ isIncludingNextSemester }));
     }, []);
 
     // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird.
