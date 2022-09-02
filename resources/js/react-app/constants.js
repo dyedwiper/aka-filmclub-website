@@ -7,6 +7,8 @@ export const NOTICES_PER_PAGE = 5;
 export const SUMMER_SEASON_IDENTIFIER = 'SS';
 export const WINTER_SEASON_IDENTIFIER = 'WS';
 
+export const YEAR_OF_FIRST_LISTED_SCREENING = 1998;
+
 export const NUMBER_OF_SEEDS_IN_GHS_BIO = 460;
 
 export const STANDARD_TICKET_PRICE = '1,50';
@@ -48,7 +50,6 @@ export const USER_STATUS_ALUMNI_NAME = 'Akalumni';
 
 // Frontend routes
 // Routes with another parameter must have a trailing slash.
-// Those are basically all routes leading to a page with a single item, e.g. '/screening/6065f3df9ee79'.
 export const ROUTE_HOME = '/';
 export const ROUTE_NEWS = '/news';
 export const ROUTE_PROGRAM = '/program';

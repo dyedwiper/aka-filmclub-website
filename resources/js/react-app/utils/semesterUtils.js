@@ -1,4 +1,4 @@
-import { SUMMER_SEASON_IDENTIFIER, WINTER_SEASON_IDENTIFIER } from '../constants';
+import { SUMMER_SEASON_IDENTIFIER, WINTER_SEASON_IDENTIFIER, YEAR_OF_FIRST_LISTED_SCREENING } from '../constants';
 
 export function computeSemester(date) {
     const month = date.getMonth();
@@ -29,7 +29,7 @@ export function computeSemesterOptions() {
     const currentMonth = currentDate.getMonth();
     const currentYear = currentDate.getFullYear();
     const allSemesters = [];
-    for (let year = 1998; year < currentYear; year++) {
+    for (let year = YEAR_OF_FIRST_LISTED_SCREENING; year < currentYear; year++) {
         allSemesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: year });
         allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: year });
     }
