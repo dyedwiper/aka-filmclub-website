@@ -59,7 +59,12 @@ export default function SerialsPage() {
         <BasePage pageTitle={PAGE_TITLE_SERIALS}>
             <PageHeadlineStyled>{PAGE_TITLE_SERIALS}</PageHeadlineStyled>
             <ArchiveSearchContainerStyled>
-                <SemesterSelect semester={semester} setSemester={setSemester} setIsLoading={setIsLoading} />
+                <SemesterSelect
+                    semester={semester}
+                    setSemester={setSemester}
+                    setIsLoading={setIsLoading}
+                    isIncludingNextSemester={true}
+                />
                 <SearchBar search={search} setSearch={setSearch} setIsLoading={setIsLoading} />
             </ArchiveSearchContainerStyled>
             {isLoading ? (

@@ -24,10 +24,13 @@ export function computeSemester(date) {
     return semester;
 }
 
-export function computeSemesterOptions() {
+export function computeSemesterOptions(isIncludingNextSemester = false) {
     const currentDate = new Date();
     const semesters = computePastSemesters(currentDate);
     semesters.push(computeCurrentSemester(currentDate));
+    if (isIncludingNextSemester) {
+        semesters.push(computeNextSemester(currentDate));
+    }
     return buildSemesterOptions(semesters);
 }
 
@@ -72,6 +75,21 @@ function computeCurrentSemester(currentDate) {
         currentSemester = { season: WINTER_SEASON_IDENTIFIER, year: currentYear };
     }
     return currentSemester;
+}
+
+function computeNextSemester(currentDate) {
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    let nextSemester;
+    // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
+    if (currentMonth >= 3) {
+        nextSemester = { season: WINTER_SEASON_IDENTIFIER, year: currentYear };
+    }
+    if (currentMonth >= 9) {
+        nextSemester = { season: SUMMER_SEASON_IDENTIFIER, year: currentYear + 1 };
+    }
+    return nextSemester;
 }
 
 function buildSemesterOptions(semesters) {

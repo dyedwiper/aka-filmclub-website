@@ -8,7 +8,7 @@ export default function SemesterSelectForSerialForm({ defaultSemester }) {
     const [defaultValue, setDefaultValue] = useState({});
 
     useEffect(() => {
-        setSemesterOptions(computeSemesterOptions());
+        setSemesterOptions(computeSemesterOptions(true));
     }, []);
 
     useEffect(() => {
@@ -20,7 +20,8 @@ export default function SemesterSelectForSerialForm({ defaultSemester }) {
                 value: defaultSemester,
             });
         } else {
-            setDefaultValue(semesterOptions[0]);
+            // Hier wird das zweite Array-Element genommen, weil dieses das aktuelle Semester ist.
+            setDefaultValue(semesterOptions[1]);
         }
     }, [semesterOptions]);
 
