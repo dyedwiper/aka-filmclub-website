@@ -29,11 +29,14 @@ class SerialController extends Controller
     {
         $currentYear = date('Y');
         $currentMonth = date('m');
-        if ($currentMonth < 10) {
+        if ($currentMonth <= 3) {
+            return Serial::where('semester', 'like', 'WS' . ($currentYear - 1))
+                ->orWhere('semester', 'like', 'SS' . $currentYear)->orderByDesc('id')->get();
+        } else if ($currentMonth > 3 && $currentMonth < 10) {
             return Serial::where('semester', 'like', '%' . $currentYear)->orderByDesc('id')->get();
         } else {
             return Serial::where('semester', 'like', 'WS' . $currentYear)
-                ->orWhere('semester', 'like', '%' . ($currentYear + 1))->orderByDesc('id')->get();
+                ->orWhere('semester', 'like', 'SS' . ($currentYear + 1))->orderByDesc('id')->get();
         }
     }
 
