@@ -25,15 +25,15 @@ class SerialController extends Controller
         return Serial::orderByDesc('id')->get();
     }
 
-    public function GetFutureSerials()
+    public function GetCurrentAndFutureSerials()
     {
         $currentYear = date('Y');
         $currentMonth = date('m');
         if ($currentMonth < 10) {
-            return Serial::where('semester', 'like', '%' . $currentYear)->get();
+            return Serial::where('semester', 'like', '%' . $currentYear)->orderByDesc('id')->get();
         } else {
             return Serial::where('semester', 'like', 'WS' . $currentYear)
-                ->orWhere('semester', 'like', '%' . ($currentYear + 1))->get();
+                ->orWhere('semester', 'like', '%' . ($currentYear + 1))->orderByDesc('id')->get();
         }
     }
 
