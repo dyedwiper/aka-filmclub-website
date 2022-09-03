@@ -26,8 +26,7 @@ export function computeSemester(date) {
 
 export function computeSemesterOptions({ isIncludingNextSemester = false }) {
     const currentDate = new Date();
-    const semesters = computePastSemesters(currentDate);
-    semesters.push(computeCurrentSemester(currentDate));
+    const semesters = computeSemesters(currentDate);
     if (isIncludingNextSemester) {
         semesters.push(computeNextSemester(currentDate));
     }
@@ -52,29 +51,22 @@ export function computeEndDateOfSemester(semesterName) {
     return endDate;
 }
 
-function computePastSemesters(currentDate) {
+function computeSemesters(currentDate) {
     const currentYear = currentDate.getFullYear();
-    const allSemesters = [];
-    for (let year = YEAR_OF_FIRST_LISTED_SCREENING; year < currentYear; year++) {
-        allSemesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: year });
-        allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: year });
-    }
-    return allSemesters;
-}
-
-function computeCurrentSemester(currentDate) {
     const currentMonth = currentDate.getMonth();
-    const currentYear = currentDate.getFullYear();
 
-    let currentSemester;
-    // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
+    const semesters = [];
+    for (let year = YEAR_OF_FIRST_LISTED_SCREENING; year < currentYear; year++) {
+        semesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: year });
+        semesters.push({ season: WINTER_SEASON_IDENTIFIER, year: year });
+    }
     if (currentMonth >= 3) {
-        currentSemester = { season: SUMMER_SEASON_IDENTIFIER, year: currentYear };
+        semesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: currentYear });
     }
     if (currentMonth >= 9) {
-        currentSemester = { season: WINTER_SEASON_IDENTIFIER, year: currentYear };
+        semesters.push({ season: WINTER_SEASON_IDENTIFIER, year: currentYear });
     }
-    return currentSemester;
+    return semesters;
 }
 
 function computeNextSemester(currentDate) {
@@ -83,10 +75,11 @@ function computeNextSemester(currentDate) {
 
     let nextSemester;
     // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
-    if (currentMonth >= 3) {
+    if (currentMonth < 3) {
+        nextSemester = { season: SUMMER_SEASON_IDENTIFIER, year: currentYear };
+    } else if (currentMonth >= 3 && currentMonth < 9) {
         nextSemester = { season: WINTER_SEASON_IDENTIFIER, year: currentYear };
-    }
-    if (currentMonth >= 9) {
+    } else if (currentMonth >= 9) {
         nextSemester = { season: SUMMER_SEASON_IDENTIFIER, year: currentYear + 1 };
     }
     return nextSemester;

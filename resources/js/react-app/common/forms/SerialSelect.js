@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { serialSelectStyles } from '../../styles/customSelectStyles';
-import { getFutureSerials, getSerials } from '../../utils/services/serialServices';
+import { getCurrentAndFutureSerials, getSerials } from '../../utils/services/serialServices';
 
 export default function SerialSelect({ defaultSerial, isEditing }) {
     const noSerialOption = { label: '-- keine Reihe --', value: '' };
@@ -11,7 +11,7 @@ export default function SerialSelect({ defaultSerial, isEditing }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getFutureSerials().then((res) => {
+        getCurrentAndFutureSerials().then((res) => {
             setSerialOptions(computeSerialOptions(res.data));
             setIsLoading(false);
         });

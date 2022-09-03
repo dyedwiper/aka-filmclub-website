@@ -4,7 +4,7 @@ export function getSerials() {
     return makeApiCall('/api/serials');
 }
 
-export function getFutureSerials() {
+export function getCurrentAndFutureSerials() {
     return makeApiCall('/api/serials/future');
 }
 
