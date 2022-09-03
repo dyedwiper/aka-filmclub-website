@@ -1,4 +1,4 @@
-import { SUMMER_SEASON_IDENTIFIER, WINTER_SEASON_IDENTIFIER } from '../constants';
+import { SUMMER_SEASON_IDENTIFIER, WINTER_SEASON_IDENTIFIER, YEAR_OF_FIRST_LISTED_SCREENING } from '../constants';
 
 export function computeSemester(date) {
     const month = date.getMonth();
@@ -24,30 +24,13 @@ export function computeSemester(date) {
     return semester;
 }
 
-export function computeSemesterOptions() {
+export function computeSemesterOptions({ isIncludingNextSemester = false }) {
     const currentDate = new Date();
-    const currentMonth = currentDate.getMonth();
-    const currentYear = currentDate.getFullYear();
-    const allSemesters = [];
-    for (let year = 1998; year < currentYear; year++) {
-        allSemesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: year });
-        allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: year });
+    const semesters = computeSemesters(currentDate);
+    if (isIncludingNextSemester) {
+        semesters.push(computeNextSemester(currentDate));
     }
-    // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
-    if (currentMonth >= 3) {
-        allSemesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: currentYear });
-    }
-    if (currentMonth >= 9) {
-        allSemesters.push({ season: WINTER_SEASON_IDENTIFIER, year: currentYear });
-    }
-    const semesterOptions = [];
-    allSemesters.reverse().forEach((semester) => {
-        semesterOptions.push({
-            label: semester.season + ' ' + semester.year,
-            value: semester.season + semester.year,
-        });
-    });
-    return semesterOptions;
+    return buildSemesterOptions(semesters);
 }
 
 export function computeEndDateOfSemester(semesterName) {
@@ -66,4 +49,49 @@ export function computeEndDateOfSemester(semesterName) {
         endDate.setMonth(3);
     }
     return endDate;
+}
+
+function computeSemesters(currentDate) {
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth();
+
+    const semesters = [];
+    for (let year = YEAR_OF_FIRST_LISTED_SCREENING; year < currentYear; year++) {
+        semesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: year });
+        semesters.push({ season: WINTER_SEASON_IDENTIFIER, year: year });
+    }
+    if (currentMonth >= 3) {
+        semesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: currentYear });
+    }
+    if (currentMonth >= 9) {
+        semesters.push({ season: WINTER_SEASON_IDENTIFIER, year: currentYear });
+    }
+    return semesters;
+}
+
+function computeNextSemester(currentDate) {
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    let nextSemester;
+    // Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...), that's why the conditions look like this.
+    if (currentMonth < 3) {
+        nextSemester = { season: SUMMER_SEASON_IDENTIFIER, year: currentYear };
+    } else if (currentMonth >= 3 && currentMonth < 9) {
+        nextSemester = { season: WINTER_SEASON_IDENTIFIER, year: currentYear };
+    } else if (currentMonth >= 9) {
+        nextSemester = { season: SUMMER_SEASON_IDENTIFIER, year: currentYear + 1 };
+    }
+    return nextSemester;
+}
+
+function buildSemesterOptions(semesters) {
+    const semesterOptions = [];
+    semesters.reverse().forEach((semester) => {
+        semesterOptions.push({
+            label: semester.season + ' ' + semester.year,
+            value: semester.season + semester.year,
+        });
+    });
+    return semesterOptions;
 }

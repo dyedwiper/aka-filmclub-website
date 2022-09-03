@@ -4,11 +4,11 @@ import styled from 'styled-components';
 import { semesterSelectStyles } from '../../styles/customSelectStyles';
 import { computeSemesterOptions } from '../../utils/semesterUtils';
 
-export default function SemesterSelect({ semester, setSemester, setIsLoading }) {
+export default function SemesterSelect({ semester, setSemester, setIsLoading, isIncludingNextSemester = false }) {
     const [semesterOptions, setSemesterOptions] = useState([]);
 
     useEffect(() => {
-        setSemesterOptions(computeSemesterOptions());
+        setSemesterOptions(computeSemesterOptions({ isIncludingNextSemester }));
     }, []);
 
     // Diese Bedingung ist notwendig, damit der defaultValue korrekt gesetzt wird.
@@ -23,6 +23,8 @@ export default function SemesterSelect({ semester, setSemester, setIsLoading }) 
                 defaultValue={
                     semester.value
                         ? { label: semester.value.slice(0, 2) + ' ' + semester.value.slice(2), value: semester.value }
+                        : isIncludingNextSemester
+                        ? semesterOptions[1]
                         : semesterOptions[0]
                 }
                 onChange={handleSemesterChange}
