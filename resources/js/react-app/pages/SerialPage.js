@@ -71,7 +71,7 @@ export default function SerialPage() {
                 <hr />
                 <ScreeningsListStyled>
                     {serial.screenings
-                        .sort((a, b) => new Date(a.date) - new Date(b.date))
+                        .sort((a, b) => new Date(a.date.replace(' ', 'T')) - new Date(b.date.replace(' ', 'T')))
                         .map((screening) => (
                             <ScreeningsListItem key={screening.id} screening={screening} />
                         ))}
