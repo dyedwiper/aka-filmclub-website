@@ -61,6 +61,7 @@ class ScreeningController extends Controller
             ->orWhere('special', 'like', '%' . $search . '%')
             ->orWhere('author', 'like', '%' . $search . '%')
             ->orderByDesc('date')
+            ->with('supportingFilms:supportingFilmOf')
             ->get();
     }
 
