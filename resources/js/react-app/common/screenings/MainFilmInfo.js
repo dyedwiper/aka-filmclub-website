@@ -4,8 +4,6 @@ import styled from 'styled-components';
 import { ROUTE_SCREENING } from '../../constants';
 
 export default function MainFilmInfo({ screening }) {
-    if (!screening.main_film) return <></>;
-
     return (
         <MainFilmInfoStyled>
             {'Vorfilm zu: '}

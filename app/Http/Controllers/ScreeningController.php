@@ -33,7 +33,7 @@ class ScreeningController extends Controller
             ->whereNull('supportingFilmOf')
             ->orderBy('date')
             ->with('image')
-            ->with('supportingFilms:supportingFilmOf')
+            ->with('supportingFilms:supportingFilmOf,uuid,title')
             ->get();
     }
 
@@ -61,7 +61,7 @@ class ScreeningController extends Controller
             ->orWhere('special', 'like', '%' . $search . '%')
             ->orWhere('author', 'like', '%' . $search . '%')
             ->orderByDesc('date')
-            ->with('supportingFilms:supportingFilmOf')
+            ->with('supportingFilms:supportingFilmOf,title')
             ->get();
     }
 

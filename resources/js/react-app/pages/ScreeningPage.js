@@ -6,7 +6,7 @@ import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import CreditsContainer from '../common/screenings/CreditsContainer';
 import MainFilmInfo from '../common/screenings/MainFilmInfo';
-import SupportingFilmsInfo from '../common/screenings/SupportingFilmsInfo';
+import SupportingFilmsList from '../common/screenings/SupportingFilmsList';
 import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_PROGRAM,
@@ -68,8 +68,12 @@ export default function ScreeningPage() {
             )}
             <TextContainerStyled>
                 {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
-                <MainFilmInfo screening={screening} />
-                <SupportingFilmsInfo screening={screening} />
+                {screening.main_film && <MainFilmInfo screening={screening} />}
+                {screening.supporting_films.length > 0 && (
+                    <SpecialStyled>
+                        <SupportingFilmsList screening={screening} />
+                    </SpecialStyled>
+                )}
                 <DateAndVenueStyled>
                     {formatToDateTimeStringWithWeekday(screening.date)} <VerticalLineStyled>|</VerticalLineStyled>{' '}
                     {screening.venue}

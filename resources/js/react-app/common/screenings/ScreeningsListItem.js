@@ -3,21 +3,20 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_SCREENING } from '../../constants';
 import { formatToDateTimeString, getWeekdayAbbreviation } from '../../utils/dateFormatters';
+import SupportingFilmsList from './SupportingFilmsList';
 
 export default function ScreeningsListItem({ screening }) {
     return (
         <ScreeningsListItemStyled>
             <WeekdayStyled>{getWeekdayAbbreviation(screening.date)}</WeekdayStyled>
             <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
-            <LinkStyled to={ROUTE_SCREENING + screening.uuid}>
-                {screening.title}
-                {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
-                {!!screening.supporting_films.length && (
-                    <SpecialStyled>
-                        {screening.supporting_films.length === 1 ? 'mit Vorfilm' : 'mit Vorfilmen'}
-                    </SpecialStyled>
-                )}
-            </LinkStyled>
+            <LinkStyled to={ROUTE_SCREENING + screening.uuid}>{screening.title}</LinkStyled>
+            {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
+            {screening.supporting_films.length > 0 && (
+                <SpecialStyled>
+                    <SupportingFilmsList screening={screening} />
+                </SpecialStyled>
+            )}
         </ScreeningsListItemStyled>
     );
 }
