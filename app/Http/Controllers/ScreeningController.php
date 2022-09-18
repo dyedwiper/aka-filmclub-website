@@ -6,10 +6,13 @@ use App\Http\Requests\ScreeningFormRequest;
 use App\Models\Screening;
 use App\Services\ImageService;
 use App\Services\ScreeningService;
+use DateTime;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ScreeningController extends Controller
 {
@@ -67,6 +70,10 @@ class ScreeningController extends Controller
 
     public function PostScreening(ScreeningFormRequest $request)
     {
+        if ($request->supportingFilmOf) {
+            $this->checkMainFilmDate($request);
+        }
+
         $screening = new Screening(['uuid' => uniqid(),]);
         $screening = $this->mapRequestToScreening($request, $screening);
 
@@ -80,6 +87,10 @@ class ScreeningController extends Controller
 
     public function PatchScreening(ScreeningFormRequest $request)
     {
+        if ($request->supportingFilmOf) {
+            $this->checkMainFilmDate($request);
+        }
+
         $screening = Screening::where('uuid', $request->uuid)->first();
         $screening = $this->mapRequestToScreening($request, $screening);
         $screening->save();
@@ -134,5 +145,22 @@ class ScreeningController extends Controller
         $screening->author = $request->author;
 
         return $screening;
+    }
+
+    private function checkMainFilmDate(Request $request)
+    {
+        $mainFilm = Screening::where('id', $request->supportingFilmOf)->first();
+        $mainDate = new DateTime($mainFilm->date);
+        $validator = Validator::make($request->all(), [
+            'day' => 'date_equals:' . $mainDate->format('Y-m-d')
+        ]);
+        if ($validator->fails()) {
+            throw new HttpResponseException(
+                response()->json(
+                    ['validationErrors' => ['Ein Vorfilm muss das selbe Vorführdatum wie der Hauptfilm.']],
+                    422
+                )
+            );
+        }
     }
 }
