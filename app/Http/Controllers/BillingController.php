@@ -50,17 +50,8 @@ class BillingController extends Controller
         $billing = $this->mapRequestToBilling($request, $billing);
         $billing->save();
 
-        for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
-            $ticketStack = new TicketStack(['billing_id' => $billing->id,]);
-            $ticketStack = $this->mapRequestToTicketStack($request, $ticketStack, $i);
-            $ticketStack->save();
-        }
-
-        for ($i = 0; $i < $request->numberOfPassStacks; $i++) {
-            $passStack = new PassStack(['billing_id' => $billing->id,]);
-            $passStack = $this->mapRequestToPassStack($request, $passStack, $i);
-            $passStack->save();
-        }
+        $this->createTicketStacks($request, $billing);
+        $this->createPassStacks($request, $billing);
 
         return $billing;
     }
@@ -127,6 +118,24 @@ class BillingController extends Controller
         $passStack->price = NumberUtils::toFloat($request->input('passPrice' . $stackNumber)) * 100;
 
         return $passStack;
+    }
+
+    private function createTicketStacks($request, $billing)
+    {
+        for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
+            $ticketStack = new TicketStack(['billing_id' => $billing->id,]);
+            $ticketStack = $this->mapRequestToTicketStack($request, $ticketStack, $i);
+            $ticketStack->save();
+        }
+    }
+
+    private function createPassStacks($request, $billing)
+    {
+        for ($i = 0; $i < $request->numberOfPassStacks; $i++) {
+            $passStack = new PassStack(['billing_id' => $billing->id,]);
+            $passStack = $this->mapRequestToPassStack($request, $passStack, $i);
+            $passStack->save();
+        }
     }
 
     private function updateTicketStacks(Request $request, Billing $billing)
