@@ -91,7 +91,12 @@ class ScreeningController extends Controller
             $this->checkMainFilmDate($request);
         }
 
-        $screening = Screening::where('uuid', $request->uuid)->first();
+        $screening = Screening::where('uuid', $request->uuid)->with('supportingFilms')->first();
+
+        if ($screening->supportingFilms) {
+            $this->updateSupportingFilmDates($screening, $request);
+        }
+
         $screening = $this->mapRequestToScreening($request, $screening);
         $screening->save();
         return $screening;
@@ -161,6 +166,14 @@ class ScreeningController extends Controller
                     422
                 )
             );
+        }
+    }
+
+    private function updateSupportingFilmDates($screening, $request)
+    {
+        foreach ($screening->supportingFilms as $supportingFilm) {
+            $supportingFilm->date = $request->day . ' ' . $request->time;
+            $supportingFilm->save();
         }
     }
 }
