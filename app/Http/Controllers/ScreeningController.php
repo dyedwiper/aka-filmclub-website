@@ -27,7 +27,7 @@ class ScreeningController extends Controller
 
     public function GetScreenings()
     {
-        return Screening::all();
+        return Screening::whereNull('supportingFilmOf')->get();
     }
 
     public function GetFutureScreenings()
