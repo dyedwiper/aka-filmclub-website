@@ -9,7 +9,7 @@ export default function SupportingFilmsList({ screening }) {
             {screening.supporting_films.length === 1 ? 'Vorfilm: ' : 'Vorfilme: '}
             <ListStyled>
                 {screening.supporting_films.map((film) => (
-                    <ListItemStyled key={film.id}>
+                    <ListItemStyled key={film.uuid}>
                         <Link to={ROUTE_SCREENING + film.uuid}>{film.title}</Link>
                         <span>, </span>
                     </ListItemStyled>

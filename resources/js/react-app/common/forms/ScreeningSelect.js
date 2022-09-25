@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import Context from '../../Context';
-import { serialSelectStyles } from '../../styles/customSelectStyles';
+import { screeningFormSelectStyles } from '../../styles/customSelectStyles';
 import { formatToDateString } from '../../utils/dateFormatters';
 import { getScreenings, getScreeningsBySemester } from '../../utils/services/screeningServices';
 
@@ -24,7 +24,7 @@ export default function ScreeningSelect({ parentScreening, defaultScreening, isE
     if (isLoading) return <LoadingNoteStyled>Am Laden...</LoadingNoteStyled>;
 
     return (
-        <SerialSelectStyled>
+        <ScreeningSelectStyled>
             <ReactSelect
                 name="supportingFilmOf"
                 options={screeningOptions}
@@ -33,13 +33,13 @@ export default function ScreeningSelect({ parentScreening, defaultScreening, isE
                         ? { label: defaultScreening.title, value: defaultScreening.id }
                         : isEditing && isNotSupportingFilmOption
                 }
-                styles={serialSelectStyles}
+                styles={screeningFormSelectStyles}
                 placeholder="Hauptfilm wählen..."
             />
             <ButtonStyled type="button " onClick={loadAllScreenings}>
                 Alle Vorführungen laden
             </ButtonStyled>
-        </SerialSelectStyled>
+        </ScreeningSelectStyled>
     );
 
     function loadAllScreenings() {
@@ -65,7 +65,7 @@ export default function ScreeningSelect({ parentScreening, defaultScreening, isE
     }
 }
 
-const SerialSelectStyled = styled.div`
+const ScreeningSelectStyled = styled.div`
     display: grid;
     grid-template-columns: 3fr 1fr;
     grid-gap: 20px;

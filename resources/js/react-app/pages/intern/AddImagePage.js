@@ -30,7 +30,7 @@ export default function AddImagePage() {
             default:
                 break;
         }
-    }, [uuid]);
+    }, [type, uuid]);
 
     return (
         <BasePage pageTitle={PAGE_TITLE_ADD_IMAGE}>

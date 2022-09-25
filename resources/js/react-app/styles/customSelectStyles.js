@@ -26,7 +26,7 @@ export const serialSemesterSelectStyles = {
     option: customOptionStyles,
 };
 
-export const serialSelectStyles = {
+export const screeningFormSelectStyles = {
     container: (provided) => ({
         ...provided,
         display: 'block',

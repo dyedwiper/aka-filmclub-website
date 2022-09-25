@@ -103,12 +103,10 @@ export default function ScreeningFormGroup({ screening }) {
             </LabelStyled>
             <LabelStyled>
                 Filmreihe
-                {/* When screening object is not empty, it means a screening is edited. This information is needed for the default. */}
                 <SerialSelect defaultSerial={screening && screening.serial} isEditing={Object.keys(screening).length} />
             </LabelStyled>
             <LabelStyled>
                 Vorfilm zu
-                {/* When screening object is not empty, it means a screening is edited. This information is needed for the default. */}
                 <ScreeningSelect
                     parentScreening={screening}
                     defaultScreening={screening && screening.main_film}

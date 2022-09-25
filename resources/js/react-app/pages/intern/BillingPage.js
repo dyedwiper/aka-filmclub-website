@@ -23,7 +23,6 @@ export default function BillingPage() {
     const { uuid } = useParams();
 
     useEffect(() => {
-        console.log(uuid);
         getBillingByUuid(uuid).then((res) => {
             setBilling(res.data);
             setIsLoading(false);

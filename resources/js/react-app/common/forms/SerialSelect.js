@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
-import { serialSelectStyles } from '../../styles/customSelectStyles';
+import { screeningFormSelectStyles } from '../../styles/customSelectStyles';
 import { getCurrentAndFutureSerials, getSerials } from '../../utils/services/serialServices';
 
 export default function SerialSelect({ defaultSerial, isEditing }) {
@@ -29,7 +29,7 @@ export default function SerialSelect({ defaultSerial, isEditing }) {
                         ? { label: defaultSerial.title, value: defaultSerial.id }
                         : isEditing && noSerialOption
                 }
-                styles={serialSelectStyles}
+                styles={screeningFormSelectStyles}
                 placeholder="Reihe wählen..."
             />
             <ButtonStyled type="button " onClick={loadAllSerials}>

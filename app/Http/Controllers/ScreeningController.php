@@ -169,7 +169,7 @@ class ScreeningController extends Controller
         }
     }
 
-    private function updateSupportingFilmDates($screening, $request)
+    private function updateSupportingFilmDates(Screening $screening, Request $request)
     {
         foreach ($screening->supportingFilms as $supportingFilm) {
             $supportingFilm->date = $request->day . ' ' . $request->time;
