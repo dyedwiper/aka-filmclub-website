@@ -70,9 +70,11 @@ export default function SerialPage() {
                 <AuthorStyled>{serial.author}</AuthorStyled>
                 <hr />
                 <ScreeningsListStyled>
-                    {serial.screenings.map((screening) => (
-                        <ScreeningsListItem key={screening.id} screening={screening} />
-                    ))}
+                    {serial.screenings
+                        .sort((a, b) => new Date(a.date.replace(' ', 'T')) - new Date(b.date.replace(' ', 'T')))
+                        .map((screening) => (
+                            <ScreeningsListItem key={screening.id} screening={screening} />
+                        ))}
                 </ScreeningsListStyled>
                 {isUserEditor && (
                     <>

@@ -4,6 +4,10 @@ export function getSerials() {
     return makeApiCall('/api/serials');
 }
 
+export function getCurrentAndFutureSerials() {
+    return makeApiCall('/api/serials/future');
+}
+
 export function getSerialsBySemester(semester) {
     return makeApiCall('/api/serials/semester/' + semester);
 }
