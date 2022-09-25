@@ -1,6 +1,6 @@
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import BillingPdf from '../../common/accounting/pdf/BillingPdf';
 import StacksList from '../../common/accounting/StacksList';
@@ -10,7 +10,6 @@ import { PageHeadlineStyled, VerticalLineStyled } from '../../common/styledEleme
 import { PAGE_TITLE_BILLING, ROUTE_INTERN_EDIT_BILLING } from '../../constants';
 import Context from '../../Context';
 import { toEuroWithSymbol } from '../../utils/moneyFormatters';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';
 import { replaceUmlautsAndSpecialCharacters } from '../../utils/stringUtils';
 import LoadingPage from '../LoadingPage';
@@ -21,13 +20,14 @@ export default function BillingPage() {
 
     const { isUserEditor, pageTitle } = useContext(Context);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getBillingByUuid(uuid).then((res) => {
             setBilling(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 

@@ -46,6 +46,7 @@ class ScreeningFormRequest extends FormRequest
             'special' => 'max:255',
             'tercet' => 'max:65535',
             'serialId' => 'nullable|integer',
+            'supportingFilmOf' => 'nullable|integer',
             'author' => 'max:255',
         ];
     }
@@ -72,6 +73,7 @@ class ScreeningFormRequest extends FormRequest
             'special' => 'Special',
             'tercet' => 'Dreizeiler',
             'serialId' => 'Filmreihe',
+            'supportingFilmOf' => 'Vorfilm zu',
             'author' => 'Autor*in',
         ];
     }

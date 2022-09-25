@@ -15,13 +15,13 @@ export default function BillingFormGroup({ screening, billing }) {
     );
 
     return (
-        <FaqFormGroupStyled>
+        <BillingFormGroupStyled>
             {/* When adding a billing, the screening_id is submitted in this hidden input. */}
             {screening && <input type="hidden" name="screening_id" value={screening.id} />}
             <DistributorRowStyled>
                 <LabelStyled>
                     Verleih (<Link to={ROUTE_INTERN_DISTRIBUTORS}>Übersicht der Verleihe</Link>)
-                    {/* When billing is not null or undefined, it means a billing is edited. This information is needed for the default. */}
+                    {/* If billing is not null or undefined, it means a billing is edited. This information is needed for the default. */}
                     <DistributorSelect defaultDistributor={billing && billing.distributor} isEditing={billing} />
                 </LabelStyled>
                 <LabelStyled>
@@ -127,7 +127,7 @@ export default function BillingFormGroup({ screening, billing }) {
                 </ButtonStyled>
             </StackInputsContainerStyled>
             <input type="hidden" name="numberOfPassStacks" value={passStackNumbers.length} />
-        </FaqFormGroupStyled>
+        </BillingFormGroupStyled>
     );
 
     function addTicketStack() {
@@ -147,7 +147,7 @@ export default function BillingFormGroup({ screening, billing }) {
     }
 }
 
-const FaqFormGroupStyled = styled.div``;
+const BillingFormGroupStyled = styled.div``;
 
 const DistributorRowStyled = styled.div`
     display: grid;

@@ -3,18 +3,17 @@ import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import React, { useContext, useEffect, useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import hintIcon from '../../assets/hint_icon.png';
 import BasePage from '../../common/BasePage';
 import HorizontalLineToolbarButton from '../../common/forms/HorizontalLineToolbarButton';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import Context from '../../Context';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
 import { getText, postText } from '../../utils/services/textServices';
 import LoadingPage from '../LoadingPage';
-import hintIcon from '../../assets/hint_icon.png';
 
 export default function EditTextPage() {
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
@@ -25,6 +24,8 @@ export default function EditTextPage() {
     const [showHints, setShowHints] = useState(false);
 
     const { pageTitle, user } = useContext(Context);
+
+    const { page } = useParams();
 
     let history = useHistory();
 
@@ -39,13 +40,12 @@ export default function EditTextPage() {
     };
 
     useEffect(() => {
-        const page = getLastParameterFromPath();
         getText(page).then((res) => {
             setDefaultText(res.data.text);
             setAssocPage(page);
             setIsLoading(false);
         });
-    }, []);
+    }, [page]);
 
     useEffect(() => {
         const draftFromHtml = htmlToDraft(defaultText, (nodeName) => {

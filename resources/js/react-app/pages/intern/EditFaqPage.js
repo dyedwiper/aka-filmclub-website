@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import FaqFormGroup from '../../common/forms/FaqFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_FAQ, ROUTE_FAQS } from '../../constants';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteFaq, getFaqByUuid, postFaq } from '../../utils/services/faqServices';
 import LoadingPage from '../LoadingPage';
 
@@ -13,13 +13,14 @@ export default function EditFaqPage() {
     const [faq, setFaq] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getFaqByUuid(uuid).then((res) => {
             setFaq(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 

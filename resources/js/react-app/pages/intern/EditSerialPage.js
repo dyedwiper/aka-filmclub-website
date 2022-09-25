@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import SerialFormGroup from '../../common/forms/SerialFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_SERIAL, ROUTE_SERIAL, ROUTE_SERIALS } from '../../constants';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteSerial, getSerialByUuid, postSerial } from '../../utils/services/serialServices';
 import LoadingPage from '../LoadingPage';
 
@@ -13,13 +13,14 @@ export default function EditSerialPage() {
     const [serial, setSerial] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
-        const serialUuid = getLastParameterFromPath();
-        getSerialByUuid(serialUuid).then((res) => {
+        getSerialByUuid(uuid).then((res) => {
             setSerial(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 

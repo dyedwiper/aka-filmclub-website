@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Redirect, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import CreditsContainer from '../common/screenings/CreditsContainer';
+import MainFilmInfo from '../common/screenings/MainFilmInfo';
+import SupportingFilmsList from '../common/screenings/SupportingFilmsList';
 import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_PROGRAM,
@@ -18,7 +20,6 @@ import {
 import Context from '../Context';
 import { formatToDateTimeStringWithWeekday } from '../utils/dateFormatters';
 import { showScreeningImage } from '../utils/imageUtils';
-import { getLastParameterFromPath } from '../utils/pathUtils';
 import { getScreeningByUuid } from '../utils/services/screeningServices';
 import LoadingPage from './LoadingPage';
 
@@ -29,13 +30,14 @@ export default function ScreeningPage() {
 
     const { isUserEditor, setPageTitle } = useContext(Context);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
         document.title = screening.title + ' | aka-Filmclub';
         setPageTitle(PAGE_TITLE_PROGRAM);
-    }, [isLoading]);
+    }, [screening]);
 
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getScreeningByUuid(uuid).then((res) => {
             if (!res.data.uuid) {
                 setNoScreeningFound(true);
@@ -43,7 +45,7 @@ export default function ScreeningPage() {
             setScreening(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 
@@ -66,6 +68,12 @@ export default function ScreeningPage() {
             )}
             <TextContainerStyled>
                 {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
+                {screening.main_film && <MainFilmInfo screening={screening} />}
+                {screening.supporting_films.length > 0 && (
+                    <SpecialStyled>
+                        <SupportingFilmsList screening={screening} />
+                    </SpecialStyled>
+                )}
                 <DateAndVenueStyled>
                     {formatToDateTimeStringWithWeekday(screening.date)} <VerticalLineStyled>|</VerticalLineStyled>{' '}
                     {screening.venue}

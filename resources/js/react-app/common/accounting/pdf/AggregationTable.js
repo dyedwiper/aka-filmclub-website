@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     row: { display: 'flex', flexDirection: 'row' },
     sign: { width: '12pt', padding: '1pt 3pt' },
     key: { width: '150pt', padding: '1pt 3pt' },
-    value: { width: '70pt', padding: '1pt 3 pt', textAlign: 'right' },
+    value: { width: '70pt', padding: '1pt 3pt', textAlign: 'right' },
     valueWithBorder: {
         width: '70pt',
         padding: '1pt 3pt',

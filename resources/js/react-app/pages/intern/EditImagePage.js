@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_IMAGE, ROUTE_NOTICE, ROUTE_SCREENING, ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteImage, getImageByUuid, postImage } from '../../utils/services/imageServices';
 import LoadingPage from '../LoadingPage';
 
@@ -14,13 +14,14 @@ export default function EditImagePage() {
     const [isLoading, setIsLoading] = useState(true);
     const [redirectRoute, setRedirectRoute] = useState('');
 
+    const { uuid } = useParams();
+
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getImageByUuid(uuid).then((res) => {
             setImage(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     useEffect(() => {
         if (image.notice) {

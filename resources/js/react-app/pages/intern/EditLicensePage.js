@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import LicenseFormGroup from '../../common/forms/LicenseFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_LICENSE, ROUTE_INTERN_LICENSES } from '../../constants';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteLicense, getLicenseByUuid, postLicense } from '../../utils/services/licenseServices';
 import LoadingPage from '../LoadingPage';
 
@@ -13,13 +13,14 @@ export default function EditLicensePage() {
     const [license, setLicense] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
+    const { uuid } = useParams();
+
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getLicenseByUuid(uuid).then((res) => {
             setLicense(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 

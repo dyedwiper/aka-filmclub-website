@@ -55,7 +55,9 @@ class SerialController extends Controller
 
     public function GetSerialByUuid(string $uuid)
     {
-        return Serial::where('uuid', $uuid)->with('image.license', 'screenings')->first();
+        return Serial::where('uuid', $uuid)
+            ->with('image.license', 'screenings.supportingFilms:supportingFilmOf,uuid,title')
+            ->first();
     }
 
     public function GetSerialsBySearchString(string $search)

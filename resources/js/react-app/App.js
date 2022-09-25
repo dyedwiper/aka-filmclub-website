@@ -93,7 +93,6 @@ import EditTextPage from './pages/intern/EditTextPage';
 import EditUserPage from './pages/intern/EditUserPage';
 import InternPage from './pages/intern/InternPage';
 import LicensesPage from './pages/intern/LicensesPage';
-import TempPdfPage from './pages/intern/TempPdfPage';
 import UsersPage from './pages/intern/UsersPage';
 import LinksPage from './pages/LinksPage';
 import LoadingPage from './pages/LoadingPage';
@@ -168,7 +167,7 @@ export default function App() {
                         <Route exact path={ROUTE_NEWS}>
                             <NoticesPage />
                         </Route>
-                        <Route path={ROUTE_NOTICE}>
+                        <Route path={ROUTE_NOTICE + ':uuid'}>
                             <NoticePage />
                         </Route>
                         <Route exact path={ROUTE_PROGRAM}>
@@ -180,13 +179,13 @@ export default function App() {
                         <Route exact path={ROUTE_ARCHIVE}>
                             <ArchivePage />
                         </Route>
-                        <Route path={ROUTE_SCREENING}>
+                        <Route path={ROUTE_SCREENING + ':uuid'}>
                             <ScreeningPage />
                         </Route>
                         <Route exact path={ROUTE_SERIALS}>
                             <SerialsPage />
                         </Route>
-                        <Route path={ROUTE_SERIAL}>
+                        <Route path={ROUTE_SERIAL + ':uuid'}>
                             <SerialPage />
                         </Route>
                         <Route exact path={ROUTE_ABOUT}>
@@ -225,65 +224,62 @@ export default function App() {
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_USER}>
                             <AddUserPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_USER}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_USER + ':uuid'}>
                             <EditUserPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_PASSWORD}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_PASSWORD + ':uuid'}>
                             <EditPasswordPage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_SERIAL}>
                             <AddSerialPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_SERIAL}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_SERIAL + ':uuid'}>
                             <EditSerialPage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_SCREENING}>
                             <AddScreeningPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_SCREENING}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_SCREENING + ':uuid'}>
                             <EditScreeningPage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_NOTICE}>
                             <AddNoticePage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_NOTICE}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_NOTICE + ':uuid'}>
                             <EditNoticePage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_ADD_IMAGE}>
+                        <PrivateRoute path={ROUTE_INTERN_ADD_IMAGE + ':type/:uuid'}>
                             <AddImagePage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_IMAGE}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_IMAGE + ':uuid'}>
                             <EditImagePage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_FAQ}>
                             <AddFaqPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_FAQ}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_FAQ + ':uuid'}>
                             <EditFaqPage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_SELFMADE_FILM}>
                             <AddSelfmadeFilmPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_SELFMADE_FILM}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_SELFMADE_FILM + ':uuid'}>
                             <EditSelfmadeFilmPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_TEXT}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_TEXT + ':page'}>
                             <EditTextPage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_ADMISSIONS}>
                             <AdmissionsPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_BILLING}>
+                        <PrivateRoute path={ROUTE_INTERN_BILLING + ':uuid'}>
                             <BillingPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_ADD_BILLING}>
+                        <PrivateRoute path={ROUTE_INTERN_ADD_BILLING + ':uuid'}>
                             <AddBillingPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_BILLING}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_BILLING + ':uuid'}>
                             <EditBillingPage />
-                        </PrivateRoute>
-                        <PrivateRoute path="/intern/tempPdf">
-                            <TempPdfPage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_DISTRIBUTORS}>
                             <DistributorsPage />
@@ -291,7 +287,7 @@ export default function App() {
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_DISTRIBUTOR}>
                             <AddDistributorPage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_DISTRIBUTOR}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_DISTRIBUTOR + ':uuid'}>
                             <EditDistributorPage />
                         </PrivateRoute>
                         <PrivateRoute exact path={ROUTE_INTERN_LICENSES}>
@@ -300,7 +296,7 @@ export default function App() {
                         <PrivateRoute exact path={ROUTE_INTERN_ADD_LICENSE}>
                             <AddLicensePage />
                         </PrivateRoute>
-                        <PrivateRoute path={ROUTE_INTERN_EDIT_LICENSE}>
+                        <PrivateRoute path={ROUTE_INTERN_EDIT_LICENSE + ':uuid'}>
                             <EditLicensePage />
                         </PrivateRoute>
                         <Route path={ROUTE_ERROR}>

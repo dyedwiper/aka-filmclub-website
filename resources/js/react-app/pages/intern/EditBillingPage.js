@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import BillingFormGroup from '../../common/forms/BillingFormGroup';
@@ -6,7 +7,6 @@ import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_BILLING, ROUTE_INTERN_ADMISSIONS, ROUTE_INTERN_BILLING } from '../../constants';
 import Context from '../../Context';
-import { getLastParameterFromPath } from '../../utils/pathUtils';
 import { deleteBilling, getBillingByUuid, postBilling } from '../../utils/services/billingServices';
 import LoadingPage from '../LoadingPage';
 
@@ -14,15 +14,16 @@ export default function EditBillingPage() {
     const [billing, setBilling] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
+    const { uuid } = useParams();
+
     const { pageTitle } = useContext(Context);
 
     useEffect(() => {
-        const uuid = getLastParameterFromPath();
         getBillingByUuid(uuid).then((res) => {
             setBilling(res.data);
             setIsLoading(false);
         });
-    }, []);
+    }, [uuid]);
 
     if (isLoading) return <LoadingPage />;
 

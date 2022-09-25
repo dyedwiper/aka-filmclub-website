@@ -13,20 +13,24 @@ class ScreeningService
 
         if ($season == 'WS') {
             return Screening::select('id', 'uuid', 'title', 'date', 'special')
+                ->whereNull('supportingFilmOf')
                 ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 10)
                 ->orWhereYear('date', $year + 1)
                 ->whereMonth('date', '<', 4)
                 ->orderBy('date')
+                ->with('supportingFilms:supportingFilmOf,uuid,title')
                 ->get();
         }
 
         if ($season == 'SS') {
             return Screening::select('id', 'uuid', 'title', 'date', 'special')
+                ->whereNull('supportingFilmOf')
                 ->whereYear('date', $year)
                 ->whereMonth('date', '>=', 4)
                 ->whereMonth('date', '<', 10)
                 ->orderBy('date')
+                ->with('supportingFilms:supportingFilmOf,uuid,title')
                 ->get();
         }
     }
