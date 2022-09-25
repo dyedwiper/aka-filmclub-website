@@ -8,8 +8,10 @@ import SupportingFilmsList from './SupportingFilmsList';
 export default function ScreeningsListItem({ screening }) {
     return (
         <ScreeningsListItemStyled>
-            <WeekdayStyled>{getWeekdayAbbreviation(screening.date)}</WeekdayStyled>
-            <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
+            <DateContainerStyled>
+                <WeekdayStyled>{getWeekdayAbbreviation(screening.date)}</WeekdayStyled>
+                <DateStyled>{formatToDateTimeString(screening.date)}</DateStyled>
+            </DateContainerStyled>
             <LinkStyled to={ROUTE_SCREENING + screening.uuid}>{screening.title}</LinkStyled>
             {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
             {screening.supporting_films.length > 0 && (
@@ -23,7 +25,18 @@ export default function ScreeningsListItem({ screening }) {
 
 const ScreeningsListItemStyled = styled.li`
     margin: 5px 0;
+
+    @media (max-width: 767px) {
+        margin: 10px 0;
+    }
 `;
+
+const DateContainerStyled = styled.span`
+    @media (max-width: 767px) {
+        display: block;
+    }
+`;
+
 const WeekdayStyled = styled.div`
     display: inline-block;
     width: 27px;
@@ -41,9 +54,6 @@ const DateStyled = styled.div`
 
 const LinkStyled = styled(Link)`
     font-weight: bold;
-    @media (max-width: 767px) {
-        display: block;
-    }
 `;
 
 const SpecialStyled = styled.span`
