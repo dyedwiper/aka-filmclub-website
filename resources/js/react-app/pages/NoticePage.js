@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
+import ImageLink from '../common/misc/ImageLink';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_NEWS,
     ROUTE_INTERN_ADD_IMAGE_NOTICE,
-    ROUTE_INTERN_EDIT_IMAGE,
     ROUTE_INTERN_EDIT_NOTICE,
     ROUTE_NOT_FOUND,
     STORAGE_FOLDER,
@@ -64,11 +64,7 @@ export default function NoticePage() {
                     <hr />
                     <LinkStyled to={ROUTE_INTERN_EDIT_NOTICE + notice.uuid}>News bearbeiten</LinkStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>
-                    {notice.image ? (
-                        <LinkStyled to={ROUTE_INTERN_EDIT_IMAGE + notice.image.uuid}>Bild bearbeiten</LinkStyled>
-                    ) : (
-                        <LinkStyled to={ROUTE_INTERN_ADD_IMAGE_NOTICE + notice.uuid}>Bild hinzufügen</LinkStyled>
-                    )}
+                    <ImageLink entity={notice} addRoute={ROUTE_INTERN_ADD_IMAGE_NOTICE} />
                     <UpdateInfo entity={notice} />
                 </>
             )}

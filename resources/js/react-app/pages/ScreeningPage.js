@@ -2,7 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import CalendarDownloadLink from '../common/calendar/CalendarDownloadLink';
+import BillingLink from '../common/misc/BillingLink';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
+import ImageLink from '../common/misc/ImageLink';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import CreditsContainer from '../common/screenings/CreditsContainer';
 import MainFilmInfo from '../common/screenings/MainFilmInfo';
@@ -10,10 +12,7 @@ import SupportingFilmsList from '../common/screenings/SupportingFilmsList';
 import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_PROGRAM,
-    ROUTE_INTERN_ADD_BILLING,
     ROUTE_INTERN_ADD_IMAGE_SCREENING,
-    ROUTE_INTERN_EDIT_BILLING,
-    ROUTE_INTERN_EDIT_IMAGE,
     ROUTE_INTERN_EDIT_SCREENING,
     ROUTE_NOT_FOUND,
     ROUTE_SERIAL,
@@ -102,25 +101,8 @@ export default function ScreeningPage() {
                             Vorführung bearbeiten
                         </EditLinkStyled>
                         <VerticalLineStyled> | </VerticalLineStyled>
-                        {screening.image ? (
-                            <EditLinkStyled to={ROUTE_INTERN_EDIT_IMAGE + screening.image.uuid}>
-                                Bild bearbeiten
-                            </EditLinkStyled>
-                        ) : (
-                            <EditLinkStyled to={ROUTE_INTERN_ADD_IMAGE_SCREENING + screening.uuid}>
-                                Bild hinzufügen
-                            </EditLinkStyled>
-                        )}
-                        <VerticalLineStyled> | </VerticalLineStyled>
-                        {screening.billing ? (
-                            <EditLinkStyled to={ROUTE_INTERN_EDIT_BILLING + screening.billing.uuid}>
-                                Abrechnung bearbeiten
-                            </EditLinkStyled>
-                        ) : (
-                            <EditLinkStyled to={ROUTE_INTERN_ADD_BILLING + screening.uuid}>
-                                Abrechnung hinzufügen
-                            </EditLinkStyled>
-                        )}
+                        <ImageLink entity={screening} addRoute={ROUTE_INTERN_ADD_IMAGE_SCREENING} />
+                        <BillingLink screening={screening} />
                         <UpdateInfo entity={screening} />
                     </>
                 )}
