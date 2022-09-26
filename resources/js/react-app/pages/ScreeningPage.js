@@ -10,7 +10,9 @@ import SupportingFilmsList from '../common/screenings/SupportingFilmsList';
 import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_PROGRAM,
+    ROUTE_INTERN_ADD_BILLING,
     ROUTE_INTERN_ADD_IMAGE_SCREENING,
+    ROUTE_INTERN_EDIT_BILLING,
     ROUTE_INTERN_EDIT_IMAGE,
     ROUTE_INTERN_EDIT_SCREENING,
     ROUTE_NOT_FOUND,
@@ -107,6 +109,16 @@ export default function ScreeningPage() {
                         ) : (
                             <EditLinkStyled to={ROUTE_INTERN_ADD_IMAGE_SCREENING + screening.uuid}>
                                 Bild hinzufügen
+                            </EditLinkStyled>
+                        )}
+                        <VerticalLineStyled> | </VerticalLineStyled>
+                        {screening.billing ? (
+                            <EditLinkStyled to={ROUTE_INTERN_EDIT_BILLING + screening.billing.uuid}>
+                                Abrechnung bearbeiten
+                            </EditLinkStyled>
+                        ) : (
+                            <EditLinkStyled to={ROUTE_INTERN_ADD_BILLING + screening.uuid}>
+                                Abrechnung hinzufügen
                             </EditLinkStyled>
                         )}
                         <UpdateInfo entity={screening} />
