@@ -2,13 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, Redirect, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import CopyrightContainer from '../common/misc/CopyrightContainer';
+import ImageLink from '../common/misc/ImageLink';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { PageStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_SERIAL,
     ROUTE_INTERN_ADD_IMAGE_SERIAL,
-    ROUTE_INTERN_EDIT_IMAGE,
     ROUTE_INTERN_EDIT_SERIAL,
     ROUTE_NOT_FOUND,
     STORAGE_FOLDER,
@@ -81,11 +81,7 @@ export default function SerialPage() {
                         <hr />
                         <LinkStyled to={ROUTE_INTERN_EDIT_SERIAL + serial.uuid}>Reihe bearbeiten</LinkStyled>
                         <VertialLineStyled> | </VertialLineStyled>
-                        {serial.image ? (
-                            <LinkStyled to={ROUTE_INTERN_EDIT_IMAGE + serial.image.uuid}>Bild bearbeiten</LinkStyled>
-                        ) : (
-                            <LinkStyled to={ROUTE_INTERN_ADD_IMAGE_SERIAL + serial.uuid}>Bild hinzufügen</LinkStyled>
-                        )}
+                        <ImageLink entity={serial} addRoute={ROUTE_INTERN_ADD_IMAGE_SERIAL} />
                         <UpdateInfo entity={serial} />
                     </>
                 )}
