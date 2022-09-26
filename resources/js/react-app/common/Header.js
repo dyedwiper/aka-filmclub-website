@@ -5,6 +5,7 @@ import akaLogo from '../assets/aka_logo.png';
 import {
     AKA_FORUM_URL,
     AKA_HIGHNOON_URL,
+    AKA_NEXTCLOUD_URL,
     PAGE_TITLE_ABOUT,
     PAGE_TITLE_ADD_NOTICE,
     PAGE_TITLE_ADD_SCREENING,
@@ -150,6 +151,14 @@ export default function Header() {
                                     onClick={() => setIsNavOpen(false)}
                                 >
                                     Forum
+                                </SubNavExternalLinkStyled>
+                                <SubNavExternalLinkStyled
+                                    href={AKA_NEXTCLOUD_URL}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={() => setIsNavOpen(false)}
+                                >
+                                    Nextcloud
                                 </SubNavExternalLinkStyled>
                                 <SubNavLinkStyled to={ROUTE_INTERN_USERS} onClick={() => setIsNavOpen(false)}>
                                     {PAGE_TITLE_USERS}

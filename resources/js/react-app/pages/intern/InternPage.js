@@ -5,6 +5,7 @@ import BasePage from '../../common/BasePage';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import {
     AKA_FORUM_URL,
+    AKA_NEXTCLOUD_URL,
     PAGE_TITLE_ADD_NOTICE,
     PAGE_TITLE_ADD_SCREENING,
     PAGE_TITLE_ADD_SERIAL,
@@ -29,9 +30,14 @@ export default function InternPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_INTERN}>
             <PageHeadlineStyled>{PAGE_TITLE_INTERN}</PageHeadlineStyled>
+            <SubheadlineStyled>Externes Internes</SubheadlineStyled>
             <ExternalLinkStyled href={AKA_FORUM_URL} target="_blank" rel="noopener noreferrer">
                 Forum
             </ExternalLinkStyled>
+            <ExternalLinkStyled href={AKA_NEXTCLOUD_URL} target="_blank" rel="noopener noreferrer">
+                Nextcloud
+            </ExternalLinkStyled>
+            <SubheadlineStyled>Mitgliederverwaltung</SubheadlineStyled>
             <LinkStyled to={ROUTE_INTERN_USERS}>{PAGE_TITLE_USERS}</LinkStyled>
             {isUserEditor ? (
                 <>
