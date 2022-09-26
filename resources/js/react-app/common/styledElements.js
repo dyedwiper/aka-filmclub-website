@@ -47,6 +47,7 @@ export const ArchiveSearchContainerStyled = styled.div`
     grid-template-columns: 280px 1fr;
     align-items: center;
     grid-gap: 40px;
+    margin-bottom: 20px;
 
     @media (max-width: 767px) {
         grid-template-columns: 1fr;

@@ -9,7 +9,6 @@ import { stripHtml } from '../../utils/stringUtils';
 export default function SerialRow({ serial }) {
     return (
         <SerialRowStyled>
-            <hr />
             <SerialContainerStyled>
                 <LinkStyled to={ROUTE_SERIAL + serial.uuid}>
                     <ImageStyled
@@ -26,11 +25,16 @@ export default function SerialRow({ serial }) {
                     <Link to={ROUTE_SERIAL + serial.uuid}>[mehr]</Link>
                 </InfoContainerStyled>
             </SerialContainerStyled>
+            <hr />
         </SerialRowStyled>
     );
 }
 
-const SerialRowStyled = styled.li``;
+const SerialRowStyled = styled.li`
+    :last-child hr {
+        display: none;
+    }
+`;
 
 const SerialContainerStyled = styled.div`
     display: grid;
