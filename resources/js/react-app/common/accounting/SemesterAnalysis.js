@@ -13,7 +13,19 @@ export default function SemesterAnalysis({ screenings, billings }) {
                     {billings.length} (von {screenings.length})
                 </ValueStyled>
             </KeyValueContainerStyled>
-            <KeyValueContainerStyled title="Verkaufte Eintrittskarten plus Freikarten">
+            <KeyValueContainerStyled>
+                <KeyStyled>Verkaufte Eintrittskarten</KeyStyled>
+                <ValueStyled>{calculateSemesterTicketsCount(billings)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Verkaufte Ausweise</KeyStyled>
+                <ValueStyled>{calculateSemesterPassesCount(billings)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Eingelöste Freikarten</KeyStyled>
+                <ValueStyled>{calculateSemesterFreeTicketsCount(billings)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled title="Verkaufte Eintrittskarten plus eingelöste Freikarten">
                 <KeyStyled>Mittlere Besuchszahl</KeyStyled>
                 <ValueStyled>
                     {calculateAverageAdmissions(billings).toLocaleString('de-DE', {
@@ -22,15 +34,7 @@ export default function SemesterAnalysis({ screenings, billings }) {
                     })}
                 </ValueStyled>
             </KeyValueContainerStyled>
-            <KeyValueContainerStyled>
-                <KeyStyled>Verkaufte Tickets</KeyStyled>
-                <ValueStyled>{calculateSemesterTicketsCount(billings)}</ValueStyled>
-            </KeyValueContainerStyled>
-            <KeyValueContainerStyled>
-                <KeyStyled>Verkaufte Ausweise</KeyStyled>
-                <ValueStyled>{calculateSemesterPassesCount(billings)}</ValueStyled>
-            </KeyValueContainerStyled>
-            <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten">
+            <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten und sonstige Einnahmen/Ausgaben (ohne Mehrwertsteuer wegen Erstattung)">
                 <KeyStyled>Bilanz</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(calculateSemesterBalance(billings))}</ValueStyled>
             </KeyValueContainerStyled>
@@ -71,6 +75,14 @@ export default function SemesterAnalysis({ screenings, billings }) {
         let count = 0;
         billings.forEach((billing) => {
             count += billing.passesCount;
+        });
+        return count;
+    }
+
+    function calculateSemesterFreeTicketsCount(billings) {
+        let count = 0;
+        billings.forEach((billing) => {
+            count += billing.freeTickets;
         });
         return count;
     }
@@ -123,7 +135,7 @@ const KeyValueContainerStyled = styled.div``;
 
 const KeyStyled = styled.div`
     display: inline-block;
-    width: 180px;
+    width: 200px;
 `;
 
 const ValueStyled = styled.div`

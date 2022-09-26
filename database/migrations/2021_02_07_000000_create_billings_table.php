@@ -31,6 +31,7 @@ class CreateBillingsTable extends Migration
             $table->integer('cashInlay');
             $table->integer('cashOut');
             $table->integer('additionalEarnings');
+            $table->integer('additionalExpenses');
             $table->text('comment')->nullable();
         });
     }

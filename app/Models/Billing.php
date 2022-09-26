@@ -20,6 +20,7 @@ class Billing extends Model
         'cashInlay',
         'cashOut',
         'additionalEarnings',
+        'additionalExpenses',
         'comment',
     ];
 

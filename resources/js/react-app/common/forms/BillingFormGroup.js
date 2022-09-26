@@ -67,7 +67,7 @@ export default function BillingFormGroup({ screening, billing }) {
                     </NumberInputContainerStyled>
                 </LabelStyled>
             </FormRowWithFourInputsStyled>
-            <FormRowWithThreeInputsStyled>
+            <FormRowWithFourInputsStyled>
                 <LabelStyled>
                     Kasseneinlage
                     <NumberInputContainerStyled>
@@ -81,7 +81,7 @@ export default function BillingFormGroup({ screening, billing }) {
                     </NumberInputContainerStyled>
                 </LabelStyled>
                 <LabelStyled>
-                    Sonstige Einnahmen/Ausgaben
+                    Sonstige Einnahmen
                     <NumberInputContainerStyled>
                         <NumberInputStyled
                             name="additionalEarnings"
@@ -90,7 +90,17 @@ export default function BillingFormGroup({ screening, billing }) {
                         €
                     </NumberInputContainerStyled>
                 </LabelStyled>
-            </FormRowWithThreeInputsStyled>
+                <LabelStyled>
+                    Sonstige Ausgaben
+                    <NumberInputContainerStyled>
+                        <NumberInputStyled
+                            name="additionalExpenses"
+                            defaultValue={billing ? toEuro(billing.additionalExpenses) : '0,00'}
+                        />{' '}
+                        €
+                    </NumberInputContainerStyled>
+                </LabelStyled>
+            </FormRowWithFourInputsStyled>
             <LabelStyled>
                 Freikarten
                 <NumberInputContainerStyled>
@@ -158,11 +168,6 @@ const DistributorRowStyled = styled.div`
 const FormRowWithFourInputsStyled = styled.div`
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-`;
-
-const FormRowWithThreeInputsStyled = styled.div`
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) minmax(0, 2fr);
 `;
 
 const LabelStyled = styled.label`

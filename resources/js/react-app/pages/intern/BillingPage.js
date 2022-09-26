@@ -42,9 +42,18 @@ export default function BillingPage() {
                 <KeyStyled>Errechnete Einnahmen</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.earnings)}</ValueStyled>
             </EarningsContainerStyled>
+            <hr />
             <KeyValueContainerStyled>
                 <KeyStyled>Sonstige Einnahmen</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.additionalEarnings)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>Sonstige Ausgaben</KeyStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.additionalExpenses)}</ValueStyled>
+            </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <TextKeyStyled>Eingelöste Freikarten</TextKeyStyled>
+                <TextValueStyled>{billing.freeTickets}</TextValueStyled>
             </KeyValueContainerStyled>
             <hr />
             <KeyValueContainerStyled>
@@ -55,12 +64,12 @@ export default function BillingPage() {
                 <KeyStyled>Kassenauslage</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.cashOut)}</ValueStyled>
             </KeyValueContainerStyled>
-            <KeyValueContainerStyled>
-                <KeyStyled title="Kassenauslage minus Kasseneinlage">Tatsächliche Einnahmen</KeyStyled>
+            <KeyValueContainerStyled title="Kassenauslage minus Kasseneinlage">
+                <KeyStyled>Tatsächliche Einnahmen</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.cashOut - billing.cashInlay)}</ValueStyled>
             </KeyValueContainerStyled>
-            <KeyValueContainerStyled>
-                <KeyStyled title="Tatsächliche Einnahmen minus errechnete Einnahmen">Kassendifferenz</KeyStyled>
+            <KeyValueContainerStyled title="Tatsächliche Einnahmen minus errechnete Einnahmen">
+                <KeyStyled>Kassendifferenz</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.cashOut - billing.cashInlay - billing.earnings)}</ValueStyled>
             </KeyValueContainerStyled>
             <hr />
@@ -97,15 +106,13 @@ export default function BillingPage() {
                 <KeyStyled>MWSt ({billing.valueAddedTaxRate} %)</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.valueAddedTax)}</ValueStyled>
             </KeyValueContainerStyled>
-            <KeyValueContainerStyled>
-                <KeyStyled title="Filmmiete plus Nebenkosten plus Mehrwertsteuer">Zu zahlen</KeyStyled>
+            <KeyValueContainerStyled title="Filmmiete plus Nebenkosten plus Mehrwertsteuer">
+                <KeyStyled>Zu zahlen</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.debt)}</ValueStyled>
             </KeyValueContainerStyled>
             <hr />
-            <KeyValueContainerStyled>
-                <KeyStyled title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)">
-                    Bilanz
-                </KeyStyled>
+            <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten und sonstige Einnahmen/Ausgaben (ohne Mehrwertsteuer wegen Erstattung)">
+                <KeyStyled>Bilanz</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.balance)}</ValueStyled>
             </KeyValueContainerStyled>
             {billing.comment && (
