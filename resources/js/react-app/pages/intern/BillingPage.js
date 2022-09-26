@@ -52,7 +52,7 @@ export default function BillingPage() {
                 <ValueStyled>{toEuroWithSymbol(billing.additionalExpenses)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
-                <TextKeyStyled>Freikarten</TextKeyStyled>
+                <TextKeyStyled>Eingelöste Freikarten</TextKeyStyled>
                 <TextValueStyled>{billing.freeTickets}</TextValueStyled>
             </KeyValueContainerStyled>
             <hr />
