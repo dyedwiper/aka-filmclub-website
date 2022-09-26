@@ -95,7 +95,9 @@ class BillingService
     {
         return $this->calculateTicketEarnings($billing)
             - $this->calculateRent($billing)
-            - $billing->incidentals;
+            - $billing->incidentals
+            + $billing->additionalEarnings
+            - $billing->additionalExpenses;
     }
 
     public function calculateValueAddedTax($billing)

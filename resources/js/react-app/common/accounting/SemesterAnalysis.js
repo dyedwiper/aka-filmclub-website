@@ -30,7 +30,7 @@ export default function SemesterAnalysis({ screenings, billings }) {
                 <KeyStyled>Verkaufte Ausweise</KeyStyled>
                 <ValueStyled>{calculateSemesterPassesCount(billings)}</ValueStyled>
             </KeyValueContainerStyled>
-            <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten">
+            <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmieten und Nebenkosten und sonstige Einnahmen/Ausgaben (ohne Mehrwertsteuer wegen Erstattung)">
                 <KeyStyled>Bilanz</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(calculateSemesterBalance(billings))}</ValueStyled>
             </KeyValueContainerStyled>

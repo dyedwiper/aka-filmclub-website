@@ -21,7 +21,7 @@ export default function AdmissionListItem({ screening, isUserEditor }) {
                     </AdmissionsStyled>
                     <PassesStyled title="Verkaufte Ausweise">{'(' + screening.billing.passesCount + ')'}</PassesStyled>
                     <BalanceStyled
-                        title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)"
+                        title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten und sonstige Einnahmen/Ausgaben (ohne Mehrwertsteuer wegen Erstattung)"
                         isNegative={screening.billing.balance < 0}
                     >
                         {toEuroWithSymbol(screening.billing.balance)}

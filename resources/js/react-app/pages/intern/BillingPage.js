@@ -107,8 +107,8 @@ export default function BillingPage() {
                 <ValueStyled>{toEuroWithSymbol(billing.debt)}</ValueStyled>
             </KeyValueContainerStyled>
             <hr />
-            <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)">
-                <KeyStyled title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten (ohne Mehrwertsteuer wegen Erstattung)">
+            <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten und sonstige Einnahmen/Ausgaben (ohne Mehrwertsteuer wegen Erstattung)">
+                <KeyStyled>
                     Bilanz
                 </KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.balance)}</ValueStyled>
