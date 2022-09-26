@@ -51,6 +51,10 @@ export default function BillingPage() {
                 <KeyStyled>Sonstige Ausgaben</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.additionalExpenses)}</ValueStyled>
             </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <TextKeyStyled>Freikarten</TextKeyStyled>
+                <TextValueStyled>{billing.freeTickets}</TextValueStyled>
+            </KeyValueContainerStyled>
             <hr />
             <KeyValueContainerStyled>
                 <KeyStyled>Kasseneinlage</KeyStyled>
@@ -108,9 +112,7 @@ export default function BillingPage() {
             </KeyValueContainerStyled>
             <hr />
             <KeyValueContainerStyled title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten und sonstige Einnahmen/Ausgaben (ohne Mehrwertsteuer wegen Erstattung)">
-                <KeyStyled>
-                    Bilanz
-                </KeyStyled>
+                <KeyStyled>Bilanz</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.balance)}</ValueStyled>
             </KeyValueContainerStyled>
             {billing.comment && (
