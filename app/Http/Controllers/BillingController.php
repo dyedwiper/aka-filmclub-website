@@ -97,6 +97,7 @@ class BillingController extends Controller
         $billing->cashInlay = NumberUtils::toFloat($request->cashInlay) * 100;
         $billing->cashOut = NumberUtils::toFloat($request->cashOut) * 100;
         $billing->additionalEarnings = NumberUtils::toFloat($request->additionalEarnings) * 100;
+        $billing->additionalExpenses = NumberUtils::toFloat($request->additionalExpenses) * 100;
         $billing->comment = $request->comment;
 
         return $billing;
