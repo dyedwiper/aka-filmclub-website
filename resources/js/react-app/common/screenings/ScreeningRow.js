@@ -30,7 +30,7 @@ export default function ScreeningRow({ screening }) {
                     )}
                     {screening.serial && (
                         <SerialStyled>
-                            Reihe: <Link to={ROUTE_SERIAL + screening.serial.uuid}>{screening.serial.title}</Link>
+                            Filmreihe: <Link to={ROUTE_SERIAL + screening.serial.uuid}>{screening.serial.title}</Link>
                         </SerialStyled>
                     )}
                     <SynopsisStyled>{stripHtml(screening.synopsis)}</SynopsisStyled>
