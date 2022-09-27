@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import akaLogoGrau from '../../assets/aka_logo_grau.png';
-import { ROUTE_SCREENING, STORAGE_FOLDER } from '../../constants';
+import { ROUTE_SCREENING, ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
 import { formatToDateTimeStringWithWeekday } from '../../utils/dateFormatters';
 import { stripHtml } from '../../utils/stringUtils';
 import SupportingFilmsList from './SupportingFilmsList';
@@ -27,6 +27,11 @@ export default function ScreeningRow({ screening }) {
                         <SpecialStyled>
                             <SupportingFilmsList screening={screening} />
                         </SpecialStyled>
+                    )}
+                    {screening.serial && (
+                        <SerialStyled>
+                            Filmreihe: <Link to={ROUTE_SERIAL + screening.serial.uuid}>{screening.serial.title}</Link>
+                        </SerialStyled>
                     )}
                     <SynopsisStyled>{stripHtml(screening.synopsis)}</SynopsisStyled>
                     <Link to={ROUTE_SCREENING + screening.uuid}>[mehr]</Link>
@@ -73,11 +78,19 @@ const DateStyled = styled.div``;
 const TitleStyled = styled.h3``;
 
 const SpecialStyled = styled.div`
-    display: inline-block;
     max-width: 100%;
+    width: max-content;
     margin: 5px 0 0 -10px;
     padding: 0 10px;
     background-color: var(--aka-gelb);
+`;
+
+const SerialStyled = styled.div`
+    max-width: 100%;
+    width: max-content;
+    margin: 5px 0 0 -10px;
+    padding: 0 10px;
+    background-color: var(--aka-hellgrau);
 `;
 
 const SynopsisStyled = styled.div`

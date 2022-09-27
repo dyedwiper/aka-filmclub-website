@@ -36,6 +36,7 @@ class ScreeningController extends Controller
             ->whereNull('supportingFilmOf')
             ->orderBy('date')
             ->with('image')
+            ->with('serial:id,uuid,title')
             ->with('supportingFilms:supportingFilmOf,uuid,title')
             ->get();
     }
