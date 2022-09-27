@@ -8,7 +8,7 @@ export default createGlobalStyle`
   :root{
       --aka-gelb: #ffef14;
       --aka-grau: #616161;
-      --aka-hellgrau: lightgrey;
+      --aka-hellgrau: #ccc;
       --aka-red: darkred;
   }
 
