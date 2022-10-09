@@ -3,8 +3,6 @@ import { CSVLink } from 'react-csv';
 import { toEuro } from '../../utils/moneyFormatters';
 
 export default function BillingsCsvLink({ screenings, semester }) {
-    console.log(semester);
-
     return (
         <CSVLink
             headers={prepareHeaders()}
@@ -33,7 +31,7 @@ export default function BillingsCsvLink({ screenings, semester }) {
     }
 
     function prepareData(screenings) {
-        const data = screenings.map((screening) => mapToDataEntry(screening));
+        const data = screenings.filter((screening) => screening.billing).map((screening) => mapToDataEntry(screening));
         return data;
     }
 
