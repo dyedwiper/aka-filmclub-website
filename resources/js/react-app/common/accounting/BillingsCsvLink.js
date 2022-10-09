@@ -43,7 +43,7 @@ export default function BillingsCsvLink({ screenings, semester }) {
             tickets: screening.billing.ticketsCount,
             passes: screening.billing.passesCount,
             guarantee: toEuro(screening.billing.guarantee),
-            percentage: screening.billing.percentage,
+            percentage: screening.billing.percentage.toString().replace('.', ','),
             incidentals: toEuro(screening.billing.incidentals),
             additionalEarnings: toEuro(screening.billing.additionalEarnings),
             additionalExpenses: toEuro(screening.billing.additionalExpenses),
