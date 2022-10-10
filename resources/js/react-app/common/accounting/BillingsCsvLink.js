@@ -1,6 +1,6 @@
 import React from 'react';
 import { CSVLink } from 'react-csv';
-import { toEuro } from '../../utils/moneyFormatters';
+import { toEuro } from '../../utils/moneyUtils';
 
 export default function BillingsCsvLink({ screenings, semester }) {
     return (

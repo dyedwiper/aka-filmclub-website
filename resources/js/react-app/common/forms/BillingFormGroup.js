@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_INTERN_DISTRIBUTORS } from '../../constants';
-import { toEuro } from '../../utils/moneyFormatters';
+import { toEuro } from '../../utils/moneyUtils';
 import DistributorSelect from './DistributorSelect';
 import StackInputsRow from './StackInputsRow';
 

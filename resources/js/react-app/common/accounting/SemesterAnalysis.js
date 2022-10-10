@@ -8,7 +8,7 @@ import {
     calculateSemesterTicketsCount,
     getWeekdayValues,
 } from '../../utils/admissionUtils';
-import { toEuroWithSymbol } from '../../utils/moneyFormatters';
+import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { VerticalLineStyled } from '../styledElements';
 
 export default function SemesterAnalysis({ screenings, billings }) {

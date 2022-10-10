@@ -14,7 +14,7 @@ import {
     AKA_ZIPCODE,
 } from '../../../constants';
 import { formatToDateString } from '../../../utils/dateFormatters';
-import { toEuroWithSymbol } from '../../../utils/moneyFormatters';
+import { toEuroWithSymbol } from '../../../utils/moneyUtils';
 import AggregationTable from './AggregationTable';
 import TicketsTable from './TicketsTable';
 

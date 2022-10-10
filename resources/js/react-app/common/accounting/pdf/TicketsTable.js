@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import React from 'react';
-import { toEuroWithSymbol } from '../../../utils/moneyFormatters';
+import { toEuroWithSymbol } from '../../../utils/moneyUtils';
 
 export default function TicketsTable({ billing }) {
     return (

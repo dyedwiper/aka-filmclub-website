@@ -9,7 +9,7 @@ import {
 } from '../../constants';
 import { formatToDateTimeString } from '../../utils/dateFormatters';
 import billingIcon from '../../assets/billing_icon.png';
-import { toEuroWithSymbol } from '../../utils/moneyFormatters';
+import { toEuroWithSymbol } from '../../utils/moneyUtils';
 
 export default function AdmissionListItem({ screening, isUserEditor }) {
     return (

@@ -9,7 +9,7 @@ import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled, VerticalLineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_BILLING, ROUTE_INTERN_EDIT_BILLING } from '../../constants';
 import Context from '../../Context';
-import { toEuroWithSymbol } from '../../utils/moneyFormatters';
+import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';
 import { replaceUmlautsAndSpecialCharacters } from '../../utils/stringUtils';
 import LoadingPage from '../LoadingPage';
