@@ -36,14 +36,10 @@ export function computeSemesterOptions({ isIncludingNextSemester = false }) {
 export function computeEndDateOfSemester(semesterName) {
     // The year 2000 in the Date constructor is a random initial value. It is overwritten anyway.
     const endDate = new Date('2000-10-01');
-    const currentMonth = new Date().getMonth();
     const seasonIdentifier = semesterName.slice(0, 2);
     const year = Number(semesterName.slice(2));
-    // Remember: Month is zero-based in JavaScript (Jan = 0, Feb = 1, ...).
     if (seasonIdentifier === 'SS') {
         endDate.setFullYear(year);
-    } else if (seasonIdentifier === 'WS' && currentMonth >= 9) {
-        endDate.setMonth(3);
     } else {
         endDate.setFullYear(year + 1);
         endDate.setMonth(3);
