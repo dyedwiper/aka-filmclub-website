@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import AdmissionListItem from '../../common/accounting/AdmissionListItem';
+import BillingsCsvLink from '../../common/accounting/BillingsCsvLink';
 import SemesterAnalysis from '../../common/accounting/SemesterAnalysis';
 import BasePage from '../../common/BasePage';
 import SemesterSelect from '../../common/forms/SemesterSelect';
@@ -69,6 +70,8 @@ export default function AdmissionsPage() {
                                         return { ...screening.billing, screeningDate: screening.date };
                                     })}
                             />
+                            <hr />
+                            <BillingsCsvLink screenings={screenings} semester={semester} />
                         </>
                     )}
                 </>
