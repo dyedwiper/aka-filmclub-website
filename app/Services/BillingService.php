@@ -79,8 +79,7 @@ class BillingService
     public function calculateNetTicketEarnings($billing)
     {
         return $this->calculateTicketEarnings($billing)
-            - $this->calculateTicketEarnings($billing)
-            * $billing->valueAddedTaxRate / 100;
+            - $this->calculateValueAddedTaxOnTicketEarnings($billing);
     }
 
     public function calculateRent($billing)
