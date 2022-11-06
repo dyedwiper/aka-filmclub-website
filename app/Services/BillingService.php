@@ -73,7 +73,8 @@ class BillingService
 
     public function calculateValueAddedTaxOnTicketEarnings($billing)
     {
-        return $this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRate / 100;
+        $vat = $this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRate / 100;
+        return round($vat);
     }
 
     public function calculateNetTicketEarnings($billing)
@@ -102,11 +103,13 @@ class BillingService
 
     public function calculateValueAddedTax($billing)
     {
-        return ($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRate / 100;
+        $vat = ($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRate / 100;
+        return round($vat);
     }
 
     public function calcaluteDebt($billing)
     {
-        return ($this->calculateRent($billing) + $billing->incidentals) * ($billing->valueAddedTaxRate + 100) / 100;
+        $debt = ($this->calculateRent($billing) + $billing->incidentals) * ($billing->valueAddedTaxRate + 100) / 100;
+        return round($debt);
     }
 }
