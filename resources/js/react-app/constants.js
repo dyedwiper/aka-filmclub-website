@@ -14,6 +14,8 @@ export const NUMBER_OF_SEEDS_IN_GHS_BIO = 460;
 export const STANDARD_TICKET_PRICE = '1,50';
 export const STANDARD_PASS_PRICE = '3,50';
 
+export const MONEY_CONVERSION_FACTOR = 100;
+
 export const AKA_SHORTNAME = 'aka-Filmclub e.V.';
 export const AKA_LONGNAME = 'Akademischer Filmclub an der Universität Freiburg e.V. (seit 1957)';
 export const AKA_ADDRESS = 'Belfortstr. 37';
