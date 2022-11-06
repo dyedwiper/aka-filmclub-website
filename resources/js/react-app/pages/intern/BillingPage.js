@@ -9,7 +9,7 @@ import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled, VerticalLineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_BILLING, ROUTE_INTERN_EDIT_BILLING } from '../../constants';
 import Context from '../../Context';
-import { toEuroWithSymbol } from '../../utils/moneyFormatters';
+import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';
 import { replaceUmlautsAndSpecialCharacters } from '../../utils/stringUtils';
 import LoadingPage from '../LoadingPage';
@@ -103,7 +103,7 @@ export default function BillingPage() {
                 <ValueStyled>{toEuroWithSymbol(billing.rent + billing.incidentals)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
-                <KeyStyled>MWSt ({billing.valueAddedTaxRate} %)</KeyStyled>
+                <KeyStyled>MwSt ({billing.valueAddedTaxRate} %)</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.valueAddedTax)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled title="Filmmiete plus Nebenkosten plus Mehrwertsteuer">

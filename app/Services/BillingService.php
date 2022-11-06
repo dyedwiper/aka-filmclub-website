@@ -4,10 +4,6 @@ namespace App\Services;
 
 class BillingService
 {
-    // That's the tax (called "V-Steuer") in cents which is subtracted from the price of every ticket,
-    // in order to calculate the net ticket price.
-    const TICKET_TAX = 10;
-
     public function addBillingToScreening($screening)
     {
         if ($screening->billing) {
@@ -22,10 +18,10 @@ class BillingService
         $billing->passesCount = $this->calculatePassesCount($billing);
         $billing->earnings = $this->calculateEarnings($billing);
         $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
+        $billing->valueAddedTaxOnTicketEarnings = $this->calculateValueAddedTaxOnTicketEarnings($billing);
         $billing->netTicketEarnings = $this->calculateNetTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);
         $billing->valueAddedTax = $this->calculateValueAddedTax($billing);
-        $billing->ticketTax = self::TICKET_TAX;
         $billing->debt = $this->calcaluteDebt($billing);
         $billing->balance = $this->calculateBalance($billing);
     }
@@ -75,11 +71,15 @@ class BillingService
         return $this->calculateTicketEarnings($billing) + $this->calculatePassEarnings($billing);
     }
 
+    public function calculateValueAddedTaxOnTicketEarnings($billing)
+    {
+        return $this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRate / 100;
+    }
+
     public function calculateNetTicketEarnings($billing)
     {
         return $this->calculateTicketEarnings($billing)
-            - $this->calculateTicketsCount($billing)
-            * self::TICKET_TAX;
+            - $this->calculateValueAddedTaxOnTicketEarnings($billing);
     }
 
     public function calculateRent($billing)

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { STANDARD_PASS_PRICE, STANDARD_TICKET_PRICE } from '../../constants';
-import { toEuro } from '../../utils/moneyFormatters';
+import { toEuro } from '../../utils/moneyUtils';
 
 export default function StackInputsRow({ billing, type, number }) {
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { toEuroWithSymbol } from '../../utils/moneyFormatters';
+import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { VerticalLineStyled } from '../styledElements';
 
 export default function StacksList({ stacks }) {
