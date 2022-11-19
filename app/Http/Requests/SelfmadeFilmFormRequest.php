@@ -38,7 +38,7 @@ class SelfmadeFilmFormRequest extends FormRequest
             'country' => 'max:255',
             'year' => 'max:255',
             'length' => 'nullable|integer|digits_between:0,4',
-            'video_link' => 'required|max:255',
+            'video_link' => 'max:255',
             'position' => 'nullable|integer',
         ];
     }

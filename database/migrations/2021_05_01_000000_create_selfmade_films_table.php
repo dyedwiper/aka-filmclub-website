@@ -29,7 +29,7 @@ class CreateSelfmadeFilmsTable extends Migration
             $table->string('country')->nullable();
             $table->string('year')->nullable();
             $table->integer('length')->nullable();
-            $table->string('video_link');
+            $table->string('video_link')->nullable();
             $table->integer('position');
         });
     }
