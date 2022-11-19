@@ -10,9 +10,11 @@ export default function SelfmadeFilmContainer({ film }) {
 
     return (
         <SelfmadeFilmContainerStyled>
-            <IFrameContainerStyled>
-                <IFrameStyled src={film.source} allow="fullscreen; picture-in-picture" />
-            </IFrameContainerStyled>
+            {film.video_link && (
+                <IFrameContainerStyled>
+                    <IFrameStyled src={film.video_link} allow="fullscreen; picture-in-picture" />
+                </IFrameContainerStyled>
+            )}
             <TitleStyled>{film.title}</TitleStyled>
             <CreditsContainer film={film} />
             {film.synopsis && <SynopsisStyled>{film.synopsis}</SynopsisStyled>}
@@ -23,7 +25,7 @@ export default function SelfmadeFilmContainer({ film }) {
 }
 
 const SelfmadeFilmContainerStyled = styled.li`
-    margin: 20px 0 40px 0;
+    margin: 20px 0 20px 0;
 
     :last-child hr {
         display: none;
