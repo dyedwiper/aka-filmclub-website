@@ -11,7 +11,7 @@ export default function SelfmadeFilmFormGroup({ film }) {
                     Hinweis: Der Link muss ein Embed-Link sein, für Vimeo z.B. die Form{' '}
                     <em>https://player.vimeo.com/video/467070172</em> haben.
                 </HintSyled>
-                <InputStyled name="source" defaultValue={film && film.source} />
+                <InputStyled name="video_link" defaultValue={film && film.video_link} />
             </LabelStyled>
             <LabelStyled>
                 Titel

@@ -11,7 +11,7 @@ export default function SelfmadeFilmContainer({ film }) {
     return (
         <SelfmadeFilmContainerStyled>
             <IFrameContainerStyled>
-                <IFrameStyled src={film.source} allow="fullscreen; picture-in-picture" />
+                <IFrameStyled src={film.video_link} allow="fullscreen; picture-in-picture" />
             </IFrameContainerStyled>
             <TitleStyled>{film.title}</TitleStyled>
             <CreditsContainer film={film} />

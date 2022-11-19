@@ -88,7 +88,7 @@ class SelfmadeFilmController extends Controller
         $selfmadeFilm->country = $request->country;
         $selfmadeFilm->year = $request->year;
         $selfmadeFilm->length = $request->length;
-        $selfmadeFilm->source = $request->source;
+        $selfmadeFilm->video_link = $request->video_link;
 
         return $selfmadeFilm;
     }
