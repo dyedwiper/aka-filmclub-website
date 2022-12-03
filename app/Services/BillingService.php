@@ -18,10 +18,10 @@ class BillingService
         $billing->passesCount = $this->calculatePassesCount($billing);
         $billing->earnings = $this->calculateEarnings($billing);
         $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
-        $billing->valueAddedTaxOnTicketEarnings = $this->calculateValueAddedTaxOnTicketEarnings($billing);
+        $billing->valueAddedTaxOnEarnings = $this->calculateValueAddedTaxOnTicketEarnings($billing);
         $billing->netTicketEarnings = $this->calculateNetTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);
-        $billing->valueAddedTax = $this->calculateValueAddedTax($billing);
+        $billing->valueAddedTaxOnDebt = $this->calculateValueAddedTaxOnDebt($billing);
         $billing->debt = $this->calcaluteDebt($billing);
         $billing->balance = $this->calculateBalance($billing);
     }
@@ -73,7 +73,7 @@ class BillingService
 
     public function calculateValueAddedTaxOnTicketEarnings($billing)
     {
-        $vat = $this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRate / 100;
+        $vat = $this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRateOnEarnings / 100;
         return round($vat);
     }
 
@@ -101,15 +101,15 @@ class BillingService
             - $billing->additionalExpenses;
     }
 
-    public function calculateValueAddedTax($billing)
+    public function calculateValueAddedTaxOnDebt($billing)
     {
-        $vat = ($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRate / 100;
+        $vat = ($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRateOnDebt / 100;
         return round($vat);
     }
 
     public function calcaluteDebt($billing)
     {
-        $debt = ($this->calculateRent($billing) + $billing->incidentals) * ($billing->valueAddedTaxRate + 100) / 100;
+        $debt = ($this->calculateRent($billing) + $billing->incidentals) * ($billing->valueAddedTaxRateOnDebt + 100) / 100;
         return round($debt);
     }
 }

@@ -103,8 +103,8 @@ export default function BillingPage() {
                 <ValueStyled>{toEuroWithSymbol(billing.rent + billing.incidentals)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
-                <KeyStyled>MwSt ({billing.valueAddedTaxRate} %)</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(billing.valueAddedTax)}</ValueStyled>
+                <KeyStyled>MwSt ({billing.valueAddedTaxRateOnDebt} %)</KeyStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.valueAddedTaxOnDebt)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled title="Filmmiete plus Nebenkosten plus Mehrwertsteuer">
                 <KeyStyled>Zu zahlen</KeyStyled>

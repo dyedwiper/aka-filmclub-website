@@ -7,8 +7,8 @@ export default function AggregationTable({ billing }) {
         <View style={styles.aggregationTable}>
             <View style={styles.rowWithBorder}>
                 <Text style={styles.sign}>-</Text>
-                <Text style={styles.key}>MwSt ({billing.valueAddedTaxRate} %)</Text>
-                <Text style={styles.value}>{toEuroWithSymbol(billing.valueAddedTaxOnTicketEarnings)}</Text>
+                <Text style={styles.key}>MwSt ({billing.valueAddedTaxRateOnEarnings} %)</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.valueAddedTaxOnEarnings)}</Text>
             </View>
             <View style={styles.row}>
                 <Text style={styles.sign}></Text>
@@ -33,8 +33,8 @@ export default function AggregationTable({ billing }) {
             </View>
             <View style={styles.rowWithBorder}>
                 <Text style={styles.sign}>+</Text>
-                <Text style={styles.key}>MwSt ({billing.valueAddedTaxRate.toLocaleString('de-DE')} %)</Text>
-                <Text style={styles.value}>{toEuroWithSymbol(billing.valueAddedTax)}</Text>
+                <Text style={styles.key}>MwSt ({billing.valueAddedTaxRateOnDebt.toLocaleString('de-DE')} %)</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.valueAddedTaxOnDebt)}</Text>
             </View>
             <View style={styles.row}>
                 <Text style={styles.sign}></Text>

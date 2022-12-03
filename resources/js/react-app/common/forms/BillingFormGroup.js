@@ -56,12 +56,24 @@ export default function BillingFormGroup({ screening, billing }) {
                         €
                     </NumberInputContainerStyled>
                 </LabelStyled>
+            </FormRowWithFourInputsStyled>
+            <FormRowWithFourInputsStyled>
                 <LabelStyled>
-                    Mehrwertsteuersatz
+                    Mehrwertsteuersatz auf Einnahmen
                     <NumberInputContainerStyled>
                         <NumberInputStyled
-                            name="valueAddedTaxRate"
-                            defaultValue={billing ? billing.valueAddedTaxRate : '7'}
+                            name="valueAddedTaxRateOnEarnings"
+                            defaultValue={billing ? billing.valueAddedTaxRateOnEarnings : '7'}
+                        />{' '}
+                        %
+                    </NumberInputContainerStyled>
+                </LabelStyled>
+                <LabelStyled>
+                    Mehrwertsteuersatz auf Rechnungsbetrag
+                    <NumberInputContainerStyled>
+                        <NumberInputStyled
+                            name="valueAddedTaxRateOnDebt"
+                            defaultValue={billing ? billing.valueAddedTaxRateOnDebt : '7'}
                         />{' '}
                         %
                     </NumberInputContainerStyled>
