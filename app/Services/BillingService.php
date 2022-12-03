@@ -109,7 +109,7 @@ class BillingService
 
     public function calcaluteDebt($billing)
     {
-        $debt = ($this->calculateRent($billing) + $billing->incidentals) * ($billing->valueAddedTaxRateOnDebt + 100) / 100;
+        $debt = $this->calculateRent($billing) + $billing->incidentals + $this->calculateValueAddedTaxOnDebt($billing);
         return round($debt);
     }
 }
