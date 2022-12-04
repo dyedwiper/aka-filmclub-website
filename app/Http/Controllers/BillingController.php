@@ -93,7 +93,8 @@ class BillingController extends Controller
         $billing->guarantee = NumberUtils::toFloat($request->guarantee) * 100;
         $billing->percentage = NumberUtils::toFloat($request->percentage);
         $billing->incidentals = NumberUtils::toFloat($request->incidentals) * 100;
-        $billing->valueAddedTaxRate = $request->valueAddedTaxRate;
+        $billing->valueAddedTaxRateOnEarnings = NumberUtils::toFloat($request->valueAddedTaxRateOnEarnings);
+        $billing->valueAddedTaxRateOnDebt = NumberUtils::toFloat($request->valueAddedTaxRateOnDebt);
         $billing->cashInlay = NumberUtils::toFloat($request->cashInlay) * 100;
         $billing->cashOut = NumberUtils::toFloat($request->cashOut) * 100;
         $billing->additionalEarnings = NumberUtils::toFloat($request->additionalEarnings) * 100;

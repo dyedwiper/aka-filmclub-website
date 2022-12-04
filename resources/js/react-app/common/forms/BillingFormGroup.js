@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ROUTE_INTERN_DISTRIBUTORS } from '../../constants';
+import { ROUTE_INTERN_DISTRIBUTORS, STANDARD_VALUE_ADDED_TAX_RATE } from '../../constants';
 import { toEuro } from '../../utils/moneyUtils';
+import { toGermanString } from '../../utils/numberUtils';
 import DistributorSelect from './DistributorSelect';
 import StackInputsRow from './StackInputsRow';
 
@@ -41,7 +42,7 @@ export default function BillingFormGroup({ screening, billing }) {
                     <NumberInputContainerStyled>
                         <NumberInputStyled
                             name="percentage"
-                            defaultValue={billing && billing.percentage.toLocaleString('de-DE')}
+                            defaultValue={toGermanString(billing && billing.percentage)}
                         />{' '}
                         %
                     </NumberInputContainerStyled>
@@ -56,12 +57,32 @@ export default function BillingFormGroup({ screening, billing }) {
                         €
                     </NumberInputContainerStyled>
                 </LabelStyled>
+            </FormRowWithFourInputsStyled>
+            <FormRowWithFourInputsStyled>
                 <LabelStyled>
-                    Mehrwertsteuersatz
+                    Mehrwertsteuersatz auf Einnahmen
                     <NumberInputContainerStyled>
                         <NumberInputStyled
-                            name="valueAddedTaxRate"
-                            defaultValue={billing ? billing.valueAddedTaxRate : '7'}
+                            name="valueAddedTaxRateOnEarnings"
+                            defaultValue={
+                                billing
+                                    ? toGermanString(billing.valueAddedTaxRateOnEarnings)
+                                    : STANDARD_VALUE_ADDED_TAX_RATE
+                            }
+                        />{' '}
+                        %
+                    </NumberInputContainerStyled>
+                </LabelStyled>
+                <LabelStyled>
+                    Mehrwertsteuersatz auf Rechnungsbetrag
+                    <NumberInputContainerStyled>
+                        <NumberInputStyled
+                            name="valueAddedTaxRateOnDebt"
+                            defaultValue={
+                                billing
+                                    ? toGermanString(billing.valueAddedTaxRateOnDebt)
+                                    : STANDARD_VALUE_ADDED_TAX_RATE
+                            }
                         />{' '}
                         %
                     </NumberInputContainerStyled>

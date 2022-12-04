@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View } from '@react-pdf/renderer';
 import React from 'react';
 import { toEuroWithSymbol } from '../../../utils/moneyUtils';
+import { toGermanString } from '../../../utils/numberUtils';
 
 export default function AggregationTable({ billing }) {
     return (
         <View style={styles.aggregationTable}>
             <View style={styles.rowWithBorder}>
                 <Text style={styles.sign}>-</Text>
-                <Text style={styles.key}>MwSt ({billing.valueAddedTaxRate} %)</Text>
-                <Text style={styles.value}>{toEuroWithSymbol(billing.valueAddedTaxOnTicketEarnings)}</Text>
+                <Text style={styles.key}>MwSt ({toGermanString(billing.valueAddedTaxRateOnEarnings)} %)</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.valueAddedTaxOnEarnings)}</Text>
             </View>
             <View style={styles.row}>
                 <Text style={styles.sign}></Text>
@@ -33,8 +34,8 @@ export default function AggregationTable({ billing }) {
             </View>
             <View style={styles.rowWithBorder}>
                 <Text style={styles.sign}>+</Text>
-                <Text style={styles.key}>MwSt ({billing.valueAddedTaxRate.toLocaleString('de-DE')} %)</Text>
-                <Text style={styles.value}>{toEuroWithSymbol(billing.valueAddedTax)}</Text>
+                <Text style={styles.key}>MwSt ({toGermanString(billing.valueAddedTaxRateOnDebt)} %)</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.valueAddedTaxOnDebt)}</Text>
             </View>
             <View style={styles.row}>
                 <Text style={styles.sign}></Text>

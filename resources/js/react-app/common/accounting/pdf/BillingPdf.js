@@ -15,6 +15,7 @@ import {
 } from '../../../constants';
 import { formatToDateString } from '../../../utils/dateFormatters';
 import { toEuroWithSymbol } from '../../../utils/moneyUtils';
+import { toGermanString } from '../../../utils/numberUtils';
 import AggregationTable from './AggregationTable';
 import TicketsTable from './TicketsTable';
 
@@ -48,7 +49,7 @@ export default function BillingPdf({ billing }) {
                         <View style={styles.billingInfo}>
                             <Text style={styles.infoField}>TB-Nr.: {billing.confirmationNumber}</Text>
                             <Text style={styles.infoField}>
-                                Prozentsatz: {billing.percentage.toLocaleString('de-DE') + ' %'}
+                                Prozentsatz: {toGermanString(billing.percentage) + ' %'}
                             </Text>
                             <Text style={styles.infoField}>
                                 Unsere Kundennr.: {billing.distributor && billing.distributor.customerId}

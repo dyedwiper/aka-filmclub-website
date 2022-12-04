@@ -9,6 +9,7 @@ class BillingService
         if ($screening->billing) {
             $this->addCalculatedValuesToBilling($screening->billing);
         }
+
         return $screening;
     }
 
@@ -18,10 +19,10 @@ class BillingService
         $billing->passesCount = $this->calculatePassesCount($billing);
         $billing->earnings = $this->calculateEarnings($billing);
         $billing->ticketEarnings = $this->calculateTicketEarnings($billing);
-        $billing->valueAddedTaxOnTicketEarnings = $this->calculateValueAddedTaxOnTicketEarnings($billing);
+        $billing->valueAddedTaxOnEarnings = $this->calculateValueAddedTaxOnTicketEarnings($billing);
         $billing->netTicketEarnings = $this->calculateNetTicketEarnings($billing);
         $billing->rent = $this->calculateRent($billing);
-        $billing->valueAddedTax = $this->calculateValueAddedTax($billing);
+        $billing->valueAddedTaxOnDebt = $this->calculateValueAddedTaxOnDebt($billing);
         $billing->debt = $this->calcaluteDebt($billing);
         $billing->balance = $this->calculateBalance($billing);
     }
@@ -33,6 +34,7 @@ class BillingService
         foreach ($ticketStacks as $stack) {
             $sum += $stack->lastNumber - $stack->firstNumber + 1;
         }
+
         return $sum;
     }
 
@@ -43,6 +45,7 @@ class BillingService
         foreach ($passStacks as $stack) {
             $sum += $stack->lastNumber - $stack->firstNumber + 1;
         }
+
         return $sum;
     }
 
@@ -53,6 +56,7 @@ class BillingService
         foreach ($ticketStacks as $stack) {
             $ticketEarnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
         }
+
         return $ticketEarnings;
     }
 
@@ -63,24 +67,31 @@ class BillingService
         foreach ($passStacks as $stack) {
             $passEarnings += ($stack->lastNumber - $stack->firstNumber + 1) * $stack->price;
         }
+
         return $passEarnings;
     }
 
     public function calculateEarnings($billing)
     {
-        return $this->calculateTicketEarnings($billing) + $this->calculatePassEarnings($billing);
+        $earnings = $this->calculateTicketEarnings($billing) + $this->calculatePassEarnings($billing);
+
+        return $earnings;
     }
 
     public function calculateValueAddedTaxOnTicketEarnings($billing)
     {
-        $vat = $this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRate / 100;
-        return round($vat);
+        $vat = $this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRateOnEarnings / 100;
+        $roundedVat = round($vat);
+
+        return $roundedVat;
     }
 
     public function calculateNetTicketEarnings($billing)
     {
-        return $this->calculateTicketEarnings($billing)
+        $earnings = $this->calculateTicketEarnings($billing)
             - $this->calculateValueAddedTaxOnTicketEarnings($billing);
+
+        return $earnings;
     }
 
     public function calculateRent($billing)
@@ -89,27 +100,34 @@ class BillingService
         if ($rent < $billing->guarantee) {
             $rent = $billing->guarantee;
         }
+
         return $rent;
     }
 
     public function calculateBalance($billing)
     {
-        return $this->calculateTicketEarnings($billing)
+        $balance = $this->calculateTicketEarnings($billing)
             - $this->calculateRent($billing)
             - $billing->incidentals
             + $billing->additionalEarnings
             - $billing->additionalExpenses;
+
+        return $balance;
     }
 
-    public function calculateValueAddedTax($billing)
+    public function calculateValueAddedTaxOnDebt($billing)
     {
-        $vat = ($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRate / 100;
-        return round($vat);
+        $vat = ($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRateOnDebt / 100;
+        $roundedVat = round($vat);
+
+        return $roundedVat;
     }
 
     public function calcaluteDebt($billing)
     {
-        $debt = ($this->calculateRent($billing) + $billing->incidentals) * ($billing->valueAddedTaxRate + 100) / 100;
-        return round($debt);
+        $debt = $this->calculateRent($billing) + $billing->incidentals + $this->calculateValueAddedTaxOnDebt($billing);
+        $roundedDebt = round($debt);
+
+        return $roundedDebt;
     }
 }

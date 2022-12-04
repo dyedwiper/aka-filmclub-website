@@ -10,6 +10,7 @@ import { PageHeadlineStyled, VerticalLineStyled } from '../../common/styledEleme
 import { PAGE_TITLE_BILLING, ROUTE_INTERN_EDIT_BILLING } from '../../constants';
 import Context from '../../Context';
 import { toEuroWithSymbol } from '../../utils/moneyUtils';
+import { toGermanString } from '../../utils/numberUtils';
 import { getBillingByUuid } from '../../utils/services/billingServices';
 import { replaceUmlautsAndSpecialCharacters } from '../../utils/stringUtils';
 import LoadingPage from '../LoadingPage';
@@ -87,7 +88,7 @@ export default function BillingPage() {
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Prozentsatz</KeyStyled>
-                <ValueStyled>{billing.percentage.toLocaleString('de-DE') + ' %'}</ValueStyled>
+                <ValueStyled>{toGermanString(billing.percentage) + ' %'}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>Nebenkosten</KeyStyled>
@@ -103,8 +104,8 @@ export default function BillingPage() {
                 <ValueStyled>{toEuroWithSymbol(billing.rent + billing.incidentals)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
-                <KeyStyled>MwSt ({billing.valueAddedTaxRate} %)</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(billing.valueAddedTax)}</ValueStyled>
+                <KeyStyled>MwSt ({toGermanString(billing.valueAddedTaxRateOnDebt)} %)</KeyStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.valueAddedTaxOnDebt)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled title="Filmmiete plus Nebenkosten plus Mehrwertsteuer">
                 <KeyStyled>Zu zahlen</KeyStyled>
