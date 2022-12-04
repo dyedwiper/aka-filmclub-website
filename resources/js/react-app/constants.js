@@ -13,6 +13,7 @@ export const NUMBER_OF_SEEDS_IN_GHS_BIO = 460;
 
 export const STANDARD_TICKET_PRICE = '1,50';
 export const STANDARD_PASS_PRICE = '3,50';
+export const STANDARD_VALUE_ADDED_TAX_RATE = 7;
 
 export const MONEY_CONVERSION_FACTOR = 100;
 

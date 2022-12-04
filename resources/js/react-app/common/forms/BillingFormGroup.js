@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ROUTE_INTERN_DISTRIBUTORS } from '../../constants';
+import { ROUTE_INTERN_DISTRIBUTORS, STANDARD_VALUE_ADDED_TAX_RATE } from '../../constants';
 import { toEuro } from '../../utils/moneyUtils';
 import DistributorSelect from './DistributorSelect';
 import StackInputsRow from './StackInputsRow';
@@ -63,7 +63,7 @@ export default function BillingFormGroup({ screening, billing }) {
                     <NumberInputContainerStyled>
                         <NumberInputStyled
                             name="valueAddedTaxRateOnEarnings"
-                            defaultValue={billing ? billing.valueAddedTaxRateOnEarnings : '7'}
+                            defaultValue={billing ? billing.valueAddedTaxRateOnEarnings : STANDARD_VALUE_ADDED_TAX_RATE}
                         />{' '}
                         %
                     </NumberInputContainerStyled>
@@ -73,7 +73,7 @@ export default function BillingFormGroup({ screening, billing }) {
                     <NumberInputContainerStyled>
                         <NumberInputStyled
                             name="valueAddedTaxRateOnDebt"
-                            defaultValue={billing ? billing.valueAddedTaxRateOnDebt : '7'}
+                            defaultValue={billing ? billing.valueAddedTaxRateOnDebt : STANDARD_VALUE_ADDED_TAX_RATE}
                         />{' '}
                         %
                     </NumberInputContainerStyled>
