@@ -30,7 +30,7 @@ class BillingFormRequest extends FormRequest
             'distributor_id' => 'nullable|integer',
             'confirmationNumber' => 'nullable|max:255',
             'freeTickets' => 'required|integer|digits_between:0,4',
-            // The max values here and below refers to the number of characters, because the fields are evaluated as strings.
+            // The max values here and below refer to the number of characters, because the fields are evaluated as strings.
             // They can't easily be evaluated as numbers because of '.' as thousands separator and ',' as decimal separator.
             'guarantee' => 'required|regex:/^\d+(,\d{1,2})?$/|max:11',
             'percentage' => 'required|regex:/^\d{1,3}(,\d{1,3})?$/',
