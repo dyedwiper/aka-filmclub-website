@@ -40,6 +40,7 @@ class BillingFormRequest extends FormRequest
             'cashInlay' => 'required|regex:/^\d+(,\d{1,2})?$/|max:11',
             'cashOut' => 'required|regex:/^\d+(,\d{1,2})?$/|max:11',
             'additionalEarnings' => 'required|regex:/^\d+(,\d{1,2})?$/|max:11',
+            'additionalExpenses' => 'required|regex:/^\d+(,\d{1,2})?$/|max:11',
             'comment' => 'nullable|max:65535',
         ];
 
@@ -71,7 +72,8 @@ class BillingFormRequest extends FormRequest
             'valueAddedTaxRateOnDebt' => 'Mehrwertsteuersatz auf Rechnungsbetrag',
             'cashInlay' => 'Kasseneinlage',
             'cashOut' => 'Kassenauslage',
-            'additionalEarnings' => 'Sonstige Einnahmen/Ausgaben',
+            'additionalEarnings' => 'Sonstige Einnahmen',
+            'additionalExpenses' => 'Sonstige Ausgaben',
             'comment' => 'Kommentar',
         ];
 
