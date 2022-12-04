@@ -42,7 +42,7 @@ export default function BillingFormGroup({ screening, billing }) {
                     <NumberInputContainerStyled>
                         <NumberInputStyled
                             name="percentage"
-                            defaultValue={toGermanString(billing && billing.percentage)}
+                            defaultValue={billing && toGermanString(billing.percentage)}
                         />{' '}
                         %
                     </NumberInputContainerStyled>
