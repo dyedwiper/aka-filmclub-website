@@ -25,10 +25,10 @@ class CreateBillingsTable extends Migration
             $table->string('confirmationNumber')->nullable();
             $table->integer('freeTickets');
             $table->integer('guarantee');
-            $table->decimal('percentage', 6, 3);
+            $table->double('percentage', 6, 3);
             $table->integer('incidentals');
-            $table->decimal('valueAddedTaxRateOnEarnings', 6, 3);
-            $table->decimal('valueAddedTaxRateOnDebt', 6, 3);
+            $table->double('valueAddedTaxRateOnEarnings', 6, 3);
+            $table->double('valueAddedTaxRateOnDebt', 6, 3);
             $table->integer('cashInlay');
             $table->integer('cashOut');
             $table->integer('additionalEarnings');
