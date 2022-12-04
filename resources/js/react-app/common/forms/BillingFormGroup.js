@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_INTERN_DISTRIBUTORS, STANDARD_VALUE_ADDED_TAX_RATE } from '../../constants';
 import { toEuro } from '../../utils/moneyUtils';
+import { toGermanString } from '../../utils/numberUtils';
 import DistributorSelect from './DistributorSelect';
 import StackInputsRow from './StackInputsRow';
 
@@ -41,7 +42,7 @@ export default function BillingFormGroup({ screening, billing }) {
                     <NumberInputContainerStyled>
                         <NumberInputStyled
                             name="percentage"
-                            defaultValue={billing && billing.percentage.toLocaleString('de-DE')}
+                            defaultValue={toGermanString(billing && billing.percentage)}
                         />{' '}
                         %
                     </NumberInputContainerStyled>
@@ -65,7 +66,7 @@ export default function BillingFormGroup({ screening, billing }) {
                             name="valueAddedTaxRateOnEarnings"
                             defaultValue={
                                 billing
-                                    ? billing.valueAddedTaxRateOnEarnings.toLocaleString('de-DE')
+                                    ? toGermanString(billing.valueAddedTaxRateOnEarnings)
                                     : STANDARD_VALUE_ADDED_TAX_RATE
                             }
                         />{' '}
@@ -79,7 +80,7 @@ export default function BillingFormGroup({ screening, billing }) {
                             name="valueAddedTaxRateOnDebt"
                             defaultValue={
                                 billing
-                                    ? billing.valueAddedTaxRateOnDebt.toLocaleString('de-DE')
+                                    ? toGermanString(billing.valueAddedTaxRateOnDebt)
                                     : STANDARD_VALUE_ADDED_TAX_RATE
                             }
                         />{' '}
