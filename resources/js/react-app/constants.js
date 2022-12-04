@@ -15,6 +15,8 @@ export const STANDARD_TICKET_PRICE = '1,50';
 export const STANDARD_PASS_PRICE = '3,50';
 export const STANDARD_VALUE_ADDED_TAX_RATE = 7;
 
+// In backend money values are stored in Cent at the moment. They need to be converted to Euro in frontend.
+// If e.g. we would decide to store the values in Millicent in backend, we would adjust the conversion factor here.
 export const MONEY_CONVERSION_FACTOR = 100;
 
 export const AKA_SHORTNAME = 'aka-Filmclub e.V.';
