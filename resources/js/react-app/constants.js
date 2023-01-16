@@ -7,7 +7,7 @@ export const NOTICES_PER_PAGE = 5;
 export const SUMMER_SEASON_IDENTIFIER = 'SS';
 export const WINTER_SEASON_IDENTIFIER = 'WS';
 
-export const YEAR_OF_FIRST_LISTED_SCREENING = 1998;
+export const YEAR_OF_FIRST_LISTED_SCREENING = 1957;
 
 export const NUMBER_OF_SEEDS_IN_GHS_BIO = 460;
 

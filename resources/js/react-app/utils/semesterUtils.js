@@ -51,8 +51,8 @@ function computeSemesters(currentDate) {
     const currentYear = currentDate.getFullYear();
     const currentMonth = currentDate.getMonth();
 
-    const semesters = [];
-    for (let year = YEAR_OF_FIRST_LISTED_SCREENING; year < currentYear; year++) {
+    const semesters = [{ season: WINTER_SEASON_IDENTIFIER, year: YEAR_OF_FIRST_LISTED_SCREENING }];
+    for (let year = YEAR_OF_FIRST_LISTED_SCREENING + 1; year < currentYear; year++) {
         semesters.push({ season: SUMMER_SEASON_IDENTIFIER, year: year });
         semesters.push({ season: WINTER_SEASON_IDENTIFIER, year: year });
     }
@@ -62,6 +62,7 @@ function computeSemesters(currentDate) {
     if (currentMonth >= 9) {
         semesters.push({ season: WINTER_SEASON_IDENTIFIER, year: currentYear });
     }
+
     return semesters;
 }
 
