@@ -13,9 +13,7 @@ class SelfmadeFilmController extends Controller
     public function GetSelfmadeFilms()
     {
         $selfmadeFilms = SelfmadeFilm::orderBy('position')->get();
-        foreach ($selfmadeFilms as $selfmadeFilm) {
-            $selfmadeFilm->areVimeoVideosEmbedded = env('ARE_VIMEO_VIDEOS_EMBEDDED');
-        }
+        $this->setVimeoProps($selfmadeFilms);
 
         return $selfmadeFilms;
     }
@@ -64,6 +62,25 @@ class SelfmadeFilmController extends Controller
         $this->updateOtherPositionsOnDelete($selfmadeFilm);
 
         $selfmadeFilm->delete();
+    }
+
+    private function setVimeoProps($selfmadeFilms)
+    {
+        foreach ($selfmadeFilms as $selfmadeFilm) {
+            if(!$selfmadeFilm->vimeo_id) {
+                continue;
+            }
+
+            $areVimeoVideosEmbedded = env('ARE_VIMEO_VIDEOS_EMBEDDED');
+
+            $selfmadeFilm->areVimeoVideosEmbedded = $areVimeoVideosEmbedded;
+
+            if($areVimeoVideosEmbedded){
+                $selfmadeFilm->vimeoLink = env('VIMEO_EMBED_URL') . $selfmadeFilm->vimeo_id;
+            } else {
+                $selfmadeFilm->vimeoLink = env('VIMEO_LINK_URL') . $selfmadeFilm->vimeo_id;
+            }
+        }
     }
 
     private function mapRequestToSelfmadeFilm(Request $request, SelfmadeFilm $selfmadeFilm)

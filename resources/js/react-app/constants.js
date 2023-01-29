@@ -2,9 +2,6 @@ export const IMAGE_FOLDER = '/images/';
 export const ASSETS_FOLDER = '/assets/';
 export const STORAGE_FOLDER = '/storage/';
 
-export const VIMEO_EMBED_URL = 'https://player.vimeo.com/video/';
-export const VIMEO_LINK_URL = 'https://vimeo.com/';
-
 export const NOTICES_PER_PAGE = 5;
 
 export const SUMMER_SEASON_IDENTIFIER = 'SS';

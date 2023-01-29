@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ROUTE_INTERN_EDIT_SELFMADE_FILM, VIMEO_EMBED_URL, VIMEO_LINK_URL } from '../../constants';
+import { ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
 import Context from '../../Context';
 import CreditsContainer from '../screenings/CreditsContainer';
 
@@ -10,14 +10,14 @@ export default function SelfmadeFilmContainer({ film }) {
 
     return (
         <SelfmadeFilmContainerStyled>
-            {film.vimeo_id && film.areVimeoVideosEmbedded && (
+            {film.vimeoLink && film.areVimeoVideosEmbedded && (
                 <IFrameContainerStyled>
-                    <IFrameStyled src={VIMEO_EMBED_URL + film.vimeo_id} allow="fullscreen; picture-in-picture" />
+                    <IFrameStyled src={film.vimeoLink} allow="fullscreen; picture-in-picture" />
                 </IFrameContainerStyled>
             )}
             <TitleStyled>{film.title}</TitleStyled>
-            {film.vimeo_id && !film.areVimeoVideosEmbedded && (
-                <VideoLinkStyled href={VIMEO_LINK_URL + film.vimeo_id} target="_blank" rel="noopener noreferrer">
+            {film.vimeoLink && !film.areVimeoVideosEmbedded && (
+                <VideoLinkStyled href={film.vimeoLink} target="_blank" rel="noopener noreferrer">
                     Link zum Video auf Vimeo
                 </VideoLinkStyled>
             )}
