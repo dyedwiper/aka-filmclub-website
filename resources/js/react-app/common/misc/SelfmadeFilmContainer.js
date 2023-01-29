@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
+import { ROUTE_INTERN_EDIT_SELFMADE_FILM, VIMEO_EMBED_URL, VIMEO_LINK_URL } from '../../constants';
 import Context from '../../Context';
 import CreditsContainer from '../screenings/CreditsContainer';
 
@@ -10,12 +10,17 @@ export default function SelfmadeFilmContainer({ film }) {
 
     return (
         <SelfmadeFilmContainerStyled>
-            {film.video_link && (
+            {film.vimeo_id && film.areVimeoVideosEmbedded && (
                 <IFrameContainerStyled>
-                    <IFrameStyled src={film.video_link} allow="fullscreen; picture-in-picture" />
+                    <IFrameStyled src={VIMEO_EMBED_URL + film.vimeo_id} allow="fullscreen; picture-in-picture" />
                 </IFrameContainerStyled>
             )}
             <TitleStyled>{film.title}</TitleStyled>
+            {film.vimeo_id && !film.areVimeoVideosEmbedded && (
+                <VideoLinkStyled href={VIMEO_LINK_URL + film.vimeo_id} target="_blank" rel="noopener noreferrer">
+                    Link zum Video auf Vimeo
+                </VideoLinkStyled>
+            )}
             <CreditsContainer film={film} />
             {film.synopsis && <SynopsisStyled>{film.synopsis}</SynopsisStyled>}
             {isUserEditor && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + film.uuid}>Bearbeiten</LinkStyled>}
@@ -47,6 +52,11 @@ const IFrameStyled = styled.iframe`
 
 const TitleStyled = styled.h3`
     margin: 10px 0;
+`;
+
+const VideoLinkStyled = styled.a`
+    display: block;
+    margin-bottom: 10px;
 `;
 
 const SynopsisStyled = styled.p`

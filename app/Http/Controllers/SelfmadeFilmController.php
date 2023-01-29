@@ -12,12 +12,19 @@ class SelfmadeFilmController extends Controller
 {
     public function GetSelfmadeFilms()
     {
-        return SelfmadeFilm::orderBy('position')->get();
+        $selfmadeFilms = SelfmadeFilm::orderBy('position')->get();
+        foreach ($selfmadeFilms as $selfmadeFilm) {
+            $selfmadeFilm->areVimeoVideosEmbedded = env('ARE_VIMEO_VIDEOS_EMBEDDED');
+        }
+
+        return $selfmadeFilms;
     }
 
     public function GetSelfmadeFilmByUuid(string $uuid)
     {
-        return SelfmadeFilm::firstWhere('uuid', $uuid);
+        $selfmadeFilm = SelfmadeFilm::firstWhere('uuid', $uuid);
+
+        return $selfmadeFilm;
     }
 
     public function PostSelfmadeFilm(SelfmadeFilmFormRequest $request)
@@ -88,7 +95,7 @@ class SelfmadeFilmController extends Controller
         $selfmadeFilm->country = $request->country;
         $selfmadeFilm->year = $request->year;
         $selfmadeFilm->length = $request->length;
-        $selfmadeFilm->video_link = $request->video_link;
+        $selfmadeFilm->vimeo_id = $request->vimeo_id;
 
         return $selfmadeFilm;
     }

@@ -6,19 +6,11 @@ export default function SelfmadeFilmFormGroup({ film }) {
     return (
         <VideoFormGroupStyled>
             <LabelStyled>
-                Link
-                <HintSyled>
-                    Hinweis: Der Link muss ein Embed-Link sein, für Vimeo z.B. die Form{' '}
-                    <em>https://player.vimeo.com/video/56653089</em> haben.
-                </HintSyled>
-                <InputStyled name="video_link" defaultValue={film && film.video_link} />
-            </LabelStyled>
-            <LabelStyled>
                 Titel
                 <InputStyled name="title" defaultValue={film && film.title} />
             </LabelStyled>
             <LabelStyled>
-                Beschreibung (optional)
+                Beschreibung
                 <TextareaStyled name="synopsis" defaultValue={film && film.synopsis} />
             </LabelStyled>
             <FormRowWithTwoInputsStyled>
@@ -65,6 +57,10 @@ export default function SelfmadeFilmFormGroup({ film }) {
                     <InputStyled name="length" defaultValue={film && film.length} />
                 </SmallInputLabelStyled>
             </FormRowWithTwoInputsStyled>
+            <LabelStyled>
+                Vimeo-ID
+                <InputStyled name="vimeo_id" defaultValue={film && film.vimeo_id} />
+            </LabelStyled>
             {film && (
                 <PositionLabelStyled>
                     Position
@@ -80,10 +76,6 @@ const VideoFormGroupStyled = styled.div``;
 const LabelStyled = styled.label`
     display: block;
     margin: 20px 0;
-`;
-
-const HintSyled = styled.div`
-    font-size: 0.7em;
 `;
 
 const FormRowWithTwoInputsStyled = styled.div`
