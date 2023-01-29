@@ -20,7 +20,7 @@ class SelfmadeFilm extends Model
         'country',
         'year',
         'length',
-        'source',
+        'vimeo_id',
         'position'
     ];
 }

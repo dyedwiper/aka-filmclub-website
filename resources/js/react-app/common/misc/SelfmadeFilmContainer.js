@@ -10,12 +10,17 @@ export default function SelfmadeFilmContainer({ film }) {
 
     return (
         <SelfmadeFilmContainerStyled>
-            {film.video_link && (
+            {film.vimeoLink && film.areVimeoVideosEmbedded && (
                 <IFrameContainerStyled>
-                    <IFrameStyled src={film.video_link} allow="fullscreen; picture-in-picture" />
+                    <IFrameStyled src={film.vimeoLink} allow="fullscreen; picture-in-picture" />
                 </IFrameContainerStyled>
             )}
             <TitleStyled>{film.title}</TitleStyled>
+            {film.vimeoLink && !film.areVimeoVideosEmbedded && (
+                <VideoLinkStyled href={film.vimeoLink} target="_blank" rel="noopener noreferrer">
+                    Link zum Video auf Vimeo
+                </VideoLinkStyled>
+            )}
             <CreditsContainer film={film} />
             {film.synopsis && <SynopsisStyled>{film.synopsis}</SynopsisStyled>}
             {isUserEditor && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + film.uuid}>Bearbeiten</LinkStyled>}
@@ -47,6 +52,11 @@ const IFrameStyled = styled.iframe`
 
 const TitleStyled = styled.h3`
     margin: 10px 0;
+`;
+
+const VideoLinkStyled = styled.a`
+    display: block;
+    margin-bottom: 10px;
 `;
 
 const SynopsisStyled = styled.p`

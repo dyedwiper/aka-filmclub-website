@@ -12,12 +12,17 @@ class SelfmadeFilmController extends Controller
 {
     public function GetSelfmadeFilms()
     {
-        return SelfmadeFilm::orderBy('position')->get();
+        $selfmadeFilms = SelfmadeFilm::orderBy('position')->get();
+        $this->setVimeoProps($selfmadeFilms);
+
+        return $selfmadeFilms;
     }
 
     public function GetSelfmadeFilmByUuid(string $uuid)
     {
-        return SelfmadeFilm::firstWhere('uuid', $uuid);
+        $selfmadeFilm = SelfmadeFilm::firstWhere('uuid', $uuid);
+
+        return $selfmadeFilm;
     }
 
     public function PostSelfmadeFilm(SelfmadeFilmFormRequest $request)
@@ -27,7 +32,9 @@ class SelfmadeFilmController extends Controller
             'position' => SelfmadeFilm::all()->count(),
         ]);
         $selfmadeFilm = $this->mapRequestToSelfmadeFilm($request, $selfmadeFilm);
+
         $selfmadeFilm->save();
+
         return $selfmadeFilm;
     }
 
@@ -36,6 +43,67 @@ class SelfmadeFilmController extends Controller
         $selfmadeFilm = SelfmadeFilm::firstWhere('uuid', $request->uuid);
         $selfmadeFilm = $this->mapRequestToSelfmadeFilm($request, $selfmadeFilm);
 
+        $this->updateOtherPositionsOnPatch($request, $selfmadeFilm);
+        $selfmadeFilm->position = $request->position;
+
+        $selfmadeFilm->save();
+
+        return $selfmadeFilm;
+    }
+
+    public function DeleteSelfmadeFilm(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(403);
+        }
+
+        $selfmadeFilm = SelfmadeFilm::firstWhere('uuid', $uuid);
+
+        $this->updateOtherPositionsOnDelete($selfmadeFilm);
+
+        $selfmadeFilm->delete();
+    }
+
+    private function setVimeoProps($selfmadeFilms)
+    {
+        foreach ($selfmadeFilms as $selfmadeFilm) {
+            if (!$selfmadeFilm->vimeo_id) {
+                continue;
+            }
+
+            $areVimeoVideosEmbedded = env('ARE_VIMEO_VIDEOS_EMBEDDED');
+
+            $selfmadeFilm->areVimeoVideosEmbedded = $areVimeoVideosEmbedded;
+
+            if ($areVimeoVideosEmbedded){
+                $selfmadeFilm->vimeoLink = env('VIMEO_EMBED_URL') . $selfmadeFilm->vimeo_id;
+            } else {
+                $selfmadeFilm->vimeoLink = env('VIMEO_LINK_URL') . $selfmadeFilm->vimeo_id;
+            }
+        }
+    }
+
+    private function mapRequestToSelfmadeFilm(Request $request, SelfmadeFilm $selfmadeFilm)
+    {
+        $selfmadeFilm->updated_by = $request->updated_by;
+        $selfmadeFilm->title = $request->title;
+        $selfmadeFilm->synopsis = $request->synopsis;
+        $selfmadeFilm->directed_by = $request->directedBy;
+        $selfmadeFilm->written_by = $request->writtenBy;
+        $selfmadeFilm->music_by = $request->musicBy;
+        $selfmadeFilm->shot_by = $request->shotBy;
+        $selfmadeFilm->edited_by = $request->editedBy;
+        $selfmadeFilm->cast = $request->cast;
+        $selfmadeFilm->country = $request->country;
+        $selfmadeFilm->year = $request->year;
+        $selfmadeFilm->length = $request->length;
+        $selfmadeFilm->vimeo_id = $request->vimeo_id;
+
+        return $selfmadeFilm;
+    }
+
+    private function updateOtherPositionsOnPatch(Request $request, SelfmadeFilm $selfmadeFilm) 
+    {
         if ($selfmadeFilm->position > $request->position) {
             $afterPositionedFilms = SelfmadeFilm
                 ::where('position', '>=', $request->position)
@@ -55,41 +123,14 @@ class SelfmadeFilmController extends Controller
                 $beforeFilm->save();
             }
         }
-        $selfmadeFilm->position = $request->position;
-
-        $selfmadeFilm->save();
     }
 
-    public function DeleteSelfmadeFilm(string $uuid)
+    private function updateOtherPositionsOnDelete(SelfmadeFilm $selfmadeFilm) 
     {
-        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(403);
-        }
-        $selfmadeFilm = SelfmadeFilm::firstWhere('uuid', $uuid);
         $afterPositionedFilms = SelfmadeFilm::where('position', '>', $selfmadeFilm->position)->get();
         foreach ($afterPositionedFilms as $afterFilm) {
             $afterFilm->position = $afterFilm->position - 1;
             $afterFilm->save();
         }
-        $selfmadeFilm->delete();
-    }
-
-    private function mapRequestToSelfmadeFilm(Request $request, SelfmadeFilm $selfmadeFilm)
-    {
-        $selfmadeFilm->updated_by = $request->updated_by;
-        $selfmadeFilm->title = $request->title;
-        $selfmadeFilm->synopsis = $request->synopsis;
-        $selfmadeFilm->directed_by = $request->directedBy;
-        $selfmadeFilm->written_by = $request->writtenBy;
-        $selfmadeFilm->music_by = $request->musicBy;
-        $selfmadeFilm->shot_by = $request->shotBy;
-        $selfmadeFilm->edited_by = $request->editedBy;
-        $selfmadeFilm->cast = $request->cast;
-        $selfmadeFilm->country = $request->country;
-        $selfmadeFilm->year = $request->year;
-        $selfmadeFilm->length = $request->length;
-        $selfmadeFilm->video_link = $request->video_link;
-
-        return $selfmadeFilm;
     }
 }
