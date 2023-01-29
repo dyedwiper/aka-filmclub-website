@@ -28,6 +28,7 @@ class FaqController extends Controller
         ]);
         $faq = $this->mapRequestToFaq($request, $faq);
         $faq->save();
+
         return $faq;
     }
 
@@ -36,6 +37,38 @@ class FaqController extends Controller
         $faq = Faq::firstWhere('uuid', $request->uuid);
         $faq = $this->mapRequestToFaq($request, $faq);
 
+        $this->updateOtherPositionsOnPatch($request, $faq);
+        $faq->position = $request->position;
+
+        $faq->save();
+
+        return $faq;
+    }
+
+    public function DeleteFaq(string $uuid)
+    {
+        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
+            abort(403);
+        }
+
+        $faq = Faq::firstWhere('uuid', $uuid);
+
+        $this->updateOtherPositionsOnDelete($faq);
+
+        $faq->delete();
+    }
+
+    private function mapRequestToFaq(Request $request, Faq $faq)
+    {
+        $faq->updated_by = $request->updated_by;
+        $faq->question = $request->question;
+        $faq->answer = $request->answer;
+
+        return $faq;
+    }
+
+    private function updateOtherPositionsOnPatch(Request $request, Faq $faq)
+    {
         if ($faq->position > $request->position) {
             $afterPositionedFaqs = Faq
                 ::where('position', '>=', $request->position)
@@ -55,32 +88,14 @@ class FaqController extends Controller
                 $beforeFaq->save();
             }
         }
-        $faq->position = $request->position;
-
-        $faq->save();
-        return $faq;
     }
 
-    public function DeleteFaq(string $uuid)
+    private function updateOtherPositionsOnDelete(Faq $faq)
     {
-        if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
-            abort(403);
-        }
-        $faq = Faq::firstWhere('uuid', $uuid);
         $afterPositionedFaqs = Faq::where('position', '>', $faq->position)->get();
         foreach ($afterPositionedFaqs as $afterFaq) {
             $afterFaq->position = $afterFaq->position - 1;
             $afterFaq->save();
         }
-        $faq->delete();
-    }
-
-    private function mapRequestToFaq(Request $request, Faq $faq)
-    {
-        $faq->updated_by = $request->updated_by;
-        $faq->question = $request->question;
-        $faq->answer = $request->answer;
-
-        return $faq;
     }
 }
