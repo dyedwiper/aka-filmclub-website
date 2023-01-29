@@ -57,7 +57,7 @@ class SelfmadeFilmFormRequest extends FormRequest
             'country' => 'Produktionsländer',
             'year' => 'Erscheinungsjahr',
             'length' => 'Länge',
-            'vimeo_id' => 'Video-ID',
+            'vimeo_id' => 'Vimeo-ID',
             'position' => 'Position',
         ];
     }

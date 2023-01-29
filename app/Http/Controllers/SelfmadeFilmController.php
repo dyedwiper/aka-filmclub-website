@@ -67,7 +67,7 @@ class SelfmadeFilmController extends Controller
     private function setVimeoProps($selfmadeFilms)
     {
         foreach ($selfmadeFilms as $selfmadeFilm) {
-            if(!$selfmadeFilm->vimeo_id) {
+            if (!$selfmadeFilm->vimeo_id) {
                 continue;
             }
 
@@ -75,7 +75,7 @@ class SelfmadeFilmController extends Controller
 
             $selfmadeFilm->areVimeoVideosEmbedded = $areVimeoVideosEmbedded;
 
-            if($areVimeoVideosEmbedded){
+            if ($areVimeoVideosEmbedded){
                 $selfmadeFilm->vimeoLink = env('VIMEO_EMBED_URL') . $selfmadeFilm->vimeo_id;
             } else {
                 $selfmadeFilm->vimeoLink = env('VIMEO_LINK_URL') . $selfmadeFilm->vimeo_id;
