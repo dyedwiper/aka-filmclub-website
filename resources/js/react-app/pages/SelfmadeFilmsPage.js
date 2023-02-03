@@ -11,6 +11,7 @@ import LoadingPage from './LoadingPage';
 export default function SelfmadeFilmsPage() {
     const [films, setFilms] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isCookieConsentGiven, setIsCookieConsentGiven] = useState(false);
 
     const { isUserEditor } = useContext(Context);
 
@@ -31,7 +32,12 @@ export default function SelfmadeFilmsPage() {
             )}
             <FilmsListStyled>
                 {films.map((film) => (
-                    <SelfmadeFilmContainer key={film.id} film={film} />
+                    <SelfmadeFilmContainer
+                        key={film.id}
+                        film={film}
+                        isCookieConsentGiven={isCookieConsentGiven}
+                        setIsCookieConsentGiven={setIsCookieConsentGiven}
+                    />
                 ))}
             </FilmsListStyled>
         </BasePage>

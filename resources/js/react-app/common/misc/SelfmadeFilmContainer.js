@@ -5,14 +5,23 @@ import { ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
 import Context from '../../Context';
 import CreditsContainer from '../screenings/CreditsContainer';
 
-export default function SelfmadeFilmContainer({ film }) {
+export default function SelfmadeFilmContainer({ film, isCookieConsentGiven, setIsCookieConsentGiven }) {
     const { isUserEditor } = useContext(Context);
 
     return (
         <SelfmadeFilmContainerStyled>
             {film.vimeoLink && film.areVimeoVideosEmbedded && (
                 <IFrameContainerStyled>
-                    <IFrameStyled src={film.vimeoLink} allow="fullscreen; picture-in-picture" />
+                    {isCookieConsentGiven ? (
+                        <IFrameStyled src={film.vimeoLink} allow="fullscreen; picture-in-picture" />
+                    ) : (
+                        <ConsentBannerStyled>
+                            <ConsentTextStyled>
+                                Hiermit erlaube ich, dass Videos eingebettet werden und Vimeo Cookies bei mir setzt.
+                            </ConsentTextStyled>
+                            <ConsentButton onClick={() => setIsCookieConsentGiven(true)}>Videos anzeigen</ConsentButton>
+                        </ConsentBannerStyled>
+                    )}
                 </IFrameContainerStyled>
             )}
             <TitleStyled>{film.title}</TitleStyled>
@@ -41,6 +50,28 @@ const IFrameContainerStyled = styled.div`
     position: relative;
     /* Padding in percent is calculated of parent's width. 56.25% stands for aspect ration 16:9. */
     padding-bottom: 56.25%;
+`;
+
+const ConsentBannerStyled = styled.div`
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    row-gap: 20px;
+    width: 100%;
+    height: 100%;
+    background-color: var(--aka-hellgrau);
+`;
+
+const ConsentTextStyled = styled.p`
+    text-align: center;
+`;
+
+const ConsentButton = styled.button`
+    display: block;
+    margin: 0 auto;
+    background-color: var(--aka-gelb);
 `;
 
 const IFrameStyled = styled.iframe`
