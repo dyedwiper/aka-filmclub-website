@@ -17,7 +17,8 @@ export default function SelfmadeFilmContainer({ film, isCookieConsentGiven, setI
                     ) : (
                         <ConsentBannerStyled>
                             <ConsentTextStyled>
-                                Hiermit erlaube ich, dass Videos eingebettet werden und Vimeo Cookies bei mir setzt.
+                                Durch Klick auf den Button willgst du ein, dass Videos eingebettet und Cookies von Vimeo
+                                gesetzt werden.
                             </ConsentTextStyled>
                             <ConsentButton onClick={() => setIsCookieConsentGiven(true)}>Videos anzeigen</ConsentButton>
                         </ConsentBannerStyled>
@@ -61,7 +62,13 @@ const ConsentBannerStyled = styled.div`
     row-gap: 20px;
     width: 100%;
     height: 100%;
+    padding: 0 200px;
     background-color: var(--aka-hellgrau);
+
+    @media (max-width: 767px) {
+        row-gap: 10px;
+        padding: 0 10px;
+    }
 `;
 
 const ConsentTextStyled = styled.p`
