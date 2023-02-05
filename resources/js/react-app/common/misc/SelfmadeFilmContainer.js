@@ -5,14 +5,14 @@ import { ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
 import Context from '../../Context';
 import CreditsContainer from '../screenings/CreditsContainer';
 
-export default function SelfmadeFilmContainer({ film, isCookieConsentGiven, setIsCookieConsentGiven }) {
+export default function SelfmadeFilmContainer({ film, isEmbedConsentGiven, setIsEmbedConsentGiven }) {
     const { isUserEditor } = useContext(Context);
 
     return (
         <SelfmadeFilmContainerStyled>
             {film.vimeoLink && film.areVimeoVideosEmbedded && (
                 <IFrameContainerStyled>
-                    {isCookieConsentGiven ? (
+                    {isEmbedConsentGiven ? (
                         <IFrameStyled src={film.vimeoLink} allow="fullscreen; picture-in-picture" />
                     ) : (
                         <ConsentBannerStyled>
@@ -20,7 +20,7 @@ export default function SelfmadeFilmContainer({ film, isCookieConsentGiven, setI
                                 Durch Klick auf den Button willgst du ein, dass Videos eingebettet und Cookies von Vimeo
                                 gesetzt werden.
                             </ConsentTextStyled>
-                            <ConsentButton onClick={() => setIsCookieConsentGiven(true)}>Videos anzeigen</ConsentButton>
+                            <ConsentButton onClick={() => setIsEmbedConsentGiven(true)}>Videos anzeigen</ConsentButton>
                         </ConsentBannerStyled>
                     )}
                 </IFrameContainerStyled>
