@@ -3,7 +3,7 @@ import CookieConsent from 'react-cookie-consent';
 
 export default function CookieBanner() {
     return (
-        <CookieConsent buttonText="Okay" style={style} buttonStyle={buttonStyle}>
+        <CookieConsent buttonText="Okay" style={style} buttonStyle={buttonStyle} debug={true}>
             Unsere Website verwendet funktionale Cookies.
         </CookieConsent>
     );
