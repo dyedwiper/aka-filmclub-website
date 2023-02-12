@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
 import styled from 'styled-components';
-import CookieBanner from './common/CookieBanner';
 import Footer from './common/Footer';
 import Header from './common/Header';
 import PrivateRoute from './common/PrivateRoute';
@@ -160,7 +159,6 @@ export default function App() {
             >
                 <Router>
                     <ScrollToTop />
-                    <CookieBanner />
                     <Header />
                     <Switch>
                         <Route exact path={ROUTE_HOME}>
