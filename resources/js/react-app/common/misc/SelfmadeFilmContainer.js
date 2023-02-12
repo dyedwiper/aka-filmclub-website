@@ -1,8 +1,14 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ROUTE_IMPRINT, ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
+import {
+    ROUTE_IMPRINT,
+    ROUTE_INTERN_EDIT_SELFMADE_FILM,
+    VIMEO_EMBED_CONSENT_COOKIE_KEY,
+    VIMEO_EMBED_CONSENT_COOKIE_VALUE,
+} from '../../constants';
 import Context from '../../Context';
+import { setCookie } from '../../utils/cookieUtils';
 import CreditsContainer from '../screenings/CreditsContainer';
 
 export default function SelfmadeFilmContainer({ film, isEmbedConsentGiven, setIsEmbedConsentGiven }) {
@@ -21,7 +27,7 @@ export default function SelfmadeFilmContainer({ film, isEmbedConsentGiven, setIs
                                 übermittelt werden. Mehr Infos dazu in unserer{' '}
                                 <Link to={ROUTE_IMPRINT}>Datenschutzerklärung</Link>.
                             </ConsentTextStyled>
-                            <ConsentButton onClick={() => setIsEmbedConsentGiven(true)}>Videos anzeigen</ConsentButton>
+                            <ConsentButton onClick={handleConsent}>Videos anzeigen</ConsentButton>
                         </ConsentBannerStyled>
                     )}
                 </IFrameContainerStyled>
@@ -38,6 +44,11 @@ export default function SelfmadeFilmContainer({ film, isEmbedConsentGiven, setIs
             <hr />
         </SelfmadeFilmContainerStyled>
     );
+
+    function handleConsent() {
+        setIsEmbedConsentGiven(true);
+        setCookie(VIMEO_EMBED_CONSENT_COOKIE_KEY, VIMEO_EMBED_CONSENT_COOKIE_VALUE, 60 * 60 * 24 * 365);
+    }
 }
 
 const SelfmadeFilmContainerStyled = styled.li`
