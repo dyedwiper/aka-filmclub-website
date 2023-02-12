@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
+import { ROUTE_IMPRINT, ROUTE_INTERN_EDIT_SELFMADE_FILM } from '../../constants';
 import Context from '../../Context';
 import CreditsContainer from '../screenings/CreditsContainer';
 
@@ -17,8 +17,9 @@ export default function SelfmadeFilmContainer({ film, isEmbedConsentGiven, setIs
                     ) : (
                         <ConsentBannerStyled>
                             <ConsentTextStyled>
-                                Durch Klick auf den Button willgst du ein, dass Videos eingebettet und Cookies von Vimeo
-                                gesetzt werden.
+                                Wenn du hier klickst, erklärst Du Dich einverstanden, dass Deine Daten an Vimeo
+                                übermittelt werden. Mehr Infos dazu in unserer{' '}
+                                <Link to={ROUTE_IMPRINT}>Datenschutzerklärung</Link>.
                             </ConsentTextStyled>
                             <ConsentButton onClick={() => setIsEmbedConsentGiven(true)}>Videos anzeigen</ConsentButton>
                         </ConsentBannerStyled>
