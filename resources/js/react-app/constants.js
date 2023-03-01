@@ -2,6 +2,9 @@ export const IMAGE_FOLDER = '/images/';
 export const ASSETS_FOLDER = '/assets/';
 export const STORAGE_FOLDER = '/storage/';
 
+export const VIMEO_EMBED_CONSENT_COOKIE_KEY = 'vimeo-embed-consent';
+export const VIMEO_EMBED_CONSENT_COOKIE_VALUE = 'true';
+
 export const NOTICES_PER_PAGE = 5;
 
 export const SUMMER_SEASON_IDENTIFIER = 'SS';

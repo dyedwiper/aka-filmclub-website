@@ -71,15 +71,7 @@ class SelfmadeFilmController extends Controller
                 continue;
             }
 
-            $areVimeoVideosEmbedded = env('ARE_VIMEO_VIDEOS_EMBEDDED');
-
-            $selfmadeFilm->areVimeoVideosEmbedded = $areVimeoVideosEmbedded;
-
-            if ($areVimeoVideosEmbedded){
-                $selfmadeFilm->vimeoLink = env('VIMEO_EMBED_URL') . $selfmadeFilm->vimeo_id;
-            } else {
-                $selfmadeFilm->vimeoLink = env('VIMEO_LINK_URL') . $selfmadeFilm->vimeo_id;
-            }
+            $selfmadeFilm->vimeoLink = env('VIMEO_EMBED_URL') . $selfmadeFilm->vimeo_id;
         }
     }
 
