@@ -23,8 +23,8 @@ export default function SelfmadeFilmContainer({ film, isEmbedConsentGiven, setIs
                     ) : (
                         <ConsentBannerStyled>
                             <ConsentTextStyled>
-                                Wenn du hier klickst, erklärst Du Dich einverstanden, dass Deine Daten an Vimeo
-                                übermittelt werden. Mehr Infos dazu in unserer{' '}
+                                Wenn du hier klickst, erklärst Du Dich einverstanden, dass Cookies von Vimeo bei dir
+                                gesetzt werden. Mehr Infos dazu in unserer{' '}
                                 <Link to={ROUTE_IMPRINT}>Datenschutzerklärung</Link>.
                             </ConsentTextStyled>
                             <ConsentButton onClick={handleConsent}>Videos anzeigen</ConsentButton>
