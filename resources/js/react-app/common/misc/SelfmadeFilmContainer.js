@@ -16,7 +16,7 @@ export default function SelfmadeFilmContainer({ film, isEmbedConsentGiven, setIs
 
     return (
         <SelfmadeFilmContainerStyled>
-            {film.vimeoLink && film.areVimeoVideosEmbedded && (
+            {film.vimeoLink && (
                 <IFrameContainerStyled>
                     {isEmbedConsentGiven ? (
                         <IFrameStyled src={film.vimeoLink} allow="fullscreen; picture-in-picture" />
@@ -33,11 +33,6 @@ export default function SelfmadeFilmContainer({ film, isEmbedConsentGiven, setIs
                 </IFrameContainerStyled>
             )}
             <TitleStyled>{film.title}</TitleStyled>
-            {film.vimeoLink && !film.areVimeoVideosEmbedded && (
-                <VideoLinkStyled href={film.vimeoLink} target="_blank" rel="noopener noreferrer">
-                    Link zum Video auf Vimeo
-                </VideoLinkStyled>
-            )}
             <CreditsContainer film={film} />
             {film.synopsis && <SynopsisStyled>{film.synopsis}</SynopsisStyled>}
             {isUserEditor && <LinkStyled to={ROUTE_INTERN_EDIT_SELFMADE_FILM + film.uuid}>Bearbeiten</LinkStyled>}
