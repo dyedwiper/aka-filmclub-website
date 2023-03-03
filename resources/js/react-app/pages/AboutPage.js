@@ -18,7 +18,7 @@ export default function AboutPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_ABOUT}>
             <PageHeadlineStyled>{PAGE_TITLE_ABOUT}</PageHeadlineStyled>
-            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.text }} />
+            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.content }} />
             <EditTextLink text={text} />
         </BasePage>
     );

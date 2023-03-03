@@ -53,7 +53,7 @@ export default function HomePage() {
     return (
         <PageStyled>
             <SectionStyled>
-                <WelcomeTextStyled dangerouslySetInnerHTML={{ __html: welcomeText.text }} />
+                <WelcomeTextStyled dangerouslySetInnerHTML={{ __html: welcomeText.content }} />
                 {isUserEditor && (
                     <>
                         <Link to={'/intern/editText/' + welcomeText.page}>{PARAGRAPH_TITLE_WELCOME} bearbeiten</Link>

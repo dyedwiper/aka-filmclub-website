@@ -16,7 +16,7 @@ class TextController extends Controller
     {
         $text = Text::firstWhere('page', $page);
         $text->updated_by = $request->updated_by;
-        $text->text = $request->text;
+        $text->content = $request->content;
         $text->save();
     }
 }

@@ -18,7 +18,7 @@ export default function LinksPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_LINKS}>
             <PageHeadlineStyled>{PAGE_TITLE_LINKS}</PageHeadlineStyled>
-            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.text }} />
+            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.content }} />
             <EditTextLink text={text} />
         </BasePage>
     );

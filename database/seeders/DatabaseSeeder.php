@@ -54,27 +54,27 @@ class DatabaseSeeder extends Seeder
             [
                 'created_at' => Carbon::now(),
                 'page' => 'about',
-                'text' => '',
+                'content' => '',
             ], [
                 'created_at' => Carbon::now(),
                 'page' => 'awards',
-                'text' => '',
+                'content' => '',
             ], [
                 'created_at' => Carbon::now(),
                 'page' => 'contact',
-                'text' => '',
+                'content' => '',
             ], [
                 'created_at' => Carbon::now(),
                 'page' => 'home',
-                'text' => '',
+                'content' => '',
             ], [
                 'created_at' => Carbon::now(),
                 'page' => 'imprint',
-                'text' => '',
+                'content' => '',
             ], [
                 'created_at' => Carbon::now(),
                 'page' => 'links',
-                'text' => '',
+                'content' => '',
             ], [
                 'created_at' => Carbon::now(),
                 'page' => 'press',
@@ -82,7 +82,7 @@ class DatabaseSeeder extends Seeder
             ], [
                 'created_at' => Carbon::now(),
                 'page' => 'selfmade',
-                'text' => '',
+                'content' => '',
             ]
         ]);
     }

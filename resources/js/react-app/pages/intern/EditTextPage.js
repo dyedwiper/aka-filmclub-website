@@ -28,7 +28,7 @@ import LoadingPage from '../LoadingPage';
 export default function EditTextPage() {
     const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
     const [assocPage, setAssocPage] = useState('');
-    const [defaultText, setDefaultText] = useState('');
+    const [currentContent, setCurrentContent] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const [validationErrors, setValidationErrors] = useState([]);
     const [showHints, setShowHints] = useState(false);
@@ -52,14 +52,14 @@ export default function EditTextPage() {
 
     useEffect(() => {
         getText(page).then((res) => {
-            setDefaultText(res.data.text);
+            setCurrentContent(res.data.content);
             setAssocPage(page);
             setIsLoading(false);
         });
     }, [page]);
 
     useEffect(() => {
-        const draftFromHtml = htmlToDraft(defaultText, (nodeName) => {
+        const draftFromHtml = htmlToDraft(currentContent, (nodeName) => {
             if (nodeName === 'hr') {
                 return {
                     type: 'HORIZONTAL_RULE',
@@ -69,7 +69,7 @@ export default function EditTextPage() {
             }
         });
         setEditorState(EditorState.createWithContent(ContentState.createFromBlockArray(draftFromHtml)));
-    }, [defaultText]);
+    }, [currentContent]);
 
     if (isLoading) return <LoadingPage />;
 
@@ -159,7 +159,7 @@ export default function EditTextPage() {
             null,
             customEntityTransform
         );
-        const data = { text: htmlFromDraft, updated_by: user.username };
+        const data = { content: htmlFromDraft, updated_by: user.username };
         postText(assocPage, data)
             .then(() => {
                 if (assocPage === 'home') {

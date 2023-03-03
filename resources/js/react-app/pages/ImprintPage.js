@@ -18,7 +18,7 @@ export default function ImprintPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_IMPRINT}>
             <PageHeadlineStyled>{PAGE_TITLE_IMPRINT}</PageHeadlineStyled>
-            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.text }} />
+            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.content }} />
             <EditTextLink text={text} />
         </BasePage>
     );

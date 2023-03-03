@@ -51,7 +51,7 @@ export default function SelfmadeFilmsPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_SELFMADE_FILMS}>
             <PageHeadlineStyled>{PAGE_TITLE_SELFMADE_FILMS}</PageHeadlineStyled>
-            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.text }} />
+            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.content }} />
             {isUserEditor && (
                 <>
                     <Link to={'/intern/editText/' + text.page}>{PARAGRAPH_TITLE_SELFMADE} bearbeiten</Link>

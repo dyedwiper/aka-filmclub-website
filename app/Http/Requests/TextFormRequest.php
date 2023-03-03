@@ -27,14 +27,14 @@ class TextFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'text' => 'required|max:16777215',
+            'content' => 'required|max:16777215',
         ];
     }
 
     public function attributes()
     {
         return [
-            'text' => 'Text',
+            'content' => 'Inhalt',
         ];
     }
 

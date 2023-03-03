@@ -18,7 +18,7 @@ class CreateTextsTable extends Migration
             $table->timestamps();
             $table->string('updated_by', 32)->nullable();
             $table->string('page');
-            $table->mediumText('text');
+            $table->mediumText('content');
         });
     }
 

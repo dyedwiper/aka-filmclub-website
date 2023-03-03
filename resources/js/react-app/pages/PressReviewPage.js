@@ -18,7 +18,7 @@ export default function PressReviewPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_PRESS}>
             <PageHeadlineStyled>{PAGE_TITLE_PRESS}</PageHeadlineStyled>
-            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.text }} />
+            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.content }} />
             <EditTextLink text={text} />
         </BasePage>
     );
