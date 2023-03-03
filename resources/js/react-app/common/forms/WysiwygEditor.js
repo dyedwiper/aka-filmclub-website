@@ -6,7 +6,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
-import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
+import { uploadImage } from '../../utils/wysiwygEditorUtils';
 
 export default function WysiwygEditor({ inputName, defaultValue }) {
     const [editorState, setEditorState] = useState(() =>
@@ -35,7 +35,7 @@ export default function WysiwygEditor({ inputName, defaultValue }) {
                         defaultTargetOption: '_blank',
                     },
                     image: {
-                        uploadCallback: uploadImage,
+                        uploadCallback: (image) => uploadImage(image, setValidationErrors),
                         previewImage: true,
                         inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
                         alt: { present: true, mandatory: false },
@@ -50,20 +50,6 @@ export default function WysiwygEditor({ inputName, defaultValue }) {
             </ValidationErrorContainerStyled>
         </WysiwygEditorStyled>
     );
-
-    function uploadImage(image) {
-        const formData = new FormData();
-        formData.append('image', image);
-        return postImageFromWysiwygEditor(formData)
-            .then((res) => {
-                return { data: { link: res.data } };
-            })
-            .catch((err) => {
-                if (err.response.status === 422) {
-                    setValidationErrors(err.response.data.validationErrors);
-                }
-            });
-    }
 }
 
 const WysiwygEditorStyled = styled.div``;

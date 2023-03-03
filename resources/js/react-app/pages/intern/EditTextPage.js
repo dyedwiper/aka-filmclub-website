@@ -21,8 +21,8 @@ import {
 } from '../../constants';
 import Context from '../../Context';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
-import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
 import { getText, postText } from '../../utils/services/textServices';
+import { uploadImage } from '../../utils/wysiwygEditorUtils';
 import LoadingPage from '../LoadingPage';
 
 export default function EditTextPage() {
@@ -132,7 +132,7 @@ export default function EditTextPage() {
                         defaultTargetOption: '_blank',
                     },
                     image: {
-                        uploadCallback: uploadImage,
+                        uploadCallback: (image) => uploadImage(image, setValidationErrors),
                         previewImage: true,
                         inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
                         alt: { present: true, mandatory: false },
@@ -198,20 +198,6 @@ export default function EditTextPage() {
 
     function HorizontalRule() {
         return <hr />;
-    }
-
-    function uploadImage(image) {
-        const formData = new FormData();
-        formData.append('image', image);
-        return postImageFromWysiwygEditor(formData)
-            .then((res) => {
-                return { data: { link: res.data } };
-            })
-            .catch((err) => {
-                if (err.response.status === 422) {
-                    setValidationErrors(err.response.data.validationErrors);
-                }
-            });
     }
 }
 
