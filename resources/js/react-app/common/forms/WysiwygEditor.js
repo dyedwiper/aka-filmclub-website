@@ -15,6 +15,8 @@ export default function WysiwygEditor({ inputName, defaultValue }) {
             : EditorState.createEmpty()
     );
 
+    const [validationErrors, setValidationErrors] = useState([]);
+
     return (
         <WysiwygEditorStyled>
             <Editor
@@ -41,6 +43,11 @@ export default function WysiwygEditor({ inputName, defaultValue }) {
                 }}
             />
             <input type="hidden" name={inputName} value={draftToHtml(convertToRaw(editorState.getCurrentContent()))} />
+            <ValidationErrorContainerStyled>
+                {validationErrors.map((error, index) => (
+                    <ValidationErrorStyled key={index}>{error}</ValidationErrorStyled>
+                ))}
+            </ValidationErrorContainerStyled>
         </WysiwygEditorStyled>
     );
 
@@ -53,11 +60,18 @@ export default function WysiwygEditor({ inputName, defaultValue }) {
             })
             .catch((err) => {
                 if (err.response.status === 422) {
-                    // setValidationErrors(err.response.data.validationErrors);
-                    console.log(err.response.data.validationErrors);
+                    setValidationErrors(err.response.data.validationErrors);
                 }
             });
     }
 }
 
 const WysiwygEditorStyled = styled.div``;
+
+const ValidationErrorContainerStyled = styled.div`
+    color: var(--aka-red);
+`;
+
+const ValidationErrorStyled = styled.div`
+    margin-bottom: 10px;
+`;

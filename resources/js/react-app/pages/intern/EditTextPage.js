@@ -243,7 +243,7 @@ const HintStyled = styled.li`
 `;
 
 const ValidationErrorContainerStyled = styled.div`
-    color: red;
+    color: var(--aka-red);
 `;
 
 const ValidationErrorStyled = styled.div`
