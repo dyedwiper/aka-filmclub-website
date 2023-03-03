@@ -1,7 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../common/BasePage';
+import EditTextLink from '../common/misc/EditTextLink';
 import SelfmadeFilmContainer from '../common/misc/SelfmadeFilmContainer';
+import UpdateInfo from '../common/misc/UpdateInfo';
 import { AddItemLinkStyled, PageHeadlineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_SELFMADE_FILMS,
@@ -11,6 +14,7 @@ import {
 import Context from '../Context';
 import { getCookieValue } from '../utils/cookieUtils';
 import { getSelfmadeFilms } from '../utils/services/selfmadeFilmServices';
+import { getText } from '../utils/services/textServices';
 import LoadingPage from './LoadingPage';
 
 export default function SelfmadeFilmsPage() {
@@ -19,6 +23,14 @@ export default function SelfmadeFilmsPage() {
     const [isVimeoEmbedConsentGiven, setIsVimeoEmbedConsentGiven] = useState(false);
 
     const { isUserEditor } = useContext(Context);
+
+    const [text, setText] = useState('');
+
+    useEffect(() => {
+        getText('selfmade').then((res) => {
+            setText(res.data);
+        });
+    }, []);
 
     useEffect(() => {
         getSelfmadeFilms().then((res) => {
@@ -39,6 +51,14 @@ export default function SelfmadeFilmsPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_SELFMADE_FILMS}>
             <PageHeadlineStyled>{PAGE_TITLE_SELFMADE_FILMS}</PageHeadlineStyled>
+            <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.text }} />
+            {isUserEditor && (
+                <>
+                    <Link to={'/intern/editText/' + text.page}>Einleitung bearbeiten</Link>
+                    <UpdateInfo entity={text} />
+                </>
+            )}
+            <hr />
             {isUserEditor && (
                 <AddItemLinkStyled to={ROUTE_INTERN_ADD_SELFMADE_FILM}>Eigenproduktion hinzufügen</AddItemLinkStyled>
             )}
@@ -55,5 +75,7 @@ export default function SelfmadeFilmsPage() {
         </BasePage>
     );
 }
+
+const TextContainerStyled = styled.div``;
 
 const FilmsListStyled = styled.ul``;

@@ -79,6 +79,10 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'page' => 'press',
                 'text' => '',
+            ], [
+                'created_at' => Carbon::now(),
+                'page' => 'selfmade',
+                'text' => '',
             ]
         ]);
     }

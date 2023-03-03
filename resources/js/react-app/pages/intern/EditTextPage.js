@@ -37,6 +37,7 @@ export default function EditTextPage() {
         press: 'Pressespiegel',
         awards: 'Auszeichnungen',
         home: 'Willkommensbereich',
+        selfmade: 'Einleitung Eigenproduktionen',
     };
 
     useEffect(() => {
