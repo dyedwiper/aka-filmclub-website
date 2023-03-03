@@ -2,12 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../common/BasePage';
-import EditTextLink from '../common/misc/EditTextLink';
 import SelfmadeFilmContainer from '../common/misc/SelfmadeFilmContainer';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import { AddItemLinkStyled, PageHeadlineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_SELFMADE_FILMS,
+    PARAGRAPH_TITLE_SELFMADE,
     ROUTE_INTERN_ADD_SELFMADE_FILM,
     VIMEO_EMBED_CONSENT_COOKIE_KEY,
 } from '../constants';
@@ -54,7 +54,7 @@ export default function SelfmadeFilmsPage() {
             <TextContainerStyled dangerouslySetInnerHTML={{ __html: text.text }} />
             {isUserEditor && (
                 <>
-                    <Link to={'/intern/editText/' + text.page}>Einleitung bearbeiten</Link>
+                    <Link to={'/intern/editText/' + text.page}>{PARAGRAPH_TITLE_SELFMADE} bearbeiten</Link>
                     <UpdateInfo entity={text} />
                 </>
             )}

@@ -156,3 +156,7 @@ export const PAGE_TITLE_EDIT_FAQ = 'FAQ bearbeiten';
 export const PAGE_TITLE_ADD_SELFMADE_FILM = 'Eigenproduktion hinzufügen';
 export const PAGE_TITLE_EDIT_SELFMADE_FILM = 'Eigenproduktion bearbeiten';
 export const PAGE_TITLE_EDIT_TEXT = 'Text bearbeiten';
+
+// Paragraph titles
+export const PARAGRAPH_TITLE_WELCOME = 'Willkommensbereich';
+export const PARAGRAPH_TITLE_SELFMADE = 'Einleitung zu Eigenproduktionen';

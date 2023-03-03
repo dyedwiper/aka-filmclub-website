@@ -9,6 +9,16 @@ import hintIcon from '../../assets/hint_icon.png';
 import BasePage from '../../common/BasePage';
 import HorizontalLineToolbarButton from '../../common/forms/HorizontalLineToolbarButton';
 import { PageHeadlineStyled } from '../../common/styledElements';
+import {
+    PAGE_TITLE_ABOUT,
+    PAGE_TITLE_AWARDS,
+    PAGE_TITLE_CONTACT,
+    PAGE_TITLE_IMPRINT,
+    PAGE_TITLE_LINKS,
+    PAGE_TITLE_PRESS,
+    PARAGRAPH_TITLE_SELFMADE,
+    PARAGRAPH_TITLE_WELCOME,
+} from '../../constants';
 import Context from '../../Context';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
@@ -30,14 +40,14 @@ export default function EditTextPage() {
     let history = useHistory();
 
     const pageTitleMap = {
-        about: 'Über uns',
-        contact: 'Kontakt',
-        imprint: 'Impressum',
-        links: 'Links',
-        press: 'Pressespiegel',
-        awards: 'Auszeichnungen',
-        home: 'Willkommensbereich',
-        selfmade: 'Einleitung Eigenproduktionen',
+        about: PAGE_TITLE_ABOUT,
+        contact: PAGE_TITLE_CONTACT,
+        imprint: PAGE_TITLE_IMPRINT,
+        links: PAGE_TITLE_LINKS,
+        press: PAGE_TITLE_PRESS,
+        awards: PAGE_TITLE_AWARDS,
+        home: PARAGRAPH_TITLE_WELCOME,
+        selfmade: PARAGRAPH_TITLE_SELFMADE,
     };
 
     useEffect(() => {

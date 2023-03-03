@@ -5,6 +5,7 @@ import UpdateInfo from '../common/misc/UpdateInfo';
 import NoticeCard from '../common/notices/NoticeCard';
 import ScreeningCard from '../common/screenings/ScreeningCard';
 import { PageStyled } from '../common/styledElements';
+import { PARAGRAPH_TITLE_WELCOME } from '../constants';
 import Context from '../Context';
 import { getNotices } from '../utils/services/noticeServices';
 import { getFutureScreenings } from '../utils/services/screeningServices';
@@ -55,7 +56,7 @@ export default function HomePage() {
                 <WelcomeTextStyled dangerouslySetInnerHTML={{ __html: welcomeText.text }} />
                 {isUserEditor && (
                     <>
-                        <Link to={'/intern/editText/' + welcomeText.page}>Willkommensbereich bearbeiten</Link>
+                        <Link to={'/intern/editText/' + welcomeText.page}>{PARAGRAPH_TITLE_WELCOME} bearbeiten</Link>
                         <UpdateInfo entity={welcomeText} />
                     </>
                 )}
