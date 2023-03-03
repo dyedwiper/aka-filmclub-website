@@ -99,11 +99,6 @@ const TitleStyled = styled.h3`
     margin: 10px 0;
 `;
 
-const VideoLinkStyled = styled.a`
-    display: block;
-    margin-bottom: 10px;
-`;
-
 const SynopsisStyled = styled.p`
     margin: 10px 0;
 `;
