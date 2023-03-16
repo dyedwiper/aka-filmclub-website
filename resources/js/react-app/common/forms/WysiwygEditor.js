@@ -9,11 +9,7 @@ import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../..
 import { uploadImage } from '../../utils/wysiwygEditorUtils';
 
 export default function WysiwygEditor({ inputName, defaultValue }) {
-    const [editorState, setEditorState] = useState(() =>
-        defaultValue
-            ? EditorState.createWithContent(ContentState.createFromBlockArray(htmlToDraft(defaultValue)))
-            : EditorState.createEmpty()
-    );
+    const [editorState, setEditorState] = useState(createInitialState(defaultValue));
 
     const [validationErrors, setValidationErrors] = useState([]);
 
@@ -50,6 +46,14 @@ export default function WysiwygEditor({ inputName, defaultValue }) {
             </ValidationErrorContainerStyled>
         </WysiwygEditorStyled>
     );
+
+    function createInitialState(defaultValue) {
+        const inititalState = defaultValue
+            ? EditorState.createWithContent(ContentState.createFromBlockArray(htmlToDraft(defaultValue)))
+            : EditorState.createEmpty();
+
+        return inititalState;
+    }
 }
 
 const WysiwygEditorStyled = styled.div``;
