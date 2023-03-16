@@ -2,8 +2,8 @@
     "name": "aka-filmclub-website-frontend",
     "private": true,
     "engines": {
-        "node": "16.x",
-        "npm": "8.x"
+        "node": "18.x",
+        "npm": "9.x"
     },
     "scripts": {
         "dev": "npm run development",
