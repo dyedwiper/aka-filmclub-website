@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { formatToIsoDateString, formatToTimeString } from '../../utils/dateFormatters';
 import ScreeningSelect from './ScreeningSelect';
 import SerialSelect from './SerialSelect';
-import WysiwygEditor from './WysiwygEditor';
+import WysiwygFormInput from './WysiwygFormInput';
 
 export default function ScreeningFormGroup({ screening }) {
     return (
@@ -38,7 +38,7 @@ export default function ScreeningFormGroup({ screening }) {
             </FormRowWithTwoInputsStyled>
             <LabelStyled>
                 Beschreibung
-                <WysiwygEditor inputName="synopsis" defaultValue={screening && screening.synopsis} />
+                <WysiwygFormInput inputName="synopsis" defaultValue={screening && screening.synopsis} />
             </LabelStyled>
             <FormRowWithTwoInputsStyled>
                 <SmallInputLabelStyled>

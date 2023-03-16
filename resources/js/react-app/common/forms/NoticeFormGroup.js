@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import WysiwygEditor from './WysiwygEditor';
+import WysiwygFormInput from './WysiwygFormInput';
 
 export default function NoticeFormGroup({ notice }) {
     return (
@@ -15,7 +15,7 @@ export default function NoticeFormGroup({ notice }) {
             </LabelStyled>
             <LabelStyled>
                 Text
-                <WysiwygEditor inputName="content" defaultValue={notice && notice.content} />
+                <WysiwygFormInput inputName="content" defaultValue={notice && notice.content} />
             </LabelStyled>
         </NoticeFormGroupStyled>
     );

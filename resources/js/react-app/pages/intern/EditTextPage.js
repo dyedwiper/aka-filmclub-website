@@ -2,12 +2,11 @@ import { ContentState, convertToRaw, EditorState } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 import React, { useContext, useEffect, useState } from 'react';
-import { Editor } from 'react-draft-wysiwyg';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import hintIcon from '../../assets/hint_icon.png';
 import BasePage from '../../common/BasePage';
-import HorizontalLineToolbarButton from '../../common/forms/HorizontalLineToolbarButton';
+import WysiwygEditor from '../../common/forms/WysiwygEditor';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import {
     PAGE_TITLE_ABOUT,
@@ -20,9 +19,7 @@ import {
     PARAGRAPH_TITLE_WELCOME,
 } from '../../constants';
 import Context from '../../Context';
-import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { getText, postText } from '../../utils/services/textServices';
-import { uploadImage } from '../../utils/wysiwygEditorUtils';
 import LoadingPage from '../LoadingPage';
 
 export default function EditTextPage() {
@@ -112,33 +109,10 @@ export default function EditTextPage() {
                     </HintStyled>
                 </HintsStyled>
             )}
-            <Editor
+            <WysiwygEditor
                 editorState={editorState}
-                onEditorStateChange={setEditorState}
-                customBlockRenderFunc={customBlockRenderer}
-                wrapperStyle={wrapperStyleObject}
-                toolbarStyle={toolbarStyleObject}
-                editorStyle={editorStyleObject}
-                toolbar={{
-                    options: ['inline', 'blockType', 'fontSize', 'link', 'image'],
-                    inline: {
-                        options: ['bold', 'italic', 'underline', 'strikethrough'],
-                    },
-                    blockType: {
-                        options: ['Normal', 'H3', 'H4', 'H5', 'H6'],
-                    },
-                    link: {
-                        showOpenOptionOnHover: false,
-                        defaultTargetOption: '_blank',
-                    },
-                    image: {
-                        uploadCallback: (image) => uploadImage(image, setValidationErrors),
-                        previewImage: true,
-                        inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
-                        alt: { present: true, mandatory: false },
-                    },
-                }}
-                toolbarCustomButtons={[<HorizontalLineToolbarButton key="1" />]}
+                setEditorState={setEditorState}
+                setValidationErrors={setValidationErrors}
             />
             <ValidationErrorContainerStyled>
                 {validationErrors.map((error, index) => (
@@ -179,25 +153,6 @@ export default function EditTextPage() {
         if (entity && entity.type === 'HORIZONTAL_RULE') {
             return '<hr/>';
         }
-    }
-
-    function customBlockRenderer(block) {
-        if (block.getType() === 'atomic') {
-            const contentState = editorState.getCurrentContent();
-            const entityKey = block.getEntityAt(0);
-            const entity = contentState.getEntity(entityKey);
-            if (entity && entity.type === 'HORIZONTAL_RULE') {
-                return {
-                    component: HorizontalRule,
-                    editable: false,
-                };
-            }
-        }
-        return undefined;
-    }
-
-    function HorizontalRule() {
-        return <hr />;
     }
 }
 
