@@ -36,7 +36,7 @@ END:VCALENDAR`;
             download={'aka-Filmclub_' + currentSemester.name}
         >
             <IconStyled src={calendarIcon} />
-            aKalender-Serie runterladen
+            Kalender-Serie runterladen
         </CalendarSeriesDownloadLinkStyled>
     );
 }
