@@ -34,6 +34,7 @@ export const AKA_IBAN = 'DE10 6805 0101 0002 0635 40';
 export const AKA_BIC = 'FRSPDE66XXX';
 export const AKA_BANK = 'Sparkasse Freiburg';
 
+export const AKA_WEBSITE_URL = 'https://aka-filmclub.de/';
 export const AKA_FORUM_URL = 'https://forum.aka-filmclub.de/';
 export const AKA_NEXTCLOUD_URL = 'https://cloud.aka-filmclub.de/';
 export const AKA_HIGHNOON_URL = 'https://highnoon.aka-filmclub.de';

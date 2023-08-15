@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import calendarIcon from '../../assets/calendar_icon.png';
 import Context from '../../Context';
 import { formatToIcsString } from '../../utils/dateFormatters';
+import { AKA_WEBSITE_URL, ROUTE_SCREENING } from '../../constants';
+import { joinPath } from '../../utils/pathUtils';
 
 export default function CalendarSeriesDownloadLink({ screenings }) {
     const { currentSemester } = useContext(Context);
@@ -20,7 +22,7 @@ ${screenings
         (screening) => `BEGIN:VEVENT
 SUMMARY:aka-Filmclub: ${screening.title}
 LOCATION:${screening.venue}
-DESCRIPTION:https://aka-filmclub.de/screenings/${screening.uuid}
+DESCRIPTION:${joinPath(AKA_WEBSITE_URL, ROUTE_SCREENING, screening.uuid)}
 DTSTART:${formatToIcsString(screening.date)}
 DTEND:${formatToIcsString(screening.date, screening.length)}
 END:VEVENT`
