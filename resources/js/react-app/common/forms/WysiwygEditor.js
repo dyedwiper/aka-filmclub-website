@@ -25,7 +25,7 @@ export default function WysiwygEditor({
             <Editor
                 editorState={editorState}
                 onEditorStateChange={setEditorState}
-                customBlockRenderFunc={customBlockRenderer}
+                customBlockRenderFunc={renderCustomBlocks}
                 wrapperStyle={wrapperStyleObject}
                 toolbarStyle={toolbarStyleObject}
                 editorStyle={editorStyleObject}
@@ -107,7 +107,7 @@ export default function WysiwygEditor({
             });
     }
 
-    function customBlockRenderer(block) {
+    function renderCustomBlocks(block) {
         if (block.getType() === 'atomic') {
             const contentState = editorState.getCurrentContent();
             const entityKey = block.getEntityAt(0);
