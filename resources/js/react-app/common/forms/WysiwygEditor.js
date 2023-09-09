@@ -1,13 +1,13 @@
+import { ContentState, EditorState, convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+import htmlToDraft from 'html-to-draftjs';
 import React, { useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
-import { uploadImage } from '../../utils/wysiwygEditorUtils';
-import HorizontalLineToolbarButton from './HorizontalLineToolbarButton';
-import { ContentState, EditorState, convertToRaw } from 'draft-js';
-import htmlToDraft from 'html-to-draftjs';
 import styled from 'styled-components';
-import draftToHtml from 'draftjs-to-html';
+import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
+import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
+import HorizontalLineToolbarButton from './HorizontalLineToolbarButton';
 
 export default function WysiwygEditor({
     defaultValue,
@@ -83,7 +83,7 @@ export default function WysiwygEditor({
                 defaultTargetOption: '_blank',
             },
             image: {
-                uploadCallback: (image) => uploadImage(image, setValidationErrors),
+                uploadCallback: uploadImage,
                 previewImage: true,
                 inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
                 alt: { present: true, mandatory: false },
@@ -91,6 +91,20 @@ export default function WysiwygEditor({
         };
 
         return toolbar;
+    }
+
+    function uploadImage(image) {
+        const formData = new FormData();
+        formData.append('image', image);
+        return postImageFromWysiwygEditor(formData)
+            .then((res) => {
+                return { data: { link: res.data } };
+            })
+            .catch((err) => {
+                if (err.response.status === 422) {
+                    setValidationErrors(err.response.data.validationErrors);
+                }
+            });
     }
 
     function customBlockRenderer(block) {
