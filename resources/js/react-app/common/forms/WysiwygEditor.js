@@ -1,40 +1,97 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
 import { uploadImage } from '../../utils/wysiwygEditorUtils';
 import HorizontalLineToolbarButton from './HorizontalLineToolbarButton';
+import { ContentState, EditorState, convertToRaw } from 'draft-js';
+import htmlToDraft from 'html-to-draftjs';
+import styled from 'styled-components';
+import draftToHtml from 'draftjs-to-html';
 
-export default function WysiwygEditor({ editorState, setEditorState, setValidationErrors }) {
+export default function WysiwygEditor({
+    defaultValue,
+    inputName,
+    setValidationErrors,
+    isBlockTypeEnabled = false,
+    isFontSizeEnabled = false,
+    isImageUploadEnabled = false,
+    isHorizontalRuleEnabled = false,
+}) {
+    const [editorState, setEditorState] = useState(() => createInitialState(defaultValue));
+
     return (
-        <Editor
-            editorState={editorState}
-            onEditorStateChange={setEditorState}
-            customBlockRenderFunc={customBlockRenderer}
-            wrapperStyle={wrapperStyleObject}
-            toolbarStyle={toolbarStyleObject}
-            editorStyle={editorStyleObject}
-            toolbar={{
-                options: ['inline', 'blockType', 'fontSize', 'link', 'image'],
-                inline: {
-                    options: ['bold', 'italic', 'underline', 'strikethrough'],
-                },
-                blockType: {
-                    options: ['Normal', 'H3', 'H4', 'H5', 'H6'],
-                },
-                link: {
-                    showOpenOptionOnHover: false,
-                    defaultTargetOption: '_blank',
-                },
-                image: {
-                    uploadCallback: (image) => uploadImage(image, setValidationErrors),
-                    previewImage: true,
-                    inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
-                    alt: { present: true, mandatory: false },
-                },
-            }}
-            toolbarCustomButtons={[<HorizontalLineToolbarButton key="1" />]}
-        />
+        <WysiwygEditorStyled>
+            <Editor
+                editorState={editorState}
+                onEditorStateChange={setEditorState}
+                customBlockRenderFunc={customBlockRenderer}
+                wrapperStyle={wrapperStyleObject}
+                toolbarStyle={toolbarStyleObject}
+                editorStyle={editorStyleObject}
+                toolbar={configureToolbar()}
+                toolbarCustomButtons={isHorizontalRuleEnabled && [<HorizontalLineToolbarButton key="1" />]}
+            />
+            <input type="hidden" name={inputName} value={createInputValue()} />
+        </WysiwygEditorStyled>
     );
+
+    function createInitialState(defaultValue) {
+        let inititalState = EditorState.createEmpty();
+
+        if (defaultValue) {
+            const draftFromHtml = htmlToDraft(defaultValue, renderHorizontalRule);
+            inititalState = EditorState.createWithContent(ContentState.createFromBlockArray(draftFromHtml));
+        }
+
+        return inititalState;
+    }
+
+    function renderHorizontalRule(nodeName) {
+        if (nodeName === 'hr') {
+            return {
+                type: 'HORIZONTAL_RULE',
+                mutability: 'IMMUTABLE',
+                data: {},
+            };
+        }
+    }
+
+    function configureToolbar() {
+        const options = ['inline', 'link'];
+        if (isBlockTypeEnabled) {
+            options.splice(1, 0, 'blockType');
+        }
+        if (isFontSizeEnabled) {
+            const insertPosition = isBlockTypeEnabled ? 2 : 1;
+            options.splice(insertPosition, 0, 'fontSize');
+        }
+        if (isImageUploadEnabled) {
+            options.push('image');
+        }
+
+        const toolbar = {
+            options,
+            inline: {
+                options: ['bold', 'italic', 'underline', 'strikethrough'],
+            },
+            blockType: {
+                options: ['Normal', 'H3', 'H4', 'H5', 'H6'],
+            },
+            link: {
+                showOpenOptionOnHover: false,
+                defaultTargetOption: '_blank',
+            },
+            image: {
+                uploadCallback: (image) => uploadImage(image, setValidationErrors),
+                previewImage: true,
+                inputAccept: 'image/gif,image/jpeg,image/jpg,image/png',
+                alt: { present: true, mandatory: false },
+            },
+        };
+
+        return toolbar;
+    }
 
     function customBlockRenderer(block) {
         if (block.getType() === 'atomic') {
@@ -54,4 +111,19 @@ export default function WysiwygEditor({ editorState, setEditorState, setValidati
     function HorizontalRule() {
         return <hr />;
     }
+
+    function createInputValue() {
+        const rawContent = convertToRaw(editorState.getCurrentContent());
+        const htmlFromDraft = draftToHtml(rawContent, null, null, customEntityTransform);
+
+        return htmlFromDraft;
+    }
+
+    function customEntityTransform(entity) {
+        if (entity && entity.type === 'HORIZONTAL_RULE') {
+            return '<hr/>';
+        }
+    }
 }
+
+const WysiwygEditorStyled = styled.div``;

@@ -1,9 +1,7 @@
-import { ContentState, convertToRaw, EditorState } from 'draft-js';
-import draftToHtml from 'draftjs-to-html';
-import htmlToDraft from 'html-to-draftjs';
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import Context from '../../Context';
 import hintIcon from '../../assets/hint_icon.png';
 import BasePage from '../../common/BasePage';
 import WysiwygEditor from '../../common/forms/WysiwygEditor';
@@ -18,12 +16,10 @@ import {
     PARAGRAPH_TITLE_SELFMADE,
     PARAGRAPH_TITLE_WELCOME,
 } from '../../constants';
-import Context from '../../Context';
 import { getText, postText } from '../../utils/services/textServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditTextPage() {
-    const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
     const [assocPage, setAssocPage] = useState('');
     const [currentContent, setCurrentContent] = useState('');
     const [isLoading, setIsLoading] = useState(true);
@@ -54,19 +50,6 @@ export default function EditTextPage() {
             setIsLoading(false);
         });
     }, [page]);
-
-    useEffect(() => {
-        const draftFromHtml = htmlToDraft(currentContent, (nodeName) => {
-            if (nodeName === 'hr') {
-                return {
-                    type: 'HORIZONTAL_RULE',
-                    mutability: 'IMMUTABLE',
-                    data: {},
-                };
-            }
-        });
-        setEditorState(EditorState.createWithContent(ContentState.createFromBlockArray(draftFromHtml)));
-    }, [currentContent]);
 
     if (isLoading) return <LoadingPage />;
 
@@ -109,31 +92,39 @@ export default function EditTextPage() {
                     </HintStyled>
                 </HintsStyled>
             )}
-            <WysiwygEditor
-                editorState={editorState}
-                setEditorState={setEditorState}
-                setValidationErrors={setValidationErrors}
-            />
-            <ValidationErrorContainerStyled>
-                {validationErrors.map((error, index) => (
-                    <ValidationErrorStyled key={index}>{error}</ValidationErrorStyled>
-                ))}
-            </ValidationErrorContainerStyled>
-            <ButtonContainerStyled>
-                <SaveButtonStyled onClick={saveText}>Speichern</SaveButtonStyled>
-                <BackButtonStyled onClick={() => history.goBack()}>Zurück</BackButtonStyled>
-            </ButtonContainerStyled>
+            <FormStyled>
+                <WysiwygEditor
+                    inputName="content"
+                    defaultValue={currentContent}
+                    setValidationErrors={setValidationErrors}
+                    isBlockTypeEnabled={true}
+                    isFontSizeEnabled={true}
+                    isImageUploadEnabled={true}
+                    isHorizontalRuleEnabled={true}
+                />
+                <ValidationErrorContainerStyled>
+                    {validationErrors.map((error, index) => (
+                        <ValidationErrorStyled key={index}>{error}</ValidationErrorStyled>
+                    ))}
+                </ValidationErrorContainerStyled>
+                <ButtonContainerStyled>
+                    <SaveButtonStyled type="submit" onClick={saveText}>
+                        Speichern
+                    </SaveButtonStyled>
+                    <BackButtonStyled type="button" onClick={() => history.goBack()}>
+                        Zurück
+                    </BackButtonStyled>
+                </ButtonContainerStyled>
+            </FormStyled>
         </BasePage>
     );
 
-    function saveText() {
-        const htmlFromDraft = draftToHtml(
-            convertToRaw(editorState.getCurrentContent()),
-            null,
-            null,
-            customEntityTransform
-        );
-        const data = { content: htmlFromDraft, updated_by: user.username };
+    function saveText(event) {
+        event.preventDefault();
+
+        const content = event.target.form.content.value;
+        const data = { content, updated_by: user.username };
+
         postText(assocPage, data)
             .then(() => {
                 if (assocPage === 'home') {
@@ -147,12 +138,6 @@ export default function EditTextPage() {
                     setValidationErrors(err.response.data.validationErrors);
                 }
             });
-    }
-
-    function customEntityTransform(entity) {
-        if (entity && entity.type === 'HORIZONTAL_RULE') {
-            return '<hr/>';
-        }
     }
 }
 
@@ -182,6 +167,8 @@ const HintsStyled = styled.div`
 const HintStyled = styled.li`
     margin-bottom: 5px;
 `;
+
+const FormStyled = styled.form``;
 
 const ValidationErrorContainerStyled = styled.div`
     color: var(--aka-red);
