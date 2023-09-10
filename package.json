@@ -16,6 +16,7 @@
     },
     "devDependencies": {
         "@babel/preset-react": "^7.12.10",
+        "@prettier/plugin-php": "^0.20.1",
         "babel-eslint": "^10.1.0",
         "babel-plugin-styled-components": "^1.12.0",
         "eslint": "^7.18.0",
@@ -68,7 +69,10 @@
     },
     "prettier": {
         "singleQuote": true,
-        "printWidth": 120
+        "printWidth": 120,
+        "plugins": [
+            "@prettier/plugin-php"
+        ]
     },
     "browserslist": {
         "production": [
