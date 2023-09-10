@@ -37,11 +37,20 @@ class CreateScreeningsTable extends Migration
             $table->text('tercet')->nullable();
             $table->string('author')->nullable();
             $table->unsignedBigInteger('serial_id')->nullable();
-            $table->foreign('serial_id')->references('id')->on('serials');
+            $table
+                ->foreign('serial_id')
+                ->references('id')
+                ->on('serials');
             $table->unsignedBigInteger('image_id')->nullable();
-            $table->foreign('image_id')->references('id')->on('images');
+            $table
+                ->foreign('image_id')
+                ->references('id')
+                ->on('images');
             $table->unsignedBigInteger('supportingFilmOf')->nullable();
-            $table->foreign('supportingFilmOf')->references('id')->on('screenings');
+            $table
+                ->foreign('supportingFilmOf')
+                ->references('id')
+                ->on('screenings');
         });
     }
 

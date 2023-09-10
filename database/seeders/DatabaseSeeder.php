@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
                 'level' => Config::get('constants.auth_level.normal'),
                 'email' => 'otto@existiert.net',
                 'realname' => 'Otto Normalmitglied',
-            ]
+            ],
         ]);
 
         DB::table('texts')->insert([
@@ -55,35 +55,42 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now(),
                 'page' => 'about',
                 'content' => '',
-            ], [
+            ],
+            [
                 'created_at' => Carbon::now(),
                 'page' => 'awards',
                 'content' => '',
-            ], [
+            ],
+            [
                 'created_at' => Carbon::now(),
                 'page' => 'contact',
                 'content' => '',
-            ], [
+            ],
+            [
                 'created_at' => Carbon::now(),
                 'page' => 'home',
                 'content' => '',
-            ], [
+            ],
+            [
                 'created_at' => Carbon::now(),
                 'page' => 'imprint',
                 'content' => '',
-            ], [
+            ],
+            [
                 'created_at' => Carbon::now(),
                 'page' => 'links',
                 'content' => '',
-            ], [
+            ],
+            [
                 'created_at' => Carbon::now(),
                 'page' => 'press',
                 'text' => '',
-            ], [
+            ],
+            [
                 'created_at' => Carbon::now(),
                 'page' => 'selfmade',
                 'content' => '',
-            ]
+            ],
         ]);
     }
 }
