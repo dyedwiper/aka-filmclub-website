@@ -21,6 +21,6 @@ class SelfmadeFilm extends Model
         'year',
         'length',
         'vimeo_id',
-        'position'
+        'position',
     ];
 }

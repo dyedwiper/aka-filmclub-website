@@ -32,7 +32,7 @@ class ScreeningController extends Controller
 
     public function GetFutureScreenings()
     {
-        return Screening::where('date', '>', date("Y-m-d H:i:s"))
+        return Screening::where('date', '>', date('Y-m-d H:i:s'))
             ->whereNull('supportingFilmOf')
             ->orderBy('date')
             ->with('image')
@@ -80,7 +80,7 @@ class ScreeningController extends Controller
             $this->checkMainFilmDate($request);
         }
 
-        $screening = new Screening(['uuid' => uniqid(),]);
+        $screening = new Screening(['uuid' => uniqid()]);
         $screening = $this->mapRequestToScreening($request, $screening);
 
         if ($request->image) {
@@ -97,7 +97,9 @@ class ScreeningController extends Controller
             $this->checkMainFilmDate($request);
         }
 
-        $screening = Screening::where('uuid', $request->uuid)->with('supportingFilms')->first();
+        $screening = Screening::where('uuid', $request->uuid)
+            ->with('supportingFilms')
+            ->first();
 
         if ($screening->supportingFilms) {
             $this->updateSupportingFilmDates($screening, $request);
@@ -163,7 +165,7 @@ class ScreeningController extends Controller
         $mainFilm = Screening::where('id', $request->supportingFilmOf)->first();
         $mainDate = new DateTime($mainFilm->date);
         $validator = Validator::make($request->all(), [
-            'day' => 'date_equals:' . $mainDate->format('Y-m-d')
+            'day' => 'date_equals:' . $mainDate->format('Y-m-d'),
         ]);
         if ($validator->fails()) {
             throw new HttpResponseException(

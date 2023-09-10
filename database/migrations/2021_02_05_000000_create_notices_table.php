@@ -22,7 +22,10 @@ class CreateNoticesTable extends Migration
             $table->string('title');
             $table->text('content');
             $table->unsignedBigInteger('image_id')->nullable();
-            $table->foreign('image_id')->references('id')->on('images');
+            $table
+                ->foreign('image_id')
+                ->references('id')
+                ->on('images');
         });
     }
 

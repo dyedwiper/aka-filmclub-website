@@ -80,7 +80,7 @@ class BillingService
 
     public function calculateValueAddedTaxOnTicketEarnings($billing)
     {
-        $vat = $this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRateOnEarnings / 100;
+        $vat = ($this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRateOnEarnings) / 100;
         $roundedVat = round($vat);
 
         return $roundedVat;
@@ -88,15 +88,14 @@ class BillingService
 
     public function calculateNetTicketEarnings($billing)
     {
-        $earnings = $this->calculateTicketEarnings($billing)
-            - $this->calculateValueAddedTaxOnTicketEarnings($billing);
+        $earnings = $this->calculateTicketEarnings($billing) - $this->calculateValueAddedTaxOnTicketEarnings($billing);
 
         return $earnings;
     }
 
     public function calculateRent($billing)
     {
-        $rent = $billing->percentage / 100 * $this->calculateNetTicketEarnings($billing);
+        $rent = ($billing->percentage / 100) * $this->calculateNetTicketEarnings($billing);
         if ($rent < $billing->guarantee) {
             $rent = $billing->guarantee;
         }
@@ -106,18 +105,19 @@ class BillingService
 
     public function calculateBalance($billing)
     {
-        $balance = $this->calculateTicketEarnings($billing)
-            - $this->calculateRent($billing)
-            - $billing->incidentals
-            + $billing->additionalEarnings
-            - $billing->additionalExpenses;
+        $balance =
+            $this->calculateTicketEarnings($billing) -
+            $this->calculateRent($billing) -
+            $billing->incidentals +
+            $billing->additionalEarnings -
+            $billing->additionalExpenses;
 
         return $balance;
     }
 
     public function calculateValueAddedTaxOnDebt($billing)
     {
-        $vat = ($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRateOnDebt / 100;
+        $vat = (($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRateOnDebt) / 100;
         $roundedVat = round($vat);
 
         return $roundedVat;

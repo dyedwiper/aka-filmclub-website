@@ -19,9 +19,15 @@ class CreateBillingsTable extends Migration
             $table->timestamps();
             $table->string('updated_by', 32)->nullable();
             $table->unsignedBigInteger('screening_id')->unique();
-            $table->foreign('screening_id')->references('id')->on('screenings');
+            $table
+                ->foreign('screening_id')
+                ->references('id')
+                ->on('screenings');
             $table->unsignedBigInteger('distributor_id')->nullable();
-            $table->foreign('distributor_id')->references('id')->on('distributors');
+            $table
+                ->foreign('distributor_id')
+                ->references('id')
+                ->on('distributors');
             $table->string('confirmationNumber')->nullable();
             $table->integer('freeTickets');
             $table->integer('guarantee');

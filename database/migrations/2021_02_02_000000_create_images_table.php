@@ -24,7 +24,10 @@ class CreateImagesTable extends Migration
             $table->string('link')->nullable();
             $table->boolean('keepShowingAfterSemester')->default(0);
             $table->unsignedBigInteger('license_id')->nullable();
-            $table->foreign('license_id')->references('id')->on('licenses');
+            $table
+                ->foreign('license_id')
+                ->references('id')
+                ->on('licenses');
         });
     }
 

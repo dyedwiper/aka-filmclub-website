@@ -58,7 +58,9 @@ class BillingController extends Controller
 
     public function PatchBilling(BillingFormRequest $request)
     {
-        $billing = Billing::where('uuid', $request->uuid)->with('ticketStacks', 'passStacks')->first();
+        $billing = Billing::where('uuid', $request->uuid)
+            ->with('ticketStacks', 'passStacks')
+            ->first();
         $billing = $this->mapRequestToBilling($request, $billing);
 
         $this->updateTicketStacks($request, $billing);
@@ -74,7 +76,9 @@ class BillingController extends Controller
             abort(403);
         }
 
-        $billing = Billing::where('uuid', $uuid)->with('ticketStacks', 'passStacks')->first();
+        $billing = Billing::where('uuid', $uuid)
+            ->with('ticketStacks', 'passStacks')
+            ->first();
         foreach ($billing->ticketStacks as $stack) {
             $stack->delete();
         }
@@ -125,7 +129,7 @@ class BillingController extends Controller
     private function createTicketStacks($request, $billing)
     {
         for ($i = 0; $i < $request->numberOfTicketStacks; $i++) {
-            $ticketStack = new TicketStack(['billing_id' => $billing->id,]);
+            $ticketStack = new TicketStack(['billing_id' => $billing->id]);
             $ticketStack = $this->mapRequestToTicketStack($request, $ticketStack, $i);
             $ticketStack->save();
         }
@@ -134,7 +138,7 @@ class BillingController extends Controller
     private function createPassStacks($request, $billing)
     {
         for ($i = 0; $i < $request->numberOfPassStacks; $i++) {
-            $passStack = new PassStack(['billing_id' => $billing->id,]);
+            $passStack = new PassStack(['billing_id' => $billing->id]);
             $passStack = $this->mapRequestToPassStack($request, $passStack, $i);
             $passStack->save();
         }
@@ -148,7 +152,7 @@ class BillingController extends Controller
                 $ticketStack = $this->mapRequestToTicketStack($request, $ticketStack, $i);
                 $ticketStack->save();
             } else {
-                $ticketStack = new TicketStack(['billing_id' => $billing->id,]);
+                $ticketStack = new TicketStack(['billing_id' => $billing->id]);
                 $ticketStack = $this->mapRequestToTicketStack($request, $ticketStack, $i);
                 $ticketStack->save();
             }
@@ -167,7 +171,7 @@ class BillingController extends Controller
                 $passStack = $this->mapRequestToPassStack($request, $passStack, $i);
                 $passStack->save();
             } else {
-                $passStack = new PassStack(['billing_id' => $billing->id,]);
+                $passStack = new PassStack(['billing_id' => $billing->id]);
                 $passStack = $this->mapRequestToPassStack($request, $passStack, $i);
                 $passStack->save();
             }

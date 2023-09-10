@@ -17,7 +17,10 @@ class CreatePassStacksTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('billing_id');
-            $table->foreign('billing_id')->references('id')->on('billings');
+            $table
+                ->foreign('billing_id')
+                ->references('id')
+                ->on('billings');
             $table->integer('firstNumber');
             $table->integer('lastNumber');
             $table->integer('price');

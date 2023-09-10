@@ -8,7 +8,7 @@ class MimeTypeUtils
     {
         $extensions = [
             'image/jpeg' => 'jpeg',
-            'image/png' => 'png'
+            'image/png' => 'png',
         ];
 
         return $extensions[$mimetype];
