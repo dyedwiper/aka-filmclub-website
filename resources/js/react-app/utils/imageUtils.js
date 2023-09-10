@@ -1,6 +1,5 @@
 import { computeEndDateOfSemester, computeSemester } from './semesterUtils';
 
-// TODO: Refactor these functions to not have several returns
 export function showScreeningImage(screening) {
     if (!screening.image) return false;
     if (screening.image.keepShowingAfterSemester) return true;
