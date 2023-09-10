@@ -81,7 +81,12 @@ class SendJustMetaWhenSharing
         $path = $request->path;
         $standardImageUrl = Config::get('app.url') . self::AKA_LOGO_PATH;
 
-        if (str_contains($userAgent, self::USER_AGENT_FACEBOOK) || str_contains($userAgent, self::USER_AGENT_TELEGRAM) || str_contains($userAgent, self::USER_AGENT_WHATSAPP) || str_contains($userAgent, self::USER_AGENT_TWITTER)) {
+        if (
+            str_contains($userAgent, self::USER_AGENT_FACEBOOK) ||
+            str_contains($userAgent, self::USER_AGENT_TELEGRAM) ||
+            str_contains($userAgent, self::USER_AGENT_WHATSAPP) ||
+            str_contains($userAgent, self::USER_AGENT_TWITTER)
+        ) {
             if ($path == self::ROUTE_HOME) {
                 $ogMeta = $this->createOgMeta(self::PAGE_TITLE_HOME, $standardImageUrl, self::DESCRIPTION_HOME, $path);
                 return response($ogMeta);
@@ -89,49 +94,114 @@ class SendJustMetaWhenSharing
                 $ogMeta = $this->createOgMeta(self::PAGE_TITLE_NEWS, $standardImageUrl, self::DESCRIPTION_NEWS, $path);
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_PROGRAM) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_PROGRAM, $standardImageUrl, self::DESCRIPTION_PROGRAM, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_PROGRAM,
+                    $standardImageUrl,
+                    self::DESCRIPTION_PROGRAM,
+                    $path
+                );
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_PROGRAM_OVERVIEW) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_PROGRAM_OVERVIEW, $standardImageUrl, self::DESCRIPTION_PROGRAM_OVERVIEW, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_PROGRAM_OVERVIEW,
+                    $standardImageUrl,
+                    self::DESCRIPTION_PROGRAM_OVERVIEW,
+                    $path
+                );
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_SERIALS) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_SERIALS, $standardImageUrl, self::DESCRIPTION_SERIALS, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_SERIALS,
+                    $standardImageUrl,
+                    self::DESCRIPTION_SERIALS,
+                    $path
+                );
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_ARCHIVE) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_ARCHIVE, $standardImageUrl, self::DESCRIPTION_ARCHIVE, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_ARCHIVE,
+                    $standardImageUrl,
+                    self::DESCRIPTION_ARCHIVE,
+                    $path
+                );
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_ABOUT) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_ABOUT, $standardImageUrl, self::DESCRIPTION_ABOUT, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_ABOUT,
+                    $standardImageUrl,
+                    self::DESCRIPTION_ABOUT,
+                    $path
+                );
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_FAQS) {
                 $ogMeta = $this->createOgMeta(self::PAGE_TITLE_FAQS, $standardImageUrl, self::DESCRIPTION_FAQS, $path);
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_PRESS) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_PRESS, $standardImageUrl, self::DESCRIPTION_PRESS, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_PRESS,
+                    $standardImageUrl,
+                    self::DESCRIPTION_PRESS,
+                    $path
+                );
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_AWARDS) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_AWARDS, $standardImageUrl, self::DESCRIPTION_AWARDS, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_AWARDS,
+                    $standardImageUrl,
+                    self::DESCRIPTION_AWARDS,
+                    $path
+                );
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_SELFMADE_FILMS) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_SELFMADE_FILMS, $standardImageUrl, self::DESCRIPTION_SELFMADE_FILMS, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_SELFMADE_FILMS,
+                    $standardImageUrl,
+                    self::DESCRIPTION_SELFMADE_FILMS,
+                    $path
+                );
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_CONTACT) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_CONTACT, $standardImageUrl, self::DESCRIPTION_CONTACT, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_CONTACT,
+                    $standardImageUrl,
+                    self::DESCRIPTION_CONTACT,
+                    $path
+                );
                 return response($ogMeta);
             } elseif ($path == self::ROUTE_LINKS) {
-                $ogMeta = $this->createOgMeta(self::PAGE_TITLE_LINKS, $standardImageUrl, self::DESCRIPTION_LINKS, $path);
+                $ogMeta = $this->createOgMeta(
+                    self::PAGE_TITLE_LINKS,
+                    $standardImageUrl,
+                    self::DESCRIPTION_LINKS,
+                    $path
+                );
                 return response($ogMeta);
             } elseif (str_starts_with($path, self::ROUTE_SCREENING)) {
                 $screeningData = $this->getScreeningData($path);
-                $ogMeta = $this->createOgMeta($screeningData['title'], $screeningData['imageUrl'], $screeningData['description'], $path);
+                $ogMeta = $this->createOgMeta(
+                    $screeningData['title'],
+                    $screeningData['imageUrl'],
+                    $screeningData['description'],
+                    $path
+                );
                 return response($ogMeta);
             } elseif (str_starts_with($path, self::ROUTE_SERIAL)) {
                 $serialData = $this->getSerialData($path);
-                $ogMeta = $this->createOgMeta($serialData['title'], $serialData['imageUrl'], $serialData['description'], $path);
+                $ogMeta = $this->createOgMeta(
+                    $serialData['title'],
+                    $serialData['imageUrl'],
+                    $serialData['description'],
+                    $path
+                );
                 return response($ogMeta);
             } elseif (str_starts_with($path, self::ROUTE_NOTICE)) {
                 $noticeData = $this->getNoticeData($path);
-                $ogMeta = $this->createOgMeta($noticeData['title'], $noticeData['imageUrl'], $noticeData['description'], $path);
+                $ogMeta = $this->createOgMeta(
+                    $noticeData['title'],
+                    $noticeData['imageUrl'],
+                    $noticeData['description'],
+                    $path
+                );
                 return response($ogMeta);
             }
         }
@@ -142,12 +212,14 @@ class SendJustMetaWhenSharing
     private function getScreeningData($path)
     {
         $uuid = PathUtils::getLastSegment($path);
-        $screening = Screening::where('uuid', $uuid)->with('image')->first();
+        $screening = Screening::where('uuid', $uuid)
+            ->with('image')
+            ->first();
         if (!$screening) {
             abort(404);
         }
         $screeningData['title'] = $screening->title;
-        $screeningData['imageUrl'] = "";
+        $screeningData['imageUrl'] = '';
         if ($screening->image) {
             $screeningData['imageUrl'] = Config::get('app.url') . self::STORAGE_PATH . $screening->image->path;
         }
@@ -158,12 +230,14 @@ class SendJustMetaWhenSharing
     private function getSerialData($path)
     {
         $uuid = PathUtils::getLastSegment($path);
-        $serial = Serial::where('uuid', $uuid)->with('image')->first();
+        $serial = Serial::where('uuid', $uuid)
+            ->with('image')
+            ->first();
         if (!$serial) {
             abort(404);
         }
         $serialData['title'] = $serial->title;
-        $serialData['imageUrl'] = "";
+        $serialData['imageUrl'] = '';
         if ($serial->image) {
             $serialData['imageUrl'] = Config::get('app.url') . self::STORAGE_PATH . $serial->image->path;
         }
@@ -174,12 +248,14 @@ class SendJustMetaWhenSharing
     private function getNoticeData($path)
     {
         $uuid = PathUtils::getLastSegment($path);
-        $notice = Notice::where('uuid', $uuid)->with('image')->first();
+        $notice = Notice::where('uuid', $uuid)
+            ->with('image')
+            ->first();
         if (!$notice) {
             abort(404);
         }
         $noticeData['title'] = $notice->title;
-        $noticeData['imageUrl'] = "";
+        $noticeData['imageUrl'] = '';
         if ($notice->image) {
             $noticeData['imageUrl'] = Config::get('app.url') . self::STORAGE_PATH . $notice->image->path;
         }

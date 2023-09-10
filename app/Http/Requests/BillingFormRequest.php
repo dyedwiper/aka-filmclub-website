@@ -92,7 +92,6 @@ class BillingFormRequest extends FormRequest
         return $attributes;
     }
 
-
     protected function failedValidation(Validator $validator)
     {
         ValidationUtils::handleValidationError($validator);

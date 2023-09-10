@@ -22,7 +22,7 @@ class DistributorController extends Controller
 
     public function PostDistributor(DistributorFormRequest $request)
     {
-        $distributor = new Distributor(['uuid' => uniqid(),]);
+        $distributor = new Distributor(['uuid' => uniqid()]);
         $distributor = $this->mapRequestToDistributor($request, $distributor);
         $distributor->save();
         return $distributor;

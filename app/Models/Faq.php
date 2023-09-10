@@ -6,11 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Faq extends Model
 {
-    protected $fillable = [
-        'uuid',
-        'updated_by',
-        'question',
-        'answer',
-        'position',
-    ];
+    protected $fillable = ['uuid', 'updated_by', 'question', 'answer', 'position'];
 }

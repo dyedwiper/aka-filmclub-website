@@ -70,8 +70,7 @@ class FaqController extends Controller
     private function updateOtherPositionsOnPatch(Request $request, Faq $faq)
     {
         if ($faq->position > $request->position) {
-            $afterPositionedFaqs = Faq
-                ::where('position', '>=', $request->position)
+            $afterPositionedFaqs = Faq::where('position', '>=', $request->position)
                 ->where('position', '<', $faq->position)
                 ->get();
             foreach ($afterPositionedFaqs as $afterFaq) {
@@ -79,8 +78,7 @@ class FaqController extends Controller
                 $afterFaq->save();
             }
         } elseif ($faq->position < $request->position) {
-            $beforePositionedFaqs = Faq
-                ::where('position', '<=', $request->position)
+            $beforePositionedFaqs = Faq::where('position', '<=', $request->position)
                 ->where('position', '>', $faq->position)
                 ->get();
             foreach ($beforePositionedFaqs as $beforeFaq) {

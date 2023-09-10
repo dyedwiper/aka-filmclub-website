@@ -94,11 +94,10 @@ class SelfmadeFilmController extends Controller
         return $selfmadeFilm;
     }
 
-    private function updateOtherPositionsOnPatch(Request $request, SelfmadeFilm $selfmadeFilm) 
+    private function updateOtherPositionsOnPatch(Request $request, SelfmadeFilm $selfmadeFilm)
     {
         if ($selfmadeFilm->position > $request->position) {
-            $afterPositionedFilms = SelfmadeFilm
-                ::where('position', '>=', $request->position)
+            $afterPositionedFilms = SelfmadeFilm::where('position', '>=', $request->position)
                 ->where('position', '<', $selfmadeFilm->position)
                 ->get();
             foreach ($afterPositionedFilms as $afterFilm) {
@@ -106,8 +105,7 @@ class SelfmadeFilmController extends Controller
                 $afterFilm->save();
             }
         } elseif ($selfmadeFilm->position < $request->position) {
-            $beforePositionedFilms = SelfmadeFilm
-                ::where('position', '<=', $request->position)
+            $beforePositionedFilms = SelfmadeFilm::where('position', '<=', $request->position)
                 ->where('position', '>', $selfmadeFilm->position)
                 ->get();
             foreach ($beforePositionedFilms as $beforeFilm) {
@@ -117,7 +115,7 @@ class SelfmadeFilmController extends Controller
         }
     }
 
-    private function updateOtherPositionsOnDelete(SelfmadeFilm $selfmadeFilm) 
+    private function updateOtherPositionsOnDelete(SelfmadeFilm $selfmadeFilm)
     {
         $afterPositionedFilms = SelfmadeFilm::where('position', '>', $selfmadeFilm->position)->get();
         foreach ($afterPositionedFilms as $afterFilm) {

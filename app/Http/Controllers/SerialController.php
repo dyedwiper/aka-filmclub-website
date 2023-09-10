@@ -31,27 +31,39 @@ class SerialController extends Controller
         $currentMonth = date('m');
         if ($currentMonth <= 3) {
             return Serial::where('semester', 'like', 'WS' . ($currentYear - 1))
-                ->orWhere('semester', 'like', 'SS' . $currentYear)->orderByDesc('id')->get();
-        } else if ($currentMonth > 3 && $currentMonth < 10) {
-            return Serial::where('semester', 'like', '%' . $currentYear)->orderByDesc('id')->get();
+                ->orWhere('semester', 'like', 'SS' . $currentYear)
+                ->orderByDesc('id')
+                ->get();
+        } elseif ($currentMonth > 3 && $currentMonth < 10) {
+            return Serial::where('semester', 'like', '%' . $currentYear)
+                ->orderByDesc('id')
+                ->get();
         } else {
             return Serial::where('semester', 'like', 'WS' . $currentYear)
-                ->orWhere('semester', 'like', 'SS' . ($currentYear + 1))->orderByDesc('id')->get();
+                ->orWhere('semester', 'like', 'SS' . ($currentYear + 1))
+                ->orderByDesc('id')
+                ->get();
         }
     }
 
     public function GetSerialsBySemester(string $semester)
     {
-        $serials = Serial::where('semester', $semester)->with('image')->get();
+        $serials = Serial::where('semester', $semester)
+            ->with('image')
+            ->get();
         foreach ($serials as $serial) {
-            $firstScreening = Screening::where('serial_id', $serial->id)->orderBy('date')->first();
+            $firstScreening = Screening::where('serial_id', $serial->id)
+                ->orderBy('date')
+                ->first();
             if ($firstScreening) {
                 $serial->firstDate = strtotime($firstScreening->date);
             }
         }
-        return $serials->sortBy('firstDate')->values()->all();
+        return $serials
+            ->sortBy('firstDate')
+            ->values()
+            ->all();
     }
-
 
     public function GetSerialByUuid(string $uuid)
     {
@@ -98,7 +110,9 @@ class SerialController extends Controller
         if (Auth::user()->level < Config::get('constants.auth_level.editor')) {
             abort(403);
         }
-        $serial = Serial::where('uuid', $request->uuid)->with('screenings')->first();
+        $serial = Serial::where('uuid', $request->uuid)
+            ->with('screenings')
+            ->first();
         if (count($serial->screenings) > 0) {
             abort(422, 'Die Reihe kann nicht gelöscht werden, solange ihr noch Vorführungen zugeordnet sind.');
         }
