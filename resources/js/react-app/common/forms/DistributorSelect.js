@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getDistributors } from '../../utils/services/distributorServices';
+import { getDistributors } from '../../services/distributorServices';
 import { default as ReactSelect } from 'react-select';
 import { distributorSelectStyles } from '../../styles/customSelectStyles';
 import styled from 'styled-components';

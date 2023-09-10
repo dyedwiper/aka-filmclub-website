@@ -7,7 +7,7 @@ import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_BILLING, ROUTE_INTERN_ADMISSIONS, ROUTE_INTERN_BILLING } from '../../constants';
 import Context from '../../Context';
-import { deleteBilling, getBillingByUuid, postBilling } from '../../utils/services/billingServices';
+import { deleteBilling, getBillingByUuid, postBilling } from '../../services/billingServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditBillingPage() {

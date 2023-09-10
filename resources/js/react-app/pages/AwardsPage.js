@@ -4,7 +4,7 @@ import BasePage from '../common/BasePage';
 import EditTextLink from '../common/misc/EditTextLink';
 import { PageHeadlineStyled } from '../common/styledElements';
 import { PAGE_TITLE_AWARDS } from '../constants';
-import { getText } from '../utils/services/textServices';
+import { getText } from '../services/textServices';
 
 export default function ContactPage() {
     const [text, setText] = useState('');

@@ -21,8 +21,8 @@ import {
 } from '../../constants';
 import Context from '../../Context';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
-import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
-import { getText, postText } from '../../utils/services/textServices';
+import { postImageFromWysiwygEditor } from '../../services/imageServices';
+import { getText, postText } from '../../services/textServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditTextPage() {
@@ -157,7 +157,7 @@ export default function EditTextPage() {
             convertToRaw(editorState.getCurrentContent()),
             null,
             null,
-            customEntityTransform
+            customEntityTransform,
         );
         const data = { content: htmlFromDraft, updated_by: user.username };
         postText(assocPage, data)

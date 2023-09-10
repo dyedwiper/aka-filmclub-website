@@ -6,7 +6,7 @@ import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { AddItemLinkStyled, PageHeadlineStyled } from '../common/styledElements';
 import { PAGE_TITLE_PROGRAM_OVERVIEW, ROUTE_INTERN_ADD_SCREENING } from '../constants';
 import Context from '../Context';
-import { getFutureScreenings } from '../utils/services/screeningServices';
+import { getFutureScreenings } from '../services/screeningServices';
 
 export default function ProgramOverviewPage() {
     const [screenings, setScreenings] = useState([]);

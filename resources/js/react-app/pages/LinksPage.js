@@ -4,7 +4,7 @@ import BasePage from '../common/BasePage';
 import EditTextLink from '../common/misc/EditTextLink';
 import { PageHeadlineStyled } from '../common/styledElements';
 import { PAGE_TITLE_LINKS } from '../constants';
-import { getText } from '../utils/services/textServices';
+import { getText } from '../services/textServices';
 
 export default function LinksPage() {
     const [text, setText] = useState('');

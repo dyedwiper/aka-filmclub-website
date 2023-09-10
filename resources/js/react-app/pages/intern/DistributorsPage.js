@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import { AddItemLinkStyled, PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_DISTRIBUTORS, ROUTE_INTERN_ADD_DISTRIBUTOR, ROUTE_INTERN_EDIT_DISTRIBUTOR } from '../../constants';
-import { getDistributors } from '../../utils/services/distributorServices';
+import { getDistributors } from '../../services/distributorServices';
 
 export default function DistributorsPage() {
     const [distributors, setDistributors] = useState([]);

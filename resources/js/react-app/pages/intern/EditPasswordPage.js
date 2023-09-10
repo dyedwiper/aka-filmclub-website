@@ -5,7 +5,7 @@ import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import PasswordFormGroup from '../../common/forms/PasswordFormGroup';
 import { PAGE_TITLE_EDIT_PASSWORD, ROUTE_INTERN_USERS } from '../../constants';
-import { getUserByUuid, postPassword } from '../../utils/services/userServices';
+import { getUserByUuid, postPassword } from '../../services/userServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditPasswordPage() {

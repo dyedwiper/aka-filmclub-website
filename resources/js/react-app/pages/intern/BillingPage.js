@@ -11,7 +11,7 @@ import { PAGE_TITLE_BILLING, ROUTE_INTERN_EDIT_BILLING } from '../../constants';
 import Context from '../../Context';
 import { toEuroWithSymbol } from '../../utils/moneyUtils';
 import { toGermanString } from '../../utils/numberUtils';
-import { getBillingByUuid } from '../../utils/services/billingServices';
+import { getBillingByUuid } from '../../services/billingServices';
 import { replaceUmlautsAndSpecialCharacters } from '../../utils/stringUtils';
 import LoadingPage from '../LoadingPage';
 

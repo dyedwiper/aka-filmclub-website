@@ -6,7 +6,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import SerialFormGroup from '../../common/forms/SerialFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_SERIAL, ROUTE_SERIAL, ROUTE_SERIALS } from '../../constants';
-import { deleteSerial, getSerialByUuid, postSerial } from '../../utils/services/serialServices';
+import { deleteSerial, getSerialByUuid, postSerial } from '../../services/serialServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditSerialPage() {

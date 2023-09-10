@@ -8,7 +8,7 @@ import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { ArchiveSearchContainerStyled, PageHeadlineStyled } from '../common/styledElements';
 import { PAGE_TITLE_ARCHIVE } from '../constants';
 import Context from '../Context';
-import { getScreeningsBySearchString, getScreeningsBySemester } from '../utils/services/screeningServices';
+import { getScreeningsBySearchString, getScreeningsBySemester } from '../services/screeningServices';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
@@ -40,7 +40,7 @@ export default function ArchivePage() {
             getScreeningsBySemester(semester.value).then((res) => {
                 history.push('/program/archive?semester=' + semester.value);
                 const screenings = res.data.filter(
-                    (screening) => new Date(screening.date.replace(' ', 'T')) < Date.now()
+                    (screening) => new Date(screening.date.replace(' ', 'T')) < Date.now(),
                 );
                 setScreenings(screenings);
                 setIsLoading(false);

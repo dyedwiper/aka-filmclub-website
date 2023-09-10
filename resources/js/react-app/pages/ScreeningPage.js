@@ -21,7 +21,7 @@ import {
 import Context from '../Context';
 import { formatToDateTimeStringWithWeekday } from '../utils/dateFormatters';
 import { showScreeningImage } from '../utils/imageUtils';
-import { getScreeningByUuid } from '../utils/services/screeningServices';
+import { getScreeningByUuid } from '../services/screeningServices';
 import LoadingPage from './LoadingPage';
 
 export default function ScreeningPage() {

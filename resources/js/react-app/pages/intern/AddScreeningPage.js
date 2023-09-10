@@ -6,7 +6,7 @@ import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_ADD_SCREENING, ROUTE_PROGRAM_OVERVIEW } from '../../constants';
-import { postScreening } from '../../utils/services/screeningServices';
+import { postScreening } from '../../services/screeningServices';
 
 export default function AddScreeningPage() {
     const [omdbData, setOmdbData] = useState({});

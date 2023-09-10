@@ -6,7 +6,7 @@ import LicenseFormGroup from '../../common/forms/LicenseFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_LICENSE, ROUTE_INTERN_LICENSES } from '../../constants';
-import { deleteLicense, getLicenseByUuid, postLicense } from '../../utils/services/licenseServices';
+import { deleteLicense, getLicenseByUuid, postLicense } from '../../services/licenseServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditLicensePage() {

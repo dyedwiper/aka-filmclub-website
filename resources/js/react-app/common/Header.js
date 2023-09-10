@@ -48,7 +48,7 @@ import {
     ROUTE_SERIALS,
 } from '../constants';
 import Context from '../Context';
-import { getLogout } from '../utils/services/userServices';
+import { getLogout } from '../services/userServices';
 import HamburgerButton from './misc/HamburgerButton';
 
 export default function Header() {

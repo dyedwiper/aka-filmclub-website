@@ -12,7 +12,7 @@ import {
     ROUTE_INTERN_USERS,
 } from '../../constants';
 import Context from '../../Context';
-import { deleteUser, getUserByUuid, postUser } from '../../utils/services/userServices';
+import { deleteUser, getUserByUuid, postUser } from '../../services/userServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditUserPage() {
