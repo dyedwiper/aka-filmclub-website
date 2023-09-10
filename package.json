@@ -24,7 +24,7 @@
         "eslint-plugin-react-hooks": "^4.2.0",
         "laravel-mix": "^6.0.43",
         "postcss": "^8.4.7",
-        "prettier": "2.2.1"
+        "prettier": "^3.0.3"
     },
     "dependencies": {
         "@react-pdf/renderer": "^2.1.1",
