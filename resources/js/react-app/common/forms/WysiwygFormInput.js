@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import WysiwygEditor from './WysiwygEditor';
-import WysiwygEditorHints from './WysiwygEditorHints';
 
 export default function WysiwygFormInput({ inputName, defaultValue }) {
     const [validationErrors, setValidationErrors] = useState([]);
 
     return (
         <WysiwygFormInputStyled>
-            <WysiwygEditorHints />
             <WysiwygEditor
                 inputName={inputName}
                 defaultValue={defaultValue}
