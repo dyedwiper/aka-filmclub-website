@@ -6,7 +6,7 @@ import FaqFormGroup from '../../common/forms/FaqFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_FAQ, ROUTE_FAQS } from '../../constants';
-import { deleteFaq, getFaqByUuid, postFaq } from '../../utils/services/faqServices';
+import { deleteFaq, getFaqByUuid, postFaq } from '../../services/faqServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditFaqPage() {

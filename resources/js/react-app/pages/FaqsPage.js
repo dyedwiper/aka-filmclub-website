@@ -6,7 +6,7 @@ import FaqRow from '../common/misc/FaqRow';
 import { AddItemLinkStyled, PageHeadlineStyled } from '../common/styledElements';
 import { PAGE_TITLE_FAQS, ROUTE_INTERN_ADD_FAQ } from '../constants';
 import Context from '../Context';
-import { getFaqs } from '../utils/services/faqServices';
+import { getFaqs } from '../services/faqServices';
 import LoadingPage from './LoadingPage';
 
 export default function FaqsPage() {

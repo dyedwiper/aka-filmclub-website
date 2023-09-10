@@ -5,7 +5,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import SerialFormGroup from '../../common/forms/SerialFormGroup';
 import { PAGE_TITLE_ADD_SERIAL, ROUTE_SERIALS } from '../../constants';
-import { postSerial } from '../../utils/services/serialServices';
+import { postSerial } from '../../services/serialServices';
 
 export default function AddSerialPage() {
     return (

@@ -9,7 +9,7 @@ import SemesterSelect from '../../common/forms/SemesterSelect';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_ADMISSIONS } from '../../constants';
 import Context from '../../Context';
-import { getScreeningsWithBillingsBySemester } from '../../utils/services/billingServices';
+import { getScreeningsWithBillingsBySemester } from '../../services/billingServices';
 
 export default function AdmissionsPage() {
     const [screenings, setScreenings] = useState([]);

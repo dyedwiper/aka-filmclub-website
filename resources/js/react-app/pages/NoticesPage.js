@@ -5,7 +5,7 @@ import Paginator from '../common/misc/Paginator';
 import NoticeRow from '../common/notices/NoticeRow';
 import { PageHeadlineStyled } from '../common/styledElements';
 import { NOTICES_PER_PAGE, PAGE_TITLE_NEWS } from '../constants';
-import { getNoticesByPage, getNoticesCount } from '../utils/services/noticeServices';
+import { getNoticesByPage, getNoticesCount } from '../services/noticeServices';
 import LoadingPage from './LoadingPage';
 
 export default function NoticesPage() {

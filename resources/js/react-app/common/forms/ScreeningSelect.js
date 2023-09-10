@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Context from '../../Context';
 import { screeningFormSelectStyles } from '../../styles/customSelectStyles';
 import { formatToDateString } from '../../utils/dateFormatters';
-import { getScreenings, getScreeningsBySemester } from '../../utils/services/screeningServices';
+import { getScreenings, getScreeningsBySemester } from '../../services/screeningServices';
 
 export default function ScreeningSelect({ parentScreening, defaultScreening, isEditing }) {
     const isNotSupportingFilmOption = { label: '-- ist kein Vorfilm --', value: '' };

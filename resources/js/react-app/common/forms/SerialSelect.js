@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { screeningFormSelectStyles } from '../../styles/customSelectStyles';
-import { getCurrentAndFutureSerials, getSerials } from '../../utils/services/serialServices';
+import { getCurrentAndFutureSerials, getSerials } from '../../services/serialServices';
 
 export default function SerialSelect({ defaultSerial, isEditing }) {
     const noSerialOption = { label: '-- keine Reihe --', value: '' };

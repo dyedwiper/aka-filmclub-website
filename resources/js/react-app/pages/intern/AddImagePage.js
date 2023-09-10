@@ -5,7 +5,7 @@ import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import { PAGE_TITLE_ADD_IMAGE, ROUTE_NOTICE, ROUTE_SCREENING, ROUTE_SERIAL } from '../../constants';
-import { postImage } from '../../utils/services/imageServices';
+import { postImage } from '../../services/imageServices';
 
 export default function AddImagePage() {
     const [assocType, setAssocType] = useState('');

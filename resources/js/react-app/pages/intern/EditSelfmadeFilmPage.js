@@ -6,7 +6,7 @@ import SelfmadeFilmFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_SELFMADE_FILM, ROUTE_SELFMADE_FILMS } from '../../constants';
-import { deleteSelfmadeFilm, getSelfmadeFilmByUuid, postSelfmadeFilm } from '../../utils/services/selfmadeFilmServices';
+import { deleteSelfmadeFilm, getSelfmadeFilmByUuid, postSelfmadeFilm } from '../../services/selfmadeFilmServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditSelfmadeFilmPage() {

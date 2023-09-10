@@ -108,7 +108,7 @@ import SelfmadeFilmsPage from './pages/SelfmadeFilmsPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
 import { computeSemester } from './utils/semesterUtils';
-import { getCurrentUser } from './utils/services/userServices';
+import { getCurrentUser } from './services/userServices';
 
 export default function App() {
     const [user, setUser] = useState({});

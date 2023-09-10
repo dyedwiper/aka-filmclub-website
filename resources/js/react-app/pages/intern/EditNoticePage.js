@@ -6,7 +6,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import NoticeFormGroup from '../../common/forms/NoticeFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_NOTICE, ROUTE_NEWS, ROUTE_NOTICE } from '../../constants';
-import { deleteNotice, getNoticeByUuid, postNotice } from '../../utils/services/noticeServices';
+import { deleteNotice, getNoticeByUuid, postNotice } from '../../services/noticeServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditNoticePage() {

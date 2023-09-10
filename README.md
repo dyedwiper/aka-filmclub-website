@@ -157,6 +157,8 @@ Das Gerüst der React-App lehnt sich an das Gerüst an, das standardmäßig von 
 
 -   _common_ enthält alle React-Komponenten, die nicht Seiten entsprechen.
 
+-   _services_ enthält Funktionen zum Aufruf des Backends.
+
 -   _utils_ enthält zusätzliche JavaScript-Funktionalität.
 
 -   _styles_ enthält Dateien, die CSS-Styles betreffen.

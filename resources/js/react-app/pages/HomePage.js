@@ -7,9 +7,9 @@ import ScreeningCard from '../common/screenings/ScreeningCard';
 import { PageStyled } from '../common/styledElements';
 import { PARAGRAPH_TITLE_WELCOME } from '../constants';
 import Context from '../Context';
-import { getNotices } from '../utils/services/noticeServices';
-import { getFutureScreenings } from '../utils/services/screeningServices';
-import { getText } from '../utils/services/textServices';
+import { getNotices } from '../services/noticeServices';
+import { getFutureScreenings } from '../services/screeningServices';
+import { getText } from '../services/textServices';
 import LoadingPage from './LoadingPage';
 
 export default function HomePage() {

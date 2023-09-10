@@ -4,7 +4,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import LicenseFormGroup from '../../common/forms/LicenseFormGroup';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_ADD_LICENSE, ROUTE_INTERN_LICENSES } from '../../constants';
-import { postLicense } from '../../utils/services/licenseServices';
+import { postLicense } from '../../services/licenseServices';
 
 export default function AddLicensePage() {
     return (
