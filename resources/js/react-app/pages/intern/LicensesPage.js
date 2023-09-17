@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import { AddItemLinkStyled, PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_LICENSES, ROUTE_INTERN_ADD_LICENSE, ROUTE_INTERN_EDIT_LICENSE } from '../../constants';
-import { getLicenses } from '../../utils/services/licenseServices';
+import { getLicenses } from '../../services/licenseServices';
 
 export default function LicensesPage() {
     const [licenses, setLicenses] = useState([]);

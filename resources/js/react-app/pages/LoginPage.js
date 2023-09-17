@@ -5,7 +5,7 @@ import magicGif from '../assets/ahahah.gif';
 import BasePage from '../common/BasePage';
 import { PAGE_TITLE_LOGIN } from '../constants';
 import Context from '../Context';
-import { getCsrfCookie, postLogin } from '../utils/services/userServices';
+import { getCsrfCookie, postLogin } from '../services/userServices';
 
 export default function LoginPage() {
     const [didLoginFail, setDidLoginFail] = useState(false);

@@ -15,7 +15,7 @@ import {
 import Context from '../Context';
 import { formatToDateString } from '../utils/dateFormatters';
 import { showNoticeImage } from '../utils/imageUtils';
-import { getNoticeByUuid } from '../utils/services/noticeServices';
+import { getNoticeByUuid } from '../services/noticeServices';
 import LoadingPage from './LoadingPage';
 
 export default function NoticePage() {

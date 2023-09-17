@@ -4,7 +4,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import FaqFormGroup from '../../common/forms/FaqFormGroup';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_ADD_FAQ, ROUTE_FAQS } from '../../constants';
-import { postFaq } from '../../utils/services/faqServices';
+import { postFaq } from '../../services/faqServices';
 
 export default function AddFaqPage() {
     return (

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { default as ReactSelect } from 'react-select';
 import styled from 'styled-components';
 import { positionSelectStyles } from '../../styles/customSelectStyles';
-import { getFaqs } from '../../utils/services/faqServices';
-import { getSelfmadeFilms } from '../../utils/services/selfmadeFilmServices';
+import { getFaqs } from '../../services/faqServices';
+import { getSelfmadeFilms } from '../../services/selfmadeFilmServices';
 
 export default function PositionSelect({ type, defaultPosition }) {
     const [positionOptions, setPositionOptions] = useState([]);

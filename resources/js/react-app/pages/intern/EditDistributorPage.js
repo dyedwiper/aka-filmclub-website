@@ -6,7 +6,7 @@ import DistributorFormGroup from '../../common/forms/DistributorFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_EDIT_DISTRIBUTOR, ROUTE_INTERN_DISTRIBUTORS } from '../../constants';
-import { deleteDistributor, getDistributorByUuid, postDistributor } from '../../utils/services/distributorServices';
+import { deleteDistributor, getDistributorByUuid, postDistributor } from '../../services/distributorServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditDistributorPage() {

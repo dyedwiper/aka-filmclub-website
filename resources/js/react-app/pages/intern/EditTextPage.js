@@ -16,7 +16,7 @@ import {
     PARAGRAPH_TITLE_SELFMADE,
     PARAGRAPH_TITLE_WELCOME,
 } from '../../constants';
-import { getText, postText } from '../../utils/services/textServices';
+import { getText, postText } from '../../services/textServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditTextPage() {

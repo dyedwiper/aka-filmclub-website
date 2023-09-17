@@ -6,7 +6,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import ScreeningFormGroup from '../../common/forms/ScreeningFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_SCREENING, ROUTE_PROGRAM_OVERVIEW, ROUTE_SCREENING } from '../../constants';
-import { deleteScreening, getScreeningByUuid, postScreening } from '../../utils/services/screeningServices';
+import { deleteScreening, getScreeningByUuid, postScreening } from '../../services/screeningServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditScreeningPage() {

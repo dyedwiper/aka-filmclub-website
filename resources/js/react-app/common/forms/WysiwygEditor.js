@@ -6,7 +6,7 @@ import { Editor } from 'react-draft-wysiwyg';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import styled from 'styled-components';
 import { editorStyleObject, toolbarStyleObject, wrapperStyleObject } from '../../styles/wysisygEditorStyles';
-import { postImageFromWysiwygEditor } from '../../utils/services/imageServices';
+import { postImageFromWysiwygEditor } from '../../services/imageServices';
 import HorizontalLineToolbarButton from './HorizontalLineToolbarButton';
 
 export default function WysiwygEditor({

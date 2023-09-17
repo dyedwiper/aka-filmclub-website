@@ -21,8 +21,7 @@ class NoticeController extends Controller
 
     public function GetNotices()
     {
-        $notices = Notice
-            ::orderByDesc('date')
+        $notices = Notice::orderByDesc('date')
             ->orderByDesc('created_at')
             ->paginate(5);
 
@@ -37,12 +36,14 @@ class NoticeController extends Controller
 
     public function GetNoticeByUuid(string $uuid)
     {
-        return Notice::where('uuid', $uuid)->with('image.license')->first();
+        return Notice::where('uuid', $uuid)
+            ->with('image.license')
+            ->first();
     }
 
     public function PostNotice(NoticeFormRequest $request)
     {
-        $notice = new Notice(['uuid' => uniqid(),]);
+        $notice = new Notice(['uuid' => uniqid()]);
         $notice = $this->mapRequestToNotice($request, $notice);
 
         if ($request->image) {

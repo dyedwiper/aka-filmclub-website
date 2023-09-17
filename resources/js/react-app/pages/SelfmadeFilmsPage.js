@@ -13,8 +13,8 @@ import {
 } from '../constants';
 import Context from '../Context';
 import { getCookieValue } from '../utils/cookieUtils';
-import { getSelfmadeFilms } from '../utils/services/selfmadeFilmServices';
-import { getText } from '../utils/services/textServices';
+import { getSelfmadeFilms } from '../services/selfmadeFilmServices';
+import { getText } from '../services/textServices';
 import LoadingPage from './LoadingPage';
 
 export default function SelfmadeFilmsPage() {

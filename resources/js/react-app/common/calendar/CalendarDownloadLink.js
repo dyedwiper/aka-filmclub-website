@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { formatToIcsString } from '../../utils/dateFormatters';
 import calendarIcon from '../../assets/calendar_icon.png';
+import { AKA_WEBSITE_URL, ROUTE_SCREENING } from '../../constants';
+import { joinPath } from '../../utils/pathUtils';
 
 export default function CalendarDownloadLink({ screening }) {
     // The template string must be unindented like this.
@@ -15,7 +17,7 @@ X-WR-TIMEZONE:Europe/Berlin
 BEGIN:VEVENT
 SUMMARY:aka-Filmclub: ${screening.title}
 LOCATION:${screening.venue}
-DESCRIPTION:https://aka-filmclub.de/screenings/${screening.uuid}
+DESCRIPTION:${joinPath(AKA_WEBSITE_URL, ROUTE_SCREENING, screening.uuid)}
 DTSTART:${formatToIcsString(screening.date)}
 DTEND:${formatToIcsString(screening.date, screening.length)}
 END:VEVENT
@@ -27,7 +29,7 @@ END:VCALENDAR`;
             download={'aka-Filmclub_' + screening.title}
         >
             <IconStyled src={calendarIcon} />
-            aKalender-Eintrag runterladen
+            Kalender-Eintrag runterladen
         </CalendarDownloadLinkStyled>
     );
 }

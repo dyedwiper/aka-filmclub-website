@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // Ignore Sanctum migrations because they are not needed for SPA authentication, see: 
+        // Ignore Sanctum migrations because they are not needed for SPA authentication, see:
         // https://laravel.com/docs/8.x/sanctum#migration-customization
         Sanctum::ignoreMigrations();
     }

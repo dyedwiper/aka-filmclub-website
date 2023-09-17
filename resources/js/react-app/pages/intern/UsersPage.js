@@ -16,7 +16,7 @@ import {
     USER_STATUS_PAUSED_NAME,
 } from '../../constants';
 import Context from '../../Context';
-import { getUsers } from '../../utils/services/userServices';
+import { getUsers } from '../../services/userServices';
 
 export default function UsersPage() {
     const [users, setUsers] = useState([]);

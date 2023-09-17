@@ -66,7 +66,6 @@ class DistributorFormRequest extends FormRequest
         ];
     }
 
-
     protected function failedValidation(Validator $validator)
     {
         ValidationUtils::handleValidationError($validator);

@@ -17,8 +17,7 @@ class ImageService
     public function storeSerialImage(Request $request, Serial $serial)
     {
         $this->validateImage($request);
-        $imageName = $serial->uuid . '.' .
-            MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
+        $imageName = $serial->uuid . '.' . MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs('/images/serials', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
     }
@@ -26,8 +25,7 @@ class ImageService
     public function storeScreeningImage(Request $request, Screening $screening)
     {
         $this->validateImage($request);
-        $imageName = $screening->uuid . '.' .
-            MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
+        $imageName = $screening->uuid . '.' . MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs('/images/screenings', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
     }
@@ -35,8 +33,7 @@ class ImageService
     public function storeNoticeImage(Request $request, Notice $notice)
     {
         $this->validateImage($request);
-        $imageName = $notice->uuid . '.' .
-            MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
+        $imageName = $notice->uuid . '.' . MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs('/images/notices', $imageName, 'public');
         return $this->storeImage($request, $imagePath);
     }
@@ -47,7 +44,7 @@ class ImageService
             $request->all(),
             ImageFormRequest::$ValidationRules,
             [],
-            ImageFormRequest::$ValidationAttributes,
+            ImageFormRequest::$ValidationAttributes
         );
 
         if ($validator->fails()) {

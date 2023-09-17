@@ -42,15 +42,17 @@ class UserController extends Controller
     public function PostLogin(Request $request)
     {
         $user = User::firstWhere('username', $request->username);
-        if (!$user) abort(401);
+        if (!$user) {
+            abort(401);
+        }
         if (
-            $user->failed_login_attempts >= env('MAX_FAILED_LOGIN_ATTEMPTS')
-            && strtotime($user->login_forbidden_until) > strtotime('now')
+            $user->failed_login_attempts >= env('MAX_FAILED_LOGIN_ATTEMPTS') &&
+            strtotime($user->login_forbidden_until) > strtotime('now')
         ) {
             abort(
                 401,
-                'Wegen zu vieler fehlgeschlagener Login-Versuche, ist dein Login für '
-                    . env('LOCKOUT_TIME_IN_MINUTES') .
+                'Wegen zu vieler fehlgeschlagener Login-Versuche, ist dein Login für ' .
+                    env('LOCKOUT_TIME_IN_MINUTES') .
                     ' Minuten gesperrt.'
             );
         }

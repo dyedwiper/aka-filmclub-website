@@ -6,7 +6,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import ImageFormGroup from '../../common/forms/ImageFormGroup';
 import UpdateInfo from '../../common/misc/UpdateInfo';
 import { PAGE_TITLE_EDIT_IMAGE, ROUTE_NOTICE, ROUTE_SCREENING, ROUTE_SERIAL, STORAGE_FOLDER } from '../../constants';
-import { deleteImage, getImageByUuid, postImage } from '../../utils/services/imageServices';
+import { deleteImage, getImageByUuid, postImage } from '../../services/imageServices';
 import LoadingPage from '../LoadingPage';
 
 export default function EditImagePage() {

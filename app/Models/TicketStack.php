@@ -6,12 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class TicketStack extends Model
 {
-    protected $fillable = [
-        'billing_id',
-        'firstNumber',
-        'lastNumber',
-        'price',
-    ];
+    protected $fillable = ['billing_id', 'firstNumber', 'lastNumber', 'price'];
 
     public function billing()
     {

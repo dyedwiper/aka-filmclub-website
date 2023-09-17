@@ -4,7 +4,7 @@ import BaseForm from '../../common/forms/BaseForm';
 import SelfmadeFilmFormGroup from '../../common/forms/SelfmadeFilmFormGroup';
 import { PageHeadlineStyled } from '../../common/styledElements';
 import { PAGE_TITLE_ADD_SELFMADE_FILM, ROUTE_SELFMADE_FILMS } from '../../constants';
-import { postSelfmadeFilm } from '../../utils/services/selfmadeFilmServices';
+import { postSelfmadeFilm } from '../../services/selfmadeFilmServices';
 
 export default function AddSelfmadeFilmPage() {
     return (

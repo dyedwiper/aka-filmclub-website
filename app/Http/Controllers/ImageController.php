@@ -27,19 +27,16 @@ class ImageController extends Controller
 
     public function GetImageByUuid(string $uuid)
     {
-        return Image::where('uuid', $uuid)->with('screening', 'serial', 'notice', 'license')->first();
+        return Image::where('uuid', $uuid)
+            ->with('screening', 'serial', 'notice', 'license')
+            ->first();
     }
 
     public function PostImage(ImageFormRequest $request)
     {
         // Der Check, ob ein Bild mitgeschickt wurde, findet hier statt und nicht im ImageFormRequest,
         // weil der Patch auch ohne Bild möglich ist
-        $validator = Validator::make(
-            $request->all(),
-            ['image' => 'required'],
-            [],
-            ['image' => 'Bild']
-        );
+        $validator = Validator::make($request->all(), ['image' => 'required'], [], ['image' => 'Bild']);
         if ($validator->fails()) {
             ValidationUtils::handleValidationError($validator);
         }
@@ -58,8 +55,7 @@ class ImageController extends Controller
                 $imageFolder = '/images/notices';
                 break;
         }
-        $imageName = $request->assocUuid . '.' .
-            MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
+        $imageName = $request->assocUuid . '.' . MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
         $imagePath = $request->image->storeAs($imageFolder, $imageName);
 
         $image = $this->imageService->storeImage($request, $imagePath);
@@ -83,8 +79,7 @@ class ImageController extends Controller
                 $assocEntity = Notice::where('image_id', $image->id)->first();
                 $imageFolder = '/images/notices';
             }
-            $imageName = $assocEntity->uuid . '.' .
-                MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
+            $imageName = $assocEntity->uuid . '.' . MimeTypeUtils::convertMime2Ext($request->image->getMimeType());
             $imagePath = $request->image->storeAs($imageFolder, $imageName);
             $image->path = $imagePath;
         }

@@ -22,7 +22,7 @@ class LicenseController extends Controller
 
     public function PostLicense(LicenseFormRequest $request)
     {
-        $license = new License(['uuid' => uniqid(),]);
+        $license = new License(['uuid' => uniqid()]);
         $license = $this->mapRequestToLicense($request, $license);
         $license->save();
         return $license;

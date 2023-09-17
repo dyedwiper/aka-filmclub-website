@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getLicenses } from '../../utils/services/licenseServices';
+import { getLicenses } from '../../services/licenseServices';
 import { default as ReactSelect } from 'react-select';
 import { licenseSelectStyles } from '../../styles/customSelectStyles';
 import styled from 'styled-components';

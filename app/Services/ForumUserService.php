@@ -15,7 +15,7 @@ class ForumUserService
     public function PostUser(Request $request)
     {
         // 'user_permissions' and 'user_sig' must be set here,
-        // because there are problems with empty string as default value for TEXT fields. 
+        // because there are problems with empty string as default value for TEXT fields.
         // See https://bugs.mysql.com/bug.php?id=13794.
         $forumUser = new ForumUser([
             'user_regdate' => time(),
@@ -40,7 +40,9 @@ class ForumUserService
     public function PatchUser(Request $request, User $user)
     {
         $forumUser = ForumUser::firstWhere('username_clean', strtolower($user->username));
-        if (!$forumUser) return;
+        if (!$forumUser) {
+            return;
+        }
 
         // Check for null, because the level is send as null, when the select in the user form is disabled.
         // Also check if the authenticated user is admin, in order to prevent users from changing their own group.
@@ -60,7 +62,7 @@ class ForumUserService
         $forumUser->user_email = $request->email;
         // 'user_rank' is 1 based.
         $forumUser->user_rank = $request->status + 1;
-        // Permissions are set automatically on login by phpBB. 
+        // Permissions are set automatically on login by phpBB.
         // They have to be reset here so that changes of the user-group can take effect.
         $forumUser->user_permissions = '';
 
@@ -77,7 +79,9 @@ class ForumUserService
     public function DeleteUser(string $username)
     {
         $forumUser = ForumUser::firstWhere('username_clean', strtolower($username));
-        if (!$forumUser) return;
+        if (!$forumUser) {
+            return;
+        }
         ForumUserGroup::where('user_id', $forumUser->user_id)->delete();
         $forumUser->delete();
     }

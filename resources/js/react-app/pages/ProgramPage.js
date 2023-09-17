@@ -4,7 +4,7 @@ import BasePage from '../common/BasePage';
 import ScreeningRow from '../common/screenings/ScreeningRow';
 import { PageHeadlineStyled } from '../common/styledElements';
 import { PAGE_TITLE_PROGRAM } from '../constants';
-import { getFutureScreenings } from '../utils/services/screeningServices';
+import { getFutureScreenings } from '../services/screeningServices';
 import LoadingPage from './LoadingPage';
 
 export default function ProgramPage() {

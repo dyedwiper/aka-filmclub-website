@@ -15,7 +15,7 @@ import {
 } from '../constants';
 import Context from '../Context';
 import { showSerialImage } from '../utils/imageUtils';
-import { getSerialByUuid } from '../utils/services/serialServices';
+import { getSerialByUuid } from '../services/serialServices';
 import LoadingPage from './LoadingPage';
 
 export default function SerialPage() {
