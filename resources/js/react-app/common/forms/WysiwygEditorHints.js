@@ -65,7 +65,7 @@ const HintIconStyled = styled.img`
     height: 48px;
 `;
 
-const HintsStyled = styled.div`
+const HintsStyled = styled.ul`
     margin-bottom: 20px;
 `;
 

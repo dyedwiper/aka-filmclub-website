@@ -29,7 +29,7 @@ export default function WysiwygEditor({
                 wrapperStyle={wrapperStyleObject}
                 toolbarStyle={toolbarStyleObject}
                 editorStyle={editorStyleObject}
-                toolbar={configureToolbar()}
+                toolbar={createToolbarConfig()}
                 toolbarCustomButtons={isHorizontalRuleEnabled && [<HorizontalLineToolbarButton key="1" />]}
             />
             <input type="hidden" name={inputName} value={createInputValue()} />
@@ -57,7 +57,7 @@ export default function WysiwygEditor({
         }
     }
 
-    function configureToolbar() {
+    function createToolbarConfig() {
         const options = ['inline', 'link'];
         if (isBlockTypeEnabled) {
             options.splice(1, 0, 'blockType');
