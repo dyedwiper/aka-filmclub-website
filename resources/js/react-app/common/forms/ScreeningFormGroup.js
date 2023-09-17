@@ -36,10 +36,10 @@ export default function ScreeningFormGroup({ screening }) {
                     />
                 </SmallInputLabelStyled>
             </FormRowWithTwoInputsStyled>
-            <LabelStyled>
+            <FakeLabelStyled>
                 Beschreibung
                 <WysiwygFormInput inputName="synopsis" defaultValue={screening && screening.synopsis} />
-            </LabelStyled>
+            </FakeLabelStyled>
             <FormRowWithTwoInputsStyled>
                 <SmallInputLabelStyled>
                     Regie
@@ -124,6 +124,13 @@ export default function ScreeningFormGroup({ screening }) {
 const ScreeningFormGroupStyled = styled.div``;
 
 const LabelStyled = styled.label`
+    display: block;
+    margin: 20px 0;
+`;
+
+// This is used because a real label element surrounding the Wysiwyg editor leads to unexpected behavior.
+// And at the moment it is also not possible to explicitly associate a label to the editor, see: https://github.com/jpuri/react-draft-wysiwyg/issues/539
+const FakeLabelStyled = styled.div`
     display: block;
     margin: 20px 0;
 `;
