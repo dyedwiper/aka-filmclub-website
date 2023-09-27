@@ -170,7 +170,7 @@ class ScreeningController extends Controller
         if ($validator->fails()) {
             throw new HttpResponseException(
                 response()->json(
-                    ['validationErrors' => ['Ein Vorfilm muss das selbe Vorführdatum wie der Hauptfilm.']],
+                    ['validationErrors' => ['Ein Vorfilm muss das selbe Vorführdatum wie der Hauptfilm haben.']],
                     422
                 )
             );
