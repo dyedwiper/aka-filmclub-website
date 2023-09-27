@@ -8,7 +8,7 @@ import ImageLink from '../common/misc/ImageLink';
 import UpdateInfo from '../common/misc/UpdateInfo';
 import CreditsContainer from '../common/screenings/CreditsContainer';
 import MainFilmInfo from '../common/screenings/MainFilmInfo';
-import SupportingFilmsList from '../common/screenings/SupportingFilmsList';
+import PreScreeningsList from '../common/screenings/PreScreeningsList';
 import { PageStyled, VerticalLineStyled } from '../common/styledElements';
 import {
     PAGE_TITLE_PROGRAM,
@@ -70,9 +70,9 @@ export default function ScreeningPage() {
             <TextContainerStyled>
                 {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
                 {screening.main_film && <MainFilmInfo screening={screening} />}
-                {screening.supporting_films.length > 0 && (
+                {screening.pre_screenings.length > 0 && (
                     <SpecialStyled>
-                        <SupportingFilmsList screening={screening} />
+                        <PreScreeningsList screening={screening} />
                     </SpecialStyled>
                 )}
                 <DateAndVenueStyled>

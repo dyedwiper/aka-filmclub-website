@@ -46,9 +46,9 @@ class CreateScreeningsTable extends Migration
                 ->foreign('image_id')
                 ->references('id')
                 ->on('images');
-            $table->unsignedBigInteger('supportingFilmOf')->nullable();
+            $table->unsignedBigInteger('preScreeningOf')->nullable();
             $table
-                ->foreign('supportingFilmOf')
+                ->foreign('preScreeningOf')
                 ->references('id')
                 ->on('screenings');
         });

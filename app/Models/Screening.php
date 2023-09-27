@@ -29,7 +29,7 @@ class Screening extends Model
         'author',
         'serial_id',
         'image_id',
-        'supportingFilmOf',
+        'preScreeningOf',
     ];
 
     public function image()
@@ -47,13 +47,13 @@ class Screening extends Model
         return $this->hasOne(Billing::class);
     }
 
-    public function supportingFilms()
+    public function preScreenings()
     {
-        return $this->hasMany(Screening::class, 'supportingFilmOf');
+        return $this->hasMany(Screening::class, 'preScreeningOf');
     }
 
     public function mainFilm()
     {
-        return $this->belongsTo(Screening::class, 'supportingFilmOf');
+        return $this->belongsTo(Screening::class, 'preScreeningOf');
     }
 }
