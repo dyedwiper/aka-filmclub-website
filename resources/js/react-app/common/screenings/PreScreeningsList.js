@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_SCREENING } from '../../constants';
 
-export default function SupportingFilmsList({ screening }) {
+export default function PreScreeningsList({ screening }) {
     return (
         <>
-            {screening.supporting_films.length === 1 ? 'Vorfilm: ' : 'Vorfilme: '}
+            {screening.pre_screenings.length === 1 ? 'Vorfilm: ' : 'Vorfilme: '}
             <ListStyled>
-                {screening.supporting_films.map((film) => (
+                {screening.pre_screenings.map((film) => (
                     <ListItemStyled key={film.uuid}>
                         <Link to={ROUTE_SCREENING + film.uuid}>{film.title}</Link>
                         <span>, </span>

@@ -7,7 +7,7 @@ import { formatToDateString } from '../../utils/dateFormatters';
 import { getScreenings, getScreeningsBySemester } from '../../services/screeningServices';
 
 export default function ScreeningSelect({ parentScreening, defaultScreening, isEditing }) {
-    const isNotSupportingFilmOption = { label: '-- ist kein Vorfilm --', value: '' };
+    const isNotPreScreeningOption = { label: '-- ist kein Vorfilm --', value: '' };
 
     const [screeningOptions, setScreeningOptions] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -26,12 +26,12 @@ export default function ScreeningSelect({ parentScreening, defaultScreening, isE
     return (
         <ScreeningSelectStyled>
             <ReactSelect
-                name="supportingFilmOf"
+                name="preScreeningOf"
                 options={screeningOptions}
                 defaultValue={
                     defaultScreening
                         ? { label: defaultScreening.title, value: defaultScreening.id }
-                        : isEditing && isNotSupportingFilmOption
+                        : isEditing && isNotPreScreeningOption
                 }
                 styles={screeningFormSelectStyles}
                 placeholder="Hauptfilm wählen..."
@@ -51,7 +51,7 @@ export default function ScreeningSelect({ parentScreening, defaultScreening, isE
     }
 
     function computeScreeningOptions(screenings) {
-        const options = [isNotSupportingFilmOption];
+        const options = [isNotPreScreeningOption];
         screenings
             .filter((screening) => parentScreening && screening.uuid !== parentScreening.uuid)
             .sort((a, b) => new Date(b.date) - new Date(a.date))

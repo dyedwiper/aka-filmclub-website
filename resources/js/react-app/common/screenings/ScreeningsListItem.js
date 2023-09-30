@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ROUTE_SCREENING } from '../../constants';
 import { formatToDateTimeString, getWeekdayAbbreviation } from '../../utils/dateFormatters';
-import SupportingFilmsList from './SupportingFilmsList';
+import PreScreeningsList from './PreScreeningsList';
 
 export default function ScreeningsListItem({ screening }) {
     return (
@@ -14,9 +14,9 @@ export default function ScreeningsListItem({ screening }) {
             </DateContainerStyled>
             <LinkStyled to={ROUTE_SCREENING + screening.uuid}>{screening.title}</LinkStyled>
             {screening.special && <SpecialStyled>{screening.special}</SpecialStyled>}
-            {screening.supporting_films.length > 0 && (
+            {screening.pre_screenings.length > 0 && (
                 <SpecialStyled>
-                    <SupportingFilmsList screening={screening} />
+                    <PreScreeningsList screening={screening} />
                 </SpecialStyled>
             )}
         </ScreeningsListItemStyled>

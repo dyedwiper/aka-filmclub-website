@@ -27,17 +27,17 @@ class ScreeningController extends Controller
 
     public function GetScreenings()
     {
-        return Screening::whereNull('supportingFilmOf')->get();
+        return Screening::whereNull('preScreeningOf')->get();
     }
 
     public function GetFutureScreenings()
     {
         return Screening::where('date', '>', date('Y-m-d H:i:s'))
-            ->whereNull('supportingFilmOf')
+            ->whereNull('preScreeningOf')
             ->orderBy('date')
             ->with('image')
             ->with('serial:id,uuid,title')
-            ->with('supportingFilms:supportingFilmOf,uuid,title')
+            ->with('preScreenings:preScreeningOf,uuid,title')
             ->get();
     }
 
@@ -47,7 +47,7 @@ class ScreeningController extends Controller
             ->with('image.license')
             ->with('serial')
             ->with('mainFilm')
-            ->with('supportingFilms')
+            ->with('preScreenings')
             ->with('billing:screening_id,uuid')
             ->first();
     }
@@ -70,13 +70,13 @@ class ScreeningController extends Controller
             ->orWhere('special', 'like', '%' . $search . '%')
             ->orWhere('author', 'like', '%' . $search . '%')
             ->orderByDesc('date')
-            ->with('supportingFilms:supportingFilmOf,title')
+            ->with('preScreenings:preScreeningOf,title')
             ->get();
     }
 
     public function PostScreening(ScreeningFormRequest $request)
     {
-        if ($request->supportingFilmOf) {
+        if ($request->preScreeningOf) {
             $this->checkMainFilmDate($request);
         }
 
@@ -93,16 +93,16 @@ class ScreeningController extends Controller
 
     public function PatchScreening(ScreeningFormRequest $request)
     {
-        if ($request->supportingFilmOf) {
+        if ($request->preScreeningOf) {
             $this->checkMainFilmDate($request);
         }
 
         $screening = Screening::where('uuid', $request->uuid)
-            ->with('supportingFilms')
+            ->with('preScreenings')
             ->first();
 
-        if ($screening->supportingFilms) {
-            $this->updateSupportingFilmDates($screening, $request);
+        if ($screening->preScreenings) {
+            $this->updatePreScreeningDates($screening, $request);
         }
 
         $screening = $this->mapRequestToScreening($request, $screening);
@@ -121,7 +121,7 @@ class ScreeningController extends Controller
         if ($screening->billing) {
             abort(422, 'Zu dieser Vorführung existiert noch eine Abrechnung, die vorher gelöscht werden muss.');
         }
-        if (count($screening->supportingFilms) > 0) {
+        if (count($screening->preScreenings) > 0) {
             abort(422, 'Diese Vorführung kann nicht gelöscht werden, weil ihr noch Vorfilme zugeordnet sind.');
         }
 
@@ -154,7 +154,7 @@ class ScreeningController extends Controller
         $screening->special = $request->special;
         $screening->tercet = $request->tercet;
         $screening->serial_id = $request->serialId;
-        $screening->supportingFilmOf = $request->supportingFilmOf;
+        $screening->preScreeningOf = $request->preScreeningOf;
         $screening->author = $request->author;
 
         return $screening;
@@ -162,7 +162,7 @@ class ScreeningController extends Controller
 
     private function checkMainFilmDate(Request $request)
     {
-        $mainFilm = Screening::where('id', $request->supportingFilmOf)->first();
+        $mainFilm = Screening::where('id', $request->preScreeningOf)->first();
         $mainDate = new DateTime($mainFilm->date);
         $validator = Validator::make($request->all(), [
             'day' => 'date_equals:' . $mainDate->format('Y-m-d'),
@@ -170,18 +170,18 @@ class ScreeningController extends Controller
         if ($validator->fails()) {
             throw new HttpResponseException(
                 response()->json(
-                    ['validationErrors' => ['Ein Vorfilm muss das selbe Vorführdatum wie der Hauptfilm.']],
+                    ['validationErrors' => ['Ein Vorfilm muss das selbe Vorführdatum wie der Hauptfilm haben.']],
                     422
                 )
             );
         }
     }
 
-    private function updateSupportingFilmDates(Screening $screening, Request $request)
+    private function updatePreScreeningDates(Screening $screening, Request $request)
     {
-        foreach ($screening->supportingFilms as $supportingFilm) {
-            $supportingFilm->date = $request->day . ' ' . $request->time;
-            $supportingFilm->save();
+        foreach ($screening->preScreenings as $preScreening) {
+            $preScreening->date = $request->day . ' ' . $request->time;
+            $preScreening->save();
         }
     }
 }
