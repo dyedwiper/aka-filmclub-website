@@ -105,7 +105,7 @@ Zum Routing siehe: https://laravel.com/docs/8.x/routing.
 
 Zur Authentifizierung wird [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum#introduction) verwendet. Siehe insbesondere den Abschnitt zu [SPA Authentication](https://laravel.com/docs/8.x/sanctum#spa-authentication) in der Doku.
 
-Die Authentifizierung ist manuell implementiert, ausgehend von [dieser Beschreibung](https://laravel.com/docs/8.x/authentication#authenticating-users). Sie findet sich in _app/Http/Controllers/UserController.php_. Sie ist so eingerichtet, dass der Login nach x fehlgeschlagenen Anmeldeversuchen für y Minuten für den jeweiligen User blockiert wird. x und y können im env-File eingestellt werden.
+Die Authentifizierung ist manuell implementiert, ausgehend von [dieser Beschreibung](https://laravel.com/docs/8.x/authentication#authenticating-users). Sie findet sich in _app/Http/Controllers/UserController.php_. Sie ist so eingerichtet, dass der Login nach _x_ fehlgeschlagenen Anmeldeversuchen für _y_ Minuten für den jeweiligen User blockiert wird. _x_ und _y_ können im env-File eingestellt werden.
 
 Für die Speicherung der Session wurde die Datenbank gewählt, siehe dazu: https://laravel.com/docs/8.x/session#introduction
 
@@ -177,7 +177,7 @@ Um Werte in der ganzen App verfügbar zu machen, werden [Context](https://reactj
 
 -   Fürs CSS-Styling verwendet die App [Styled Components](https://styled-components.com/) und hier insbesondere auch [GlobalStyles](https://scalablecss.com/styled-components-global-styles/).
 
--   Zur Erzeugung von PDFs verwendet die App [React PDF](https://react-pdf.org/). Dabei wird zum Styling die [Styled-Components-Erweiterung für React PDF](https://www.npmjs.com/package/@react-pdf/styled-components) verwendet, die eigentlich veraltet ist und bei Gelegenheit ausgebaut werden sollte.
+-   Zur Erzeugung von PDFs verwendet die App [React PDF](https://react-pdf.org/).
 
 -   Für die WYSIWYG-Editoren wird [React Draft Wysiwyg](https://github.com/jpuri/react-draft-wysiwyg) verwendet.
 
