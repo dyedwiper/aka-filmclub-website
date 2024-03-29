@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../common/BasePage';
 import SearchBar from '../common/forms/SearchBar';
 import SemesterSelect from '../common/forms/SemesterSelect';
 import SerialRow from '../common/misc/SerialRow';
 import { ArchiveSearchContainerStyled, PageHeadlineStyled } from '../common/styledElements';
-import { PAGE_TITLE_SERIALS } from '../constants';
+import { PAGE_TITLE_SERIALS, ROUTE_SERIALS } from '../constants';
 import Context from '../Context';
 import { getSerialsBySearchString, getSerialsBySemester } from '../services/serialServices';
+import { computeSemesterOptions } from '../utils/semesterUtils';
 
 export default function SerialsPage() {
     const [serials, setSerials] = useState([]);
@@ -82,6 +83,13 @@ export default function SerialsPage() {
                     </ListStyled>
                 </>
             )}
+            {/* These hidden links are for search engine crawlers, so they can reach each year's site in the archive.
+            Unfortunately they can't reach the sites through the semester select.*/}
+            <HiddenLinksStyled>
+                {computeSemesterOptions({ isIncludingNextSemester: true }).map((semester) => (
+                    <Link key={semester.value} to={ROUTE_SERIALS + '?semester=' + semester.value}></Link>
+                ))}
+            </HiddenLinksStyled>
         </BasePage>
     );
 }
@@ -91,3 +99,5 @@ const ListStyled = styled.ul``;
 const NoItemsHint = styled.p`
     margin-top: 20px;
 `;
+
+const HiddenLinksStyled = styled.div``;
