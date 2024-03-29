@@ -1,14 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import Context from '../Context';
 import BasePage from '../common/BasePage';
 import SearchBar from '../common/forms/SearchBar';
 import SemesterSelect from '../common/forms/SemesterSelect';
 import ScreeningsListItem from '../common/screenings/ScreeningsListItem';
 import { ArchiveSearchContainerStyled, PageHeadlineStyled } from '../common/styledElements';
-import { PAGE_TITLE_ARCHIVE } from '../constants';
-import Context from '../Context';
+import { PAGE_TITLE_ARCHIVE, ROUTE_ARCHIVE } from '../constants';
 import { getScreeningsBySearchString, getScreeningsBySemester } from '../services/screeningServices';
+import { computeSemesterOptions } from '../utils/semesterUtils';
 
 export default function ArchivePage() {
     const [screenings, setScreenings] = useState([]);
@@ -77,6 +78,13 @@ export default function ArchivePage() {
                     </ListStyled>
                 </>
             )}
+            {/* These hidden links are for search engine crawlers, so they can reach each year's site in the archive.
+            Unfortunately they can't reach the sites through the semester select.*/}
+            <HiddenLinksStyled>
+                {computeSemesterOptions({}).map((semester) => (
+                    <Link key={semester.value} to={ROUTE_ARCHIVE + '?semester=' + semester.value}></Link>
+                ))}
+            </HiddenLinksStyled>
         </BasePage>
     );
 }
@@ -86,3 +94,5 @@ const ListStyled = styled.ul``;
 const NoItemsHint = styled.p`
     margin-top: 20px;
 `;
+
+const HiddenLinksStyled = styled.div``;
