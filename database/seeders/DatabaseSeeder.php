@@ -84,7 +84,7 @@ class DatabaseSeeder extends Seeder
             [
                 'created_at' => Carbon::now(),
                 'page' => 'press',
-                'text' => '',
+                'content' => '',
             ],
             [
                 'created_at' => Carbon::now(),
