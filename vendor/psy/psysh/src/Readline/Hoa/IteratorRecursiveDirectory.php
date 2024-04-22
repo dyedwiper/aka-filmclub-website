@@ -58,7 +58,7 @@ class IteratorRecursiveDirectory extends \RecursiveDirectoryIterator
      * Please, see \RecursiveDirectoryIterator::__construct() method.
      * We add the $splFileInfoClass parameter.
      */
-    public function __construct(string $path, int $flags = null, string $splFileInfoClass = null)
+    public function __construct(string $path, ?int $flags = null, ?string $splFileInfoClass = null)
     {
         if (null === $flags) {
             parent::__construct($path);
@@ -76,6 +76,7 @@ class IteratorRecursiveDirectory extends \RecursiveDirectoryIterator
      * Current.
      * Please, see \RecursiveDirectoryIterator::current() method.
      */
+    #[\ReturnTypeWillChange]
     public function current()
     {
         $out = parent::current();
@@ -97,6 +98,7 @@ class IteratorRecursiveDirectory extends \RecursiveDirectoryIterator
      * Get children.
      * Please, see \RecursiveDirectoryIterator::getChildren() method.
      */
+    #[\ReturnTypeWillChange]
     public function getChildren()
     {
         $out = parent::getChildren();
