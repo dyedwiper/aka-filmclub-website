@@ -1,19 +1,31 @@
 <?php
 
+/**
+ * Mockery (https://docs.mockery.io/)
+ *
+ * @copyright https://github.com/mockery/mockery/blob/HEAD/COPYRIGHT.md
+ * @license https://github.com/mockery/mockery/blob/HEAD/LICENSE BSD 3-Clause License
+ * @link https://github.com/mockery/mockery for the canonical source repository
+ */
+
 namespace Mockery\Exception;
 
-class BadMethodCallException extends \BadMethodCallException
+use Throwable;
+
+class BadMethodCallException extends \BadMethodCallException implements MockeryExceptionInterface
 {
     private $dismissed = false;
 
     public function dismiss()
     {
         $this->dismissed = true;
-
         // we sometimes stack them
-        if ($this->getPrevious() && $this->getPrevious() instanceof BadMethodCallException) {
-            $this->getPrevious()->dismiss();
+        $previous = $this->getPrevious();
+        if (! $previous instanceof self) {
+            return;
         }
+
+        $previous->dismiss();
     }
 
     public function dismissed()

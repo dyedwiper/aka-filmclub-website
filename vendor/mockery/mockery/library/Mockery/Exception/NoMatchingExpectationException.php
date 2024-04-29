@@ -1,38 +1,49 @@
 <?php
+
 /**
- * Mockery
+ * Mockery (https://docs.mockery.io/)
  *
- * LICENSE
- *
- * This source file is subject to the new BSD license that is bundled
- * with this package in the file LICENSE.txt.
- * It is also available through the world-wide-web at this URL:
- * http://github.com/padraic/mockery/blob/master/LICENSE
- * If you did not receive a copy of the license and are unable to
- * obtain it through the world-wide-web, please send an email
- * to padraic@php.net so we can send you a copy immediately.
- *
- * @category   Mockery
- * @package    Mockery
- * @copyright  Copyright (c) 2010 Pádraic Brady (http://blog.astrumfutura.com)
- * @license    http://github.com/padraic/mockery/blob/master/LICENSE New BSD License
+ * @copyright https://github.com/mockery/mockery/blob/HEAD/COPYRIGHT.md
+ * @license https://github.com/mockery/mockery/blob/HEAD/LICENSE BSD 3-Clause License
+ * @link https://github.com/mockery/mockery for the canonical source repository
  */
 
 namespace Mockery\Exception;
 
-use Mockery;
+use Mockery\Exception;
+use Mockery\LegacyMockInterface;
 
-class NoMatchingExpectationException extends Mockery\Exception
+class NoMatchingExpectationException extends Exception
 {
-    protected $method = null;
+    protected $actual = [];
 
-    protected $actual = array();
+    protected $method = null;
 
     protected $mockObject = null;
 
-    public function setMock(Mockery\LegacyMockInterface $mock)
+    public function getActualArguments()
     {
-        $this->mockObject = $mock;
+        return $this->actual;
+    }
+
+    public function getMethodName()
+    {
+        return $this->method;
+    }
+
+    public function getMock()
+    {
+        return $this->mockObject;
+    }
+
+    public function getMockName()
+    {
+        return $this->getMock()->mockery_getName();
+    }
+
+    public function setActualArguments($count)
+    {
+        $this->actual = $count;
         return $this;
     }
 
@@ -42,29 +53,9 @@ class NoMatchingExpectationException extends Mockery\Exception
         return $this;
     }
 
-    public function setActualArguments($count)
+    public function setMock(LegacyMockInterface $mock)
     {
-        $this->actual = $count;
+        $this->mockObject = $mock;
         return $this;
-    }
-
-    public function getMock()
-    {
-        return $this->mockObject;
-    }
-
-    public function getMethodName()
-    {
-        return $this->method;
-    }
-
-    public function getActualArguments()
-    {
-        return $this->actual;
-    }
-
-    public function getMockName()
-    {
-        return $this->getMock()->mockery_getName();
     }
 }
