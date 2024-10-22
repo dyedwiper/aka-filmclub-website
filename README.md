@@ -16,43 +16,39 @@ Es handelt sich um eine [Single-Page-Applicaton (SPA)](https://de.wikipedia.org/
 
 ## Installation und Entwicklung
 
-### Voraussetzungen
-
-Damit die App lokal läuft, muss folgendes installiert sein:
-
--   [PHP](https://www.php.net/) (7.4, 8)
--   eine SQL-Datenbank z.B. [MariaDB](https://mariadb.org/) (10.1)
--   ein Webserver, z.B. [Apache](https://httpd.apache.org/) (2.4)
-
-Zur Entwicklung ist außerdem notwendig:
-
--   [Node.js](https://nodejs.org/en/)
-
-In Klammern stehen die Versionen, mit denen die App getestet wurde. Es kann sein, dass sie auch mit älteren oder neueren Versionen läuft.
-
 ### Installation
 
-Da die Vendor-Biblitheken mit im Repository liegen (Erklärung dazu [hier](#vendor-ordner)), muss Laravel nicht extra installiert werden. Die App ist praktisch sofort lauffähig. Es müssen nur die folgenden Dinge erledigt werden:
+Am einfachsten lässt sich die App lokal mit [Laravel Sail](https://laravel.com/docs/8.x/sail) einrichten.
 
-#### env
+Es ist empfehlenswert sich ein Alias für das Sail-Script anzulegen, wie [hier](https://laravel.com/docs/8.x/sail#configuring-a-bash-alias) beschrieben. Bei den unten angegebenen Befehle wird davon ausgegangen, dass dieses Alias angelegt ist.
 
-Die Werte im env-File müssen angepasst werden. Ein Beispiel-env-File liegt als _env.example_ im Repository. Erklärungen finden sich [hier](https://laravel.com/docs/8.x#environment-based-configuration) und [hier](https://laravel.com/docs/8.x/configuration) in der Laravel-Doku.
+#### Docker installieren
 
-#### Datenbank
+Mit Laravel Sail läuft die App in einem Docker-Container. Damit das funktioniert, muss [Docker](<https://de.wikipedia.org/wiki/Docker_(Software)>) installiert sein. Das geht auf verschiedenen Wegen. Hier zwei Möglichkeiten:
 
-Die Datenbank-Tabellen für die Website müssen erzeugt werden. Das geht mit dem Befehl `php artisan migrate`.
+-   [Docker Desktop installieren](https://www.docker.com/products/docker-desktop/), das eine grafische Benutzerfläche enthält.
+-   [Docker Engine installieren](https://docs.docker.com/engine/install/), die keine grafische Benutzeroberfläche enthält.
 
-Danach müssen einige Datensätze geseedet werden mit dem Befehl `php artisan db:seed`. Dadurch werden auch die User "armin", "edith", und "otto" erzeugt - jeweils mit gleichlautendem Passwort.
+#### App einrichten
 
-Falls auch die [Verbindung zum Forum](#verbindung-zum-forum) bestehen soll, muss dafür eine zusätzliche Datenbank eingerichtet werden. Die Tabellen für die Forums-Datenbank sind [hier](https://wiki.phpbb.com/Tables) gelistet. Die einfachste Möglichkeit, die Datenbank einzurichten, ist wohl, ein phpBB-Forum lokal zu installieren.
+Wenn Docker installiert ist, kann die App eingerichtet werden. Dazu sind folgende Schritte in dieser Reihenfolge nötig. Bei Veränderung der Reihenfolge einiger Schritte treten Fehler auf.
 
-#### Webserver
+<!-- Prettier formatiert die Unterstriche in Punkt 3 falsch. Und man kann nur die ganze Liste ignorieren. -->
+<!-- prettier-ignore -->
+1.  Auf oberster Ebene im Repository eine Datei _.env_ anlegen und den Inhalt von _.env.example_ in die Datei kopieren. Erklärungen finden sich [hier](https://laravel.com/docs/8.x#environment-based-configuration) und [hier](https://laravel.com/docs/8.x/configuration) in der Laravel-Doku.
+2.  `sail up` ausführen und die Container laufen lassen.
+3.  `sail artisan key:generate` ausführen, um einen  APP_KEY in _.env_ einzutragen.
+4.  `sail artisan migrate` ausführen, um die Datenbank-Tabellen zu erstellen.
+5.  `sail artisan db:seed` ausführen, um einige notwendige Werte in die Datenbank zu schreiben. Dadurch werden auch die User "armin", "edith", und "otto" erzeugt - jeweils mit gleichlautendem Passwort.
+6.  `sail artisan storage:link` ausführen, um die Interaktion mit dem Dateisystem einzurichten, siehe [hier](https://laravel.com/docs/8.x/filesystem#the-public-disk).
 
-Der Webserver muss auf den _/public_-Ordner zeigen.
+Jetzt sollte die App bereits unter http://localhost erreichbar sein und funktionieren.
 
-#### Verlinkung Storage-Ordner
+Warum die Vendor-Biblitheken mit im Repository liegen und somit nicht installiert werden müssen, wird [weiter unten](#vendor-ordner) erklärt.
 
-Für die Interaktion mit dem Dateisystem muss ein Link erstellt werden, siehe dazu [hier](https://laravel.com/docs/8.x/filesystem#the-public-disk).
+#### Forum einrichten (optional)
+
+Falls die [Verbindung zum Forum](#verbindung-zum-forum) lokal getestet werden soll, muss dafür eine zusätzliche Datenbank eingerichtet werden. Die einfachste Möglichkeit, die Datenbank einzurichten, ist wohl, ein phpBB-Forum lokal zu installieren.
 
 ### Entwicklung
 
@@ -62,7 +58,7 @@ Zur Versionsverwaltung wird [Git](https://git-scm.com/) verwendet. Im Folgenden 
 
 ##### _vendor_-Ordner
 
-Normalerweise würde man einen Ordner mit Fremd-Bibliotheken wie den _vendor_-Ordner nicht in die Versionsverwaltung einchecken. Das ist hier aber nötig, weil die App direkt über Git auf den Webserver des Website-Hosts geladen wird und es dort keine Möglichkeit gibt, die Bibliotheken wiederherzustellen (weil z.B. Composer nicht auf dem Webserver installiert ist).
+Normalerweise würde man einen Ordner mit Fremd-Bibliotheken wie den _vendor_-Ordner nicht in die Versionsverwaltung einchecken. Das ist hier aber nötig, weil die App direkt über Git auf den Webserver des Web-Hosts geladen wird und es dort keine Möglichkeit gibt, die Bibliotheken wiederherzustellen (weil z.B. Composer nicht auf dem Webserver installiert ist).
 
 ##### Kompiliertes Frontend
 
@@ -70,23 +66,25 @@ Die Datei _public/js/app.js_, die das kompilierte Frontend enthält, würde man 
 
 ##### Branches
 
-Die Hauptbranch heißt _main_. In diesem liegt der produktive Code, d.h. es dürfen keine Zwischenstände auf _main_ commited werden. Außerdem muss in _main_ immer das mit `npm run prod` gebaute Frontend liegen.
+Der Hauptbranch heißt _main_. In diesem liegt der produktive Code, d.h. es dürfen keine Zwischenstände auf _main_ commited werden. Außerdem muss in _main_ immer das mit `npm run prod` gebaute Frontend liegen.
 
 Für größere Entwicklungen sollte ein feature-Branch abgezweigt und über einen Pull Request bei GitHub gemerget werden.
 
-#### Laravel Mix und NPM
+#### Laravel Mix und npm
 
 Das Frontend wird mithilfe von [Laravel Mix](https://laravel.com/docs/8.x/mix) kompiliert. Die Konfiguration von Mix liegt in der Datei _webpack.mix.js_.
 
-Vor dem erstmaligen Verwenden der App muss einmal der Befehl `npm install` ausgeführt werden.
+Node.js und npm sind im Sail-Container installiert und die angegebenen Befehle beziehen sich darauf. (Alternativ kann man sich auch Node.js lokal installieren.)
 
-Die anderen für diese App relevanten NPM-Befehle (die sich auch in der _package.json_ finden) sind:
+Vor dem erstmaligen Verwenden der App muss einmal der Befehl `sail npm install` ausgeführt werden.
 
--   `npm run dev`: Kompiliert das Frontend.
--   `npm run watch`: Überwacht Änderungen im Code und kompiliert das Frontend automatisch bei jeder Änderung.
--   `npm run prod`: Kompiliert das Frontend und minifiziert das Output-File.
+Die anderen für diese App relevanten npm-Befehle (die sich auch in der _package.json_ finden) sind:
 
-**Wichtig:** Vor einem Commit in den _main_-Branch muss immer `npm run prod` ausgeführt werden.
+-   `sail npm run dev`: Kompiliert das Frontend.
+-   `sail npm run watch`: Überwacht Änderungen im Code und kompiliert das Frontend automatisch bei jeder Änderung.
+-   `sail npm run prod`: Kompiliert das Frontend und minifiziert das Output-File.
+
+**Wichtig:** Vor einem Commit in den _main_-Branch muss immer `sail npm run prod` ausgeführt werden.
 
 ## Backend
 
