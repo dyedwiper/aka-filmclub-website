@@ -20,7 +20,7 @@ Es handelt sich um eine [Single-Page-Applicaton (SPA)](https://de.wikipedia.org/
 
 Am einfachsten lässt sich die App lokal mit [Laravel Sail](https://laravel.com/docs/8.x/sail) einrichten.
 
-Es ist empfehlenswert sich ein Alias für das Sail-Script anzulegen, wie [hier](https://laravel.com/docs/8.x/sail#configuring-a-bash-alias) beschrieben. Bei den unten angegebenen Befehle wird davon ausgegangen, dass dieses Alias angelegt ist.
+Es ist empfehlenswert sich ein Alias für das Sail-Script anzulegen, wie [hier](https://laravel.com/docs/8.x/sail#configuring-a-bash-alias) beschrieben. Bei den unten angegebenen Befehlen wird davon ausgegangen, dass dieses Alias angelegt ist.
 
 #### Docker installieren
 
@@ -31,7 +31,7 @@ Mit Laravel Sail läuft die App in einem Docker-Container. Damit das funktionier
 
 #### App einrichten
 
-Wenn Docker installiert ist, kann die App eingerichtet werden. Dazu sind folgende Schritte in dieser Reihenfolge nötig. Bei Veränderung der Reihenfolge einiger Schritte treten Fehler auf.
+Wenn Docker installiert ist, kann die App eingerichtet werden. Dazu sind folgende Schritte in dieser Reihenfolge nötig. (Bei Veränderung der Reihenfolge einiger Schritte treten Fehler auf.)
 
 <!-- Prettier formatiert die Unterstriche in Punkt 3 falsch. Und man kann nur die ganze Liste ignorieren. -->
 <!-- prettier-ignore -->
@@ -42,9 +42,7 @@ Wenn Docker installiert ist, kann die App eingerichtet werden. Dazu sind folgend
 5.  `sail artisan db:seed` ausführen, um einige notwendige Werte in die Datenbank zu schreiben. Dadurch werden auch die User "armin", "edith", und "otto" erzeugt - jeweils mit gleichlautendem Passwort.
 6.  `sail artisan storage:link` ausführen, um die Interaktion mit dem Dateisystem einzurichten, siehe [hier](https://laravel.com/docs/8.x/filesystem#the-public-disk).
 
-Jetzt sollte die App bereits unter http://localhost erreichbar sein und funktionieren.
-
-Warum die Vendor-Biblitheken mit im Repository liegen und somit nicht installiert werden müssen, wird [weiter unten](#vendor-ordner) erklärt.
+Jetzt sollte die App unter http://localhost erreichbar sein und funktionieren.
 
 #### Forum einrichten (optional)
 
