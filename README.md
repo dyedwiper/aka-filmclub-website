@@ -72,7 +72,7 @@ Für größere Entwicklungen sollte ein feature-Branch abgezweigt und über eine
 
 Das Frontend wird mithilfe von [Laravel Mix](https://laravel.com/docs/8.x/mix) kompiliert. Die Konfiguration von Mix liegt in der Datei _webpack.mix.js_.
 
-Node.js und npm sind im Sail-Container installiert und die angegebenen Befehle beziehen sich darauf. (Alternativ kann man sich auch Node.js lokal installieren.)
+Node.js und npm sind im Sail-Container installiert und die angegebenen Befehle beziehen sich darauf. (Alternativ kann man sich auch Node.js lokal installieren, am besten mit [nvm](https://github.com/nvm-sh/nvm).)
 
 Vor dem erstmaligen Verwenden der App muss einmal der Befehl `sail npm install` ausgeführt werden.
 
