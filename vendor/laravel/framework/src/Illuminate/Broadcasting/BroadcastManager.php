@@ -64,7 +64,7 @@ class BroadcastManager implements FactoryContract
      * @param  array|null  $attributes
      * @return void
      */
-    public function routes(array $attributes = null)
+    public function routes(?array $attributes = null)
     {
         if ($this->app instanceof CachesRoutes && $this->app->routesAreCached()) {
             return;
@@ -86,7 +86,7 @@ class BroadcastManager implements FactoryContract
      * @param  array|null  $attributes
      * @return void
      */
-    public function userRoutes(array $attributes = null)
+    public function userRoutes(?array $attributes = null)
     {
         if ($this->app instanceof CachesRoutes && $this->app->routesAreCached()) {
             return;
@@ -110,9 +110,9 @@ class BroadcastManager implements FactoryContract
      * @param  array|null  $attributes
      * @return void
      */
-    public function channelRoutes(array $attributes = null)
+    public function channelRoutes(?array $attributes = null)
     {
-        return $this->routes($attributes);
+        $this->routes($attributes);
     }
 
     /**
@@ -271,6 +271,17 @@ class BroadcastManager implements FactoryContract
     protected function callCustomCreator(array $config)
     {
         return $this->customCreators[$config['driver']]($this->app, $config);
+    }
+
+    /**
+     * Create an instance of the driver.
+     *
+     * @param  array  $config
+     * @return \Illuminate\Contracts\Broadcasting\Broadcaster
+     */
+    protected function createReverbDriver(array $config)
+    {
+        return $this->createPusherDriver($config);
     }
 
     /**
