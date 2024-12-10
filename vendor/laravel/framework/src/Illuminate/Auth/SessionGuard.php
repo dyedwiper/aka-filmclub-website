@@ -38,7 +38,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
      *
      * @var string
      */
-    protected $name;
+    public readonly string $name;
 
     /**
      * The user we last attempted to retrieve.
@@ -123,8 +123,8 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     public function __construct($name,
                                 UserProvider $provider,
                                 Session $session,
-                                Request $request = null,
-                                Timebox $timebox = null)
+                                ?Request $request = null,
+                                ?Timebox $timebox = null)
     {
         $this->name = $name;
         $this->session = $session;
