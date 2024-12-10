@@ -18,12 +18,12 @@ export default function StacksList({ stacks }) {
                     </StackBalanceStyled>
                 </StackListItemStyled>
             ))}
-            {getValuesPerPrice(stacks).map((price) => (
-                <StackListItemStyled key={price}>
+            {getValuesPerPrice(stacks).map((value) => (
+                <StackListItemStyled key={value.price}>
                     <StackNumbersStyled>Summe</StackNumbersStyled>
                     <VerticalLineStyled>|</VerticalLineStyled>
-                    <StackInfoStyled>{price.items + ' x ' + toEuroWithSymbol(price.price) + ' = '}</StackInfoStyled>
-                    <StackBalanceStyled>{toEuroWithSymbol(price.earnings)}</StackBalanceStyled>
+                    <StackInfoStyled>{value.items + ' x ' + toEuroWithSymbol(value.price) + ' = '}</StackInfoStyled>
+                    <StackBalanceStyled>{toEuroWithSymbol(value.earnings)}</StackBalanceStyled>
                 </StackListItemStyled>
             ))}
         </StacksListStyled>

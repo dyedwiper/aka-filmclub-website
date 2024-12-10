@@ -76,7 +76,7 @@ const PassesStyled = styled.div`
 
 const BalanceStyled = styled.div`
     display: inline-block;
-    width: 80px;
+    width: 85px;
     margin-right: 10px;
     text-align: right;
     font-weight: bold;
