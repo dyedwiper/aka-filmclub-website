@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '481afdc03b996c13b6fb8fadf6274d5e5cc1c817',
+        'reference' => 'd6bddd1d35eed84ebc73a5fc837a27b5e6838376',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '481afdc03b996c13b6fb8fadf6274d5e5cc1c817',
+            'reference' => 'd6bddd1d35eed84ebc73a5fc837a27b5e6838376',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -111,15 +111,6 @@
             'install_path' => __DIR__ . '/../fakerphp/faker',
             'aliases' => array(),
             'dev_requirement' => true,
-        ),
-        'fideloper/proxy' => array(
-            'pretty_version' => '4.4.2',
-            'version' => '4.4.2.0',
-            'reference' => 'a751f2bc86dd8e6cfef12dc0cbdada82f5a18750',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../fideloper/proxy',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'filp/whoops' => array(
             'pretty_version' => '2.16.0',
