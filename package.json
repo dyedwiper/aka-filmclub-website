@@ -2,7 +2,7 @@
     "name": "aka-filmclub-website-frontend",
     "private": true,
     "engines": {
-        "node": "20",
+        "node": "22",
         "npm": "10"
     },
     "scripts": {
