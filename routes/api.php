@@ -99,6 +99,7 @@ Route::prefix('users')->group(function () {
     Route::post('/login', [UserController::class, 'PostLogin']);
 
     Route::get('/logout', [UserController::class, 'GetLogout']);
+
     Route::middleware('auth:sanctum')->post('/', [UserController::class, 'PostUser']);
 
     Route::middleware('auth:sanctum')->patch('/', [UserController::class, 'PatchUser']);
@@ -106,8 +107,6 @@ Route::prefix('users')->group(function () {
     Route::middleware('auth:sanctum')->patch('/password', [UserController::class, 'PatchPassword']);
 
     Route::middleware('auth:sanctum')->delete('/uuid/{uuid}', [UserController::class, 'DeleteUser']);
-
-    Route::middleware('auth:sanctum')->get('/update_uuids', [UserController::class, 'UpdateUuids']);
 });
 
 Route::prefix('faqs')->group(function () {
