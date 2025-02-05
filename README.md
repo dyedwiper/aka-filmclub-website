@@ -72,17 +72,17 @@ Für größere Entwicklungen sollte ein feature-Branch abgezweigt und über eine
 
 Das Frontend wird mithilfe von [Laravel Mix](https://laravel.com/docs/8.x/mix) kompiliert. Die Konfiguration von Mix liegt in der Datei _webpack.mix.js_.
 
-Node.js und npm sind im Sail-Container installiert und die angegebenen Befehle beziehen sich darauf. (Alternativ kann man sich auch Node.js lokal installieren, am besten mit [nvm](https://github.com/nvm-sh/nvm).)
+Node.js und npm sind im Sail-Container installiert. Der Einfachheit halber empfiehlt es sich aber Node.js lokal zu installieren, am besten mit [nvm](https://github.com/nvm-sh/nvm). Die angegebenen npm-Befehle beziehen sich auf eine lokale Installation. Ohne lokale Installation muss man `sail` vor jeden Befehl hängen.
 
-Vor dem erstmaligen Verwenden der App muss einmal der Befehl `sail npm install` ausgeführt werden.
+Vor dem erstmaligen Verwenden der App muss einmal der Befehl `npm install` ausgeführt werden.
 
 Die anderen für diese App relevanten npm-Befehle (die sich auch in der _package.json_ finden) sind:
 
--   `sail npm run dev`: Kompiliert das Frontend.
--   `sail npm run watch`: Überwacht Änderungen im Code und kompiliert das Frontend automatisch bei jeder Änderung.
--   `sail npm run prod`: Kompiliert das Frontend und minifiziert das Output-File.
+-   `npm run dev`: Kompiliert das Frontend.
+-   `npm run watch`: Überwacht Änderungen im Code und kompiliert das Frontend automatisch bei jeder Änderung.
+-   `npm run prod`: Kompiliert das Frontend und minifiziert das Output-File.
 
-**Wichtig:** Vor einem Commit in den _main_-Branch muss immer `sail npm run prod` ausgeführt werden.
+**Wichtig:** Vor einem Commit in den _main_-Branch muss immer `npm run prod` ausgeführt werden.
 
 ## Backend
 
