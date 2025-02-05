@@ -12,7 +12,7 @@ Außerdem wird erklärt, was nötig ist, um die App lokal zu installieren.
 
 Das Backend der Website ist mit [Laravel](https://laravel.com/) gebaut, das Frontend mit [React](https://reactjs.org/).
 
-Es handelt sich um eine [Single-Page-Applicaton (SPA)](https://de.wikipedia.org/wiki/Single-Page-Webanwendung), d.h. beim Aufruf der Website wird das gesamte Frontend als JavaScript-Anwendung an den Browser geschickt. Beim Navigieren oder anderen Interaktionen fragt das Frontend nur noch Daten vom Backend ab bzw. schickt Daten ans Backend.
+Es handelt sich um eine [Single-Page-Applicaton (SPA)](https://de.wikipedia.org/wiki/Single-Page-Webanwendung).
 
 ## Installation und Entwicklung
 
@@ -46,7 +46,7 @@ Jetzt sollte die App unter http://localhost erreichbar sein und funktionieren.
 
 #### Forum einrichten (optional)
 
-Falls die [Verbindung zum Forum](#verbindung-zum-forum) lokal getestet werden soll, muss dafür eine zusätzliche Datenbank eingerichtet werden. Die einfachste Möglichkeit, die Datenbank einzurichten, ist wohl, ein phpBB-Forum lokal zu installieren.
+Falls die [Verbindung zum Forum](#verbindung-zum-forum) lokal getestet werden soll, muss dafür eine zusätzliche Datenbank eingerichtet werden. Die einfachste Möglichkeit die Datenbank einzurichten, ist wohl ein phpBB-Forum lokal zu installieren.
 
 ### Entwicklung
 
