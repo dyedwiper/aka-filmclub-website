@@ -18,9 +18,9 @@ Es handelt sich um eine [Single-Page-Applicaton (SPA)](https://de.wikipedia.org/
 
 ### Installation
 
-Am einfachsten lässt sich die App lokal mit [Laravel Sail](https://laravel.com/docs/8.x/sail) einrichten.
+Am einfachsten lässt sich die App lokal mit [Laravel Sail](https://laravel.com/docs/11.x/sail) einrichten.
 
-Es ist empfehlenswert sich ein Alias für das Sail-Script anzulegen, wie [hier](https://laravel.com/docs/8.x/sail#configuring-a-bash-alias) beschrieben. Bei den unten angegebenen Befehlen wird davon ausgegangen, dass dieses Alias angelegt ist.
+Es ist empfehlenswert sich ein Alias für das Sail-Script anzulegen, wie [hier](https://laravel.com/docs/11.x/sail#configuring-a-shell-alias) beschrieben. Bei den unten angegebenen Befehlen wird davon ausgegangen, dass dieses Alias angelegt ist.
 
 #### Docker installieren
 
@@ -35,12 +35,12 @@ Wenn Docker installiert ist, kann die App eingerichtet werden. Dazu sind folgend
 
 <!-- Prettier formatiert die Unterstriche in Punkt 3 falsch. Und man kann nur die ganze Liste ignorieren. -->
 <!-- prettier-ignore -->
-1.  Auf oberster Ebene im Repository eine Datei _.env_ anlegen und den Inhalt von _.env.example_ in die Datei kopieren. Erklärungen finden sich [hier](https://laravel.com/docs/8.x#environment-based-configuration) und [hier](https://laravel.com/docs/8.x/configuration) in der Laravel-Doku.
+1.  Auf oberster Ebene im Repository eine Datei _.env_ anlegen und den Inhalt von _.env.example_ in die Datei kopieren. Erklärungen finden sich [hier](https://laravel.com/docs/11.x#environment-based-configuration) und [hier](https://laravel.com/docs/11.x/configuration) in der Laravel-Doku.
 2.  `sail up` ausführen und die Container laufen lassen.
 3.  `sail artisan key:generate` ausführen, um einen  APP_KEY in _.env_ einzutragen.
 4.  `sail artisan migrate` ausführen, um die Datenbank-Tabellen zu erstellen.
 5.  `sail artisan db:seed` ausführen, um einige notwendige Werte in die Datenbank zu schreiben. Dadurch werden auch die User "armin", "edith", und "otto" erzeugt - jeweils mit gleichlautendem Passwort.
-6.  `sail artisan storage:link` ausführen, um die Interaktion mit dem Dateisystem einzurichten, siehe [hier](https://laravel.com/docs/8.x/filesystem#the-public-disk).
+6.  `sail artisan storage:link` ausführen, um die Interaktion mit dem Dateisystem einzurichten, siehe [hier](https://laravel.com/docs/11.x/filesystem#the-public-disk).
 
 Jetzt sollte die App unter http://localhost erreichbar sein und funktionieren.
 
@@ -70,7 +70,7 @@ Für größere Entwicklungen sollte ein feature-Branch abgezweigt und über eine
 
 #### Laravel Mix und npm
 
-Das Frontend wird mithilfe von [Laravel Mix](https://laravel.com/docs/8.x/mix) kompiliert. Die Konfiguration von Mix liegt in der Datei _webpack.mix.js_.
+Das Frontend wird mithilfe von [Laravel Mix](https://laravel.com/docs/11.x/mix) kompiliert. Die Konfiguration von Mix liegt in der Datei _webpack.mix.js_.
 
 Node.js und npm sind im Sail-Container installiert. Der Einfachheit halber empfiehlt es sich aber Node.js lokal zu installieren, am besten mit [nvm](https://github.com/nvm-sh/nvm). Die angegebenen npm-Befehle beziehen sich auf eine lokale Installation. Ohne lokale Installation muss man `sail` vor jeden Befehl hängen.
 
@@ -90,32 +90,32 @@ Die anderen für diese App relevanten npm-Befehle (die sich auch in der _package
 
 Die Web-Routes sind in der Datei _routes/web.php_ definiert. Es gibt nur zwei:
 
--   Die obere ist ein Spezialfall: Unter _/files_ lassen sich Dateien zum Download hinterlegen, siehe dazu [hier](https://laravel.com/docs/8.x/responses#file-responses).
+-   Die obere ist ein Spezialfall: Unter _/files_ lassen sich Dateien zum Download hinterlegen, siehe dazu [hier](https://laravel.com/docs/11.x/responses#file-responses).
 -   Auf allen anderen Routes, die nicht mit _api_ beginnen, wird der _index_-View zurückgegeben, über den dann die React-App geladen wird.
 
 Die Api-Routes sind in der Datei _routes/api.php_ definiert und nach Ressourcen gruppiert.
 
-Zum Routing siehe: https://laravel.com/docs/8.x/routing.
+Zum Routing siehe: https://laravel.com/docs/11.x/routing.
 
 ### Authentifizierung
 
-Zur Authentifizierung wird [Laravel Sanctum](https://laravel.com/docs/8.x/sanctum#introduction) verwendet. Siehe insbesondere den Abschnitt zu [SPA Authentication](https://laravel.com/docs/8.x/sanctum#spa-authentication) in der Doku.
+Zur Authentifizierung wird [Laravel Sanctum](https://laravel.com/docs/11.x/sanctum) verwendet. Siehe insbesondere den Abschnitt zu [SPA Authentication](https://laravel.com/docs/11.x/sanctum#spa-authentication) in der Doku.
 
-Die Authentifizierung ist manuell implementiert, ausgehend von [dieser Beschreibung](https://laravel.com/docs/8.x/authentication#authenticating-users). Sie findet sich in _app/Http/Controllers/UserController.php_. Sie ist so eingerichtet, dass der Login nach _x_ fehlgeschlagenen Anmeldeversuchen für _y_ Minuten für den jeweiligen User blockiert wird. _x_ und _y_ können im env-File eingestellt werden.
+Die Authentifizierung ist manuell implementiert, ausgehend von [dieser Beschreibung](https://laravel.com/docs/11.x/authentication#authenticating-users). Sie findet sich in _app/Http/Controllers/UserController.php_. Sie ist so eingerichtet, dass der Login nach _x_ fehlgeschlagenen Anmeldeversuchen für _y_ Minuten für den jeweiligen User blockiert wird. _x_ und _y_ können im env-File eingestellt werden.
 
-Für die Speicherung der Session wurde die Datenbank gewählt, siehe dazu: https://laravel.com/docs/8.x/session#introduction
+Für die Speicherung der Session wurde die Datenbank gewählt, siehe dazu: https://laravel.com/docs/11.x/session
 
 ### Authorisierung und Validierung
 
-Authorisierung und Validierung sind mit [Form Requests](https://laravel.com/docs/8.x/validation#form-request-validation) implementiert.
+Authorisierung und Validierung sind mit [Form Requests](https://laravel.com/docs/11.x/validation#form-request-validation) implementiert.
 
 ### Upload von Bildern
 
-Auf der Website können Bilder hochgeladen werden, die wie [hier](https://laravel.com/docs/8.x/filesystem#file-uploads) beschrieben gespeichert werden.
+Auf der Website können Bilder hochgeladen werden, die wie [hier](https://laravel.com/docs/11.x/filesystem#file-uploads) beschrieben gespeichert werden.
 
 ### Middleware für Sharing
 
-Fürs Sharen auf Facebook, Telegram, WhatsApp und Twitter gibt es eine eigene [Middleware](https://laravel.com/docs/8.x/middleware), die unter _app/Http/Middleware/SendJustMetaWhenSharing.php_ zu finden ist.
+Fürs Sharen auf Facebook, Telegram, WhatsApp, Signal, etc. gibt es eine eigene [Middleware](https://laravel.com/docs/11.x/middleware), die unter _app/Http/Middleware/SendJustMetaWhenSharing.php_ zu finden ist.
 
 Die Middleware checkt den User-Agent des Requests. Wenn dieser zu einer der genannten Websites/Apps gehört, werden nur passende Meta-Daten zurückgegeben. Ansonsten nimmt der Request seinen normalen Lauf.
 
@@ -141,7 +141,7 @@ Das Frontend ist wie [oben beschrieben](#grundlegendes-setup) eine mit React geb
 
 ### _app.js_ und _bootstrap.js_
 
-Die Dateien _app.js_ und _bootstrap.js_ im Ordner _resources/js_ sind Dateien aus dem Standard-Setup von Laravel. In _app.js_ wird der JavaScript-Code gesammelt, der von [Laravel Mix](https://laravel.com/docs/8.x/mix) kompiliert wird. In _bootstrap.js_ steht globale Konfiguration - momentan nur für [Axios](https://axios-http.com/docs/intro).
+Die Dateien _app.js_ und _bootstrap.js_ im Ordner _resources/js_ sind Dateien aus dem Standard-Setup von Laravel. In _app.js_ wird der JavaScript-Code gesammelt, der von [Laravel Mix](https://laravel.com/docs/11.x/mix) kompiliert wird. In _bootstrap.js_ steht globale Konfiguration - momentan nur für [Axios](https://axios-http.com/docs/intro).
 
 ### Gerüst der React-App
 
