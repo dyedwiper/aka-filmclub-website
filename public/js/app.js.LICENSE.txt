@@ -29,9 +29,6 @@ object-assign
 /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
 
 /**
- * @param {Object[]} nodes
- * @param {number[]} lines
- * @param {Object} settings
  * @preserve Knuth and Plass line breaking algorithm in JavaScript
  *
  * Licensed under the new BSD License.
