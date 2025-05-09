@@ -1,14 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import facebookIcon from '../assets/facebook_icon.png';
 import instagramIcon from '../assets/instagram_icon.png';
-import twitterIcon from '../assets/twitter_icon.png';
+import telegramIcon from '../assets/telegram_icon.png';
+import blueskyIcon from '../assets/bluesky_icon.png';
+import mastodonIcon from '../assets/mastodon_icon.png';
 import {
-    AKA_FACEBOOK_URL,
     AKA_INSTAGRAM_URL,
+    AKA_BSKY_URL,
+    AKA_MASTODON_URL,
+    AKA_TELEGRAM_URL,
     AKA_LONGNAME,
-    AKA_TWITTER_URL,
     PAGE_TITLE_CONTACT,
     PAGE_TITLE_IMPRINT,
     ROUTE_CONTACT,
@@ -26,14 +28,17 @@ export default function Footer() {
                     <LinkStyled to={ROUTE_IMPRINT}>{PAGE_TITLE_IMPRINT}</LinkStyled>
                 </LinksContainerStyled>
                 <IconLinksContainerStyled>
-                    <IconLinkStyled href={AKA_FACEBOOK_URL} target="_blank" rel="noopener noreferrer">
-                        <ImageStyled src={facebookIcon} alt="Logo von Facebook" />
-                    </IconLinkStyled>
                     <IconLinkStyled href={AKA_INSTAGRAM_URL} target="_blank" rel="noopener noreferrer">
                         <ImageStyled src={instagramIcon} alt="Logo von Instagram" />
                     </IconLinkStyled>
-                    <IconLinkStyled href={AKA_TWITTER_URL} target="_blank" rel="noopener noreferrer">
-                        <ImageStyled src={twitterIcon} alt="Logo von Twitter" />
+                    <IconLinkStyled href={AKA_TELEGRAM_URL} target="_blank" rel="noopener noreferrer">
+                        <ImageStyled src={telegramIcon} alt="Logo von Telegram" />
+                    </IconLinkStyled>
+                    <IconLinkStyled href={AKA_BSKY_URL} target="_blank" rel="noopener noreferrer">
+                        <ImageStyled src={blueskyIcon} alt="Logo von Bluesky" />
+                    </IconLinkStyled>
+                    <IconLinkStyled href={AKA_MASTODON_URL} target="_blank" rel="noopener noreferrer">
+                        <ImageStyled src={mastodonIcon} alt="Logo von Mastodon" />
                     </IconLinkStyled>
                 </IconLinksContainerStyled>
             </ContentContainerStyled>
