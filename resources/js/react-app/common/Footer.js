@@ -47,7 +47,12 @@ export default function Footer() {
 }
 
 const FooterStyled = styled.footer`
-    height: 60px;
+    @media (max-width: 767px) {
+        height: 90px;
+    }
+    @media (min-width: 767px) {
+        height: 60px;
+    }
     width: 100%;
     background-color: var(--aka-gelb);
 `;
@@ -62,8 +67,11 @@ const ContentContainerStyled = styled.div`
     padding: 0 20px;
 
     @media (max-width: 767px) {
-        grid-template-columns: 1fr 1fr;
-    }
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        row-gap: 8px;
+        justify-items: center;
+  }
 `;
 
 const HeadlineStyled = styled.h1`
@@ -81,7 +89,6 @@ const LinksContainerStyled = styled.div`
     justify-self: center;
 
     @media (max-width: 767px) {
-        justify-self: left;
         margin-left: -5px;
     }
 `;
@@ -100,6 +107,11 @@ const VerticalLineStyled = styled.span``;
 
 const IconLinksContainerStyled = styled.div`
     justify-self: right;
+
+    @media (max-width: 767px) {
+        justify-self: center;
+        grid-column: 1 / -1; /* Span entire row */
+  }
 `;
 
 const IconLinkStyled = styled.a`
