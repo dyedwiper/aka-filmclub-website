@@ -43,11 +43,6 @@ export const AKA_MASTODON_URL = 'https://freiburg.social/@akafilmclub';
 export const AKA_BSKY_URL = 'https://bsky.app/profile/akafilmclub.bsky.social';
 export const AKA_TELEGRAM_URL = 'https://t.me/akafilmclub';
 
-// Discontinued:
-// export const AKA_TWITTER_URL = 'https://twitter.com/akafilmclub';
-// export const AKA_FACEBOOK_URL = 'https://www.facebook.com/akaFilmclub/';
-
-
 // User enums
 export const AUTH_LEVEL_NORMAL = 0;
 export const AUTH_LEVEL_EDITOR = 1;
