@@ -38,9 +38,10 @@ export const AKA_WEBSITE_URL = 'https://aka-filmclub.de/';
 export const AKA_FORUM_URL = 'https://forum.aka-filmclub.de/';
 export const AKA_NEXTCLOUD_URL = 'https://cloud.aka-filmclub.de/';
 export const AKA_HIGHNOON_URL = 'https://highnoon.aka-filmclub.de';
-export const AKA_FACEBOOK_URL = 'https://www.facebook.com/akaFilmclub/';
 export const AKA_INSTAGRAM_URL = 'https://www.instagram.com/akafilmclub/';
-export const AKA_TWITTER_URL = 'https://twitter.com/akafilmclub';
+export const AKA_MASTODON_URL = 'https://freiburg.social/@akafilmclub';
+export const AKA_BSKY_URL = 'https://bsky.app/profile/akafilmclub.bsky.social';
+export const AKA_TELEGRAM_URL = 'https://t.me/akafilmclub';
 
 // User enums
 export const AUTH_LEVEL_NORMAL = 0;
