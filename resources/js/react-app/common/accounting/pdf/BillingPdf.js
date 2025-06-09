@@ -16,6 +16,7 @@ import {
 import { formatToDateString } from '../../../utils/dateFormatters';
 import { toEuroWithSymbol } from '../../../utils/moneyUtils';
 import { toGermanString } from '../../../utils/numberUtils';
+import AddressHeader from './AddressHeader';
 import AggregationTable from './AggregationTable';
 import TicketsTable from './TicketsTable';
 
@@ -25,24 +26,7 @@ export default function BillingPdf({ billing }) {
             <Page size="A4">
                 <View style={styles.pageContainer}>
                     <Image src={akaLogo} style={styles.logo} />
-                    <View style={styles.header}>
-                        <View style={styles.addressContainer}>
-                            <Text>{billing.distributor && billing.distributor.name}</Text>
-                            <Text>{billing.distributor && billing.distributor.address}</Text>
-                            <Text>
-                                {billing.distributor && billing.distributor.zipcode + ' ' + billing.distributor.city}
-                            </Text>
-                        </View>
-                        <Text>
-                            {billing.distributor &&
-                                'E-Mail: ' +
-                                    billing.distributor.email +
-                                    ' / Tel: ' +
-                                    billing.distributor.phone +
-                                    ' / Fax: ' +
-                                    billing.distributor.fax}
-                        </Text>
-                    </View>
+                    {!!billing.distributor && <AddressHeader distributor={billing.distributor} />}
                     <View style={styles.main}>
                         <Text style={styles.headline}>Abrechnung: {billing.screening.title}</Text>
                         <Text style={styles.date}>Spieltermin: {formatToDateString(billing.screening.date)}</Text>
@@ -83,8 +67,6 @@ export default function BillingPdf({ billing }) {
 const styles = StyleSheet.create({
     pageContainer: { position: 'relative', height: '100vh', padding: '40pt 60pt', fontSize: '12pt' },
     logo: { position: 'fixed', top: 0, left: '330pt', height: '90pt', width: '120pt' },
-    header: { display: 'flex', flexDirection: 'column' },
-    addressContainer: { marginBottom: '10pt' },
     main: { margin: '40pt 0 0 0' },
     headline: { marginBottom: '10pt', fontSize: '24pt' },
     date: { marginBottom: '10pt' },
