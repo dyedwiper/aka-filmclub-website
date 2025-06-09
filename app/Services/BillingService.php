@@ -78,19 +78,19 @@ class BillingService
         return $earnings;
     }
 
-    public function calculateValueAddedTaxOnTicketEarnings($billing)
-    {
-        $vat = ($this->calculateTicketEarnings($billing) * $billing->valueAddedTaxRateOnEarnings) / 100;
-        $roundedVat = round($vat);
-
-        return $roundedVat;
-    }
-
     public function calculateNetTicketEarnings($billing)
     {
-        $earnings = $this->calculateTicketEarnings($billing) - $this->calculateValueAddedTaxOnTicketEarnings($billing);
+        $net = $this->calculateTicketEarnings($billing) / (1 + $billing->valueAddedTaxRateOnEarnings / 100);
+        $roundedNet = round($net);
 
-        return $earnings;
+        return $roundedNet;
+    }
+
+    public function calculateValueAddedTaxOnTicketEarnings($billing)
+    {
+        $vat = $this->calculateTicketEarnings($billing) - $this->calculateNetTicketEarnings($billing);
+
+        return $vat;
     }
 
     public function calculateRent($billing)
