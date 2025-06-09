@@ -27,7 +27,7 @@ class BillingService
         $billing->balance = $this->calculateBalance($billing);
     }
 
-    public function calculateTicketsCount($billing)
+    private function calculateTicketsCount($billing)
     {
         $ticketStacks = $billing->ticketStacks;
         $sum = 0;
@@ -38,7 +38,7 @@ class BillingService
         return $sum;
     }
 
-    public function calculatePassesCount($billing)
+    private function calculatePassesCount($billing)
     {
         $passStacks = $billing->passStacks;
         $sum = 0;
@@ -49,7 +49,7 @@ class BillingService
         return $sum;
     }
 
-    public function calculateTicketEarnings($billing)
+    private function calculateTicketEarnings($billing)
     {
         $ticketStacks = $billing->ticketStacks;
         $ticketEarnings = 0;
@@ -60,7 +60,7 @@ class BillingService
         return $ticketEarnings;
     }
 
-    public function calculatePassEarnings($billing)
+    private function calculatePassEarnings($billing)
     {
         $passStacks = $billing->passStacks;
         $passEarnings = 0;
@@ -71,14 +71,14 @@ class BillingService
         return $passEarnings;
     }
 
-    public function calculateEarnings($billing)
+    private function calculateEarnings($billing)
     {
         $earnings = $this->calculateTicketEarnings($billing) + $this->calculatePassEarnings($billing);
 
         return $earnings;
     }
 
-    public function calculateNetTicketEarnings($billing)
+    private function calculateNetTicketEarnings($billing)
     {
         $net = $this->calculateTicketEarnings($billing) / (1 + $billing->valueAddedTaxRateOnEarnings / 100);
         $roundedNet = round($net);
@@ -86,14 +86,14 @@ class BillingService
         return $roundedNet;
     }
 
-    public function calculateValueAddedTaxOnTicketEarnings($billing)
+    private function calculateValueAddedTaxOnTicketEarnings($billing)
     {
         $vat = $this->calculateTicketEarnings($billing) - $this->calculateNetTicketEarnings($billing);
 
         return $vat;
     }
 
-    public function calculateRent($billing)
+    private function calculateRent($billing)
     {
         $rent = ($billing->percentage / 100) * $this->calculateNetTicketEarnings($billing);
         if ($rent < $billing->guarantee) {
@@ -103,7 +103,7 @@ class BillingService
         return $rent;
     }
 
-    public function calculateBalance($billing)
+    private function calculateBalance($billing)
     {
         $balance =
             $this->calculateTicketEarnings($billing) -
@@ -115,7 +115,7 @@ class BillingService
         return $balance;
     }
 
-    public function calculateValueAddedTaxOnDebt($billing)
+    private function calculateValueAddedTaxOnDebt($billing)
     {
         $vat = (($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRateOnDebt) / 100;
         $roundedVat = round($vat);
@@ -123,7 +123,7 @@ class BillingService
         return $roundedVat;
     }
 
-    public function calcaluteDebt($billing)
+    private function calcaluteDebt($billing)
     {
         $debt = $this->calculateRent($billing) + $billing->incidentals + $this->calculateValueAddedTaxOnDebt($billing);
         $roundedDebt = round($debt);
