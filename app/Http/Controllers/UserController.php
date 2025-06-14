@@ -26,6 +26,10 @@ class UserController extends Controller
 
     public function GetUsers()
     {
+        if (Auth::user()->level != Config::get('constants.auth_level.admin')) {
+            abort(403);
+        }
+
         return User::select('id', 'uuid', 'username', 'realname', 'status')->get();
     }
 
@@ -36,6 +40,10 @@ class UserController extends Controller
 
     public function GetUserByUuid(Request $request)
     {
+        if (Auth::user()->level != Config::get('constants.auth_level.admin') && Auth::user()->uuid != $request->uuid) {
+            abort(403);
+        }
+
         return User::where('uuid', $request->uuid)->first();
     }
 

@@ -8,6 +8,7 @@ import UpdateInfo from '../../common/misc/UpdateInfo';
 import {
     PAGE_TITLE_EDIT_PASSWORD,
     PAGE_TITLE_EDIT_USER,
+    ROUTE_INTERN,
     ROUTE_INTERN_EDIT_PASSWORD,
     ROUTE_INTERN_USERS,
 } from '../../constants';
@@ -50,7 +51,7 @@ export default function EditUserPage() {
                 postFunction={postUser}
                 deleteFunction={deleteUser}
                 isEditing={true}
-                postRedirectRoute={ROUTE_INTERN_USERS}
+                postRedirectRoute={isUserAdmin ? ROUTE_INTERN_USERS : ROUTE_INTERN}
                 deleteRedirectRoute={ROUTE_INTERN_USERS}
                 isEditingUser={true}
             >
