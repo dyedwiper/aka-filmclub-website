@@ -13,9 +13,9 @@ export default function AddressHeader({ distributor }) {
                 </Text>
             </View>
             <Text>
-                {distributor.email && <Text>{'E-Mail: ' + distributor.email} / </Text>}
-                {distributor.phone && <Text>{'Tel: ' + distributor.phone} / </Text>}
-                {distributor.fax && <Text>{'Fax: ' + distributor.fax}</Text>}
+                {distributor.email && <Text>{`E-Mail: ${distributor.email} / `}</Text>}
+                {distributor.phone && <Text>{`Tel: ${distributor.phone} / `}</Text>}
+                {distributor.fax && <Text>{`Fax: ${distributor.fax}`}</Text>}
             </Text>
         </View>
     );
