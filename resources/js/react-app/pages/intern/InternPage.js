@@ -19,13 +19,14 @@ import {
     ROUTE_INTERN_ADD_SERIAL,
     ROUTE_INTERN_ADMISSIONS,
     ROUTE_INTERN_DISTRIBUTORS,
+    ROUTE_INTERN_EDIT_USER,
     ROUTE_INTERN_LICENSES,
     ROUTE_INTERN_USERS,
 } from '../../constants';
 import Context from '../../Context';
 
 export default function InternPage() {
-    const { isUserEditor } = useContext(Context);
+    const { isUserEditor, isUserAdmin, user } = useContext(Context);
 
     return (
         <BasePage pageTitle={PAGE_TITLE_INTERN}>
@@ -38,7 +39,8 @@ export default function InternPage() {
                 Nextcloud
             </ExternalLinkStyled>
             <SubheadlineStyled>Mitgliederverwaltung</SubheadlineStyled>
-            <LinkStyled to={ROUTE_INTERN_USERS}>{PAGE_TITLE_USERS}</LinkStyled>
+            {isUserAdmin && <LinkStyled to={ROUTE_INTERN_USERS}>{PAGE_TITLE_USERS}</LinkStyled>}
+            <LinkStyled to={ROUTE_INTERN_EDIT_USER + user.uuid}>Eigene Daten bearbeiten</LinkStyled>
             {isUserEditor ? (
                 <>
                     <SubheadlineStyled>Sachen hinzufügen</SubheadlineStyled>

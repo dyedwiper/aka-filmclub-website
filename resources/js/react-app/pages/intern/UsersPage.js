@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
@@ -6,7 +6,6 @@ import { AddItemLinkStyled, PageHeadlineStyled } from '../../common/styledElemen
 import {
     PAGE_TITLE_USERS,
     ROUTE_INTERN_ADD_USER,
-    ROUTE_INTERN_EDIT_PASSWORD,
     ROUTE_INTERN_EDIT_USER,
     USER_STATUS_ACTIVE,
     USER_STATUS_ACTIVE_NAME,
@@ -15,13 +14,10 @@ import {
     USER_STATUS_PAUSED,
     USER_STATUS_PAUSED_NAME,
 } from '../../constants';
-import Context from '../../Context';
 import { getUsers } from '../../services/userServices';
 
 export default function UsersPage() {
     const [users, setUsers] = useState([]);
-
-    const { user: loggedInUser, isUserAdmin } = useContext(Context);
 
     useEffect(() => {
         getUsers().then((res) => {
@@ -32,13 +28,7 @@ export default function UsersPage() {
     return (
         <BasePage pageTitle={PAGE_TITLE_USERS}>
             <PageHeadlineStyled>{PAGE_TITLE_USERS}</PageHeadlineStyled>
-            <EditOwnDataLinkStyled to={ROUTE_INTERN_EDIT_USER + loggedInUser.uuid}>
-                Eigene Daten bearbeiten
-            </EditOwnDataLinkStyled>
-            <EditOwnDataLinkStyled to={ROUTE_INTERN_EDIT_PASSWORD + loggedInUser.uuid}>
-                Eigenes Passwort ändern
-            </EditOwnDataLinkStyled>
-            {isUserAdmin && <AddItemLinkStyled to={ROUTE_INTERN_ADD_USER}>Mitglied hinzufügen</AddItemLinkStyled>}
+            <AddItemLinkStyled to={ROUTE_INTERN_ADD_USER}>Mitglied hinzufügen</AddItemLinkStyled>
             <GridContainerStyled>
                 <ListContainerStyled>
                     <SubheadlineStyled>{USER_STATUS_ACTIVE_NAME}</SubheadlineStyled>
@@ -83,11 +73,6 @@ export default function UsersPage() {
         </BasePage>
     );
 }
-
-const EditOwnDataLinkStyled = styled(Link)`
-    display: block;
-    margin-bottom: 20px;
-`;
 
 const GridContainerStyled = styled.div`
     display: grid;

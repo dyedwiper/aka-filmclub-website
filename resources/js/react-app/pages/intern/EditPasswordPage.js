@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import BasePage from '../../common/BasePage';
 import BaseForm from '../../common/forms/BaseForm';
 import PasswordFormGroup from '../../common/forms/PasswordFormGroup';
-import { PAGE_TITLE_EDIT_PASSWORD, ROUTE_INTERN_USERS } from '../../constants';
+import { PAGE_TITLE_EDIT_PASSWORD, ROUTE_INTERN, ROUTE_INTERN_USERS } from '../../constants';
 import { getUserByUuid, postPassword } from '../../services/userServices';
 import LoadingPage from '../LoadingPage';
+import Context from '../../Context';
 
 export default function EditPasswordPage() {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
+
+    const { isUserAdmin } = useContext(Context);
 
     const { uuid } = useParams();
 
@@ -28,7 +31,7 @@ export default function EditPasswordPage() {
             <HeadlineStyled>{PAGE_TITLE_EDIT_PASSWORD}</HeadlineStyled>
             <BaseForm
                 postFunction={postPassword}
-                postRedirectRoute={ROUTE_INTERN_USERS}
+                postRedirectRoute={isUserAdmin ? ROUTE_INTERN_USERS : ROUTE_INTERN}
                 deleteRedirectRoute={ROUTE_INTERN_USERS}
             >
                 {/* HTML forms can't make PATCH requests. That's why the method is spoofed with this hidden input.
