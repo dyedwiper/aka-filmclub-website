@@ -26,7 +26,7 @@ export default function BillingPdf({ billing }) {
             <Page size="A4">
                 <View style={styles.pageContainer}>
                     <Image src={akaLogo} style={styles.logo} />
-                    {!!billing.distributor && <AddressHeader distributor={billing.distributor} />}
+                    {billing.distributor && <AddressHeader distributor={billing.distributor} />}
                     <View style={styles.main}>
                         <Text style={styles.headline}>Abrechnung: {billing.screening.title}</Text>
                         <Text style={styles.date}>Spieltermin: {formatToDateString(billing.screening.date)}</Text>
@@ -40,12 +40,12 @@ export default function BillingPdf({ billing }) {
                         </View>
                         <TicketsTable billing={billing} />
                         <AggregationTable billing={billing} />
-                        {!!billing.distributor?.iban && (
+                        {billing.distributor?.iban && (
                             <View style={styles.transferralContainer}>
                                 <Text>Den Betrag überweisen wir in den nächsten Tagen auf folgendes Konto:</Text>
                                 <Text>
                                     IBAN {billing.distributor.iban}
-                                    {!!billing.distributor.bic && ', BIC ' + billing.distributor.bic}
+                                    {billing.distributor.bic && ', BIC ' + billing.distributor.bic}
                                 </Text>
                             </View>
                         )}
