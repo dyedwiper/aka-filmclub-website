@@ -35,19 +35,17 @@ export default function BillingPdf({ billing }) {
                             <Text style={styles.infoField}>
                                 Prozentsatz: {toGermanString(billing.percentage) + ' %'}
                             </Text>
-                            <Text style={styles.infoField}>
-                                Unsere Kundennr.: {billing.distributor && billing.distributor.customerId}
-                            </Text>
+                            <Text style={styles.infoField}>Unsere Kundennr.: {billing.distributor?.customerId}</Text>
                             <Text style={styles.infoField}>Mindestgarantie: {toEuroWithSymbol(billing.guarantee)}</Text>
                         </View>
                         <TicketsTable billing={billing} />
                         <AggregationTable billing={billing} />
-                        {billing.distributor && (
+                        {!!billing.distributor?.iban && (
                             <View style={styles.transferralContainer}>
                                 <Text>Den Betrag überweisen wir in den nächsten Tagen auf folgendes Konto:</Text>
                                 <Text>
-                                    IBAN {billing.distributor.iban}{' '}
-                                    {billing.distributor.bic && ', BIC ' + billing.distributor.bic}
+                                    IBAN {billing.distributor.iban}
+                                    {!!billing.distributor.bic && ', BIC ' + billing.distributor.bic}
                                 </Text>
                             </View>
                         )}
