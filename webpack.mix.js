@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').react();
+mix.js('resources/js/app.js', 'public/js').react().version();
 
 // These fallbacks are needed for @react-pdf/renderer
 mix.webpackConfig({
