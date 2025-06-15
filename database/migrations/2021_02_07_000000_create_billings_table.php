@@ -33,6 +33,7 @@ class CreateBillingsTable extends Migration
             $table->integer('guarantee');
             $table->double('percentage');
             $table->integer('incidentals');
+            $table->integer('spio');
             $table->double('valueAddedTaxRateOnEarnings');
             $table->double('valueAddedTaxRateOnDebt');
             $table->integer('cashInlay');

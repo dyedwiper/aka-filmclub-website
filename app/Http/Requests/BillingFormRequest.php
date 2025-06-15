@@ -35,6 +35,7 @@ class BillingFormRequest extends FormRequest
             'guarantee' => 'required|regex:/^\d+(,\d{1,2})?$/|max:11',
             'percentage' => 'required|regex:/^\d{1,3}(,\d{1,3})?$/',
             'incidentals' => 'required|regex:/^\d+(,\d{1,2})?$/|max:11',
+            'spio' => 'required|regex:/^\d+(,\d{1,2})?$/|max:11',
             'valueAddedTaxRateOnEarnings' => 'required|regex:/^\d{1,3}(,\d{1,3})?$/',
             'valueAddedTaxRateOnDebt' => 'required|regex:/^\d{1,3}(,\d{1,3})?$/',
             'cashInlay' => 'required|regex:/^\d+(,\d{1,2})?$/|max:11',

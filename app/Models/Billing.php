@@ -16,6 +16,7 @@ class Billing extends Model
         'guarantee',
         'percentage',
         'incidentals',
+        'spio',
         'valueAddedTaxRateOnEarnings',
         'valueAddedTaxRateOnDebt',
         'cashInlay',

@@ -109,6 +109,7 @@ class BillingService
             $this->calculateTicketEarnings($billing) -
             $this->calculateRent($billing) -
             $billing->incidentals +
+            $billing->spio +
             $billing->additionalEarnings -
             $billing->additionalExpenses;
 
@@ -117,7 +118,10 @@ class BillingService
 
     private function calculateValueAddedTaxOnDebt($billing)
     {
-        $vat = (($this->calculateRent($billing) + $billing->incidentals) * $billing->valueAddedTaxRateOnDebt) / 100;
+        $vat =
+            (($this->calculateRent($billing) + $billing->incidentals + $billing->spio) *
+                $billing->valueAddedTaxRateOnDebt) /
+            100;
         $roundedVat = round($vat);
 
         return $roundedVat;
@@ -125,7 +129,11 @@ class BillingService
 
     private function calcaluteDebt($billing)
     {
-        $debt = $this->calculateRent($billing) + $billing->incidentals + $this->calculateValueAddedTaxOnDebt($billing);
+        $debt =
+            $this->calculateRent($billing) +
+            $billing->incidentals +
+            $billing->spio +
+            $this->calculateValueAddedTaxOnDebt($billing);
         $roundedDebt = round($debt);
 
         return $roundedDebt;
