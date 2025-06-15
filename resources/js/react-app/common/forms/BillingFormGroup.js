@@ -9,10 +9,10 @@ import StackInputsRow from './StackInputsRow';
 
 export default function BillingFormGroup({ screening, billing }) {
     const [ticketStackNumbers, setTicketStackNumbers] = useState(
-        billing && billing.ticket_stacks.length ? [...Array(billing.ticket_stacks.length).keys()] : [0]
+        billing && billing.ticket_stacks.length ? [...Array(billing.ticket_stacks.length).keys()] : [0],
     );
     const [passStackNumbers, setPassStackNumbers] = useState(
-        billing && billing.pass_stacks.length ? [...Array(billing.pass_stacks.length).keys()] : [0]
+        billing && billing.pass_stacks.length ? [...Array(billing.pass_stacks.length).keys()] : [0],
     );
 
     return (
@@ -55,6 +55,12 @@ export default function BillingFormGroup({ screening, billing }) {
                             defaultValue={billing ? toEuro(billing.incidentals) : '0,00'}
                         />{' '}
                         €
+                    </NumberInputContainerStyled>
+                </LabelStyled>
+                <LabelStyled>
+                    SPIO
+                    <NumberInputContainerStyled>
+                        <NumberInputStyled name="spio" defaultValue={billing ? toEuro(billing.spio) : '0,00'} /> €
                     </NumberInputContainerStyled>
                 </LabelStyled>
             </FormRowWithFourInputsStyled>

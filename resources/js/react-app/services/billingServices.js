@@ -14,6 +14,7 @@ export function postBilling(data) {
     const fieldsToRemoveDotsFrom = [
         'guarantee',
         'incidentals',
+        'spio',
         'cashInlay',
         'cashOut',
         'additionalEarnings',
