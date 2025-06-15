@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="/js/app.js" defer></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
     <title>aka-Filmclub</title>
     <meta name="description" content="Der aka-Filmclub ist ein studentischer Filmclub an der Universität Freiburg, der ein Hörsaalkino mit buntem Programm betreibt.">
 
