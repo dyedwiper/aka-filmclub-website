@@ -94,14 +94,18 @@ export default function BillingPage() {
                 <KeyStyled>Nebenkosten</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.incidentals)}</ValueStyled>
             </KeyValueContainerStyled>
+            <KeyValueContainerStyled>
+                <KeyStyled>SPIO</KeyStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.spio)}</ValueStyled>
+            </KeyValueContainerStyled>
             <hr />
             <KeyValueContainerStyled>
                 <KeyStyled>Filmmiete</KeyStyled>
                 <ValueStyled>{toEuroWithSymbol(billing.rent)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
-                <KeyStyled>Filmmiete inkl. Nebenkosten</KeyStyled>
-                <ValueStyled>{toEuroWithSymbol(billing.rent + billing.incidentals)}</ValueStyled>
+                <KeyStyled>Filmmiete inkl. Nebenkosten und SPIO</KeyStyled>
+                <ValueStyled>{toEuroWithSymbol(billing.rent + billing.incidentals + billing.spio)}</ValueStyled>
             </KeyValueContainerStyled>
             <KeyValueContainerStyled>
                 <KeyStyled>MwSt ({toGermanString(billing.valueAddedTaxRateOnDebt)} %)</KeyStyled>

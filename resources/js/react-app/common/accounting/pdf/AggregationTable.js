@@ -22,15 +22,20 @@ export default function AggregationTable({ billing }) {
                 <Text style={styles.key}>Filmmiete</Text>
                 <Text style={styles.value}>{toEuroWithSymbol(billing.rent)}</Text>
             </View>
-            <View style={styles.rowWithBorder}>
+            <View style={styles.row}>
                 <Text style={styles.sign}>+</Text>
                 <Text style={styles.key}>Nebenkosten</Text>
                 <Text style={styles.value}>{toEuroWithSymbol(billing.incidentals)}</Text>
             </View>
+            <View style={styles.rowWithBorder}>
+                <Text style={styles.sign}>+</Text>
+                <Text style={styles.key}>SPIO</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.spio)}</Text>
+            </View>
             <View style={styles.row}>
                 <Text style={styles.sign}></Text>
                 <Text style={styles.key}>Zwischensumme</Text>
-                <Text style={styles.value}>{toEuroWithSymbol(billing.rent + billing.incidentals)}</Text>
+                <Text style={styles.value}>{toEuroWithSymbol(billing.rent + billing.incidentals + billing.spio)}</Text>
             </View>
             <View style={styles.rowWithBorder}>
                 <Text style={styles.sign}>+</Text>
