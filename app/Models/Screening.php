@@ -30,7 +30,7 @@ class Screening extends Model
         'serial_id',
         'image_id',
         'preScreeningOf',
-        'rating',
+        'fsk',
     ];
 
     public function image()

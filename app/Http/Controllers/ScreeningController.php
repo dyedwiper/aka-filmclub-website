@@ -156,7 +156,7 @@ class ScreeningController extends Controller
         $screening->serial_id = $request->serialId;
         $screening->preScreeningOf = $request->preScreeningOf;
         $screening->author = $request->author;
-        $screening->rating = $request->rating;
+        $screening->fsk = $request->fsk;
 
         return $screening;
     }

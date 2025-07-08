@@ -87,7 +87,7 @@ export default function ScreeningFormGroup({ screening }) {
                 </SmallInputLabelStyled>
                 <SmallInputLabelStyled>
                     FSK
-                    <InputStyled name="rating" defaultValue={screening && screening.fsk} />
+                    <InputStyled name="fsk" defaultValue={screening && screening.fsk} />
                 </SmallInputLabelStyled>
                 <SmallInputLabelStyled>
                     Veranstaltungsort
