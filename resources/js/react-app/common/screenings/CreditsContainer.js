@@ -83,6 +83,13 @@ export default function CreditsContainer({ film }) {
                     <VerticalLineStyled> | </VerticalLineStyled>
                 </CreditStyled>
             )}
+            {film.fsk && (
+                <CreditStyled>
+                    <KeyStyled>FSK: </KeyStyled>
+                    <ValueStyled>{film.fsk}</ValueStyled>
+                    <VerticalLineStyled> | </VerticalLineStyled>
+                </CreditStyled>
+            )}
         </CreditsContainerStyled>
     );
 }
