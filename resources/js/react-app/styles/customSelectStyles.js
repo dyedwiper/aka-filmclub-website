@@ -57,6 +57,24 @@ export const userStatusSelectStyles = {
     option: customOptionStyles,
 };
 
+
+export const fskRatingSelectStyles = {
+    container: (provided) => ({
+        ...provided,
+        display: 'inline-block',
+        width: '300px',
+        '@media (max-width: 767px)': {
+            width: '100%',
+        },
+    }),
+    control: customControlStyles,
+    dropdownIndicator: customDropdownIndicatorStyles,
+    indicatorSeparator: customIndicatorSeparatorStyles,
+    singleValue: customSingleValueStyles,
+    menu: customMenuStyles,
+    option: customOptionStyles,
+};
+
 export const positionSelectStyles = {
     container: (provided) => ({
         ...provided,
