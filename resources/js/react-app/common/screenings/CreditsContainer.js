@@ -3,7 +3,21 @@ import styled from 'styled-components';
 import { VerticalLineStyled } from '../styledElements';
 import { FSK_RATING_NONE } from '../../constants';
 
+const FSK_RATING_LABELS = {
+  1: '0',
+  2: '6',
+  3: '12',
+  4: '16',
+  5: '18',
+  6: 'ungeprüft',
+};
+
+
 export default function CreditsContainer({ film }) {
+    const fskLabel = film.fsk && film.fsk !== FSK_RATING_NONE
+    ? FSK_RATING_LABELS[film.fsk]
+    : null;
+
     return (
         <CreditsContainerStyled>
             {film.directed_by && (
@@ -84,10 +98,10 @@ export default function CreditsContainer({ film }) {
                     <VerticalLineStyled> | </VerticalLineStyled>
                 </CreditStyled>
             )}
-            {film.fsk && film.fsk !== FSK_RATING_NONE && (
+            {fskLabel && (
                 <CreditStyled>
                     <KeyStyled>FSK: </KeyStyled>
-                    <ValueStyled>{film.fsk}</ValueStyled>
+                    <ValueStyled>{fskLabel}</ValueStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>
                 </CreditStyled>
             )}
