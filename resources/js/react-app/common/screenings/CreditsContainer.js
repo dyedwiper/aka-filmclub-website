@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { VerticalLineStyled } from '../styledElements';
 
+
 export default function CreditsContainer({ film }) {
+
     return (
         <CreditsContainerStyled>
             {film.directed_by && (
@@ -80,6 +82,13 @@ export default function CreditsContainer({ film }) {
                 <CreditStyled>
                     <KeyStyled>Originaltitel: </KeyStyled>
                     <ValueStyled>{film.original_title}</ValueStyled>
+                    <VerticalLineStyled> | </VerticalLineStyled>
+                </CreditStyled>
+            )}
+            {film.fsk && (
+                <CreditStyled>
+                    <KeyStyled>FSK: </KeyStyled>
+                    <ValueStyled>{film.fsk}</ValueStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>
                 </CreditStyled>
             )}

@@ -48,6 +48,7 @@ class ScreeningFormRequest extends FormRequest
             'serialId' => 'nullable|integer',
             'preScreeningOf' => 'nullable|integer',
             'author' => 'max:255',
+            'fsk' => 'max:32',
         ];
     }
 
@@ -75,6 +76,7 @@ class ScreeningFormRequest extends FormRequest
             'serialId' => 'Filmreihe',
             'preScreeningOf' => 'Vorfilm zu',
             'author' => 'Autor*in',
+            'fsk' => 'FSK',
         ];
     }
 
