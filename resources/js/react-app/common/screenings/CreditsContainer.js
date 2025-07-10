@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { VerticalLineStyled } from '../styledElements';
-import { FSK_RATING_NONE } from '../../constants';
-
 
 
 export default function CreditsContainer({ film }) {
- 
+
     return (
         <CreditsContainerStyled>
             {film.directed_by && (
