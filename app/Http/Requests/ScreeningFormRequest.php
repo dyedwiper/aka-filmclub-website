@@ -48,7 +48,7 @@ class ScreeningFormRequest extends FormRequest
             'serialId' => 'nullable|integer',
             'preScreeningOf' => 'nullable|integer',
             'author' => 'max:255',
-            'fsk' => 'integer',
+            'fsk' => 'max:32',
         ];
     }
 
