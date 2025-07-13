@@ -91,7 +91,11 @@ export default function CreditsContainer({ film }) {
                     <KeyStyled>FSK: </KeyStyled>
                     <ValueStyled>
                         {film.fsk}
-                        {film.descriptors && ` (${film.descriptors})`}
+                        {film.descriptors && (
+                            <a href='https://www.fsk.de/zusatzhinweise/'>
+                                {' ('}{film.descriptors}{')'}
+                            </a>
+                    )}
                     </ValueStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>
                 </CreditStyled>
