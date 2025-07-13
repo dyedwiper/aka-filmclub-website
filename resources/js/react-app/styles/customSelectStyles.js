@@ -62,7 +62,7 @@ export const fskRatingSelectStyles = {
     container: (provided) => ({
         ...provided,
         display: 'inline-block',
-        width: '300px',
+        width: '260px',
         '@media (max-width: 767px)': {
             width: '100%',
         },

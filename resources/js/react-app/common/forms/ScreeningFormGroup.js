@@ -88,15 +88,19 @@ export default function ScreeningFormGroup({ screening }) {
                     <InputStyled name="version" defaultValue={screening && screening.version} />
                 </SmallInputLabelStyled>
                 <SmallInputLabelStyled>
-                    FSK
-                    <FskRatingSelect defaultRating={screening && screening.fsk ? screening.fsk : FSK_RATING_NONE} />
-                </SmallInputLabelStyled>
-                <SmallInputLabelStyled>
                     Veranstaltungsort
                     <InputStyled
                         name="venue"
                         defaultValue={screening && screening.venue ? screening.venue : 'GHS Biologie'}
                     />
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
+                    FSK
+                    <FskRatingSelect defaultRating={screening && screening.fsk ? screening.fsk : FSK_RATING_NONE} />
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
+                    FSK-Deskriptoren
+                    <InputStyled name="descriptors" defaultValue={screening && screening.descriptors} />
                 </SmallInputLabelStyled>
             </SmallInputsContainerStyled>
             <LabelStyled>

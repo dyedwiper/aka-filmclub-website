@@ -157,6 +157,7 @@ class ScreeningController extends Controller
         $screening->preScreeningOf = $request->preScreeningOf;
         $screening->author = $request->author;
         $screening->fsk = $request->fsk;
+        $screening->descriptors = $request->descriptors;
 
         return $screening;
     }
