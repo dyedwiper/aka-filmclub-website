@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import { VerticalLineStyled } from '../styledElements';
 import { FSK_RATING_NONE } from '../../constants';
 
-
 export default function CreditsContainer({ film }) {
-
     return (
         <CreditsContainerStyled>
             {film.directed_by && (
@@ -91,11 +89,7 @@ export default function CreditsContainer({ film }) {
                     <KeyStyled>FSK: </KeyStyled>
                     <ValueStyled>
                         {film.fsk}
-                        {film.descriptors && (
-                            <a href='https://www.fsk.de/zusatzhinweise/'>
-                                {' ('}{film.descriptors}{')'}
-                            </a>
-                    )}
+                        {film.descriptors && ` (${film.descriptors})`}
                     </ValueStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>
                 </CreditStyled>
