@@ -100,7 +100,7 @@ export default function ScreeningFormGroup({ screening }) {
                 </SmallInputLabelStyled>
                 <SmallInputLabelStyled>
                     FSK-Deskriptoren
-                    <InputStyled name="descriptors" defaultValue={screening && screening.descriptors} />
+                    <InputStyled name="fskDescriptors" defaultValue={screening && screening.fskDescriptors} />
                 </SmallInputLabelStyled>
             </SmallInputsContainerStyled>
             <LabelStyled>

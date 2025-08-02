@@ -49,7 +49,7 @@ class ScreeningFormRequest extends FormRequest
             'preScreeningOf' => 'nullable|integer',
             'author' => 'max:255',
             'fsk' => 'nullable|max:32',
-            'descriptors' => 'nullable|max:255',
+            'fskDescriptors' => 'nullable|max:255',
         ];
     }
 
@@ -78,7 +78,7 @@ class ScreeningFormRequest extends FormRequest
             'preScreeningOf' => 'Vorfilm zu',
             'author' => 'Autor*in',
             'fsk' => 'FSK',
-            'descriptors' => 'Deskriptoren',
+            'fskDescriptors' => 'Deskriptoren',
         ];
     }
 
