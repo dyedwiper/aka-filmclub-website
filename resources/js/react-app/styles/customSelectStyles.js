@@ -57,7 +57,6 @@ export const userStatusSelectStyles = {
     option: customOptionStyles,
 };
 
-
 export const fskRatingSelectStyles = {
     container: (provided) => ({
         ...provided,

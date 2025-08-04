@@ -24,7 +24,7 @@ export default function fskRatingSelect({ defaultRating }) {
 
     return (
         <ReactSelect
-            name="fsk"
+            name="fskRating"
             options={ratingOptions}
             defaultValue={ratingOptions.find((option) => option.value === defaultRating)}
             styles={fskRatingSelectStyles}

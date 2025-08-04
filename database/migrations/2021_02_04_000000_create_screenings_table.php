@@ -36,7 +36,7 @@ class CreateScreeningsTable extends Migration
             $table->string('special')->nullable();
             $table->text('tercet')->nullable();
             $table->string('author')->nullable();
-            $table->string('fsk')->nullable();
+            $table->string('fskRating')->nullable();
             $table->string('fskDescriptors')->nullable();
             $table->unsignedBigInteger('serial_id')->nullable();
             $table

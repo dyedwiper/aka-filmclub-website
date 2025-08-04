@@ -96,7 +96,9 @@ export default function ScreeningFormGroup({ screening }) {
                 </SmallInputLabelStyled>
                 <SmallInputLabelStyled>
                     FSK
-                    <FskRatingSelect defaultRating={screening && screening.fsk ? screening.fsk : FSK_RATING_NONE} />
+                    <FskRatingSelect
+                        defaultRating={screening && screening.fskRating ? screening.fskRating : FSK_RATING_NONE}
+                    />
                 </SmallInputLabelStyled>
                 <SmallInputLabelStyled>
                     FSK-Deskriptoren

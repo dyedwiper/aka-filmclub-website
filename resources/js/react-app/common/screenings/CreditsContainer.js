@@ -84,11 +84,11 @@ export default function CreditsContainer({ film }) {
                     <VerticalLineStyled> | </VerticalLineStyled>
                 </CreditStyled>
             )}
-            {film.fsk && film.fsk !== FSK_RATING_NONE && (
+            {film.fskRating && film.fskRating !== FSK_RATING_NONE && (
                 <CreditStyled>
                     <KeyStyled>FSK: </KeyStyled>
                     <ValueStyled>
-                        {film.fsk}
+                        {film.fskRating}
                         {film.fskDescriptors && ` (${film.fskDescriptors})`}
                     </ValueStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>
