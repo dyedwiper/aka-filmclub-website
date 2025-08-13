@@ -59,6 +59,15 @@ export const USER_STATUS_ACTIVE_NAME = 'Aktiv';
 export const USER_STATUS_PAUSED_NAME = 'Pausierend/Unklar';
 export const USER_STATUS_ALUMNI_NAME = 'Akalumni';
 
+// FSK rating enum
+export const FSK_RATING_NONE = 'keine Angabe';
+export const FSK_RATING_0 = '0';
+export const FSK_RATING_6 = '6';
+export const FSK_RATING_12 = '12';
+export const FSK_RATING_16 = '16';
+export const FSK_RATING_18 = '18';
+export const FSK_RATING_NOT_RATED = 'ungeprüft';
+
 // Frontend routes
 // Routes with another parameter must have a trailing slash.
 export const ROUTE_HOME = '/';

@@ -4,6 +4,8 @@ import { formatToIsoDateString, formatToTimeString } from '../../utils/dateForma
 import ScreeningSelect from './ScreeningSelect';
 import SerialSelect from './SerialSelect';
 import WysiwygFormInput from './WysiwygFormInput';
+import { FSK_RATING_NONE } from '../../constants';
+import FskRatingSelect from './FskRatingSelect';
 
 export default function ScreeningFormGroup({ screening }) {
     return (
@@ -91,6 +93,16 @@ export default function ScreeningFormGroup({ screening }) {
                         name="venue"
                         defaultValue={screening && screening.venue ? screening.venue : 'GHS Biologie'}
                     />
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
+                    FSK
+                    <FskRatingSelect
+                        defaultRating={screening && screening.fskRating ? screening.fskRating : FSK_RATING_NONE}
+                    />
+                </SmallInputLabelStyled>
+                <SmallInputLabelStyled>
+                    FSK-Deskriptoren
+                    <InputStyled name="fskDescriptors" defaultValue={screening && screening.fskDescriptors} />
                 </SmallInputLabelStyled>
             </SmallInputsContainerStyled>
             <LabelStyled>

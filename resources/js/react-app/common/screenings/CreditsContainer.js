@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { VerticalLineStyled } from '../styledElements';
+import { FSK_RATING_NONE } from '../../constants';
 
 export default function CreditsContainer({ film }) {
     return (
@@ -80,6 +81,16 @@ export default function CreditsContainer({ film }) {
                 <CreditStyled>
                     <KeyStyled>Originaltitel: </KeyStyled>
                     <ValueStyled>{film.original_title}</ValueStyled>
+                    <VerticalLineStyled> | </VerticalLineStyled>
+                </CreditStyled>
+            )}
+            {film.fskRating && film.fskRating !== FSK_RATING_NONE && (
+                <CreditStyled>
+                    <KeyStyled>FSK: </KeyStyled>
+                    <ValueStyled>
+                        {film.fskRating}
+                        {film.fskDescriptors && ` (${film.fskDescriptors})`}
+                    </ValueStyled>
                     <VerticalLineStyled> | </VerticalLineStyled>
                 </CreditStyled>
             )}
