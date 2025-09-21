@@ -64,13 +64,13 @@ export default function Header() {
 
     return (
         <HeaderStyled>
-            <ContentContainerStyled headerHeight={headerHeight}>
+            <ContentContainerStyled $headerHeight={headerHeight}>
                 <LinkStyled to={ROUTE_HOME} aria-label="Home">
-                    <LogoStyled src={akaLogo} alt="Logo des aka-Filmclub" headerHeight={headerHeight} />
+                    <LogoStyled src={akaLogo} alt="Logo des aka-Filmclub" $headerHeight={headerHeight} />
                 </LinkStyled>
                 <PageTitleStyled onClick={() => window.scroll(0, 0)}>{pageTitle}</PageTitleStyled>
                 <HamburgerButton isNavOpen={isNavOpen} setIsNavOpen={setIsNavOpen} />
-                <NavStyled isNavOpen={isNavOpen}>
+                <NavStyled $isNavOpen={isNavOpen}>
                     <DropdownContainerStyled>
                         <NavLinkStyled to={ROUTE_NEWS} onClick={() => setIsNavOpen(false)}>
                             {PAGE_TITLE_NEWS}
@@ -259,7 +259,7 @@ const ContentContainerStyled = styled.div`
     display: grid;
     grid-template-columns: 180px 1fr;
     align-items: center;
-    height: ${(props) => props.headerHeight + 'px'};
+    height: ${(props) => props.$headerHeight + 'px'};
     max-width: 1024px;
     padding: 0 20px;
     margin: 0 auto;
@@ -280,7 +280,7 @@ const LinkStyled = styled(Link)`
 `;
 
 const LogoStyled = styled.img`
-    height: ${(props) => props.headerHeight - 20 + 'px'};
+    height: ${(props) => props.$headerHeight - 20 + 'px'};
     filter: none;
 
     @media (max-width: 767px) {
@@ -307,7 +307,7 @@ const NavStyled = styled.nav`
     background-color: white;
 
     @media (max-width: 767px) {
-        display: ${(props) => (props.isNavOpen ? 'block' : 'none')};
+        display: ${(props) => (props.$isNavOpen ? 'block' : 'none')};
         position: absolute;
         top: 60px;
         overflow: auto;
