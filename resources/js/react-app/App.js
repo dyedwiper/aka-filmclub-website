@@ -121,16 +121,16 @@ export default function App() {
 
     useEffect(() => {
         getCurrentUser().then((res) => {
-            setUser(res.data);
+            const currentUser = res.data;
+            if (currentUser) {
+                setUser(currentUser);
+                setIsUserLoggedIn(true);
+                setIsUserEditor(currentUser.level >= AUTH_LEVEL_EDITOR);
+                setIsUserAdmin(currentUser.level >= AUTH_LEVEL_ADMIN);
+            }
             setIsLoading(false);
         });
     }, []);
-
-    useEffect(() => {
-        setIsUserLoggedIn(Object.keys(user).length !== 0);
-        setIsUserEditor(user.level >= AUTH_LEVEL_EDITOR);
-        setIsUserAdmin(user.level >= AUTH_LEVEL_ADMIN);
-    }, [user]);
 
     useEffect(() => {
         setCurrentSemester(computeSemester(new Date()));
@@ -150,8 +150,11 @@ export default function App() {
                     user,
                     setUser,
                     isUserLoggedIn,
+                    setIsUserLoggedIn,
                     isUserEditor,
+                    setIsUserEditor,
                     isUserAdmin,
+                    setIsUserAdmin,
                     pageTitle,
                     setPageTitle,
                     currentSemester,

@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import magicGif from '../assets/ahahah.gif';
 import BasePage from '../common/BasePage';
-import { PAGE_TITLE_LOGIN } from '../constants';
+import { AUTH_LEVEL_ADMIN, AUTH_LEVEL_EDITOR, PAGE_TITLE_LOGIN } from '../constants';
 import Context from '../Context';
 import { getCsrfCookie, postLogin } from '../services/userServices';
 
@@ -11,7 +11,7 @@ export default function LoginPage() {
     const [didLoginFail, setDidLoginFail] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const { setUser } = useContext(Context);
+    const { setUser, setIsUserLoggedIn, setIsUserEditor, setIsUserAdmin } = useContext(Context);
 
     let history = useHistory();
 
@@ -44,7 +44,11 @@ export default function LoginPage() {
         getCsrfCookie().then(() => {
             postLogin(formData)
                 .then((res) => {
-                    setUser(res.data);
+                    const user = res.data;
+                    setUser(user);
+                    setIsUserLoggedIn(true);
+                    setIsUserEditor(user.level >= AUTH_LEVEL_EDITOR);
+                    setIsUserAdmin(user.level >= AUTH_LEVEL_ADMIN);
                     history.push('/intern');
                 })
                 .catch((err) => {

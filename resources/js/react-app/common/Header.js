@@ -55,7 +55,17 @@ export default function Header() {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [headerHeight, setHeaderHeight] = useState(120);
 
-    const { user, setUser, isUserLoggedIn, isUserEditor, isUserAdmin, pageTitle } = useContext(Context);
+    const {
+        user,
+        setUser,
+        isUserLoggedIn,
+        setIsUserLoggedIn,
+        isUserEditor,
+        setIsUserEditor,
+        isUserAdmin,
+        setIsUserAdmin,
+        pageTitle,
+    } = useContext(Context);
 
     window.addEventListener('scroll', () => {
         const height = window.scrollY < 160 ? 120 - window.scrollY / 4 : 80;
@@ -243,6 +253,9 @@ export default function Header() {
     function handleLogout() {
         getLogout().then(() => {
             setUser({});
+            setIsUserLoggedIn(false);
+            setIsUserEditor(false);
+            setIsUserAdmin(false);
         });
     }
 }
