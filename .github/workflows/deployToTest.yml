@@ -19,5 +19,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: '.'
-          target: '/html/foo.aka-filmclub.de'
+          target: '~/html/foo.aka-filmclub.de'
           overwrite: true
