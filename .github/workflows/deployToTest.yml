@@ -20,3 +20,4 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           source: '.'
           target: '/html/test.aka-filmclub.de'
+          overwrite: true
