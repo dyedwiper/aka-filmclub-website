@@ -1,4 +1,5 @@
 /node_modules
+/vendor
 /public/js
 /public/mix-manifest.json
 /public/images
