@@ -11,6 +11,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: 'package.json'
+
+      - run: npm ci
+
+      - run: npm run prod
+
       - name: Copy files via SSH
         uses: appleboy/scp-action@v1
         with:
