@@ -1,14 +1,19 @@
 name: Build and deploy
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
-      domain:
-        required: true
-        type: string
       ref:
         required: true
         type: string
+        default: 'main'
+      domain:
+        required: true
+        type: string
+        options:
+          - 'test.aka-filmclub.com'
+          - 'aka-filmclub.com'
+        default: 'test.aka-filmclub.com'
 
 jobs:
   build-and-deploy:
