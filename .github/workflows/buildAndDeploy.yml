@@ -6,6 +6,9 @@ on:
       domain:
         required: true
         type: string
+      ref:
+        required: true
+        type: string
 
 jobs:
   build-and-deploy:
@@ -13,6 +16,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.ref }}
 
       - uses: actions/setup-node@v5
         with:
