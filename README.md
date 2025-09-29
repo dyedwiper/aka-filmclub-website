@@ -35,12 +35,13 @@ Wenn Docker installiert ist, kann die App eingerichtet werden. Dazu sind folgend
 
 <!-- Prettier formatiert die Unterstriche in Punkt 3 falsch. Und man kann nur die ganze Liste ignorieren. -->
 <!-- prettier-ignore -->
-1.  Auf oberster Ebene im Repository eine Datei _.env_ anlegen und den Inhalt von _.env.example_ in die Datei kopieren. Erklärungen finden sich [hier](https://laravel.com/docs/11.x#environment-based-configuration) und [hier](https://laravel.com/docs/11.x/configuration) in der Laravel-Doku.
-2.  `sail up` ausführen und die Container laufen lassen.
-3.  `sail artisan key:generate` ausführen, um einen  APP_KEY in _.env_ einzutragen.
-4.  `sail artisan migrate` ausführen, um die Datenbank-Tabellen zu erstellen.
-5.  `sail artisan db:seed` ausführen, um einige notwendige Werte in die Datenbank zu schreiben. Dadurch werden auch die User "armin", "edith", und "otto" erzeugt - jeweils mit gleichlautendem Passwort.
-6.  `sail artisan storage:link` ausführen, um die Interaktion mit dem Dateisystem einzurichten, siehe [hier](https://laravel.com/docs/11.x/filesystem#the-public-disk).
+1.  Den [hier](https://laravel.com/docs/11.x/sail#installing-composer-dependencies-for-existing-projects) genannten Befehl ausführen, um die benötigten Composer Dependencys zu installieren. (Die Auswahl der richtigen PHP-Version beachten!)
+2.  Auf oberster Ebene im Repository eine Datei _.env_ anlegen und den Inhalt von _.env.example_ in die Datei kopieren. Erklärungen finden sich [hier](https://laravel.com/docs/11.x#environment-based-configuration) und [hier](https://laravel.com/docs/11.x/configuration) in der Laravel-Doku.
+3.  `sail up` ausführen und die Container laufen lassen.
+4.  `sail artisan key:generate` ausführen, um einen  APP_KEY in _.env_ einzutragen.
+5.  `sail artisan migrate` ausführen, um die Datenbank-Tabellen zu erstellen.
+6.  `sail artisan db:seed` ausführen, um einige notwendige Werte in die Datenbank zu schreiben. Dadurch werden auch die User "armin", "edith", und "otto" erzeugt - jeweils mit gleichlautendem Passwort.
+7.  `sail artisan storage:link` ausführen, um die Interaktion mit dem Dateisystem einzurichten, siehe [hier](https://laravel.com/docs/11.x/filesystem#the-public-disk).
 
 Jetzt sollte die App unter http://localhost erreichbar sein und funktionieren.
 
@@ -52,19 +53,7 @@ Falls die [Verbindung zum Forum](#verbindung-zum-forum) lokal getestet werden so
 
 #### Versionsverwaltung mit Git
 
-Zur Versionsverwaltung wird [Git](https://git-scm.com/) verwendet. Im Folgenden sind ein paar Besonderheiten beschrieben.
-
-##### _vendor_-Ordner
-
-Normalerweise würde man einen Ordner mit Fremd-Bibliotheken wie den _vendor_-Ordner nicht in die Versionsverwaltung einchecken. Das ist hier aber nötig, weil die App direkt über Git auf den Webserver des Web-Hosts geladen wird und es dort keine Möglichkeit gibt, die Bibliotheken wiederherzustellen (weil z.B. Composer nicht auf dem Webserver installiert ist).
-
-##### Kompiliertes Frontend
-
-Die Datei _public/js/app.js_, die das kompilierte Frontend enthält, würde man eigentlich auch nicht mit einchecken. Dass es dennoch so ist, hat einen ähnlichen Grund wie beim _vendor_-Ordner: Es gibt keine Möglichkeit die Datei auf dem Webserver zu kompilieren.
-
-##### Branches
-
-Der Hauptbranch heißt _main_. In diesem liegt der produktive Code, d.h. es dürfen keine Zwischenstände auf _main_ commited werden. Außerdem muss in _main_ immer das mit `npm run prod` gebaute Frontend liegen.
+Der Hauptbranch heißt _main_. In diesem liegt der produktive Code, d.h. es dürfen keine Zwischenstände auf _main_ commited werden.
 
 Für größere Entwicklungen sollte ein feature-Branch abgezweigt und über einen Pull Request bei GitHub gemerget werden.
 
@@ -76,13 +65,7 @@ Node.js und npm sind im Sail-Container installiert. Der Einfachheit halber empfi
 
 Vor dem erstmaligen Verwenden der App muss einmal der Befehl `npm install` ausgeführt werden.
 
-Die anderen für diese App relevanten npm-Befehle (die sich auch in der _package.json_ finden) sind:
-
--   `npm run dev`: Kompiliert das Frontend.
--   `npm run watch`: Überwacht Änderungen im Code und kompiliert das Frontend automatisch bei jeder Änderung.
--   `npm run prod`: Kompiliert das Frontend und minifiziert das Output-File.
-
-**Wichtig:** Vor einem Commit in den _main_-Branch muss immer `npm run prod` ausgeführt werden.
+Die anderen für die App relevanten npm-Befehle finden sich in der _package.json_.
 
 ## Backend
 
@@ -163,17 +146,17 @@ Das Gerüst der React-App lehnt sich an das Gerüst an, das standardmäßig von 
 
 ### Verwendete React-Funktionalität
 
-Die React-App ist mit [React Function Components](https://www.robinwieruch.de/react-function-component/) und [Hooks](https://reactjs.org/docs/hooks-intro.html) geschrieben. (Achtung vor Verwirrung: Viele Beispiele in der React-Dokumentation beziehen sich noch auf React Class Components.)
+Die React-App ist mit [React Function Components](https://www.robinwieruch.de/react-function-component/) und [Hooks](https://reactjs.org/docs/hooks-intro.html) geschrieben.
 
-Um Werte in der ganzen App verfügbar zu machen, werden [Context](https://reactjs.org/docs/hooks-intro.html) und der [useContext-Hook](https://reactjs.org/docs/hooks-reference.html#usecontext) verwendet.
+Um State in der ganzen App verfügbar zu machen, werden [Context](https://reactjs.org/docs/hooks-intro.html) und der [useContext-Hook](https://reactjs.org/docs/hooks-reference.html#usecontext) verwendet.
 
 ### Verwendete React-Erweiterungen
 
--   Zum Frontend-Routing verwendet die App [React Router](https://v5.reactrouter.com/web/guides/quick-start). Das Routing findet in der App-Komponente statt.
+-   Zum Frontend-Routing wird [React Router](https://v5.reactrouter.com/web/guides/quick-start) verwendet. Das Routing findet in der App-Komponente statt.
 
--   Fürs CSS-Styling verwendet die App [Styled Components](https://styled-components.com/) und hier insbesondere auch [GlobalStyles](https://scalablecss.com/styled-components-global-styles/).
+-   Fürs CSS-Styling wird [Styled Components](https://styled-components.com/) und hier insbesondere auch [GlobalStyles](https://scalablecss.com/styled-components-global-styles/) verwendet.
 
--   Zur Erzeugung von PDFs verwendet die App [React PDF](https://react-pdf.org/).
+-   Zur Erzeugung von PDFs wird [React PDF](https://react-pdf.org/) verwendet.
 
 -   Für die WYSIWYG-Editoren wird [React Draft Wysiwyg](https://github.com/jpuri/react-draft-wysiwyg) verwendet.
 
@@ -207,11 +190,11 @@ Die Favicons (einschließlich diverser Icons für spezielle Betriebssysteme und 
 
 ### Kommentare
 
-Manche Kommentare im Code sind auf deutsch, manche auf englisch. Das ist aus Unachtsamkeit entstanden und hat keine Bedeutung, wäre aber zu viel Aufwand zu vereinheitlichen.
+Manche Kommentare im Code sind auf deutsch, manche auf englisch. Das ist aus Unachtsamkeit entstanden und hat keine Bedeutung.
 
 ### Uneinheitlicher Case
 
-Eigentlich wird in der App überall camelCase oder PascalCase verwendet, aber an einigen Stellen taucht auch snake_case auf. Das liegt daran, dass die Benamung von einigen Datenbank-Spalten durcheinander gegangen ist. Der unterschiedliche Case hat keine Bedeutung; es wäre aber zu viel Aufwand ihn zu vereinheitlichen.
+Eigentlich wird in der App überall camelCase oder PascalCase verwendet, aber an einigen Stellen taucht auch snake_case auf. Das liegt daran, dass die Benamung von einigen Datenbank-Spalten durcheinander gegangen ist. Der unterschiedliche Case hat keine Bedeutung.
 
 ### Testen der API mit Postman
 
