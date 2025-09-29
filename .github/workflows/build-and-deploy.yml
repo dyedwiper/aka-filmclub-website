@@ -1,7 +1,10 @@
-name: Deploy to test.aka-filmclub.de
-
+name: Build and deploy
 on:
-  workflow_dispatch:
+  workflow_call:
+    inputs:
+      domain:
+        required: true
+        type: string
 
 jobs:
   build-and-deploy:
@@ -32,5 +35,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: '.'
-          target: '~/html/test.aka-filmclub.de'
+          target: '~/html/${{ inputs.domain }}'
           overwrite: true
