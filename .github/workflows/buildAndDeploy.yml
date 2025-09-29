@@ -1,0 +1,52 @@
+name: Build and deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'The branch, tag or SHA to deploy'
+        required: true
+        type: string
+        default: 'main'
+      domain:
+        description: 'The domain to deploy to'
+        required: true
+        type: string
+        options:
+          - 'test.aka-filmclub.com'
+          - 'aka-filmclub.com'
+        default: 'test.aka-filmclub.com'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ inputs.ref }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: 'package.json'
+
+      - run: npm ci
+
+      - run: npm run prod
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+
+      - uses: 'ramsey/composer-install@v3'
+
+      - name: Copy files via SSH
+        uses: appleboy/scp-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          source: '.'
+          target: '~/html/${{ inputs.domain }}'
+          overwrite: true
