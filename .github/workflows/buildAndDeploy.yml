@@ -1,4 +1,5 @@
 name: Build and deploy
+run-name: Build and deploy ${{ inputs.ref }} to ${{ inputs.domain }}
 
 on:
   workflow_dispatch:
