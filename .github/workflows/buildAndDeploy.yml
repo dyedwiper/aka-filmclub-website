@@ -11,7 +11,7 @@ on:
       domain:
         description: 'The domain to deploy to'
         required: true
-        type: string
+        type: choice
         options:
           - 'test.aka-filmclub.com'
           - 'aka-filmclub.com'
