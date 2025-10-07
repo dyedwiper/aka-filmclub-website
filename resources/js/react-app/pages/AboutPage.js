@@ -7,6 +7,7 @@ import { PAGE_TITLE_ABOUT } from '../constants';
 import { getText } from '../services/textServices';
 
 export default function AboutPage() {
+    // foo
     const [text, setText] = useState('');
 
     useEffect(() => {
