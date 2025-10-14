@@ -315,7 +315,7 @@ const NavStyled = styled.nav`
         height: calc(100vh - 60px);
         width: 100vw;
         padding: 20px;
-        padding-bottom: 50px;
+        padding-bottom: 100px;
         background-color: var(--aka-gelb);
         opacity: 0.9;
         text-align: right;
