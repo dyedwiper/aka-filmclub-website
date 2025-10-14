@@ -14,9 +14,9 @@ on:
         required: true
         type: choice
         options:
-          - 'test.aka-filmclub.com'
-          - 'aka-filmclub.com'
-        default: 'test.aka-filmclub.com'
+          - 'test.aka-filmclub.de'
+          - 'aka-filmclub.de'
+        default: 'test.aka-filmclub.de'
 
 jobs:
   build-and-deploy:
