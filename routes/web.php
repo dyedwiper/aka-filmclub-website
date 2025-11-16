@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('files/{filename}', function ($filename) {
-    return response()->file($filename);
-});
-
 Route::get('/{path}', function () {
     return view('index');
 })->where('path', '^(?!api).*');
