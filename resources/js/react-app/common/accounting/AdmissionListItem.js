@@ -22,12 +22,12 @@ export default function AdmissionListItem({ screening, isUserEditor }) {
                     <PassesStyled title="Verkaufte Ausweise">{'(' + screening.billing.passesCount + ')'}</PassesStyled>
                     <BalanceStyled
                         title="Einnahmen aus Ticketverkauf minus Filmmiete und Nebenkosten und sonstige Einnahmen/Ausgaben (ohne Mehrwertsteuer wegen Erstattung)"
-                        isNegative={screening.billing.balance < 0}
+                        $isNegative={screening.billing.balance < 0}
                     >
                         {toEuroWithSymbol(screening.billing.balance)}
                     </BalanceStyled>
                     <DiagramContainerStyled>
-                        <DiagramStyled admissions={screening.billing.ticketsCount + screening.billing.freeTickets} />
+                        <DiagramStyled $admissions={screening.billing.ticketsCount + screening.billing.freeTickets} />
                     </DiagramContainerStyled>
                 </>
             ) : (
@@ -36,7 +36,7 @@ export default function AdmissionListItem({ screening, isUserEditor }) {
                     <PassesStyled>?</PassesStyled>
                     <BalanceStyled>?</BalanceStyled>
                     <DiagramContainerStyled>
-                        <DiagramStyled admissions={0} />
+                        <DiagramStyled $admissions={0} />
                     </DiagramContainerStyled>
                 </>
             )}
@@ -80,7 +80,7 @@ const BalanceStyled = styled.div`
     margin-right: 10px;
     text-align: right;
     font-weight: bold;
-    color: ${(props) => props.isNegative && 'var(--aka-red)'};
+    color: ${(props) => props.$isNegative && 'var(--aka-red)'};
 `;
 
 const DiagramContainerStyled = styled.div`
@@ -90,7 +90,7 @@ const DiagramContainerStyled = styled.div`
 `;
 
 const DiagramStyled = styled.div`
-    width: ${(props) => (props.admissions / NUMBER_OF_SEEDS_IN_GHS_BIO) * 100 + '%'};
+    width: ${(props) => (props.$admissions / NUMBER_OF_SEEDS_IN_GHS_BIO) * 100 + '%'};
     height: 10px;
     background-color: var(--aka-gelb);
 `;

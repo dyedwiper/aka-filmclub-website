@@ -6,12 +6,13 @@ import BasePage from '../common/BasePage';
 import { PAGE_TITLE_LOGIN } from '../constants';
 import Context from '../Context';
 import { getCsrfCookie, postLogin } from '../services/userServices';
+import { isAdmin, isEditor } from '../utils/userUtils';
 
 export default function LoginPage() {
     const [didLoginFail, setDidLoginFail] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
 
-    const { setUser } = useContext(Context);
+    const { setUser, setIsUserLoggedIn, setIsUserEditor, setIsUserAdmin } = useContext(Context);
 
     let history = useHistory();
 
@@ -44,7 +45,11 @@ export default function LoginPage() {
         getCsrfCookie().then(() => {
             postLogin(formData)
                 .then((res) => {
-                    setUser(res.data);
+                    const user = res.data;
+                    setUser(user);
+                    setIsUserLoggedIn(true);
+                    setIsUserEditor(isEditor(user));
+                    setIsUserAdmin(isAdmin(user));
                     history.push('/intern');
                 })
                 .catch((err) => {

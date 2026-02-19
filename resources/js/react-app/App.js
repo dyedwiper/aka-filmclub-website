@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from './common/Footer';
 import Header from './common/Header';
 import PrivateRoute from './common/PrivateRoute';
 import ScrollToTop from './common/ScrollToTop';
 import {
-    AUTH_LEVEL_ADMIN,
-    AUTH_LEVEL_EDITOR,
     ROUTE_ABOUT,
     ROUTE_ARCHIVE,
     ROUTE_AWARDS,
@@ -107,11 +105,12 @@ import ScreeningPage from './pages/ScreeningPage';
 import SelfmadeFilmsPage from './pages/SelfmadeFilmsPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
-import { computeSemester } from './utils/semesterUtils';
 import { getCurrentUser } from './services/userServices';
+import { computeSemester } from './utils/semesterUtils';
+import { isAdmin, isEditor } from './utils/userUtils';
 
 export default function App() {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [isUserEditor, setIsUserEditor] = useState(false);
     const [isUserAdmin, setIsUserAdmin] = useState(false);
@@ -121,16 +120,16 @@ export default function App() {
 
     useEffect(() => {
         getCurrentUser().then((res) => {
-            setUser(res.data);
+            const currentUser = res.data;
+            if (currentUser) {
+                setUser(currentUser);
+                setIsUserLoggedIn(true);
+                setIsUserEditor(isEditor(currentUser));
+                setIsUserAdmin(isAdmin(currentUser));
+            }
             setIsLoading(false);
         });
     }, []);
-
-    useEffect(() => {
-        setIsUserLoggedIn(Object.keys(user).length !== 0);
-        setIsUserEditor(user.level >= AUTH_LEVEL_EDITOR);
-        setIsUserAdmin(user.level >= AUTH_LEVEL_ADMIN);
-    }, [user]);
 
     useEffect(() => {
         setCurrentSemester(computeSemester(new Date()));
@@ -150,8 +149,11 @@ export default function App() {
                     user,
                     setUser,
                     isUserLoggedIn,
+                    setIsUserLoggedIn,
                     isUserEditor,
+                    setIsUserEditor,
                     isUserAdmin,
+                    setIsUserAdmin,
                     pageTitle,
                     setPageTitle,
                     currentSemester,
