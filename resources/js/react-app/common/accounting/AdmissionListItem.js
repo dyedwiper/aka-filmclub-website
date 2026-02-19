@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import billingIcon from '../../assets/billing_icon.png';
 import {
     NUMBER_OF_SEEDS_IN_GHS_BIO,
     ROUTE_INTERN_ADD_BILLING,
     ROUTE_INTERN_BILLING,
     ROUTE_SCREENING,
 } from '../../constants';
+import Context from '../../Context';
 import { formatToDateTimeString } from '../../utils/dateFormatters';
-import billingIcon from '../../assets/billing_icon.png';
 import { toEuroWithSymbol } from '../../utils/moneyUtils';
 
-export default function AdmissionListItem({ screening, isUserEditor }) {
+export default function AdmissionListItem({ screening }) {
+    const { isUserEditor } = useContext(Context);
+
     return (
         <ListItemStyled>
             {screening.billing ? (
