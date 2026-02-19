@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 import Footer from './common/Footer';
 import Header from './common/Header';
 import PrivateRoute from './common/PrivateRoute';
 import ScrollToTop from './common/ScrollToTop';
 import {
-    AUTH_LEVEL_ADMIN,
-    AUTH_LEVEL_EDITOR,
     ROUTE_ABOUT,
     ROUTE_ARCHIVE,
     ROUTE_AWARDS,
@@ -107,8 +105,9 @@ import ScreeningPage from './pages/ScreeningPage';
 import SelfmadeFilmsPage from './pages/SelfmadeFilmsPage';
 import SerialPage from './pages/SerialPage';
 import SerialsPage from './pages/SerialsPage';
-import { computeSemester } from './utils/semesterUtils';
 import { getCurrentUser } from './services/userServices';
+import { computeSemester } from './utils/semesterUtils';
+import { isAdmin, isEditor } from './utils/userUtils';
 
 export default function App() {
     const [user, setUser] = useState();
@@ -125,8 +124,8 @@ export default function App() {
             if (currentUser) {
                 setUser(currentUser);
                 setIsUserLoggedIn(true);
-                setIsUserEditor(currentUser.level >= AUTH_LEVEL_EDITOR);
-                setIsUserAdmin(currentUser.level >= AUTH_LEVEL_ADMIN);
+                setIsUserEditor(isEditor(currentUser));
+                setIsUserAdmin(isAdmin(currentUser));
             }
             setIsLoading(false);
         });

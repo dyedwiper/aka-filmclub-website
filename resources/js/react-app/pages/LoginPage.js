@@ -3,9 +3,10 @@ import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 import magicGif from '../assets/ahahah.gif';
 import BasePage from '../common/BasePage';
-import { AUTH_LEVEL_ADMIN, AUTH_LEVEL_EDITOR, PAGE_TITLE_LOGIN } from '../constants';
+import { PAGE_TITLE_LOGIN } from '../constants';
 import Context from '../Context';
 import { getCsrfCookie, postLogin } from '../services/userServices';
+import { isAdmin, isEditor } from '../utils/userUtils';
 
 export default function LoginPage() {
     const [didLoginFail, setDidLoginFail] = useState(false);
@@ -47,8 +48,8 @@ export default function LoginPage() {
                     const user = res.data;
                     setUser(user);
                     setIsUserLoggedIn(true);
-                    setIsUserEditor(user.level >= AUTH_LEVEL_EDITOR);
-                    setIsUserAdmin(user.level >= AUTH_LEVEL_ADMIN);
+                    setIsUserEditor(isEditor(user));
+                    setIsUserAdmin(isAdmin(user));
                     history.push('/intern');
                 })
                 .catch((err) => {
