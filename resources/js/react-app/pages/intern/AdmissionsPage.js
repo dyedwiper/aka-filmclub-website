@@ -16,7 +16,7 @@ export default function AdmissionsPage() {
     const [semester, setSemester] = useState({});
     const [isLoading, setIsLoading] = useState(true);
 
-    const { currentSemester } = useContext(Context);
+    const { isUserEditor, currentSemester } = useContext(Context);
 
     let history = useHistory();
 
@@ -54,7 +54,11 @@ export default function AdmissionsPage() {
                         <>
                             <ListStyled>
                                 {screenings.map((screening) => (
-                                    <AdmissionListItem key={screening.id} screening={screening} />
+                                    <AdmissionListItem
+                                        key={screening.id}
+                                        screening={screening}
+                                        isUserEditor={isUserEditor}
+                                    />
                                 ))}
                             </ListStyled>
                             <hr />
