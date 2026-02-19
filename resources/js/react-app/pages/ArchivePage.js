@@ -69,7 +69,7 @@ export default function ArchivePage() {
                 <div>Loading</div>
             ) : (
                 <>
-                    {!screenings.length && <NoItemsHint>In jenem Semester gab es keine Vorführungen.</NoItemsHint>}
+                    {!screenings.length && <NoItemsHint>In diesem Semester gab es keine Vorführungen.</NoItemsHint>}
                     <ListStyled>
                         {screenings.map((screening) => (
                             <ScreeningsListItem key={screening.id} screening={screening} />
