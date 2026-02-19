@@ -111,7 +111,7 @@ import { computeSemester } from './utils/semesterUtils';
 import { getCurrentUser } from './services/userServices';
 
 export default function App() {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState();
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [isUserEditor, setIsUserEditor] = useState(false);
     const [isUserAdmin, setIsUserAdmin] = useState(false);

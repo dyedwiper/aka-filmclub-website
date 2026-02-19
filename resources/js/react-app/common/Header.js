@@ -252,7 +252,7 @@ export default function Header() {
 
     function handleLogout() {
         getLogout().then(() => {
-            setUser({});
+            setUser();
             setIsUserLoggedIn(false);
             setIsUserEditor(false);
             setIsUserAdmin(false);
