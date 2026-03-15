@@ -48,6 +48,6 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          source: '.'
+          source: 'app,bootstrap,config,public,resources,routes,storage,vendor'
           target: '~/html/${{ inputs.domain }}'
           overwrite: true
