@@ -26,7 +26,7 @@ const ListStyled = styled.ul`
 const ListItemStyled = styled.li`
     display: inline;
 
-    :last-child span {
+    &:last-child > span {
         display: none;
     }
 `;
