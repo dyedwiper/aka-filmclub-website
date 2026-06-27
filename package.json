@@ -2,8 +2,8 @@
     "name": "aka-filmclub-website-frontend",
     "private": true,
     "engines": {
-        "node": "22",
-        "npm": ">=10"
+        "node": "24",
+        "npm": "11"
     },
     "scripts": {
         "dev": "npm run development",
@@ -29,7 +29,7 @@
     },
     "dependencies": {
         "@react-pdf/renderer": "^4.3.0",
-        "axios": "^1.8.3",
+        "axios": "^1.15.0",
         "browserify-zlib": "^0.2.0",
         "draft-js": "^0.11.7",
         "draftjs-to-html": "^0.9.1",
@@ -74,15 +74,7 @@
             "@prettier/plugin-php"
         ]
     },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version"
-        ]
-    }
+    "browserslist": [
+        "defaults"
+    ]
 }
