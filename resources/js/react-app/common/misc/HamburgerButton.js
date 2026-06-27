@@ -4,10 +4,10 @@ import styled from 'styled-components';
 export default function HamburgerButton({ isNavOpen, setIsNavOpen }) {
     return (
         <HamburgerButtonStyled onClick={() => setIsNavOpen(!isNavOpen)} aria-label="Navigation">
-            <HamburgerStyled isNavOpen={isNavOpen}>
-                <LineStyled isNavOpen={isNavOpen} />
-                <LineStyled isNavOpen={isNavOpen} />
-                <LineStyled isNavOpen={isNavOpen} />
+            <HamburgerStyled $isNavOpen={isNavOpen}>
+                <LineStyled $isNavOpen={isNavOpen} />
+                <LineStyled $isNavOpen={isNavOpen} />
+                <LineStyled $isNavOpen={isNavOpen} />
             </HamburgerStyled>
         </HamburgerButtonStyled>
     );
@@ -44,14 +44,14 @@ const LineStyled = styled.div`
 
     &:nth-child(1) {
         top: 7.5px;
-        transform: ${(props) => (props.isNavOpen ? 'translateY(10px) rotate(-45deg)' : 'none')};
+        transform: ${(props) => (props.$isNavOpen ? 'translateY(10px) rotate(-45deg)' : 'none')};
     }
     &:nth-child(2) {
         top: 17.5px;
-        opacity: ${(props) => (props.isNavOpen ? '0' : '1')};
+        opacity: ${(props) => (props.$isNavOpen ? '0' : '1')};
     }
     &:nth-child(3) {
         top: 27.5px;
-        transform: ${(props) => (props.isNavOpen ? 'translateY(-10px) rotate(45deg)' : 'none')};
+        transform: ${(props) => (props.$isNavOpen ? 'translateY(-10px) rotate(45deg)' : 'none')};
     }
 `;
