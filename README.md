@@ -71,10 +71,7 @@ Die anderen für die App relevanten npm-Befehle finden sich in der _package.json
 
 ### Routes
 
-Die Web-Routes sind in der Datei _routes/web.php_ definiert. Es gibt nur zwei:
-
--   Die obere ist ein Spezialfall: Unter _/files_ lassen sich Dateien zum Download hinterlegen, siehe dazu [hier](https://laravel.com/docs/11.x/responses#file-responses).
--   Auf allen anderen Routes, die nicht mit _api_ beginnen, wird der _index_-View zurückgegeben, über den dann die React-App geladen wird.
+Die Web-Routes sind in der Datei _routes/web.php_ definiert. Es gibt nur eine: Auf allen Routes, die nicht mit _api_ beginnen, wird der _index_-View zurückgegeben, über den dann die React-App geladen wird.
 
 Die Api-Routes sind in der Datei _routes/api.php_ definiert und nach Ressourcen gruppiert.
 
