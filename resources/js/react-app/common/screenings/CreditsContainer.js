@@ -103,7 +103,7 @@ const CreditsContainerStyled = styled.div`
 `;
 
 const CreditStyled = styled.span`
-    :last-child span[class*='VerticalLine'] {
+    &:last-child > span[class*='VerticalLine'] {
         display: none;
     }
 `;

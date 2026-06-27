@@ -31,7 +31,7 @@ export default function SerialRow({ serial }) {
 }
 
 const SerialRowStyled = styled.li`
-    :last-child hr {
+    &:last-child > hr {
         display: none;
     }
 `;

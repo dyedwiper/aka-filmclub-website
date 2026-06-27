@@ -32,7 +32,7 @@ export default function NoticeRow({ notice }) {
 }
 
 const NoticeRowStyled = styled.li`
-    :last-child hr {
+    &:last-child > hr {
         display: none;
     }
 `;

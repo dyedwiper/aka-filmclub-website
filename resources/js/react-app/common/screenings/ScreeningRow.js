@@ -43,7 +43,7 @@ export default function ScreeningRow({ screening }) {
 }
 
 const ScreeningRowStyled = styled.li`
-    :last-child hr {
+    &:last-child > hr {
         display: none;
     }
 `;
