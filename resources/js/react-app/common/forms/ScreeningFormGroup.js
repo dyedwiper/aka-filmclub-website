@@ -110,6 +110,10 @@ export default function ScreeningFormGroup({ screening }) {
                 <InputStyled name="special" defaultValue={screening && screening.special} />
             </LabelStyled>
             <LabelStyled>
+                Inhaltshinweise
+                <InputStyled name="contentNotes" defaultValue={screening && screening.content_notes} />
+            </LabelStyled>
+            <LabelStyled>
                 Dreizeiler
                 <TercetTextareaStyled name="tercet" defaultValue={screening && screening.tercet} />
             </LabelStyled>

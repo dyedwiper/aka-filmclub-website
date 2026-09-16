@@ -28,6 +28,7 @@ export default function ScreeningPage() {
     const [screening, setScreening] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [noScreeningFound, setNoScreeningFound] = useState(false);
+    const [areContentNotesVisible, setAreContentNotesVisible] = useState(false);
 
     const { isUserEditor, setPageTitle } = useContext(Context);
 
@@ -85,6 +86,25 @@ export default function ScreeningPage() {
                 <CreditsContainer film={screening} />
                 <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
+                {screening.content_notes && (
+                    <SpoilerStyled>
+                        <SpoilerButtonStyled
+                            type="button"
+                            onClick={() => setAreContentNotesVisible(!areContentNotesVisible)}
+                            aria-expanded={areContentNotesVisible}
+                        >
+                            {areContentNotesVisible
+                                ? 'Triggerwarnungen ausblenden'
+                                : 'Triggerwarnungen einblenden (mögliche Spoiler)'}
+                        </SpoilerButtonStyled>
+
+                        {areContentNotesVisible && (
+                            <SpoilerContentStyled>
+                                {screening.content_notes}
+                            </SpoilerContentStyled>
+                        )}
+                    </SpoilerStyled>
+                )}     
                 {screening.serial && (
                     <SerialContainerStyled>
                         <hr />
@@ -196,3 +216,34 @@ const SerialLinkStyled = styled(Link)`
 `;
 
 const EditLinkStyled = styled(Link)``;
+
+const SpoilerStyled = styled.div`
+    margin: 20px 0;
+    padding: 8px 16px;
+    font-size: 0.7em;
+    white-space: pre-wrap;
+`;
+
+const SpoilerButtonStyled = styled.button`
+    width: 100%;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+
+    &:focus {
+        outline: 0;
+        box-shadow: none;
+    }
+`;
+
+const SpoilerContentStyled = styled.div`
+    padding-top: 12px;
+`;
+
