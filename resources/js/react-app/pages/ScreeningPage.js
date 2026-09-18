@@ -226,20 +226,24 @@ const SpoilerStyled = styled.div`
 
 const SpoilerButtonStyled = styled.button`
     width: 100%;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    box-shadow: none;
-    background: transparent;
-    color: inherit;
+    display: block;
+    padding: 5px;
+    border: solid 1px black;
+    box-shadow: 1px 1px 1px black;
+    background-color: transparent;
+    color: black;
     font: inherit;
     font-weight: bold;
     text-align: left;
     cursor: pointer;
 
-    &:focus {
-        outline: 0;
-        box-shadow: none;
+    &:active {
+        background-color: var(--aka-gelb);
+    }
+
+    &:focus-visible {
+        outline: 2px solid var(--aka-gelb);
+        outline-offset: 2px;
     }
 `;
 

@@ -111,7 +111,7 @@ export default function ScreeningFormGroup({ screening }) {
             </LabelStyled>
             <LabelStyled>
                 Inhaltshinweise
-                <InputStyled name="contentNotes" defaultValue={screening && screening.content_notes} />
+                <TercetTextareaStyled name="contentNotes" defaultValue={screening && screening.content_notes} />
             </LabelStyled>
             <LabelStyled>
                 Dreizeiler

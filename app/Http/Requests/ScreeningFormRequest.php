@@ -44,7 +44,7 @@ class ScreeningFormRequest extends FormRequest
             'version' => 'max:255',
             'venue' => 'required|max:255',
             'special' => 'max:255',
-            'contentNotes' => 'nullable|string|max:65535',
+            'contentNotes' => 'nullable|max:65535',
             'tercet' => 'max:65535',
             'serialId' => 'nullable|integer',
             'preScreeningOf' => 'nullable|integer',

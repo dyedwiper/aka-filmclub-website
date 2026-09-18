@@ -34,6 +34,7 @@ class CreateScreeningsTable extends Migration
             $table->string('version')->nullable();
             $table->string('venue');
             $table->string('special')->nullable();
+            $table->text('content_notes')->nullable();
             $table->text('tercet')->nullable();
             $table->string('author')->nullable();
             $table->string('fskRating')->nullable();
