@@ -87,8 +87,8 @@ export default function ScreeningPage() {
                 <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
                 {screening.content_notes && (
-                    <SpoilerStyled>
-                        <SpoilerButtonStyled
+                    <ContentNoteContainerStyled>
+                        <ContentNoteButtonStyled
                             type="button"
                             onClick={() => setAreContentNotesVisible(!areContentNotesVisible)}
                             aria-expanded={areContentNotesVisible}
@@ -96,15 +96,11 @@ export default function ScreeningPage() {
                             {areContentNotesVisible
                                 ? 'Triggerwarnungen ausblenden'
                                 : 'Triggerwarnungen einblenden (mögliche Spoiler)'}
-                        </SpoilerButtonStyled>
+                        </ContentNoteButtonStyled>
 
-                        {areContentNotesVisible && (
-                            <SpoilerContentStyled>
-                                {screening.content_notes}
-                            </SpoilerContentStyled>
-                        )}
-                    </SpoilerStyled>
-                )}     
+                        {areContentNotesVisible && <ContentNotesStyled>{screening.content_notes}</ContentNotesStyled>}
+                    </ContentNoteContainerStyled>
+                )}
                 {screening.serial && (
                     <SerialContainerStyled>
                         <hr />
@@ -217,37 +213,16 @@ const SerialLinkStyled = styled(Link)`
 
 const EditLinkStyled = styled(Link)``;
 
-const SpoilerStyled = styled.div`
+const ContentNoteContainerStyled = styled.div`
     margin: 20px 0;
-    padding: 8px 16px;
     font-size: 0.7em;
+`;
+
+const ContentNoteButtonStyled = styled.button`
+    font-weight: bold;
+`;
+
+const ContentNotesStyled = styled.div`
+    padding-top: 12px;
     white-space: pre-wrap;
 `;
-
-const SpoilerButtonStyled = styled.button`
-    width: 100%;
-    display: block;
-    padding: 5px;
-    border: solid 1px black;
-    box-shadow: 1px 1px 1px black;
-    background-color: transparent;
-    color: black;
-    font: inherit;
-    font-weight: bold;
-    text-align: left;
-    cursor: pointer;
-
-    &:active {
-        background-color: var(--aka-gelb);
-    }
-
-    &:focus-visible {
-        outline: 2px solid var(--aka-gelb);
-        outline-offset: 2px;
-    }
-`;
-
-const SpoilerContentStyled = styled.div`
-    padding-top: 12px;
-`;
-
