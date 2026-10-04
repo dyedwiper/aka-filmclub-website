@@ -94,8 +94,8 @@ export default function ScreeningPage() {
                             aria-expanded={areContentNotesVisible}
                         >
                             {areContentNotesVisible
-                                ? 'Triggerwarnungen ausblenden'
-                                : 'Triggerwarnungen einblenden (mögliche Spoiler)'}
+                                ? 'Inhaltshinweise ausblenden'
+                                : 'Inhaltshinweise einblenden (mögliche Spoiler)'}
                         </ContentNoteButtonStyled>
 
                         {areContentNotesVisible && <ContentNotesStyled>{screening.content_notes}</ContentNotesStyled>}
