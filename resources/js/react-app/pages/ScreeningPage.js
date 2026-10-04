@@ -87,8 +87,8 @@ export default function ScreeningPage() {
                 <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
                 {screening.content_notes && (
-                    <ContentNoteContainerStyled>
-                        <ContentNoteButtonStyled
+                    <ContentNotesContainerStyled>
+                        <ContentNotesButtonStyled
                             type="button"
                             onClick={() => setAreContentNotesVisible(!areContentNotesVisible)}
                             aria-expanded={areContentNotesVisible}
@@ -96,10 +96,9 @@ export default function ScreeningPage() {
                             {areContentNotesVisible
                                 ? 'Inhaltshinweise ausblenden'
                                 : 'Inhaltshinweise einblenden (mögliche Spoiler)'}
-                        </ContentNoteButtonStyled>
-
+                        </ContentNotesButtonStyled>
                         {areContentNotesVisible && <ContentNotesStyled>{screening.content_notes}</ContentNotesStyled>}
-                    </ContentNoteContainerStyled>
+                    </ContentNotesContainerStyled>
                 )}
                 {screening.serial && (
                     <SerialContainerStyled>
@@ -213,12 +212,12 @@ const SerialLinkStyled = styled(Link)`
 
 const EditLinkStyled = styled(Link)``;
 
-const ContentNoteContainerStyled = styled.div`
+const ContentNotesContainerStyled = styled.div`
     margin: 20px 0;
     font-size: 0.7em;
 `;
 
-const ContentNoteButtonStyled = styled.button`
+const ContentNotesButtonStyled = styled.button`
     font-weight: bold;
 `;
 
