@@ -44,13 +44,13 @@ class ScreeningFormRequest extends FormRequest
             'version' => 'max:255',
             'venue' => 'required|max:255',
             'special' => 'max:255',
-            'contentNotes' => 'nullable|max:65535',
             'tercet' => 'max:65535',
             'serialId' => 'nullable|integer',
             'preScreeningOf' => 'nullable|integer',
             'author' => 'max:255',
             'fskRating' => 'nullable|max:255',
             'fskDescriptors' => 'nullable|max:255',
+            'contentNotes' => 'nullable|max:65535',
         ];
     }
 
@@ -74,13 +74,13 @@ class ScreeningFormRequest extends FormRequest
             'version' => 'Sprachfassung',
             'venue' => 'Veranstaltungsort',
             'special' => 'Special',
-            'contentNotes' => 'Inhaltshinweise',
             'tercet' => 'Dreizeiler',
             'serialId' => 'Filmreihe',
             'preScreeningOf' => 'Vorfilm zu',
             'author' => 'Autor*in',
             'fskRating' => 'FSK',
             'fskDescriptors' => 'FSK-Deskriptoren',
+            'contentNotes' => 'Inhaltshinweise',
         ];
     }
 

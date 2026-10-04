@@ -152,13 +152,13 @@ class ScreeningController extends Controller
         $screening->version = $request->version;
         $screening->venue = $request->venue;
         $screening->special = $request->special;
-        $screening->content_notes = $request->contentNotes;
         $screening->tercet = $request->tercet;
         $screening->serial_id = $request->serialId;
         $screening->preScreeningOf = $request->preScreeningOf;
         $screening->author = $request->author;
         $screening->fskRating = $request->fskRating;
         $screening->fskDescriptors = $request->fskDescriptors;
+        $screening->content_notes = $request->contentNotes;
 
         return $screening;
     }
