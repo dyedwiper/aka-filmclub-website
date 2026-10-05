@@ -50,6 +50,7 @@ class ScreeningFormRequest extends FormRequest
             'author' => 'max:255',
             'fskRating' => 'nullable|max:255',
             'fskDescriptors' => 'nullable|max:255',
+            'contentNotes' => 'nullable|max:65535',
         ];
     }
 
@@ -79,6 +80,7 @@ class ScreeningFormRequest extends FormRequest
             'author' => 'Autor*in',
             'fskRating' => 'FSK',
             'fskDescriptors' => 'FSK-Deskriptoren',
+            'contentNotes' => 'Triggerwarnungen',
         ];
     }
 

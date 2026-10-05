@@ -110,8 +110,12 @@ export default function ScreeningFormGroup({ screening }) {
                 <InputStyled name="special" defaultValue={screening && screening.special} />
             </LabelStyled>
             <LabelStyled>
+                Triggerwarnungen
+                <TextareaStyled name="contentNotes" defaultValue={screening && screening.content_notes} />
+            </LabelStyled>
+            <LabelStyled>
                 Dreizeiler
-                <TercetTextareaStyled name="tercet" defaultValue={screening && screening.tercet} />
+                <TextareaStyled name="tercet" defaultValue={screening && screening.tercet} />
             </LabelStyled>
             <LabelStyled>
                 Filmreihe
@@ -153,7 +157,7 @@ const SmallInputLabelStyled = styled.label`
 
 const InputStyled = styled.input``;
 
-const TercetTextareaStyled = styled.textarea`
+const TextareaStyled = styled.textarea`
     height: 80px;
 `;
 

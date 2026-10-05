@@ -158,6 +158,7 @@ class ScreeningController extends Controller
         $screening->author = $request->author;
         $screening->fskRating = $request->fskRating;
         $screening->fskDescriptors = $request->fskDescriptors;
+        $screening->content_notes = $request->contentNotes;
 
         return $screening;
     }

@@ -28,6 +28,7 @@ export default function ScreeningPage() {
     const [screening, setScreening] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [noScreeningFound, setNoScreeningFound] = useState(false);
+    const [areContentNotesVisible, setAreContentNotesVisible] = useState(false);
 
     const { isUserEditor, setPageTitle } = useContext(Context);
 
@@ -85,6 +86,20 @@ export default function ScreeningPage() {
                 <CreditsContainer film={screening} />
                 <SynopsisStyled dangerouslySetInnerHTML={{ __html: screening.synopsis }} />
                 <AuthorStyled>{screening.author}</AuthorStyled>
+                {screening.content_notes && (
+                    <ContentNotesContainerStyled>
+                        <ContentNotesButtonStyled
+                            type="button"
+                            onClick={() => setAreContentNotesVisible(!areContentNotesVisible)}
+                            aria-expanded={areContentNotesVisible}
+                        >
+                            {areContentNotesVisible
+                                ? 'Triggerwarnungen ausblenden'
+                                : 'Triggerwarnungen einblenden (mögliche Spoiler)'}
+                        </ContentNotesButtonStyled>
+                        {areContentNotesVisible && <ContentNotesStyled>{screening.content_notes}</ContentNotesStyled>}
+                    </ContentNotesContainerStyled>
+                )}
                 {screening.serial && (
                     <SerialContainerStyled>
                         <hr />
@@ -196,3 +211,17 @@ const SerialLinkStyled = styled(Link)`
 `;
 
 const EditLinkStyled = styled(Link)``;
+
+const ContentNotesContainerStyled = styled.div`
+    margin: 20px 0;
+    font-size: 0.7em;
+`;
+
+const ContentNotesButtonStyled = styled.button`
+    font-weight: bold;
+`;
+
+const ContentNotesStyled = styled.div`
+    padding-top: 12px;
+    white-space: pre-wrap;
+`;
