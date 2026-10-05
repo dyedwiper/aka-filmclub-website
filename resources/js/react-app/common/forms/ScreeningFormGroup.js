@@ -110,7 +110,7 @@ export default function ScreeningFormGroup({ screening }) {
                 <InputStyled name="special" defaultValue={screening && screening.special} />
             </LabelStyled>
             <LabelStyled>
-                Inhaltshinweise
+                Triggerwarnungen
                 <TextareaStyled name="contentNotes" defaultValue={screening && screening.content_notes} />
             </LabelStyled>
             <LabelStyled>

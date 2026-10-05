@@ -80,7 +80,7 @@ class ScreeningFormRequest extends FormRequest
             'author' => 'Autor*in',
             'fskRating' => 'FSK',
             'fskDescriptors' => 'FSK-Deskriptoren',
-            'contentNotes' => 'Inhaltshinweise',
+            'contentNotes' => 'Triggerwarnungen',
         ];
     }
 
